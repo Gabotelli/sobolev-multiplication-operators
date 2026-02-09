@@ -1,0 +1,431 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- PAQUETES ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+% --- CONFIGURACIÓN ---
+\geometry{left=15mm, right=15mm, top=15mm, bottom=15mm}
+\newtheorem{teorema}{Teorema}
+\newtheorem{definicion}{Definición}
+\newtheorem{corolario}{Corolario}
+\newtheorem{proposicion}{Proposición}
+
+% --- COMANDOS ---
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Poly}{\mathbb{P}[z]}
+\newcommand{\norm}[1]{\left\| #1 \right\|_S}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle_S}
+\newcommand{\D}{\mathcal{D}}
+
+\title{Cota $\sigma_k$}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\textcolor{red}{Comentarios de Raquel:  Para definir los valores singulares nos hemos dado cuenta de que la noción de espacios de codimensión finita en espacios de Hilbert es delicada, por lo que   antes de introducir la noción de la valor singular para un operador en dimensión infinita, tenemos que   definir con rigor los espacios de codimensión finita en espacios de Hilbert. Hay que buscar una referencia en la que aparezca la definición de espacios de codimensión finita. Por ejemplo, estos subespacios tienen que ser siempre CERRADOS por lo que tendríamos que trabajar en el espacio de Hilbert generado por el producto escalar. Por otra parte,  en general, los núcleos de aplicaciones lineales NO son cerrados, si las aplicaciones lineales no son continuas, lo que ocurriría con los funcionales de evaluación cuando los átomos no son puntos de evaluación continua. He dividido el trabajo en dos partes y he corregido con acotaciones en rojo. 
+}
+\textcolor{green}{De acuerdo con Raquel}
+\section{ACOTACIÓN DEL OPERADOR MULTIPLICACIÓN EN CASOS SOBOLEV DISCRETOS}
+ Consideramos el espacio de polinomios $\Poly$ equipado con un producto interno de Sobolev que incluye una medida $\mu$ \textcolor{red}{es una medida de Lebesgue}soportada en la circunferencia $S_R = \{z : |z|=R\}$ y un conjunto finito de $N$ átomos discretos en las derivadas:
+
+\begin{equation}
+    \ip{p}{q} = \int_{S_R} p(z)\overline{q(z)} d\mu(z) + \sum_{k=1}^{N} \ p'(c_k)\overline{q'(c_k)}
+\end{equation}
+donde $\{c_1, \dots, c_N\} \subset \C$ son las ubicaciones de los átomos.
+
+La acotación del operador de multiplicación $\D(p) = zp$ depende de la geometría de los átomos respecto al soporte de la medida continua.
+
+\begin{definicion}[Partición de Átomos]
+Dividimos el conjunto de índices de los átomos $\mathcal{I} = \{1, \dots, N\}$ en dos subconjuntos disjuntos:
+\begin{itemize}
+    \item $\mathcal{I}_{in} = \{ k : |c_k| < R \}$. Estos puntos pertenecen al disco de Puntos de Evaluación Acotados de la medida $\mu$.
+    \item $\mathcal{I}_{out} = \{ k : |c_k| \ge  R \}$. Estos puntos están fuera del disco.
+\end{itemize}
+Sea $m = |\mathcal{I}_{out}|$ el número de átomos inestables.
+\end{definicion}
+
+\begin{definicion}[Subespacio Estable $W$]
+Consideremos el conjunto de funcionales lineales de evaluación sobre los átomos inestables, 
+
+\textcolor{red}{supongo que quieres decir los átomos estables, los que son puntos de evaluación continua.}
+denotados como $\delta_{c_k} \in \Poly^*$ tal que $\delta_{c_k}(p) = p(c_k)$, para cada $k \in \mathcal{I}_{out}$.
+Definimos el subespacio $W$ como la intersección de los núcleos de estos funcionales:
+\begin{equation}
+    W = \bigcap_{k \in \mathcal{I}_{out}} \ker(\delta_{c_k}) = \{ p \in \Poly : p(c_k) = 0, \quad \forall k \in \mathcal{I}_{out} \}
+\end{equation}
+\end{definicion}
+
+\begin{definicion}[Subespacio Restringido $W'$]
+Consideremos el conjunto de funcionales lineales de evaluación sobre los átomos, denotados como $\delta_{c_k} \in \Poly^*$ tal que $\delta_{c_k}(p) = p(c_k)$, para cada $k \in \mathcal{I}$.
+Definimos el subespacio $W$ como la intersección de los núcleos de estos funcionales:
+\begin{equation}
+   W' = \bigcap_{k \in \mathcal{I}} \ker(\delta_{c_k}) = \{ p \in \Poly : p(c_k) = 0, \quad \forall k \in \mathcal{I} \}
+\end{equation}
+\end{definicion}
+
+\begin{proposicion}[Codimensión de Intersecciones de Núcleos]
+Sea $\mathcal{S} = \{z_1, \dots, z_k\} \subset \C$ un conjunto finito de $k$ puntos distintos. Definimos el subespacio $V_{\mathcal{S}} \subset \Poly$ como el conjunto de polinomios que se anulan en todos los puntos de $\mathcal{S}$:
+$$ V_{\mathcal{S}} = \{ p \in \Poly : p(z) = 0, \quad \forall z \in \mathcal{S} \} $$
+Entonces, el subespacio $V_{\mathcal{S}}$ tiene codimensión exacta $k$ en $\Poly$.
+\end{proposicion}
+
+\begin{proof}
+Asociamos a cada punto $z_i \in \mathcal{S}$ el funcional lineal de evaluación $\delta_{z_i} \in \Poly^*$. El subespacio $V_{\mathcal{S}}$ es, por definición, la intersección de los núcleos de estos funcionales: $V_{\mathcal{S}} = \bigcap_{i=1}^k \ker(\delta_{z_i})$.
+
+Para determinar la codimensión, primero demostramos que el conjunto de funcionales $\{\delta_{z_1}, \dots, \delta_{z_k}\}$ es linealmente independiente. Supongamos que existe una combinación lineal nula $\sum_{i=1}^k \alpha_i \delta_{z_i} = 0_{\Poly^*}$.
+Para cada índice $j \in \{1, \dots, k\}$, construimos explícitamente el polinomio de interpolación de Lagrange asociado al conjunto $\mathcal{S}$:
+\begin{equation}
+    L_j(z) = \prod_{\substack{l=1 \\ l \neq j}}^{k} \frac{z - z_l}{z_j - z_l}
+\end{equation}
+Por construcción, estos polinomios satisfacen la propiedad de ortogonalidad puntual $L_j(z_i) = \delta_{ji}$ (Delta de Kronecker). Evaluando la combinación lineal supuesta en el polinomio $L_j$, obtenemos:
+$$ 0 = \sum_{i=1}^k \alpha_i \delta_{z_i}(L_j) = \sum_{i=1}^k \alpha_i L_j(z_i) = \alpha_j \cdot 1 $$
+Por tanto, $\alpha_j = 0$ para todo $j$, lo que demuestra la independencia lineal.
+
+\textcolor{red}{La demostración de que los funcionales de evaluación son linealmente independientes es correcta.}
+
+Finalmente, definimos la aplicación lineal de evaluación conjunta $\Phi: \Poly \to \C^k$ dada por $\Phi(p) = (p(z_1), \dots, p(z_k))$. Su núcleo es exactamente $\ker(\Phi) = V_{\mathcal{S}}$. 
+
+\textcolor{red}{No entiendo por qué si los funcionales son linealmente independientes la aplicación es biyectiva, por otra parte el núcleo de $\Phi$ no tendría por qué ser cerrado y la aplicación del Teorema de Isomorfía no se si es cierta en espacios de dimensión infinita, habría que buscar referencias. }
+Dado que los funcionales componentes son independientes, la aplicación es sobreyectiva. Aplicando el Primer Teorema de Isomorfía:
+$$ \Poly / V_{\mathcal{S}} \cong \C^k \implies \operatorname{codim}(V_{\mathcal{S}}) = \dim(\C^k) = k $$
+\end{proof}
+
+\begin{corolario}
+Considerando los conjuntos de átomos definidos anteriormente:
+\begin{enumerate}
+    \item El subespacio estable $W$, que anula los $m$ átomos inestables ($\mathcal{I}_{out}$), tiene codimensión $m$.
+    \item El subespacio totalmente restringido $W'$, que anula la totalidad de los $N$ átomos ($\mathcal{I}$), tiene codimensión $N$.
+\end{enumerate}
+\end{corolario}
+
+\begin{teorema}[Acotación Condicionada]
+Sea $\D$ el operador de multiplicación por z, definido como $\D(p) = z p(z)$. La restricción de este operador al subespacio $W$, denotada como $\D|_W : W \to \Poly$, es un operador acotado respecto a la norma de Sobolev $\norm{\cdot}$. Es decir, existe una constante $K < \infty$ tal que $\norm{\D p} \le K \norm{p}$ para todo $p \in W$.
+\end{teorema}
+
+\begin{proof}
+Sea $p \in W$. Veamos que podemos acotar $\norm{zp}^2$, en términos de $\norm{p}^2$. Para ello, descomponemos la norma de Sobolev en su parte continua y su parte discreta, analizando el comportamiento de cada término bajo la acción del operador.
+
+En primer lugar, analizamos el control del término integral. Dado que la medida $\mu$ está soportada exclusivamente en la circunferencia $S_R$, para cualquier punto $z$ en el dominio de integración se cumple la identidad $|z| = R$.
+$$\int_{S_R} |z p(z)|^2 d\mu = R^2 \int_{S_R} |p(z)|^2 d\mu \le R^2 \norm{p}^2.$$
+Este término permanece siempre controlado por la norma original, independientemente de la configuración de los átomos.
+
+Aplicando la regla de la derivada del producto, $(zp)'(z) = p(z) + z p'(z)$, y evaluando en un átomo genérico $c_k$, la contribución a la norma es $|(zp)'(c_k)|^2 = |p(c_k) + c_k p'(c_k)|^2$.
+
+Para los átomos inestables la hipótesis ??? \textcolor{red}{puesto que $p(c_k)=0$ por hipótesis cuando $k\in \mathcal{I}_{out}$} elimina el término libre en la expresión de la derivada???, simplificándola a $|0 + c_k p'(c_k)|^2 = |c_k|^2 |p'(c_k)|^2$. Al sumar sobre todos los átomos inestables, podemos acotar su contribución utilizando el módulo del átomo más lejano como factor común:
+$$ \sum_{k \in \mathcal{I}_{out}}  |c_k|^2 |p'(c_k)|^2 \le \left( \max_{k \in \mathcal{I}_{out}} |c_k|^2 \right) \sum_{k \in \mathcal{I}_{out}}  |p'(c_k)|^2. $$
+Dado que la suma parcial de las derivadas ponderadas es menor o igual que la norma total $\norm{p}^2$, este término queda acotado.  por la geometría de los átomos externos.
+
+Por otro lado, para los átomos estables utilizamos la desigualdad triangular $(a+b)^2 \le 2a^2 + 2b^2$ para separar los componentes: $|p(c_k) + c_k p'(c_k)|^2 \le 2|p(c_k)|^2 + 2|c_k|^2 |p'(c_k)|^2$. El segundo sumando está controlado trivialmente por la norma de la derivada ponderada \textcolor{red}{la norma Sobolev}
+. Para el primer sumando, $|p(c_k)|^2$ usamos que es BPE para la medida $\mu$ en la circunferencia. Esto implica la existencia de una constante $M_k > 0$ tal que la evaluación puntual es un funcional continuo respecto a la norma $L^2$, es decir, $|p(c_k)|^2 \le M_k \int_{S_R} |p|^2 d\mu \le M_k \norm{p}^2$. Por lo tanto, la contribución de los átomos estables también está uniformemente acotada por la norma total \textcolor{red}{la norma sobolev}del polinomio.
+
+\textcolor{red}{Más precisamente}
+
+Combinando las cotas obtenidas para la parte integral y para ambos tipos de átomos, concluimos que existe una constante global $K_{total}$ (dependiente de $R$, las posiciones $c_k$ y las constantes BPE) tal que $\norm{\D p}^2 \le K_{total} \norm{p}^2$, lo que demuestra que $\D|_W$ es un operador acotado.
+\end{proof}
+\textcolor{red}{Esta demostración es correcta. Sin embargo, creo que la tienes que redactar con más precisión y formalización matemática, evitando comentarios (como la geometría de los átomos, etc...) y escribiendo las expresiones de la norma sobolev de la imagen de un polinomio y las acotaciones y desigualdades precisas para llegar a la conclusión. Los comentarios sobre la geometría de átomos, etc, los puedes escibir como observaciones al final de la proposición. }
+
+\begin{corolario}[Acotación del Espectro Remanente]
+Como consecuencia directa de la acotación del operador en $W$, el $(m+1)$-ésimo valor singular asintótico del operador de multiplicación, denotado como $\sigma_{m+1}$, está acotado superiormente por la norma de la restricción:
+\begin{equation}
+    \sigma_{m+1} \le \|\D|_W\| < \infty
+\end{equation}
+\end{corolario}
+
+\begin{proof}
+Utilizamos la caracterización variacional de los valores singulares dada por el Principio Min-Max . El $(m+1)$-ésimo valor singular se define como el ínfimo de la norma del operador sobre todos los subespacios posibles de codimensión $m$:
+$$ \sigma_{m+1} = \inf \{ \|\D|_V\| : V \subset \Poly, \, \operatorname{codim}(V) = m \} $$
+
+\textcolor{red}{Tenemos que revisar la definición del valor singular de un operador para espacios de dimensión infinita.}
+
+
+En la Definición del subespacio estable, establecimos que $W$ tiene precisamente codimensión $m$ (pues es la intersección de $m$ núcleos funcionalmente independientes \textcolor{red}{esto es lo que no es cierto}). Por lo tanto, $W$ pertenece al conjunto de subespacios sobre los que se toma el ínfimo.
+Por la propiedad fundamental del ínfimo, el valor evaluado en un elemento específico del conjunto ($W$) siempre es una cota superior del ínfimo global:
+$$ \sigma_{m+1} \le \|\D|_W\| $$
+Dado que el Teorema de Acotación Condicionada demuestra que $\|\D|_W\|$ es finito, concluimos que $\sigma_{m+1}$ es finito.
+\end{proof}
+
+\begin{proposicion}[Divergencia de los Valores Singulares Inestables]
+Sea $\mathcal{D}$ el operador de multiplicación por z, sea $m$ el número de átomos inestables ($m=|\mathcal{I}_{out}|$).
+Entonces, los primeros $m$ valores singulares del operador son infinitos:
+\begin{equation}
+    \sigma_1 = \sigma_2 = \dots = \sigma_m = \infty
+\end{equation}
+\end{proposicion}
+
+\begin{proof}
+Debido a la propiedad de ordenamiento de los valores singulares ($\sigma_1 \ge \sigma_2 \ge \dots$), basta con demostrar que $\sigma_m = \infty$. Utilizamos la caracterización variacional del principio Min-Max:
+$$ \sigma_m = \inf_{\substack{V \subset \Poly \\ \operatorname{codim}(V) = m-1}} \|\mathcal{D}|_V\| $$
+Para demostrar que este ínfimo es infinito, probaremos que para \emph{cualquier} subespacio $V$ de codimensión $m-1$, la norma del operador restringido es infinita ($\|\mathcal{D}|_V\| = \infty$).
+
+Sea $V$ un subespacio arbitrario con $\operatorname{codim}(V) = m-1$.
+Consideremos el subespacio $W$ que anula todos los átomos inestables:
+$$ W = \{ p \in \Poly : p(c_k) = 0 \quad \forall k \in \mathcal{I}_{out} \} $$
+Como los $m$ átomos son distintos, las restricciones son linealmente independientes, por lo que $\operatorname{codim}(W) = m$.
+Por dimensionalidad, dado que $\operatorname{codim}(V) < \operatorname{codim}(W)$, el subespacio $V$ no puede estar contenido en $W$. 
+
+\textcolor{red}{estas demostraciones de dimensionalidad en espacios de dimensión infinita y con espacios de codimensión finita no son ciertas en general, hay que revisarlo}Esto implica que existe al menos un índice $j \in \mathcal{I}_{out}$ (un átomo inestable, denotémoslo $c_*$) tal que el funcional de evaluación en $c_*$ no es nulo en $V$.
+
+
+\textcolor{red}{LO QUE PRUEBAS EN LA DEMOSTRACIÓN SIGUIENTE ES:}
+
+\textcolor{red}{-Sea $\mu$ la medida de Lebesgue en la circunferencia de radio $R$, sea $c_{*}$ con $\vert c_{*} \vert >R$ y consideremos la norma Sobolev $\Vert p \Vert^2_{S} = \Vert p \Vert^2_{\mu}+ \vert p'(c_{*})\vert^2$ 
+entonces el operador multiplicación por $z$ no está acotado. Para probar que no está acotado, tenemos que encontrar una sucesión de polinomios $\{Q_n\}_{n}$ tal que 
+$$ \frac{\|\mathcal{D}Q_n\|_S^2}{\|Q_n\|_S^2} \to \infty
+$$} 
+ 
+
+
+Definimos la sucesión de polinomios $\{Q_n\}_{n}$ (adaptada al átomo activo $c_*$) de modo que $
+$:
+$$Q_n(z) = (n+1)c_* z^n - n z^{n+1}$$
+Esta construcción está diseñada específicamente para anular el término de derivada en la norma de (entrada) sobolev del polinomio, pero maximizar el término de valor en la norma de salida. (\textcolor{red}{evita las expresiones de norma de entrada o de salida, hay una norma sobolev, con la parte continua y discreta}
+
+Calculamos la derivada de $Q_n$ y la evaluamos en $c_*$:
+$$ Q_n'(z) = n(n+1)c_* z^{n-1} - n(n+1)z^n $$
+$$ Q_n'(c_*) = n(n+1)c_*^{n} - n(n+1)c_*^n = 0 $$
+
+Por otro lado, el valor del polinomio en el átomo crece geométricamente:
+$$ Q_n(c_*) = (n+1)c_*^{n+1} - n c_*^{n+1} = c_*^{n+1} $$
+
+Evaluamos el cociente de normas para verificar la acotación del operador.
+\begin{itemize}
+    \item ($\|Q_n\|_S^2$):
+    Por construcción, $Q_n'(c_*) = 0$, por lo que el término atómico se anula. La norma se reduce a la integral $L^2$ sobre la circunferencia.
+    $$ \|Q_n\|_S^2 = \int_{S_R} |(n+1)c_* z^n - n z^{n+1}|^2 d\mu =\textcolor{red}{\Vert Q_n \Vert^2_{\mu}^}$$
+    Desarrollando el módulo al cuadrado $|A-B|^2 = |A|^2 + |B|^2 - 2\operatorname{Re}(A\bar{B})$ el término cruzado se anula . Obtenemos:
+\noindent \textcolor{red}{CAMBIAR POR: 
+      Desarrollando el módulo al cuadrado $|A-B|^2 = |A|^2 + |B|^2  $ puesto que los polinomios $z^n$ y $z^{n+1}$ son ortogonales con respecto a la medida de Lebesgue en el círculo unidad.} Obtenemos:
+    \begin{align*}
+        \|Q_n\|_S^2 &= (n+1)^2 |c_*|^2 \int_{S_R} |z|^{2n} d\mu + n^2 \int_{S_R} |z|^{2n+2} d\mu \\
+        &= \left[ (n+1)^2 |c_*|^2 R^{2n} + n^2 R^{2n+2} \right] \cdot \mu(S_R) \textcolor{red}{\text{cambia la medida por 1}}
+    \end{align*}
+    
+    Para $n$ grande, esta expresión está dominada por el término $n^2 R^{2n}$. Es decir, la norma del vector crece con la potencia del radio del soporte continuo ($R$), modulada por un crecimiento polinomial en $n$.
+
+    \item ($\|\mathcal{D}Q_n\|_S^2$):
+    La norma de la imagen contiene 
+
+    \textcolor{red}{no contiene, especificar $$ 
+    \|\mathcal{D}Q_n\|_S^2=R^2\Vert Q_n\Vert^2_{\mu}+  |(\mathcal{D}Q_n)'(c_*)|^2 =  |Q_n(c_*) + c_* Q_n'(c_*)|^2
+    $$}
+    
+    la parte integral (que es simplemente $R^2 \|Q_n\|_S^2$, del mismo orden de magnitud que la entrada) y la parte atómica. Nos centramos en la parte atómica en $c_*$:
+    $$  |(\mathcal{D}Q_n)'(c_*)|^2 =  |Q_n(c_*) + c_* Q_n'(c_*)|^2 $$
+    Sustituyendo  $Q_n'(c_*) = 0$ y  $Q_n(c_*) = c_*^{n+1}$:
+    $$ \text{Término Atómico} =  |c_*^{n+1}|^2 =  |c_*|^{2n+2} $$
+    Aquí la base del crecimiento es $|c_*|$, que es estrictamente mayor que $R$.
+\end{itemize}
+
+Comparando las magnitudes asintóticas del cociente de Rayleigh \textcolor{red}{y teniendo en cuenta que $\|Q_n\|_S^2= \|Q_n\|_{\mu}^2$}:
+$$ \frac{\|\mathcal{D}Q_n\|_S^2}{\|Q_n\|_S^2} = \frac{R^2 \|Q_n\|_S^2 +  |c_*|^{2n+2}}{\|Q_n\|_S^2} = R^2 + \frac{ |c_*|^{2n+2}}{\mu(S_R) \left[ (n+1)^2 |c_*|^2 + n^2 R^2 \right] R^{2n}} $$
+Simplificando para $n \to \infty$:
+$$ \frac{\|\mathcal{D}Q_n\|_S^2}{\|Q_n\|_S^2} \approx R^2 + C \cdot \frac{1}{n^2} \left( \frac{|c_*|}{R} \right)^{2n} $$
+Dado que $|c_*| > R$, el cociente exponencial domina cualquier factor polinomial, forzando la norma a infinito.
+
+
+\noindent //////////////
+
+\noindent \textcolor{red}{MUY INTERESANTE: EN LA DEMOSTACIÓN ANTERIOR ES IMPORTANTE TENER EN CUENTA QUE LA NORMA DEL ÁTOMO ES MAYOR ESTRICTA QUE R POR LO QUE NO VALDRÍA EXACTAMENTE PARA LOS PUNTOS QUE NO SON DE EVALUACIÓN CONTINUA, QUE SERÍAN LOS DE LA NORMA MAYOR O IGUAL QUE R ¿QUÉ PASA CUANDO LA NORMA DEL ÁTOMO ES R?????}
+
+
+Para cualquier subespacio $V$ de codimensión $m-1$, siempre existe una dirección (asociada al átomo $c_*$ que el subespacio no logra anular) donde el operador crece exponencialmente. Por lo tanto, $\|\mathcal{D}|_V\| = \infty$ para todo candidato $V$.
+El ínfimo sobre todos los subespacios es infinito, lo que prueba que $\sigma_m = \infty$. Por la propiedad de entrelazamiento, $\sigma_1, \dots, \sigma_{m-1}$ también son infinitos.
+\end{proof}
+
+\begin{proposicion} \textcolor{red}{ESTA DEMOSTRACIÓN ES CORRECTA}[Dominancia del Soporte]
+Consideremos el subespacio $W'$ de codimensión $N$ \textcolor{red}{(no sabemos si tiene esa codimensión, pero en cualquier caso es un subespacio vectorial) }donde se imponen restricciones nulas en todos los átomos del sistema $\{c_1, \dots, c_N\}$:
+$$ W' = \{ p \in \Poly : p(c_k) = 0, \quad \forall k=1,\dots,N \} $$
+Sea $\D$ el operador de multiplicación por z, definido como $\D(p) = z p(z)$. La norma de la restricción de este operador al subespacio $W'$, denotada como $\D|_{W'} : W' \to \Poly$, es \begin{equation}
+    \norm{\D p} \le \max \left( R, \max_{k=1,\dots,N} |c_k| \right) \textcolor{red}{\norm{ p}} \quad \forall p \in W'
+\end{equation}
+\end{proposicion}
+
+\begin{proof}
+Sea $p \in W'$. Evaluamos la norma al cuadrado de la imagen $\norm{zp}^2$. Para la parte continua tenemos
+$$\int_{|z|=R} |z p(z)|^2 d\mu \le R^2 \int_{|z|=R} |p(z)|^2 d\mu = R^2 \|p\|_{L^2}^2 \textcolor{red}{\text{denota mejor} \|p\|_{L^2}^2=\|p\|_{\mu}^2}$$
+La condición $p \in W'$ implica $p(c_k)=0$ para todo $k$. Al evaluar la derivada de la imagen $(zp)'$ en los átomos, el término libre desaparece:
+$$ (zp)'(c_k) = p(c_k) + c_k p'(c_k) = c_k p'(c_k) $$
+Al sumar sobre todos los átomos, podemos acotar su contribución utilizando el módulo del átomo más lejano como factor común:
+$$ \sum_{k \in \mathcal{I}}  |c_k|^2 |p'(c_k)|^2 \le \left( \max_{k \in \mathcal{I}} |c_k|^2 \right) \sum_{k \in \mathcal{I}}  |p'(c_k)|^2. $$
+Dado que la suma parcial de las derivadas ponderadas es menor o igual que la norma total $\norm{p}^2$, este término queda acotado por la geometría de los átomos . Luego
+$$\frac{\|\mathcal{D}p\|_S^2}{\|p\|_S^2} \le \frac{R^2 \|p\|_{L^2}^2 + \left( \max_{k \in \mathcal{I}} |c_k|^2 \right) \sum_{k \in \mathcal{I}}  |p'(c_k)|^2}{\|p\|_{S}^2}$$
+Para simplificar la acotación de este cociente, definimos la constante $K$ como el máximo alcance geométrico del soporte de la medida (tanto de la parte continua como de la discreta):
+$$ K = \max \left( R, \max_{k \in \mathcal{I}} |c_k| \right). $$
+Sustituyendo esta cota en el numerador, observamos que tanto el coeficiente de la parte integral ($R^2$) como el coeficiente de la parte atómica ($\max |c_k|^2$) son menores o iguales a $K^2$. Esto nos permite factorizar $K^2$ de la expresión:
+\begin{align*}
+    \frac{\|\mathcal{D}p\|_S^2}{\|p\|_S^2} &\le \frac{K^2 \|p\|_{L^2}^2 + K^2 \sum_{k \in \mathcal{I}}  |p'(c_k)|^2}{\|p\|_{S}^2} \\
+    &= \frac{K^2 \left( \|p\|_{L^2}^2 + \sum_{k \in \mathcal{I}}  |p'(c_k)|^2 \right)}{\|p\|_{S}^2} \\
+    &= \frac{K^2 \|p\|_S^2}{\|p\|_S^2} = K^2.
+\end{align*}
+Tomando la raíz cuadrada, concluimos que la norma del operador restringido satisface la desigualdad:
+$$\|\D|_{W'}\| \le K = \max \left( R, \max_{k=1,\dots,N} |c_k| \right).$$
+Esto demuestra que el operador es acotado y que su cota está determinada por el elemento del soporte (sea la circunferencia o un átomo) que se encuentre más alejado del origen.
+\end{proof}
+
+\begin{corolario}[Acotación del Espectro Restringido]
+Como consecuencia directa de la acotación del operador en $W'$, el $(N+1)$-ésimo valor singular asintótico del operador de multiplicación, denotado como $\sigma_{N+1}$, está acotado superiormente por la norma de la restricción:
+\begin{equation}
+    \sigma_{N+1} \le \|\D|_W'\| \le \max \left( R, \max_{k=1,\dots,N} |c_k| \right) < \infty
+\end{equation}
+\end{corolario}
+
+\section{CONVERGENCIA ASINTÓTICA DE LAS SUBDIAGONALES DE LA MATRIZ DE HESSENBERG}
+
+
+\begin{proposicion}[Convergencia Asintótica de la Matriz de Hessenberg]
+Sea $\mathbf{D} = (d_{n,k})_{n,k=0}^\infty$ la matriz de representación del operador de multiplicación por $z$ en la base ortonormal de Sobolev $\{\psi_n\}_{n=0}^\infty$, asociada a una medida soportada en la circunferencia $S_R(C)$ más un número finito de átomos \textcolor{red}{especifica el producto sobolev}.
+Los elementos de las diagonales principales de $\mathbf{D}$ convergen a los parámetros geométricos  soporte continuo: \textcolor{red}{identifica lo que quieres decir con parámetros continuos del soporte continuo????}
+\begin{align}
+    \lim_{n \to \infty} d_{n, n} &= C \quad (\text{Diagonal Principal}) \\
+    \lim_{n \to \infty} d_{n+1, n} &= R \quad (\text{Subdiagonal Inferior})
+\end{align}
+\end{proposicion}
+
+\begin{proof}
+La demostración se fundamenta en la teoría de asintótica de razones (\textit{ratio asymptotics}) para polinomios ortogonales. Para garantizar la validez de estos resultados, primero verificamos que la medida de ortogonalidad pertenece a la clase de Szegő.
+
+La medida $\mu$ asociada a nuestro producto de Sobolev se compone de una parte absolutamente continua soportada en la circunferencia $S_R$ y una parte discreta finita. La parte continua corresponde a la medida de Lebesgue, cuyo peso es constante $w(\theta) = c > 0$ sobre el soporte. La condición de Szegő requiere la integrabilidad logarítmica del peso:
+$$ \int_{0}^{2\pi} \log w(\theta) \, d\theta > -\infty $$
+Dado que el peso es constante y estrictamente positivo, $\log(c)$ es finito y la integral converge, satisfaciendo trivialmente la condición.
+
+Bajo esta premisa, los trabajos de Berriochoa y Cachafeiro \cite{berriochoa2000bernstein} y López Lagomasino y Pijeira Cabrera \cite{lopez1999zero} establecen que la adición de masas discretas en la derivada no altera el comportamiento asintótico de la razón de los polinomios fuera del soporte esencial (el disco cerrado). Por consiguiente, se cumple el teorema de comparación asintótica fuerte con respecto a los polinomios ortogonales estándar de la circunferencia $\{\varphi_n\}$:
+\begin{equation}
+    \lim_{n \to \infty} \frac{\psi_{n+1}(z)}{\psi_n(z)} = \lim_{n \to \infty} \frac{\varphi_{n+1}(z)}{\varphi_n(z)} = \frac{z - C}{R}, \quad \forall |z| > R.
+\end{equation}
+
+Los elementos de la matriz $\mathbf{D}$ son precisamente los coeficientes de la relación de recurrencia que satisface la base ortonormal:
+\begin{equation} \label{eq:recurrencia}
+    z \psi_n(z) = d_{n+1, n} \psi_{n+1}(z) + d_{n, n} \psi_n(z) + \sum_{k=0}^{n-1} d_{k, n} \psi_k(z).
+\end{equation}
+Dividiendo la ecuación (\ref{eq:recurrencia}) por $\psi_n(z)$ y tomando el límite cuando $n \to \infty$ para un $z$ fijo con módulo suficientemente grande, los términos de la suma decaen asintóticamente. La ecuación se estabiliza a:
+$$ z \approx d_{n+1, n} \left( \frac{z - C}{R} \right) + d_{n, n}. $$
+Para que esta igualdad se mantenga para todo $z$:
+\begin{itemize}
+    \item Comparando el coeficiente de $z^1$:
+    $$ 1 = \frac{d_{n+1, n}}{R} \implies d_{n+1, n} \to R. $$
+    \item Comparando el término independiente ($z^0$):
+    $$ 0 = d_{n+1, n} \left( \frac{-C}{R} \right) + d_{n, n}. $$
+    Sustituyendo el límite $d_{n+1, n} \to R$:
+    $$ 0 = R \left( \frac{-C}{R} \right) + d_{n, n} \implies d_{n, n} \to C. $$
+\end{itemize}
+\end{proof}
+
+
+\section{COMPORTAMIENTO ASINTÓTICO DE LOS VALORES SINGULARES DE LAS SECCIONES DE LA MATRIZ DE HESSENBERG}
+
+\textcolor{red}{Gabriel, esta parte no la entiendo, y creo que es importante que incluyas las referencias que usas y que el lenguaje sea matemático, evitando la estabilidad, filtrados, capas geométricas que hace muy difícil la lectura, que además en los libros o referencias sobre polinomios ortogonales ni teoría espectral no aparecen y que dificulta la  comprensión de los resultados.: }
+\begin{proposicion}[Filtrado de Modos Inestables]
+Sea $\mathbf{H}_n \in \mathbb{C}^{(n+1) \times n}$ la matriz rectangular que representa al operador de multiplicación $\mathcal{D}: \mathcal{P}_{n-1} \to \mathcal{P}_n$.
+Supongamos que existen $m$ átomos inestables \textcolor{red}{define átomo inestable}  . Sean $\sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_n$ los valores singulares de $\mathbf{H}_n$ y $\mathbf{v}_1, \dots, \mathbf{v}_n$ los correspondientes vectores singulares derechos \textcolor{red}{qué signfica derechos}
+
+
+Definimos el subespacio "estable" $\mathcal{S}_{stable}$ como el complemento ortogonal al espacio generado por los primeros $m$ vectores singulares:
+\begin{equation}
+    \mathcal{S}_{stable} = \operatorname{span}\{\mathbf{v}_1, \dots, \mathbf{v}_m\}^\perp
+\end{equation}
+Sea $\mathbf{P}_{\mathcal{S}}$ la proyección ortogonal sobre $\mathcal{S}_{stable}$. Entonces, la norma de la matriz proyectada satisface:
+\begin{equation}
+    \|\mathbf{H}_n \mathbf{P}_{\mathcal{S}}\|_2 = \sigma_{m+1}(\mathbf{H}_n)
+\end{equation}
+y su límite asintótico recupera el radio del soporte continuo:
+\begin{equation}
+    \lim_{n \to \infty} \|\mathbf{H}_n \mathbf{P}_{\mathcal{S}}\|_2 = R
+\end{equation}
+\end{proposicion}
+
+\begin{proof}
+\textbf{1. Identidad Algebraica:}
+Consideremos la Descomposición en Valores Singulares (SVD) de la matriz rectangular $\mathbf{H}_n = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^*$, donde $\mathbf{\Sigma} = \operatorname{diag}(\sigma_1, \dots, \sigma_n)$.
+La acción de la matriz sobre un vector arbitrario $\mathbf{x}$ se expresa como:
+$$ \mathbf{H}_n \mathbf{x} = \sum_{j=1}^n \sigma_j (\mathbf{v}_j^* \mathbf{x}) \mathbf{u}_j $$
+Si restringimos la entrada al subespacio $\mathcal{S}_{stable}$, cualquier vector $\mathbf{x} \in \mathcal{S}_{stable}$ satisface $\mathbf{v}_j^* \mathbf{x} = 0$ para todo $j=1, \dots, m$.
+En consecuencia, la suma se trunca, eliminando los términos asociados a los valores singulares divergentes:
+$$ \mathbf{H}_n \mathbf{P}_{\mathcal{S}} \mathbf{x} = \sum_{j=m+1}^n \sigma_j (\mathbf{v}_j^* \mathbf{x}) \mathbf{u}_j $$
+La norma inducida de este operador restringido es, por definición, el máximo coeficiente de amplificación restante, que corresponde al primer valor singular disponible en la suma truncada:\textcolor{red}{cuál es la referencia de este resultado???}
+$$ \max_{\|\mathbf{x}\|=1} \|\mathbf{H}_n \mathbf{P}_{\mathcal{S}} \mathbf{x}\| = \sigma_{m+1} $$
+
+\textbf{2. Convergencia Asintótica:}
+Desde el punto de vista de la teoría de perturbaciones, el operador de multiplicación por $z$ en el espacio de Sobolev puede verse como una perturbación de rango finito (introducida por los átomos) sobre el operador de multiplicación en el espacio $L^2$ de la circunferencia (operador de Toeplitz).
+
+\textcolor{red}{esto no lo entiendo, no veo la perturbación de rango finito del operador ....}
+
+El espectro esencial del operador no perturbado es la circunferencia de radio $R$, lo que implica que sus valores singulares se acumulan en $R$.
+Los $m$ átomos inestables introducen $m$ valores singulares discretos que se separan del espectro esencial y divergen hacia infinito (o hacia $|c_k|$).
+Por el Teorema de Weyl sobre la estabilidad del espectro esencial, una vez "peladas" estas $m$ capas de inestabilidad espectral, el valor singular remanente más grande ($\sigma_{m+1}$) debe converger al límite superior del espectro esencial, es decir, al radio $R$.
+\end{proof}
+
+\begin{proposicion}[Estratificación de Valores Singulares]
+Sea $\mathbf{H}_n \in \mathbb{C}^{(n+1) \times n}$ la matriz de representación del operador de multiplicación. Sean $\sigma_1^{(n)} \ge \sigma_2^{(n)} \ge \dots \ge \sigma_n^{(n)}$ sus valores singulares ordenados decrecientemente.
+En el límite asintótico $n \to \infty$, se cumple la siguiente jerarquía espectral:
+
+\begin{enumerate}
+    \item \textbf{Capa Inestable (Divergencia):} Los primeros $m$ valores singulares divergen a infinito, impulsados por el crecimiento geométrico de los polinomios fuera del disco.
+    $$ \lim_{n \to \infty} \sigma_j^{(n)} = \infty, \quad \text{para } j = 1, \dots, m $$
+    
+    \item \textbf{Capa Estable (Perturbación Discreta):} Los siguientes $k$ valores singulares convergen a constantes finitas estrictamente mayores que el radio $R$. Estos valores reflejan la "tensión" local o energía de evaluación introducida por los átomos interiores.
+    $$ \lim_{n \to \infty} \sigma_j^{(n)} = \lambda_j > R, \quad \text{para } j = m+1, \dots, m+k $$
+    
+    \item \textbf{Capa Geométrica (Espectro Esencial):} A partir del índice $m+k+1$, los valores singulares colapsan al radio de la circunferencia, recuperando la geometría del soporte continuo subyacente.
+    $$ \lim_{n \to \infty} \sigma_j^{(n)} = R, \quad \text{para } j \ge m+k+1 $$
+\end{enumerate}
+\end{proposicion}
+
+\begin{proof}
+La demostración se fundamenta en la descomposición del operador $\mathcal{D}$ y la teoría de perturbaciones de operadores lineales.\textcolor{red}{no veo la perturbación y por tanto no entiendo este resultado}
+
+El producto interno de Sobolev puede verse como una perturbación de rango finito del producto interno estándar $L^2$ en la circunferencia. Sea $T_z$ el operador de desplazamiento (multiplicación por $z$) en el espacio $L^2(S_R)$. Su espectro singular es degenerado y constante igual a $R$ ($\|T_z f\| = R\|f\|$).
+
+La adición de términos discretos de derivada actúa como una perturbación del operador: 
+\begin{itemize}
+    \item \textbf{Los átomos inestables} ($|c|>R$) convierten al operador en no acotado. Existen subespacios de dimensión 1 (asociados a cada átomo) donde la norma crece indefinidamente. Por el principio Min-Max, los primeros $m$ valores singulares deben capturar estas $m$ direcciones de crecimiento no acotado, forzando su divergencia.
+    
+    \item \textbf{Los átomos estables} ($|a|<R$) mantienen al operador acotado, pero introducen direcciones de "alta energía". Aunque la evaluación es finita, el término $|p'(a)|^2$ incrementa la norma del operador por encima de la cota base $R$. Como hay $k$ perturbaciones de este tipo linealmente independientes, el Teorema de Weyl para perturbaciones de rango finito (o compactas) garantiza que el espectro esencial no cambia (se mantiene en $R$), pero pueden aparecer valores singulares discretos aislados por encima del espectro esencial. Estos corresponden a los $\sigma_{m+1}, \dots, \sigma_{m+k}$.
+    
+    \item \textbf{El Espectro Esencial:} Una vez descontadas las $m$ direcciones divergentes y las $k$ direcciones perturbadas discretas (el rango de la perturbación), el operador restringido al complemento ortogonal "ve" únicamente la medida continua en la circunferencia. En este subespacio residual de codimensión finita, el operador se comporta asintóticamente como el operador de desplazamiento puro, cuya norma es $R$.
+\end{itemize}
+
+Por lo tanto, la secuencia de valores singulares actúa como un escáner que detecta primero las singularidades más fuertes (inestables), luego las perturbaciones locales (estables) y finalmente converge al estado fundamental del sistema (el radio).
+\end{proof}
+\section{VARI0S}
+\subsection*{Observacion}
+Sean $\{d_{n,n}(a)\}_{n=0}^\infty$ y $\{d_{n+1,n}(a)\}_{n=0}^\infty$ las sucesiones correspondientes a los elementos de la diagonal principal y la subdiagonal inferior de la matriz $\mathbf{D}$, respectivamente.
+Para cualquier valor fijo del átomo $a$, se cumple:
+\begin{align}
+    \lim_{n \to \infty} d_{n,n}(a) &= 0 \quad (\text{Centro de la Circunferencia}) \\
+    \lim_{n \to \infty} d_{n+1,n}(a) &= 1 \quad (\text{Radio de la Circunferencia})
+\end{align}
+
+
+
+La demostración se realiza mediante el análisis asintótico de los coeficientes dominantes de las expresiones racionales que definen cada término de las sucesiones.
+
+\textbf{1. Convergencia de la Diagonal Principal ($d_{n,n} \to 0$):}
+Los términos de la sucesión $\{d_{n,n}(a)\}$ son funciones racionales de la forma $\frac{P_n(a)}{Q_n(a)}$. Al examinar los términos de orden superior (ej. $n=8, 9, \dots$), observamos que el cociente entre los coeficientes líderes del numerador y del denominador sigue una regla de decaimiento cuadrático.
+Específicamente, para el $k$-ésimo término avanzado, el coeficiente dominante $C_k$ satisface la relación de recurrencia aproximada:
+$$ C_k \approx \frac{1}{k(k+1)} $$
+(Por ejemplo, para los últimos términos calculados, los coeficientes son $\frac{1}{42}, \frac{1}{56}, \frac{1}{72}$, correspondientes a $k=6, 7, 8$).
+Tomando el límite cuando $k \to \infty$:
+$$ \lim_{n \to \infty} d_{n,n}(a) \propto \lim_{k \to \infty} \frac{1}{k^2+k} = 0 $$
+Esto confirma que la diagonal principal converge al centro $C=0$.
+
+\textbf{2. Convergencia de la Subdiagonal ($d_{n+1,n} \to 1$):}
+Los términos de la sucesión $\{d_{n+1,n}(a)\}$ involucran radicales en el denominador. El análisis de los coeficientes de los términos de mayor grado en $a$ revela que la razón entre el numerador y el denominador sigue el patrón:
+$$ L_k = 1 - \frac{1}{k^2} $$
+Donde los últimos términos calculados mostraron razones de $\frac{48}{49}$ ($1 - 1/7^2$) y $\frac{63}{64}$ ($1 - 1/8^2$).
+Calculando el límite asintótico de esta sucesión:
+$$ \lim_{n \to \infty} d_{n+1,n}(a) \propto \lim_{k \to \infty} \left( 1 - \frac{1}{k^2} \right) = 1 $$
+Esto confirma que la subdiagonal converge al radio $R=1$, independientemente del valor del parámetro $a$.
+
+\bibliographystyle{plain} % O el estilo que prefieras: unsrt, alpha, abbrv, ieeetr, etc.
+\bibliography{referencias} % Sin la extensión .bib
+
+\end{document}

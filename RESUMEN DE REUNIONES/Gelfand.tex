@@ -1,0 +1,333 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- PAQUETES ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+% --- CONFIGURACIÓN ---
+\geometry{left=15mm, right=15mm, top=15mm, bottom=15mm}
+\newtheorem{teorema}{Teorema}
+\newtheorem{definicion}{Definición}
+\newtheorem{corolario}{Corolario}
+\newtheorem{proposicion}{Proposición}
+
+% --- COMANDOS ---
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Poly}{\mathbb{P}[z]}
+\newcommand{\norm}[1]{\left\| #1 \right\|_S}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle_S}
+\newcommand{\D}{\mathcal{D}}
+
+\title{Cota $\sigma_k$}
+\author{}
+\date{}
+
+\begin{document}
+
+\section{PROBLEMA: Convergencia de los valores singulares de las secciones a los n\'{u}meros de Gelfand}
+
+
+
+
+
+\noindent {\bf PROBLEMA:} 
+
+\noindent Consideramos el operador multiplicación por $z$ en $\mathbb{P}[z]$, y sus restricciones a los espacios finito dimensionales $\mathbb{P}_{n}[z]
+$ espacio 
+$$
+\mathcal{D}/\mathbb{P}_{n}[z] \to \mathbb{P}_{n+1}[z] 
+$$
+
+\noindent representados por matrices de orden $(n+1)\times (n+2)$ que llamaremos $\mathbf{D}_n$. Consideramos las matrices $\mathbf{D}^{*}_n\mathbf{D}_n$ cuadradas de orden $n+1$,
+
+
+
+
+
+\section{Valores singulares de una matriz finita.} 
+
+\noindent Intoducimos los valores singulares de una matriz cualquiera finita: 
+
+\noindent Sea $\mathbf{A}$ una matriz cuadrada o rectangular $m\times n$ de n\'{u}meros complejos,  la matriz $\mathbf{A}^{*}\mathbf{A}$  ( $\mathbf{A}^{t}\mathbf{A}$ en el caso de matrices con entradas reales) es una matriz hermitiana y semidefinida positiva, por lo tanto, tiene $n$ autovalores mayores o iguales que cero contados con su multiplicidad. Ordenamos de menor a mayor dichos autovalores y los denotaremos de la siguiente forma:
+$$
+0 \leq \lambda_{n,n}\leq \dots \leq \lambda_{2,n} \leq \lambda_{1,n}. 
+$$
+
+
+\noindent Se definen los  valores singulares de $\mathbf{A}$ como 
+$$
+\sigma_{k,n}= \sqrt{\lambda_{k,n}}, \qquad k=1,\dots,n,
+$$
+\noindent siendo: 
+$$
+0 \leq \sigma_{n,n} \leq \dots \sigma_{2,n} \leq \sigma_{1,n}.
+$$
+
+\noindent Utilizando el criterio de Rayleigh, que ha aparecido con anterioridad, se tiene que el mayor valor singular de una matriz coincide con su norma como operador en el espacio eucl\'{\i}deo $\CC^n$. En 
+efecto, si consideramos la matriz $\mathbf{A}^{t}\mathbf{A}$ es una matriz hermitiana semidefinida positiva y 
+$$
+\lambda_{1,n}= 
+\max \{ <\mathbf{A}^{t}\mathbf{A}x,x>: \Vert x \Vert =1 \}
+= \max \{\Vert \mathbf{A} x \Vert^2 : \Vert x \Vert =1\}=
+\Vert \mathbf{A} \Vert^2,
+$$
+\noindent por lo que:
+$$
+\sigma_{1,n} = \Vert \mathbf{A} \Vert. 
+$$
+
+\noindent M\'{a}s generalmente, 
+el Principio de min-max de  Courant-Fischer  (BUSCAR BIBLIOGRAFIA) afirma que el $k$-\'{e}simo valor singular, ordenado de forma descediente, es el m\'{\i}nimo de las normas de la aplicaci\'{o}n lineal entre todos los subespacios de codimensi\'{o}n $k-1$, es decir, 
+$$
+\lambda_{k,n}= \min_{V, cod(V)=k-1}  \max \{<\mathbf{A}^{t}\mathbf{A}x,x>: \Vert x \Vert =1,x\in V \}= \min_{V, cod(V)=k-1} \Vert \mathbf{A}/V\Vert^{2},
+$$
+
+\noindent es decir, 
+$$
+\sigma_{k,n}=  \min_{V, cod(V)=k-1} \Vert \mathbf{A}/V\Vert,
+$$
+siendo $\mathbf{A}/V$ la restricci\'on de la aplicaci\'on lineal $\mathbf{A}$ al subespacio $V$. 
+
+\noindent De particular inter\'{e}s para nosotros es el segundo mayor valor singular de una matriz, que representa el m\'{a}ximo de las normas en los subespacios de codimensi\'{o}n $1$ del espacio, es decir, 
+
+\ 
+$$
+\sigma_{2,n} =  \min_{V: cod(V)=1} \Vert \mathbf{A}\vert V \Vert 
+$$
+
+\noindent siendo $\mathbf{A}\vert V$ la restricci\'{o}n de la aplicaci\'{o}n lineal $\mathbf{A}$ al subespacio $V$. 
+
+%\end{enumerate} 
+
+\subsection{Versiones infinito dimensionales: los n\'{u}meros de Gelfand} 
+
+\noindent Antes de introducir los s-números o números de Gelfand de un operador acotado recordamos las nociones de subespacios vectoriales de dimensión infinita. 
+
+\noindent BUSCAR REFERENCIAS PARA LOS SIGUIENTES RESULTADOS SOBRE LA CODIMENSIÓN DE UN ESPACIO: 
+
+\noindent Un subespacio vectorial cerrado $Y$ en un espacio de Hilbert $\mathcal{H}$ tiene codimensión $k$ si la dimensión de su complemento ortogonal es $k$, es decir, 
+$$
+\mathcal{H}= Y \bigoplus Y^{\perp} \qquad dim(Y^{\perp})=k.
+$$
+
+\noindent Esto es equivalente a que existan $z_1,\dots,z_{k-1}$ unitarios, y distintos de modo que 
+$$
+Y=\cap_{k=1}^{n-1} {\it Ker}<\cdot,z_k>.
+$$
+\noindent 
+\noindent Dado un operador lineal y continuo en un espacio de Hilbert  podemos definir el n\'{u}mero de Gelfand como:
+$$
+c_n(T)=\inf_{V: cod(V)<n} \Vert T\vert V \Vert 
+$$
+
+\noindent Importante: para la codimensión consideramos subespacios vectoriales cerrados, por que lo que se consideran espacios de Hilbert. Se trata de operadores acotados, por tanto esta noción no tendría sentido en espacios pre-Hilbert, como el de los polinomios. 
+
+\noindent La única definición que tendría sentido cuando consideramos el operador multiplicación, que está definido en un subespacio denso, es 
+
+$$
+c_n(T)=\inf_{V: V\subset \mathbb{P}[z], cod(\overline{V)}<n} \Vert T\vert V \Vert 
+$$
+
+
+\noindent Nos fijamos en el segundo n\'{u}mero de Gelfand y se tiene que coincide con el \'{i}nfimo de las normas del operador en espacios de codimensi\'{o}n $1$, es decir, 
+$$
+c_{2}(T)=\inf_{V: cod(V)=1} \Vert T\vert V \Vert .
+$$ 
+
+
+\noindent El n\'{u}mero anterior siempre existe, pudiendo ser $\infty$ si el operador no es acotado. 
+\noindent En relaci\'{o}n con el comportamiento asint\'{o}tico uno puede hacerse la siguiente pregunta: 
+
+
+
+
+\noindent {\bf Problema:} ¿Es cierto que 
+$$
+\lim_{n\to \infty} \sigma_{2,n} \leq c_{2}(T) ??
+$$
+
+\noindent En el caso de que sea acotado, vemos que 
+$$
+\lim_{n\to \infty} \sigma_{2,n} \leq c_{2}(T)
+$$
+
+\noindent En efecto, dado $\epsilon>0$,  por la condici\'{o}n de \'{\i}nfimo existe un subespacio de codimensi\'{o}n uno, $V$ tal que 
+$$
+\Vert T \vert V \Vert \leq c_{2}(T)+\epsilon .
+$$
+\noindent Consideramos una base ortonormal del espacio de Hilbert, $\{e_1,\dots,e_n\}$ ahora el subespacio $V\cap [e_1,\dots,e_n]$ que ser\'{a} o de dimensi\'{o}n $n$ o de dimensi\'{o}n $n-1$, entonces: para todo $n\in \NN$ se tiene que  
+$$
+\min \{\sigma_{2,n},\sigma_{2,n+1} \} \leq c_{2}(T)+\epsilon
+$$
+
+
+\noindent como la sucesi\'{o}n converge y es creciente, entonces 
+$$
+\lim_{n\to \infty} \sigma_{2,n} < c_{2}(T)+\epsilon
+$$
+\noindent para todo $\epsilon >0$ por lo que: 
+$$
+\lim_{n\to \infty} \sigma_{2,n} \leq c_2(T)
+$$
+
+\noindent 
+\subsection{Convergencia del mayor valor singular de $\mathbf{D}_n$.} 
+
+
+
+\noindent Nota: Aquí aparecen las matrices cuadradas pero se podría considerar las rectangulares de las que hablamos 
+
+
+\noindent Sea $\mathbf{D}$ una matriz infinita de Hessemberg. La matriz $\mathbf{D}$ tiene la propiedad de que siempre existe la matriz infinita 
+$$
+\mathbf{D}^{*}\mathbf{D}.
+$$
+
+\noindent Adem\'{a}s, se puede comprobar que: 
+$$
+[\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1}]_{n\times n}= \mathbf{D}_n^{*}\mathbf{D}_n
+$$
+.
+
+\noindent Dada la matriz $\mathbf{D}_n^{t}\mathbf{D}_n$ que es sim\'{e}trica y semidefinida positiva consideramos el segundo mayor valor singular, es decir, si ordenamos los valores singulares de esta forma:
+
+$$
+0\leq \sigma_{n,n} \leq \dots \leq \sigma_{2,n} \leq \sigma_{1,n} 
+$$
+
+
+
+\noindent son los valores singulares de $\mathbf{D}_n$, 
+
+\bigskip
+
+\noindent N\'otese que $\Vert \mathbf{D}_n \Vert= \sigma_{1,n}$, ya que para una matriz simétrica y semidefinida positiva el mayor autovalor es la norma.  
+
+\bigskip Utilizando resultados de Análisis Funcional (BUSCAR REFERENCIA) se tiene que:
+
+\begin{prop} Sea $\mathcal{D}$ una aplicaci\'on lineal continua en $\ell_2$ y sean $\mathbf{D}_n$ las secciones de orden $n$, entonces 
+$$
+\Vert \mathcal{D} \Vert = \lim_{n\to \infty} \Vert \mathbf{D}_n\Vert 
+$$
+
+\end{prop} 
+
+\noindent Utilizando este resultado se tiene que: 
+$$
+\lim_{n\to \infty} \sigma_{1,n}(\mathbf{D}_n)= \lim_{n \to \infty} \Vert \mathbf{D}_n\Vert= \Vert \mathcal{D}\Vert 
+$$
+
+\noindent que siempre existe pudiendo ser $\infty$ en el caso no acotado. 
+
+\subsection{Estudio del segundo mayor valor singualar de las matrices $\mathbf{D}_n$.} 
+
+\noindent $\bullet$ {\bf  ESTUDIO DEL COMPORTAMIENTO ASINT\'oTICO de: } 
+$$
+\lim_{n\to \infty} \sigma_{2,n},
+$$
+
+\noindent tiene relaci\'on con el soporte de las medidas???
+  
+\noindent En los experimentos realizados la conjetura principal es: 
+
+
+\noindent El estudio del segundo valor singular de una matriz ( y de cualquiera de ellos) tiene una expresi\'on min max por el Teorema de Courant Fisher
+
+\noindent A partir de estos teoremas se obtiene la siguiente caracterizaci\'on de dicho valor singular como el mínimo  de las normas del operador restringido a subespacios vectoriales de dimensi\'on $n-1$ o codimensi\'on $1$, es decir, 
+$$
+\sigma_{2,n}^{2} = \min_{S: dim(S)=n-1} \max_{x\in S,\Vert x\Vert=1} <\mathbf{D}_n^t\mathbf{D}_n x,x>= \min_{S: dim(S)=n-1} \Vert \mathbf{D}_n/S\Vert^2.
+$$
+
+
+
+
+
+
+
+\noindent podría haber un min-max infinito dimensinal en el sentido de considerar el mínimo de las normas del operador multiplicaci\'on por $z$ entre todos los subespacios de codimensi\'on $1$. 
+
+$$
+\min_{S: cod(S)=1} \Vert \mathcal{D}/S \Vert 
+$$
+
+\noindent Puede ocurrir que 
+
+$$
+\min_{S: cod(S)=1} \Vert \mathcal{D}/S \Vert < \Vert \mathcal{D} \Vert = \infty.
+$$
+
+\noindent Sí, puede ocurrir, basta considerar un caso como una matriz que sea diagonal salvo en la primera fila que esté llena de unos, entonces las secciones tendrán normas que van a infinito pero si consideramos las restricciones en las sucesiones con $x_0=0$ se tendría que está acotada, y el mínimo anterior sería todavía menor. 
+
+
+$$
+\mathbf{D}= \begin{pmatrix}
+  1  & 1 & 1& \hdots & 1 & \hdots  \\
+  1       & \frac{1}{2} & 0  & \hdots & 0 & \hdots 
+   \\
+  0  & \frac{1}{2} & \frac{1}{3}  & \vdots  & \hdots & \hdots  
+   \\
+  0  & 0 & 0   & \vdots  & \hdots & \hdots  \
+\end{pmatrix}
+$$
+
+
+\noindent {\bf Problema:} ¿ Es 
+$$
+\lim_{n\to \infty} \sigma_{2,n}= \min_{S: cod(S)=1} \Vert \mathcal{D}/S \Vert ????
+$$
+\section{Convergencia del  segundo valor singular m\'{a}ximo.}
+
+\noindent Problemas:  Si tenemos una matriz hermitiana definida positiva, acotada, y consideramos las secciones, y sus valores singulares ordenados:
+$$
+0 \leq \sigma_{n,n}\leq \dots \sigma_{2,n} \leq \sigma_{1,n} 
+$$
+
+\begin{enumerate} 
+\item ¿ es cierto que $\lim_{n\to \infty} \sigma_{2,n}$ existe??? 
+
+\noindent La respuesta es positiva y es consecuencia del Teorema de Cauchy de entralazamiento de los autovalores. 
+
+\noindent {\it Cauchy interlace theorem} Let $A$ be an Hermitian matrix of order $n$ and let $B$ a principal submatrix of $A$ or order $n-1$. If $\lambda_n\leq \dots \leq \lambda_2\leq \lambda_1$ lists the eigenvalues of $A$ and $\mu_{n-1}\leq \dots \leq \mu_2\leq \mu_1$ the eigenvalues of $B$ then 
+$$
+\lambda_n \leq \mu_{n-1} \leq \dots \leq \mu_2 \leq \lambda_1
+$$
+
+\noindent Este resultado justifica el entrelazamiento de las raíces de los polinomios ortogonales cuando consideramos medidas en el caso real puesto que las  matrices de Jacobi, que son las matrices de Hessemberg en estos casos, son hermitianas, y sus autovalores son las raíces de los polinomios ortogonales. 
+
+\noindent Ahora, se puede probar que 
+ $\mathbf{D}^{t}_{n-1}\mathbf{D}_n$ es una submatriz de $\mathbf{D}_n^{t}\mathbf{D}_n$ 
+por lo que hay un entrelazamiento entre los valores singulares de $\mathbf{D}_{n-1}$ y los valores singulares de $\mathbf{D}_n$: 
+$$
+\sigma_{n,n} \leq \sigma_{n-1,n-1} \leq \dots \leq \sigma_{2,n-1} \leq   \sigma_{2,n} \leq \sigma_{1,n-1} \leq \sigma_{1,n}.
+$$
+
+\noindent En particular, la sucesi\'on $\{\sigma_{2,n}\}_{n=1}^{\infty}$ es una sucesi\'on creciente, por lo que o converge o tiene límite infinito. EXISTE 
+$$
+\lim_{n\to \infty} \sigma_{2,n} \leq \infty.
+$$
+\item $\textquestiondown $ Coincide con 
+$$
+\min_{V, cod(V)=1} \max \Vert \mathcal{D}/V \Vert 
+$$
+\noindent 
+
+\item 
+\end{enumerate} 
+
+\noindent Sería interesante probar (o buscar referencias) de que 
+$$
+\lim_{n\to \infty} \sigma_{2,n} = \inf_{V, cod(V)=1} \sup \Vert \mathcal{D}/V \Vert 
+$$
+
+
+
+
+
+\end{document}
+ 
+
