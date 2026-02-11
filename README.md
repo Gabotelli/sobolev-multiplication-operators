@@ -19,13 +19,21 @@ El repositorio está sincronizado con dos repositorios remotos:
 
 **Opción 1 - Push a ambos repositorios** (recomendado):
 
+En Windows (CMD):
 ```bash
 git add .
 git commit -m "Descripción de los cambios"
 .\push-all.bat
 ```
 
-El script `push-all.bat` sincroniza automáticamente:
+En Git Bash / Linux / Mac:
+```bash
+git add .
+git commit -m "Descripción de los cambios"
+bash push-all.sh
+```
+
+Los scripts sincronizan automáticamente:
 - A GitHub: todo el contenido (README, .gitignore y carpetas)
 - A Overleaf: solo las 3 carpetas de trabajo
 
@@ -35,7 +43,9 @@ El script `push-all.bat` sincroniza automáticamente:
 git push
 ```
 
-**Opción 3 - Push manual a Overleaf** (solo carpetas):
+**Opción 3 - Push manual a Overleaf**:
+
+⚠️ **Nota**: Si haces push manual a Overleaf, también subirá README y .gitignore. Usa los scripts para mantener Overleaf solo con las carpetas de trabajo.
 
 ```bash
 git push overleaf master
