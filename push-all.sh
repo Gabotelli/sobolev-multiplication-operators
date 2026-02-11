@@ -40,6 +40,9 @@ if [ $? -ne 0 ]; then
     git rm -f README.md .gitignore push-all.bat push-all.sh 2>/dev/null
     find "Notas para trabajar" -type f ! -name "*.tex" ! -name "*.bib" -exec git rm -f {} \; 2>/dev/null
     find "RESUMEN DE REUNIONES" -type f ! -name "*.tex" ! -name "*.bib" -exec git rm -f {} \; 2>/dev/null
+    # Restaurar archivos .tex y .bib desde master si fueron eliminados
+    git checkout master -- "Notas para trabajar"/*.tex "Notas para trabajar"/*.bib 2>/dev/null
+    git checkout master -- "RESUMEN DE REUNIONES"/*.tex "RESUMEN DE REUNIONES"/*.bib 2>/dev/null
     git commit -m "Remove config files and non-tex files after merge" --no-verify 2>/dev/null
     git push overleaf overleaf-sync:master
 fi
