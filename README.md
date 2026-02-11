@@ -13,8 +13,8 @@ El repositorio está sincronizado con dos repositorios remotos:
 - **GitHub**: https://github.com/Gabotelli/tfm.git (todo el contenido)
 - **Overleaf**: https://git.overleaf.com/68e79d3d788acc72d9f9ff40 (contenido filtrado)
   - Artículos Base: todos los archivos
-  - Notas para trabajar: solo archivos .tex
-  - RESUMEN DE REUNIONES: solo archivos .tex
+  - Notas para trabajar: solo archivos .tex y .bib
+  - RESUMEN DE REUNIONES: solo archivos .tex y .bib
 
 ## Comandos Principales
 
@@ -43,8 +43,8 @@ Los scripts sincronizan automáticamente:
 - A GitHub: todo el contenido (README, .gitignore, scripts y las 3 carpetas completas)
 - A Overleaf: contenido filtrado
   - Artículos Base: todos los archivos
-  - Notas para trabajar: solo archivos .tex
-  - RESUMEN DE REUNIONES: solo archivos .tex
+  - Notas para trabajar: solo archivos .tex y .bib
+  - RESUMEN DE REUNIONES: solo archivos .tex y .bib
 
 **Opción 2 - Push solo a GitHub**:
 

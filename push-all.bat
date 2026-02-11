@@ -19,10 +19,10 @@ git checkout -b overleaf-sync master
 REM Eliminar archivos de configuración
 git rm -f README.md .gitignore push-all.bat push-all.sh 2>nul
 
-REM Eliminar archivos no-.tex de "Notas para trabajar" y "RESUMEN DE REUNIONES"
+REM Eliminar archivos que no sean .tex ni .bib de "Notas para trabajar" y "RESUMEN DE REUNIONES"
 echo Filtrando archivos para Overleaf...
-for /r "Notas para trabajar" %%F in (*) do if not "%%~xF"==".tex" git rm -f "%%F" 2>nul
-for /r "RESUMEN DE REUNIONES" %%F in (*) do if not "%%~xF"==".tex" git rm -f "%%F" 2>nul
+for /r "Notas para trabajar" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
+for /r "RESUMEN DE REUNIONES" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
 
 REM Commit los cambios
 git commit -m "Remove config files and non-tex files for Overleaf sync" --no-verify 2>nul
@@ -37,8 +37,8 @@ if %errorlevel% neq 0 (
     git pull overleaf master --no-edit --strategy-option theirs 2>nul
     REM Asegurarse de que los archivos sigan eliminados
     git rm -f README.md .gitignore push-all.bat push-all.sh 2>nul
-    for /r "Notas para trabajar" %%F in (*) do if not "%%~xF"==".tex" git rm -f "%%F" 2>nul
-    for /r "RESUMEN DE REUNIONES" %%F in (*) do if not "%%~xF"==".tex" git rm -f "%%F" 2>nul
+    for /r "Notas para trabajar" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
+    for /r "RESUMEN DE REUNIONES" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
     git commit -m "Remove config files and non-tex files after merge" --no-verify 2>nul
     git push overleaf overleaf-sync:master
 )
