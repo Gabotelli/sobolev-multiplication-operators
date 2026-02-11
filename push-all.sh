@@ -13,27 +13,29 @@ echo "Preparando push a Overleaf (solo carpetas de trabajo)..."
 # Fetch desde Overleaf para tener el estado actualizado
 git fetch overleaf
 
-# Crear branch temporal basado en el estado actual de Overleaf
+# Crear branch temporal desde master
 git branch -D overleaf-sync 2>/dev/null
-git checkout -b overleaf-sync overleaf/master
+git checkout -b overleaf-sync master
 
-# Eliminar archivos de configuración si existen
-if [ -f "README.md" ]; then git rm README.md; fi
-if [ -f ".gitignore" ]; then git rm .gitignore; fi
-if [ -f "push-all.bat" ]; then git rm push-all.bat; fi
-if [ -f "push-all.sh" ]; then git rm push-all.sh; fi
+# Eliminar archivos de configuración
+git rm -f README.md .gitignore push-all.bat push-all.sh 2>/dev/null
 
-# Si hay cambios, hacer commit
-if ! git diff --cached --quiet; then
-    git commit -m "Remove config files for Overleaf sync" --no-verify
-fi
-
-# Merge con master (trae los cambios de las carpetas)
-git merge master --no-edit -X theirs
+# Commit los cambios
+git commit -m "Remove config files for Overleaf sync" --no-verify 2>/dev/null
 
 # Hacer push a Overleaf
 echo "Subiendo a Overleaf..."
 git push overleaf overleaf-sync:master
+
+# Si falla, intentar con pull y merge
+if [ $? -ne 0 ]; then
+    echo "Sincronizando con Overleaf..."
+    git pull overleaf master --no-edit --strategy-option theirs 2>/dev/null
+    # Asegurarse de que los archivos sigan eliminados
+    git rm -f README.md .gitignore push-all.bat push-all.sh 2>/dev/null
+    git commit -m "Remove config files after merge" --no-verify 2>/dev/null
+    git push overleaf overleaf-sync:master
+fi
 
 # Volver a master
 git checkout master
