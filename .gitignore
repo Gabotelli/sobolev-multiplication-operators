@@ -9,3 +9,4 @@
 # Permitir archivos de configuración
 !.gitignore
 !README.md
+!push-all.bat
