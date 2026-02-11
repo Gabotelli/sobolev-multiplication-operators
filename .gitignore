@@ -1,0 +1,10 @@
+# Ignorar todo en la raíz
+/*
+
+# Permitir las 3 carpetas específicas
+!/Artículos Base/
+!/Notas para trabajar/
+!/RESUMEN DE REUNIONES/
+
+# Permitir el .gitignore
+!.gitignore
