@@ -9,17 +9,31 @@ if %errorlevel% neq 0 (
 echo.
 echo Preparando push a Overleaf (solo carpetas de trabajo)...
 
-REM Crear branch temporal para Overleaf
+REM Fetch desde Overleaf
+git fetch overleaf
+
+REM Crear branch temporal basado en Overleaf
 git branch -D overleaf-sync 2>nul
-git checkout -b overleaf-sync
+git checkout -b overleaf-sync overleaf/master
 
-REM Eliminar README y .gitignore solo de este branch
-git rm --cached README.md .gitignore
-git commit -m "Remove config files for Overleaf sync" --no-verify
+REM Eliminar archivos de configuración si existen
+if exist README.md git rm README.md
+if exist .gitignore git rm .gitignore
+if exist push-all.bat git rm push-all.bat
+if exist push-all.sh git rm push-all.sh
 
-REM Hacer push a Overleaf
+REM Commit solo si hay cambios
+git diff --cached --quiet
+if %errorlevel% neq 0 (
+    git commit -m "Remove config files for Overleaf sync" --no-verify
+)
+
+REM Merge con master
+git merge master --no-edit -X theirs
+
+REM Push a Overleaf
 echo Subiendo a Overleaf...
-git push overleaf overleaf-sync:master --force
+git push overleaf overleaf-sync:master
 
 REM Volver a master
 git checkout master
@@ -27,5 +41,5 @@ git branch -D overleaf-sync
 
 echo.
 echo ¡Sincronización completa!
-echo - GitHub: con README y .gitignore
+echo - GitHub: con README, .gitignore y scripts
 echo - Overleaf: solo carpetas de trabajo
