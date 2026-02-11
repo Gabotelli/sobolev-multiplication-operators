@@ -39,6 +39,9 @@ if %errorlevel% neq 0 (
     git rm -f README.md .gitignore push-all.bat push-all.sh 2>nul
     for /r "Notas para trabajar" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
     for /r "RESUMEN DE REUNIONES" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
+    REM Restaurar archivos .tex y .bib desde master si fueron eliminados
+    git checkout master -- "Notas para trabajar/*.tex" "Notas para trabajar/*.bib" 2>nul
+    git checkout master -- "RESUMEN DE REUNIONES/*.tex" "RESUMEN DE REUNIONES/*.bib" 2>nul
     git commit -m "Remove config files and non-tex files after merge" --no-verify 2>nul
     git push overleaf overleaf-sync:master
 )
