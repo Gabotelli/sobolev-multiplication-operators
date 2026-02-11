@@ -20,8 +20,13 @@ git checkout -b overleaf-sync master
 # Eliminar archivos de configuración
 git rm -f README.md .gitignore push-all.bat push-all.sh 2>/dev/null
 
+# Eliminar archivos no-.tex de "Notas para trabajar" y "RESUMEN DE REUNIONES"
+echo "Filtrando archivos para Overleaf..."
+find "Notas para trabajar" -type f ! -name "*.tex" -exec git rm -f {} \; 2>/dev/null
+find "RESUMEN DE REUNIONES" -type f ! -name "*.tex" -exec git rm -f {} \; 2>/dev/null
+
 # Commit los cambios
-git commit -m "Remove config files for Overleaf sync" --no-verify 2>/dev/null
+git commit -m "Remove config files and non-tex files for Overleaf sync" --no-verify 2>/dev/null
 
 # Hacer push a Overleaf
 echo "Subiendo a Overleaf..."
@@ -33,7 +38,9 @@ if [ $? -ne 0 ]; then
     git pull overleaf master --no-edit --strategy-option theirs 2>/dev/null
     # Asegurarse de que los archivos sigan eliminados
     git rm -f README.md .gitignore push-all.bat push-all.sh 2>/dev/null
-    git commit -m "Remove config files after merge" --no-verify 2>/dev/null
+    find "Notas para trabajar" -type f ! -name "*.tex" -exec git rm -f {} \; 2>/dev/null
+    find "RESUMEN DE REUNIONES" -type f ! -name "*.tex" -exec git rm -f {} \; 2>/dev/null
+    git commit -m "Remove config files and non-tex files after merge" --no-verify 2>/dev/null
     git push overleaf overleaf-sync:master
 fi
 

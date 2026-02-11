@@ -10,8 +10,11 @@ Este repositorio contiene el trabajo de investigación organizado en tres carpet
 
 El repositorio está sincronizado con dos repositorios remotos:
 
-- **GitHub**: https://github.com/Gabotelli/tfm.git (incluye README y .gitignore)
-- **Overleaf**: https://git.overleaf.com/68e79d3d788acc72d9f9ff40 (solo carpetas de trabajo)
+- **GitHub**: https://github.com/Gabotelli/tfm.git (todo el contenido)
+- **Overleaf**: https://git.overleaf.com/68e79d3d788acc72d9f9ff40 (contenido filtrado)
+  - Artículos Base: todos los archivos
+  - Notas para trabajar: solo archivos .tex
+  - RESUMEN DE REUNIONES: solo archivos .tex
 
 ## Comandos Principales
 
@@ -20,6 +23,7 @@ El repositorio está sincronizado con dos repositorios remotos:
 **Opción 1 - Push a ambos repositorios** (recomendado):
 
 En Windows (CMD):
+
 ```bash
 git add .
 git commit -m "Descripción de los cambios"
@@ -27,6 +31,7 @@ git commit -m "Descripción de los cambios"
 ```
 
 En Git Bash / Linux / Mac:
+
 ```bash
 git add .
 git commit -m "Descripción de los cambios"
@@ -34,8 +39,12 @@ bash push-all.sh
 ```
 
 Los scripts sincronizan automáticamente:
-- A GitHub: todo el contenido (README, .gitignore y carpetas)
-- A Overleaf: solo las 3 carpetas de trabajo
+
+- A GitHub: todo el contenido (README, .gitignore, scripts y las 3 carpetas completas)
+- A Overleaf: contenido filtrado
+  - Artículos Base: todos los archivos
+  - Notas para trabajar: solo archivos .tex
+  - RESUMEN DE REUNIONES: solo archivos .tex
 
 **Opción 2 - Push solo a GitHub**:
 
