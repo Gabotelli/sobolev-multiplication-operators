@@ -6,5 +6,6 @@
 !/Notas para trabajar/
 !/RESUMEN DE REUNIONES/
 
-# Permitir el .gitignore
+# Permitir archivos de configuración
 !.gitignore
+!README.md
