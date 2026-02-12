@@ -55,11 +55,11 @@ Para estudiar el operador de multiplicación sobre subespacios definidos mediant
 Basándonos en la geometría de los átomos respecto al soporte continuo, clasificamos el conjunto de índices $\mathcal{I} = \{1, \dots, N\}$ en dos categorías:
 \begin{itemize}
     \item \textbf{Átomos Interiores ($I_{in}$):} $\{k \in \mathcal{I} : \abs{c_k} < R\}$.
-    \item \textbf{Átomos Exteriores ($I_{out}$):} $\{k \in \mathcal{I} : \abs{c_k} > R\}$. Sea $m = |I_{out}|$.
+    \item \textbf{Átomos Exteriores ($I_{out}$):} $\{k \in \mathcal{I} : \abs{c_k} > R\}$. Sea $m = |I_{out}|$. \textcolor{red}{es mayor o igual }
 \end{itemize}
 
 \begin{proposicion}[Acotación y Extensión Continua en el Interior]
-    Para los átomos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
+    Para los átomos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado. \color{red}poner referencia \color{black}
 \end{proposicion}
 
 \begin{proof}
@@ -69,11 +69,11 @@ Basándonos en la geometría de los átomos respecto al soporte continuo, clasif
     $$ \abs{p(c_k)}^2 \leq \left( \frac{1}{2\pi} \int_{S_R} \frac{1}{\abs{z - c_k}^2} \abs{dz} \right) \left( \int_{S_R} \abs{p(z)}^2 \abs{dz} \right). $$
     Puesto que $\abs{c_k} < R$, la distancia al borde de la circunferencia está estrictamente acotada por abajo, luego la primera integral es una constante finita $M_{c_k} > 0$. Además, la segunda integral está dominada por la parte continua de la norma de Sobolev (salvo una constante de proporcionalidad dependiente de la medida de Lebesgue). Por tanto:
     $$ \abs{p(c_k)}^2 \leq \tilde{M}_{c_k} \|p\|_{L^2(\mu)}^2 \leq \tilde{M}_{c_k} \norm{p}^2. $$
-    Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Densos, se extiende de manera continua a $\mathcal{H}$.
+    Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Densos, se extiende de manera continua a $\mathcal{H}$.\color{red}poner referencia, libro de funcional \color{black}
 \end{proof}
 
 \begin{observacion}[Átomos Exteriores]
-    Para los átomos exteriores ($k \in I_{out}$), el funcional de evaluación $\delta_{c_k}$ no es continuo respecto a la norma $L^2$ sobre $S_R$. En consecuencia, su núcleo algebraico no es necesariamente cerrado en $\mathcal{H}$. Por este motivo, los subespacios asociados a condiciones de anulación en átomos exteriores se definen de forma algebraica y se considera su clausura topológica. Esta clausura preserva las propiedades dimensionales requeridas sobre el dominio denso de polinomios.
+    Para los átomos exteriores ($k \in I_{out}$), el funcional de evaluación $\delta_{c_k}$ no es continuo respecto a la norma $L^2$ sobre $S_R$ \color{red} poner referencia \color{black}. En consecuencia, su núcleo algebraico no es necesariamente cerrado en $\mathcal{H}$. Por este motivo, los subespacios asociados a condiciones de anulación en átomos exteriores se definen de forma algebraica y se considera su clausura topológica. Esta clausura preserva las propiedades dimensionales \textcolor{red}{esto hay que probarlo, creo que sí es cierto}requeridas sobre el dominio denso de polinomios.
 \end{observacion}
 
 \begin{definicion}[Subespacio Estable $W$]
@@ -95,7 +95,7 @@ Basándonos en la geometría de los átomos respecto al soporte continuo, clasif
 \begin{definicion}[Codimensión]
     Sea $M$ un subespacio vectorial de un espacio de Banach $X$. La codimensión de $M$ en $X$, denotada por $\operatorname{codim}(M)$, se define como la dimensión algebraica del espacio vectorial cociente $X/M$:
     $$ \operatorname{codim}(M) = \dim(X/M). $$
-    En el caso particular de que $X$ sea un espacio de Hilbert y $M$ sea un subespacio cerrado, esta definición coincide con la dimensión del complemento ortogonal $M^\perp$.
+    En el caso particular de que $X$ sea un espacio de Hilbert y $M$ sea un subespacio cerrado, esta definición coincide con la dimensión del complemento ortogonal $M^\perp$. \textcolor{red}{incluye la referencia concreta que encontró Carmen}
 \end{definicion}
 
 \begin{proposicion}[Codimensión de Intersecciones de Núcleos]
@@ -475,31 +475,29 @@ $$ B_{ij} = \langle K_j, K_i \rangle_{L^2} + [K_j(c) + c K_j'(c)] \overline{[K_i
 
 Particularicemos para un átomo real en $c=1/2$. Los valores de los núcleos y sus derivadas son:
 \begin{align*}
-    k_{00} & = K_0(c) = \frac{1}{1-c^2} = \frac{4}{3},            \\
-    k_{01} & = K_0'(c) = \frac{c}{(1-c^2)^2} = \frac{8}{9},       \\
-    k_{11} & = K_1'(c) = \frac{1+c^2}{(1-c^2)^3} = \frac{80}{27}.
+    k_{00} &= \frac{4}{3}, \quad k_{01} = \frac{8}{9}, \\
+    k_{11} &= \frac{1+(1/2)^2}{(1-(1/2)^2)^3} = \frac{1.25}{0.421875} = \frac{80}{27} \approx 2.963.
 \end{align*}
 
-Sustituyendo estos valores en la matriz $\mathbf{A}$ (y simplificando fracciones):
-$$ \mathbf{A} \approx \begin{pmatrix} 2.123 & 3.522 \\ 3.522 & 11.742 \end{pmatrix}. $$
-Para la matriz $\mathbf{B}$, calculamos el término de derivada de la imagen. Sea $w_0$ y $w_1$ los valores de $(\D K_0)'(c)$ y $(\D K_1)'(c)$ respectivamente:
-\begin{align*}
-    w_0 & = k_{00} + c k_{01} = \frac{4}{3} + \frac{1}{2}\left(\frac{8}{9}\right) = \frac{16}{9},    \\
-    w_1 & = k_{10} + c k_{11} = \frac{8}{9} + \frac{1}{2}\left(\frac{80}{27}\right) = \frac{64}{27}.
-\end{align*}
-(Nótese que $K_1(c) = K_0'(c)$ en el caso real). Así construimos $\mathbf{B}$:
-$$ B_{ij} = k_{ji} + w_j w_i \implies \mathbf{B} \approx \begin{pmatrix} 4.493 & 5.101 \\ 5.101 & 8.581 \end{pmatrix}. $$
+Construimos las matrices $\mathbf{A}$ (norma de entrada) y $\mathbf{B}$ (norma de salida) utilizando las fórmulas derivadas:
+\begin{equation}
+    \mathbf{A} \approx \begin{pmatrix} 2.123 & 3.522 \\ 3.522 & 11.742 \end{pmatrix}, \quad
+    \mathbf{B} \approx \begin{pmatrix} 4.493 & 5.101 \\ 5.101 & 8.581 \end{pmatrix}.
+\end{equation}
 
-El primer número de Gelfand es la raíz cuadrada de la mayor solución $\lambda$ de $\det(\mathbf{B} - \lambda \mathbf{A}) = 0$:
-$$ (4.493 - 2.123\lambda)(8.581 - 11.742\lambda) - (5.101 - 3.522\lambda)^2 = 0. $$
-Resolviendo la ecuación cuadrática resultante obtenemos $\lambda_{max} \approx 4.55$.
+El primer número de Gelfand se obtiene de la mayor raíz de la ecuación característica $\det(\mathbf{B} - \lambda \mathbf{A}) = 0$. Al desarrollar el determinante, encontramos una propiedad notable: $\det(\mathbf{A}) = \det(\mathbf{B})$, lo que resulta en una ecuación polinómica simétrica (los autovalores son recíprocos, $\lambda_1 \lambda_2 = 1$):
+\begin{equation}
+    12.52 \lambda^2 - 35.04 \lambda + 12.52 = 0.
+\end{equation}
+Resolviendo para la mayor raíz:
+$$ \lambda_{max} = \frac{35.04 + \sqrt{35.04^2 - 4(12.52)^2}}{2(12.52)} \approx 2.377. $$
 
 Por lo tanto, la norma del operador con un átomo en $c=0.5$ es:
 \begin{equation}
-    c_1(\D) = \sqrt{\lambda_{max}} \approx 2.13.
+    c_1(\D) = \sqrt{\lambda_{max}} \approx \sqrt{2.377} \approx 1.5417.
 \end{equation}
 
-Este valor es estrictamente mayor que $\sqrt{2} \approx 1.41$, obtenido para el átomo en el origen. Esto confirma cuantitativamente que el desplazamiento del átomo hacia la frontera incrementa la norma del operador.
+Este valor es consistente con las simulaciones numéricas de secciones finitas, las cuales convergen geométricamente a este límite. Observamos que $1.5417 > \sqrt{2} \approx 1.414$, confirmando que el desplazamiento del átomo hacia la frontera incrementa la norma.
 
 \subsection{El Segundo Número de Gelfand: Recuperando la Circunferencia}
 
