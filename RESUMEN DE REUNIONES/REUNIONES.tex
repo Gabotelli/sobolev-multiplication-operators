@@ -238,7 +238,40 @@ $$
  $$
  \lim_{n\to \infty} \sigma_{1,n} = \lim_{n\to \infty} \Vert \mathbf{D}_n \Vert = R 
  $$
- \noindent siendo $R= \max\{ \vert z \vert : z\in {\it supp}(\mu)\}$.  
+ \noindent siendo $R= \max\{ \vert z \vert : z\in {\it supp}(\mu)\}$.  %%%%%%%%%%%%%%%%%%%%%%%
+
+\[
+\text{Sea } \gamma(t)=e^{it},\quad 0\le t\le 2\pi,
+\]
+\[
+dz=\gamma'(t)\,dt=ie^{it}\,dt.
+\]
+Entonces,
+\[
+\int_{|z|=1} (z-a)\,dz
+=\int_{0}^{2\pi}\bigl(e^{it}-a\bigr)\,ie^{it}\,dt
+=\int_{0}^{2\pi} i e^{2it}\,dt
+-a\int_{0}^{2\pi} i e^{it}\,dt.
+\]
+Calculamos cada integral:
+\[
+\int_{0}^{2\pi} i e^{2it}\,dt
+= i\left[\frac{e^{2it}}{2i}\right]_{0}^{2\pi}
+=\frac{1}{2}\bigl(e^{4\pi i}-1\bigr)=0,
+\]
+\[
+\int_{0}^{2\pi} i e^{it}\,dt
+= i\left[\frac{e^{it}}{i}\right]_{0}^{2\pi}
+= e^{2\pi i}-1=0.
+\]
+Por tanto,
+\[
+\int_{|z|=1} (z-a)\,dz=0.
+\]
+
+%%%%%%%%%%%%%%%%%%%
+
+ 
 
 \end{enumerate} 
  
