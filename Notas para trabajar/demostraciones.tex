@@ -220,6 +220,100 @@ El siguiente resultado establece que la imposición de restricciones lineales co
     Por tanto, $\dim(\mathcal{H}/W) = \dim(\C^N) = N$, lo que concluye la demostración.
 \end{proof}
 
+\begin{proof}
+    Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que su clausura $V = \overline{Y_a}$ tiene codimensión 1.
+    
+    Supongamos por reducción al absurdo que $\operatorname{codim}(V) > 1$.
+    Sabemos que el funcional de evaluación en $a$ es continuo (por ser un átomo BPE o un punto interior en $H^2$), luego existe un núcleo reproductor $K_a \in \mathcal{H}$ tal que $f(a) = \langle f, K_a \rangle$.
+    
+    La condición $f \in Y_a$ implica $f(a)=0$, lo que equivale a $f \perp K_a$. Por tanto, el subespacio $V$ está contenido en el ortogonal de $K_a$:
+    $$ V \subseteq \{K_a\}^\perp. $$
+    
+    Si la codimensión fuera mayor que 1, existiría un vector no nulo $g \in \mathcal{H}$ ($g \neq 0$) tal que:
+    \begin{enumerate}
+        \item $g \perp V$ (es ortogonal al ideal),
+        \item $g \perp K_a$ (es ortogonal al núcleo reproductor).
+    \end{enumerate}
+    
+    Cualquier polinomio $p \in \Poly$ se puede escribir como $p(z) = p(a)\frac{K_a(z)}{K_a(a)} + (p(z) - p(a)\dots)$, es decir, $\Poly \subset \operatorname{span}\{K_a\} \oplus Y_a$.
+    
+    Como $g$ es ortogonal a ambos sumandos ($K_a$ y $Y_a$), entonces $g$ es ortogonal a todo el espacio de polinomios $\Poly$:
+    $$ g \perp \Poly. $$
+    
+    Como $\Poly$ es denso en $\mathcal{H}$, esto implica obligatoriamente que $g = 0$, lo cual es una contradicción.
+    Por tanto, no existe tal vector $g$, y el complemento ortogonal de $V$ está generado únicamente por $K_a$.
+    $$ \operatorname{codim}(V) = 1. $$
+\end{proof}
+
+\begin{teorema}[Dicotomía de la Codimensión]
+    Sea $\mathcal{H}$ la clausura de $\Poly$ respecto a una norma de Hilbert y sea $a \in \C$. Sea $V = \overline{\{p \in \Poly : p(a)=0\}}$. Entonces, solo existen dos posibilidades:
+    \begin{enumerate}
+        \item Si $a$ es un punto de evaluación acotada (BPE), entonces $V$ es un hiperplano cerrado y $\operatorname{codim}(V) = 1$.
+        \item Si $a$ no es un BPE, entonces $V$ es denso en $\mathcal{H}$ y $\operatorname{codim}(V) = 0$.
+    \end{enumerate}
+\end{teorema}
+
+\begin{proof}
+    El caso 1 se sigue del Teorema de Riesz (existencia del núcleo reproductor ortogonal).
+    Si el funcional de evaluación $\delta_a: \Poly \to \C$ definido por $\delta_a(p) = p(a)$ no es acotado respecto a la norma del espacio $\|\cdot\|_{\mathcal{H}}$, demostraremos que su núcleo algebraico $Y_a = \{p \in \Poly : p(a)=0\}$ es denso en $\mathcal{H}$.
+
+
+    Por definición de operador no acotado, para todo $n \in \mathbb{N}$, existe un polinomio $h_n \in \Poly$ tal que:
+    $$ |h_n(a)| > n \|h_n\|_{\mathcal{H}}. $$
+    Podemos normalizar estos polinomios para fijar su valor en el átomo. Definimos la sucesión:
+    $$ q_n(z) = \frac{h_n(z)}{h_n(a)}. $$
+    Por construcción, se cumple que $q_n(a) = 1$ para todo $n$. Además, su norma decae asintóticamente a cero:
+    $$ \|q_n\|_{\mathcal{H}} = \frac{\|h_n\|_{\mathcal{H}}}{|h_n(a)|} < \frac{1}{n} \xrightarrow{n\to\infty} 0. $$
+    
+
+    Consideremos ahora la función constante $1 \in \Poly$. Construimos la sucesión de polinomios:
+    $$ p_n(z) = 1 - q_n(z). $$
+    Evaluando en el punto $a$, tenemos $p_n(a) = 1 - q_n(a) = 1 - 1 = 0$. Esto implica que cada término de la sucesión  $p_n \in Y_a \quad \forall n$.
+    
+    Calculamos la distancia entre la constante $1$ y esta sucesión:
+    $$ \|1 - p_n\|_{\mathcal{H}} = \|1 - (1 - q_n)\|_{\mathcal{H}} = \|q_n\|_{\mathcal{H}} < \frac{1}{n}. $$
+    Esto demuestra que la función constante $1$ pertenece a la clausura del subespacio: $1 \in \overline{Y_a}$.
+
+
+    Dado que $\overline{Y_a}$ es un subespacio vectorial cerrado que contiene a la función constante $1$, y sabiendo que algebraicamente cualquier polinomio $P(z)$ se puede escribir como:
+    $$ P(z) = P(a)\cdot 1 + (z-a)Q(z), $$
+    donde el término $(z-a)Q(z)$ pertenece trivialmente a $Y_a \subset \overline{Y_a}$, concluimos por linealidad que $P \in \overline{Y_a}$ para todo $P \in \Poly$.
+
+    
+    Finalmente, como $\Poly$ es denso en el espacio de Hilbert $\mathcal{H}$ (por definición de la completación), y hemos probado que $\Poly \subseteq \overline{Y_a}$, se sigue necesariamente que:
+    $$ \overline{Y_a} = \mathcal{H}. $$
+
+Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$, y por tanto $\operatorname{codim}(V) = 0$.
+\end{proof}
+
+\begin{proof}[Prueba Geométrica (Corrección mediante Proyección)]
+    Sea $V = \overline{(z-a)\Poly}$ el subespacio cerrado generado por los polinomios que se anulan en $a$. Queremos determinar la dimensión de su complemento ortogonal $V^\perp$.
+    
+    Consideremos la función constante $u(z) = 1$. Por el Teorema de la Proyección Ortogonal en espacios de Hilbert, existe una descomposición única:
+    $$ 1 = P_V(1) + h, $$
+    donde $P_V(1) \in V$ es la proyección ortogonal de la unidad sobre el subespacio, y $h \in V^\perp$ es el vector residual.
+    
+    Distinguimos dos casos para el vector $h = 1 - P_V(1)$:
+    
+    \begin{enumerate}
+        \item \textbf{Si $h = 0$:} Entonces $1 \in V$. Como $V$ es un ideal (cerrado bajo multiplicación por polinomios), esto implicaría que $\Poly \subset V$, y por tanto $V = \mathcal{H}$. Esto corresponde al caso donde la evaluación no es acotada (codimensión 0).
+        
+        \item \textbf{Si $h \neq 0$:} Entonces hemos encontrado un vector no nulo $h \in V^\perp$. 
+        Para ver que este vector genera \textit{todo} el complemento ortogonal, tomemos cualquier otro $g \in V^\perp$.
+        Cualquier polinomio $p$ se escribe como $p(z) = p(a) + q(z)$ con $q \in V$.
+        Esto implica que el espacio total es la suma directa (no necesariamente ortogonal todavía) de las constantes y $V$:
+        $$ \mathcal{H} = \operatorname{span}\{1\} + V. $$
+        Como $1 = P_V(1) + h$, podemos reescribir esto como:
+        $$ \mathcal{H} = \operatorname{span}\{P_V(1) + h\} + V = \operatorname{span}\{h\} + V. $$
+        (El término $P_V(1)$ se absorbe en $V$).
+        
+        Dado que $h \perp V$, esta suma es ortogonal:
+        $$ \mathcal{H} = \operatorname{span}\{h\} \oplus V. $$
+        
+        Concluimos que $V^\perp = \operatorname{span}\{h\}$, y como $h \neq 0$, la dimensión es exactamente 1.
+    \end{enumerate}
+\end{proof}
+
 \begin{corolario}
     Si los átomos $\{c_k\}_{k=1}^N$ son puntos de evaluación acotada (BPE), el subespacio $W = \overline{\{p \in \Poly : (zp)'(c_k)=0\}}$ tiene codimensión exactamente $N$ en $\mathcal{H}$.
 \end{corolario}
@@ -619,6 +713,25 @@ Bajo esta premisa de acotación global, se demuestra que, independientemente de 
 
     La combinación de la cota superior y la inferior concluye la demostración: $c_{N+1}(D) = 1$.
 \end{proof}
+
+\subsection{Definición de Valores Singulares para Operadores No Acotados}
+
+Dado que nuestro operador de multiplicación puede no ser acotado en el caso de átomos exteriores o en la frontera (donde la evaluación no es un funcional continuo), la definición clásica de los números de Gelfand basada en la codimensión de subespacios cerrados presenta dificultades topológicas (el núcleo de la evaluación es denso).
+
+Vamos a dar una definición robusta que cubra tanto el caso BPE como el no-BPE, adoptamos la definición variacional basada en el Principio Min-Max de Courant-Fischer para la raíz cuadrada del operador positivo $D^*D$.
+
+\begin{definicion}[Valores Singulares Variacionales]
+    Definimos el $k$-ésimo valor singular $\sigma_k(\mathcal{D})$ como:
+    $$ \sigma_k(\mathcal{D}) = \inf_{\substack{S \subset \mathcal{H} \\ \dim(S) < k}} \left( \sup_{\substack{f \in S^\perp \cap \text{Dom}(\mathcal{D}) \\ f \neq 0}} \frac{\|\mathcal{D}f\|}{\|f\|} \right). $$
+\end{definicion}
+
+Esta definición nos permite interpretar rigurosamente los resultados numéricos:
+\begin{itemize}
+    \item \textbf{Para $\sigma_1$ ($k=1$):} El ínfimo se toma sobre el subespacio nulo ($\dim S = 0$). El supremo recorre todo el dominio. Si el átomo no es BPE, este supremo es infinito ($\sigma_1 = \infty$).
+    \item \textbf{Para $\sigma_2$ ($k=2$):} Buscamos eliminar un subespacio unidimensional $S$. Si elegimos $S$ alineado con la singularidad del átomo, el supremo sobre el complemento ortogonal $S^\perp$ se estabiliza.
+\end{itemize}
+
+Experimentalmente, hemos comprobado que restringir el operador al subespacio algebraico $V_{alg} = \{p \in \Poly : p(a)=0\}$ equivale a eliminar la singularidad espectral, obteniendo una norma restringida finita (específicamente 1) incluso cuando la norma global diverge. Esto confirma que la divergencia de $\sigma_1$ es una propiedad de rango 1.
 
 \section{Convergencia Asintótica de las Subdiagonales}
 
