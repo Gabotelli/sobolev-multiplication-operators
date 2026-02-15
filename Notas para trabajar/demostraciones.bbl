@@ -1,0 +1,82 @@
+\begin{thebibliography}{10}
+
+\bibitem{albeverio1988solvable}
+Sergio Albeverio, Fritz Gesztesy, Raphael H{\o}egh-Krohn, and Helge Holden.
+\newblock {\em Solvable Models in Quantum Mechanics}.
+\newblock Springer-Verlag, 1988.
+
+\bibitem{berriochoa2000bernstein}
+E~Berriochoa and A~Cachafeiro.
+\newblock Bernstein-szeg{\H{o}}-lebesgue sobolev orthogonal polynomials on the
+  unit circle.
+\newblock {\em Journal of Difference Equations and Applications},
+  6(6):719--737, 2000.
+
+\bibitem{conway1990course}
+John~B. Conway.
+\newblock {\em A Course in Functional Analysis}, volume~96 of {\em Graduate
+  Texts in Mathematics}.
+\newblock Springer-Verlag, New York, 2 edition, 1990.
+
+\bibitem{duren1970theory}
+Peter~L. Duren.
+\newblock {\em Theory of $H^p$ Spaces}, volume~38 of {\em Pure and Applied
+  Mathematics}.
+\newblock Academic Press, New York, 1970.
+
+\bibitem{frymark2021spectral}
+Dale Frymark and Constanze Liaw.
+\newblock Spectral analysis, model theory and applications of finite-rank
+  perturbations.
+\newblock {\em arXiv preprint arXiv:1906.02701}, 2021.
+\newblock Survey fundamental para la teoría de perturbaciones de rango finito.
+
+\bibitem{gelfand1964generalized}
+I.~M. Gel'fand and N.~Ya. Vilenkin.
+\newblock {\em Generalized Functions, Volume 4: Applications of Harmonic
+  Analysis}.
+\newblock Academic Press, 1964.
+
+\bibitem{gohberg1969introduction}
+Israel~C Gohberg and Mark~G Krein.
+\newblock {\em Introduction to the Theory of Linear Nonselfadjoint Operators}.
+\newblock American Mathematical Society, Providence, RI, 1969.
+\newblock Referencia clásica para los s-números y el Principio Min-Max.
+
+\bibitem{halmos1982hilbert}
+Paul~R. Halmos.
+\newblock {\em A Hilbert Space Problem Book}, volume~19 of {\em Graduate Texts
+  in Mathematics}.
+\newblock Springer-Verlag, New York, 2 edition, 1982.
+
+\bibitem{kreyszig1989introductory}
+Erwin Kreyszig.
+\newblock {\em Introductory Functional Analysis with Applications}.
+\newblock John Wiley \& Sons, 1989.
+
+\bibitem{lopez1999zero}
+Guillermo L{\'o}pez~Lagomasino and H{\'e}ctor Pijeira~Cabrera.
+\newblock Zero location and n-th root asymptotics of sobolev orthogonal
+  polynomials.
+\newblock {\em Journal of Approximation Theory}, 99(1):30--43, 1999.
+
+\bibitem{lopez2001sobolev}
+Guillermo L{\'o}pez~Lagomasino, H{\'e}ctor Pijeira~Cabrera, and Ignacio
+  P{\'e}rez~Izquierdo.
+\newblock Sobolev orthogonal polynomials in the complex plane.
+\newblock {\em Journal of Computational and Applied Mathematics},
+  127(1-2):219--230, 2001.
+\newblock Base para la asintótica de razones en la circunferencia.
+
+\bibitem{reed1975methods}
+Michael Reed and Barry Simon.
+\newblock {\em Methods of Modern Mathematical Physics, Vol. II: Fourier
+  Analysis, Self-Adjointness}.
+\newblock Academic Press, 1975.
+
+\bibitem{roman2007advanced}
+Steven Roman.
+\newblock {\em Advanced Linear Algebra}.
+\newblock Springer, 3 edition, 2007.
+
+\end{thebibliography}
