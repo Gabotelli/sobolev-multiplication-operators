@@ -55,11 +55,11 @@ Para estudiar el operador de multiplicación sobre subespacios definidos mediant
 Basándonos en la geometría de los átomos respecto al soporte continuo, clasificamos el conjunto de índices $\mathcal{I} = \{1, \dots, N\}$ en dos categorías:
 \begin{itemize}
     \item \textbf{Átomos Interiores ($I_{in}$):} $\{k \in \mathcal{I} : \abs{c_k} < R\}$.
-    \item \textbf{Átomos Exteriores ($I_{out}$):} $\{k \in \mathcal{I} : \abs{c_k} > R\}$. Sea $m = |I_{out}|$. \textcolor{red}{es mayor o igual }
+    \item \textbf{Átomos Exteriores ($I_{out}$):} $\{k \in \mathcal{I} : \abs{c_k} \geq R\}$. Sea $m = |I_{out}|$.
 \end{itemize}
 
 \begin{proposicion}[Acotación y Extensión Continua en el Interior]
-    Para los átomos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado. \color{red}poner referencia \color{black}
+    Para los átomos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
 \end{proposicion}
 
 \begin{proof}
@@ -69,11 +69,11 @@ Basándonos en la geometría de los átomos respecto al soporte continuo, clasif
     $$ \abs{p(c_k)}^2 \leq \left( \frac{1}{2\pi} \int_{S_R} \frac{1}{\abs{z - c_k}^2} \abs{dz} \right) \left( \int_{S_R} \abs{p(z)}^2 \abs{dz} \right). $$
     Puesto que $\abs{c_k} < R$, la distancia al borde de la circunferencia está estrictamente acotada por abajo, luego la primera integral es una constante finita $M_{c_k} > 0$. Además, la segunda integral está dominada por la parte continua de la norma de Sobolev (salvo una constante de proporcionalidad dependiente de la medida de Lebesgue). Por tanto:
     $$ \abs{p(c_k)}^2 \leq \tilde{M}_{c_k} \|p\|_{L^2(\mu)}^2 \leq \tilde{M}_{c_k} \norm{p}^2. $$
-    Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Densos, se extiende de manera continua a $\mathcal{H}$.\color{red}poner referencia, libro de funcional \color{black}
+    Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Acotados en espacios densos \cite[Teorema 2.7-11]{kreyszig1989introductory}, el funcional se extiende de manera continua y única a todo $\mathcal{H}$. Al ser continuo, su núcleo es la preimagen de un conjunto cerrado (el $\{0\}$), por lo que es un subespacio cerrado.
 \end{proof}
 
 \begin{observacion}[Átomos Exteriores]
-    Para los átomos exteriores ($k \in I_{out}$), el funcional de evaluación $\delta_{c_k}$ no es continuo respecto a la norma $L^2$ sobre $S_R$ \color{red} poner referencia \color{black}. En consecuencia, su núcleo algebraico no es necesariamente cerrado en $\mathcal{H}$. Por este motivo, los subespacios asociados a condiciones de anulación en átomos exteriores se definen de forma algebraica y se considera su clausura topológica. Esta clausura preserva las propiedades dimensionales \textcolor{red}{esto hay que probarlo, creo que sí es cierto}requeridas sobre el dominio denso de polinomios.
+    Para los átomos exteriores o en la frontera ($k \in I_{out}$), el funcional de evaluación $\delta_{c_k}$ no es continuo respecto a la norma $L^2$ inducida en el espacio de Hardy \cite{duren1970theory}, donde se demuestra que los funcionales de evaluación puntual solo son acotados en el interior del dominio). En consecuencia, su núcleo algebraico no es necesariamente cerrado en $\mathcal{H}$. Por este motivo, los subespacios asociados a condiciones de anulación en átomos exteriores se definen de forma algebraica y se considera su clausura topológica. En consecuencia, su núcleo algebraico $W_0$ es denso en $\mathcal{H}$, por lo que su clausura topológica resulta ser todo el espacio ($\overline{W_0} = \mathcal{H}$). Por este motivo, el estudio espectral para átomos exteriores exige trabajar estrictamente sobre el subespacio algebraico $W_0 \subset \mathbb{P}[z]$ sin tomar su clausura topológica, aplicando el Principio Min-Max sobre dominios densos para aprovechar su codimensión algebraica estricta.
 \end{observacion}
 
 \begin{definicion}[Subespacio Estable $W$]
