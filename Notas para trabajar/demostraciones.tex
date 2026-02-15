@@ -40,44 +40,41 @@ Consideramos el espacio de polinomios $\Poly$ equipado con el siguiente producto
 \begin{equation}
     \ip{p}{q} = \int_{S_R} p(z)\overline{q(z)} d\mu(z) + \sum_{k=1}^{N} p'(c_k)\overline{q'(c_k)},
 \end{equation}
-donde $\mu$ es la medida de Lebesgue soportada en la circunferencia $S_R = \{z \in \C : \abs{z} = R\}$ y $\mathcal{A} = \{c_1, \dots, c_N\} \subset \C$ es el conjunto finito de átomos en las derivadas.
+donde $\mu$ es la medida de Lebesgue soportada en la circunferencia $S_R = \{z \in \C : \abs{z} = R\}$ y $\mathcal{A} = \{c_1, \dots, c_N\} \subset \C$ es el conjunto finito de puntos en las derivadas.
 
 \begin{definicion}[Espacio de Hilbert Sobolev]
     Denotamos por $\mathcal{H}$ a la completación del espacio de polinomios $\Poly$ respecto a la norma inducida $\norm{p} = \sqrt{\ip{p}{p}}$. Es decir, $\mathcal{H} = \overline{\Poly}^{\norm{\cdot}}$.
 \end{definicion}
 
-Para estudiar el operador de multiplicación sobre subespacios definidos mediante condiciones de anulación en los átomos, es necesario distinguir entre la estructura algebraica del espacio de polinomios y la topología del espacio de Hilbert. A tal efecto, se definen las evaluaciones puntuales en el espacio de polinomios y se considera su clausura topológica, siguiendo la metodología estándar en el análisis de operadores no acotados.
+Para estudiar el operador de multiplicación sobre subespacios definidos mediante condiciones de anulación en los puntos, es necesario distinguir entre la estructura algebraica del espacio de polinomios y la topología del espacio de Hilbert. A tal efecto, se definen las evaluaciones puntuales en el espacio de polinomios y se considera su clausura topológica, siguiendo la metodología estándar en el análisis de operadores no acotados.
 
 \begin{definicion}[Funcionales de Evaluación Algebraicos]
     Para cualquier $\xi \in \C$, definimos el funcional de evaluación lineal sobre el espacio de polinomios $\delta_\xi : \Poly \to \C$ como $\delta_\xi(p) = p(\xi)$. Análogamente, definimos la evaluación de la derivada como $\delta'_\xi(p) = p'(\xi)$.
 \end{definicion}
 
-Basándonos en la geometría de los átomos respecto al soporte continuo, clasificamos el conjunto de índices $\mathcal{I} = \{1, \dots, N\}$ en dos categorías:
+Basándonos en la geometría de los puntos respecto al soporte continuo, clasificamos el conjunto de índices $\mathcal{I} = \{1, \dots, N\}$ en dos categorías:
 \begin{itemize}
-    \item \textbf{Átomos Interiores ($I_{in}$):} $\{k \in \mathcal{I} : \abs{c_k} < R\}$.
-    \item \textbf{Átomos Exteriores ($I_{out}$):} $\{k \in \mathcal{I} : \abs{c_k} \geq R\}$. Sea $m = |I_{out}|$.
+    \item \textbf{Puntos Interiores ($I_{in}$):} $\{k \in \mathcal{I} : \abs{c_k} < R\}$.
+    \item \textbf{Puntos Exteriores ($I_{out}$):} $\{k \in \mathcal{I} : \abs{c_k} \geq R\}$. Sea $m = |I_{out}|$.
 \end{itemize}
 
 \begin{proposicion}[Acotación y Extensión Continua en el Interior]
-    Para los átomos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
+    Para los puntos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
 \end{proposicion}
 
 \begin{proof}
-    Para cualquier polinomio $p \in \Poly$ y un átomo $c_k$ con $\abs{c_k} < R$, podemos aplicar la Fórmula Integral de Cauchy sobre la circunferencia $S_R$:
+    Para cualquier polinomio $p \in \Poly$ y un punto $c_k$ con $\abs{c_k} < R$, podemos aplicar la Fórmula Integral de Cauchy sobre la circunferencia $S_R$:
     $$ p(c_k) = \frac{1}{2\pi i} \int_{S_R} \frac{p(z)}{z - c_k} dz. $$
     Tomando valores absolutos y aplicando la desigualdad de Cauchy-Schwarz:
     $$ \abs{p(c_k)}^2 \leq \left( \frac{1}{2\pi} \int_{S_R} \frac{1}{\abs{z - c_k}^2} \abs{dz} \right) \left( \int_{S_R} \abs{p(z)}^2 \abs{dz} \right). $$
     Puesto que $\abs{c_k} < R$, la distancia al borde de la circunferencia está estrictamente acotada por abajo, luego la primera integral es una constante finita $M_{c_k} > 0$. Además, la segunda integral está dominada por la parte continua de la norma de Sobolev (salvo una constante de proporcionalidad dependiente de la medida de Lebesgue). Por tanto:
     $$ \abs{p(c_k)}^2 \leq \tilde{M}_{c_k} \|p\|_{L^2(\mu)}^2 \leq \tilde{M}_{c_k} \norm{p}^2. $$
-    Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Acotados en espacios densos \cite[Teorema 2.7-11]{kreyszig1989introductory}, el funcional se extiende de manera continua y única a todo $\mathcal{H}$. Al ser continuo, su núcleo es la preimagen de un conjunto cerrado (el $\{0\}$), por lo que es un subespacio cerrado.
+    Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Acotados en espacios densos \cite{kreyszig1989introductory}, el funcional se extiende de manera continua y única a todo $\mathcal{H}$. Al ser continuo, su núcleo es la preimagen de un conjunto cerrado (el $\{0\}$), por lo que es un subespacio cerrado.
 \end{proof}
 
-\begin{observacion}[Átomos Exteriores]
-    Para los átomos exteriores o en la frontera ($k \in I_{out}$), el funcional de evaluación $\delta_{c_k}$ no es continuo respecto a la norma $L^2$ inducida en el espacio de Hardy \cite{duren1970theory}, donde se demuestra que los funcionales de evaluación puntual solo son acotados en el interior del dominio). En consecuencia, su núcleo algebraico no es necesariamente cerrado en $\mathcal{H}$. Por este motivo, los subespacios asociados a condiciones de anulación en átomos exteriores se definen de forma algebraica y se considera su clausura topológica. En consecuencia, su núcleo algebraico $W_0$ es denso en $\mathcal{H}$, por lo que su clausura topológica resulta ser todo el espacio ($\overline{W_0} = \mathcal{H}$). Por este motivo, el estudio espectral para átomos exteriores exige trabajar estrictamente sobre el subespacio algebraico $W_0 \subset \mathbb{P}[z]$ sin tomar su clausura topológica, aplicando el Principio Min-Max sobre dominios densos para aprovechar su codimensión algebraica estricta.
-\end{observacion}
 
 \begin{definicion}[Subespacio Estable $W$]
-    Definimos el subespacio estable algebraico $W_0$ como el conjunto de polinomios que se anulan en los átomos exteriores:
+    Definimos el subespacio estable algebraico $W_0$ como el conjunto de polinomios que se anulan en los puntos exteriores:
     \begin{equation}
         W_0 = \{p \in \Poly : p(c_k) = 0, \forall k \in I_{out}\}.
     \end{equation}
@@ -85,7 +82,7 @@ Basándonos en la geometría de los átomos respecto al soporte continuo, clasif
 \end{definicion}
 
 \begin{definicion}[Subespacio Totalmente Restringido $W'$]
-    Definimos el subespacio algebraico $W'_0$ imponiendo restricciones nulas en la totalidad de los átomos:
+    Definimos el subespacio algebraico $W'_0$ imponiendo restricciones nulas en la totalidad de los puntos:
     \begin{equation}
         W'_0 = \{p \in \Poly : p(c_k) = 0, \forall k \in \{1, \dots, N\}\}.
     \end{equation}
@@ -122,10 +119,10 @@ Basándonos en la geometría de los átomos respecto al soporte continuo, clasif
 \end{proof}
 
 \begin{corolario}
-    Considerando los conjuntos de átomos definidos anteriormente:
+    Considerando los conjuntos de puntos definidos anteriormente:
     \begin{enumerate}
-        \item El subespacio estable $W$, que anula los $m$ átomos inestables ($I_{out}$), tiene codimensión $m$.
-        \item El subespacio totalmente restringido $W'$, que anula la totalidad de los $N$ átomos ($\mathcal{I}$), tiene codimensión $N$.
+        \item El subespacio estable $W$, que anula los $m$ puntos inestables ($I_{out}$), tiene codimensión $m$.
+        \item El subespacio totalmente restringido $W'$, que anula la totalidad de los $N$ puntos ($\mathcal{I}$), tiene codimensión $N$.
     \end{enumerate}
 \end{corolario}
 
@@ -140,6 +137,26 @@ Existe un isomorfismo isométrico natural entre $H^2(\mathbb{D})$ y el subespaci
 $$ H^2 \cong \overline{\Poly}^{L^2(S_1)}. $$
 
 Esta identificación es fundamental , ya que nos permite utilizar la estructura de \textit{Reproducing Kernel Hilbert Space} (RKHS) de $H^2$. En particular, para cualquier $c \in \mathbb{D}$, el núcleo reproductor de Szegő viene dado por $K_c(z) = (1-\bar{c}z)^{-1}$.
+
+\begin{observacion}[Puntos Exteriores]
+    Para los puntos exteriores o en la frontera ($k \in I_{out}$), el funcional de evaluación $\delta_{c_k}$ no es continuo respecto a la norma $L^2$ inducida en el espacio de Hardy \cite{duren1970theory}, donde se demuestra que los funcionales de evaluación puntual solo son acotados en el interior del dominio. En consecuencia, su núcleo algebraico no es necesariamente cerrado en $\mathcal{H}$. Por este motivo, los subespacios asociados a condiciones de anulación en puntos exteriores se definen de forma algebraica y se considera su clausura topológica. En consecuencia, su núcleo algebraico $W_0$ es denso en $\mathcal{H}$, por lo que su clausura topológica resulta ser todo el espacio ($\overline{W_0} = \mathcal{H}$). Por este motivo, el estudio espectral para puntos exteriores exige trabajar estrictamente sobre el subespacio algebraico $W_0 \subset \mathbb{P}[z]$ sin tomar su clausura topológica, aplicando el Principio Min-Max sobre dominios densos para aprovechar su codimensión algebraica estricta.
+\end{observacion}
+
+\begin{observacion}[Codimensión Algebraica y el Primer Teorema de Isomorfía]
+    Dado que para los puntos exteriores el funcional de evaluación $\Psi$ no es continuo respecto a la norma del espacio de Hilbert subyacente, su núcleo $W_0 = \ker(\Psi)$ es topológicamente denso en $\mathcal{H}$, lo que implica que su codimensión topológica es nula ($\overline{W_0} = \mathcal{H}$). Por este motivo, nuestro análisis espectral y la aplicación del Principio Min-Max deben fundamentarse estrictamente en la \textbf{codimensión algebraica} sobre el dominio denso $\mathbb{P}[z]$.
+
+    La validez de trabajar con este concepto en dimensión infinita se apoya en el Primer Teorema de Isomorfía para espacios vectoriales. Si $\Psi: \mathbb{P}[z] \to \mathbb{C}^m$ es el funcional lineal sobreyectivo que evalúa las $m$ condiciones singulares, el teorema garantiza que el espacio cociente es isomorfo a la imagen del funcional:
+    \[ \mathbb{P}[z] / \ker(\Psi) \cong \text{Im}(\Psi) = \mathbb{C}^m \]
+    Por definición, la codimensión algebraica de un subespacio es la dimensión de su espacio cociente. Tomando dimensiones a ambos lados del isomorfismo, obtenemos:
+    \[ \text{codim}_{alg}(W_0) = \dim(\mathbb{P}[z] / W_0) = \dim(\mathbb{C}^m) = m \]
+    Cabe destacar que este es un resultado de álgebra lineal abstracta y opera al margen de cualquier estructura métrica o topológica (\cite{roman2007advanced, kreyszig1989introductory}). Además, es totalmente consistente con la formulación mediante bases de Hamel: afirmar que $\text{codim}_{alg}(W_0) = m$ equivale a que cualquier base de Hamel de $W_0$ requiere exactamente $m$ vectores (polinomios) adicionales linealmente independientes para generar todo el espacio $\mathbb{P}[z]$.
+\end{observacion}
+
+\begin{observacion}[Conexión con la Física Matemática y Extensiones de Operadores]
+    La metodología de olvidar la topología de la norma Sobolev para operar sobre la restricción algebraica a un subespacio de codimensión finita ($W_0$) es una técnicas usada en el análisis de operadores no acotados. La necesidad de evaluar funcionales que son densos pero no acotados sobre un dominio ``bueno'' ($\mathbb{P}[z]$) es análoga a la construcción de los Tripletes de Gelfand (Rigged Hilbert Spaces) introducidos por Gelfand y Vilenkin \cite{gelfand1964generalized}, los cuales legitiman el uso de funcionales singulares como la Delta de Dirac en mecánica cuántica.
+
+    De manera similar, el hecho de ``apagar'' la singularidad restringiendo el operador a un subespacio de codimensión algebraica finita coincide con los procedimientos empleados en la teoría de extensiones de Von Neumann (Reed y Simon \cite{reed1975methods}) para aislar perturbaciones de rango finito o potenciales de contacto (\textit{Point Interactions} \cite{albeverio1988solvable}). Esto demuestra que la convergencia de nuestros $\sigma_k$ filtrando la singularidad responde a un comportamiento estructural bien documentado en la teoría espectral de operadores autoadjuntos.
+\end{observacion}
 
 \section{Acotación del Operador Multiplicación}
 
@@ -157,13 +174,13 @@ Esta identificación es fundamental , ya que nos permite utilizar la estructura 
     $$ \int_{S_R} \abs{z p(z)}^2 d\mu(z) = R^2 \int_{S_R} \abs{p(z)}^2 d\mu(z) \leq R^2 \norm{p}^2. $$
 
     \textbf{2. Acotación de la parte discreta:}
-    Utilizamos la regla de la derivada del producto $(zp)'(z) = p(z) + z p'(z)$. Dividimos la suma de átomos en los conjuntos $I_{in}$ (interiores) e $I_{out}$ (exteriores).
+    Utilizamos la regla de la derivada del producto $(zp)'(z) = p(z) + z p'(z)$. Dividimos la suma de puntos en los conjuntos $I_{in}$ (interiores) e $I_{out}$ (exteriores).
 
-    \textit{Caso A: Átomos Exteriores ($k \in I_{out}$)}.
+    \textit{Caso A: Puntos Exteriores ($k \in I_{out}$)}.
     Por definición del subespacio estable $W$, si $p \in W$, entonces $p(c_k) = 0$ para todo $k \in I_{out}$. La expresión evaluada se reduce a:
     $$ \abs{p(c_k) + c_k p'(c_k)}^2 = \abs{0 + c_k p'(c_k)}^2 = \abs{c_k}^2 \abs{p'(c_k)}^2. $$
 
-    \textit{Caso B: Átomos Interiores ($k \in I_{in}$)}.
+    \textit{Caso B: Puntos Interiores ($k \in I_{in}$)}.
     En este caso no podemos asumir que $p(c_k)$ se anule. Utilizamos la desigualdad triangular $(a+b)^2 \leq 2a^2 + 2b^2$:
     $$ \abs{p(c_k) + c_k p'(c_k)}^2 \leq 2\abs{p(c_k)}^2 + 2\abs{c_k}^2 \abs{p'(c_k)}^2. $$
     Por la Proposición de Evaluación Puntual (ver Preliminares), sabemos que la evaluación es un funcional acotado. Existe una constante $M_k > 0$ tal que $\abs{p(c_k)}^2 \leq M_k \norm{p}^2$.
@@ -174,7 +191,7 @@ Esta identificación es fundamental , ya que nos permite utilizar la estructura 
         \norm{Dp}^2 & \leq R^2 \norm{p}^2 + \sum_{k \in I_{out}} \abs{c_k}^2 \abs{p'(c_k)}^2 + \sum_{k \in I_{in}} \left( 2 M_k \norm{p}^2 + 2 \abs{c_k}^2 \abs{p'(c_k)}^2 \right) \\
                     & \leq \left( R^2 + \max_{k \in I_{out}}\abs{c_k}^2 + 2\sum_{k \in I_{in}} M_k + 2\max_{k \in I_{in}}\abs{c_k}^2 \right) \norm{p}^2.
     \end{align*}
-    Nótese que hemos usado que $\abs{p'(c_k)}^2 \leq \norm{p}^2$ por definición de la norma Sobolev. Si definimos $K$ como la raíz cuadrada del término entre paréntesis (que es una constante finita dependiente solo de $R$ y los átomos), concluimos que $\norm{Dp} \leq K \norm{p}$.
+    Nótese que hemos usado que $\abs{p'(c_k)}^2 \leq \norm{p}^2$ por definición de la norma Sobolev. Si definimos $K$ como la raíz cuadrada del término entre paréntesis (que es una constante finita dependiente solo de $R$ y los puntos), concluimos que $\norm{Dp} \leq K \norm{p}$.
 \end{proof}
 
 \begin{corolario}[Acotación del Espectro Remanente]
@@ -195,7 +212,7 @@ Esta identificación es fundamental , ya que nos permite utilizar la estructura 
 
 \section{Divergencia de los Valores Singulares Inestables}
 
-Los átomos situados fuera del disco soporte de la medida continua generan un comportamiento singular en el operador. A diferencia del caso acotado, estos puntos inducen valores singulares infinitos.
+Los puntos situados fuera del disco soporte de la medida continua generan un comportamiento singular en el operador. A diferencia del caso acotado, estos puntos inducen valores singulares infinitos.
 
 \subsection{Persistencia de la Codimensión}
 
@@ -222,24 +239,24 @@ El siguiente resultado establece que la imposición de restricciones lineales co
 
 \begin{proof}
     Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que su clausura $V = \overline{Y_a}$ tiene codimensión 1.
-    
+
     Supongamos por reducción al absurdo que $\operatorname{codim}(V) > 1$.
-    Sabemos que el funcional de evaluación en $a$ es continuo (por ser un átomo BPE o un punto interior en $H^2$), luego existe un núcleo reproductor $K_a \in \mathcal{H}$ tal que $f(a) = \langle f, K_a \rangle$.
-    
+    Sabemos que el funcional de evaluación en $a$ es continuo (por ser un punto BPE o un punto interior en $H^2$), luego existe un núcleo reproductor $K_a \in \mathcal{H}$ tal que $f(a) = \langle f, K_a \rangle$.
+
     La condición $f \in Y_a$ implica $f(a)=0$, lo que equivale a $f \perp K_a$. Por tanto, el subespacio $V$ está contenido en el ortogonal de $K_a$:
     $$ V \subseteq \{K_a\}^\perp. $$
-    
+
     Si la codimensión fuera mayor que 1, existiría un vector no nulo $g \in \mathcal{H}$ ($g \neq 0$) tal que:
     \begin{enumerate}
         \item $g \perp V$ (es ortogonal al ideal),
         \item $g \perp K_a$ (es ortogonal al núcleo reproductor).
     \end{enumerate}
-    
+
     Cualquier polinomio $p \in \Poly$ se puede escribir como $p(z) = p(a)\frac{K_a(z)}{K_a(a)} + (p(z) - p(a)\dots)$, es decir, $\Poly \subset \operatorname{span}\{K_a\} \oplus Y_a$.
-    
+
     Como $g$ es ortogonal a ambos sumandos ($K_a$ y $Y_a$), entonces $g$ es ortogonal a todo el espacio de polinomios $\Poly$:
     $$ g \perp \Poly. $$
-    
+
     Como $\Poly$ es denso en $\mathcal{H}$, esto implica obligatoriamente que $g = 0$, lo cual es una contradicción.
     Por tanto, no existe tal vector $g$, y el complemento ortogonal de $V$ está generado únicamente por $K_a$.
     $$ \operatorname{codim}(V) = 1. $$
@@ -260,16 +277,16 @@ El siguiente resultado establece que la imposición de restricciones lineales co
 
     Por definición de operador no acotado, para todo $n \in \mathbb{N}$, existe un polinomio $h_n \in \Poly$ tal que:
     $$ |h_n(a)| > n \|h_n\|_{\mathcal{H}}. $$
-    Podemos normalizar estos polinomios para fijar su valor en el átomo. Definimos la sucesión:
+    Podemos normalizar estos polinomios para fijar su valor en el punto. Definimos la sucesión:
     $$ q_n(z) = \frac{h_n(z)}{h_n(a)}. $$
     Por construcción, se cumple que $q_n(a) = 1$ para todo $n$. Además, su norma decae asintóticamente a cero:
     $$ \|q_n\|_{\mathcal{H}} = \frac{\|h_n\|_{\mathcal{H}}}{|h_n(a)|} < \frac{1}{n} \xrightarrow{n\to\infty} 0. $$
-    
+
 
     Consideremos ahora la función constante $1 \in \Poly$. Construimos la sucesión de polinomios:
     $$ p_n(z) = 1 - q_n(z). $$
     Evaluando en el punto $a$, tenemos $p_n(a) = 1 - q_n(a) = 1 - 1 = 0$. Esto implica que cada término de la sucesión  $p_n \in Y_a \quad \forall n$.
-    
+
     Calculamos la distancia entre la constante $1$ y esta sucesión:
     $$ \|1 - p_n\|_{\mathcal{H}} = \|1 - (1 - q_n)\|_{\mathcal{H}} = \|q_n\|_{\mathcal{H}} < \frac{1}{n}. $$
     Esto demuestra que la función constante $1$ pertenece a la clausura del subespacio: $1 \in \overline{Y_a}$.
@@ -279,47 +296,47 @@ El siguiente resultado establece que la imposición de restricciones lineales co
     $$ P(z) = P(a)\cdot 1 + (z-a)Q(z), $$
     donde el término $(z-a)Q(z)$ pertenece trivialmente a $Y_a \subset \overline{Y_a}$, concluimos por linealidad que $P \in \overline{Y_a}$ para todo $P \in \Poly$.
 
-    
+
     Finalmente, como $\Poly$ es denso en el espacio de Hilbert $\mathcal{H}$ (por definición de la completación), y hemos probado que $\Poly \subseteq \overline{Y_a}$, se sigue necesariamente que:
     $$ \overline{Y_a} = \mathcal{H}. $$
 
-Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$, y por tanto $\operatorname{codim}(V) = 0$.
+    Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$, y por tanto $\operatorname{codim}(V) = 0$.
 \end{proof}
 
 \begin{proof}[Prueba Geométrica (Corrección mediante Proyección)]
     Sea $V = \overline{(z-a)\Poly}$ el subespacio cerrado generado por los polinomios que se anulan en $a$. Queremos determinar la dimensión de su complemento ortogonal $V^\perp$.
-    
+
     Consideremos la función constante $u(z) = 1$. Por el Teorema de la Proyección Ortogonal en espacios de Hilbert, existe una descomposición única:
     $$ 1 = P_V(1) + h, $$
     donde $P_V(1) \in V$ es la proyección ortogonal de la unidad sobre el subespacio, y $h \in V^\perp$ es el vector residual.
-    
+
     Distinguimos dos casos para el vector $h = 1 - P_V(1)$:
-    
+
     \begin{enumerate}
         \item \textbf{Si $h = 0$:} Entonces $1 \in V$. Como $V$ es un ideal (cerrado bajo multiplicación por polinomios), esto implicaría que $\Poly \subset V$, y por tanto $V = \mathcal{H}$. Esto corresponde al caso donde la evaluación no es acotada (codimensión 0).
-        
-        \item \textbf{Si $h \neq 0$:} Entonces hemos encontrado un vector no nulo $h \in V^\perp$. 
-        Para ver que este vector genera \textit{todo} el complemento ortogonal, tomemos cualquier otro $g \in V^\perp$.
-        Cualquier polinomio $p$ se escribe como $p(z) = p(a) + q(z)$ con $q \in V$.
-        Esto implica que el espacio total es la suma directa (no necesariamente ortogonal todavía) de las constantes y $V$:
-        $$ \mathcal{H} = \operatorname{span}\{1\} + V. $$
-        Como $1 = P_V(1) + h$, podemos reescribir esto como:
-        $$ \mathcal{H} = \operatorname{span}\{P_V(1) + h\} + V = \operatorname{span}\{h\} + V. $$
-        (El término $P_V(1)$ se absorbe en $V$).
-        
-        Dado que $h \perp V$, esta suma es ortogonal:
-        $$ \mathcal{H} = \operatorname{span}\{h\} \oplus V. $$
-        
-        Concluimos que $V^\perp = \operatorname{span}\{h\}$, y como $h \neq 0$, la dimensión es exactamente 1.
+
+        \item \textbf{Si $h \neq 0$:} Entonces hemos encontrado un vector no nulo $h \in V^\perp$.
+              Para ver que este vector genera \textit{todo} el complemento ortogonal, tomemos cualquier otro $g \in V^\perp$.
+              Cualquier polinomio $p$ se escribe como $p(z) = p(a) + q(z)$ con $q \in V$.
+              Esto implica que el espacio total es la suma directa (no necesariamente ortogonal todavía) de las constantes y $V$:
+              $$ \mathcal{H} = \operatorname{span}\{1\} + V. $$
+              Como $1 = P_V(1) + h$, podemos reescribir esto como:
+              $$ \mathcal{H} = \operatorname{span}\{P_V(1) + h\} + V = \operatorname{span}\{h\} + V. $$
+              (El término $P_V(1)$ se absorbe en $V$).
+
+              Dado que $h \perp V$, esta suma es ortogonal:
+              $$ \mathcal{H} = \operatorname{span}\{h\} \oplus V. $$
+
+              Concluimos que $V^\perp = \operatorname{span}\{h\}$, y como $h \neq 0$, la dimensión es exactamente 1.
     \end{enumerate}
 \end{proof}
 
 \begin{corolario}
-    Si los átomos $\{c_k\}_{k=1}^N$ son puntos de evaluación acotada (BPE), el subespacio $W = \overline{\{p \in \Poly : (zp)'(c_k)=0\}}$ tiene codimensión exactamente $N$ en $\mathcal{H}$.
+    Si los puntos $\{c_k\}_{k=1}^N$ son puntos de evaluación acotada (BPE), el subespacio $W = \overline{\{p \in \Poly : (zp)'(c_k)=0\}}$ tiene codimensión exactamente $N$ en $\mathcal{H}$.
 \end{corolario}
 
 \begin{proposicion}[Divergencia de $s$-números]
-    \cite{gohberg1969introduction} Sea $D$ el operador de multiplicación por $z$. Sea $m = |I_{out}|$ el número de átomos inestables. Entonces, los primeros $m$ valores singulares (números de aproximación) del operador son infinitos:
+    \cite{gohberg1969introduction} Sea $D$ el operador de multiplicación por $z$. Sea $m = |I_{out}|$ el número de puntos inestables. Entonces, los primeros $m$ valores singulares (números de aproximación) del operador son infinitos:
     \begin{equation}
         \sigma_1 = \sigma_2 = \dots = \sigma_m = \infty.
     \end{equation}
@@ -331,9 +348,9 @@ Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$
     Para demostrar que $\sigma_m = \infty$, probaremos que para cualquier subespacio $V$ de codimensión $m-1$, el operador es no acotado sobre $V$.
 
     Sea $V \subset \mathcal{H}$ un subespacio arbitrario con $\operatorname{codim}(V) = m-1$.
-    Consideremos el subespacio estable $W$ definido en la sección anterior, el cual anula los $m$ átomos inestables. Sabemos que $\operatorname{codim}(W) = m$. Por razones de dimensionalidad (propiedades de los complementos ortogonales en espacios de Hilbert), es imposible que $V$ esté contenido en $W$, ya que $\operatorname{codim}(V) < \operatorname{codim}(W)$.
+    Consideremos el subespacio estable $W$ definido en la sección anterior, el cual anula los $m$ puntos inestables. Sabemos que $\operatorname{codim}(W) = m$. Por razones de dimensionalidad (propiedades de los complementos ortogonales en espacios de Hilbert), es imposible que $V$ esté contenido en $W$, ya que $\operatorname{codim}(V) < \operatorname{codim}(W)$.
 
-    Esto implica que existe al menos un átomo inestable $c^* \in I_{out}$ tal que el funcional de evaluación $\delta_{c^*}$ no se anula idénticamente sobre $V$. En consecuencia, el operador actúa sobre $V$ de forma no acotada, ya que el módulo del átomo $c^*$ es estrictamente mayor que $R$.
+    Esto implica que existe al menos un punto inestable $c^* \in I_{out}$ tal que el funcional de evaluación $\delta_{c^*}$ no se anula idénticamente sobre $V$. En consecuencia, el operador actúa sobre $V$ de forma no acotada, ya que el módulo del punto $c^*$ es estrictamente mayor que $R$.
 
     Para formalizar la divergencia, construimos la sucesión de polinomios prueba $\{Q_n\}_{n \geq 1}$ definida por:
     $$ Q_n(z) = (n+1)c^* z^n - n z^{n+1}. $$
@@ -359,7 +376,7 @@ Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$
 \end{proof}
 
 \begin{proposicion}[Dominancia del Soporte]
-    Sea $W'$ el subespacio totalmente restringido, definido como la clausura en $\mathcal{H}$ del conjunto de polinomios que se anulan en todos los átomos $\{c_1, \dots, c_N\}$ (véase la Sección~1).
+    Sea $W'$ el subespacio totalmente restringido, definido como la clausura en $\mathcal{H}$ del conjunto de polinomios que se anulan en todos los puntos $\{c_1, \dots, c_N\}$ (véase la Sección~1).
     Sea $\D$ el operador de multiplicación por z, definido como $\D(p) = z p(z)$. La norma de la restricción de este operador al subespacio $W'$, denotada como $\D|_{W'} : W' \to \mathcal{H}$, es:
     \begin{equation}
         \norm{\D p} \le \max \left( R, \max_{k=1,\dots,N} |c_k| \right) \norm{p} \quad \forall p \in W'
@@ -369,9 +386,9 @@ Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$
 \begin{proof}
     Sea $p \in W'$. Evaluamos la norma al cuadrado de la imagen $\norm{zp}^2$. Para la parte continua tenemos:
     $$\int_{|z|=R} |z p(z)|^2 d\mu \le R^2 \int_{|z|=R} |p(z)|^2 d\mu = R^2 \|p\|_{L^2}^2.$$
-    La condición $p \in W'$ implica $p(c_k)=0$ para todo $k$ (por construcción de la clausura y continuidad de la evaluación en los átomos). Al evaluar la derivada de la imagen $(zp)'$ en los átomos, el término libre desaparece:
+    La condición $p \in W'$ implica $p(c_k)=0$ para todo $k$ (por construcción de la clausura y continuidad de la evaluación en los puntos). Al evaluar la derivada de la imagen $(zp)'$ en los puntos, el término libre desaparece:
     $$ (zp)'(c_k) = p(c_k) + c_k p'(c_k) = c_k p'(c_k) $$
-    Al sumar sobre todos los átomos, se acota la contribución utilizando el módulo del átomo de mayor módulo:
+    Al sumar sobre todos los puntos, se acota la contribución utilizando el módulo del punto de mayor módulo:
     $$ \sum_{k \in \mathcal{I}}  |c_k|^2 |p'(c_k)|^2 \le \left( \max_{k \in \mathcal{I}} |c_k|^2 \right) \sum_{k \in \mathcal{I}}  |p'(c_k)|^2. $$
     Dado que la suma parcial de las derivadas ponderadas es menor o igual que la norma total $\norm{p}^2$, este término queda acotado.
     Definimos la constante $K$ como:
@@ -384,7 +401,7 @@ Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$
     \end{align*}
     Tomando la raíz cuadrada, concluimos que la norma del operador restringido satisface la desigualdad:
     $$\|\D|_{W'}\| \le K = \max \left( R, \max_{k=1,\dots,N} |c_k| \right).$$
-    Esto demuestra que el operador restringido es acotado, con cota determinada por el máximo entre el radio del soporte continuo y el módulo del átomo más alejado del origen.
+    Esto demuestra que el operador restringido es acotado, con cota determinada por el máximo entre el radio del soporte continuo y el módulo del punto más alejado del origen.
 \end{proof}
 
 \begin{corolario}[Acotación del Espectro Restringido]
@@ -394,27 +411,27 @@ Concluimos que el complemento ortogonal es el subespacio nulo, $V^\perp = \{0\}$
     \end{equation}
 \end{corolario}
 
-\section{Análisis Espectral: El Caso de un Único Átomo}
+\section{Análisis Espectral: El Caso de un Único Punto}
 
-Con el fin de analizar el impacto que las derivadas discretas tienen sobre la estructura espectral del operador de multiplicación $D(p) = zp$, se estudia en primer lugar el caso particular de un único átomo en la derivada. Específicamente, se considera la perturbación de la medida continua, soportada en la circunferencia unidad $S_1$, mediante la adición de un único término discreto en la derivada, evaluado en un punto $c_1 \in \C$.
+Con el fin de analizar el impacto que las derivadas discretas tienen sobre la estructura espectral del operador de multiplicación $D(p) = zp$, se estudia en primer lugar el caso particular de un único punto en la derivada. Específicamente, se considera la perturbación de la medida continua, soportada en la circunferencia unidad $S_1$, mediante la adición de un único término discreto en la derivada, evaluado en un punto $c_1 \in \C$.
 
 En el marco de la teoría de ideales de operadores, los números de Gelfand constituyen la herramienta natural para cuantificar el comportamiento espectral direccional de un operador acotado. Para un operador $T \in \mathcal{L}(\mathcal{H})$, el $m$-ésimo número de Gelfand se define como:
 \begin{equation}
     c_m(T) = \inf \{ \norm{T|_V} : V \subset \mathcal{H}, \, \operatorname{codim}(V) < m \}
 \end{equation}
 
-A lo largo de esta sección, se asume que el átomo $c_1$ constituye una \textit{Bounded Point Evaluation} (BPE). Como se estableció en la sección de preliminares, esta hipótesis es necesaria para garantizar que el operador $D$ sea globalmente acotado en $\mathcal{H}$.
+A lo largo de esta sección, se asume que el punto $c_1$ constituye una \textit{Bounded Point Evaluation} (BPE). Como se estableció en la sección de preliminares, esta hipótesis es necesaria para garantizar que el operador $D$ sea globalmente acotado en $\mathcal{H}$.
 
 \subsection{El Primer Número de Gelfand: La Norma Global}
 
 Por definición, el primer número de Gelfand, $c_1(D)$, corresponde al ínfimo sobre subespacios de codimensión estrictamente menor que 1. El único subespacio que cumple esta condición es el espacio total $\mathcal{H}$. Por consiguiente:
 $$ c_1(D) = \norm{D} $$
 
-Este primer número refleja el comportamiento global del operador. Analíticamente, se verifica que $c_1(D)$ depende de la posición del átomo $c_1$: cuanto mayor es la contribución del término discreto a la norma de Sobolev, mayor es la dilatación de $c_1(D)$ respecto al radio de la circunferencia.
+Este primer número refleja el comportamiento global del operador. Analíticamente, se verifica que $c_1(D)$ depende de la posición del punto $c_1$: cuanto mayor es la contribución del término discreto a la norma de Sobolev, mayor es la dilatación de $c_1(D)$ respecto al radio de la circunferencia.
 
-\subsection{Un ejemplo ilustrativo: El átomo en el origen}
+\subsection{Un ejemplo ilustrativo: El punto en el origen}
 
-Consideremos el espacio de polinomios $\Poly$ dotado de la medida de Lebesgue normalizada en la circunferencia unidad $S_1$ y un único átomo en la derivada situado en el origen ($c_1 = 0$). El producto interno de Sobolev toma la forma:
+Consideremos el espacio de polinomios $\Poly$ dotado de la medida de Lebesgue normalizada en la circunferencia unidad $S_1$ y un único punto en la derivada situado en el origen ($c_1 = 0$). El producto interno de Sobolev toma la forma:
 \begin{equation}
     \ip{p}{q} = \int_{S_1} p(z)\overline{q(z)} \frac{\abs{dz}}{2\pi} + p'(0)\overline{q'(0)}.
 \end{equation}
@@ -456,11 +473,11 @@ Verificamos la igualdad evaluando el cociente en esta función constante:
 $$ \frac{\norm{\D(1)}^2}{\norm{1}^2} = 2. $$
 Concluimos formalmente que la norma global del operador es $c_1(\D) = \sqrt{2}$.
 
-\subsection{Dependencia de la Posición: El caso de un átomo arbitrario}
+\subsection{Dependencia de la Posición: El caso de un punto arbitrario}
 
-El caso $c=0$ produce una norma global $c_1(\D) = \sqrt{2}$, alcanzada por los polinomios constantes. A continuación se analiza el caso de un átomo interior arbitrario $c \neq 0$. Este análisis requiere consideraciones adicionales, ya que los núcleos reproductores del espacio de Hardy $H^2$ no coinciden con la base de monomios cuando el punto de evaluación no es el origen.
+El caso $c=0$ produce una norma global $c_1(\D) = \sqrt{2}$, alcanzada por los polinomios constantes. A continuación se analiza el caso de un punto interior arbitrario $c \neq 0$. Este análisis requiere consideraciones adicionales, ya que los núcleos reproductores del espacio de Hardy $H^2$ no coinciden con la base de monomios cuando el punto de evaluación no es el origen.
 
-Sea $c \in \C$ un átomo interior con $0 < \abs{c} < 1$. Para aplicar la caracterización matricial del primer número de Gelfand, necesitamos los representantes de Riesz de la evaluación funcional y de la derivada en el punto $c$. Para la medida de Lebesgue en la circunferencia, estos son los conocidos núcleos de Szegő:
+Sea $c \in \C$ un punto interior con $0 < \abs{c} < 1$. Para aplicar la caracterización matricial del primer número de Gelfand, necesitamos los representantes de Riesz de la evaluación funcional y de la derivada en el punto $c$. Para la medida de Lebesgue en la circunferencia, estos son los conocidos núcleos de Szegő:
 \begin{equation}
     K_0(z) = \frac{1}{1 - \bar{c}z}, \quad K_1(z) = \frac{\partial}{\partial \bar{c}} K_0(z) = \frac{z}{(1 - \bar{c}z)^2}.
 \end{equation}
@@ -470,13 +487,13 @@ El cálculo exacto de $c_1(\D)$ se reduce a resolver el problema de autovalores 
 Evaluamos el cociente de Rayleigh en dos polinomios naturales: la función constante y la función identidad.
 
 \textbf{1. El candidato constante ($p_0(z) = 1$):}
-Como se demostró anteriormente, $\norm{1}^2 = 1$ y $\norm{\D(1)}^2 = 2$. El cociente de Rayleigh permanece invariante respecto a la posición del átomo:
+Como se demostró anteriormente, $\norm{1}^2 = 1$ y $\norm{\D(1)}^2 = 2$. El cociente de Rayleigh permanece invariante respecto a la posición del punto:
 $$ \mathcal{R}(1) = \frac{\norm{\D(1)}^2}{\norm{1}^2} = 2. $$
 
 \textbf{2. El candidato lineal ($p_1(z) = z$):}
 Calculamos las normas involucradas para este polinomio cuando $c \neq 0$:
 \begin{itemize}
-    \item Derivada en el átomo: $p_1'(c) = 1$.
+    \item Derivada en el punto: $p_1'(c) = 1$.
     \item Derivada de la imagen: $(\D p_1)'(c) = (z^2)'(c) = 2c$.
     \item Norma de entrada: $\norm{z}^2 = \|z\|_{L^2}^2 + \abs{1}^2 = 1 + 1 = 2$.
     \item Norma de salida: $\norm{z^2}^2 = \|z^2\|_{L^2}^2 + \abs{2c}^2 = 1 + 4\abs{c}^2$.
@@ -490,12 +507,12 @@ La comparación de ambos candidatos revela un cambio cualitativo en el comportam
     \item Sin embargo, existe un punto crítico cuando $\frac{1}{2} + 2\abs{c}^2 = 2$, es decir, cuando $\abs{c} = \frac{\sqrt{3}}{2} \approx 0.866$.
 \end{itemize}
 
-Para átomos situados cerca de la frontera ($|c| > \sqrt{3}/2$), el polinomio $p(z)=z$ sufre una dilatación mayor que el polinomio constante. Esto demuestra rigurosamente que:
+Para puntos situados cerca de la frontera ($|c| > \sqrt{3}/2$), el polinomio $p(z)=z$ sufre una dilatación mayor que el polinomio constante. Esto demuestra rigurosamente que:
 \begin{equation}
     c_1(\D) \ge \max \left( \sqrt{2}, \, \sqrt{\frac{1}{2} + 2\abs{c}^2} \right).
 \end{equation}
 
-Este resultado tiene la siguiente interpretación geométrica: a medida que el átomo se acerca a la frontera ($|c| \to 1$), el primer número de Gelfand crece, y la dirección que alcanza la norma pasa de las funciones constantes a funciones con mayor dependencia en $z$, alineándose con la singularidad del núcleo $K_1(z)$.
+Este resultado tiene la siguiente interpretación geométrica: a medida que el punto se acerca a la frontera ($|c| \to 1$), el primer número de Gelfand crece, y la dirección que alcanza la norma pasa de las funciones constantes a funciones con mayor dependencia en $z$, alineándose con la singularidad del núcleo $K_1(z)$.
 
 \subsection{Caracterización Exacta del Primer Número de Gelfand}
 
@@ -507,7 +524,7 @@ El cálculo de la norma global equivale a encontrar el supremo del cociente de R
 \end{equation}
 Nótese que hemos utilizado el hecho de que, sobre la circunferencia $S_1$, la norma $L^2$ es invariante bajo la multiplicación por $z$, es decir, $\|zp\|_{L^2(\mu)} = \|p\|_{L^2(\mu)}$.
 
-Dado que $c_1$ es un átomo BPE, tanto la evaluación de la función como la de su derivada son funcionales continuos en la completación de $\Poly$ respecto a la norma $L^2(\mu)$ (el espacio de Hardy $H^2(\mu)$). Por el Teorema de Representación de Riesz, existen dos núcleos reproductores $K_0, K_1 \in H^2(\mu)$ tales que, para todo polinomio $p$:
+Dado que $c_1$ es un punto BPE, tanto la evaluación de la función como la de su derivada son funcionales continuos en la completación de $\Poly$ respecto a la norma $L^2(\mu)$ (el espacio de Hardy $H^2(\mu)$). Por el Teorema de Representación de Riesz, existen dos núcleos reproductores $K_0, K_1 \in H^2(\mu)$ tales que, para todo polinomio $p$:
 \begin{align*}
     p(c_1)  & = \langle p, K_0 \rangle_{L^2(\mu)}, \\
     p'(c_1) & = \langle p, K_1 \rangle_{L^2(\mu)}.
@@ -528,19 +545,19 @@ Por lo tanto, la búsqueda en dimensión infinita colapsa a una optimización en
     \norm{p_K}^2   & = v^* A v, \\
     \norm{D p_K}^2 & = v^* B v,
 \end{align*}
-donde $A$ y $B$ son matrices hermíticas de orden $2 \times 2$ cuyas entradas dependen exclusivamente de los productos escalares $\langle K_i, K_j \rangle_{L^2}$ y las evaluaciones de los núcleos en el átomo $c_1$.
+donde $A$ y $B$ son matrices hermíticas de orden $2 \times 2$ cuyas entradas dependen exclusivamente de los productos escalares $\langle K_i, K_j \rangle_{L^2}$ y las evaluaciones de los núcleos en el punto $c_1$.
 
 El cálculo de $c_1(D)^2$ se reduce entonces a encontrar el mayor autovalor generalizado del haz de matrices $(B, A)$, es decir, la mayor raíz $\lambda$ de la ecuación característica bidimensional:
 \begin{equation}
     \det(B - \lambda A) = 0.
 \end{equation}
-Esta reducción justifica rigurosamente por qué el primer número de Gelfand es computable y finito bajo la hipótesis BPE, dependiendo únicamente de la geometría local en el átomo y de la función de Christoffel-Darboux (o núcleo de Szegő) asociada a la medida continua.
+Esta reducción justifica rigurosamente por qué el primer número de Gelfand es computable y finito bajo la hipótesis BPE, dependiendo únicamente de la geometría local en el punto y de la función de Christoffel-Darboux (o núcleo de Szegő) asociada a la medida continua.
 
 Cabe preguntarse si, al neutralizar esta fuente de perturbación mediante la restricción a un subespacio adecuado, es posible determinar el valor del número de Gelfand residual.
 
 \subsection{Cálculo Exacto: La Solución Matricial General}
 
-Para obtener un valor explícito del primer número de Gelfand $c_1(\D)$ para cualquier posición del átomo $c \in \mathbb{D}$, debemos resolver el problema de autovalores generalizados asociado al subespacio óptimo.
+Para obtener un valor explícito del primer número de Gelfand $c_1(\D)$ para cualquier posición del punto $c \in \mathbb{D}$, debemos resolver el problema de autovalores generalizados asociado al subespacio óptimo.
 
 Como el supremo se alcanza en el subespacio generado por los núcleos reproductores del espacio de Hardy $H^2$, denotemos la base por $\mathcal{B} = \{K_0, K_1\}$, donde:
 \begin{equation}
@@ -565,12 +582,12 @@ Usando la notación $k_{ij} = K_i^{(j)}(c)$ para las derivadas de los núcleos e
 La norma de salida es $\norm{\D p}^2 = \|p\|_{L^2}^2 + \abs{(\D p)'(c)}^2$. Observamos que $(\D p)'(c) = p(c) + c p'(c)$. Por tanto, la matriz $\mathbf{B}$ es una perturbación de rango 1 de la parte continua:
 $$ B_{ij} = \langle K_j, K_i \rangle_{L^2} + [K_j(c) + c K_j'(c)] \overline{[K_i(c) + c K_i'(c)]}. $$
 
-\subsubsection{Ejemplo Numérico: Átomo en $c = 0.5$}
+\subsubsection{Ejemplo Numérico: Punto en $c = 0.5$}
 
-Particularicemos para un átomo real en $c=1/2$. Los valores de los núcleos y sus derivadas son:
+Particularicemos para un punto real en $c=1/2$. Los valores de los núcleos y sus derivadas son:
 \begin{align*}
-    k_{00} &= \frac{4}{3}, \quad k_{01} = \frac{8}{9}, \\
-    k_{11} &= \frac{1+(1/2)^2}{(1-(1/2)^2)^3} = \frac{1.25}{0.421875} = \frac{80}{27} \approx 2.963.
+    k_{00} & = \frac{4}{3}, \quad k_{01} = \frac{8}{9},                                               \\
+    k_{11} & = \frac{1+(1/2)^2}{(1-(1/2)^2)^3} = \frac{1.25}{0.421875} = \frac{80}{27} \approx 2.963.
 \end{align*}
 
 Construimos las matrices $\mathbf{A}$ (norma de entrada) y $\mathbf{B}$ (norma de salida) utilizando las fórmulas derivadas:
@@ -586,21 +603,21 @@ El primer número de Gelfand se obtiene de la mayor raíz de la ecuación caract
 Resolviendo para la mayor raíz:
 $$ \lambda_{max} = \frac{35.04 + \sqrt{35.04^2 - 4(12.52)^2}}{2(12.52)} \approx 2.377. $$
 
-Por lo tanto, la norma del operador con un átomo en $c=0.5$ es:
+Por lo tanto, la norma del operador con un punto en $c=0.5$ es:
 \begin{equation}
     c_1(\D) = \sqrt{\lambda_{max}} \approx \sqrt{2.377} \approx 1.5417.
 \end{equation}
 
-Este valor es consistente con las simulaciones numéricas de secciones finitas, las cuales convergen geométricamente a este límite. Observamos que $1.5417 > \sqrt{2} \approx 1.414$, confirmando que el desplazamiento del átomo hacia la frontera incrementa la norma.
+Este valor es consistente con las simulaciones numéricas de secciones finitas, las cuales convergen geométricamente a este límite. Observamos que $1.5417 > \sqrt{2} \approx 1.414$, confirmando que el desplazamiento del punto hacia la frontera incrementa la norma.
 
 \subsection{El Segundo Número de Gelfand: Recuperando la Circunferencia}
 
 A continuación se calcula $c_2(D)$, el ínfimo de la norma del operador sobre todos los subespacios de codimensión 1.
 
-El siguiente teorema establece que, independientemente de la posición exacta del átomo BPE, al restringir el espacio una sola dimensión, la norma del operador coincide exactamente con el radio de la circunferencia.
+El siguiente teorema establece que, independientemente de la posición exacta del punto BPE, al restringir el espacio una sola dimensión, la norma del operador coincide exactamente con el radio de la circunferencia.
 
-\begin{teorema}[Valor exacto de $c_2$ para un átomo]
-    Sea $\mathcal{H}$ el espacio de Sobolev con medida continua soportada en $S_1$ y un único átomo BPE $c_1$ en la derivada. El segundo número de Gelfand del operador de multiplicación $D(p) = zp$ es exactamente el radio de la circunferencia:
+\begin{teorema}[Valor exacto de $c_2$ para un punto]
+    Sea $\mathcal{H}$ el espacio de Sobolev con medida continua soportada en $S_1$ y un único punto BPE $c_1$ en la derivada. El segundo número de Gelfand del operador de multiplicación $D(p) = zp$ es exactamente el radio de la circunferencia:
     $$ c_2(D) = 1 $$
 \end{teorema}
 
@@ -609,7 +626,7 @@ El siguiente teorema establece que, independientemente de la posición exacta de
 
     \textbf{Parte I: Cota superior ($c_2(D) \le 1$)}
 
-    Buscamos un subespacio $V$ de codimensión 1 que neutralice el efecto expansivo de la derivada. Motivados por la expresión de la norma de la imagen, definimos el subespacio óptimo $W_{opt}$ imponiendo que la derivada de la imagen se anule en el átomo:
+    Buscamos un subespacio $V$ de codimensión 1 que neutralice el efecto expansivo de la derivada. Motivados por la expresión de la norma de la imagen, definimos el subespacio óptimo $W_{opt}$ imponiendo que la derivada de la imagen se anule en el punto:
     $$ W_{opt} = \{ p \in \mathcal{H} : (zp)'(c_1) = 0 \}. $$
     Esta condición es el núcleo del funcional lineal $\Psi(p) = p(c_1) + c_1 p'(c_1)$. Gracias a nuestra hipótesis BPE, las evaluaciones $p(c_1)$ y $p'(c_1)$ son continuas, lo que hace que $\Psi \in \mathcal{H}^*$. En consecuencia, $W_{opt} = \ker(\Psi)$ es un subespacio cerrado de codimensión 1 (o 0, si $\Psi$ fuera trivial, lo cual también es admisible).
 
@@ -647,18 +664,18 @@ El siguiente teorema establece que, independientemente de la posición exacta de
 
 \section{Cálculo Exacto del Número de Gelfand Asintótico (Caso Acotado)}
 
-Aplicando la definición de los números de Gelfand introducida en la sección anterior, se extiende el análisis al caso general de $N$ átomos.
+Aplicando la definición de los números de Gelfand introducida en la sección anterior, se extiende el análisis al caso general de $N$ puntos.
 
-Para poder aplicar esta teoría globalmente a nuestro operador de multiplicación $D(p) = zp$, es condición necesaria que $D$ sea un operador acotado en $\mathcal{H}$. Como hemos demostrado en secciones anteriores, esto ocurre si y solo si las evaluaciones en los átomos no generan divergencias en la norma.
+Para poder aplicar esta teoría globalmente a nuestro operador de multiplicación $D(p) = zp$, es condición necesaria que $D$ sea un operador acotado en $\mathcal{H}$. Como hemos demostrado en secciones anteriores, esto ocurre si y solo si las evaluaciones en los puntos no generan divergencias en la norma.
 
 \begin{lema}[Acotación Global bajo Hipótesis BPE]
-    Supongamos que los $N$ átomos discretos $\{c_1, \dots, c_N\}$ asociados a las derivadas son \textit{Bounded Point Evaluations} (BPE) en $\mathcal{H}$, y están situados en el disco unidad abierto ($|c_k| < 1$). Entonces, el operador $D$ es globalmente acotado en $\mathcal{H}$, y sus números de Gelfand $c_m(D)$ están bien definidos para todo $m \ge 1$.
+    Supongamos que los $N$ puntos discretos $\{c_1, \dots, c_N\}$ asociados a las derivadas son \textit{Bounded Point Evaluations} (BPE) en $\mathcal{H}$, y están situados en el disco unidad abierto ($|c_k| < 1$). Entonces, el operador $D$ es globalmente acotado en $\mathcal{H}$, y sus números de Gelfand $c_m(D)$ están bien definidos para todo $m \ge 1$.
 \end{lema}
 
-Bajo esta premisa de acotación global, se demuestra que, independientemente de la posición exacta de los $N$ átomos BPE dentro del disco, el $(N+1)$-ésimo número de Gelfand está determinado por la parte continua de la medida.
+Bajo esta premisa de acotación global, se demuestra que, independientemente de la posición exacta de los $N$ puntos BPE dentro del disco, el $(N+1)$-ésimo número de Gelfand está determinado por la parte continua de la medida.
 
 \begin{teorema}[Valor exacto de $c_{N+1}$]
-    Sea $\mathcal{H}$ el espacio de Sobolev con medida continua soportada en la circunferencia unidad $S_1$ ($R=1$) y $N$ átomos BPE en la derivada. Entonces, el $(N+1)$-ésimo número de Gelfand del operador de multiplicación es exactamente el radio de la circunferencia:
+    Sea $\mathcal{H}$ el espacio de Sobolev con medida continua soportada en la circunferencia unidad $S_1$ ($R=1$) y $N$ puntos BPE en la derivada. Entonces, el $(N+1)$-ésimo número de Gelfand del operador de multiplicación es exactamente el radio de la circunferencia:
     $$ c_{N+1}(D) = 1 $$
 \end{teorema}
 
@@ -667,9 +684,9 @@ Bajo esta premisa de acotación global, se demuestra que, independientemente de 
 
     \textbf{Paso 1: Cota Superior ($c_{N+1}(D) \le 1$)}
 
-    Definimos el subespacio $W_{opt}$ anulando la derivada de la imagen en los $N$ átomos:
+    Definimos el subespacio $W_{opt}$ anulando la derivada de la imagen en los $N$ puntos:
     $$ W_{opt} = \{ p \in \mathcal{H} : (zp)'(c_k) = 0, \quad \forall k=1,\dots,N \}. $$
-    Podemos expresar esta restricción mediante los funcionales $\Psi_k(p) = p(c_k) + c_k p'(c_k)$. Al ser los átomos BPE por hipótesis, las evaluaciones de la función y de su derivada son funcionales lineales continuos. Por tanto, $\Psi_k \in \mathcal{H}^*$.
+    Podemos expresar esta restricción mediante los funcionales $\Psi_k(p) = p(c_k) + c_k p'(c_k)$. Al ser los puntos BPE por hipótesis, las evaluaciones de la función y de su derivada son funcionales lineales continuos. Por tanto, $\Psi_k \in \mathcal{H}^*$.
     El subespacio $W_{opt} = \bigcap_{k=1}^N \ker(\Psi_k)$ es la intersección de $N$ núcleos de funcionales continuos, lo que garantiza que es un subespacio cerrado con $\operatorname{codim}(W_{opt}) \le N$.
 
     Evaluamos la norma de la imagen para cualquier $p \in W_{opt}$:
@@ -695,7 +712,7 @@ Bajo esta premisa de acotación global, se demuestra que, independientemente de 
     \end{equation}
 
     Consideremos la aplicación de evaluación de derivadas $E: V \to \C^N$ definida por $E(p) = (p'(c_1), \dots, p'(c_N))$.
-    Por nuestra hipótesis, los átomos son \textit{Bounded Point Evaluations} (BPE), lo que implica por definición que cada funcional de evaluación es continuo respecto a la norma de Sobolev. En consecuencia, el operador lineal $E$ es continuo.
+    Por nuestra hipótesis, los puntos son \textit{Bounded Point Evaluations} (BPE), lo que implica por definición que cada funcional de evaluación es continuo respecto a la norma de Sobolev. En consecuencia, el operador lineal $E$ es continuo.
 
     En Análisis Funcional, el núcleo de un operador lineal continuo es siempre un subespacio cerrado. Por tanto, $\ker(E|_V)$ es un subespacio cerrado de $V$. Además, dado que la imagen $\operatorname{Im}(E|_V)$ está contenida en $\C^N$, es de dimensión finita (y por tanto cerrada).
 
@@ -716,7 +733,7 @@ Bajo esta premisa de acotación global, se demuestra que, independientemente de 
 
 \subsection{Definición de Valores Singulares para Operadores No Acotados}
 
-Dado que nuestro operador de multiplicación puede no ser acotado en el caso de átomos exteriores o en la frontera (donde la evaluación no es un funcional continuo), la definición clásica de los números de Gelfand basada en la codimensión de subespacios cerrados presenta dificultades topológicas (el núcleo de la evaluación es denso).
+Dado que nuestro operador de multiplicación puede no ser acotado en el caso de puntos exteriores o en la frontera (donde la evaluación no es un funcional continuo), la definición clásica de los números de Gelfand basada en la codimensión de subespacios cerrados presenta dificultades topológicas (el núcleo de la evaluación es denso).
 
 Vamos a dar una definición robusta que cubra tanto el caso BPE como el no-BPE, adoptamos la definición variacional basada en el Principio Min-Max de Courant-Fischer para la raíz cuadrada del operador positivo $D^*D$.
 
@@ -727,8 +744,8 @@ Vamos a dar una definición robusta que cubra tanto el caso BPE como el no-BPE, 
 
 Esta definición nos permite interpretar rigurosamente los resultados numéricos:
 \begin{itemize}
-    \item \textbf{Para $\sigma_1$ ($k=1$):} El ínfimo se toma sobre el subespacio nulo ($\dim S = 0$). El supremo recorre todo el dominio. Si el átomo no es BPE, este supremo es infinito ($\sigma_1 = \infty$).
-    \item \textbf{Para $\sigma_2$ ($k=2$):} Buscamos eliminar un subespacio unidimensional $S$. Si elegimos $S$ alineado con la singularidad del átomo, el supremo sobre el complemento ortogonal $S^\perp$ se estabiliza.
+    \item \textbf{Para $\sigma_1$ ($k=1$):} El ínfimo se toma sobre el subespacio nulo ($\dim S = 0$). El supremo recorre todo el dominio. Si el punto no es BPE, este supremo es infinito ($\sigma_1 = \infty$).
+    \item \textbf{Para $\sigma_2$ ($k=2$):} Buscamos eliminar un subespacio unidimensional $S$. Si elegimos $S$ alineado con la singularidad del punto, el supremo sobre el complemento ortogonal $S^\perp$ se estabiliza.
 \end{itemize}
 
 Experimentalmente, hemos comprobado que restringir el operador al subespacio algebraico $V_{alg} = \{p \in \Poly : p(a)=0\}$ equivale a eliminar la singularidad espectral, obteniendo una norma restringida finita (específicamente 1) incluso cuando la norma global diverge. Esto confirma que la divergencia de $\sigma_1$ es una propiedad de rango 1.
@@ -783,7 +800,7 @@ La estructura del producto interno de Sobolev puede interpretarse como una pertu
 \begin{proposicion}[Invariancia del Espectro Esencial]
     \cite{frymark2021spectral} Sea $H_n$ la matriz de representación del operador de multiplicación $D$ en la base ortonormal truncada de dimensión $n$.
     Consideremos la descomposición de los valores singulares de $H_n$, denotados por $\sigma_k^{(n)}$, ordenados de forma decreciente.
-    Al eliminar los efectos de los $m$ átomos inestables (ya tratados en la Proposición 2), el límite de la norma del operador restringido recupera el radio del soporte continuo.
+    Al eliminar los efectos de los $m$ puntos inestables (ya tratados en la Proposición 2), el límite de la norma del operador restringido recupera el radio del soporte continuo.
 \end{proposicion}
 
 \begin{proof}
@@ -804,12 +821,12 @@ Basándonos en los resultados anteriores, se formaliza la estratificación de lo
 
     \begin{enumerate}
         \item \textbf{Valores Singulares Divergentes ($I_{out}$):}
-              Para los índices $j = 1, \dots, m$ (correspondientes a los átomos con $\abs{c_k} > R$), se cumple:
+              Para los índices $j = 1, \dots, m$ (correspondientes a los puntos con $\abs{c_k} > R$), se cumple:
               $$ \lim_{n \to \infty} \sigma_j^{(n)} = \infty. $$
               Esto es consecuencia directa de la Proposición 2 (No acotación del operador en subespacios de codimensión menor a $m$).
 
         \item \textbf{Valores Singulares Aislados ($I_{in}$):}
-              Para los átomos interiores con $\abs{c_k} < R$ que introducen una perturbación en la derivada, aparecen valores singulares que convergen a constantes estrictamente mayores que el radio esencial:
+              Para los puntos interiores con $\abs{c_k} < R$ que introducen una perturbación en la derivada, aparecen valores singulares que convergen a constantes estrictamente mayores que el radio esencial:
               $$ \lim_{n \to \infty} \sigma_j^{(n)} = \lambda_j > R, \quad \text{para } j = m+1, \dots, m+k. $$
               Estos valores corresponden a autovalores aislados del operador perturbado $D|_W$, cuya existencia está garantizada por la teoría de perturbaciones de rango finito (valores singulares atípicos o \textit{outliers} espectrales).
 
@@ -824,7 +841,7 @@ Basándonos en los resultados anteriores, se formaliza la estratificación de lo
 
 \begin{observacion}[Velocidad de Convergencia de la Matriz de Hessenberg]
     Sean $\{d_{n,n}(a)\}_{n=0}^\infty$ y $\{d_{n+1,n}(a)\}_{n=0}^\infty$ las sucesiones correspondientes a los elementos de la diagonal principal y la subdiagonal inferior de la matriz $\mathbf{D}$, respectivamente.
-    Para cualquier valor fijo del átomo $a$, se cumple:
+    Para cualquier valor fijo del punto $a$, se cumple:
     \begin{align}
         \lim_{n \to \infty} d_{n,n}(a)   & = 0 \quad (\text{Centro de la Circunferencia}) \\
         \lim_{n \to \infty} d_{n+1,n}(a) & = 1 \quad (\text{Radio de la Circunferencia})
