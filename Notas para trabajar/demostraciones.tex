@@ -218,48 +218,47 @@ Los puntos situados fuera del disco soporte de la medida continua generan un com
 
 El siguiente resultado establece que la imposición de restricciones lineales continuas sobre el subespacio denso $\Poly$ preserva la codimensión tras tomar la clausura en el espacio de Hilbert.
 
-\begin{proposicion}[Persistencia de la Codimensión bajo Clausura]
-    Sea $\mathcal{H}$ un espacio de Hilbert y $\Poly$ un subespacio denso. Sean $\ell_1, \dots, \ell_N$ funcionales lineales linealmente independientes definidos en $\Poly$ que son continuos respecto a la norma $\norm{\cdot}$.
-    Consideremos el subespacio algebraico:
-    $$ W_0 = \{ p \in \Poly : \ell_k(p) = 0, \, \forall k=1,\dots,N \}. $$
-    Si definimos $W = \overline{W_0}$ como la clausura de $W_0$ en $\mathcal{H}$, entonces $W$ es un subespacio cerrado y su codimensión es exactamente $N$:
-    $$ \operatorname{codim}(W) = N. $$
-\end{proposicion}
 
-\begin{proof}
-    Dado que cada funcional $\ell_k$ es continuo y lineal en el subespacio denso $\Poly$, por el Teorema de Extensión de Operadores Lineales Acotados (BLT Theorem), existe una única extensión continua $\tilde{\ell}_k \in \mathcal{H}^*$ para cada $k$.
-    La propiedad de continuidad implica que la anulación del funcional se preserva en el límite, por lo que la clausura del núcleo algebraico coincide con el núcleo de la extensión en todo el espacio:
-    $$ W = \overline{\bigcap_{k=1}^N \ker(\ell_k)} = \bigcap_{k=1}^N \ker(\tilde{\ell}_k). $$
-    Definimos el operador lineal acotado $\Phi: \mathcal{H} \to \C^N$ mediante $\Phi(f) = (\tilde{\ell}_1(f), \dots, \tilde{\ell}_N(f))$. Es evidente que $\ker(\Phi) = W$.
-    Por el Primer Teorema de Isomorfía para espacios vectoriales, tenemos la identificación algebraica:
-    $$ \mathcal{H}/W = \mathcal{H}/\ker(\Phi) \cong \operatorname{Im}(\Phi). $$
-    Puesto que los funcionales originales eran linealmente independientes, sus extensiones también lo son, lo que implica que el operador $\Phi$ es sobreyectivo sobre $\C^N$ (es decir, $\operatorname{Im}(\Phi) = \C^N$).
-    Por tanto, $\dim(\mathcal{H}/W) = \dim(\C^N) = N$, lo que concluye la demostración.
-\end{proof}
+\begin{proposicion}[Codimensión de la clausura del ideal para un átomo BPE]
+    Sea $\mathcal{H}$ un espacio de Hilbert tal que el espacio de polinomios $\mathbb{P}[z]$ es denso en $\mathcal{H}$. Sea $a \in \mathbb{C}$ un punto de evaluación acotada (BPE) respecto a la norma de $\mathcal{H}$. Entonces, la clausura topológica del ideal algebraico $Y_a = \{p \in \mathbb{P}[z] : p(a) = 0\}$ en $\mathcal{H}$, denotada como $V = \overline{Y_a}$, es un subespacio cerrado de codimensión topológica exactamente 1.
+\end{proposicion}
 
 \begin{proof}
     Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que su clausura $V = \overline{Y_a}$ tiene codimensión 1.
 
-    Supongamos por reducción al absurdo que $\operatorname{codim}(V) > 1$.
-    Sabemos que el funcional de evaluación en $a$ es continuo (por ser un punto BPE o un punto interior en $H^2$), luego existe un núcleo reproductor $K_a \in \mathcal{H}$ tal que $f(a) = \langle f, K_a \rangle$.
+    Dado que $a$ es un punto de evaluación continua (BPE), el funcional lineal $\Phi_a: \Poly \to \mathbb{C}$ dado por $\Phi_a(p) = p(a)$ es acotado. Por el Teorema de Extensión, $\Phi_a$ se extiende de manera única y continua a todo $\mathcal{H}$. Al ser continuo, su núcleo $\ker(\Phi_a)$ es un subespacio cerrado de $\mathcal{H}$.
 
-    La condición $f \in Y_a$ implica $f(a)=0$, lo que equivale a $f \perp K_a$. Por tanto, el subespacio $V$ está contenido en el ortogonal de $K_a$:
-    $$ V \subseteq \{K_a\}^\perp. $$
+    Como $Y_a \subset \ker(\Phi_a)$ y el núcleo es cerrado, deducimos que $V = \overline{Y_a} \subseteq \ker(\Phi_a)$.
+    
+    Por otro lado, cualquier polinomio $p \in \Poly$ admite la siguiente descomposición algebraica trivial:
+    $$p(z) = (p(z) - p(a)) + p(a) \cdot 1$$
+    El primer término pertenece a $Y_a$ y el segundo al subespacio generado por el polinomio constante $\mathbf{1}$. Por tanto, $\Poly = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$.
+    
+    Tomando clausuras en $\mathcal{H}$, y sabiendo que $\mathcal{P}$ es denso en $\mathcal{H}$, obtenemos:
+    $$\mathcal{H} = \overline{\Poly} = \overline{Y_a \oplus \operatorname{span}\{\mathbf{1}\}}$$
+    
+    Como el funcional es continuo y $\Phi_a(\mathbf{1}) = 1 \neq 0$, sabemos que $\mathbf{1} \notin V$. Por lo tanto, la suma directa se preserva en la clausura:
+    $$\mathcal{H} = V \oplus \operatorname{span}\{\mathbf{1}\}$$
+    Lo que demuestra que $\operatorname{codim}(V) = \operatorname{dim}(\operatorname{span}\{\mathbf{1}\}) = 1$.
+\end{proof}
 
-    Si la codimensión fuera mayor que 1, existiría un vector no nulo $g \in \mathcal{H}$ ($g \neq 0$) tal que:
-    \begin{enumerate}
-        \item $g \perp V$ (es ortogonal al ideal),
-        \item $g \perp K_a$ (es ortogonal al núcleo reproductor).
-    \end{enumerate}
+\begin{proposicion}[Codimensión de la clausura para múltiples átomos BPE]
+    Sea $\mathcal{H}$ un espacio de Hilbert donde $\mathbb{P}[z]$ es denso. Sea $\mathcal{A} = \{a_1, \dots, a_N\} \subset \mathbb{C}$ un conjunto de $N$ puntos distintos que son de evaluación acotada (BPE) respecto a la norma de $\mathcal{H}$. Si consideramos el subespacio de polinomios que se anulan simultáneamente en dichos puntos, $Y_{\mathcal{A}} = \{p \in \mathbb{P}[z] : p(a_k) = 0 \text{ para } k=1,\dots,N\}$, es un subespacio cerrado de codimensión topológica exactamente $N$.
+\end{proposicion}
 
-    Cualquier polinomio $p \in \Poly$ se puede escribir como $p(z) = p(a)\frac{K_a(z)}{K_a(a)} + (p(z) - p(a)\dots)$, es decir, $\Poly \subset \operatorname{span}\{K_a\} \oplus Y_a$.
+\begin{proof}
+    Consideremos el funcional vectorial continuo $\vec{\Phi}: \mathbb{P}[z] \to \mathbb{C}^N$ dado por $\vec{\Phi}(p) = (p(a_1), \dots, p(a_N))$. Por definición, el subespacio algebraico es su núcleo: $Y_{\mathcal{A}} = \ker(\vec{\Phi})$ que es cerrado por ser $\vec{\Phi}$ continuo.
+    
+    Sean $L_1(z), \dots, L_N(z)$ los polinomios fundamentales de interpolación de Lagrange asociados al conjunto de puntos $\mathcal{A}$, los cuales satisfacen $L_i(a_j) = \delta_{ij}$. Cualquier polinomio $p \in \mathbb{P}[z]$ se puede descomponer unívocamente como:
+    $$p(z) = \underbrace{\left( p(z) - \sum_{k=1}^N p(a_k)L_k(z) \right)}_{\in Y_{\mathcal{A}}} + \underbrace{\sum_{k=1}^N p(a_k)L_k(z)}_{\in \operatorname{span}\{L_1, \dots, L_N\}}$$
+    El primer término pertenece a $Y_{\mathcal{A}}$ puesto que, por la propiedad de los polinomios de Lagrange, se anula exactamente en todos los puntos $a_j \in \mathcal{A}$. Esto demuestra la descomposición en suma directa algebraica:
+    $$\mathbb{P}[z] = Y_{\mathcal{A}} \oplus \operatorname{span}\{L_1, \dots, L_N\}$$
+    
+    Como los $N$ puntos son BPE, las evaluaciones puntuales son funcionales acotados. Por tanto, el funcional vectorial $\vec{\Phi}$ se extiende de manera continua a $\mathcal{H}$. Esto implica que  $Y_{\mathcal{A}}$ sigue contenida en el núcleo de la extensión, por lo que no interseca el espacio generado por los polinomios de Lagrange (salvo en el vector nulo). 
 
-    Como $g$ es ortogonal a ambos sumandos ($K_a$ y $Y_a$), entonces $g$ es ortogonal a todo el espacio de polinomios $\Poly$:
-    $$ g \perp \Poly. $$
-
-    Como $\Poly$ es denso en $\mathcal{H}$, esto implica obligatoriamente que $g = 0$, lo cual es una contradicción.
-    Por tanto, no existe tal vector $g$, y el complemento ortogonal de $V$ está generado únicamente por $K_a$.
-    $$ \operatorname{codim}(V) = 1. $$
+    Tomando clausuras en la descomposición anterior y apoyándonos en la densidad de los polinomios ($\overline{\mathbb{P}[z]} = \mathcal{H}$):
+    $$\mathcal{H} = \overline{Y_{\mathcal{A}} \oplus \operatorname{span}\{L_1, \dots, L_N\}}$$
+    De donde se concluye inmediatamente que el complemento directo tiene dimensión $N$, y por lo tanto $\operatorname{codim}(Y_{\mathcal{A}}) = N$.
 \end{proof}
 
 \begin{teorema}[Dicotomía de la Codimensión]
@@ -330,7 +329,7 @@ El siguiente resultado establece que la imposición de restricciones lineales co
               Concluimos que $V^\perp = \operatorname{span}\{h\}$, y como $h \neq 0$, la dimensión es exactamente 1.
     \end{enumerate}
 \end{proof}
-
+\textcolor{red}{en la segunda prueba no necesitas considerar otro g porque no lo usas en la demostración. La prueba está bien de hecho $h=1-P_V(a1)\in V^{\perp}$}
 \begin{corolario}
     Si los puntos $\{c_k\}_{k=1}^N$ son puntos de evaluación acotada (BPE), el subespacio $W = \overline{\{p \in \Poly : (zp)'(c_k)=0\}}$ tiene codimensión exactamente $N$ en $\mathcal{H}$.
 \end{corolario}
@@ -473,6 +472,7 @@ Verificamos la igualdad evaluando el cociente en esta función constante:
 $$ \frac{\norm{\D(1)}^2}{\norm{1}^2} = 2. $$
 Concluimos formalmente que la norma global del operador es $c_1(\D) = \sqrt{2}$.
 
+\textcolor{red}{Perfecto!!}
 \subsection{Dependencia de la Posición: El caso de un punto arbitrario}
 
 El caso $c=0$ produce una norma global $c_1(\D) = \sqrt{2}$, alcanzada por los polinomios constantes. A continuación se analiza el caso de un punto interior arbitrario $c \neq 0$. Este análisis requiere consideraciones adicionales, ya que los núcleos reproductores del espacio de Hardy $H^2$ no coinciden con la base de monomios cuando el punto de evaluación no es el origen.
@@ -524,7 +524,10 @@ El cálculo de la norma global equivale a encontrar el supremo del cociente de R
 \end{equation}
 Nótese que hemos utilizado el hecho de que, sobre la circunferencia $S_1$, la norma $L^2$ es invariante bajo la multiplicación por $z$, es decir, $\|zp\|_{L^2(\mu)} = \|p\|_{L^2(\mu)}$.
 
-Dado que $c_1$ es un punto BPE, tanto la evaluación de la función como la de su derivada son funcionales continuos en la completación de $\Poly$ respecto a la norma $L^2(\mu)$ (el espacio de Hardy $H^2(\mu)$). Por el Teorema de Representación de Riesz, existen dos núcleos reproductores $K_0, K_1 \in H^2(\mu)$ tales que, para todo polinomio $p$:
+Dado que $c_1$ es un punto BPE, tanto la evaluación de la función como la de su derivada son funcionales continuos en la completación de $\Poly$ respecto a la norma $L^2(\mu)$ (el espacio de Hardy $H^2(\mu)$)  
+
+\textcolor{red}{esto no lo veo, si un punto es bpe, es decir, $\delta_{c}$ es continua, también tiene que ser continua $\delta'_c$ ?????}
+. Por el Teorema de Representación de Riesz, existen dos núcleos reproductores $K_0, K_1 \in H^2(\mu)$ tales que, para todo polinomio $p$:
 \begin{align*}
     p(c_1)  & = \langle p, K_0 \rangle_{L^2(\mu)}, \\
     p'(c_1) & = \langle p, K_1 \rangle_{L^2(\mu)}.
@@ -750,6 +753,7 @@ Esta definición nos permite interpretar rigurosamente los resultados numéricos
 
 Experimentalmente, hemos comprobado que restringir el operador al subespacio algebraico $V_{alg} = \{p \in \Poly : p(a)=0\}$ equivale a eliminar la singularidad espectral, obteniendo una norma restringida finita (específicamente 1) incluso cuando la norma global diverge. Esto confirma que la divergencia de $\sigma_1$ es una propiedad de rango 1.
 
+\end{document}
 \section{Convergencia Asintótica de las Subdiagonales}
 
 \begin{proposicion}[Convergencia Asintótica de la Matriz de Hessenberg]
