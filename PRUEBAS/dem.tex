@@ -1,0 +1,20 @@
+\begin{proposicion}[Codimensión de la clausura del ideal para un átomo BPE]
+	Sea $\mathcal{H}$ un espacio de Hilbert tal que el espacio de polinomios $\mathbb{P}[z]$ es denso en $\mathcal{H}$. Sea $a \in \mathbb{C}$ un punto de evaluación acotada (BPE) respecto a la norma de $\mathcal{H}$. Entonces, el ideal algebraico $Y_a = \{p \in \mathbb{P}[z] : p(a) = 0\}$ en $\mathcal{H}$, es un subespacio cerrado de codimensión topológica exactamente 1.
+\end{proposicion}
+
+\begin{proof}
+	Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que tiene codimensión 1.
+
+	Dado que $a$ es un punto de evaluación continua (BPE), el funcional lineal $\Phi_a: \Poly \to \mathbb{C}$ dado por $\Phi_a(p) = p(a)$ es acotado. Por el Teorema de Extensión, $\Phi_a$ se extiende de manera única y continua a todo $\mathcal{H}$. Al ser continuo, su núcleo $\ker(\Phi_a)$ es un subespacio cerrado de $\mathcal{H}$.
+
+	Por otro lado, cualquier polinomio $p \in \Poly$ admite la siguiente descomposición algebraica trivial:
+	$$p(z) = (p(z) - p(a)) + p(a) \cdot 1$$
+	El primer término pertenece a $Y_a$ y el segundo al subespacio generado por el polinomio constante $\mathbf{1}$. Por tanto, $\Poly = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$.
+
+	Tomando clausuras en $\mathcal{H}$, y sabiendo que $\mathcal{P}$ es denso en $\mathcal{H}$, obtenemos:
+	$$\mathcal{H} = \overline{\Poly} = \overline{Y_a \oplus \operatorname{span}\{\mathbf{1}\}}$$
+
+	Como el funcional es continuo y $\Phi_a(\mathbf{1}) = 1 \neq 0$, sabemos que $\mathbf{1} \notin V$. Por lo tanto, la suma directa se preserva en la clausura:
+	$$\mathcal{H} = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$$
+	Lo que demuestra que $\operatorname{codim}(V) = \operatorname{dim}(\operatorname{span}\{\mathbf{1}\}) = 1$.
+\end{proof}
