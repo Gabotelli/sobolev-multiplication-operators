@@ -74,6 +74,28 @@ Basándonos en la geometría de los puntos respecto al soporte continuo, clasifi
     Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Acotados en espacios densos \cite{kreyszig1989introductory}, el funcional se extiende de manera continua y única a todo $\mathcal{H}$. Al ser continuo, su núcleo es la preimagen de un conjunto cerrado (el $\{0\}$), por lo que es un subespacio cerrado.
 \end{proof}
 
+\begin{lema}[Continuidad del funcional derivada para puntos ABPE]
+    \label{lema:ABPE_derivada}
+    Sea $\mu$ la medida de Lebesgue (o una medida que satisfaga la condición de Szegő) soportada en la circunferencia $\mathbb{T}_R = \{z \in \mathbb{C} : |z| = R\}$. Si $c \in \mathbb{C}$ es un punto de evaluación acotada (BPE) para la norma $L^2(\mu)$, y se encuentra en el interior de la curva ($|c| < R$), entonces $c$ es un punto de Evaluación Analítica Acotada (ABPE). En consecuencia, el funcional evaluación de la derivada, $\delta'_c(p) = p'(c)$, es un funcional lineal continuo.
+\end{lema}
+
+\begin{proof}
+    Al ser $c$ un punto BPE situado en el interior de la región acotada por el soporte de la medida, la teoría clásica de espacios de Hardy y polinomios ortogonales garantiza que $c$ es, de hecho, un punto ABPE. Esto implica que existe un entorno abierto $\mathcal{U}$ de $c$ contenido en el disco $|z| < R$ donde la evaluación puntual es uniformemente acotada.
+
+    Sea $r > 0$ suficientemente pequeño tal que la circunferencia cerrada $\gamma_r = \{z \in \mathbb{C} : |z-c| = r\}$ esté contenida en $\mathcal{U}$. Dado que los polinomios son funciones enteras, podemos aplicar la Fórmula Integral de Cauchy para la derivada:
+    \[
+        p'(c) = \frac{1}{2\pi i} \oint_{\gamma_r} \frac{p(z)}{(z-c)^2} dz
+    \]
+    Tomando valor absoluto y acotando la integral por el máximo de la función en la curva:
+    \[
+        |p'(c)| \le \frac{1}{2\pi} \left( 2\pi r \right) \frac{\max_{z \in \gamma_r} |p(z)|}{r^2} = \frac{1}{r} \max_{z \in \gamma_r} |p(z)|
+    \]
+    Como todos los puntos $z \in \gamma_r$ son BPEs, existe una constante $M > 0$ tal que $|p(z)| \le M \|p\|_{L^2(\mu)}$ para todo $z \in \gamma_r$. Sustituyendo esta cota obtenemos:
+    \[
+        |p'(c)| \le \frac{M}{r} \|p\|_{L^2(\mu)} \le \frac{M}{r} \|p\|_S
+    \]
+    Lo que demuestra que existe una constante $C = M/r < \infty$ tal que $|\delta'_c(p)| \le C \|p\|_S$, probando así que la evaluación de la derivada es un funcional lineal continuo.
+\end{proof}
 
 \begin{definicion}[Subespacio Estable $V$]
     Definimos el subespacio estable algebraico $V_0$ como el conjunto de polinomios que se anulan en los puntos exteriores:
@@ -440,6 +462,51 @@ El supremo (y en este caso, el máximo) se alcanza si y solo si el término sust
 Verificamos la igualdad evaluando el cociente en esta función constante:
 $$ \frac{\norm{\D(1)}^2}{\norm{1}^2} = 2. $$
 Concluimos formalmente que la norma global del operador es $c_1(\D) = \sqrt{2}$.
+
+\subsection{Un ejemplo ilustrativo: El punto en el origen y radio $R$}
+
+Consideremos el espacio de polinomios $\Poly$ dotado de la medida de Lebesgue normalizada en la circunferencia $S_R$ de radio $R$ y un único punto en la derivada situado en el origen ($c_1 = 0$). El producto interno de Sobolev toma la forma:
+\begin{equation}
+    \ip{p}{q} = \int_{S_R} p(z)\overline{q(z)} \frac{\abs{dz}}{2\pi R} + p'(0)\overline{q'(0)}.
+\end{equation}
+
+Sea $p(z) = \sum_{k=0}^n a_k z^k$ un polinomio arbitrario. Gracias a la ortogonalidad de la base de monomios $\{z^k\}$ respecto a la medida de Lebesgue en $S_R$, la norma al cuadrado de cada monomio es $\int_{S_R} \abs{z}^{2k} \frac{\abs{dz}}{2\pi R} = R^{2k}$. Por lo tanto, la parte continua de la norma es la suma ponderada de los módulos al cuadrado de sus coeficientes. Por otro lado, la derivada evaluada en el origen es exactamente el coeficiente de grado uno: $p'(0) = a_1$.
+Por lo tanto, el cuadrado de la norma de Sobolev de entrada es:
+\begin{equation} \label{eq:norma_in_0_R}
+    \norm{p}^2 = \sum_{k=0}^n \abs{a_k}^2 R^{2k} + \abs{p'(0)}^2 = \sum_{k=0}^n \abs{a_k}^2 R^{2k} + \abs{a_1}^2 = \abs{a_0}^2 + (R^2 + 1)\abs{a_1}^2 + \sum_{k=2}^n \abs{a_k}^2 R^{2k}.
+\end{equation}
+
+Veamos ahora el efecto del operador de multiplicación $\D(p)(z) = z p(z)$. El polinomio resultante es $\D p(z) = \sum_{k=0}^n a_k z^{k+1}$. Su derivada en el origen, por inspección directa del coeficiente de grado uno del polinomio resultante, es $(\D p)'(0) = p(0) = a_0$.
+El cuadrado de la norma de salida resulta ser:
+\begin{equation} \label{eq:norma_out_0_R}
+    \norm{\D p}^2 = \sum_{k=0}^n \abs{a_k}^2 R^{2(k+1)} + \abs{(\D p)'(0)}^2 = \sum_{k=0}^n \abs{a_k}^2 R^{2k+2} + \abs{a_0}^2 = (R^2 + 1)\abs{a_0}^2 + R^4\abs{a_1}^2 + \sum_{k=2}^n \abs{a_k}^2 R^{2k+2}.
+\end{equation}
+
+En la teoría de ideales de operadores, la norma global del operador coincide con su primer número de Gelfand, $c_1(\D)$, definido como el supremo del cociente de Rayleigh. Utilizando \eqref{eq:norma_in_0_R} y \eqref{eq:norma_out_0_R}:
+\begin{equation}
+    c_1(\D)^2 = \sup_{p \neq 0} \frac{\norm{\D p}^2}{\norm{p}^2} = \sup_{a_k} \frac{(R^2 + 1)\abs{a_0}^2 + R^4\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2 R^{2k+2}}{\abs{a_0}^2 + (R^2 + 1)\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2 R^{2k}}.
+\end{equation}
+
+Para determinar el supremo de este cociente, se reescribe el numerador en función del denominador. Denotando $S = \norm{p}^2 = \abs{a_0}^2 + (R^2 + 1)\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2 R^{2k}$, multiplicamos por $(R^2 + 1)$ para buscar la semejanza y expresamos el numerador como:
+\begin{align*}
+    (R^2 + 1)\abs{a_0}^2 + R^4\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2 R^{2k+2} & = (R^2 + 1) \left( \abs{a_0}^2 + (R^2 + 1)\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2 R^{2k} \right)                      \\
+                                                                                & \quad - \left[ (R^2 + 1)^2 - R^4 \right]\abs{a_1}^2 - \sum_{k \ge 2} \abs{a_k}^2 R^{2k} \left[ (R^2 + 1) - R^2 \right] \\
+                                                                                & = (R^2 + 1)S - (2R^2 + 1)\abs{a_1}^2 - \sum_{k \ge 2} \abs{a_k}^2 R^{2k}.
+\end{align*}
+
+Sustituyendo esta expresión algebraica en el cociente de Rayleigh, obtenemos:
+\begin{equation}
+    \frac{\norm{\D p}^2}{\norm{p}^2} = \frac{(R^2 + 1)S - (2R^2 + 1)\abs{a_1}^2 - \sum_{k \ge 2} \abs{a_k}^2 R^{2k}}{S} = (R^2 + 1) - \frac{(2R^2 + 1)\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2 R^{2k}}{\norm{p}^2}.
+\end{equation}
+
+Dado que los módulos al cuadrado son siempre cantidades no negativas, $R>0$ y $\norm{p}^2 > 0$ (para cualquier $p \neq 0$), el término fraccionario que se resta a $(R^2 + 1)$ es siempre mayor o igual a cero. Esto establece la siguiente cota superior para el cociente:
+$$ \frac{\norm{\D p}^2}{\norm{p}^2} \le R^2 + 1. $$
+
+El supremo (y en este caso, el máximo) se alcanza si y solo si el término sustractivo es exactamente nulo. Esto exige matemáticamente que $a_1 = 0$ y $a_k = 0$ para todo $k \ge 2$. La única variable que queda libre es $a_0 \neq 0$, lo que implica que el subespacio de polinomios que maximizan la acción del operador está formado exclusivamente por las funciones constantes, como por ejemplo $p(z) = 1$.
+
+Verificamos la igualdad evaluando el cociente en esta función constante:
+$$ \frac{\norm{\D(1)}^2}{\norm{1}^2} = \frac{\norm{z}^2}{\norm{1}^2} = \frac{R^2 + \abs{1}^2}{1 + \abs{0}^2} = R^2 + 1. $$
+Concluimos formalmente que la norma global del operador, para una circunferencia de radio $R$ y un átomo en la derivada en el origen, es exactamente $c_1(\D) = \sqrt{R^2 + 1}$.
 
 \subsection{Dependencia de la Posición: El caso de un punto arbitrario}
 
