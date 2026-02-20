@@ -1,7 +1,7 @@
 # Ignorar todo en la raíz
 /*
 
-# Permitir las 3 carpetas específicas
+# Permitir las carpetas del proyecto
 !/Artículos Base/
 !/Notas para trabajar/
 !/RESUMEN DE REUNIONES/
@@ -13,3 +13,4 @@
 !push-all.sh
 !pull-overleaf.bat
 !pull-overleaf.sh
+!/PRUEBAS/

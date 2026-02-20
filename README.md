@@ -1,10 +1,11 @@
 # TFM - Repositorio de Trabajo
 
-Este repositorio contiene el trabajo de investigación organizado en tres carpetas principales:
+Este repositorio contiene el trabajo de investigación organizado en cuatro carpetas principales:
 
 - **Artículos Base/** - Documentos y artículos de referencia
 - **Notas para trabajar/** - Notas y desarrollos del trabajo
 - **RESUMEN DE REUNIONES/** - Resúmenes de reuniones y discusiones
+- **PRUEBAS/** - Código y pruebas experimentales (solo en GitHub)
 
 ## Configuración de Git
 
@@ -15,6 +16,7 @@ El repositorio está sincronizado con dos repositorios remotos:
   - Artículos Base: todos los archivos
   - Notas para trabajar: solo archivos .tex y .bib
   - RESUMEN DE REUNIONES: solo archivos .tex y .bib
+  - PRUEBAS: NO se sincroniza con Overleaf
 
 ## Comandos Principales
 
@@ -40,11 +42,12 @@ bash push-all.sh
 
 Los scripts sincronizan automáticamente:
 
-- A GitHub: todo el contenido (README, .gitignore, scripts y las 3 carpetas completas)
+- A GitHub: todo el contenido (README, .gitignore, scripts y las 4 carpetas completas)
 - A Overleaf: contenido filtrado
   - Artículos Base: todos los archivos
   - Notas para trabajar: solo archivos .tex y .bib
   - RESUMEN DE REUNIONES: solo archivos .tex y .bib
+  - PRUEBAS: NO se sube a Overleaf
 
 **Opción 2 - Push solo a GitHub**:
 
@@ -89,4 +92,4 @@ Los scripts automáticamente:
 
 ## Estructura Protegida
 
-El repositorio solo trackea archivos dentro de las tres carpetas principales. Cualquier archivo fuera de estas carpetas será ignorado automáticamente.
+El repositorio solo trackea archivos dentro de las cuatro carpetas principales. Cualquier archivo fuera de estas carpetas será ignorado automáticamente.
