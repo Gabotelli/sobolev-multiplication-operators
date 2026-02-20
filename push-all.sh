@@ -18,7 +18,7 @@ git branch -D overleaf-sync 2>/dev/null
 git checkout -b overleaf-sync master
 
 # Eliminar archivos de configuración
-git rm -f README.md .gitignore push-all.bat push-all.sh 2>/dev/null
+git rm -f README.md .gitignore push-all.bat push-all.sh pull-overleaf.bat pull-overleaf.sh 2>/dev/null
 
 # Eliminar archivos que no sean .tex ni .bib de "Notas para trabajar" y "RESUMEN DE REUNIONES"
 echo "Filtrando archivos para Overleaf..."
@@ -37,7 +37,7 @@ if [ $? -ne 0 ]; then
     echo "Sincronizando con Overleaf..."
     git pull overleaf master --no-edit --strategy-option theirs 2>/dev/null
     # Asegurarse de que los archivos sigan eliminados
-    git rm -f README.md .gitignore push-all.bat push-all.sh 2>/dev/null
+    git rm -f README.md .gitignore push-all.bat push-all.sh pull-overleaf.bat pull-overleaf.sh 2>/dev/null
     find "Notas para trabajar" -type f ! -name "*.tex" ! -name "*.bib" -exec git rm -f {} \; 2>/dev/null
     find "RESUMEN DE REUNIONES" -type f ! -name "*.tex" ! -name "*.bib" -exec git rm -f {} \; 2>/dev/null
     # Restaurar archivos .tex y .bib desde master si fueron eliminados
