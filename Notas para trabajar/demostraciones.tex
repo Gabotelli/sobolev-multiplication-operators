@@ -561,7 +561,22 @@ Nótese que hemos utilizado el hecho de que, sobre la circunferencia $S_1$, la n
 
 Dado que $c_1$ es un punto de evaluación acotada (BPE) para una medida soportada en la circunferencia, este se encuentra necesariamente en el interior del disco unidad ($|c_1| < 1$). Esto confiere a $c_1$ la estructura de un punto de \textit{evaluación analítica acotada (ABPE)} \cite{conway2020approximationmeanrationalfunctions, aleman2009nontangential}, lo que significa que existe un entorno abierto alrededor de $c_1$ donde todos los puntos son BPE.
 
-Por la teoría clásica de espacios de funciones analíticas, esta propiedad topológica permite aplicar las estimaciones de Cauchy. Al estar la evaluación de la función acotada por la norma $L^2(\mu)$ en un entorno de $c_1$, la fórmula integral de Cauchy para las derivadas garantiza automáticamente que la evaluación de su derivada, $\delta'_{c_1}(p) = p'(c_1)$, también es un funcional lineal continuo en la completación $H^2(\mu)$. Por lo tanto, el supremo en la Ecuación \eqref{eq:rayleigh_c1} está bien definido y es finito.
+Al ser $c_1$ un ABPE, existe un radio $r > 0$ y una constante $M > 0$ tal que, para cualquier punto $z$ en la circunferencia $\gamma_r = \{z \in \mathbb{C} : |z - c_1| = r\}$, la evaluación puntual está uniformemente acotada por $|p(z)| \le M \|p\|_{L^2(\mu)}$ para todo polinomio $p$.
+
+Utilizando la fórmula integral de Cauchy para la primera derivada:
+\begin{equation}
+    p'(c_1) = \frac{1}{2\pi i} \oint_{\gamma_r} \frac{p(z)}{(z-c_1)^2} dz
+\end{equation}
+Podemos acotar su módulo tomando el máximo sobre la curva:
+\begin{equation}
+    |p'(c_1)| \le \frac{1}{2\pi} \cdot (2\pi r) \cdot \frac{\max_{z \in \gamma_r} |p(z)|}{r^2} = \frac{1}{r} \max_{z \in \gamma_r} |p(z)|
+\end{equation}
+Sustituyendo la cota uniforme de los BPEs en $\gamma_r$, obtenemos finalmente la acotación explícita para la derivada:
+\begin{equation}
+    |p'(c_1)| \le \frac{M}{r} \|p\|_{L^2(\mu)}
+\end{equation}
+
+Como $M$ y $r$ son constantes estrictamente positivas e independientes del polinomio $p$, $\delta'_{c_1}(p) = p'(c_1)$ es un funcional lineal continuo acotado por la norma del espacio. Por lo tanto, el supremo en la Ecuación \eqref{eq:rayleigh_c1} está bien definido y es finito en la completación $H^2(\mu)$.
 
 Por el Teorema de Representación de Riesz, existen dos núcleos reproductores $K_0, K_1 \in H^2(\mu)$ tales que, para todo polinomio $p$:
 \begin{align*}

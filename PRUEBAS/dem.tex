@@ -1,20 +1,27 @@
-\begin{proposicion}[Codimensión de la clausura del ideal para un átomo BPE]
-	Sea $\mathcal{H}$ un espacio de Hilbert tal que el espacio de polinomios $\mathbb{P}[z]$ es denso en $\mathcal{H}$. Sea $a \in \mathbb{C}$ un punto de evaluación acotada (BPE) respecto a la norma de $\mathcal{H}$. Entonces, el ideal algebraico $Y_a = \{p \in \mathbb{P}[z] : p(a) = 0\}$ en $\mathcal{H}$, es un subespacio cerrado de codimensión topológica exactamente 1.
-\end{proposicion}
+\begin{teorema}
+	Si $a$ es un BPE para una medida $\mu$ soportada en la circunferencia, entonces el funcional lineal definido por la derivada de evaluación en $a$, es decir, $\delta'_{a}(p) = p'(a)$, es un funcional lineal continuo en la completación $H^2(\mu)$ del espacio de polinomios con la norma inducida por $\mu$. En particular, esto implica que el supremo
+	\begin{equation}	\sup_{p \in H^2(\mu)} \frac{|\delta'_{a}(p)|}{\|p\|_{L^2(\mu)}}
+		\label{eq:rayleigh_c1} \end{equation}
+	es finito, lo que garantiza la existencia de una constante $C > 0$ tal que $|\delta'_{a}(p)| \le C \|p\|_{L^2(\mu)}$ para todo $p \in H^2(\mu)$.
+\end{teorema}
 
 \begin{proof}
-	Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que tiene codimensión 1.
+	Dado que $c_1$ es un punto de evaluación acotada (BPE) para una medida soportada en la circunferencia, este se encuentra necesariamente en el interior del disco unidad ($|c_1| < 1$). Esto confiere a $c_1$ la estructura de un punto de \textit{evaluación analítica acotada (ABPE)} \cite{conway2020approximationmeanrationalfunctions, aleman2009nontangential}, lo que significa que existe un entorno abierto alrededor de $c_1$ donde todos los puntos son BPE.
 
-	Dado que $a$ es un punto de evaluación continua (BPE), el funcional lineal $\Phi_a: \Poly \to \mathbb{C}$ dado por $\Phi_a(p) = p(a)$ es acotado. Por el Teorema de Extensión, $\Phi_a$ se extiende de manera única y continua a todo $\mathcal{H}$. Al ser continuo, su núcleo $\ker(\Phi_a)$ es un subespacio cerrado de $\mathcal{H}$.
+	Al ser $c_1$ un ABPE, existe un radio $r > 0$ y una constante $M > 0$ tal que, para cualquier punto $z$ en la circunferencia $\gamma_r = \{z \in \mathbb{C} : |z - c_1| = r\}$, la evaluación puntual está uniformemente acotada por $|p(z)| \le M \|p\|_{L^2(\mu)}$ para todo polinomio $p$.
 
-	Por otro lado, cualquier polinomio $p \in \Poly$ admite la siguiente descomposición algebraica trivial:
-	$$p(z) = (p(z) - p(a)) + p(a) \cdot 1$$
-	El primer término pertenece a $Y_a$ y el segundo al subespacio generado por el polinomio constante $\mathbf{1}$. Por tanto, $\Poly = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$.
+	Utilizando la fórmula integral de Cauchy para la primera derivada:
+	\begin{equation}
+		p'(c_1) = \frac{1}{2\pi i} \oint_{\gamma_r} \frac{p(z)}{(z-c_1)^2} dz
+	\end{equation}
+	Podemos acotar su módulo tomando el máximo sobre la curva:
+	\begin{equation}
+		|p'(c_1)| \le \frac{1}{2\pi} \cdot (2\pi r) \cdot \frac{\max_{z \in \gamma_r} |p(z)|}{r^2} = \frac{1}{r} \max_{z \in \gamma_r} |p(z)|
+	\end{equation}
+	Sustituyendo la cota uniforme de los BPEs en $\gamma_r$, obtenemos finalmente la acotación explícita para la derivada:
+	\begin{equation}
+		|p'(c_1)| \le \frac{M}{r} \|p\|_{L^2(\mu)}
+	\end{equation}
 
-	Tomando clausuras en $\mathcal{H}$, y sabiendo que $\mathcal{P}$ es denso en $\mathcal{H}$, obtenemos:
-	$$\mathcal{H} = \overline{\Poly} = \overline{Y_a \oplus \operatorname{span}\{\mathbf{1}\}}$$
-
-	Como el funcional es continuo y $\Phi_a(\mathbf{1}) = 1 \neq 0$, sabemos que $\mathbf{1} \notin V$. Por lo tanto, la suma directa se preserva en la clausura:
-	$$\mathcal{H} = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$$
-	Lo que demuestra que $\operatorname{codim}(V) = \operatorname{dim}(\operatorname{span}\{\mathbf{1}\}) = 1$.
+	Como $M$ y $r$ son constantes estrictamente positivas e independientes del polinomio $p$, $\delta'_{c_1}(p) = p'(c_1)$ es un funcional lineal continuo acotado por la norma del espacio. Por lo tanto, el supremo en la Ecuación \eqref{eq:rayleigh_c1} está bien definido y es finito en la completación $H^2(\mu)$.
 \end{proof}
