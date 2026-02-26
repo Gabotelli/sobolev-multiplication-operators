@@ -1,0 +1,16 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Contexto y Motivación}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Marco Teórico y Preliminares}{3}{}%
+\contentsline {subsubsection}{\numberline {1.2.1}Espacios de Polinomios y Ortogonalidad}{3}{}%
+\contentsline {subsubsection}{\numberline {1.2.2}El Operador de Multiplicación}{4}{}%
+\contentsline {subsection}{\numberline {1.3}Espacios de Sobolev y Productos Discretos}{5}{}%
+\contentsline {subsubsection}{\numberline {1.3.1}Clasificación de los puntos de derivada}{5}{}%
+\contentsline {subsection}{\numberline {1.4}Herramientas de Análisis Espectral}{6}{}%
+\contentsline {subsubsection}{\numberline {1.4.1}Evaluaciones Puntuales Acotadas (BPE)}{6}{}%
+\contentsline {subsubsection}{\numberline {1.4.2}Codimensión y Subespacios}{6}{}%
+\contentsline {subsubsection}{\numberline {1.4.3}Valores Singulares ($s$-números)}{7}{}%
+\contentsline {section}{\numberline {2}Estructura de la Memoria}{7}{}%
+\contentsline {section}{\numberline {3}Análisis Espectral y Valores de Gelfand}{8}{}%
+\contentsline {section}{\numberline {4}Análisis Matricial y Comportamiento Asintótico}{8}{}%
+\contentsline {section}{\numberline {5}Acotación de los Ceros de Polinomios de Sobolev}{8}{}%

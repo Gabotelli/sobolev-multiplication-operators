@@ -13,10 +13,10 @@ El repositorio está sincronizado con dos repositorios remotos:
 
 - **GitHub**: https://github.com/Gabotelli/tfm.git (todo el contenido)
 - **Overleaf**: https://git.overleaf.com/68e79d3d788acc72d9f9ff40 (contenido filtrado)
-  - Artículos Base: todos los archivos
-  - Notas para trabajar: solo archivos .tex y .bib
-  - RESUMEN DE REUNIONES: solo archivos .tex y .bib
-  - PRUEBAS: NO se sincroniza con Overleaf
+    - Artículos Base: todos los archivos
+    - Notas para trabajar: solo archivos .tex y .bib
+    - RESUMEN DE REUNIONES: solo archivos .tex y .bib
+    - PRUEBAS: NO se sincroniza con Overleaf
 
 ## Comandos Principales
 
@@ -44,10 +44,10 @@ Los scripts sincronizan automáticamente:
 
 - A GitHub: todo el contenido (README, .gitignore, scripts y las 4 carpetas completas)
 - A Overleaf: contenido filtrado
-  - Artículos Base: todos los archivos
-  - Notas para trabajar: solo archivos .tex y .bib
-  - RESUMEN DE REUNIONES: solo archivos .tex y .bib
-  - PRUEBAS: NO se sube a Overleaf
+    - Artículos Base: todos los archivos
+    - Notas para trabajar: solo archivos .tex y .bib
+    - RESUMEN DE REUNIONES: solo archivos .tex y .bib
+    - PRUEBAS: NO se sube a Overleaf
 
 **Opción 2 - Push solo a GitHub**:
 
@@ -76,16 +76,19 @@ git pull
 ⚠️ **Importante**: NO uses `git pull overleaf master` directamente, ya que eliminará README, .gitignore y los scripts.
 
 En Git Bash / Linux / Mac:
+
 ```bash
 bash pull-overleaf.sh
 ```
 
 En Windows (CMD):
+
 ```bash
 .\pull-overleaf.bat
 ```
 
 Los scripts automáticamente:
+
 - Traen los cambios desde Overleaf
 - Restauran los archivos de configuración que no deben eliminarse
 - Hacen merge correctamente sin pérdida de archivos

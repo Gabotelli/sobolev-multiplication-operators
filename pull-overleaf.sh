@@ -10,6 +10,9 @@ git merge overleaf/master --no-commit --no-ff 2>/dev/null
 echo "Restaurando archivos de configuración..."
 git checkout HEAD -- README.md .gitignore push-all.bat push-all.sh pull-overleaf.bat pull-overleaf.sh 2>/dev/null
 
+# Restaurar carpeta PRUEBAS (proyecto Lean4, no viene de Overleaf)
+git checkout HEAD -- PRUEBAS 2>/dev/null
+
 # Completar el merge
 if git diff --cached --quiet; then
     echo "No hay cambios nuevos desde Overleaf"
