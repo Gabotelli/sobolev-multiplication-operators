@@ -30,9 +30,14 @@
 
 \begin{document}
 
-\title{Análisis Espectral y Matricial del operador de Multiplicación en Espacios de Sobolev}
+\title{Análisis Espectral y Matricial del Operador de Multiplicación en Espacios de Sobolev Discretos}
 \author{Gabriel Suárez}
 \maketitle
+
+\begin{abstract}
+	Se estudia el operador de multiplicación por la variable compleja en espacios de polinomios dotados de un producto interno de Sobolev discreto, cuya componente continua es la medida de Lebesgue normalizada sobre una circunferencia. Se demuestra que la presencia de puntos de derivada en la región exterior al disco induce una reducción de codimensión finita del espacio de Sobolev respecto al espacio de Hardy $H^2(\mathbb{D})$, controlada por el número de tales puntos exteriores. Mediante la teoría de perturbaciones de rango finito y el estudio de los valores singulares de las secciones truncadas del operador, se obtienen cotas precisas para la localización de los ceros de los polinomios ortogonales de Sobolev correspondientes.
+\end{abstract}
+
 \newpage
 \tableofcontents
 \newpage
@@ -54,15 +59,15 @@ Sin embargo, en las últimas décadas ha surgido un gran interés en el estudio 
 \end{equation}
 donde $\{c_k\}$ son puntos discretos en el plano complejo y $\lambda_k > 0$ son pesos.
 
-La introducción de derivadas en la métrica cambia radicalmente la geometría del espacio de Hilbert subyacente. Una de las consecuencias más notables, y que constituye el núcleo de este trabajo, es el comportamiento del \textbf{operador multiplicación}. Mientras que en la teoría clásica este operador es generalmente ``tranquilo'' (acotado y autoadjunto o unitario), en los espacios de Sobolev discretos su comportamiento depende críticamente de la ubicación de los puntos $c_k$ respecto al soporte de la medida $\mu$.
+La introducción de derivadas en la métrica cambia radicalmente la geometría del espacio de Hilbert subyacente. Una de las consecuencias más notables, y que constituye el núcleo de este trabajo, es el comportamiento del \textbf{operador multiplicación}. Mientras que en la teoría clásica este operador es acotado y, según el contexto, autoadjunto o unitario, en los espacios de Sobolev discretos su comportamiento depende críticamente de la ubicación de los puntos $c_k$ respecto al soporte de la medida $\mu$.
 
-El objetivo principal es analizar la estructura espectral del operador multiplicación en el caso \textit{no acotado}. Específicamente, estudiamos la situación inestable donde los puntos $c_k$ se encuentran fuera del soporte esencial de la medida (el caso que denominaremos \textit{no-BPE} o de evaluaciones puntuales no acotadas). Para ello, utilizaremos la teoría de perturbaciones de rango finito y la teoría de los números-$s$ (valores singulares), para caracterizar la ``medida de la no-acotación'' del operador y su impacto en la asintótica de los ceros.
+El objetivo principal es analizar la estructura espectral del operador multiplicación en el caso \textit{no acotado}. Específicamente, estudiamos la situación inestable donde los puntos $c_k$ se encuentran fuera del soporte esencial de la medida (el caso que denominaremos \textit{no-BPE} o de evaluaciones puntuales no acotadas). Para ello, se emplea la teoría de perturbaciones de rango finito y la teoría de los números-$s$ (valores singulares), con el fin de cuantificar la no-acotación del operador y su impacto en la asintótica de los ceros.
 
 Este enfoque no solo proporciona un marco riguroso para los fenómenos observados anteriormente, sino que conecta el problema de los polinomios ortogonales con problemas modernos de análisis espectral y teoría de la aproximación en espacios de codimensión finita.
 
 \subsection{Marco Teórico y Preliminares}
 
-En esta sección establecemos las nociones básicas de la teoría clásica de Polinomios Ortogonales que servirán de base para las generalizaciones de Sobolev presentadas en los capítulos posteriores.
+Esta sección recoge las nociones básicas de la teoría clásica de Polinomios Ortogonales que sirven de base para las generalizaciones de Sobolev desarrolladas en las secciones posteriores.
 
 \subsubsection{Espacios de Polinomios y Ortogonalidad}
 
@@ -115,7 +120,7 @@ La representación matricial de este operador en la base de polinomios ortonorma
 	Debido a la relación de recurrencia que satisfacen los polinomios ortogonales, esta matriz es tridiagonal (Matriz de Jacobi) en el caso real, o Hessenberg superior con subdiagonal no nula en el caso general.
 \end{definition}
 
-La siguiente proposición conecta el álgebra lineal numérica con los ceros de los polinomios, justificando los métodos computacionales utilizados en este trabajo.
+La siguiente proposición establece la conexión fundamental entre el álgebra lineal numérica y los ceros de los polinomios ortonormales.
 
 \begin{proposition}[Ceros como Autovalores] \label{prop:ceros_autovalores}
 	Los ceros del $n$-ésimo polinomio ortogonal $\phi_n(z)$ coinciden exactamente con los autovalores de la submatriz principal truncada $H_n$ de tamaño $n \times n$ del operador de multiplicación.
@@ -134,7 +139,7 @@ Sea $C = \{c_1, \dots, c_N\} \subset \mathbb{C}$ un conjunto finito de puntos en
 	\end{equation}
 \end{definition}
 
-Un aspecto crucial que diferencia este trabajo de la teoría clásica es la completitud del espacio. Definimos el espacio de Hilbert de Sobolev $\mathcal{H}$ como la clausura (cierre) de los polinomios bajo esta métrica.
+Un aspecto central que distingue este marco del caso clásico es la completitud del espacio. El espacio de Hilbert de Sobolev $\mathcal{H}$ se define como la clausura de los polinomios bajo la métrica inducida por $\langle \cdot, \cdot \rangle_S$.
 
 \begin{definition}[Espacio de Hilbert $\mathcal{H}$]
 	\begin{equation}
@@ -173,11 +178,11 @@ Basándonos en la geometría de los puntos respecto al soporte continuo, clasifi
 	\end{itemize}
 \end{definition}
 
-Esta distinción entre $I_{in}$ y $I_{out}$ será la base para el análisis espectral y el estudio de la codimensión del espacio que se desarrollará en el Capítulo 2.
+Esta distinción entre $I_{in}$ y $I_{out}$ constituye la base del análisis espectral y del estudio de la codimensión del espacio desarrollado en la Sección~\ref{sec:espectral}.
 
 \subsection{Herramientas de Análisis Espectral}
 
-El estudio de los polinomios ortogonales de Sobolev con puntos de derivada en la zona inestable ($I_{out}$) requiere herramientas que van más allá de la teoría clásica de espacios de Hilbert. A continuación, introducimos los conceptos de evaluaciones puntuales, codimensión y valores singulares, que constituirán el lenguaje principal de los Capítulos 2 y 3.
+El estudio de los polinomios ortogonales de Sobolev con puntos de derivada en la zona inestable ($I_{out}$) requiere herramientas que van más allá de la teoría clásica de espacios de Hilbert. A continuación, introducimos los conceptos de evaluaciones puntuales, codimensión y valores singulares, que constituyen el marco formal de las Secciones~\ref{sec:espectral} y~\ref{sec:matricial}.
 
 \subsubsection{Evaluaciones Puntuales Acotadas (BPE)}
 
@@ -191,7 +196,7 @@ La noción de \textit{Bounded Point Evaluation} (BPE) es fundamental para entend
 	Equivalentemente, por el Teorema de Representación de Riesz, esto corresponde a la existencia de un núcleo reproductor $K_a \in \overline{\mathbb{P}[z]}^{L^2(\mu)}$ tal que $p(a) = \langle p, K_a \rangle_{L^2(\mu)}$ para todo $p \in \mathbb{P}[z]$.
 \end{definition}
 
-En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{out}$ (Definición \ref{def:class_points}) se traduce en términos de BPEs para las derivadas. Si un punto $c_k \in I_{out}$, el funcional $p \mapsto p'(c_k)$ no es acotado en la norma estándar $L^2(\mu)$. Al forzar su continuidad en la norma de Sobolev, inducimos un cambio drástico en la estructura del espacio, reduciendo su ``tamaño'' relativo al espacio ambiental.
+En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{out}$ (Definición \ref{def:class_points}) se traduce en términos de BPEs para las derivadas. Si $c_k \in I_{out}$, el funcional $p \mapsto p'(c_k)$ no es acotado en la norma estándar $L^2(\mu)$. Al imponer su continuidad en la norma de Sobolev, se produce una reducción de codimensión finita del espacio $\mathcal{H}$ respecto al espacio ambiental $H^2(\mathbb{D})$.
 
 \subsubsection{Codimensión y Subespacios}
 
@@ -214,7 +219,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 
 \subsubsection{Valores Singulares ($s$-números)}
 
-Para estudiar el comportamiento asintótico de las matrices de momentos y de los operadores truncados (Capítulo 3), emplearemos la teoría de los números de aproximación o valores singulares.
+Para el estudio del comportamiento asintótico de los operadores truncados (Sección~\ref{sec:matricial}), se emplea la teoría de los números de aproximación o valores singulares.
 
 \begin{definition}[Valores Singulares]
 	Sea $T: \mathcal{H}_1 \to \mathcal{H}_2$ un operador lineal compacto entre espacios de Hilbert. Los valores singulares de $T$, denotados por $\{s_n(T)\}_{n \geq 1}$, son las raíces cuadradas de los autovalores del operador autoadjunto no negativo $T^*T$. Se ordenan de forma decreciente:
@@ -227,30 +232,30 @@ Para estudiar el comportamiento asintótico de las matrices de momentos y de los
 	\end{equation}
 \end{definition}
 
-El decaimiento de estos números nos dará información precisa sobre la ``velocidad'' de convergencia de nuestras aproximaciones y la distribución asintótica de los ceros.
+La tasa de decaimiento de estos números proporciona información precisa sobre la velocidad de convergencia de las aproximaciones finitas y la distribución asintótica de los ceros.
 
-\section{Estructura de la Memoria}
+\section{Organización del Artículo}
 
-El presente Trabajo de Fin de Máster se estructura de la siguiente manera:
+El artículo se organiza como sigue:
 
 \begin{itemize}
-	\item \textbf{Capítulo 2: Análisis Espectral.} Presentamos el núcleo teórico del trabajo. Estudiamos las propiedades del operador multiplicación en el espacio de Sobolev, demostrando los resultados sobre la codimensión del espacio en función de la ubicación de los puntos discretos (caso BPE vs. no-BPE).
+	\item \textbf{Sección~\ref{sec:espectral}: Análisis Espectral.} Se desarrolla el núcleo teórico del trabajo. Se estudian las propiedades del operador multiplicación en el espacio de Sobolev, estableciendo los resultados sobre la codimensión del espacio en función de la ubicación de los puntos discretos (caso BPE frente a no-BPE).
 
-	\item \textbf{Capítulo 3: Análisis Matricial y Asintótica.} Nos centramos en las representaciones matriciales de los operadores. Analizamos el comportamiento asintótico de las secciones finitas (matrices de Hessenberg) cuando el tamaño tiende a infinito, utilizando la teoría de perturbaciones y valores singulares.
+	\item \textbf{Sección~\ref{sec:matricial}: Análisis Matricial y Asintótica.} Se analizan las representaciones matriciales de los operadores. Se estudia el comportamiento asintótico de las secciones finitas (matrices de Hessenberg) cuando el orden tiende a infinito, mediante la teoría de perturbaciones y los valores singulares.
 
-	\item \textbf{Capítulo 4: Estudio de los Ceros.} Aplicamos la teoría desarrollada para acotar la ubicación de los ceros de los polinomios ortogonales. Este capítulo conecta los resultados abstractos de operadores con el problema clásico de la distribución de ceros, extendiendo las visualizaciones numéricas del TFG con demostraciones rigurosas de acotación.
+	\item \textbf{Sección~\ref{sec:ceros}: Acotación de los Ceros.} Se aplican los resultados obtenidos para acotar la ubicación de los ceros de los polinomios ortogonales, conectando los resultados abstractos sobre operadores con el problema clásico de la distribución de ceros mediante estimaciones rigurosas.
 
-	\item \textbf{Conclusiones y Líneas Futuras.} Resumimos las aportaciones principales y proponemos vías abiertas para la investigación futura.
+	\item \textbf{Conclusiones y Líneas Futuras.} Se resumen las aportaciones principales del trabajo y se proponen vías abiertas para investigación futura.
 \end{itemize}
 
-% --- CAPÍTULO 2 ---
-\section{Análisis Espectral y Valores de Gelfand}
+% --- SECCIÓN 2 ---
+\section{Análisis Espectral y Valores de Gelfand}\label{sec:espectral}
 % 2.1 El caso BPE (Operadores acotados)
 % 2.2 El caso No-BPE (El colapso topológico y la codimensión algebraica)
 % 2.3 Cálculo del caso exacto (Átomo en c=0, Norma R^2+1)
 % 2.4 Estabilización de la cadena: La dicotomía del Espectro
 
-Para el estudio del operador de multiplicación, es fundamental distinguir el comportamiento sobre distintos subespacios del espacio de Hilbert $\mathcal{H}$, determinados por las condiciones de anulación en los conjuntos $I_{in}$ e $I_{out}$.
+Para el estudio del operador de multiplicación, es fundamental distinguir el comportamiento sobre distintos subespacios del espacio de Hilbert $\mathcal{H}$, determinados por las condiciones de anulación en los conjuntos $I_{in}$ e $I_{out}$. Se demuestra, en el transcurso de esta sección, que la codimensión de $\mathcal{H}$ en $H^2(\mathbb{D})$ está directamente determinada por el número de puntos en la región inestable $I_{out}$; este déficit dimensional guarda una estrecha relación con la teoría de índices de defecto de operadores simétricos y con los Tripletes de Gelfand.
 
 \begin{definition}[Subespacio Estable $V$]
 	Definimos el subespacio estable algebraico $V_0$ como el conjunto de polinomios que se anulan en los puntos exteriores:
@@ -278,14 +283,152 @@ En el marco de la teoría de ideales de operadores, los números de Gelfand cons
 	En particular, $c_1(T) = \|T\|$ es la norma global del operador.
 \end{definition}
 
-% --- CAPÍTULO 3 ---
-\section{Análisis Matricial y Comportamiento Asintótico}
-% 3.1 Secciones truncadas (Matrices D_n)
-% 3.2 La matriz D*D y el Principio Min-Max discreto
-% 3.3 Convergencia asintótica de los valores singulares finitos
+% --- SECCIÓN 3 ---
+\section{Análisis Matricial y Comportamiento Asintótico}\label{sec:matricial}
 
-% --- CAPÍTULO 4 ---
-\section{Acotación de los Ceros de Polinomios de Sobolev}
+\subsection{Secciones truncadas y estructura de Hessenberg}
+
+El estudio asintótico del operador multiplicación $\mathcal{D}$ se lleva a cabo a través de sus aproximaciones de rango finito, denominadas secciones principales.
+
+\begin{definition}[Sección principal de orden $n$]\label{def:seccion_truncada}
+	Sea $A = (a_{ij})_{i,j \geq 0}$ una matriz infinita. Para cada $n \in \mathbb{N}$, la \emph{sección principal de orden $n$} de $A$ es la submatriz finita
+	\[
+		A_n = (a_{ij})_{0 \leq i,j \leq n-1} \in \mathcal{M}_n(\mathbb{C}).
+	\]
+	Denotamos por $\mathbf{D}_n$ la sección de orden $n$ de la matriz $\mathbf{D}$ que representa al operador $\mathcal{D}$ en la base de polinomios ortonormales $\{\phi_k\}$.
+\end{definition}
+
+\begin{definition}[Operador acotado y norma]\label{def:operador_acotado}
+	El operador multiplicación $\mathcal{D}$ se dice \emph{acotado} en $(\mathbb{P}[z], \langle \cdot, \cdot \rangle)$ si existe una constante $C > 0$ tal que
+	\[
+		\|\mathcal{D}(p)\| \leq C \|p\|, \qquad \forall\, p \in \mathbb{P}[z].
+	\]
+	La menor constante con esta propiedad se denomina \emph{norma del operador} y se denota $\|\mathcal{D}\|$.
+\end{definition}
+
+La representación matricial del operador $\mathcal{D}$ en la base ortonormal $\{\phi_n\}$ posee una estructura algebraica especialmente conveniente.
+
+\begin{proposition}[Estructura de Hessenberg de $\mathbf{D}$]\label{prop:hessenberg}
+	Para todos los índices $i, j \geq 0$ se verifica $d_{i,j} = 0$ si $i > j+1$. En consecuencia, $\mathbf{D}$ es una matriz de Hessenberg superior infinita:
+	\[
+		\mathbf{D} = \begin{pmatrix}
+			d_{0,0} & d_{0,1} & d_{0,2} & d_{0,3} & \cdots \\
+			d_{1,0} & d_{1,1} & d_{1,2} & d_{1,3} & \cdots \\
+			0       & d_{2,1} & d_{2,2} & d_{2,3} & \cdots \\
+			0       & 0       & d_{3,2} & d_{3,3} & \cdots \\
+			\vdots  & \vdots  & \vdots  & \vdots  & \ddots
+		\end{pmatrix}.
+	\]
+	El patrón de ceros es consecuencia directa de que $\deg(z\phi_j) = j+1$, de modo que la expansión de $z\phi_j$ en la base solo involucra $\phi_0, \dots, \phi_{j+1}$.
+\end{proposition}
+
+Las secciones $\mathbf{D}_n$ de esta matriz poseen las siguientes propiedades relevantes para el análisis de los ceros:
+
+\begin{itemize}
+	\item Si el producto interno procede de una medida real en un intervalo, la relación de recurrencia de tres términos hace que $\mathbf{D}$ sea tridiagonal y simétrica (matriz de Jacobi).
+	\item El determinante característico $|\mathbf{D}_n - z\mathbf{I}_n|$ es un polinomio proporcional a $\phi_{n+1}(z)$; en particular, ambos comparten exactamente los mismos ceros.
+\end{itemize}
+
+\begin{proposition}[Ceros como autovalores de la sección truncada]\label{prop:autovalores_ceros}
+	Los ceros del polinomio ortonormal $\phi_{n+1}(z)$ son exactamente los autovalores de la sección transpuesta $\mathbf{D}_n^t$:
+	\[
+		\sigma(\mathbf{D}_n^t) = \{z \in \mathbb{C} : \phi_{n+1}(z) = 0\}.
+	\]
+\end{proposition}
+
+\subsection{Radio espectral y valores singulares de las secciones}
+
+\begin{definition}[Radio espectral]\label{def:radio_espectral}
+	El \emph{radio espectral} de una matriz cuadrada $A \in \mathcal{M}_n(\mathbb{C})$, denotado $\rho(A)$, se define como
+	\[
+		\rho(A) = \max\{|\lambda| : \lambda \in \sigma(A)\}.
+	\]
+\end{definition}
+
+\begin{definition}[Valores singulares de las secciones: notación $\sigma_{k,n}$]\label{def:sigma_kn}
+	Los valores singulares de la sección $\mathbf{D}_n$, ordenados de forma decreciente, se denotan
+	\[
+		\sigma_{1,n} \geq \sigma_{2,n} \geq \cdots \geq \sigma_{n,n} \geq 0.
+	\]
+	En particular, $\sigma_{1,n} = \|\mathbf{D}_n\|$ es la norma espectral (norma operatorial inducida por la norma euclídea) de $\mathbf{D}_n$. Por el principio min-max de Courant-Fischer,
+	\[
+		\sigma_{2,n}^2 = \min_{\substack{V \subset \mathbb{C}^n \\ \operatorname{codim}(V) = 1}} \max_{\substack{x \in V \\ \|x\| = 1}} \|\mathbf{D}_n x\|^2.
+	\]
+\end{definition}
+
+\begin{proposition}[Convergencia de los valores singulares]\label{prop:convergencia_sigma}
+	Sea $\mathcal{D}$ el operador multiplicación por $z$ y $\mathbf{D}_n$ su sección de orden $n$. Entonces
+	\[
+		\lim_{n \to \infty} \sigma_{1,n} = \lim_{n \to \infty} \|\mathbf{D}_n\| = \|\mathcal{D}\|,
+	\]
+	donde el límite puede ser $+\infty$ en el caso no acotado.
+\end{proposition}
+
+En el caso en que la medida continua tiene soporte acotado con radio máximo $R$, es conocido que $\|\mathcal{D}\| = R$ y, por tanto, $\lim_{n \to \infty} \sigma_{1,n} = R$.
+
+\subsection{Matrices de momentos de Sobolev y de Dirac}
+
+\begin{definition}[Matriz de momentos de Sobolev $\mathbf{M}_S$]\label{def:matriz_sobolev}
+	Sea $\boldsymbol{\mu} = (\mu_1, \mu_2)$ un par de medidas de Borel positivas con soporte compacto en $\mathbb{C}$. Denótense por $\mathbf{M}_j = (c^{(j)}_{n,m})_{n,m \geq 0}$ sus respectivas matrices de momentos, donde $c^{(j)}_{n,m} = \int z^n \bar{z}^m \, d\mu_j(z)$, $j = 1, 2$. La \emph{matriz de momentos de Sobolev} asociada a $\boldsymbol{\mu}$ es
+	\[
+		\mathbf{M}_S = \mathbf{M}_1 + \boldsymbol{\Lambda}\, \mathbf{M}_2\, \boldsymbol{\Lambda}^*,
+	\]
+	donde $\boldsymbol{\Lambda} = (\lambda_{i,j})_{i,j \geq 0}$ es la matriz que representa el operador de derivación en la base monomial:
+	\[
+		\lambda_{i,j} = \begin{cases} j & \text{si } i = j - 1, \\ 0 & \text{en otro caso.} \end{cases}
+	\]
+	El \emph{producto matricial interno de Sobolev} inducido por el par $\{\mathbf{M}_1, \mathbf{M}_2\}$ se define como
+	\[
+		\langle p, q \rangle_{\mathbf{M}_S} = v\, \mathbf{M}_S\, w^*, \qquad p(z) = \sum_k v_k z^k,\ q(z) = \sum_k w_k z^k.
+	\]
+\end{definition}
+
+\begin{definition}[Matriz de momentos de la medida de Dirac]\label{def:matriz_dirac}
+	Sea $\delta_a$ la medida de Dirac concentrada en $a \in \mathbb{C}$. Su matriz de momentos, denotada $M(a) = M(\delta_a)$, tiene entradas $c_{n,m} = a^n \bar{a}^m$ y puede representarse como
+	\[
+		M(a) = \begin{pmatrix}
+			1      & \bar{a}    & \bar{a}^2  & \bar{a}^3    & \cdots \\
+			a      & |a|^2      & a\bar{a}^2 & a\bar{a}^3   & \cdots \\
+			a^2    & a^2\bar{a} & |a|^4      & a^2\bar{a}^3 & \cdots \\
+			\vdots & \vdots     & \vdots     & \vdots       & \ddots
+		\end{pmatrix}.
+	\]
+	Obsérvese que $M(a)$ es semidefinida positiva pero no definida positiva, por lo que no induce por sí sola un producto interno en $\mathbb{P}[z]$.
+\end{definition}
+
+\begin{definition}[Producto matricial de Sobolev generalizado]\label{def:producto_sobolev_matricial}
+	Sea $\{\mathbf{M}_1, \mathbf{M}_2\}$ un par de matrices hermíticas semidefinidas positivas con $\mathbf{M}_1$ definida positiva. El \emph{producto matricial de Sobolev} inducido se define como
+	\[
+		\langle p, q \rangle_{\mathbf{M}_S} = \langle p, q \rangle_{\mathbf{M}_1} + \langle p', q' \rangle_{\mathbf{M}_2}, \qquad p, q \in \mathbb{P}[z].
+	\]
+	Cuando $\mathbf{M}_j$ es la matriz de momentos de una medida $\mu_j$, esta definición recupera el producto de Sobolev integral de la Sección~1.
+\end{definition}
+
+\subsection{Dominación secuencial y envoltura convexa polinómica}
+
+\begin{definition}[Matrices secuencialmente dominadas]\label{def:dominacion_secuencial}
+	Un par de matrices hermíticas semidefinidas positivas $\{\mathbf{M}_1, \mathbf{M}_2\}$ se dice \emph{secuencialmente dominado} si existe una constante $C > 0$ tal que
+	\[
+		\mathbf{M}_2 \leq C \cdot \mathbf{M}_1,
+	\]
+	donde $\mathbf{A} \leq \mathbf{B}$ significa $v \mathbf{A} v^* \leq v \mathbf{B} v^*$ para todo $v \in c_{00}$.
+\end{definition}
+
+\begin{remark}
+	En el caso de productos de Sobolev con medidas sobre circunferencias, el par $\{\mathbf{M}(\mathbf{m}_{b;r_b}), \mathbf{M}(\mathbf{m}_{a;r_a})\}$ es secuencialmente dominado si y solo si $\mathbb{S}_{r_a}(a) \subset \mathbb{D}_{r_b}(b)$, donde $\mathbb{D}_{r_b}(b)$ denota el disco abierto de centro $b$ y radio $r_b$.
+\end{remark}
+
+\begin{definition}[Envoltura convexa polinómica]\label{def:envoltura_polinomica}
+	Para un compacto $K \subset \mathbb{C}$, la \emph{envoltura convexa polinómica} de $K$ se define como
+	\[
+		P_C(K) = \Bigl\{ z \in \mathbb{C} : |p(z)| \leq \max_{\xi \in K} |p(\xi)|\ \text{ para todo } p \in \mathbb{P}[z] \Bigr\}.
+	\]
+\end{definition}
+
+La envoltura convexa polinómica caracteriza los puntos de evaluación acotada: todo punto de evaluación acotada de una medida $\mu$ pertenece a $P_C(\operatorname{supp}(\mu))$. Para el caso en que $K = \mathbb{S}_r(a)$, se tiene $P_C(K) = \overline{\mathbb{D}_r(a)}$, lo que conecta la geometría del soporte con la región interior al disco.
+
+% --- SECCIÓN 4 ---
+\section{Acotación de los Ceros de Polinomios de Sobolev}\label{sec:ceros}
 % 4.1 Relación entre ceros, radio espectral y valores singulares
 % 4.2 Hipótesis de acotación en el caso discreto
 % 4.3 El papel del primer s-número finito como cota global
@@ -296,5 +439,3 @@ En el marco de la teoría de ideales de operadores, los números de Gelfand cons
 \bibliography{referencias}
 
 \end{document}
-
-En el Capítulo 2 demostraremos que la codimensión de $\mathcal{H}$ en $\mathcal{K}$ está directamente relacionada con el número de puntos de derivada situados en la región inestable $I_{out}$. Este ``déficit'' dimensional está íntimamente ligado a la teoría de índices de defecto de operadores simétricos y a los Tripletes de Gelfand.
