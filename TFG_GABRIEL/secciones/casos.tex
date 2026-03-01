@@ -1,0 +1,1762 @@
+\chapter{Casos Analizados y Conjeturas}
+\label{ch:caso_real}
+
+En el Capítulo \ref{ch:marco-teorico} se establecieron los cimientos teóricos que guiarán todo el trabajo: se revisaron las nociones básicas de polinomios ortogonales y sus matrices de momentos, se introdujo el operador de multiplicación \(\mathcal{D}\) y se formalizó la ortogonalidad de Sobolev junto con el problema central de la localización de ceros. Además, se contextualizó el estado del arte resaltando la utilidad de la aproximación matricial y de los estudios numéricos para desvelar la geometría de los ceros bajo diferentes productos internos.
+
+El objetivo de este segundo capítulo es \emph{aplicar} aquel armazón teórico a los 4 casos concretos y, a partir de la evidencia obtenida, \emph{formular conjeturas} que orienten futuras demostraciones rigurosas. Con este fin, el capítulo se organiza en tres secciones principales:
+
+\begin{itemize}
+	\item \textbf{3.1 Caso real} - Se analizan productos de Sobolev definidos sobre soportes en la recta real. La simplicidad geométrica permite contrastar los resultados con referencias clásicas y calibrar las herramientas algebraicas presentadas anteriormente.
+	\item \textbf{3.2 Caso circunferencia} - El estudio se traslada al plano complejo considerando medidas soportadas en circunferencias. Esta configuración pone de relieve la influencia de transformaciones de semejanza y la interacción entre la topología del soporte y la distribución de ceros.
+	\item \textbf{3.3 Análisis y conjeturas} - Reúne las observaciones extraídas de ambos escenarios para proponer conjeturas sobre:
+	      \begin{enumerate}
+		      \item Cotas uniformes para los ceros en función del radio o de la posición relativa de los soportes.
+		      \item El comportamiento asintótico de valores singulares sucesivos de las secciones \(\mathbf{D}_n\) y su relación con el radio espectral.
+		      \item La influencia de la dominación secuencial o matricial en la acotación de \(\mathbf{D}\).
+	      \end{enumerate}
+\end{itemize}
+
+A lo largo del capítulo se alternarán \emph{demostraciones analíticas} y \emph{experimentos numéricos}, reforzando la filosofía descrita en la introducción: combinar la teoría de matrices de Hessenberg con simulaciones para obtener una visión más completa de los ceros de los polinomios ortogonales de Sobolev.
+
+En estos experimentos, utilizaremos la metodología computacional expuesta en el Planteamiento del problema del Capítulo \ref{ch:marco-teorico}, que nos permite calcular y visualizar los ceros de polinomios ortogonales de Sobolev. Las gráficas presentadas para cada ejemplo muestran:
+
+\begin{enumerate}
+	\item Una primera imagen que muestra los ceros del polinomio ortogonal $\varphi_n$ para un grado fijo, donde el punto rojo destaca el cero de mayor módulo que determina el radio espectral de la matriz $\mathbf{D}_n$.
+
+	\item Una segunda imagen que representa el conjunto completo de todos los ceros de la familia $\{\varphi_i\}_{i=0}^n$, donde los puntos rojos destacan, para cada polinomio $\varphi_i$, el cero de mayor módulo que determina el radio espectral correspondiente.
+
+	\item Una tercera imagen que visualiza la evolución de los valores singulares y el radio espectral en función del orden $n$ de la matriz $\mathbf{D}_n$. En esta gráfica:
+	      \begin{itemize}
+		      \item Los círculos (que varían cromáticamente del rojo al azul) representan el radio espectral $\rho(\mathbf{D}_n)$ para cada valor de $n$.
+		      \item Los diamantes (que varían del verde al morado) corresponden al primer valor singular $\sigma_{1,n}$ de cada matriz $\mathbf{D}_n$.
+		      \item Las cajas o cuadrados (también variando del verde al morado) representan el segundo valor singular $\sigma_{2,n}$.
+	      \end{itemize}
+\end{enumerate}
+
+Estos gráficos se complementan con una tabla numérica que resume las principales magnitudes espectrales calculadas mediante nuestro algoritmo en Maple, incluyendo los valores singulares dominantes, el radio espectral y el máximo de los radios espectrales en la secuencia, lo que permite contrastar hipótesis sobre la acotación de ceros.
+
+\newpage
+\section{Caso Real}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 1.}\;
+	$\displaystyle
+		\langle p,q\rangle_S
+		=\int_{-1}^{1} p(t)q(t)\,t^{2}\,dt
+		+ \int_{-1}^{1} p'(t)q'(t)\,t^{10}\,dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t2t10_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a-1b1-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t2t10_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a-1b1-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t2t10.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a-1b1-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=1.2760$
+			\item $\sigma_{2,70}=1.2760$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{70})=0.9999$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=1.1333$
+		\end{enumerate}
+		\label{fig:a-1b1-data}
+	\end{subfigure}
+	\label{fig:a-1b1-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 2.}\;
+	$\displaystyle
+		\langle p,q\rangle_S
+		=\int_{-2}^{2} p(t)q(t) \, dt
+		+ \int_{-1}^{1} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-2b2c1d-1_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a-2b2c1d-1-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-2b2c1d-1_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a-2b2c1d-1-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-2b2c1d-1.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a-2b2c1d-1-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=1.999$
+			\item $\sigma_{2,70}=1.999$
+			\item $R = 2$
+			\item $\rho(\mathbf{D}_{70})=1.999$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=1.999$
+		\end{enumerate}
+		\label{fig:a-2b2c1d-1-data}
+	\end{subfigure}
+	\label{fig:a-2b2c1d-1-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 3.}\;
+	$\displaystyle
+		\langle p,q\rangle_S
+		=\int_{-1}^{1} p(t)q(t)\,t^{10}\,dt
+		+ \int_{-1}^{1} p'(t)q'(t)\,t^{2}\,dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t10t2_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a-1b1t10t2-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t10t2_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a-1b1t10t2-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t10t2.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a-1b1t10t2-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=2.204$
+			\item $\sigma_{2,70}=2.122$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{70})=1.000$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=1.275$
+		\end{enumerate}
+		\label{fig:a-1b1t10t2-data}
+	\end{subfigure}
+	\label{fig:a-1b1t10t2-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 4.}\;
+	$\displaystyle
+		\langle p,q\rangle_S
+		=\int_{0}^{10} p(t)q(t) \, dt
+		+ \int_{30}^{40} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b10c30d40_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a0b10c30d40-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b10c30d40_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a0b10c30d40-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b10c30d40.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a0b10c30d40-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=9.272\times10^{16}$
+			\item $\sigma_{2,70}=39.998$
+			\item $R = 40$
+			\item $\rho(\mathbf{D}_{70})=42.930$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=50.052$
+		\end{enumerate}
+		\label{fig:a0b10c30d40-data}
+	\end{subfigure}
+	\label{fig:a0b10c30d40-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 5.}\;
+	$\displaystyle
+		\langle p,q\rangle_S
+		=\int_{30}^{40} p(t)q(t) \, dt
+		+ \int_{0}^{10} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b40c0d10_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a30b40c0d10-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b40c0d10_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a30b40c0d10-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b40c0d10.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a30b40c0d10-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=9.272\times10^{16}$
+			\item $\sigma_{2,70}=39.991$
+			\item $R = 40$
+			\item $\rho(\mathbf{D}_{70})=39.991$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=39.991$
+		\end{enumerate}
+		\label{fig:a30b40c0d10-data}
+	\end{subfigure}
+	\label{fig:a30b40c0d10-pack}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 6.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		=\int_{0}^{10} p(t)q(t) \, dt
+		+ \int_{30}^{50} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b10c30d50_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a0b10c30d50-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b10c30d50_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a0b10c30d50-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b10c30d50.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a0b10c30d50-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=5.990\times10^{13}$
+			\item $\sigma_{2,70}=49.983$
+			\item $R = 50$
+			\item $\rho(\mathbf{D}_{70})=52.656$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=59.814$
+		\end{enumerate}
+		\label{fig:a0b10c30d50-data}
+	\end{subfigure}
+	\label{fig:a0b10c30d50-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 7.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		=\int_{30}^{50} p(t)q(t) \, dt
+		+ \int_{0}^{10} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b50c0d10_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a30b50c0d10-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b50c0d10_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a30b50c0d10-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b50c0d10.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a30b50c0d10-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=3.752\times10^{13}$
+			\item $\sigma_{2,70}=49.987$
+			\item $R = 50$
+			\item $\rho(\mathbf{D}_{70})=49.987$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=49.987$
+		\end{enumerate}
+		\label{fig:a30b50c0d10-data}
+	\end{subfigure}
+	\label{fig:a30b50c0d10-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 8.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		=\int_{0}^{20} p(t)q(t) \, dt
+		+ \int_{30}^{40} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b20c30d40_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a0b20c30d40-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b20c30d40_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a0b20c30d40-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b20c30d40.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a0b20c30d40-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=2.944\times10^{9}$
+			\item $\sigma_{2,70}=39.985$
+			\item $R = 40$
+			\item $\rho(\mathbf{D}_{70})=40.951$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=44.196$
+		\end{enumerate}
+		\label{fig:a0b20c30d40-data}
+	\end{subfigure}
+	\label{fig:a0b20c30d40-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 9.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		=\int_{30}^{40} p(t)q(t) \, dt
+		+ \int_{0}^{20} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b40c0d20_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a30b40c0d20-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b40c0d20_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a30b40c0d20-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a30b40c0d20.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a30b40c0d20-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=4.136\times10^{8}$
+			\item $\sigma_{2,70}=39.989$
+			\item $R = 40$
+			\item $\rho(\mathbf{D}_{70})=39.989$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=39.989$
+		\end{enumerate}
+		\label{fig:a30b40c0d20-data}
+	\end{subfigure}
+	\label{fig:a30b40c0d20-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 10.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		=\int_{-15}^{-5} p(t)q(t) \, dt
+		+ \int_{5}^{16} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-15b-5c5d16_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a-15b-5c5d16-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-15b-5c5d16_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a-15b-5c5d16-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-15b-5c5d16.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a-15b-5c5d16-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=3.711\times10^{10}$
+			\item $\sigma_{2,70}=15.990$
+			\item $R = 16$
+			\item $\rho(\mathbf{D}_{70})=17.107$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=21.152$
+		\end{enumerate}
+		\label{fig:a-15b-5c5d16-data}
+	\end{subfigure}
+	\label{fig:a-15b-5c5d16-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 11.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		=\int_{-15}^{-5} p(t)q(t) \, dt
+		+ \int_{5}^{14} p'(t)q'(t) \, dt$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-15b-5c5d14_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a-15b-5c5d14-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-15b-5c5d14_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a-15b-5c5d14-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-15b-5c5d14.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a-15b-5c5d14-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=2.338\times10^{11}$
+			\item $\sigma_{2,70}=14.992$
+			\item $R = 15$
+			\item $\rho(\mathbf{D}_{70})=15.094$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=19.007$
+		\end{enumerate}
+		\label{fig:a-15b-5c5d14-data}
+	\end{subfigure}
+	\label{fig:a-15b-5c5d14-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 12.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		= \int_{-1}^{1} p(t) q(t) \, dt
+		+ p'(0)q'(0)$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t0_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a-1b1t0-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t0_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a-1b1t0-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t0.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a-1b1t0-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=4.704$
+			\item $\sigma_{2,70}=0.999$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{70})=0.999$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=0.999$
+		\end{enumerate}
+		\label{fig:a-1b1t0-data}
+	\end{subfigure}
+	\label{fig:a-1b1t0-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 13.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		= \int_{-1}^{1} p(t) q(t) \, dt
+		+ p'(2) q'(2)$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t2_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a-1b1t2-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t2_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a-1b1t2-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a-1b1t2.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a-1b1t2-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=7.441\times10^{36}$
+			\item $\sigma_{2,70}=0.999$
+			\item $R = 2$
+			\item $\rho(\mathbf{D}_{70})=2.025$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=2.933$
+		\end{enumerate}
+		\label{fig:a-1b1t2-data}
+	\end{subfigure}
+	\label{fig:a-1b1t2-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 14.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		= \int_{0}^{1} p(t) q(t) \, dt
+		+ p'(0)q'(0)$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b1t0_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a0b1t0-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b1t0_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a0b1t0-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b1t0.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a0b1t0-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=35.000$
+			\item $\sigma_{2,70}=0.999$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{70})=0.999$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=0.999$
+		\end{enumerate}
+		\label{fig:a0b1t0-data}
+	\end{subfigure}
+	\label{fig:a0b1t0-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 15.}\;
+	$\displaystyle
+		\langle p(t),q(t) \rangle_S
+		= \int_{0}^{1} p(t) q(t) \, dt
+		+ p'(2)q'(2)$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b1t2_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:a0b1t2-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b1t2_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:a0b1t2-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/a0b1t2.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:a0b1t2-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=1.405\times10^{50}$
+			\item $\sigma_{2,70}=0.999$
+			\item $R = 2$
+			\item $\rho(\mathbf{D}_{70})=2.021$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=3.299$
+		\end{enumerate}
+		\label{fig:a0b1t2-data}
+	\end{subfigure}
+	\label{fig:a0b1t2-pack}
+\end{minipage}
+
+\begin{sidewaystable}
+	\centering
+	\footnotesize
+	\caption{Resumen de ejemplos sobre la localización de ceros.}
+	\begin{tabular}{|c|cccc|cccc|cccc|}
+		\hline
+		\multirow{3}{*}{\textbf{Parámetros}}       & \multicolumn{4}{c|}{\textbf{SECUENCIALMENTE}} & \multicolumn{4}{c|}{\textbf{NO SECUENCIALMENTE}} & \multicolumn{4}{c|}{\textbf{ÁTOMO}}                                                                                                                                                                      \\
+		                                           & \multicolumn{4}{c|}{\textbf{DOMINADO}}        & \multicolumn{4}{c|}{\textbf{DOMINADO}}           & \multicolumn{4}{c|}{}                                                                                                                                                                                    \\
+		\cline{2-13}
+		                                           & $\sigma_{1,n}$                                & $\sigma_{2,n}$                                   & $\rho(\mathcal{D}_{n})$             & $\max Z$ & $\sigma_{1,n}$       & $\sigma_{2,n}$ & $\rho(\mathcal{D}_{n})$ & $\max Z$ & $\sigma_{1,n}$       & $\sigma_{2,n}$ & $\rho(\mathcal{D}_{n})$ & $\max Z$ \\
+		\hline
+		\textbf{Ej.1}: $[-1,1]t^2, [-1,1]t^{10}$   & 1.276                                         & 1.276                                            & 1.000                               & 1.133    & -                    & -              & -                       & -        & -                    & -              & -                       & -        \\
+		\textbf{Ej.2}: $[-2,2], [-1,1]$            & 1.999                                         & 1.999                                            & 1.999                               & 1.999    & -                    & -              & -                       & -        & -                    & -              & -                       & -        \\
+		\textbf{Ej.3}: $[-1,1]t^{10}, [-1,1]t^{2}$ & -                                             & -                                                & -                                   & -        & 2.204                & 2.122          & 1.000                   & 1.275    & -                    & -              & -                       & -        \\
+		\textbf{Ej.4}: $[0,10], [30,40]$           & -                                             & -                                                & -                                   & -        & $9.272\times10^{16}$ & 39.998         & 42.930                  & 50.052   & -                    & -              & -                       & -        \\
+		\textbf{Ej.5}: $[30,40], [0,10]$           & -                                             & -                                                & -                                   & -        & $9.272\times10^{16}$ & 39.991         & 39.991                  & 39.991   & -                    & -              & -                       & -        \\
+		\textbf{Ej.6}: $[0,10], [30,50]$           & -                                             & -                                                & -                                   & -        & $5.990\times10^{13}$ & 49.983         & 52.656                  & 59.814   & -                    & -              & -                       & -        \\
+		\textbf{Ej.7}: $[30,50], [0,10]$           & -                                             & -                                                & -                                   & -        & $3.752\times10^{13}$ & 49.987         & 49.987                  & 49.987   & -                    & -              & -                       & -        \\
+		\textbf{Ej.8}: $[0,20], [30,40]$           & -                                             & -                                                & -                                   & -        & $2.944\times10^{9}$  & 39.985         & 40.951                  & 44.196   & -                    & -              & -                       & -        \\
+		\textbf{Ej.9}: $[30,40], [0,20]$           & -                                             & -                                                & -                                   & -        & $4.136\times10^{8}$  & 39.989         & 39.989                  & 39.989   & -                    & -              & -                       & -        \\
+		\textbf{Ej.10}: $[-15,-5], [5,16]$         & -                                             & -                                                & -                                   & -        & $3.711\times10^{10}$ & 15.990         & 17.107                  & 21.152   & -                    & -              & -                       & -        \\
+		\textbf{Ej.11}: $[-15,-5], [5,14]$         & -                                             & -                                                & -                                   & -        & $2.338\times10^{11}$ & 14.992         & 15.094                  & 19.007   & -                    & -              & -                       & -        \\
+		\textbf{Ej.12}: $[-1,1], c=0$              & -                                             & -                                                & -                                   & -        & -                    & -              & -                       & -        & 4.704                & 0.999          & 0.999                   & 0.999    \\
+		\textbf{Ej.13}: $[-1,1], c=2$              & -                                             & -                                                & -                                   & -        & -                    & -              & -                       & -        & $7.441\times10^{36}$ & 0.999          & 2.025                   & 2.933    \\
+		\textbf{Ej.14}: $[0,1], c=0$               & -                                             & -                                                & -                                   & -        & -                    & -              & -                       & -        & 35.000               & 0.999          & 0.999                   & 0.999    \\
+		\textbf{Ej.15}: $[0,1], c=2$               & -                                             & -                                                & -                                   & -        & -                    & -              & -                       & -        & $1.405\times10^{50}$ & 0.999          & 2.021                   & 3.299    \\
+		\hline
+	\end{tabular}
+\end{sidewaystable}
+
+\newpage
+
+\section{Caso Circunferencia}
+
+En este capítulo analizamos el comportamiento de los ceros de polinomios ortogonales de Sobolev en el caso complejo, donde las medidas están soportadas en circunferencias. Este enfoque nos permite extender nuestro estudio más allá del eje real y comprender mejor los fenómenos de distribución de ceros en el plano complejo.
+
+% CASOS SECUENCIALMENTE DOMINADOS
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 1.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + \int_{S_{0.4}(0.4)} p'(z)\overline{q'(z)}\, dm_{0.4;0.4}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_0.4c2_0.4_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{25}$.}
+		\label{fig:r1_1c1_0r2_0.4c2_0.4-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_0.4c2_0.4_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{25}$.}
+		\label{fig:r1_1c1_0r2_0.4c2_0.4-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_0.4c2_0.4.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{25}$.}
+		\label{fig:r1_1c1_0r2_0.4c2_0.4-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,25}=1.516$
+			\item $\sigma_{2,25}=1.000$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{25})=0.667$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{25}=0.672$
+		\end{enumerate}
+		\label{fig:r1_1c1_0r2_0.4c2_0.4-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0r2_0.4c2_0.4-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 2.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + \int_{S_{2}(0.5)} p'(z)\overline{q'(z)}\, dm_{0.5;2}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_2c2_0.5_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{25}$.}
+		\label{fig:r1_1c1_0r2_2c2_0.5-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_2c2_0.5_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{25}$.}
+		\label{fig:r1_1c1_0r2_2c2_0.5-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_2c2_0.5.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{25}$.}
+		\label{fig:r1_1c1_0r2_2c2_0.5-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,25}=3.470$
+			\item $\sigma_{2,25}=2.968$
+			\item $R = 2.5$
+			\item $\rho(\mathbf{D}_{25})=1.108$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{25}=1.112$
+		\end{enumerate}
+		\label{fig:r1_1c1_0r2_2c2_0.5-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0r2_2c2_0.5-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 3.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + \int_{S_{10}(0.5)} p'(z)\overline{q'(z)}\, dm_{0.5;10}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_10c2_0.5_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{25}$.}
+		\label{fig:r1_1c1_0r2_10c2_0.5-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_10c2_0.5_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{25}$.}
+		\label{fig:r1_1c1_0r2_10c2_0.5-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_10c2_0.5.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{25}$.}
+		\label{fig:r1_1c1_0r2_10c2_0.5-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,25}=15.248$
+			\item $\sigma_{2,25}=13.972$
+			\item $R = 10.5$
+			\item $\rho(\mathbf{D}_{25})=1.068$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{25}=1.185$
+		\end{enumerate}
+		\label{fig:r1_1c1_0r2_10c2_0.5-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0r2_10c2_0.5-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 4.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + \int_{S_{1}(1)} p'(z)\overline{q'(z)}\, dm_{1;1}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_1c2_1_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_1c1_0r2_1c2_1-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_1c2_1_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_1c1_0r2_1c2_1-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_1c2_1.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_1c1_0r2_1c2_1-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=2.672$
+			\item $\sigma_{2,70}=2.672$
+			\item $R = 2$
+			\item $\rho(\mathbf{D}_{70})=1.933$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=1.963$
+		\end{enumerate}
+		\label{fig:r1_1c1_0r2_1c2_1-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0r2_1c2_1-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 5.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + \int_{S_{1}(-10)} p'(z)\overline{q'(z)}\, dm_{-10;1}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_1c2_-10_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_1c1_0r2_1c2_-10-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_1c2_-10_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_1c1_0r2_1c2_-10-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_1c2_-10.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_1c1_0r2_1c2_-10-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=4.963 \times 10^{14}$
+			\item $\sigma_{2,70}=11.211$
+			\item $R = 11$
+			\item $\rho(\mathbf{D}_{70})=12.424$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=15.074$
+		\end{enumerate}
+		\label{fig:r1_1c1_0r2_1c2_-10-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0r2_1c2_-10-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 6.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{0.25}(-10)} p(z)\overline{q(z)}\, dm_{-10;0.25} + \int_{S_{1}(0)} p'(z)\overline{q'(z)}\, dm_{0;1}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_0.25c1_-10r2_1c2_0_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_0.25c1_-10r2_1c2_0-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_0.25c1_-10r2_1c2_0_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_0.25c1_-10r2_1c2_0-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_0.25c1_-10r2_1c2_0.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_0.25c1_-10r2_1c2_0-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=9.660 \times 10^{22}$
+			\item $\sigma_{2,70}=10.249$
+			\item $R = 10.25$
+			\item $\rho(\mathbf{D}_{70})=10.035$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=10.035$
+		\end{enumerate}
+		\label{fig:r1_0.25c1_-10r2_1c2_0-data}
+	\end{subfigure}
+	\label{fig:r1_0.25c1_-10r2_1c2_0-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 7.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + \int_{S_{0.25}(-10)} p'(z)\overline{q'(z)}\, dm_{-10;0.25}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_0.25c2_-10_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_1c1_0r2_0.25c2_-10-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_0.25c2_-10_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_1c1_0r2_0.25c2_-10-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0r2_0.25c2_-10.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_1c1_0r2_0.25c2_-10-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=1.409 \times 10^{23}$
+			\item $\sigma_{2,70}=10.298$
+			\item $R = 10.25$
+			\item $\rho(\mathbf{D}_{70})=11.641$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=14.981$
+		\end{enumerate}
+		\label{fig:r1_1c1_0r2_0.25c2_-10-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0r2_0.25c2_-10-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 8.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + p'(0.5+0.5i)\overline{q'(0.5+0.5i)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_(0.5)(0.5).png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{50}$.}
+		\label{fig:r1_1c1_0c2_0.5_0.5-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_(0.5)(0.5)_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{50}$.}
+		\label{fig:r1_1c1_0c2_0.5_0.5-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,50}=33.560$
+			\item $\sigma_{2,50}=1.457$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{50})=31.489$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{50}=31.489$
+		\end{enumerate}
+		\label{fig:r1_1c1_0c2_0.5_0.5-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0c2_0.5_0.5-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 9.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(-0.5-0.5i)} p(z)\overline{q(z)}\, dm_{-0.5-0.5i;1} + p'(0)\overline{q'(0)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5)(-0.5)c2_0_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_1c1_-0.5_-0.5c2_0-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5)(-0.5)c2_0_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_1c1_-0.5_-0.5c2_0-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5)(-0.5)c2_0.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_1c1_-0.5_-0.5c2_0-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=314.848$
+			\item $\sigma_{2,70}=54.035$
+			\item $R = 1.5$
+			\item $\rho(\mathbf{D}_{70})=270.137$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=270.137$
+		\end{enumerate}
+		\label{fig:r1_1c1_-0.5_-0.5c2_0-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_-0.5_-0.5c2_0-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 10.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + p'(0.5)\overline{q'(0.5)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_0.5.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{50}$.}
+		\label{fig:r1_1c1_0c2_0.5-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_0.5_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{50}$.}
+		\label{fig:r1_1c1_0c2_0.5-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,50}=1.542$
+			\item $\sigma_{2,50}=1.000$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{50})=0.533$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{50}=0.651$
+		\end{enumerate}
+		\label{fig:r1_1c1_0c2_0.5-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0c2_0.5-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 11.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(-0.5)} p(z)\overline{q(z)}\, dm_{-0.5;1} + p'(0)\overline{q'(0)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5)c2_0_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_1c1_-0.5c2_0-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5)c2_0_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_1c1_-0.5c2_0-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5)c2_0.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_1c1_-0.5c2_0-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=1.525$
+			\item $\sigma_{2,70}=1.500$
+			\item $R = 1.5$
+			\item $\rho(\mathbf{D}_{70})=1.017$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=1.031$
+		\end{enumerate}
+		\label{fig:r1_1c1_-0.5c2_0-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_-0.5c2_0-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 12.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + p'(0)\overline{q'(0)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_0.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{50}$.}
+		\label{fig:r1_1c1_0c2_0-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_0_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{50}$.}
+		\label{fig:r1_1c1_0c2_0-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,50}=1.414$
+			\item $\sigma_{2,50}=1.000$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{50})=0.000$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{50}=0.000$
+		\end{enumerate}
+		\label{fig:r1_1c1_0c2_0-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0c2_0-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 13.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + p'(0.5i)\overline{q'(0.5i)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_(0)(0.5).png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{50}$.}
+		\label{fig:r1_1c1_0c2_0_0.5i-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_(0)(0.5)_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{50}$.}
+		\label{fig:r1_1c1_0c2_0_0.5i-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,50}=6.325$
+			\item $\sigma_{2,50}=1.492$
+			\item $R = 1$
+			\item $\rho(\mathbf{D}_{50})=5.311$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{50}=5.311$
+		\end{enumerate}
+		\label{fig:r1_1c1_0c2_0_0.5i-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0c2_0_0.5i-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 14.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(-0.5i)} p(z)\overline{q(z)}\, dm_{-0.5i;1} + p'(0)\overline{q'(0)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5i)c2_0_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_1c1_-0.5ic2_0-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5i)c2_0_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_1c1_-0.5ic2_0-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_(-0.5i)c2_0.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_1c1_-0.5ic2_0-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=9690.600$
+			\item $\sigma_{2,70}=1647.790$
+			\item $R = 1.5$
+			\item $\rho(\mathbf{D}_{70})=9665.190$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=9665.190$
+		\end{enumerate}
+		\label{fig:r1_1c1_-0.5ic2_0-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_-0.5ic2_0-pack}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	%--- título y definición del producto --------------
+	\textbf{Ejemplo 15.}\;
+	$\displaystyle
+		\langle p(z),q(z) \rangle_{S}=\int_{S_{1}(0)} p(z)\overline{q(z)}\, dm_{0;1} + p'(10)\overline{q'(10)}$
+
+	\medskip           % separación visual
+	\captionsetup{type=figure} % lo que viene se numera como "Figura"
+
+	%--------------- FILA 1 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_10_zero.png}
+		\caption{Conjunto de ceros de $\varphi_{70}$.}
+		\label{fig:r1_1c1_0c2_10-zero}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_10_zeros.png}
+		\caption{Conjunto de ceros de $\varphi_{0},\dots,\varphi_{70}$.}
+		\label{fig:r1_1c1_0c2_10-zeros}
+	\end{subfigure}
+
+	\vspace{1em}       % salto entre filas (ajusta si deseas)
+
+	%--------------- FILA 2 ----------------------------
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\linewidth]{include/r1_1c1_0c2_10.png}
+		\caption{Secuencia de $\{\sigma_{1,n}$, $\sigma_{2,n}$, $\rho(\mathbf{D}_n)\}_{n=0}^{70}$.}
+		\label{fig:r1_1c1_0c2_10-curve}
+	\end{subfigure}\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{enumerate}
+			\item $\sigma_{1,70}=3.502\times10^{26}$
+			\item $\sigma_{2,70}=1.000$
+			\item $R = 10$
+			\item $\rho(\mathbf{D}_{70})=10.345$
+			\item $\max\{\rho(\mathbf{D}_{n})\}_{n=0}^{70}=14.975$
+		\end{enumerate}
+		\label{fig:r1_1c1_0c2_10-data}
+	\end{subfigure}
+	\label{fig:r1_1c1_0c2_10-pack}
+\end{minipage}
+
+\begin{sidewaystable}
+	\centering
+	\footnotesize
+	\caption{Resumen de ejemplos sobre la localización de ceros en el caso de circunferencias.}
+	\begin{tabular}{|c|cccc|cccc|cccc|}
+		\hline
+		\multirow{3}{*}{\textbf{Parámetros}}     & \multicolumn{4}{c|}{\textbf{SECUENCIALMENTE}} & \multicolumn{4}{c|}{\textbf{NO SECUENCIALMENTE}} & \multicolumn{4}{c|}{\textbf{ÁTOMO}}                                                                                                                                                                            \\
+		                                         & \multicolumn{4}{c|}{\textbf{DOMINADO}}        & \multicolumn{4}{c|}{\textbf{DOMINADO}}           & \multicolumn{4}{c|}{}                                                                                                                                                                                          \\
+		\cline{2-13}
+		                                         & $\sigma_{1,n}$                                & $\sigma_{2,n}$                                   & $\rho(\mathcal{D}_{n})$             & $\max Z$ & $\sigma_{1,n}$         & $\sigma_{2,n}$ & $\rho(\mathcal{D}_{n})$ & $\max Z$ & $\sigma_{1,n}$         & $\sigma_{2,n}$ & $\rho(\mathcal{D}_{n})$ & $\max Z$   \\
+		\hline
+		\textbf{Ej.1}: $S_{0}(1), S_{0.4}(0.4)$  & $1.516$                                       & $1.000$                                          & $0.667$                             & $0.672$  & -                      & -              & -                       & -        & -                      & -              & -                       & -          \\
+		\textbf{Ej.2}: $S_{0}(1), S_{0.5}(2)$    & $3.470$                                       & $2.968$                                          & $1.108$                             & $1.112$  & -                      & -              & -                       & -        & -                      & -              & -                       & -          \\
+		\textbf{Ej.3}: $S_{0}(1), S_{0.5}(10)$   & $15.248$                                      & $13.972$                                         & $1.068$                             & $1.185$  & -                      & -              & -                       & -        & -                      & -              & -                       & -          \\
+		\textbf{Ej.4}: $S_{0}(1), S_{1}(1)$      & -                                             & -                                                & -                                   & -        & $2.672$                & $2.672$        & $1.933$                 & $1.963$  & -                      & -              & -                       & -          \\
+		\textbf{Ej.5}: $S_{0}(1), S_{-10}(1)$    & -                                             & -                                                & -                                   & -        & $4.963 \times 10^{14}$ & $11.211$       & $12.424$                & $15.074$ & -                      & -              & -                       & -          \\
+		\textbf{Ej.6}: $S_{-10}(0.25), S_{0}(1)$ & -                                             & -                                                & -                                   & -        & $9.660 \times 10^{22}$ & $10.249$       & $10.035$                & $10.035$ & -                      & -              & -                       & -          \\
+		\textbf{Ej.7}: $S_{0}(1), S_{-10}(0.25)$ & -                                             & -                                                & -                                   & -        & $1.409 \times 10^{23}$ & $10.298$       & $11.641$                & $14.981$ & -                      & -              & -                       & -          \\
+		\textbf{Ej.8}: $S_{0}(1), c=0.5+0.5i$    & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $33.560$               & $1.457$        & $31.489$                & $31.489$   \\
+		\textbf{Ej.9}: $S_{-0.5-0.5i}(1), c=0$   & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $314.848$              & $54.035$       & $270.137$               & $270.137$  \\
+		\textbf{Ej.10}: $S_{0}(1), c=0.5$        & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $1.542$                & $1.000$        & $0.533$                 & $0.651$    \\
+		\textbf{Ej.11}: $S_{-0.5}(1), c=0$       & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $1.525$                & $1.500$        & $1.017$                 & $1.031$    \\
+		\textbf{Ej.12}: $S_{0}(1), c=0$          & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $1.414$                & $1.000$        & $0.000$                 & $0.000$    \\
+		\textbf{Ej.13}: $S_{0}(1), c=0.5i$       & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $6.325$                & $1.492$        & $5.311$                 & $5.311$    \\
+		\textbf{Ej.14}: $S_{-0.5i}(1), c=0$      & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $9690.600$             & $1647.790$     & $9665.190$              & $9665.190$ \\
+		\textbf{Ej.15}: $S_{0}(1), c=10$         & -                                             & -                                                & -                                   & -        & -                      & -              & -                       & -        & $3.502 \times 10^{26}$ & $1.000$        & $10.345$                & $14.975$   \\
+		\hline
+	\end{tabular}
+\end{sidewaystable}
+
+\newpage
+
+\section{Análisis y Conjeturas}
+
+El Cuadro 3.1, que resume los experimentos numéricos para el caso real, revela una variedad de comportamientos. Notablemente, en ejemplos como el primero, donde el producto de Sobolev puede considerarse secuencialmente dominado (es decir, el soporte de la integral que involucra las derivadas, $I_2=[c,d]$, está contenido en el soporte de la integral del término sin derivadas, $I_1=[a,b]$, y el cociente de los pesos $w_1(t)/w_0(t)$ está acotado en $I_1$), los valores singulares del operador de multiplicación truncado $\mathbf{D}_n$ y su radio espectral confirman la acotación del operador $\mathcal{D}$. La Proposición a continuación aborda formalmente esta situación, estableciendo una cota para la norma de $\mathcal{D}$ bajo dichas condiciones de dominación secuencial en el caso real continuo.
+
+\begin{proposition}\label{prop:bounded_operator_continuous}
+	Para el caso continuo real secuencialmente dominado con soportes $I_1=[a,b]$ y $I_2=[c,d]$ con $[c,d] \subset [a,b]$, definamos
+	\(
+	R = \max\{|a|,|b|,|c|,|d|\},
+	\qquad
+	\alpha = \max_{t\in[a,b]}\frac{w_1(t)}{w_0(t)}.
+	\)
+	Entonces el operador multiplicación $\mathcal{D}$
+	es acotado en el producto Sobolev y satisface
+	\(
+	\|\mathcal{D}\|\;\le\;\sqrt{2(R^{2}+\alpha)}\,.
+	\)
+\end{proposition}
+
+\begin{proof}
+	Sea $p(t)\in\mathbb{P}[t]$.
+	\noindent Utilizando que $(a+b)^2\leq 2(a^2+b^2)$ para $a,b\ge0$, se obtiene:
+	$$
+		\Vert \mathcal{D}(p(t))\Vert^{2}
+		= \int_{a}^{b} t^2 p^2(t) w_0(t)\,dt
+		\;+\;\int_{c}^{d} \Bigl[(tp(t))'\Bigr]^2 w_1(t)\,dt
+	$$
+	$$
+		= \int_{a}^{b} t^2 p^2(t) w_0(t)\,dt
+		+ \int_{c}^{d} \Bigl(p(t)+tp'(t)\Bigr)^2 w_1(t)\,dt
+		\;\le\;
+	$$
+	$$
+		\int_{a}^{b} t^2p^2(t)w_0(t)\; dt+2\Bigl(\int_{c}^{d} p(t)^2w_1(t)\; dt +\int_{c}^{d} t^2p'(t)^2w_1(t)\; dt\Bigr) \leq
+	$$
+	$$
+		R^{2} \Bigl(\int_{a}^{b} p^2(t)w_0(t)\; dt +  2\int_{c}^{d} p'(t)^2w_1(t)\; dt\Bigr)+ 2\int_{c}^{d} p(t)^2w_1(t)\; dt \leq
+	$$
+	$$
+		2R^{2} \Vert p(t)\Vert^{2} + 2\alpha \int_{c}^{d} p(t)^2w_0(t)\; dt \leq 2R^{2} \Vert p(t)\Vert^{2} + 2\alpha \int_{a}^{b} p(t)^2w_0(t)\; dt =
+	$$
+	$$
+		2(R^{2}+\alpha)\Vert p(t) \Vert^{2}
+	$$
+
+\end{proof}
+
+\noindent Aplicando la Proposición \ref{prop:bounded_operator_continuous} al \textbf{Ejemplo 1} del Caso Real: tenemos $I_1 = [-1,1]$ (con $w_0(t)=t^2$) y $I_2 = [-1,1]$ (con $w_1(t)=t^{10}$). Así, $R = \max\{|-1|,|1|\} = 1$. El cociente de pesos $w_1(t)/w_0(t) = t^8$ (para $t \neq 0$) implica $\alpha = 1$. Por lo tanto, la cota es $\|\mathcal{D}\| \le \sqrt{2(R^2 + \alpha)} = \sqrt{2(1^2 + 1)} = \sqrt{4} = 2$. Este resultado es consistente con el valor numérico $\sigma_{1,70} = 1.2760$ (Cuadro 2.1), ya que $1.2760 \le 2$.
+
+\noindent Para el \textbf{Ejemplo 2}, tenemos $I_1 = [-2,2]$ (con $w_0(t)=1$) y $I_2 = [-1,1]$ (con $w_1(t)=1$). Aquí, $R = \max\{|-2|,|2|,|-1|,|1|\} = 2$. Como $w_1(t)/w_0(t) = 1$ para $t \in [-1,1]$, tenemos $\alpha = 1$. Así, obtenemos $\|\mathcal{D}\| \le \sqrt{2(R^2 + \alpha)} = \sqrt{2(2^2 + 1)} = \sqrt{2(4 + 1)} = \sqrt{10} \approx 3.16$. Esto también es consistente con el valor experimental $\sigma_{1,70} = 1.999$, confirmando que la cota teórica es válida.
+
+\noindent Es interesante notar que el \textbf{Ejemplo 3}, aunque no es secuencialmente dominado (ya que $w_1(t)/w_0(t) = t^{-8}$ no está acotado en $[-1,1]$), presenta $\sigma_{1,70} = 2.2040$. Si bien la Proposición \ref{prop:bounded_operator_continuous} no aplica directamente, el valor experimental es cercano a la cota de 2 obtenida para el Ejemplo 1, lo que podría sugerir alguna relación subyacente o la necesidad de una cota más general.
+
+Para continuar el análisis, aplicaré el Teorema 2 de la Introducción a los \textit{Ejemplos 4-11}, explorando cómo la relación entre los soportes de las medidas afecta la acotación del operador y la distribución de ceros.
+
+Para los casos no secuencialmente dominados (\textit{Ejemplos 3-11}), podemos observar patrones interesantes. En el \textit{Ejemplo 3}, donde $I_1=[-1,1]$ (con $w_0(t)=t^{10}$) y $I_2=[-1,1]$ (con $w_1(t)=t^{2}$), aunque los soportes coinciden, el cociente $w_1(t)/w_0(t)=t^{-8}$ no está acotado cerca de $t=0$. Esto se refleja en $\sigma_{1,70} = 2.204$, mientras que $\rho(\mathbf{D}_{70}) = 1.000$, evidenciando un operador acotado pero no necesariamente por las razones del Teorema 2.
+
+Los \textit{Ejemplos 4 y 5} muestran casos donde $I_1=[0,10]$ e $I_2=[30,40]$ (y viceversa), con soportes disjuntos y relativamente distantes. Aquí observamos que $\sigma_{1,n}$ crece exponencialmente ($\approx 9.272\times10^{16}$), sugiriendo un operador no acotado, mientras que $\rho(\mathbf{D}_n)$ permanece acotado (42.930 y 39.991 respectivamente). Es importante destacar que, aunque $\sigma_{1,n}$ sugiere un operador no acotado en estos casos, $\sigma_{2,n}$ parece converger al máximo absoluto de los extremos de los soportes, $R = \max\{|a|,|b|,|c|,|d|\}$. Por ejemplo, en los Ejemplos 4 y 5, $R=40$, y los valores de $\sigma_{2,70}$ son $39.998$ y $39.991$ respectivamente (según el Cuadro 2.1). Esta tendencia de $\sigma_{2,n}$ a aproximarse a $R$ se mantiene en los siguientes ejemplos de este grupo (Ejemplos 6-11). Notablemente, cuando el soporte de la medida sin derivada está a la derecha del soporte con derivada (Ejemplo 5), los ceros tienden a permanecer dentro del soporte de mayor magnitud, con $\rho(\mathbf{D}_{70}) = 39.991$.
+
+Los \textit{Ejemplos 6 y 7} con $I_1=[0,10]$ e $I_2=[30,50]$ (y viceversa) confirman esta tendencia. Cuando la segunda medida tiene un soporte más amplio (Ejemplo 6), los ceros se extienden más allá del soporte máximo ($\rho(\mathbf{D}_{70}) = 59.814 > 50$), mientras que en el Ejemplo 7, con la configuración inversa, los ceros permanecen confinados ($\rho(\mathbf{D}_{70}) = 49.987 \approx 50$).
+
+Los \textit{Ejemplos 8-11} con diferentes configuraciones de soportes $[0,20]$ y $[30,40]$ (y viceversa), así como $[-15,-5]$ y $[5,16]$ (o $[5,14]$), refuerzan esta observación: cuando la medida sin derivada ($I_1$) tiene el soporte de mayor magnitud, los ceros tienden a permanecer dentro de ese soporte (es decir, $\rho(\mathbf{D}_{70}) \approx R$). Por el contrario, cuando la medida con derivada ($I_2$) tiene el soporte más extremo, los ceros pueden exceder significativamente $R$. En estos casos, la localización de los ceros más externos, $\rho(\mathbf{D}_n)$, puede describirse como $R + k$, donde el factor $k$ (positivo en este contexto) depende de la geometría relativa de los soportes $I_1$ e $I_2$, incluyendo su separación, tamaños relativos y cuál de ellos corresponde a la medida con derivada.
+
+A partir de los \textit{Ejemplos 4-11}, donde los soportes $I_1=[a,b]$ y $I_2=[c,d]$ varían en posición y tamaño, se observan las siguientes tendencias:
+\begin{itemize}
+	\item \textbf{Operador $\mathcal{D}$ (Norma $\sigma_{1,n}$):} En casos con soportes disjuntos y $I_2$ significativamente alejado o más extenso que $I_1$ (e.g., Ej. 4, 6, 10), $\sigma_{1,n}$ tiende a valores muy grandes, sugiriendo que $\mathcal{D}$ es no acotado.
+	\item \textbf{Segundo Valor Singular ($\sigma_{2,n}$):} Consistentemente, $\sigma_{2,n}$ se aproxima a $R = \max\{|a|,|b|,|c|,|d|\}$, el extremo de mayor módulo entre todos los límites de los soportes.
+	\item \textbf{Radio Espectral ($\rho(\mathbf{D}_n)$):} Aunque $\sigma_{1,n}$ pueda divergir, $\rho(\mathbf{D}_n)$ permanece acotado, influenciado por $R$ y la posición relativa de los soportes.
+	      \begin{itemize}
+		      \item Si el soporte de la medida sin derivada, $I_1$, contiene el extremo de mayor módulo (e.g., Ej. 5, 7, 9), $\rho(\mathbf{D}_n)$ tienden a converger a $R$.
+		      \item Si el soporte de la medida con derivada, $I_2$, contiene el extremo de mayor módulo (e.g., Ej. 4, 6, 8, 10, 11), $\rho(\mathbf{D}_n)$ pueden superar $R$. En estos casos, $\rho(\mathbf{D}_n)$ puede describirse como $R + k$, donde $k \ge 0$ es un factor que depende de:
+		            \begin{itemize}
+			            \item La separación entre $I_1$ e $I_2$.
+			            \item Los tamaños relativos de $I_1$ e $I_2$.
+			            \item Cuál de los soportes ($I_1$ o $I_2$) es el más externo. El factor $k$ tiende a ser mayor cuando $I_2$ es el soporte más externo y de mayor magnitud.
+		            \end{itemize}
+	      \end{itemize}
+\end{itemize}
+
+La Proposición \ref{prop:bounded_operator_continuous} nos dio una perspectiva sobre la acotación de $\mathcal{D}$ en ciertos casos continuos. Ahora, dirigimos nuestra atención a los productos internos que, además de la integral usual, incorporan un término atómico para la derivada, como se observa en los Ejemplos 11-14 (Cuadro 3.1). Estos productos, de la forma $\langle p(t),q(t) \rangle_S = \int_{a}^{b} p(t) q(t) \, dt + p'(c)q'(c)$, son particularmente interesantes. Aunque la adición de este átomo a menudo implica que el operador $\mathcal{D}$ no sea acotado (como sugiere $\sigma_{1,n}$ en dichos ejemplos), los ceros de los polinomios ortogonales resultantes parecen mantenerse acotados. Esta aparente acotación de los ceros es lo que exploraremos seguidamente.
+
+A continuación, se analiza el comportamiento en los \textit{Ejemplos 12-15} del Cuadro 3.1, que corresponden a productos internos con una medida atómica para la derivada, de la forma $\langle p(t),q(t) \rangle_S = \int_{a}^{b} p(t) q(t) \, dt + p'(c)q'(c)$. Estos casos no son secuencialmente dominados en el sentido de la Proposición \ref{prop:bounded_operator_continuous}. Una observación clave es que $\sigma_{1,n}$ (la norma de $\mathbf{D}_n$) tiende a ser extremadamente grande o infinita (ver Ej. 13: $\sigma_{1,70} = 7.4 \times 10^{36}$ y Ej. 15: $\sigma_{1,70} = 1.4 \times 10^{50}$), lo que sugiere que el operador $\mathcal{D}$ es generalmente no acotado en presencia del término atómico.
+
+A pesar de esta aparente no acotación de $\mathcal{D}$, $\rho(\mathbf{D}_{70})$ se mantienen acotados. El comportamiento de los ceros y del radio espectral $\rho(\mathcal{D}_n)$ depende de la posición del átomo $c$ respecto al intervalo de integración $[a,b]$:
+\begin{itemize}
+	\item Si $c \in [a,b]$ (como en el Ej. 12, con $c=0 \in [-1,1]$, y el Ej. 14, con $c=0 \in [0,1]$), $\rho(\mathcal{D}_n)$ converge al radio del soporte de la integral, $R_0 = \max\{|a|,|b|\}$. En ambos ejemplos, este valor es $1$ (observado como $0.999$).
+	\item Si $c \notin [a,b]$ (como en el Ej. 13, con $c=2 \notin [-1,1]$, y el Ej. 15, con $c=2 \notin [0,1]$), $\rho(\mathcal{D}_n)$ es fuertemente influenciado por la posición del átomo. Específicamente, $\rho(\mathcal{D}_n)$ se aproxima a $|c|=R$ (e.g., $2.025 \approx |2|$ en Ej. 13 y $2.021 \approx |2|$ en Ej. 15), y el cero máximo de $\varphi_n$ también se localiza en la vecindad de $c$, pudiendo incluso superarlo (e.g., $2.933$ en Ej. 13 y $3.299$ en Ej. 15).
+\end{itemize}
+De manera crucial, en los cuatro ejemplos atómicos (12-15), el segundo mayor valor singular, $\sigma_{2,70}$, converge consistentemente a $R_0 = \max\{|a|,|b|\}$ (que es $1$ en estos casos, observado como $0.999$), y en algunos ejemplos coincide con $R$ (cuando $c=0$). Esto indica que $\sigma_{2,n}$ puede servir como un estimador robusto del radio efectivo del soporte de la parte integral del producto de Sobolev, incluso cuando el término atómico induce la no acotación del operador de multiplicación $\mathcal{D}$.
+
+En resumen, la influencia del átomo en $c$ sobre los ceros en los casos reales analizados es la siguiente:
+\begin{itemize}
+	\item Si el átomo $c$ se encuentra \textbf{dentro} del intervalo de integración $[a,b]$ (e.g., Ej. 12, 14):
+	      \begin{itemize}
+		      \item El radio espectral $\rho(\mathbf{D}_n)$ convergen a $R_0 = \max\{|a|,|b|\} = R$, que es el radio del soporte de la integral.
+		      \item El segundo valor singular $\sigma_{2,n}$ también converge a $R_0$, sirviendo como un estimador de esta cota para los ceros.
+	      \end{itemize}
+	\item Si el átomo $c$ se encuentra \textbf{fuera} del intervalo de integración $[a,b]$ (e.g., Ej. 13, 15):
+	      \begin{itemize}
+		      \item El radio espectral $\rho(\mathbf{D}_n)$ se aproxima a $|c|=R$.
+		      \item Los ceros máximos de $\varphi_n$ son fuertemente atraídos por la posición del átomo, localizándose en la vecindad de $c$ y pudiendo tener módulo mayor que $R$ (y que $R_0$). La cota efectiva para los ceros parece depender de $R$ y su distancia al intervalo $[a,b]$.
+		      \item Aunque el operador $\mathcal{D}$ es generalmente no acotado (evidenciado por $\sigma_{1,n}$ grande), $\sigma_{2,n}$ sigue convergiendo a $R_0$.
+	      \end{itemize}
+\end{itemize}
+
+Pasando ahora al \textbf{Caso Circunferencia}, resumido en el Cuadro 3.2, se investiga cómo las observaciones del caso real se trasladan al plano complejo. En este escenario, las medidas de Sobolev se definen sobre circunferencias, y los términos atómicos, si existen, son puntos en $\mathbb{C}$. El análisis se centra en la acotación del operador de multiplicación $\mathcal{D}$ y la localización de los ceros, interpretando los resultados experimentales a la luz de las siguientes conclusiones sobre la acotación de $\mathcal{D}$.
+
+\noindent \textbf{CASO CONTINUO DOS CIRCUNFERENCIAS}: Se consideran productos internos donde ambas medidas son integrales sobre circunferencias, de la forma $\langle p(z),q(z) \rangle=\int_{S_{r_b}(b)} p(z)\overline{q(z)}\, dm_{b;r_b} + \int_{S_{r_a}(a)} p'(z)\overline{q'(z)}\, dm_{a;r_a}$.
+
+\begin{enumerate}
+	\item \textbf{Cuando la segunda circunferencia $S_{r_a}(a)$ (y su interior $\mathbb{D}_{r_a}(a)$) está contenida en el primer disco abierto $\mathbb{D}_{r_b}(b)$}: Esta situación corresponde a un caso secuencialmente dominado, y por tanto, el operador $\mathcal{D}$ está acotado.
+	      \begin{itemize}
+		      \item El \textit{Ejemplo 1} del Cuadro 3.2 ($S_{1}(0)$ y $S_{0.4}(0.4)$) satisface esta condición, ya que $|0.4-0|+0.4 = 0.8 < 1$. Consistentemente, $\sigma_{1,n} \approx 1.516$ es finito, indicando acotación.
+	      \end{itemize}
+	\item \textbf{Cuando el centro de la segunda circunferencia $a$ está contenido en el primer disco abierto $\mathbb{D}_{r_b}(b)$ (aunque $S_{r_a}(a)$ no esté contenido en dicho disco)}: En este caso, se ha demostrado que $\mathcal{D}$ está acotado \cite{escribano2025zeros}. Este caso no es necesariamente secuencialmente dominado ni matricialmente secuencialmente dominado en el sentido clásico.
+	      \begin{itemize}
+		      \item El \textit{Ejemplo 2} ($S_{1}(0)$ y $S_{2}(0.5)$): $a=0.5 \in \mathbb{D}_1(0)$. Se observa $\sigma_{1,25} = 3.470$.
+		      \item El \textit{Ejemplo 3} ($S_{1}(0)$ y $S_{10}(0.5)$): $a=0.5 \in \mathbb{D}_1(0)$. Se observa $\sigma_{1,25} = 15.248$.
+
+		            Ambos ejemplos muestran convergencia para $\sigma_{1,n}$, apoyando la acotación de $\mathcal{D}$.
+	      \end{itemize}
+	\item \textbf{Cuando el centro de la segunda circunferencia $a$ no está contenido en el primer disco abierto $D_{r_b}(b)$}: Este es un caso no secuencialmente dominado, y el comportamiento de $\mathcal{D}$ no se conoce teóricamente de forma general.
+	      \begin{itemize}
+		      \item El \textit{Ejemplo 5} ($S_{1}(0)$ y $S_{1}(-10)$): $a=-10 \notin \mathbb{D}_1(0)$. $\sigma_{1,70} = 4.963 \times 10^{14}$.
+		      \item El \textit{Ejemplo 6} ($S_{0.25}(-10)$ y $S_{1}(0)$): $b=-10, r_b=0.25$, $a=0$. $a=0 \notin \mathbb{D}_{0.25}(-10)$. $\sigma_{1,70} = 9.660 \times 10^{22}$.
+		      \item El \textit{Ejemplo 7} ($S_{1}(0)$ y $S_{0.25}(-10)$): $a=-10 \notin \mathbb{D}_1(0)$. $\sigma_{1,70} = 1.409 \times 10^{23}$.
+		            En estos ejemplos, los valores extremadamente grandes de $\sigma_{1,n}$ sugieren que $\mathcal{D}$ es no acotado.
+		      \item El \textit{Ejemplo 4} ($S_{1}(0)$ y $S_{1}(1)$): $a=1$, que está en el borde de $\mathbb{D}_1(0)$ (no en el disco abierto). $\sigma_{1,70} = 2.672$. A pesar de no poder asegurar acotación, parece que los ceros si lo están.
+	      \end{itemize}
+\end{enumerate}
+
+\noindent \textbf{CASO DE CIRCUNFERENCIA Y ÁTOMO}: Se analizan productos de la forma $\langle p(z),q(z) \rangle=\int_{S_{r_b}(b)} p(z)\overline{q(z)}\, dm_{b;r_b} + p'(c)\overline{q'(c)}$.
+\begin{enumerate}
+	\item \textbf{Cuando el átomo $c$ está dentro del disco abierto $D_{r_b}(b)$}:
+	      \begin{enumerate}
+		      \item El operador $\mathcal{D}$ está acotado. Este es un caso secuencialmente dominado \ref{cor:bounded_zeros_circle}.
+		            \begin{itemize}
+			            \item \textit{Ejemplo 10} ($S_1(0), c=0.5$): $0.5 \in \mathbb{D}_1(0)$. $\sigma_{1,50} = 1.542$.
+			            \item \textit{Ejemplo 12} ($S_1(0), c=0$): $0 \in \mathbb{D}_1(0)$. $\sigma_{1,50} = 1.414$.
+			            \item \textit{Ejemplo 13} ($S_1(0), c=0.5i$): $0.5i \in \mathbb{D}_1(0)$. $\sigma_{1,50} = 6.325$.
+			            \item \textit{Ejemplo 11} ($S_1(-0.5), c=0$): $0 \in \mathbb{D}_1(-0.5)$. $\sigma_{1,70} = 1.525$.
+			            \item \textit{Ejemplo 8} ($S_1(0), c=0.5+0.5i$): $c \in \mathbb{D}_1(0)$ ya que $|0.5+0.5i| \approx 0.707 < 1$. $\sigma_{1,50} = 33.560$.
+			            \item \textit{Ejemplo 9} ($S_1(-0.5-0.5i), c=0$): $c \in \mathbb{D}_1(-0.5-0.5i)$ ya que $|0-(-0.5-0.5i)| \approx 0.707 < 1$. $\sigma_{1,70} = 314.848$.
+			            \item \textit{Ejemplo 14} ($S_1(-0.5i), c=0$): $c \in \mathbb{D}_1(-0.5i)$ ya que $|0-(-0.5i)| = 0.5 < 1$. $\sigma_{1,70} = 9690.60$.
+
+			                  En todos estos casos, $\sigma_{1,n}$ es finito, lo que es consistente con la acotación teórica de $\mathcal{D}$, aunque el límite de la magnitud de la cota puede variar considerablemente.
+		            \end{itemize}
+	      \end{enumerate}
+	\item \textbf{Cuando el átomo $c$ está fuera del disco abierto $\mathbb{D}_{r_b}(b)$}: El comportamiento de $\mathcal{D}$ no se conoce teóricamente de forma general, pero la experimentación numérica sugiere que podría ser no acotado.
+	      \begin{itemize}
+		      \item \textit{Ejemplo 15} ($S_1(0), c=10$): $c=10 \notin \mathbb{D}_1(0)$. $\sigma_{1,70} = 3.502 \times 10^{26}$, un valor muy grande que sugiere la no acotación de $\mathcal{D}$.
+	      \end{itemize}
+\end{enumerate}
+
+Analizando globalmente los resultados obtenidos en ambos casos (real y circunferencia), podemos observar patrones significativos respecto a la acotación del operador multiplicación y la localización de los ceros. A pesar de la diversidad de configuraciones estudiadas, destaca una característica sorprendente: incluso cuando el operador $\mathcal{D}$ no es acotado (como sugieren los valores extremadamente grandes de $\sigma_{1,n}$), los ceros de los polinomios ortogonales correspondientes parecen permanecer acotados en todos los casos. Además, existe una aparente correlación entre el segundo valor singular $\sigma_{2,n}$ y el máximo de los extremos de los soportes $R$. Esta evidencia numérica nos lleva a formular una conjetura fundamental sobre el comportamiento asintótico del radio espectral de las matrices truncadas $\mathbf{D}_n$, que tiene importantes implicaciones para la teoría de polinomios ortogonales de Sobolev.
+
+\paragraph{Observación Empírica sobre el radio espectral}
+Una observación fundamental, verificada en la totalidad de los ejemplos numéricos presentados en los Cuadros 3.1 y 3.2, es que el radio espectral de las matrices de multiplicación truncadas $\mathbf{D}_n$ permanece acotado incluso cuando el operador $\mathcal{D}$ no es acotado (como indican los valores extremadamente grandes de $\sigma_{1,n}$). Esta acotación del radio espectral se manifiesta de diferentes maneras según la configuración de los soportes:
+$$
+	\lim_{n \to \infty} \rho(\mathbf{D}_n) < \infty.
+$$
+Específicamente, cuando la medida sin derivada $I_1$ contiene el soporte de mayor magnitud, $\rho(\mathbf{D}_n)$ tiende a converger aproximadamente a $R = \max\{|a|,|b|,|c|,|d|\}$. Cuando la medida con derivada $I_2$ contiene el soporte de mayor magnitud, $\rho(\mathbf{D}_n)$ puede exceder $R$, aproximándose a $R + k$ donde $k \geq 0$ depende de la separación entre soportes y sus tamaños relativos.
+
+\begin{conjetura}
+	\label{conj:rho_Dn_bounded}
+	El análisis numérico exhaustivo de los diversos ejemplos de productos internos de Sobolev presentados (Cuadros 3.1 y 3.2), abarcando las configuraciones previamente categorizadas como (1.3)-(1.6), sugiere de manera consistente que el radio espectral de las secciones truncadas del operador de multiplicación, $\mathbf{D}_n$, converge a un límite finito:
+	$$
+		\lim_{n \to \infty} \rho(\mathbf{D}_n) < \infty.
+	$$
+	Esta propiedad parece mantenerse incluso en escenarios donde el operador $\mathcal{D}$ no es acotado. De hecho, los ejemplos sugieren que el radio espectral $\rho(\mathbf{D}_n)$ tiende a converger $R + k$ con $k \in \mathbb{R}$ dependiente de las posiciones y tamaños relativos de los soportes y si se alcanza en el soporte de la derivada o no.
+\end{conjetura}
+
+\paragraph{Observación Empírica sobre el Segundo Valor Singular}: Una observación fundamental, verificada en la totalidad de los ejemplos numéricos presentados en los Cuadros 3.1 y 3.2 (representativos de las categorías de productos de Sobolev (1.3)-(1.6)), es la convergencia del segundo mayor valor singular de la matriz de multiplicación truncada $\mathbf{D}_n$, en los casos reales con soportes compactos, converge a $R$, en casos reales con átomo, converge a $R_0$:
+$$
+	\lim_{n \to \infty} \sigma_{2,n} < \infty.
+$$
+Esta convergencia se manifiesta consistentemente en todos los casos estudiados.
+
+\begin{conjetura}
+	\label{conj:sigma2_Dn_bounded_if_sigma1_unbounded}
+	Basándose en la observación anterior, y con especial énfasis en aquellos casos donde el operador de multiplicación $\mathcal{D}$ es no acotado (lo cual se infiere de $\lim_{n \to \infty} \sigma_{1,n} = \infty$), se postula la siguiente conjetura:
+	$$
+		\text{Si } \lim_{n \to \infty} \sigma_{1,n} = \infty, \quad \text{entonces} \quad \lim_{n \to \infty} \sigma_{2,n} < \infty.
+	$$
+\end{conjetura}
+
+\noindent En esta dirección hemos obtenido unos resultados que apoyan esta conjetura \cite{singularValuesOfHessenbergMatrices}.
+
+\noindent {\bf Teorema de entrelazamiento de Cauchy} \cite{Bhatia1997} Sea  $A$ una matriz de orden  $n$ y sea  $B$ una submatriz principal de  $A$ de  orden  $n-1$. Si $\lambda_n\leq \dots \leq \lambda_2\leq \lambda_1$ son los autovalores de $A$ y  $\mu_{n-1}\leq \dots \leq \mu_2\leq \mu_1$ son los autovalores de $B$, entonces
+$$
+	\lambda_n \leq \mu_{n-1} \leq \dots \leq \mu_2 \leq \lambda_1.
+$$
+
+
+\begin{proposition} Sea $\mathbf{M}$ una matriz infinita  hermitiana semidefinida positiva. Sean
+
+	$$
+		0 \leq \lambda_{n,n}\leq \dots \lambda_{2,n} \leq \lambda_{1,n}.
+	$$
+	\noindent los autovalores de la matriz $\mathbf{M}_n$. Entonces La sucesión $\{ \sigma_{2,n}\}_{n=1}^{\infty}$ es una sucesión creciente, es decir,
+	$$
+		\lambda_{2,n+1} \leq \lambda_{2,n} \qquad \forall n\in \mathbb{N}.
+	$$
+	\noindent por lo que existe $\displaystyle{\lim_{n\to \infty} \lambda_{2,n}}$ pudiendo ser finito o infinito.
+\end{proposition}
+
+
+\begin{proof} Utilizando el teorema de entrelazamiento se tiene que:
+
+	$$
+		0 \leq \lambda_{n+1,n+1} \leq \lambda_{n,n} \lambda_{n,n+1} \leq \dots \lambda_{2,n}  \leq \lambda_{2,n+1} \leq \lambda_{1,n} \leq \lambda_{1,n+1}
+	$$
+
+	\noindent En particular,
+	$$
+		\lambda_{2,n+1} \leq \lambda_{2,n} \qquad \forall n\in \mathbb{N}.
+	$$
+\end{proof}
+
+\noindent
+
+\begin{lemma} Sea $\mathbf{D}$ una matriz infinita de Hessenberg superior y $\mathbf{D}_n$ las secciones de orden $n$. Entonces se tiene que
+
+	$$
+		(\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1})_{n} = \mathbf{D}_n^{*}\mathbf{D}_n +\begin{pmatrix}
+			0 & \dots  & 0 & 0           \\
+			  & \ddots &   & \vdots      \\
+			  & \dots  &   & 0           \\
+			0 & \dots  & 0 & d_{n+1,n}^2
+		\end{pmatrix}
+	$$
+\end{lemma}
+
+\begin{proof} Expresando el producto $(\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1})$ adecuadamente y multiplicando por cajas, obtenemos el resultado:
+	\[ (\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1}) =
+		\left (   \mbox{
+			\begin{tabular}{ccc|c}
+				              & $$                   &               & $0$             \\
+				$$            & $\mathbf{D}_{n}^{*}$ &               & $\vdots$        \\
+				              &                      &               & $d_{n+1,n}^*$   \\  \hline
+
+				$d_{1,n+1}^*$ & $\ldots$             & $d_{n,n+1}^*$ & $d_{n+1,n+1}^*$ \\
+			\end{tabular}
+		} \right ) \left (   \mbox{
+			\begin{tabular}{ccc|c}
+				    & $$               &             & $d_{1,n+1}$   \\
+				$$  & $\mathbf{D}_{n}$ &             & $\vdots$      \\
+				    &                  &             & $d_{n,n+1}$   \\  \hline
+
+				$0$ & $\ldots$         & $d_{n+1,n}$ & $d_{n+1,n+1}$ \\
+			\end{tabular}
+		} \right )
+	\]
+
+	\[
+		\left (   \mbox{
+			\begin{tabular}{ccc|c}
+				   & $$                                                &    &       \\
+				$$ & $\mathbf{D}_{n}^{*}\mathbf{D}_{n}+\begin{pmatrix}
+						                                       0 & \ldots & 0 & 0           \\
+						                                         & \ddots &   & \vdots      \\
+						                                         & \dots  &   & 0           \\
+						                                       0 & \dots  & 0 & d_{n+1,n}^2
+					                                       \end{pmatrix}$ &    & $X$ \\
+				   &                                                   &    & $$    \\  \hline
+
+				$$ & $Y$                                               & $$ & $Z$   \\
+			\end{tabular}
+		} \right )
+	\]
+\end{proof}
+
+\begin{proposition} Sea $\mathbf{D}$ una matriz infinita de Hessenberg, y $\mathbf{D}_n$ las secciones de orden $n$ entonces si $$
+		0 \leq \sigma_{n,n}\leq \dots \sigma_{2,n} \leq \sigma_{1,n}.
+	$$
+
+	\noindent los valores singulares de la matriz $\mathbf{D}_n$ se tiene que
+	la sucesión $\{\sigma_{2,n}\}_{n=1}^{\infty}$ es creciente y existe
+	$$
+		\lim_{n\to \infty} \sigma_{2,n} \leq \infty
+	$$
+
+
+\end{proposition}
+
+\begin{proof}
+	Sean $\lambda_{2,n}$ los segundos autovalores de una   matriz hermitiana de orden n. Denotamos por $H_n$  la siguiente matriz de orden $n$:
+	\[
+		H_n=\begin{pmatrix}
+			0 & \ldots & 0 & 0           \\
+			  & \ddots &   & \vdots      \\
+			  & \dots  &   & 0           \\
+			0 & \dots  & 0 & d_{n+1,n}^2
+		\end{pmatrix}
+	\]
+	Teniendo en cuenta que $H_n$ es hermitiana semidefinida positiva y utilizando las propiedades de monotonía de Weyl (\cite{Bhatia1997}):
+	\[
+		\lambda_{2,n} (\mathbf{D}_n^{*}\mathbf{D}_n) \leq  \lambda_{2,n}(\mathbf{D}_n^{*}\mathbf{D}_n +H_n)=\lambda_{2,n}(
+		\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1})_{n}   \]
+	Ahora por las propiedades de entrelazamiento
+	\[
+		\lambda_{2,n}(
+		\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1})_{n} \leq \lambda_{2,n+1}(
+		\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1}), \]
+	de donde
+	\[
+		\lambda_{2,n}(\mathbf{D}_n^{*}\mathbf{D}_n) \leq \lambda_{2,n+1}(
+		\mathbf{D}_{n+1}^{*}\mathbf{D}_{n+1}). \] Por tanto $\sigma_{2,n}\leq\sigma_{2,n+1}$  y se verifica el resultado.
+\end{proof}
+
+\paragraph{Observación Empírica sobre la traslación de los soportes}: Se ha observado que cuando los soportes están en la recta real y se trasladan a lo largo del eje real, los ceros también se trasladan de igual manera. Sin embargo, si la traslación de los soportes tiene una componente imaginaria, se observan comportamientos anómalos en la localización de los ceros.
+
+\begin{conjetura}
+	Basándonos en la observación del comportamiento de los ceros de Sobolev cuando trasladamos los soportes de ambas medidas mediante una traslación en el eje real, se postula la siguiente conjetura:
+	\label{conj:zeros_sobolev_translation}
+	Los ceros de los polinomios ortogonales de Sobolev asociados a las nuevas medidas trasladadas, se trasladan mediante la misma traslación.
+\end{conjetura}
+
+Estas observaciones indican que la geometría de los soportes en el plano complejo (posición relativa de circunferencias y átomos) es determinante para las propiedades del operador de multiplicación y la distribución de los ceros. Las transformaciones de semejanza, que se discuten a continuación, ofrecen herramientas para comprender cómo los cambios de escala y las translaciones afectan estas propiedades.
+
+El siguiente resultado refleja la situación de traslación de ceros en el caso estándar de polinomios ortogonales asociados a una medida.
+
+\begin{proposition}
+	\cite{Escribano2012} Sea $\mu $ una medida con soporte en el plano complejo $\mathbb{C} $ y  $f(z)=\alpha z+\beta $ una semejanza con $\alpha > 0
+		%=|\alpha | e^{i \theta}
+	$   y sea $\mathbf{D}$ la matriz del operador  multiplicación por $z$ respecto de la SPON definida por $\mu $. Entonces, si consideramos la medida imagen de $\mu $ por $f$, $\mu_{f}=\mu \circ f^{-1}$, obtenemos un nuevo producto interior y una secuencia de polinomios ortonormales, tal que la matriz $D^{f}$ del operador multiplicación por $z$ tiene como sección de orden $n$ la matriz
+	\[
+		D^{f}_{n} = \alpha\;  D_{n} + \beta I_{n}.
+	\]
+
+\end{proposition}
+De este resultado podemos deducir el comportamiento de los ceros de los polinomios si transformamos el soporte mediante una semejanza, puesto que  los ceros de los polinomios mónicos  son  autovalores de las secciones $\mathbf{D}_n$.
+\begin{corollary}
+	En las condiciones de  proposición anterior,
+	denotamos por $\{P_{k}(z)\}_{0}^{\infty}$ y $\{P_{k}^{f}(z)\}_{0}^{\infty}$, las secuencias de polinomios mónicos asociados respectivamente a $\mu$ y a $\mu_f$, entonces
+	\[
+		P_{n}^{f}(z)=\alpha^n P_{n}(\frac{z-\beta}{\alpha}).
+	\]
+\end{corollary}
+
+\begin{proof}
+	\[
+		P_{n}^{f}(z)= \vert z \mathbf{I}_{n}-\mathbf{D}^f_{n} \vert =\vert z \mathbf{I}_{n}-(\alpha \mathbf{D}_{n} + \beta I_{n})\vert =
+		\vert( z-\beta)\mathbf{I}_{n}-\alpha \mathbf{D}_{n} \vert=
+	\]
+	\[
+		\vert(\alpha\frac{z-\beta}{\alpha} )\mathbf{I}_{n}-\alpha \mathbf{D}_{n} \vert=\vert\alpha(\frac{z-\beta}{\alpha} \mathbf{I}_{n}-\mathbf{D}_{n}) \vert=
+		\alpha^n P_{n}(\frac{z-\beta}{\alpha}).
+	\]
+\end{proof}
+Por lo que  $z_0$ es un cero de $P_{k}^{f}(z)\Leftrightarrow P_{n}^{f}(z_0)=0 \Leftrightarrow P_{n}(\frac{z_0-\beta}{\alpha})=0\Leftrightarrow \omega_0=\frac{z_0-\beta}{\alpha}$ es un cero de $P_{n}(z)$, esto es, $\alpha \omega_0+\beta=z_0$.
+
+En el contexto de los productos internos de Sobolev, la aplicabilidad directa de este corolario sobre la transformación de los ceros no es, en general, válida según visto en los ejemplos. Se puede observar cómo al hacer traslaciones con un vector con componentes complejas, se obtiene un comportamiento diferente al del corolario. Habría que investigar si es un error de cálculo o si es un resultado que no se puede aplicar directamente a los productos internos de Sobolev.
