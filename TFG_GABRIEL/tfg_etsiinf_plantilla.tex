@@ -1,0 +1,158 @@
+%%***********************************************
+%% Plantilla para TFG.
+%% Escuela Técnica Superior de Ingenieros Informáticos. UPM.
+%%***********************************************
+\documentclass[a4paper,11pt]{book}
+
+%%-----------------------------------------------
+%% Importar Preámbulo:
+\input{include/preambulo}
+
+%% -----------------------------------------------
+%% Cargar datos relativos al TFG:
+%% (actualizar estos datos en ./datos_tfg.tex)
+\input{datos_tfg}
+
+%% -----------------------------------------------
+%% Importación de otros paquetes de LaTeX a usar en el desarrollo del TFG:
+%% (veanse algunos ejemplos como listings (para incluir código), todonotes (para poner anotaciones al margen con cosas por hacer), etc.
+%%-----------------------------------------------
+\usepackage{color}
+
+\usepackage{listings}
+
+\usepackage{rotating}
+
+\usepackage{multirow}
+
+\usepackage{subcaption} 
+  % subfiguras
+\usepackage{caption}
+
+%% Definiciones de entornos para teoremas, lemas, etc.
+\usepackage{amsthm}
+
+% Crear un estilo personalizado con más espacio
+\newtheoremstyle{espaciado}
+{1em}   % Espacio por encima
+{1em}   % Espacio por debajo
+{\itshape}  % Fuente del cuerpo en itálica
+{}      % Sangría
+{\bfseries} % Fuente del encabezado
+{.}     % Puntuación después del encabezado
+{.5em}  % Espacio después del encabezado
+{}      % Especificación del encabezado (vacío significa normal)
+
+% Aplicar el estilo personalizado
+\theoremstyle{espaciado}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{Proposición}
+\newtheorem{lemma}{Lema}
+\newtheorem{corollary}{Corolario}
+\newtheorem{definition}{Definición}
+\newtheorem{conjetura}{Conjetura}
+
+\definecolor{commentcolor}{rgb}{.804,0,0}
+\definecolor{keywordcolor}{rgb}{.608,.19,1}
+\definecolor{stringcolor}{rgb}{0,.545,0}
+\lstdefinestyle{color}{
+  identifierstyle=\itshape,
+  commentstyle=\itshape\color{commentcolor},
+  keywordstyle=\bfseries\color{keywordcolor},
+  stringstyle=\color{stringcolor},
+  emphstyle=\bfseries
+}
+
+\lstdefinestyle{nocolor}{
+  identifierstyle=\itshape,
+  commentstyle=\itshape,
+  keywordstyle=\bfseries,
+  stringstyle=,
+  emphstyle=\itshape
+}
+
+\lstset{
+  basicstyle=\ttfamily,
+  style=color,
+  extendedchars=true,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {ñ}{~n}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1
+  {¿}{{?`}}1 {¡}{{!`}}1 {‘}{`}1 {’}{'}1
+  {·}{.}1
+}
+
+\usepackage[textwidth=2.5cm, textsize=smaller]{todonotes}
+\setlength{\marginparwidth}{2.5cm}
+
+\usepackage{lipsum}
+
+\usepackage{relsize}
+
+
+%%-----------------------------------------------
+%% Documento:
+\begin{document}
+
+\input{include/portada}
+
+\input{secciones/agradecimientos} %% Nueva línea
+
+%%-----------------------------------------------
+%% Numeración romana:
+\frontmatter
+
+%% -----------------------------------------------
+\input{secciones/resumen}
+\tableofcontents
+
+%%-----------------------------------------------
+%% Numeración arábiga:
+\mainmatter
+
+%%-----------------------------------------------
+%% Contenido del TFG
+\input{secciones/intro}
+
+\input{secciones/marco_teorico}
+
+\input{secciones/casos}
+
+\input{secciones/impacto}
+
+\input{secciones/conclusiones}
+
+%%-----------------------------------------------
+%% Bibliografía
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{IEEEtran}
+\bibliography{secciones/biblio}
+
+%% -----------------------------------------------
+%% Anexos
+\appendix
+\part*{Anexos}
+\addcontentsline{toc}{part}{Anexos}
+\input{secciones/anexo1}
+
+
+%% ---------------------------------------------------------
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
