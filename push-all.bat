@@ -22,6 +22,9 @@ git rm -f README.md .gitignore push-all.bat push-all.sh pull-overleaf.bat pull-o
 REM Eliminar carpeta PRUEBAS (no debe ir a Overleaf)
 git rm -rf PRUEBAS 2>nul
 
+REM Eliminar carpeta TFG_GABRIEL (no debe ir a Overleaf)
+git rm -rf "TFG_GABRIEL" 2>nul
+
 REM Eliminar archivos que no sean .tex ni .bib de "Notas para trabajar" y "RESUMEN DE REUNIONES"
 echo Filtrando archivos para Overleaf...
 for /r "Notas para trabajar" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
@@ -41,6 +44,7 @@ if %errorlevel% neq 0 (
     REM Asegurarse de que los archivos sigan eliminados
     git rm -f README.md .gitignore push-all.bat push-all.sh pull-overleaf.bat pull-overleaf.sh 2>nul
     git rm -rf PRUEBAS 2>nul
+    git rm -rf "TFG_GABRIEL" 2>nul
     for /r "Notas para trabajar" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
     for /r "RESUMEN DE REUNIONES" %%F in (*) do if not "%%~xF"==".tex" if not "%%~xF"==".bib" git rm -f "%%F" 2>nul
     REM Restaurar archivos .tex y .bib desde master si fueron eliminados

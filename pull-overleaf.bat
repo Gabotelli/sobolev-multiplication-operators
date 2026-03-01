@@ -12,6 +12,9 @@ git checkout HEAD -- README.md .gitignore push-all.bat push-all.sh pull-overleaf
 REM Restaurar carpeta PRUEBAS (proyecto Lean4, no viene de Overleaf)
 git checkout HEAD -- PRUEBAS 2>nul
 
+REM Restaurar carpeta TFG_GABRIEL (no viene de Overleaf)
+git checkout HEAD -- TFG_GABRIEL 2>nul
+
 REM Completar el merge
 git diff --cached --quiet
 if %errorlevel% equ 0 (
