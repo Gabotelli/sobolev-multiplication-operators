@@ -198,6 +198,43 @@ La noción de \textit{Bounded Point Evaluation} (BPE) es fundamental para entend
 
 En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{out}$ (Definición \ref{def:class_points}) se traduce en términos de BPEs para las derivadas. Si $c_k \in I_{out}$, el funcional $p \mapsto p'(c_k)$ no es acotado en la norma estándar $L^2(\mu)$. Al imponer su continuidad en la norma de Sobolev, se produce una reducción de codimensión finita del espacio $\mathcal{H}$ respecto al espacio ambiental $H^2(\mathbb{D})$.
 
+\begin{proposition}[Acotación y Extensión Continua en el Interior]
+	Para los puntos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
+\end{proposition}
+
+\begin{proof}
+	Para cualquier polinomio $p \in \Poly$ y un punto $c_k$ con $\abs{c_k} < R$, podemos aplicar la Fórmula Integral de Cauchy sobre la circunferencia $S_R$:
+	$$ p(c_k) = \frac{1}{2\pi i} \int_{S_R} \frac{p(z)}{z - c_k} dz. $$
+	Tomando valores absolutos y aplicando la desigualdad de Cauchy-Schwarz:
+	$$ \abs{p(c_k)}^2 \leq \left( \frac{1}{2\pi} \int_{S_R} \frac{1}{\abs{z - c_k}^2} \abs{dz} \right) \left( \int_{S_R} \abs{p(z)}^2 \abs{dz} \right). $$
+	Puesto que $\abs{c_k} < R$, la distancia al borde de la circunferencia está estrictamente acotada por abajo, luego la primera integral es una constante finita $M_{c_k} > 0$. Además, la segunda integral está dominada por la parte continua de la norma de Sobolev (salvo una constante de proporcionalidad dependiente de la medida de Lebesgue). Por tanto:
+	$$ \abs{p(c_k)}^2 \leq \tilde{M}_{c_k} \|p\|_{L^2(\mu)}^2 \leq \tilde{M}_{c_k} \norm{p}^2. $$
+	Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Acotados en espacios densos \cite{kreyszig1989introductory}, el funcional se extiende de manera continua y única a todo $\mathcal{H}$. Al ser continuo, su núcleo es la preimagen de un conjunto cerrado (el $\{0\}$), por lo que es un subespacio cerrado.
+\end{proof}
+
+\begin{lemma}[Continuidad del funcional derivada para puntos ABPE]
+	\label{lema:ABPE_derivada}
+	Sea $\mu$ la medida de Lebesgue (o una medida que satisfaga la condición de Szegő) soportada en la circunferencia $\mathbb{T}_R = \{z \in \mathbb{C} : |z| = R\}$. Si $c \in \mathbb{C}$ es un punto de evaluación acotada (BPE) para la norma $L^2(\mu)$, y se encuentra en el interior de la curva ($|c| < R$), entonces $c$ es un punto de Evaluación Analítica Acotada (ABPE). En consecuencia, el funcional evaluación de la derivada, $\delta'_c(p) = p'(c)$, es un funcional lineal continuo.
+\end{lemma}
+
+\begin{proof}
+	Al ser $c$ un punto BPE situado en el interior de la región acotada por el soporte de la medida, la teoría clásica de espacios de Hardy y polinomios ortogonales garantiza que $c$ es, de hecho, un punto ABPE. Esto implica que existe un entorno abierto $\mathcal{U}$ de $c$ contenido en el disco $|z| < R$ donde la evaluación puntual es uniformemente acotada.
+
+	Sea $r > 0$ suficientemente pequeño tal que la circunferencia cerrada $\gamma_r = \{z \in \mathbb{C} : |z-c| = r\}$ esté contenida en $\mathcal{U}$. Dado que los polinomios son funciones enteras, podemos aplicar la Fórmula Integral de Cauchy para la derivada:
+	\[
+		p'(c) = \frac{1}{2\pi i} \oint_{\gamma_r} \frac{p(z)}{(z-c)^2} dz
+	\]
+	Tomando valor absoluto y acotando la integral por el máximo de la función en la curva:
+	\[
+		|p'(c)| \le \frac{1}{2\pi} \left( 2\pi r \right) \frac{\max_{z \in \gamma_r} |p(z)|}{r^2} = \frac{1}{r} \max_{z \in \gamma_r} |p(z)|
+	\]
+	Como todos los puntos $z \in \gamma_r$ son BPEs, existe una constante $M > 0$ tal que $|p(z)| \le M \|p\|_{L^2(\mu)}$ para todo $z \in \gamma_r$. Sustituyendo esta cota obtenemos:
+	\[
+		|p'(c)| \le \frac{M}{r} \|p\|_{L^2(\mu)} \le \frac{M}{r} \|p\|_S
+	\]
+	Lo que demuestra que existe una constante $C = M/r < \infty$ tal que $|\delta'_c(p)| \le C \|p\|_S$, probando así que la evaluación de la derivada es un funcional lineal continuo.
+\end{proof}
+
 \subsubsection{Codimensión y Subespacios}
 
 \begin{definition}[Codimensión]
@@ -282,6 +319,158 @@ En el marco de la teoría de ideales de operadores, los números de Gelfand cons
 	\end{equation}
 	En particular, $c_1(T) = \|T\|$ es la norma global del operador.
 \end{definition}
+
+\begin{proposition}[Codimensión de la clausura del ideal para un átomo BPE]
+	Sea $\mathcal{H}$ un espacio de Hilbert tal que el espacio de polinomios $\mathbb{P}[z]$ es denso en $\mathcal{H}$. Sea $a \in \mathbb{C}$ un punto de evaluación acotada (BPE) respecto a la norma de $\mathcal{H}$. Entonces, el ideal algebraico $Y_a = \{p \in \mathbb{P}[z] : p(a) = 0\}$ es un subespacio cerrado de codimensión topológica exactamente 1.
+\end{proposition}
+
+\begin{proof}
+	Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que tiene codimensión 1.
+
+	Dado que $a$ es un punto de evaluación continua (BPE), el funcional lineal $\Phi_a: \Poly \to \mathbb{C}$ dado por $\Phi_a(p) = p(a)$ es acotado. Por el Teorema de Extensión, $\Phi_a$ se extiende de manera única y continua a todo $\mathcal{H}$. Al ser continuo, su núcleo $\ker(\Phi_a)$ es un subespacio cerrado de $\mathcal{H}$.
+
+	Por otro lado, cualquier polinomio $p \in \Poly$ admite la siguiente descomposición algebraica:
+	$$p(z) = (p(z) - p(a)) + p(a) \cdot 1$$
+	El primer término pertenece a $Y_a$ y el segundo al subespacio generado por el polinomio constante $\mathbf{1}$. Por tanto, $\Poly = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$.
+
+	Tomando clausuras en $\mathcal{H}$, y sabiendo que $\Poly$ es denso en $\mathcal{H}$:
+	$$\mathcal{H} = \overline{\Poly} = \overline{Y_a \oplus \operatorname{span}\{\mathbf{1}\}}$$
+	Como el funcional es continuo y $\Phi_a(\mathbf{1}) = 1 \neq 0$, la suma directa se preserva en la clausura:
+	$$\mathcal{H} = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$$
+	Lo que demuestra que $\operatorname{codim}(Y_a) = 1$.
+\end{proof}
+
+\begin{proposition}[Codimensión de la clausura para múltiples átomos BPE]
+	Sea $\mathcal{H}$ un espacio de Hilbert donde $\mathbb{P}[z]$ es denso. Sea $\mathcal{A} = \{a_1, \dots, a_N\} \subset \mathbb{C}$ un conjunto de $N$ puntos distintos que son de evaluación acotada (BPE) respecto a la norma de $\mathcal{H}$. El subespacio $Y_{\mathcal{A}} = \{p \in \mathbb{P}[z] : p(a_k) = 0 \text{ para } k=1,\dots,N\}$ es un subespacio cerrado de codimensión topológica exactamente $N$.
+\end{proposition}
+
+\begin{proof}
+	Consideremos el funcional vectorial continuo $\vec{\Phi}: \mathbb{P}[z] \to \mathbb{C}^N$ dado por $\vec{\Phi}(p) = (p(a_1), \dots, p(a_N))$. Por definición, $Y_{\mathcal{A}} = \ker(\vec{\Phi})$, que es cerrado por ser $\vec{\Phi}$ continuo.
+
+	Sean $L_1(z), \dots, L_N(z)$ los polinomios fundamentales de interpolación de Lagrange asociados a $\mathcal{A}$, los cuales satisfacen $L_i(a_j) = \delta_{ij}$. Cualquier polinomio $p \in \mathbb{P}[z]$ se descompone unívocamente como:
+	$$p(z) = \underbrace{\left( p(z) - \sum_{k=1}^N p(a_k)L_k(z) \right)}_{\in Y_{\mathcal{A}}} + \underbrace{\sum_{k=1}^N p(a_k)L_k(z)}_{\in \operatorname{span}\{L_1, \dots, L_N\}}$$
+	Esto demuestra la descomposición en suma directa algebraica $\mathbb{P}[z] = Y_{\mathcal{A}} \oplus \operatorname{span}\{L_1, \dots, L_N\}$.
+
+	Como los $N$ puntos son BPE, el funcional vectorial $\vec{\Phi}$ se extiende de manera continua a $\mathcal{H}$. Tomando clausuras y apoyándonos en la densidad de los polinomios ($\overline{\mathbb{P}[z]} = \mathcal{H}$):
+	$$\mathcal{H} = \overline{Y_{\mathcal{A}} \oplus \operatorname{span}\{L_1, \dots, L_N\}}$$
+	Concluimos que $\operatorname{codim}(Y_{\mathcal{A}}) = N$.
+\end{proof}
+
+\begin{theorem}[Dicotomía de la Codimensión]
+	\label{thm:dicotomia}
+	Sea $\mathcal{H}$ la clausura de $\Poly$ respecto a una norma de Hilbert y sea $a \in \C$. Sea $V = \overline{\{p \in \Poly : p(a)=0\}}$. Entonces, solo existen dos posibilidades:
+	\begin{enumerate}
+		\item Si $a$ es un punto de evaluación acotada (BPE), entonces $V$ es un hiperplano cerrado y $\operatorname{codim}(V) = 1$.
+		\item Si $a$ no es un BPE, entonces $V$ es denso en $\mathcal{H}$ y $\operatorname{codim}(V) = 0$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	El caso 1 se sigue de las proposiciones anteriores.
+
+	Si el funcional de evaluación $\delta_a: \Poly \to \C$ no es acotado respecto a $\|\cdot\|_{\mathcal{H}}$, demostraremos que su núcleo algebraico $Y_a = \{p \in \Poly : p(a)=0\}$ es denso en $\mathcal{H}$.
+
+	Por definición de operador no acotado, para todo $n \in \mathbb{N}$ existe un polinomio $h_n \in \Poly$ tal que $|h_n(a)| > n \|h_n\|_{\mathcal{H}}$. Definimos la sucesión normalizada:
+	$$ q_n(z) = \frac{h_n(z)}{h_n(a)}, $$
+	con $q_n(a) = 1$ y $\|q_n\|_{\mathcal{H}} < 1/n \to 0$.
+
+	Consideremos la sucesión $p_n(z) = 1 - q_n(z)$. Se cumple $p_n(a) = 0$, luego $p_n \in Y_a$ para todo~$n$. Además:
+	$$ \|1 - p_n\|_{\mathcal{H}} = \|q_n\|_{\mathcal{H}} < \frac{1}{n}, $$
+	lo que prueba que $1 \in \overline{Y_a}$. Por linealidad y densidad de $\Poly$ en $\mathcal{H}$ concluimos que $\overline{Y_a} = \mathcal{H}$, esto es, $\operatorname{codim}(V) = 0$.
+\end{proof}
+
+\subsection{El Caso de un Único Punto}\label{sec:ceros}
+
+Con el fin de analizar el impacto que las derivadas discretas tienen sobre la estructura espectral del operador de multiplicación $D(p) = zp$, se estudia el caso particular de un único punto en la derivada. Específicamente, se considera la perturbación de la medida continua, soportada en la circunferencia unidad $S_1$, mediante la adición de un único término discreto en la derivada, evaluado en un punto $c_1 \in \C$. A lo largo de esta subsección, se asume que $c_1$ es un punto BPE.
+
+\subsubsection{El Primer Número de Gelfand: La Norma Global}
+
+Por definición, el primer número de Gelfand, $c_1(D)$, corresponde al ínfimo sobre subespacios de codimensión estrictamente menor que 1. El único subespacio que cumple esta condición es el espacio total $\mathcal{H}$. Por consiguiente:
+$$ c_1(D) = \norm{D}. $$
+Este primer número refleja el comportamiento global del operador: cuanto mayor es la contribución del término discreto a la norma de Sobolev, mayor es la dilatación de $c_1(D)$ respecto al radio de la circunferencia.
+
+\subsubsection{Un ejemplo ilustrativo: El punto en el origen}
+
+Consideremos el espacio de polinomios $\Poly$ dotado de la medida de Lebesgue normalizada en la circunferencia unidad $S_1$ y un único punto en la derivada situado en el origen ($c_1 = 0$). El producto interno de Sobolev toma la forma:
+\begin{equation}
+	\ip{p}{q} = \int_{S_1} p(z)\overline{q(z)} \frac{\abs{dz}}{2\pi} + p'(0)\overline{q'(0)}.
+\end{equation}
+
+Sea $p(z) = \sum_{k=0}^n a_k z^k$. La derivada evaluada en el origen es $p'(0) = a_1$, luego:
+\begin{equation} \label{eq:norma_in_0}
+	\norm{p}^2 = \abs{a_0}^2 + 2\abs{a_1}^2 + \sum_{k=2}^n \abs{a_k}^2.
+\end{equation}
+El polinomio imagen es $\D p(z) = \sum_{k=0}^n a_k z^{k+1}$, con $(\D p)'(0) = a_0$:
+\begin{equation} \label{eq:norma_out_0}
+	\norm{\D p}^2 = 2\abs{a_0}^2 + \abs{a_1}^2 + \sum_{k=2}^n \abs{a_k}^2.
+\end{equation}
+Denotando $S = \norm{p}^2$, el cociente de Rayleigh satisface:
+\begin{equation}
+	\frac{\norm{\D p}^2}{\norm{p}^2} = 2 - \frac{3\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2}{\norm{p}^2} \le 2,
+\end{equation}
+con el máximo alcanzado en las funciones constantes ($p(z)=1$). Concluimos que $c_1(\D) = \sqrt{2}$.
+
+\subsubsection{Un ejemplo ilustrativo: El punto en el origen y radio $R$}
+
+Con la medida de Lebesgue en $S_R$ y el átomo en $c_1 = 0$, la ortogonalidad da $\int_{S_R} |z|^{2k} \frac{|dz|}{2\pi R} = R^{2k}$. Las normas son:
+\begin{align}
+	\norm{p}^2    & = \abs{a_0}^2 + (R^2 + 1)\abs{a_1}^2 + \sum_{k=2}^n \abs{a_k}^2 R^{2k}, \label{eq:norma_in_0_R}       \\
+	\norm{\D p}^2 & = (R^2 + 1)\abs{a_0}^2 + R^4\abs{a_1}^2 + \sum_{k=2}^n \abs{a_k}^2 R^{2k+2}. \label{eq:norma_out_0_R}
+\end{align}
+El cociente de Rayleigh queda:
+\begin{equation}
+	\frac{\norm{\D p}^2}{\norm{p}^2} = (R^2 + 1) - \frac{(2R^2 + 1)\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2 R^{2k}}{\norm{p}^2} \le R^2 + 1,
+\end{equation}
+con el máximo en las funciones constantes. Por tanto $c_1(\D) = \sqrt{R^2 + 1}$.
+
+\subsubsection{Dependencia de la Posición: El caso de un punto arbitrario}
+
+Sea $c \in \C$ con $0 < \abs{c} < 1$. Evaluando el cociente de Rayleigh en los candidatos naturales $p_0(z)=1$ y $p_1(z)=z$ se obtienen los valores $\mathcal{R}(1) = 2$ y $\mathcal{R}(z) = \frac{1}{2} + 2\abs{c}^2$, de donde:
+\begin{equation}
+	c_1(\D) \ge \max \left( \sqrt{2}, \, \sqrt{\tfrac{1}{2} + 2\abs{c}^2} \right).
+\end{equation}
+El polinomio lineal supera al constante para $|c| > \sqrt{3}/2 \approx 0.866$, revelando que la norma crece a medida que el punto se acerca a la frontera.
+
+\subsubsection{Caracterización Exacta del Primer Número de Gelfand}
+
+El cálculo exacto equivale a hallar el supremo del cociente de Rayleigh:
+\begin{equation} \label{eq:rayleigh_c1}
+	c_1(D)^2 = \sup_{p \neq 0} \frac{\|p\|_{L^2(\mu)}^2 + \abs{p(c_1) + c_1 p'(c_1)}^2}{\|p\|_{L^2(\mu)}^2 + \abs{p'(c_1)}^2}.
+\end{equation}
+Por la propiedad ABPE (Lema~\ref{lema:ABPE_derivada}), los núcleos reproductores $K_0, K_1 \in H^2(\mu)$ verifican $p(c_1) = \langle p, K_0 \rangle_{L^2}$ y $p'(c_1) = \langle p, K_1 \rangle_{L^2}$. Descomponiendo $p = p_K + p_\perp$ con $p_K \in V_K = \operatorname{span}\{K_0,K_1\}$ y $p_\perp \perp V_K$, el cociente de Rayleigh es decreciente en $\|p_\perp\|^2$, por lo que el supremo se alcanza en $p_\perp = 0$. Identificando $p_K$ con el vector $v = (\alpha,\beta)^T \in \C^2$:
+\begin{equation}
+	c_1(D)^2 = \lambda_{\max}(\mathbf{A}^{-1}\mathbf{B}),
+\end{equation}
+donde $A_{ij} = \langle K_j, K_i \rangle_{L^2} + K_j'(c)\overline{K_i'(c)}$ y $B_{ij} = \langle K_j, K_i \rangle_{L^2} + [K_j(c) + c K_j'(c)]\overline{[K_i(c) + c K_i'(c)]}$.
+
+\paragraph{Ejemplo numérico: $c = 0.5$.}
+Con $k_{00} = 4/3$, $k_{01} = 8/9$, $k_{11} = 80/27$:
+\begin{equation}
+	\mathbf{A} \approx \begin{pmatrix} 2.123 & 3.522 \\ 3.522 & 11.742 \end{pmatrix}, \quad
+	\mathbf{B} \approx \begin{pmatrix} 4.493 & 5.101 \\ 5.101 & 8.581 \end{pmatrix}.
+\end{equation}
+La ecuación $\det(\mathbf{B}-\lambda\mathbf{A})=0$ da $\lambda_{\max} \approx 2.377$, de donde $c_1(\D) \approx 1.5417 > \sqrt{2}$.
+
+\subsubsection{El Segundo Número de Gelfand: Recuperando la Circunferencia}
+
+\begin{theorem}[Valor exacto de $c_2$ para un punto]
+	\label{thm:c2_punto}
+	Sea $\mathcal{H}$ el espacio de Sobolev con medida continua soportada en $S_1$ y un único punto BPE $c_1$ en la derivada. Entonces $c_2(D) = 1$.
+\end{theorem}
+
+\begin{proof}
+	\textbf{Cota superior.} El subespacio $V_{opt} = \ker(\Psi)$, donde $\Psi(p) = p(c_1) + c_1 p'(c_1)$, es cerrado de codimensión 1. Para $p \in V_{opt}$:
+	\[
+		\norm{Dp}^2 = \int_{S_1} \abs{zp}^2 d\mu + \underbrace{\abs{(zp)'(c_1)}^2}_{=0} = \|p\|_{L^2}^2 \le \norm{p}^2,
+	\]
+	luego $\norm{D|_{V_{opt}}} \le 1$ y $c_2(D) \le 1$.
+
+	\textbf{Cota inferior.} Supóngase que existe $V$ de codimensión 1 y $\epsilon > 0$ con $\norm{Dp}^2 \le (1-\epsilon)\norm{p}^2$ para todo $p \in V$. Desarrollando las normas:
+	\[
+		\epsilon \|p\|_{L^2}^2 \le (1-\epsilon)\abs{p'(c_1)}^2, \quad \forall p \in V.
+	\]
+	Como $V$ tiene dimensión infinita, $\ker(\delta'_{c_1}|_V) \neq \{0\}$; tomando $q$ no nulo en dicho núcleo se obtiene $\epsilon\|q\|_{L^2}^2 \le 0$, contradicción. Por tanto $c_2(D) \ge 1$.
+\end{proof}
 
 % --- SECCIÓN 3 ---
 \section{Análisis Matricial y Comportamiento Asintótico}\label{sec:matricial}
@@ -427,13 +616,7 @@ En el caso en que la medida continua tiene soporte acotado con radio máximo $R$
 
 La envoltura convexa polinómica caracteriza los puntos de evaluación acotada: todo punto de evaluación acotada de una medida $\mu$ pertenece a $P_C(\operatorname{supp}(\mu))$. Para el caso en que $K = \mathbb{S}_r(a)$, se tiene $P_C(K) = \overline{\mathbb{D}_r(a)}$, lo que conecta la geometría del soporte con la región interior al disco.
 
-% --- SECCIÓN 4 ---
-\section{Acotación de los Ceros de Polinomios de Sobolev}\label{sec:ceros}
-% 4.1 Relación entre ceros, radio espectral y valores singulares
-% 4.2 Hipótesis de acotación en el caso discreto
-% 4.3 El papel del primer s-número finito como cota global
 
-\newpage
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{referencias}
