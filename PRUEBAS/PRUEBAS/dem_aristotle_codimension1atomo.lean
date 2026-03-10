@@ -33,6 +33,8 @@ set_option autoImplicit false
 
 noncomputable section
 
+namespace AristotleCodimensionOneAtomo
+
 theorem check_poly : True := by
   let p : Polynomial ℂ := Polynomial.X
   trivial
@@ -155,3 +157,5 @@ theorem codimension_one_of_bpe
       exact ⟨ iota ( Polynomial.C c ), by simp +decide [ hΦ_a ] ⟩;
     refine' ( LinearMap.quotKerEquivOfSurjective _ h_quotient );
   simpa using LinearEquiv.finrank_eq h_quotient
+
+end AristotleCodimensionOneAtomo

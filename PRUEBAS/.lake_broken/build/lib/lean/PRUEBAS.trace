@@ -1,0 +1,32 @@
+{"synthetic": false,
+ "outputs":
+ {"o": ["17635394743520340569"],
+  "i": "9787453949216991718",
+  "c": "1434977230440297649"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\build\\lib\\lean c:\\Users\\Usuario\\.elan\\toolchains\\leanprover--lean4---v4.24.0\\bin\\lean.exe C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\PRUEBAS.lean -o C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\build\\lib\\lean\\PRUEBAS.olean -i C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\build\\lib\\lean\\PRUEBAS.ilean -c C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\build\\ir\\PRUEBAS.c --setup C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\build\\ir\\PRUEBAS.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["PRUEBAS:deps",
+   [["deps",
+     [["PRUEBAS/PRUEBAS:extraDep", [["@PRUEBAS:extraDep", "1723"]]],
+      ["imports",
+       [["PRUEBAS.Basic transitive imports (legacy)", "1723"],
+        ["PRUEBAS.Basic:importAllArts", "16858001540163550741"]]]]],
+    ["libs",
+     [["import dynlibs", "1723"],
+      ["package external libraries", "1723"],
+      ["module dynlibs", "1723"],
+      ["module plugins", "1723"]]]]],
+  ["Lean 4.24.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b",
+   "1165570713881806064"],
+  ["C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\PRUEBAS.lean",
+   "7118632882883256866"],
+  ["options",
+   [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
+    ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
+    ["-DrelaxedAutoImplicit=false", "8404479228809428608"],
+    ["-Dpp.unicode.fun=true", "11210593074386665387"]]],
+  ["Module.leanArgs: #[]", "1723"]],
+ "depHash": "7928292740327061186"}

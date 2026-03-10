@@ -284,3 +284,33 @@ theorem closure_Y_eq_ker_Phi (hι_dense : (LinearMap.range ι).topologicalClosur
   apply le_antisymm
   · exact closure_Y_le_ker_Phi ι A h_bpe
   · exact ker_Phi_le_closure_Y ι A h_bpe hι_dense
+
+/-
+Exact codimension statement for the closure of the polynomial ideal vanishing on a finite set of BPEs.
+-/
+open Polynomial Module FiniteDimensional
+
+variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+variable (ι : Polynomial ℂ →ₗ[ℂ] H)
+variable (hι_dense : (LinearMap.range ι).topologicalClosure = ⊤)
+variable (hι_inj : Function.Injective ι)
+variable (A : Finset ℂ)
+variable (N : ℕ)
+variable (hA_card : A.card = N)
+variable (h_bpe : ∀ a ∈ A, ∃ (f : H →L[ℂ] ℂ), ∀ p, f (ι p) = p.eval a)
+
+theorem codimension_eq_card
+    (h_bpe : ∀ a ∈ A, ∃ (f : H →L[ℂ] ℂ), ∀ p, f (ι p) = p.eval a)
+    (hι_dense : (LinearMap.range ι).topologicalClosure = ⊤) :
+    Module.finrank ℂ (H ⧸ (Y ι A).topologicalClosure) = Fintype.card A := by
+  rw [closure_Y_eq_ker_Phi ι A h_bpe hι_dense]
+  let e : (H ⧸ LinearMap.ker (Phi ι A h_bpe)) ≃ₗ[ℂ] (A → ℂ) :=
+    LinearMap.quotKerEquivOfSurjective _ (Phi_surjective ι A h_bpe)
+  rw [LinearEquiv.finrank_eq e, Module.finrank_fintype_fun_eq_card]
+
+theorem codimension_eq_N
+    (hA_card : A.card = N)
+    (h_bpe : ∀ a ∈ A, ∃ (f : H →L[ℂ] ℂ), ∀ p, f (ι p) = p.eval a)
+    (hι_dense : (LinearMap.range ι).topologicalClosure = ⊤) :
+    Module.finrank ℂ (H ⧸ (Y ι A).topologicalClosure) = N := by
+  simpa [hA_card] using codimension_eq_card ι A h_bpe hι_dense

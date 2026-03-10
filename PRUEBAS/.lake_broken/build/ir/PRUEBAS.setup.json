@@ -1,0 +1,12 @@
+{"plugins": [],
+ "options":
+ {"weak.linter.mathlibStandardSet": true,
+  "relaxedAutoImplicit": false,
+  "pp.unicode.fun": true,
+  "maxSynthPendingDepth": 3},
+ "name": "PRUEBAS",
+ "isModule": false,
+ "importArts":
+ {"PRUEBAS.Basic":
+  ["C:\\Users\\Usuario\\Documents\\tfm\\PRUEBAS\\.lake\\build\\lib\\lean\\PRUEBAS\\Basic.olean"]},
+ "dynlibs": []}
