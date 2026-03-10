@@ -18,6 +18,11 @@ E~Berriochoa and A~Cachafeiro.
 \newblock {\em Journal of Difference Equations and Applications},
   6(6):719--737, 2000.
 
+\bibitem{bogachev2007measure}
+Vladimir~I. Bogachev.
+\newblock {\em Measure Theory}, volume~1.
+\newblock Springer, Berlin, 2007.
+
 \bibitem{conway1990course}
 John~B. Conway.
 \newblock {\em A Course in Functional Analysis}, volume~96 of {\em Graduate
@@ -33,6 +38,11 @@ Peter~L. Duren.
 \newblock {\em Theory of $H^p$ Spaces}, volume~38 of {\em Pure and Applied
   Mathematics}.
 \newblock Academic Press, New York, 1970.
+
+\bibitem{folland1999real}
+Gerald~B. Folland.
+\newblock {\em Real Analysis: Modern Techniques and Their Applications}.
+\newblock John Wiley \& Sons, New York, 2 edition, 1999.
 
 \bibitem{frymark2021spectral}
 Dale Frymark and Constanze Liaw.
@@ -106,5 +116,22 @@ Michael Reed and Barry Simon.
 Steven Roman.
 \newblock {\em Advanced Linear Algebra}.
 \newblock Springer, 3 edition, 2007.
+
+\bibitem{rudin1987real}
+Walter Rudin.
+\newblock {\em Real and Complex Analysis}.
+\newblock McGraw-Hill, New York, 3 edition, 1987.
+
+\bibitem{stahl1992general}
+Herbert Stahl and Vilmos Totik.
+\newblock {\em General Orthogonal Polynomials}, volume~43 of {\em Encyclopedia
+  of Mathematics and its Applications}.
+\newblock Cambridge University Press, Cambridge, 1992.
+
+\bibitem{szego1975orthogonal}
+G{\'a}bor Szeg{\H{o}}.
+\newblock {\em Orthogonal Polynomials}, volume~23 of {\em American Mathematical
+  Society Colloquium Publications}.
+\newblock American Mathematical Society, Providence, RI, 4 edition, 1975.
 
 \end{thebibliography}
