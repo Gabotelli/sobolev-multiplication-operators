@@ -1075,12 +1075,22 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 	Cuando la medida continua $\mu_0$ es regular, la teoría clásica de polinomios ortogonales garantiza, bajo las hipótesis habituales sobre el soporte, que la medida contadora normalizada de ceros de los polinomios ortogonales converge débilmente hacia la medida de equilibrio de $S(\mu_0)$ \cite{stahl1992general}. Por ello, la regularidad de la componente continua constituye la referencia natural frente a la cual se mide el efecto de las perturbaciones de Sobolev.
 \end{remark}
 
-\begin{theorem}[Control asintótico del número de ceros exteriores]\label{thm:acotacion_ceros}
+\begin{theorem}[Acotación uniforme de los ceros]\label{thm:acotacion_ceros}
 	Sea $\mu$ una medida de Borel positiva con soporte compacto tal que $\operatorname{supp}(\mu) \subseteq \overline{\mathbb{D}_R(0)}$ con $R < \infty$. Sea $\langle \cdot, \cdot \rangle_S$ un producto interno de Sobolev definido sobre $\mathbb{P}[z]$ como:
 	\begin{equation}\label{eq:sobolev_general}
 		\langle p, q \rangle_S = \int p(z)\overline{q(z)} d\mu(z) + \sum_{k=1}^N \lambda_k p^{(j_k)}(c_k) \overline{q^{(j_k)}(c_k)}
 	\end{equation}
-	donde $\lambda_k > 0$, $j_k \ge 0$, y $\{c_k\}_{k=1}^N \subset \mathbb{C}$ son puntos finitos. Entonces, asintóticamente (para un grado $n$ suficientemente grande), el polinomio ortogonal de Sobolev $p_n$ tiene a lo sumo $N$ ceros fuera de cualquier entorno abierto del disco $\overline{\mathbb{D}_R(0)}$, los cuales son atraídos por los átomos $c_k$.
+	donde $\lambda_k > 0$, $j_k \ge 0$, y $\{c_k\}_{k=1}^N \subset \mathbb{C}$ son puntos finitos. Sea $p_n$ el polinomio ortogonal de Sobolev de grado $n$ y definamos
+	\[
+		A(z)=\prod_{k=1}^N (z-c_k)^{j_k+1},
+		\qquad
+		L = \deg A = \sum_{k=1}^N (j_k+1).
+	\]
+	Entonces, para todo $n \ge L+1$, el polinomio $p_n$ es cuasi-ortogonal de orden $L$ respecto de la medida compleja
+	\[
+		d\nu(z)=\overline{A(z)}\,d\mu(z),
+	\]
+	y, en consecuencia, existe un compacto $K \subset \mathbb{C}$, independiente de $n$, tal que todos los ceros de $p_n$ pertenecen a $K$. En particular, la familia de ceros de los polinomios ortogonales de Sobolev es uniformemente acotada.
 \end{theorem}
 
 \begin{proof}
@@ -1098,26 +1108,7 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 	\]
 	Esto prueba que $p_n$ es cuasi-ortogonal de orden $L$ respecto de la medida compleja compactamente soportada $\nu$.
 
-	Para todo polinomio $p \in V_0$, el término discreto de $\|\mathcal{D}p\|_S^2$ se anula idénticamente por definición. Por tanto, acotando la integral sobre el soporte de $\mu$:
-	\begin{equation}
-		\|\mathcal{D}p\|_S^2 = \int_{\operatorname{supp}(\mu)} |z|^2 |p(z)|^2 d\mu(z) \le R^2 \int |p(z)|^2 d\mu(z) \le R^2 \|p\|_S^2
-	\end{equation}
-	Esto demuestra que la restricción del operador cumple $\|\mathcal{D}|_{V_0}\| \le R$.
-
-	Sea $\mathbf{D}_n$ la matriz de la compresión de $\mathcal{D}$ al subespacio $\mathbb{P}_{n-1}$. Definimos $V_{0,n} = V_0 \cap \mathbb{P}_{n-1}$. Por la fórmula de Grassmann, $\dim(V_{0,n}) \ge n - N$. Identificando ahora cada polinomio $p \in \mathbb{P}_{n-1}$ con su vector de coordenadas $x \in \mathbb{C}^n$ en la base ortonormal, el subespacio $V_{0,n}$ induce un subespacio vectorial $\mathcal{V}_{0,n} \subset \mathbb{C}^n$ de dimensión al menos $n-N$.
-
-	El $(N+1)$-ésimo valor singular de $\mathbf{D}_n$, denotado como $\sigma_{N+1,n}$, se caracteriza mediante el teorema minimax de Courant-Fischer:
-	\begin{equation}
-		\sigma_{N+1,n} = \min_{\dim(S) = n-N} \max_{\substack{x \in S \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le \max_{\substack{x \in \mathcal{V}_{0,n} \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le R
-	\end{equation}
-    
-	Dado que $\sigma_{N+1,n} \le R$ para todo $n > N$, podemos utilizar la descomposición en valores singulares. La matriz truncada se escribe como $\mathbf{D}_n = \mathbf{M}_n + \mathbf{E}_n$, donde $\mathbf{E}_n$ contiene únicamente la contribución de los $N$ primeros valores singulares (por lo que $\operatorname{rango}(\mathbf{E}_n) \le N$) y $\mathbf{M}_n$ contiene el resto de los valores singulares acotados por $\sigma_{N+1,n} \le R$. Por definición, esto garantiza que la norma espectral de esta última cumple $\|\mathbf{M}_n\|_2 \le R$.
-
-	Como se demostró anteriormente, los ceros del polinomio ortogonal $p_n(z)$ coinciden con los autovalores de $\mathbf{D}_n$. La descomposición $\mathbf{D}_n = \mathbf{M}_n + \mathbf{E}_n$ revela que la dinámica de los ceros está gobernada por un operador contractivo (acotado por $R$) sometido a una perturbación estrictamente de rango finito $N$. 
-	
-	Al pasar al límite en el espacio de dimensión infinita, el operador global $\mathcal{D}$ difiere del operador estándar de multiplicación $\mathcal{M}$ en un operador de rango $N$ (que es, por tanto, un operador compacto). Por el Teorema de Weyl sobre perturbaciones compactas, el espectro esencial del operador permanece inalterado, preservando su estructura en $\overline{\mathbb{D}_R(0)}$. 
-	
-	El espectro discreto fuera de este disco (los autovalores aislados) se genera exclusivamente por los polos de la función resolvente de la perturbación $\mathbf{E}_n$, los cuales están anclados topológicamente en las coordenadas de evaluación funcionales $\{c_k\}_{k=1}^N$. Dado que solo existen $N$ masas discretas funcionalmente independientes introduciendo inestabilidad, la teoría de atracción espectral garantiza que, para $n$ suficientemente grande, a lo sumo $N$ ceros lograrán escapar de la región principal para orbitar en entornos de los puntos $c_k$. Concluimos así que el número de ceros exteriores queda asintóticamente acotado por $N$.
+	La localización de ceros para polinomios ortogonales de Sobolev y, más generalmente, para polinomios cuasi-ortogonales de orden fijo respecto de medidas de soporte compacto implica entonces que los ceros de $p_n$ permanecen en un compacto independiente de $n$; véanse \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}. En consecuencia, existe un compacto $K \subset \mathbb{C}$ tal que todo cero de $p_n$ pertenece a $K$ para todo $n$.
 \end{proof}
 
 \begin{remark}[Orden efectivo de la cuasi-ortogonalidad]
