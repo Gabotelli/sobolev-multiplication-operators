@@ -822,6 +822,67 @@ Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathca
 
 Este resultado muestra que, en el caso de un único átomo exterior, la divergencia asintótica de las secciones truncadas queda confinada a una sola dirección: $\sigma_{1,n} \to \infty$, mientras que $\sigma_{2,n}$ permanece uniformemente acotado por $R$.
 
+\begin{theorem}[Control singular del escape exterior]\label{thm:control_singular_escape}
+	Sea $\mu$ una medida de Borel positiva con soporte compacto tal que $\operatorname{supp}(\mu) \subseteq \overline{\mathbb{D}_R(0)}$ con $R < \infty$. Sea $\langle \cdot, \cdot \rangle_S$ un producto interno de Sobolev definido sobre $\mathbb{P}[z]$ como:
+	\begin{equation}\label{eq:sobolev_general_singular}
+		\langle p, q \rangle_S = \int p(z)\overline{q(z)} d\mu(z) + \sum_{k=1}^N \lambda_k p^{(j_k)}(c_k) \overline{q^{(j_k)}(c_k)}
+	\end{equation}
+	donde $\lambda_k > 0$, $j_k \ge 0$, y $\{c_k\}_{k=1}^N \subset \mathbb{C}$ son puntos finitos. Entonces, para toda sección principal $\mathbf{D}_n$ con $n > N$, se verifica
+	\[
+		\sigma_{N+1,n} \le R.
+	\]
+	En particular, cada $\mathbf{D}_n$ admite una descomposición
+	\[
+		\mathbf{D}_n = \mathbf{M}_n + \mathbf{E}_n,
+	\]
+	con $\|\mathbf{M}_n\|_2 \le R$ y $\operatorname{rango}(\mathbf{E}_n) \le N$. Por consiguiente, la posible inestabilidad inducida por la perturbación discreta queda confinada, en sentido singular, a lo sumo a $N$ direcciones.
+\end{theorem}
+
+\begin{proof}
+	Analizaremos la acción del operador multiplicación $\mathcal{D}: p \mapsto zp$ sobre la norma inducida por (\ref{eq:sobolev_general_singular}). Para cualquier polinomio $p \in \mathbb{P}[z]$, la norma de su imagen es:
+	\begin{equation}
+		\|\mathcal{D}p\|_S^2 = \int |zp(z)|^2 d\mu(z) + \sum_{k=1}^N \lambda_k \left| (zp)^{(j_k)}(c_k) \right|^2
+	\end{equation}
+	Aplicando la regla de Leibniz para la derivada de un producto, la evaluación discreta resulta en:
+	\begin{equation}\label{eq:leibniz_eval}
+		(zp)^{(j_k)}(c_k) = c_k p^{(j_k)}(c_k) + j_k p^{(j_k-1)}(c_k)
+	\end{equation}
+	Definimos un conjunto de $N$ funcionales lineales sobre $\mathbb{P}[z]$ dados por $\phi_k(p) = c_k p^{(j_k)}(c_k) + j_k p^{(j_k-1)}(c_k)$ para $k=1,\dots,N$. Consideremos el subespacio algebraico $V_0$ definido como la intersección de sus núcleos:
+	\begin{equation}
+		V_0 = \bigcap_{k=1}^N \ker(\phi_k) = \left\{ p \in \mathbb{P}[z] : (zp)^{(j_k)}(c_k) = 0, \quad \forall k=1,\dots,N \right\}
+	\end{equation}
+	Al ser la intersección de $N$ hiperplanos, la codimensión algebraica de $V_0$ en $\mathbb{P}[z]$ cumple $\operatorname{codim}(V_0) \le N$.
+
+	Para todo polinomio $p \in V_0$, el término discreto de $\|\mathcal{D}p\|_S^2$ se anula idénticamente por definición. Por tanto, acotando la integral sobre el soporte de $\mu$:
+	\begin{equation}
+		\|\mathcal{D}p\|_S^2 = \int_{\operatorname{supp}(\mu)} |z|^2 |p(z)|^2 d\mu(z) \le R^2 \int |p(z)|^2 d\mu(z) \le R^2 \|p\|_S^2
+	\end{equation}
+	Esto demuestra que la restricción del operador cumple $\|\mathcal{D}|_{V_0}\| \le R$.
+
+	Sea $\mathbf{D}_n$ la matriz de la compresión de $\mathcal{D}$ al subespacio $\mathbb{P}_{n-1}$. Definimos $V_{0,n} = V_0 \cap \mathbb{P}_{n-1}$. Por la fórmula de Grassmann, $\dim(V_{0,n}) \ge n - N$. Identificando ahora cada polinomio $p \in \mathbb{P}_{n-1}$ con su vector de coordenadas $x \in \mathbb{C}^n$ en la base ortonormal, el subespacio $V_{0,n}$ induce un subespacio vectorial $\mathcal{V}_{0,n} \subset \mathbb{C}^n$ de dimensión al menos $n-N$.
+
+	El $(N+1)$-ésimo valor singular de $\mathbf{D}_n$, denotado como $\sigma_{N+1,n}$, se caracteriza mediante el teorema minimax de Courant-Fischer:
+	\begin{equation}
+		\sigma_{N+1,n} = \min_{\dim(S) = n-N} \max_{\substack{x \in S \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le \max_{\substack{x \in \mathcal{V}_{0,n} \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le R
+	\end{equation}
+	Dado que $\sigma_{N+1,n} \le R$ para todo $n > N$, podemos utilizar la descomposición en valores singulares. La matriz truncada se escribe como $\mathbf{D}_n = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^*$, donde $\mathbf{\Sigma}$ es diagonal y contiene los valores singulares en orden decreciente.
+	Separando los primeros $N$ valores singulares (que pueden ser mayores que $R$) del resto, la matriz se descompone de forma exacta como una suma:
+	$$ \mathbf{D}_n = \mathbf{M}_n + \mathbf{E}_n $$
+	donde $\mathbf{E}_n$ contiene únicamente la contribución de los $N$ primeros valores singulares (por lo que $\operatorname{rango}(\mathbf{E}_n) \le N$) y $\mathbf{M}_n$ contiene el resto de los valores singulares acotados por $\sigma_{N+1,n} \le R$. Por definición, esto garantiza que la norma espectral de esta última cumple $\|\mathbf{M}_n\|_2 \le R$.
+\end{proof}
+
+\begin{remark}[Límite del argumento matricial]
+	El resultado anterior controla valores singulares, no el número exacto de autovalores exteriores. En efecto, si $\lambda$ es un autovalor de $\mathbf{D}_n$ con $|\lambda| > R$ y $x \neq 0$ es un autovector asociado, de la identidad
+	\begin{equation}\label{eq:autovector_escape}
+		x = (\lambda \mathbf{I} - \mathbf{M}_n)^{-1} \mathbf{E}_n x
+	\end{equation}
+	solo se deduce que $x$ pertenece a
+	\[
+		\operatorname{Im}\bigl((\lambda \mathbf{I} - \mathbf{M}_n)^{-1} \mathbf{E}_n\bigr),
+	\]
+	pero este subespacio depende de $\lambda$. Por ello, no es válido concluir que todos los autovectores correspondientes a autovalores exteriores queden contenidos en un único subespacio de dimensión $N$. Esta es precisamente la obstrucción que aparece en matrices no normales, como las truncaciones de Hessenberg consideradas aquí.
+\end{remark}
+
 \subsection{Relación entre los Valores Singulares y el Índice $Q_k$}
 
 En esta subsección comparamos los valores singulares de las secciones truncadas $\mathbf{D}_n$ con el índice algebraico $Q_k(\mathcal{D})$ introducido en la Sección~\ref{sec:espectral}. Como el espíritu del trabajo incluye operadores no acotados, admitiremos de manera explícita valores en la recta real extendida $[0,+\infty]$: cada $\sigma_{k,n}$ es finito para $n$ fijo, pero sus límites pueden divergir, del mismo modo que $Q_k(\mathcal{D})$ puede ser infinito.
@@ -893,37 +954,28 @@ sus valores singulares.
 	y además $c_1(\mathcal{D}) = \|\mathcal{D}\|$. Si $\mathcal{D}$ no es acotado, entonces nuevamente por la Proposición~\ref{prop:convergencia_sigma} se tiene $\sigma_{1,n} \to +\infty$, mientras que la identidad $Q_1(\mathcal{D}) = \|\mathcal{D}\|_S$ implica $Q_1(\mathcal{D}) = +\infty$. Esto prueba la coincidencia en ambos regímenes.
 \end{proof}
 
-Para índices superiores, una igualdad exacta requiere información adicional que conecte las compresiones finitas con el operador global. El siguiente resultado proporciona esa coincidencia en el caso acotado bajo una hipótesis explícita de aproximación en norma.
+Para índices superiores, los resultados obtenidos en este trabajo proporcionan de manera natural una cota asintótica superior. En el caso acotado, esta cota puede expresarse directamente en términos de los números de Gelfand del operador global.
 
-\begin{proposition}[Coincidencia exacta para $k \ge 1$ bajo aproximación en norma]\label{prop:convergencia_qk_condicional}
-	Supongamos que $\mathcal{D}$ extiende a un operador acotado en $\mathcal{H}$ y que, para las proyecciones ortogonales $P_n$ sobre $\operatorname{span}\{\phi_0,\dots,\phi_{n-1}\}$, se verifica
+\begin{corollary}[Cota asintótica superior en el caso acotado]\label{cor:convergencia_qk_condicional}
+	Supongamos que el operador multiplicación $\mathcal{D}$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todos los átomos de derivada son puntos BPE). Entonces, para todo $k \ge 1$,
 	\[
-		\|\mathcal{D} - P_n\mathcal{D}P_n\| \longrightarrow 0.
+		\limsup_{n \to \infty} \sigma_{k,n} \le c_k(\mathcal{D}).
 	\]
-	Entonces, para todo $k \ge 1$,
-	\[
-		\lim_{n \to \infty} \sigma_{k,n} = c_k(\mathcal{D}) = Q_k(\mathcal{D}).
-	\]
-\end{proposition}
+\end{corollary}
 
 \begin{proof}
-	Definamos $\widetilde{\mathcal{D}}_n = P_n\mathcal{D}P_n$. Como $\widetilde{\mathcal{D}}_n$ tiene rango finito, sus números de Gelfand coinciden con sus valores singulares; además, sus valores singulares no nulos son exactamente los de la matriz $\mathbf{D}_n$. En consecuencia,
+	Por la Proposición~\ref{prop:sigma_qk}, para todo $k \ge 1$ se tiene
 	\[
-		c_k(\widetilde{\mathcal{D}}_n) = \sigma_{k,n}, \qquad 1 \le k \le n.
+		\limsup_{n \to \infty} \sigma_{k,n} \le Q_k(\mathcal{D}).
 	\]
-	Por otra parte, los números de Gelfand son 1-Lipschitz respecto de la norma operatorial, esto es,
+	Como $\mathcal{D}$ es acotado en $\mathcal{H}$, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} implica que
 	\[
-		|c_k(S)-c_k(T)| \le \|S-T\|, \qquad S,T \in \mathcal{L}(\mathcal{H}).
+		Q_k(\mathcal{D}) = c_k(\mathcal{D}).
 	\]
-	Aplicando esta estimación a $S=\widetilde{\mathcal{D}}_n$ y $T=\mathcal{D}$, obtenemos
+	Combinando ambas relaciones se obtiene directamente
 	\[
-		|\sigma_{k,n} - c_k(\mathcal{D})| = |c_k(\widetilde{\mathcal{D}}_n) - c_k(\mathcal{D})| \le \|\widetilde{\mathcal{D}}_n - \mathcal{D}\|.
+		\limsup_{n \to \infty} \sigma_{k,n} \le c_k(\mathcal{D}).
 	\]
-	La hipótesis implica que el término de la derecha converge a cero, y por tanto
-	\[
-		\sigma_{k,n} \longrightarrow c_k(\mathcal{D}).
-	\]
-	Finalmente, por el Teorema~\ref{thm:equivalencia_Qk_Gelfand}, se tiene $c_k(\mathcal{D}) = Q_k(\mathcal{D})$, lo que concluye la demostración.
 \end{proof}
 
 \subsection{Matrices de Momentos de Sobolev y de Dirac}
@@ -985,7 +1037,7 @@ En esta subsección traducimos la estructura del producto de Sobolev a un lengua
 % =============================================================
 \section{Localización y Acotación Asintótica de los Ceros}\label{sec:ceros_acotacion}
 
-La combinación de la caracterización de los ceros como autovalores de secciones truncadas con el control del rango de divergencia de los valores singulares, permite establecer un resultado universal sobre la localización asintótica de los ceros en espacios de Sobolev discretos.
+La combinación de la caracterización de los ceros como autovalores de secciones truncadas con la estructura algebraica del producto de Sobolev permite reformular el problema exterior en términos de cuasi-ortogonalidad de orden finito. Este cambio de enfoque es el que conduce a una cota uniforme para la localización de los ceros cuando el soporte de la medida continua es compacto \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}.
 
 % -------------------------------------------------------------
 \subsection{Los Ceros como Autovalores}
@@ -1005,7 +1057,7 @@ La combinación de la caracterización de los ceros como autovalores de seccione
 	\]
 \end{definition}
 
-La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral, dada por $\rho(\mathbf{D}_n^t) \le \sigma_{1,n}$, es fundamental para acotar la región donde los ceros pueden situarse. En particular, la estabilización algebraica demostrada en la Sección~\ref{sec:matricial} garantiza que el escape de ceros hacia el infinito queda limitado a un número finito y controlado.
+La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral, dada por $\rho(\mathbf{D}_n^t) \le \sigma_{1,n}$, sigue siendo útil para controlar el tamaño de las truncaciones. Sin embargo, para obtener una acotación uniforme de todos los ceros resulta más eficaz explotar que la ortogonalidad de Sobolev induce, tras anular los términos discretos, una condición de cuasi-ortogonalidad de orden fijo respecto a una medida compleja de soporte compacto \cite{lopez1999zero,marcellan2015sobolev}.
 
 % -------------------------------------------------------------
 \subsection{Control Exterior de los Ceros de Sobolev}
@@ -1023,62 +1075,53 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 	Cuando la medida continua $\mu_0$ es regular, la teoría clásica de polinomios ortogonales garantiza, bajo las hipótesis habituales sobre el soporte, que la medida contadora normalizada de ceros de los polinomios ortogonales converge débilmente hacia la medida de equilibrio de $S(\mu_0)$ \cite{stahl1992general}. Por ello, la regularidad de la componente continua constituye la referencia natural frente a la cual se mide el efecto de las perturbaciones de Sobolev.
 \end{remark}
 
-\begin{theorem}[Control del número de ceros exteriores]\label{thm:acotacion_ceros}
+\begin{theorem}[Acotación uniforme de los ceros]\label{thm:acotacion_ceros}
 	Sea $\mu$ una medida de Borel positiva con soporte compacto tal que $\operatorname{supp}(\mu) \subseteq \overline{\mathbb{D}_R(0)}$ con $R < \infty$. Sea $\langle \cdot, \cdot \rangle_S$ un producto interno de Sobolev definido sobre $\mathbb{P}[z]$ como:
 	\begin{equation}\label{eq:sobolev_general}
 		\langle p, q \rangle_S = \int p(z)\overline{q(z)} d\mu(z) + \sum_{k=1}^N \lambda_k p^{(j_k)}(c_k) \overline{q^{(j_k)}(c_k)}
 	\end{equation}
-	donde $\lambda_k > 0$, $j_k \ge 0$, y $\{c_k\}_{k=1}^N \subset \mathbb{C}$ son puntos finitos. Entonces, para todo $n \in \mathbb{N}$, el polinomio ortogonal de Sobolev $p_n$ tiene a lo sumo $N$ ceros fuera del disco cerrado $\overline{\mathbb{D}_R(0)}$.
+	donde $\lambda_k > 0$, $j_k \ge 0$, y $\{c_k\}_{k=1}^N \subset \mathbb{C}$ son puntos finitos. Sea $p_n$ el polinomio ortogonal de Sobolev de grado $n$ y definamos
+	\[
+		A(z)=\prod_{k=1}^N (z-c_k)^{j_k+1},
+		\qquad
+		L = \deg A = \sum_{k=1}^N (j_k+1).
+	\]
+	Entonces, para todo $n \ge L+1$, el polinomio $p_n$ es cuasi-ortogonal de orden $L$ respecto de la medida compleja
+	\[
+		d\nu(z)=\overline{A(z)}\,d\mu(z),
+	\]
+	y, en consecuencia, existe un compacto $K \subset \mathbb{C}$, independiente de $n$, tal que todos los ceros de $p_n$ pertenecen a $K$. En particular, la familia de ceros de los polinomios ortogonales de Sobolev es uniformemente acotada.
 \end{theorem}
 
 \begin{proof}
-	Analizaremos la acción del operador multiplicación $\mathcal{D}: p \mapsto zp$ sobre la norma inducida por (\ref{eq:sobolev_general}). Para cualquier polinomio $p \in \mathbb{P}[z]$, la norma de su imagen es:
-	\begin{equation}
-		\|\mathcal{D}p\|_S^2 = \int |zp(z)|^2 d\mu(z) + \sum_{k=1}^N \lambda_k \left| (zp)^{(j_k)}(c_k) \right|^2
-	\end{equation}
-	Aplicando la regla de Leibniz para la derivada de un producto, la evaluación discreta resulta en:
-	\begin{equation}\label{eq:leibniz_eval}
-		(zp)^{(j_k)}(c_k) = c_k p^{(j_k)}(c_k) + j_k p^{(j_k-1)}(c_k)
-	\end{equation}
-	Definimos un conjunto de $N$ funcionales lineales sobre $\mathbb{P}[z]$ dados por $\phi_k(p) = c_k p^{(j_k)}(c_k) + j_k p^{(j_k-1)}(c_k)$ para $k=1,\dots,N$. Consideremos el subespacio algebraico $V_0$ definido como la intersección de sus núcleos:
-	\begin{equation}
-		V_0 = \bigcap_{k=1}^N \ker(\phi_k) = \left\{ p \in \mathbb{P}[z] : (zp)^{(j_k)}(c_k) = 0, \quad \forall k=1,\dots,N \right\}
-	\end{equation}
-	Al ser la intersección de $N$ hiperplanos, la codimensión algebraica de $V_0$ en $\mathbb{P}[z]$ cumple $\operatorname{codim}(V_0) \le N$.
+	Sea $q \in \mathbb{P}[z]$ con $\deg q \le n-L-1$. Entonces $\deg(Aq) \le n-1$, y por la definición de polinomio ortogonal de Sobolev se tiene
+	\[
+		\langle p_n, Aq \rangle_S = 0.
+	\]
+	Además, para cada $k=1,\dots,N$, el polinomio $A$ tiene un cero de orden $j_k+1$ en $c_k$, de modo que
+	\[
+		(Aq)^{(j_k)}(c_k)=0.
+	\]
+	Por tanto, todos los términos discretos de la forma de Sobolev desaparecen y queda
+	\[
+		0 = \langle p_n, Aq \rangle_S = \int p_n(z)\overline{A(z)q(z)}\,d\mu(z) = \int p_n(z)\overline{q(z)}\,d\nu(z).
+	\]
+	Esto prueba que $p_n$ es cuasi-ortogonal de orden $L$ respecto de la medida compleja compactamente soportada $\nu$.
 
-	Para todo polinomio $p \in V_0$, el término discreto de $\|\mathcal{D}p\|_S^2$ se anula idénticamente por definición. Por tanto, acotando la integral sobre el soporte de $\mu$:
-	\begin{equation}
-		\|\mathcal{D}p\|_S^2 = \int_{\operatorname{supp}(\mu)} |z|^2 |p(z)|^2 d\mu(z) \le R^2 \int |p(z)|^2 d\mu(z) \le R^2 \|p\|_S^2
-	\end{equation}
-	Esto demuestra que la restricción del operador cumple $\|\mathcal{D}|_{V_0}\| \le R$.
-
-	Sea $\mathbf{D}_n$ la matriz de la compresión de $\mathcal{D}$ al subespacio $\mathbb{P}_{n-1}$. Definimos $V_{0,n} = V_0 \cap \mathbb{P}_{n-1}$. Por la fórmula de Grassmann, $\dim(V_{0,n}) \ge n - N$. Identificando ahora cada polinomio $p \in \mathbb{P}_{n-1}$ con su vector de coordenadas $x \in \mathbb{C}^n$ en la base ortonormal, el subespacio $V_{0,n}$ induce un subespacio vectorial $\mathcal{V}_{0,n} \subset \mathbb{C}^n$ de dimensión al menos $n-N$.
-
-	El $(N+1)$-ésimo valor singular de $\mathbf{D}_n$, denotado como $\sigma_{N+1,n}$, se caracteriza mediante el teorema minimax de Courant-Fischer:
-	\begin{equation}
-		\sigma_{N+1,n} = \min_{\dim(S) = n-N} \max_{\substack{x \in S \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le \max_{\substack{x \in \mathcal{V}_{0,n} \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le R
-	\end{equation}
-	Dado que $\sigma_{N+1,n} \le R$ para todo $n > N$, podemos utilizar la descomposición en valores singulares. La matriz truncada se escribe como $\mathbf{D}_n = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^*$, donde $\mathbf{\Sigma}$ es diagonal y contiene los valores singulares en orden decreciente.
-	Separando los primeros $N$ valores singulares (que pueden ser mayores que $R$) del resto, la matriz se descompone de forma exacta como una suma:
-	$$ \mathbf{D}_n = \mathbf{M}_n + \mathbf{E}_n $$
-	donde $\mathbf{E}_n$ contiene únicamente la contribución de los $N$ primeros valores singulares (por lo que $\operatorname{rango}(\mathbf{E}_n) \le N$) y $\mathbf{M}_n$ contiene el resto de los valores singulares acotados por $\sigma_{N+1,n} \le R$. Por definición, esto garantiza que la norma espectral de esta última cumple $\|\mathbf{M}_n\|_2 \le R$.
-
-	Como se demostró anteriormente, los ceros del polinomio ortogonal $p_n(z)$ coinciden exactamente con los autovalores de la matriz transpuesta. Analicemos los autovalores de $\mathbf{D}_n$. Supongamos que $\lambda \in \mathbb{C}$ es un autovalor que escapa del disco de radio $R$ (es decir, $|\lambda| > R$), con autovector asociado $x \neq 0$. Por definición:
-	$$ \mathbf{D}_n x = \lambda x $$
-	Sustituyendo nuestra descomposición obtenemos:
-	$$ (\mathbf{M}_n + \mathbf{E}_n)x = \lambda x \implies (\lambda \mathbf{I} - \mathbf{M}_n)x = \mathbf{E}_n x $$
-
-	Puesto que la norma espectral acota al radio espectral, se tiene $\rho(\mathbf{M}_n) \le \|\mathbf{M}_n\|_2 \le R$. Como hemos supuesto que $|\lambda| > R$, el valor $\lambda$ no pertenece a $\sigma(\mathbf{M}_n)$, y por tanto la matriz $(\lambda \mathbf{I} - \mathbf{M}_n)$ es invertible. Multiplicando a la izquierda por su inversa, obtenemos:
-	\begin{equation}\label{eq:autovector_escape}
-		x = (\lambda \mathbf{I} - \mathbf{M}_n)^{-1} \mathbf{E}_n x
-	\end{equation}
-
-	Esta ecuación muestra que el autovector $x$ pertenece al espacio imagen de la matriz $(\lambda \mathbf{I} - \mathbf{M}_n)^{-1} \mathbf{E}_n$. Como el rango de un producto está acotado por el rango de sus factores y $\operatorname{rango}(\mathbf{E}_n) \le N$, la dimensión de dicho espacio imagen es a lo sumo $N$.
-
-	En consecuencia, el subespacio generado por todos los autovectores asociados a autovalores en la región $|\lambda| > R$ no puede tener dimensión mayor que $N$. Por tanto, una perturbación matricial de rango $N$ desplaza, como máximo, $N$ autovalores fuera del disco $\overline{\mathbb{D}_R(0)}$.
-
-	De aquí se deduce que, para cada $n$, el número de ceros de $p_n$ situados en la región exterior $|z| > R$ es a lo sumo $N$, que es precisamente la cota afirmada.
+	La localización de ceros para polinomios ortogonales de Sobolev y, más generalmente, para polinomios cuasi-ortogonales de orden fijo respecto de medidas de soporte compacto implica entonces que los ceros de $p_n$ permanecen en un compacto independiente de $n$; véanse \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}. En consecuencia, existe un compacto $K \subset \mathbb{C}$ tal que todo cero de $p_n$ pertenece a $K$ para todo $n$.
 \end{proof}
+
+\begin{remark}[Orden efectivo de la cuasi-ortogonalidad]
+	El entero
+	\[
+		L = \sum_{k=1}^N (j_k+1)
+	\]
+	es el número natural de restricciones algebraicas necesarias para anular todos los términos discretos. En el caso particular tratado con mayor detalle en este trabajo, donde solo intervienen primeras derivadas, se tiene $j_k=1$ para todo $k$ y, por tanto, $L=2N$. Así, la acotación uniforme de los ceros procede de una cuasi-ortogonalidad de orden fijo $2N$, no de una cota matricial del tipo ``a lo sumo $N$ ceros exteriores''.
+\end{remark}
+
+\begin{remark}[Localización más fina]
+	Los resultados citados en \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev} permiten obtener formulaciones más precisas que la mera acotación uniforme. En particular, bajo hipótesis adicionales de regularidad, todos salvo un número finito de ceros permanecen próximos a la envoltura convexa polinómica del soporte continuo, y el posible escape exterior queda ligado a la estructura finita de la perturbación de Sobolev.
+\end{remark}
 
 \nocite{*}
 \bibliographystyle{plain}
