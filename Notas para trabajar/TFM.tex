@@ -41,7 +41,7 @@
 % Cap. 4 — Localización y Acotación de Ceros
 
 \begin{abstract}
-	Se estudia el operador de multiplicación por la variable compleja en espacios de polinomios dotados de un producto interno de Sobolev discreto, cuya componente continua es la medida de Lebesgue normalizada sobre una circunferencia. Se demuestra que la presencia de puntos de derivada en la región exterior al disco induce una reducción de codimensión finita del espacio de Sobolev respecto al espacio de Hardy $H^2(\mathbb{D})$, controlada por el número de tales puntos exteriores. Mediante la teoría de perturbaciones de rango finito y el estudio de los valores singulares de las secciones truncadas del operador, se obtienen cotas precisas para la localización de los ceros de los polinomios ortogonales de Sobolev correspondientes.
+	Se estudia el operador de multiplicación por la variable compleja en espacios de polinomios dotados de un producto interno de Sobolev discreto, cuya componente continua es la medida de Lebesgue normalizada sobre una circunferencia. Se demuestra que la presencia de puntos de derivada en la región exterior al disco induce una reducción de codimensión topológica finita del espacio de Sobolev respecto al espacio de Hardy $H^2(\mathbb{D})$, controlada por el número de tales puntos exteriores. Mediante la teoría de perturbaciones de rango finito y el estudio de los valores singulares de las secciones truncadas del operador, se obtienen cotas precisas para la localización de los ceros de los polinomios ortogonales de Sobolev correspondientes.
 \end{abstract}
 
 \newpage
@@ -73,7 +73,7 @@ La introducción de derivadas en la métrica cambia radicalmente la geometría d
 
 El objetivo principal es analizar la estructura espectral del operador multiplicación en el caso \textit{no acotado}. Específicamente, estudiamos la situación inestable donde los puntos $c_k$ se encuentran fuera del soporte esencial de la medida (el caso que denominaremos \textit{no-BPE} o de evaluaciones puntuales no acotadas). Para ello, se emplea la teoría de perturbaciones de rango finito y la teoría de los números-$s$ (valores singulares), con el fin de cuantificar la no-acotación del operador y su impacto en la asintótica de los ceros.
 
-Este enfoque no solo proporciona un marco riguroso para los fenómenos observados anteriormente, sino que conecta el problema de los polinomios ortogonales con problemas modernos de análisis espectral y teoría de la aproximación en espacios de codimensión finita.
+Este enfoque no solo proporciona un marco riguroso para los fenómenos observados anteriormente, sino que conecta el problema de los polinomios ortogonales con problemas modernos de análisis espectral y teoría de la aproximación en espacios de codimensión topológica finita.
 
 \subsection{Medidas de Borel, Regularidad y Medida de Lebesgue}
 
@@ -203,7 +203,7 @@ La generalización central de este trabajo consiste en perturbar el producto int
 Sea $C = \{c_1, \dots, c_N\} \subset \mathbb{C}$ un conjunto finito de puntos en el plano complejo.
 
 \begin{definition}[Producto Interno de Sobolev Discreto]
-	Definimos el producto interno de Sobolev $\langle \cdot, \cdot \rangle_S$ en el espacio de polinomios $\mathbb{P}$ como:
+	Definimos el producto interno de Sobolev $\langle \cdot, \cdot \rangle_S$ en el espacio de polinomios $\Poly$ como:
 	\begin{equation} \label{eq:sobolev_inner_prod}
 		\langle p, q \rangle_S = \langle p, q \rangle_{L^2(\mu)} + \sum_{k=1}^N p'(c_k) \overline{q'(c_k)}.
 	\end{equation}
@@ -242,7 +242,7 @@ Basándonos en la geometría de los puntos respecto al soporte continuo, clasifi
 	\end{itemize}
 \end{definition}
 
-Esta distinción entre $I_{in}$ y $I_{out}$ constituye la base del análisis espectral y del estudio de la codimensión del espacio desarrollado en la Sección~\ref{sec:espectral}. La noción de \textit{Bounded Point Evaluation} (BPE) formaliza esta separación.
+Esta distinción entre $I_{in}$ y $I_{out}$ constituye la base del análisis espectral y del estudio de la codimensión topológica del espacio desarrollado en la Sección~\ref{sec:espectral}. La noción de \textit{Bounded Point Evaluation} (BPE) formaliza esta separación.
 
 \begin{definition}[Punto de Evaluación Acotada (BPE)]
 	Decimos que $a \in \C$ es un punto de evaluación acotada (\textit{bounded point evaluation}, BPE) de una medida $\mu$ \cite{miller1999bounded,aleman2009nontangential} si existe una constante $C > 0$ tal que:
@@ -252,7 +252,7 @@ Esta distinción entre $I_{in}$ y $I_{out}$ constituye la base del análisis esp
 	Equivalentemente, por el Teorema de Representación de Riesz, esto corresponde a la existencia de un núcleo reproductor $K_a \in \overline{\mathbb{P}[z]}^{L^2(\mu)}$ tal que $p(a) = \langle p, K_a \rangle_{L^2(\mu)}$ para todo $p \in \mathbb{P}[z]$.
 \end{definition}
 
-En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{out}$ (Definición \ref{def:class_points}) se traduce en términos de BPEs para las derivadas. Si $c_k \in I_{out}$, el funcional $p \mapsto p'(c_k)$ no es acotado en la norma estándar $L^2(\mu)$. Al imponer su continuidad en la norma de Sobolev, se produce una reducción de codimensión finita del espacio $\mathcal{H}$ respecto al espacio ambiental $H^2(\mathbb{D})$.
+En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{out}$ (Definición \ref{def:class_points}) se traduce en términos de BPEs para las derivadas. Si $c_k \in I_{out}$, el funcional $p \mapsto p'(c_k)$ no es acotado en la norma estándar $L^2(\mu)$.
 
 \begin{proposition}[Acotación y Extensión Continua en el Interior]
 	Para los puntos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
@@ -296,7 +296,7 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{o
 El artículo se organiza como sigue:
 
 \begin{itemize}
-	\item \textbf{Sección~\ref{sec:espectral}: Análisis Espectral y Topología.} Se desarrolla el núcleo teórico del trabajo. Se estudian la codimensión del espacio de Sobolev, la estructura del operador multiplicación y los números de Gelfand, estableciendo la dicotomía entre el caso BPE y el caso no-BPE.
+	\item \textbf{Sección~\ref{sec:espectral}: Análisis Espectral y Topología.} Se desarrolla el núcleo teórico del trabajo. Se estudian la codimensión topológica del espacio de Sobolev, la estructura del operador multiplicación y los números de Gelfand, estableciendo la dicotomía entre el caso BPE y el caso no-BPE.
 
 	\item \textbf{Sección~\ref{sec:matricial}: Análisis Matricial y Comportamiento Asintótico.} Se analizan las representaciones matriciales de los operadores. Se estudia el comportamiento asintótico de las secciones finitas (matrices de Hessenberg) mediante la teoría de perturbaciones y los valores singulares, y se demuestra la estabilización algebraica.
 
@@ -314,17 +314,33 @@ El artículo se organiza como sigue:
 % =============================================================
 \section{Análisis Espectral y Topología en Espacios de Sobolev}\label{sec:espectral}
 
-Para el estudio del operador de multiplicación, es fundamental distinguir el comportamiento sobre distintos subespacios del espacio de Hilbert $\mathcal{H}$, determinados por las condiciones de anulación en los conjuntos $I_{in}$ e $I_{out}$. Se demuestra, en el transcurso de esta sección, que la codimensión de $\mathcal{H}$ en $H^2(\mathbb{D})$ está directamente determinada por el número de puntos en la región inestable $I_{out}$; este déficit dimensional guarda una estrecha relación con la teoría de índices de defecto de operadores simétricos y con los Tripletes de Gelfand.
+Para el estudio del operador de multiplicación, es fundamental distinguir el comportamiento sobre distintos subespacios del espacio de Hilbert $\mathcal{H}$, determinados por las condiciones de anulación en los conjuntos $I_{in}$ e $I_{out}$. Se demuestra, en el transcurso de esta sección, que la codimensión topológica de $\mathcal{H}$ en $H^2(\mathbb{D})$ está directamente determinada por el número de puntos en la región inestable $I_{out}$; este déficit dimensional guarda una estrecha relación con la teoría de índices de defecto de operadores simétricos y con los Tripletes de Gelfand.
 
 % -------------------------------------------------------------
 \subsection{Codimensión y Subespacios en el Espacio de Hilbert}
 % -------------------------------------------------------------
 
-\begin{definition}[Codimensión]
-	Sea $M$ un subespacio vectorial de un espacio de Banach $X$. La codimensión de $M$ en $X$, denotada por $\operatorname{codim}(M)$, se define como la dimensión algebraica del espacio vectorial cociente $X/M$:
-	$$ \operatorname{codim}(M) = \dim(X/M). $$
-	En el caso particular de que $X$ sea un espacio de Hilbert y $M$ sea un subespacio cerrado, esta definición coincide con la dimensión del complemento ortogonal $M^\perp$ \cite{halmos1982hilbert}.
+\begin{definition}[Codimensión topológica en Hilbert]\label{def:codim_top_hilbert}
+	Sea $\mathcal{H}$ un espacio de Hilbert y sea $M\subset \mathcal{H}$ un subespacio cerrado. Definimos su codimensión topológica por
+	$$
+		\operatorname{codim}_{\mathcal{H}}(M):=\dim(\mathcal{H}/M).
+	$$
+	Equivalentemente,
+	$$
+		\operatorname{codim}_{\mathcal{H}}(M)=\dim(M^\perp)
+	$$
+	\cite{halmos1982hilbert}.
 \end{definition}
+
+\begin{remark}[Convención de notación para codimensión]\label{rem:convencion_codim}
+	A lo largo del trabajo distinguiremos dos nociones:
+	\begin{itemize}
+		\item $\operatorname{codim}_{\mathcal{H}}(M)$ para subespacios cerrados $M$ de un espacio de Hilbert (noción topológica).
+		\item $\operatorname{codim}_{alg}(V)$ para subespacios vectoriales $V\subset \mathbb{P}[z]$ (noción puramente algebraica; véase la Definición~\ref{def:codim_alg}).
+	\end{itemize}
+	En el primer caso, la dimensión se entiende en sentido hilbertiano (cardinal de una base ortonormal); en el segundo, en sentido algebraico (cardinal de una base de Hamel).
+	Cuando el espacio ambiente sea finito-dimensional (por ejemplo, $\mathbb{C}^n$), usaremos $\operatorname{codim}(\cdot)$ sin subíndice.
+\end{remark}
 
 Dado que nuestra medida $\mu$ es la medida de Lebesgue en la circunferencia unidad $S_1$, la componente continua de nuestro espacio de Sobolev está ligada al espacio de Hardy \cite{duren1970theory}.
 
@@ -362,7 +378,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 \end{proposition}
 
 \begin{proof}
-	Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que tiene codimensión 1.
+	Consideremos el ideal $Y_a = (z-a)\Poly$. Queremos probar que tiene codimensión topológica 1.
 
 	Dado que $a$ es un punto de evaluación continua (BPE), el funcional lineal $\Phi_a: \Poly \to \mathbb{C}$ dado por $\Phi_a(p) = p(a)$ es acotado. Por el Teorema de Extensión, $\Phi_a$ se extiende de manera única y continua a todo $\mathcal{H}$. Al ser continuo, su núcleo $\ker(\Phi_a)$ es un subespacio cerrado de $\mathcal{H}$.
 
@@ -374,7 +390,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 	$$\mathcal{H} = \overline{\Poly} = \overline{Y_a \oplus \operatorname{span}\{\mathbf{1}\}}$$
 	Como el funcional es continuo y $\Phi_a(\mathbf{1}) = 1 \neq 0$, la suma directa se preserva en la clausura:
 	$$\mathcal{H} = Y_a \oplus \operatorname{span}\{\mathbf{1}\}$$
-	Lo que demuestra que $\operatorname{codim}(Y_a) = 1$.
+	Lo que demuestra que $\operatorname{codim}_{\mathcal{H}}(Y_a) = 1$.
 \end{proof}
 
 \begin{proposition}[Codimensión de la clausura para múltiples átomos BPE]
@@ -390,15 +406,15 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 
 	Como los $N$ puntos son BPE, el funcional vectorial $\vec{\Phi}$ se extiende de manera continua a $\mathcal{H}$. Tomando clausuras y apoyándonos en la densidad de los polinomios ($\overline{\mathbb{P}[z]} = \mathcal{H}$):
 	$$\mathcal{H} = \overline{Y_{\mathcal{A}} \oplus \operatorname{span}\{L_1, \dots, L_N\}}$$
-	Concluimos que $\operatorname{codim}(Y_{\mathcal{A}}) = N$.
+	Concluimos que $\operatorname{codim}_{\mathcal{H}}(Y_{\mathcal{A}}) = N$.
 \end{proof}
 
 \begin{theorem}[Dicotomía de la Codimensión]
 	\label{thm:dicotomia}
 	Sea $\mathcal{H}$ la clausura de $\Poly$ respecto a una norma de Hilbert y sea $a \in \C$. Sea $V = \overline{\{p \in \Poly : p(a)=0\}}$. Entonces, solo existen dos posibilidades:
 	\begin{enumerate}
-		\item Si $a$ es un punto de evaluación acotada (BPE), entonces $V$ es un hiperplano cerrado y $\operatorname{codim}(V) = 1$.
-		\item Si $a$ no es un BPE, entonces $V$ es denso en $\mathcal{H}$ y $\operatorname{codim}(V) = 0$.
+		\item Si $a$ es un punto de evaluación acotada (BPE), entonces $V$ es un hiperplano cerrado y $\operatorname{codim}_{\mathcal{H}}(V) = 1$.
+		\item Si $a$ no es un BPE, entonces $V$ es denso en $\mathcal{H}$ y $\operatorname{codim}_{\mathcal{H}}(V) = 0$.
 	\end{enumerate}
 \end{theorem}
 
@@ -413,7 +429,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 
 	Consideremos la sucesión $p_n(z) = 1 - q_n(z)$. Se cumple $p_n(a) = 0$, luego $p_n \in Y_a$ para todo~$n$. Además:
 	$$ \|1 - p_n\|_{\mathcal{H}} = \|q_n\|_{\mathcal{H}} < \frac{1}{n}, $$
-	lo que prueba que $1 \in \overline{Y_a}$. Por linealidad y densidad de $\Poly$ en $\mathcal{H}$ concluimos que $\overline{Y_a} = \mathcal{H}$, esto es, $\operatorname{codim}(V) = 0$.
+	lo que prueba que $1 \in \overline{Y_a}$. Por linealidad y densidad de $\Poly$ en $\mathcal{H}$ concluimos que $\overline{Y_a} = \mathcal{H}$, esto es, $\operatorname{codim}_{\mathcal{H}}(V) = 0$.
 \end{proof}
 
 \begin{theorem}[Dicotomía de la Codimensión para un Funcional]\label{thm:dicotomia_1}
@@ -429,7 +445,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 
 	\textbf{Caso 2 ($\phi$ acotado):} Dado que $\phi$ es continuo, su núcleo ya es un subespacio cerrado, por lo que $\overline{\ker(\phi)} = \ker(\phi)$ (tomando la clausura en $\mathcal{H}$).
 
-	Para calcular su codimensión, utilizaremos una aproximación constructiva mediante subespacios de dimensión finita. Sea $\mathbb{P}_n$ el espacio de polinomios de grado menor o igual a $n$, el cual tiene dimensión finita $n+1$.
+	Para calcular su codimensión topológica, utilizaremos una aproximación constructiva mediante subespacios de dimensión finita. Sea $\mathbb{P}_n$ el espacio de polinomios de grado menor o igual a $n$, el cual tiene dimensión finita $n+1$.
 	Consideremos la restricción del funcional a este subespacio, $\phi_n = \phi|_{\mathbb{P}_n} : \mathbb{P}_n \to \mathbb{C}$.
 
 	Como $\phi$ no es el funcional nulo, existe un grado $n_0$ tal que para todo $n \ge n_0$, existe al menos un polinomio $q \in \mathbb{P}_n$ con $\phi_n(q) \neq 0$. Por tanto, para $n \ge n_0$, la imagen de $\phi_n$ es todo $\mathbb{C}$ (dimensión 1).
@@ -469,7 +485,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 	Al ser los $k$ funcionales continuos por hipótesis, $M_c$ es un subespacio cerrado en $\mathcal{H}$ ($\overline{M_c} = M_c$). La descomposición se hereda al espacio completo, $\mathcal{H} = M_c \oplus \operatorname{span}\{q_1, \dots, q_k\}$, demostrando que $\operatorname{codim}_\mathcal{H}(M_c) = k$.
 
 	Ahora, analizamos la restricción de los funcionales no acotados restantes $\{\psi_{k+1}, \dots, \psi_N\}$ actuando \textit{dentro} del subespacio cerrado $M_c$.
-	Como estas aplicaciones son no acotadas, el Lema de codimensión finita garantiza que su restricción a $M_c$ (que tiene codimensión finita $k$) sigue siendo no acotada.
+	Como estas aplicaciones son no acotadas, el Lema de codimensión topológica finita garantiza que su restricción a $M_c$ (que tiene codimensión topológica finita $k$) sigue siendo no acotada.
 	Por el mismo principio del Teorema para un funcional (Teorema \ref{thm:dicotomia_1}), la intersección de los núcleos de funcionales no acotados es densa en el espacio donde actúan.
 	Por lo tanto, la clausura topológica de la intersección total dentro de $M_c$ es todo $M_c$:
 	$$ \overline{V_0} = \overline{M_c \cap \bigcap_{j=k+1}^N \ker(\psi_j)} = M_c $$
@@ -477,7 +493,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 	Finalmente, dado que la clausura topológica del subespacio total es exactamente $\overline{V_0} = M_c$, y ya habíamos probado que $\operatorname{codim}_\mathcal{H}(M_c) = k$, concluimos que:
 	$$ \operatorname{codim}_\mathcal{H}(\overline{V_0}) = k \le N. $$
 
-	Los casos extremos se siguen trivialmente: si $k=0$, $\overline{V_0} = \mathcal{H}$ y la codimensión es 0; si $k=N$, $\overline{V_0} = V_0$ es cerrado y su codimensión topológica es máxima e igual a $N$.
+	Los casos extremos se siguen trivialmente: si $k=0$, $\overline{V_0} = \mathcal{H}$ y la codimensión topológica es 0; si $k=N$, $\overline{V_0} = V_0$ es cerrado y su codimensión topológica es máxima e igual a $N$.
 \end{proof}
 
 % -------------------------------------------------------------
@@ -502,7 +518,7 @@ En el marco de la teoría de ideales de operadores, los números de Gelfand cons
 \begin{definition}[Números de Gelfand]
 	Sea $T \in \mathcal{L}(\mathcal{H})$ un operador acotado en un espacio de Hilbert. El $m$-ésimo número de Gelfand de $T$ se define como:
 	\begin{equation}
-		c_m(T) = \inf \{ \|T|_V\| : V \subset \mathcal{H}, \; \operatorname{codim}(V) < m \}.
+		c_m(T) = \inf \{ \|T|_V\| : V \subset \mathcal{H}, \; \operatorname{codim}_{\mathcal{H}}(V) < m \}.
 	\end{equation}
 	En particular, $c_1(T) = \|T\|$ es la norma global del operador.
 \end{definition}
@@ -511,7 +527,7 @@ Con el fin de analizar el impacto que las derivadas discretas tienen sobre la es
 
 \subsubsection{El Primer Número de Gelfand: La Norma Global}
 
-Por definición, el primer número de Gelfand, $c_1(\mathcal{D})$, corresponde al ínfimo sobre subespacios de codimensión estrictamente menor que 1. El único subespacio que cumple esta condición es el espacio total $\mathcal{H}$. Por consiguiente:
+Por definición, el primer número de Gelfand, $c_1(\mathcal{D})$, corresponde al ínfimo sobre subespacios de codimensión topológica estrictamente menor que 1. El único subespacio que cumple esta condición es el espacio total $\mathcal{H}$. Por consiguiente:
 $$ c_1(\mathcal{D}) = \|\mathcal{D}\|. $$
 Este primer número refleja el comportamiento global del operador: cuanto mayor es la contribución del término discreto a la norma de Sobolev, mayor es la dilatación de $c_1(\mathcal{D})$ respecto al radio de la circunferencia.
 
@@ -553,7 +569,7 @@ Los cálculos explícitos más simples ya muestran dos rasgos del problema: la d
 	\]
 \end{example}
 
-El siguiente resultado muestra que, aun cuando $c_1(\mathcal{D})$ refleje la perturbación discreta, al pasar a codimensión uno se recupera exactamente la escala geométrica de la circunferencia.
+El siguiente resultado muestra que, aun cuando $c_1(\mathcal{D})$ refleje la perturbación discreta, al pasar a codimensión topológica uno se recupera exactamente la escala geométrica de la circunferencia.
 
 \begin{theorem}[Valor exacto de $c_2$ para un punto]
 	\label{thm:c2_punto}
@@ -569,17 +585,17 @@ El siguiente resultado muestra que, aun cuando $c_1(\mathcal{D})$ refleje la per
 	\[
 		\Psi(p) = p(c_1) + c_1 p'(c_1), \qquad p \in \Poly,
 	\]
-	se extiende continuamente a $\mathcal{H}$. Denotando de nuevo por $\Psi$ a dicha extensión, el subespacio $V_{opt} = \ker(\Psi)$ es cerrado y de codimensión 1. Para $p \in V_{opt}$:
+	se extiende continuamente a $\mathcal{H}$. Denotando de nuevo por $\Psi$ a dicha extensión, el subespacio $V_{opt} = \ker(\Psi)$ es cerrado y de codimensión topológica 1. Para $p \in V_{opt}$:
 	\[
 		\norm{\mathcal{D}p}^2 = \int_{S_1} \abs{zp}^2 d\mu + \underbrace{\abs{(zp)'(c_1)}^2}_{=0} = \|p\|_{L^2}^2 \le \norm{p}^2,
 	\]
 	luego $\|\mathcal{D}|_{V_{opt}}\| \le 1$ y $c_2(\mathcal{D}) \le 1$.
 
-	\textbf{Cota inferior.} Supóngase que existe $V$ de codimensión 1 y $\epsilon > 0$ con $\norm{\mathcal{D}p}^2 \le (1-\epsilon)\norm{p}^2$ para todo $p \in V$. Desarrollando las normas:
+	\textbf{Cota inferior.} Supóngase que existe $V$ de codimensión topológica 1 y $\epsilon > 0$ con $\norm{\mathcal{D}p}^2 \le (1-\epsilon)\norm{p}^2$ para todo $p \in V$. Desarrollando las normas:
 	\[
 		\epsilon \|p\|_{L^2}^2 + \abs{p(c_1) + c_1 p'(c_1)}^2 \le (1-\epsilon)\abs{p'(c_1)}^2, \quad \forall p \in V.
 	\]
-	Además, por el Lema~\ref{lema:ABPE_derivada}, el funcional de derivación puntual $\delta'_{c_1}: \mathcal{H} \to \mathbb{C}$ es continuo; en particular, su restricción $\delta'_{c_1}|_V : V \to \mathbb{C}$ también lo es. Como $V$ tiene codimensión 1 en un espacio infinito-dimensional, sigue siendo infinito-dimensional. La aplicación lineal $\delta'_{c_1}|_V$ no puede ser inyectiva, pues una aplicación lineal inyectiva de un espacio vectorial infinito-dimensional en $\mathbb{C}$ forzaría $\dim(V) \leq \dim(\mathbb{C}) = 1$, contradicción. Por tanto, su núcleo es no trivial. Tomemos $q \in V$, $q \neq 0$, tal que $q'(c_1)=0$. Sustituyendo en la desigualdad anterior obtenemos
+	Además, por el Lema~\ref{lema:ABPE_derivada}, el funcional de derivación puntual $\delta'_{c_1}: \mathcal{H} \to \mathbb{C}$ es continuo; en particular, su restricción $\delta'_{c_1}|_V : V \to \mathbb{C}$ también lo es. Como $V$ tiene codimensión topológica 1 en un espacio infinito-dimensional, sigue siendo infinito-dimensional. La aplicación lineal $\delta'_{c_1}|_V$ no puede ser inyectiva, pues una aplicación lineal inyectiva de un espacio vectorial infinito-dimensional en $\mathbb{C}$ forzaría $\dim(V) \leq \dim(\mathbb{C}) = 1$, contradicción. Por tanto, su núcleo es no trivial. Tomemos $q \in V$, $q \neq 0$, tal que $q'(c_1)=0$. Sustituyendo en la desigualdad anterior obtenemos
 	\[
 		\epsilon \|q\|_{L^2}^2 + \abs{q(c_1)}^2 \le 0.
 	\]
@@ -600,13 +616,82 @@ En el régimen no-BPE, el estudio topológico del operador multiplicación $\mat
 
 Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas operan exclusivamente sobre polinomios, resulta natural definir un nuevo índice que mida la acotación de forma puramente algebraica dentro del espacio pre-Hilbertiano $\mathbb{P}[z]$.
 
-\begin{definition}[Índice Algebraico $Q_k$]\label{def:indice_Qk}
-	Sea $\mathcal{D}: \mathbb{P}[z] \to \mathbb{P}[z]$ el operador multiplicación en el espacio de polinomios equipado con un producto interno de Sobolev. Para cada entero $k \ge 1$, definimos el $k$-ésimo índice algebraico $Q_k(\mathcal{D})$ como:
-	\begin{equation}
-		Q_k(\mathcal{D}) = \inf \left\{ \| \mathcal{D}|_V \|_{S} : V \subset \mathbb{P}[z] \text{ es un subespacio vectorial con } \operatorname{codim}_{alg}(V) < k \right\}
-	\end{equation}
-	donde $\| \mathcal{D}|_V \|_{S} = \sup_{p \in V, p \neq 0} \frac{\|\mathcal{D}p\|_S}{\|p\|_S}$, y la codimensión se entiende en el sentido estrictamente algebraico de espacios vectoriales, sin requerir clausura topológica.
+\begin{definition}[Codimensión algebraica finita]\label{def:codim_alg}
+	Para un subespacio vectorial $V\subset \mathbb P[z]$, definimos
+	\[
+		\operatorname{codim}_{alg}(V):=\dim(\mathbb P[z]/V)\in \mathbb N\cup\{\infty\}.
+	\]
+	Aquí $\dim(\cdot)$ denota dimensión algebraica (cardinal de una base de Hamel).
+	Diremos que $V$ es de codimensión algebraica finita si
+	\[
+		\operatorname{codim}_{alg}(V)<\infty.
+	\]
 \end{definition}
+
+\begin{proposition}[Caracterización por funcionales]\label{prop:finite-codim-kernels}
+	Para un subespacio vectorial $V\subset \mathbb P[z]$, son equivalentes:
+	\begin{enumerate}
+		\item $\operatorname{codim}_{alg}(V)<\infty$;
+		\item existe un sistema finito de funcionales lineales $\Phi=(\phi_1,\dots,\phi_m)$
+		      tal que
+		      \[
+			      V=\bigcap_{j=1}^m \ker \phi_j.
+		      \]
+	\end{enumerate}
+	Además, en tal caso,
+	\[
+		\operatorname{codim}_{alg}(V)
+		=
+		\min\Bigl\{m:\exists\,\Phi=(\phi_1,\dots,\phi_m),\
+		V=\bigcap_{j=1}^m\ker\phi_j\Bigr\}.
+	\]
+	Más precisamente, si $V=\bigcap_{j=1}^m\ker\phi_j$, entonces
+	\[
+		\operatorname{codim}_{alg}(V)=\dim\operatorname{span}\{\phi_1,\dots,\phi_m\}.
+	\]
+\end{proposition}
+
+\begin{definition}[Índice Algebraico $Q_k$]\label{def:indice_Qk}
+	Sea $\mathcal{D}:\mathbb{P}[z]\to\mathbb{P}[z]$ el operador multiplicación en el espacio pre-Hilbertiano de Sobolev. Para cada $k\ge1$, definimos
+	\[
+		Q_k(\mathcal{D})
+		:=\inf\{\|\mathcal{D}|_V\|_S:V\subset\mathbb{P}[z]\ \text{admisible y}\ \operatorname{codim}_{alg}(V)<k\},
+	\]
+	donde
+	\[
+		\|\mathcal{D}|_V\|_S:=\sup_{\substack{p\in V\\p\ne0}}\frac{\|\mathcal{D}p\|_S}{\|p\|_S}.
+	\]
+	Por la convención anterior, $Q_1(\mathcal{D})=\|\mathcal{D}\|_S$, admitiendo el valor $+\infty$.
+\end{definition}
+
+\begin{remark}[Lectura min-max]
+	La familia admisible está construida mediante intersecciones finitas de hiperplanos en $\mathbb{P}[z]$. Cuando dichos hiperplanos son ortogonales a polinomios, se recupera literalmente el esquema de Courant--Fischer; cuando provienen de funcionales no continuos en $\mathcal{H}$ (caso no-BPE), la formulación sigue siendo válida dentro de $\mathbb{P}[z]$.
+\end{remark}
+
+\begin{proposition}[Caso ortogonal]\label{prop:equiv_ortho_interseccion}
+	Sea $F=(f_1,\dots,f_m)\subset \mathbb P[z]$ y supongamos que
+	$\langle\cdot,\cdot\rangle_S$ es un producto escalar en $\mathbb P[z]$.
+	Definimos
+	\[
+		V_{\perp}(F):=\{p\in\mathbb P[z]:\langle p,f_j\rangle_S=0,\ j=1,\dots,m\}.
+	\]
+	Entonces
+	\[
+		V_{\perp}(F)=\bigcap_{j=1}^m \ker(\phi_j),
+		\qquad
+		\phi_j(p):=\langle p,f_j\rangle_S,
+	\]
+	y
+	\[
+		\operatorname{codim}_{alg}(V_\perp(F))
+		=
+		\dim\operatorname{span}\{f_1,\dots,f_m\}.
+	\]
+	En particular, si $f_1,\dots,f_m$ son linealmente independientes, entonces
+	\[
+		\operatorname{codim}_{alg}(V_\perp(F))=m.
+	\]
+\end{proposition}
 
 La ventaja principal de este nuevo índice es que permite aislar las singularidades generadas por los átomos exteriores, revelando que la inestabilidad, aunque topológicamente densa, es algebraicamente de rango finito.
 
@@ -619,43 +704,57 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 \end{theorem}
 
 \begin{proof}
-	Para $k=1$, la codimensión requerida es estrictamente menor que 1, lo que obliga a tomar $V = \mathbb{P}[z]$. Dado que el funcional $p \mapsto p(c) + c p'(c)$ es no acotado en $\mathbb{P}[z]$ respecto a la norma de Sobolev, podemos encontrar una sucesión de polinomios normalizados donde su imagen diverja. Por tanto, $\|\mathcal{D}\|_{\mathbb{P}[z]} = \infty$, lo que implica $Q_1(\mathcal{D}) = \infty$.
+	Para $k=1$, la condición $\operatorname{codim}_{alg}(V)<1$ fuerza $V=\mathbb{P}[z]$. Dado que el funcional $p \mapsto p(c)+cp'(c)$ es no acotado en $\mathbb{P}[z]$ respecto a la norma de Sobolev, se obtiene $\|\mathcal{D}\|_S=\infty$, y por tanto $Q_1(\mathcal{D})=\infty$.
 
-	Para $k=2$, es suficiente encontrar un único subespacio algebraico $V_0 \subset \mathbb{P}[z]$ de codimensión 1 donde el operador esté acotado. Definimos el funcional lineal $\phi(p) = p(c) + c p'(c)$ y tomamos su núcleo $V_0 = \ker(\phi) \subset \mathbb{P}[z]$.
-	Por el Teorema del Rango-Nulidad algebraico, al ser $\phi$ no nulo, $\operatorname{codim}_{alg}(V_0) = 1$.
+	Para $k=2$, basta exhibir un subespacio admisible de codimensión algebraica 1 sobre el que la restricción sea acotada. Tomamos
+	\[
+		V_0:=\{p\in\mathbb{P}[z]:p(c)+cp'(c)=0\}.
+	\]
+	Este subespacio está definido por una única restricción lineal, luego su codimensión algebraica es 1.
 
 	Al evaluar la norma del operador para cualquier polinomio $p \in V_0$, la parte discreta se anula por definición:
 	$$ \|\mathcal{D}p\|_S^2 = \int |zp(z)|^2 d\mu(z) + |\phi(p)|^2 = \int |zp(z)|^2 d\mu(z) + 0 $$
 	Acotando la integral por el radio máximo del soporte continuo, obtenemos:
 	$$ \|\mathcal{D}p\|_S^2 \le R^2 \int |p(z)|^2 d\mu(z) \le R^2 \|p\|_S^2 $$
-	En consecuencia, $\|\mathcal{D}|_{V_0}\| \le R$. Al tomar el ínfimo sobre todos los subespacios de codimensión menor que 2, se concluye que $Q_2(\mathcal{D}) \le R$.
+	En consecuencia, $\|\mathcal{D}|_{V_0}\| \le R$. Al tomar el ínfimo sobre todos los subespacios admisibles con codimensión algebraica menor que 2, se concluye que $Q_2(\mathcal{D}) \le R$.
 \end{proof}
 
 \begin{proposition}[Propiedades Básicas del Índice $Q_k$]\label{prop:propiedades_Qk}
 	Para el operador multiplicación $\mathcal{D}$ definido sobre el espacio pre-Hilbertiano $\mathbb{P}[z]$, el índice algebraico $Q_k(\mathcal{D})$ forma una sucesión monótona no creciente cuyo primer término coincide exactamente con la norma global del operador. Es decir:
 	$$ \|\mathcal{D}\|_S = Q_1(\mathcal{D}) \ge Q_2(\mathcal{D}) \ge \dots \ge Q_k(\mathcal{D}) \ge Q_{k+1}(\mathcal{D}) \ge \dots \ge 0 $$
+	(admitiendo el valor $+\infty$ cuando $\mathcal{D}$ es no acotado).
 \end{proposition}
 
 \begin{proof}
-	Demostraremos en primer lugar la identidad para el caso $k=1$. Por definición, el índice $Q_1(\mathcal{D})$ requiere tomar el ínfimo sobre la familia de subespacios $V \subset \mathbb{P}[z]$ que satisfacen la condición:
-	$$ \operatorname{codim}_{alg}(V) < 1 $$
-	Dado que la codimensión algebraica de un subespacio es, por definición, un número entero no negativo, la única posibilidad es que $\operatorname{codim}_{alg}(V) = 0$. El único subespacio de $\mathbb{P}[z]$ al que no le falta ninguna dimensión para generar todo el espacio es el propio espacio total, $V = \mathbb{P}[z]$.
+	Para $k=1$, por la convención de la Definición~\ref{def:codim_alg}, solo aparece el conjunto vacío de restricciones y por tanto $V(\varnothing)=\mathbb{P}[z]$. Así,
+	$$ Q_1(\mathcal{D}) = \|\mathcal{D}|_{\mathbb{P}[z]}\|_S = \|\mathcal{D}\|_S. $$
 
-	Por lo tanto, el conjunto de subespacios admisibles sobre el que se calcula el ínfimo contiene un único elemento. Al evaluar, obtenemos trivialmente la norma global del operador:
-	$$ Q_1(\mathcal{D}) = \|\mathcal{D}|_{\mathbb{P}[z]}\|_S = \|\mathcal{D}\|_S $$
-
-	A continuación, probaremos la monotonía de la sucesión, es decir, $Q_k(\mathcal{D}) \ge Q_{k+1}(\mathcal{D})$ para cualquier $k \ge 1$.
-	Definamos $\mathcal{F}_k$ como la familia de subespacios admisibles para el cálculo del $k$-ésimo índice:
-	$$ \mathcal{F}_k = \left\{ V \subset \mathbb{P}[z] : \operatorname{codim}_{alg}(V) < k \right\} $$
-
-	Si tomamos un subespacio arbitrario $V \in \mathcal{F}_k$, sabemos que su codimensión es a lo sumo $k-1$. Por tanto, es estrictamente menor que $k+1$, lo que implica que $V$ también cumple la condición para pertenecer a la familia $\mathcal{F}_{k+1}$. Esto establece una relación de inclusión estricta entre las familias de subespacios admisibles:
-	$$ \mathcal{F}_1 \subset \mathcal{F}_2 \subset \dots \subset \mathcal{F}_k \subset \mathcal{F}_{k+1} \subset \dots $$
-
-	El índice $Q_k(\mathcal{D})$ se define como el ínfimo de las normas de las restricciones del operador sobre estas familias. Por las propiedades fundamentales del ínfimo, al minimizar una misma función sobre un conjunto de opciones más amplio (o igual), el resultado solo puede ser menor o igual:
-	$$ Q_{k+1}(\mathcal{D}) = \inf_{V \in \mathcal{F}_{k+1}} \|\mathcal{D}|_V\|_S \le \inf_{V \in \mathcal{F}_k} \|\mathcal{D}|_V\|_S = Q_k(\mathcal{D}) $$
-
-	Finalmente, puesto que el índice se define como el ínfimo de normas, y toda norma es no negativa por axioma, se tiene que $Q_k(\mathcal{D}) \ge 0$ para todo $k$, concluyendo la demostración.
+	Probemos ahora la monotonía. Sea $\Phi_k=(\phi_1,\dots,\phi_{k-1})$ un sistema de $k-1$ funcionales y definamos
+	$$V_k=V(\Phi_k)=\{p\in\mathbb{P}[z]:\phi_j(p)=0,\ j=1,\dots,k-1\}.$$
+	Si añadimos una restricción lineal más $\phi_k$, obtenemos
+	$$V_{k+1}=V(\phi_1,\dots,\phi_k)=\{p\in V_k:\phi_k(p)=0\}\subseteq V_k.$$
+	Por inclusión de subespacios,
+	$$\|\mathcal{D}|_{V_{k+1}}\|_S\le \|\mathcal{D}|_{V_k}\|_S.$$
+	Tomando ínfimo sobre todos los sistemas de $k$ y $k-1$ restricciones, respectivamente, se concluye
+	$$Q_{k+1}(\mathcal{D})\le Q_k(\mathcal{D}).$$
+	La no negatividad es inmediata al ser ínfimo de normas operatoriales (posiblemente infinitas).
 \end{proof}
+
+\subsection{Los Cuatro Índices y la Estrategia de Equivalencia}
+
+Para evitar ambigüedades de notación, distinguimos cuatro objetos que intervienen en el trabajo:
+\begin{itemize}
+	\item $Q_k$: índice polinómico definido por ortogonalidad en $\mathbb{P}[z]$ (Definición~\ref{def:indice_Qk}).
+	\item $S_k$: índice topológico obtenido al tomar ínfimos sobre subespacios de codimensión topológica $<k$ en la completación de Hilbert $\mathcal{H}$.
+	\item $\Sigma_k$: límite asintótico (cuando existe) de la cadena truncada $\sigma_{k,n}$ de valores singulares de $\mathbf{D}_n$.
+	\item $C_k$: números de Gelfand clásicos para operadores acotados en $\mathcal{H}$.
+\end{itemize}
+
+En el régimen acotado, el objetivo es identificar estos cuatro índices. La desigualdad
+\[
+	\limsup_{n\to\infty}\sigma_{k,n}\le Q_k
+\]
+ya se obtiene por compresión/proyección (Proposición~\ref{prop:sigma_qk}). El paso técnicamente más delicado es comparar la versión polinómica con la topológica. La estrategia es perturbativa: aproximar funcionales continuos de $\mathcal{H}$ mediante polinomios usando densidad, controlar la variación de los hiperplanos ortogonales asociados y, finalmente, transferir ese control a la norma restringida de $\mathcal{D}$. Este es el mecanismo que conecta de forma estable la formulación min-max en $\mathcal{H}$ con su versión puramente polinómica.
 
 \begin{proposition}[Subaditividad y Perturbación Acotada]\label{prop:Qk_perturbacion}
 	Sea $\mathcal{D}$ un operador en $\mathbb{P}[z]$ y $\mathcal{E}$ un operador acotado en el mismo espacio ($\|\mathcal{E}\|_S < \infty$). Entonces, para todo $k \ge 1$:
@@ -663,11 +762,11 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 \end{proposition}
 
 \begin{proof}
-	Sea $V \subset \mathbb{P}[z]$ un subespacio algebraico admisible ($\operatorname{codim}_{alg}(V) < k$). Por la desigualdad triangular de la norma de operadores, la restricción de la suma satisface:
+	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k$. Por la desigualdad triangular de la norma de operadores, la restricción de la suma satisface:
 	$$ \|(\mathcal{D} + \mathcal{E})|_V\|_S \le \|\mathcal{D}|_V\|_S + \|\mathcal{E}|_V\|_S $$
 	Dado que la norma de una restricción nunca puede superar la norma global del operador, sabemos que $\|\mathcal{E}|_V\|_S \le \|\mathcal{E}\|_S$. Sustituyendo:
 	$$ \|(\mathcal{D} + \mathcal{E})|_V\|_S \le \|\mathcal{D}|_V\|_S + \|\mathcal{E}\|_S $$
-	Tomando el ínfimo sobre todos los subespacios admisibles $V$ a ambos lados de la desigualdad, obtenemos directamente:
+	Tomando el ínfimo sobre todos los subespacios admisibles con $\operatorname{codim}_{alg}(V)<k$ a ambos lados de la desigualdad, obtenemos directamente:
 	$$ Q_k(\mathcal{D} + \mathcal{E}) \le Q_k(\mathcal{D}) + \|\mathcal{E}\|_S $$
 \end{proof}
 
@@ -684,14 +783,81 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 	Procederemos probando ambas desigualdades. Recordemos que $c_k(\mathcal{D})$ calcula el ínfimo sobre subespacios \textit{cerrados} $M \subset \mathcal{H}$ de codimensión topológica $m < k$.
 
 	\textbf{Paso 1: $Q_k(\mathcal{D}) \le c_k(\mathcal{D})$.}
-	Sea $M \subset \mathcal{H}$ un subespacio cerrado de codimensión $m < k$. Por propiedades elementales de Análisis Funcional, $M$ puede expresarse como la intersección de los núcleos de $m$ funcionales lineales continuos $\{\phi_j\}_{j=1}^m$.
-	Definimos la restricción algebraica $V = M \cap \mathbb{P}[z]$. Como $\mathbb{P}[z]$ es denso en $\mathcal{H}$ y los funcionales son continuos, $\operatorname{codim}_{alg}(V) = m < k$.
+	Sea $M \subset \mathcal{H}$ un subespacio cerrado de codimensión topológica $m < k$. Por propiedades elementales de Análisis Funcional, $M$ puede escribirse como intersección de $m$ hiperplanos cerrados, esto es, $M=\bigcap_{j=1}^m\ker\Phi_j$ con $\Phi_1,\dots,\Phi_m\in\mathcal{H}^*$ linealmente independientes. Tomando intersección con $\mathbb{P}[z]$, obtenemos
+	\[
+		V:=M\cap\mathbb{P}[z]=\bigcap_{j=1}^m\ker(\Phi_j|_{\mathbb{P}[z]}).
+	\]
+	En efecto, para $p\in\mathbb{P}[z]$ se tiene
+	\[
+		p\in M\cap\mathbb{P}[z]
+		\iff p\in\mathbb{P}[z]\ \text{y}\ \Phi_j(p)=0\ \forall j
+		\iff p\in\bigcap_{j=1}^m\ker(\Phi_j|_{\mathbb{P}[z]}),
+	\]
+	lo que justifica la igualdad anterior.
+
+	Además, las restricciones $\Phi_j|_{\mathbb{P}[z]}$ son linealmente independientes: si
+	\[
+		\sum_{j=1}^m \alpha_j\,\Phi_j|_{\mathbb{P}[z]}=0,
+	\]
+	entonces el funcional continuo $\Psi:=\sum_{j=1}^m \alpha_j\Phi_j\in\mathcal{H}^*$ se anula en $\mathbb{P}[z]$. Como $\mathbb{P}[z]$ es denso en $\mathcal{H}$ y $\Psi$ es continuo, se sigue que $\Psi\equiv 0$ en todo $\mathcal{H}$. Por independencia lineal de $\Phi_1,\dots,\Phi_m$, necesariamente $\alpha_1=\cdots=\alpha_m=0$.
+
+	Por la Proposición~\ref{prop:finite-codim-kernels}, se concluye que $\operatorname{codim}_{alg}(V)=m<k$.
 	Dado que $\mathcal{D}$ es continuo, su norma suprema sobre un subconjunto denso ($V$) es igual a la norma sobre su clausura ($M$). Por tanto, $\|\mathcal{D}|_V\| = \|\mathcal{D}|_M\|$. Al ser $V$ un subespacio candidato en la definición de $Q_k$, deducimos que $Q_k(\mathcal{D}) \le c_k(\mathcal{D})$.
 
 	\textbf{Paso 2: $c_k(\mathcal{D}) \le Q_k(\mathcal{D})$.}
-	Sea $V \subset \mathbb{P}[z]$ un subespacio algebraico arbitrario de $\operatorname{codim}_{alg}(V) = m < k$. Consideremos su clausura topológica $M = \overline{V}$ en el espacio de Hilbert $\mathcal{H}$.
-	Al clausurar un subespacio, su codimensión topológica nunca puede ser mayor que su codimensión algebraica original, por lo que $\operatorname{codim}_{\mathcal{H}}(M) \le m < k$.
-	Nuevamente, por la continuidad estricta del operador $\mathcal{D}$ en todo el espacio $\mathcal{H}$, la norma se preserva en el límite, es decir, $\|\mathcal{D}|_V\| = \|\mathcal{D}|_M\|$. Como $M$ es un subespacio cerrado válido para la definición de los números de Gelfand, tenemos que $\|\mathcal{D}|_V\| \ge c_k(\mathcal{D})$. Tomando el ínfimo sobre todos los posibles subespacios algebraicos $V$, obtenemos $Q_k(\mathcal{D}) \ge c_k(\mathcal{D})$.
+	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) = m < k$. Consideremos su clausura topológica $M = \overline{V}$ en el espacio de Hilbert $\mathcal{H}$.
+	Como $\operatorname{codim}_{alg}(V)=m$, existe $F\subset\mathbb{P}[z]$ con $\dim(F)=m$ tal que
+	\[
+		\mathbb{P}[z]=V\oplus F.
+	\]
+	Tomando clausuras en $\mathcal{H}$ y usando que $F$ es finito-dimensional (luego cerrado),
+	\[
+		\mathcal{H}=\overline{\mathbb{P}[z]}=\overline{V\oplus F}=\overline{V}+F=M+F.
+	\]
+	Por tanto, el cociente $\mathcal{H}/M$ está generado por las clases de $F$, y se obtiene
+	\[
+		\dim(\mathcal{H}/M)\le \dim(F)=m,
+	\]
+	es decir,
+	\[
+		\operatorname{codim}_{\mathcal{H}}(M)\le m<k.
+	\]
+	Así, $M$ es admisible en la definición de $c_k(\mathcal{D})$.
+
+	Además, como $V$ es denso en $M$ y $\mathcal{D}$ es continuo en $\mathcal{H}$:
+	\[
+		\|\mathcal{D}|_V\|\le \|\mathcal{D}|_M\|.
+	\]
+	Para la desigualdad inversa, fijado $\varepsilon>0$, existe $x\in M$, $\|x\|_S=1$, tal que
+	\[
+		\|\mathcal{D}x\|_S>\|\mathcal{D}|_M\|-\varepsilon.
+	\]
+	Tomamos $v_n\in V$ con $v_n\to x$ en $\|\cdot\|_S$. Entonces
+	\[
+		\|v_n\|_S\to 1,
+		\qquad
+		\|\mathcal{D}v_n\|_S\to \|\mathcal{D}x\|_S.
+	\]
+	En particular, para $n$ grande,
+	\[
+		\frac{\|\mathcal{D}v_n\|_S}{\|v_n\|_S}>\|\mathcal{D}|_M\|-2\varepsilon,
+	\]
+	y por definición de norma operatorial sobre $V$,
+	\[
+		\|\mathcal{D}|_V\|\ge \|\mathcal{D}|_M\|-2\varepsilon.
+	\]
+	Como $\varepsilon>0$ es arbitrario,
+	\[
+		\|\mathcal{D}|_V\|=\|\mathcal{D}|_M\|.
+	\]
+	Dado que $M$ es admisible para $c_k$, se tiene
+	\[
+		c_k(\mathcal{D})\le \|\mathcal{D}|_M\|=\|\mathcal{D}|_V\|.
+	\]
+	Tomando ínfimo sobre todos los $V\subset\mathbb{P}[z]$ con $\operatorname{codim}_{alg}(V)<k$:
+	\[
+		c_k(\mathcal{D})\le \inf_{\operatorname{codim}_{alg}(V)<k}\|\mathcal{D}|_V\|=Q_k(\mathcal{D}).
+	\]
 
 	Al cumplirse ambas desigualdades, se concluye la identidad $Q_k(\mathcal{D}) = c_k(\mathcal{D})$.
 \end{proof}
@@ -817,7 +983,7 @@ Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathca
 
 	Definimos $V_0 = \{ p \in \mathbb{P}[z] : (zp)'(c) = 0 \} = \{ p \in \mathbb{P}[z] : p(c) + c p'(c) = 0 \}$. Al ser el núcleo de un único funcional lineal, su codimensión algebraica en $\mathbb{P}[z]$ es exactamente 1. Para cualquier $p \in V_0$, la componente discreta de la imagen se anula:
 	$$ \|\mathcal{D}p\|_S^2 = \|zp\|_{L^2(\mu)}^2 + |(zp)'(c)|^2 = \|zp\|_{L^2(\mu)}^2 \le R^2 \|p\|_{L^2(\mu)}^2 \le R^2 \|p\|_S^2. $$
-	Al intersecar $V_0$ con el subespacio generado por los primeros $n$ polinomios ortonormales, obtenemos un subespacio de codimensión a lo sumo 1 en $\mathbb{C}^n$ donde la norma de la matriz $\mathbf{D}_n$ está acotada por $R$. Por el principio min-max, esto fuerza a que $\sigma_{2,n} \le R$ para todo $n$.
+	Al intersecar $V_0$ con el subespacio generado por los primeros $n$ polinomios ortonormales, obtenemos un subespacio de codimensión algebraica a lo sumo 1 en $\mathbb{C}^n$ donde la norma de la matriz $\mathbf{D}_n$ está acotada por $R$. Por el principio min-max, esto fuerza a que $\sigma_{2,n} \le R$ para todo $n$.
 \end{proof}
 
 Este resultado muestra que, en el caso de un único átomo exterior, la divergencia asintótica de las secciones truncadas queda confinada a una sola dirección: $\sigma_{1,n} \to \infty$, mientras que $\sigma_{2,n}$ permanece uniformemente acotado por $R$.
@@ -851,7 +1017,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\begin{equation}
 		V_0 = \bigcap_{k=1}^N \ker(\phi_k) = \left\{ p \in \mathbb{P}[z] : (zp)^{(j_k)}(c_k) = 0, \quad \forall k=1,\dots,N \right\}
 	\end{equation}
-	Al ser la intersección de $N$ hiperplanos, la codimensión algebraica de $V_0$ en $\mathbb{P}[z]$ cumple $\operatorname{codim}(V_0) \le N$.
+	Al ser la intersección de $N$ hiperplanos, la codimensión algebraica de $V_0$ en $\mathbb{P}[z]$ cumple $\operatorname{codim}_{alg}(V_0) \le N$.
 
 	Para todo polinomio $p \in V_0$, el término discreto de $\|\mathcal{D}p\|_S^2$ se anula idénticamente por definición. Por tanto, acotando la integral sobre el soporte de $\mu$:
 	\begin{equation}
@@ -909,11 +1075,11 @@ sus valores singulares.
 	\[
 		\sigma_{k,n} = \inf_{\substack{W \subset \mathbb{C}^n \\ \operatorname{codim}(W) < k}} \|\mathbf{D}_n|_W\|_2.
 	\]
-	Sea ahora $V \subset \mathbb{P}[z]$ un subespacio algebraico con $\operatorname{codim}_{alg}(V) < k$, y definamos
+	Sea ahora $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k$, y definamos
 	\[
 		V_n = V \cap \mathbb{P}_{n-1}.
 	\]
-	Entonces $V_n$ induce, en coordenadas respecto de la base ortonormal $\{\phi_0,\dots,\phi_{n-1}\}$, un subespacio $W_n \subset \mathbb{C}^n$ de codimensión menor que $k$. Por la caracterización minimax anterior,
+	Entonces $V_n$ induce, en coordenadas respecto de la base ortonormal $\{\phi_0,\dots,\phi_{n-1}\}$, un subespacio $W_n \subset \mathbb{C}^n$ de codimensión algebraica menor que $k$. Por la caracterización minimax anterior,
 	\[
 		\sigma_{k,n} \le \|\mathbf{D}_n|_{W_n}\|_2.
 	\]
@@ -921,7 +1087,7 @@ sus valores singulares.
 	\[
 		\|\mathbf{D}_n|_{W_n}\|_2 \le \|\mathcal{D}|_{V_n}\|_S \le \|\mathcal{D}|_V\|_S.
 	\]
-	Por tanto, $\sigma_{k,n} \le \|\mathcal{D}|_V\|_S$ para todo subespacio algebraico $V$ con codimensión menor que $k$. Tomando ínfimo sobre todos esos subespacios, concluimos que
+	Por tanto, $\sigma_{k,n} \le \|\mathcal{D}|_V\|_S$ para todo subespacio admisible $V$ con codimensión algebraica menor que $k$. Tomando ínfimo sobre todos esos subespacios, concluimos que
 	\[
 		\sigma_{k,n} \le Q_k(\mathcal{D}).
 	\]
