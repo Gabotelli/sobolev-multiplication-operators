@@ -515,12 +515,12 @@ La conexión entre la teoría de polinomios ortogonales y la teoría espectral d
 
 En el marco de la teoría de ideales de operadores, los números de Gelfand constituyen la herramienta natural para cuantificar el comportamiento espectral direccional de un operador acotado.
 
-\begin{definition}[Números de Gelfand]
+\begin{definition}[Números de Gelfand]\label{def:numeros_gelfand}
 	Sea $T \in \mathcal{L}(\mathcal{H})$ un operador acotado en un espacio de Hilbert. El $m$-ésimo número de Gelfand de $T$ se define como:
 	\begin{equation}
 		c_m(T) = \inf \{ \|T|_V\| : V \subset \mathcal{H}, \; \operatorname{codim}_{\mathcal{H}}(V) < m \}.
 	\end{equation}
-	En particular, $c_1(T) = \|T\|$ es la norma global del operador.
+	En particular, $c_1(T) = \|T\|$ es la norma global del operador. En este trabajo usaremos siempre la notación $c_k(\mathcal{D})$ para los números de Gelfand del operador de multiplicación.
 \end{definition}
 
 Con el fin de analizar el impacto que las derivadas discretas tienen sobre la estructura espectral del operador multiplicación $\mathcal{D}(p) = zp$, se estudia el caso particular de un único punto en la derivada. Específicamente, se considera la perturbación de la medida continua, soportada en la circunferencia unidad $S_1$, mediante la adición de un único término discreto en la derivada, evaluado en un punto $c_1 \in \C$. A lo largo de esta subsección, se asume que $c_1$ es un punto BPE.
@@ -740,21 +740,23 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	La no negatividad es inmediata al ser ínfimo de normas operatoriales (posiblemente infinitas).
 \end{proof}
 
-\subsection{Los Cuatro Índices y la Estrategia de Equivalencia}
-
-Para evitar ambigüedades de notación, distinguimos cuatro objetos que intervienen en el trabajo:
-\begin{itemize}
-	\item $Q_k$: índice polinómico definido por ortogonalidad en $\mathbb{P}[z]$ (Definición~\ref{def:indice_Qk}).
-	\item $S_k$: índice topológico obtenido al tomar ínfimos sobre subespacios de codimensión topológica $<k$ en la completación de Hilbert $\mathcal{H}$.
-	\item $\Sigma_k$: límite asintótico (cuando existe) de la cadena truncada $\sigma_{k,n}$ de valores singulares de $\mathbf{D}_n$.
-	\item $C_k$: números de Gelfand clásicos para operadores acotados en $\mathcal{H}$.
-\end{itemize}
-
-En el régimen acotado, el objetivo es identificar estos cuatro índices. La desigualdad
-\[
-	\limsup_{n\to\infty}\sigma_{k,n}\le Q_k
-\]
-ya se obtiene por compresión/proyección (Proposición~\ref{prop:sigma_qk}). El paso técnicamente más delicado es comparar la versión polinómica con la topológica. La estrategia es perturbativa: aproximar funcionales continuos de $\mathcal{H}$ mediante polinomios usando densidad, controlar la variación de los hiperplanos ortogonales asociados y, finalmente, transferir ese control a la norma restringida de $\mathcal{D}$. Este es el mecanismo que conecta de forma estable la formulación min-max en $\mathcal{H}$ con su versión puramente polinómica.
+\begin{definition}[Índice Topológico $S_k$]\label{def:indice_Sk}
+	Sea $\mathcal{D}:\mathbb{P}[z]\to\mathbb{P}[z]$ el operador multiplicación y sea $k\ge 1$. Definimos
+	\[
+		S_k(\mathcal{D})
+		:=
+		\inf\!\left\{\,\|\mathcal{D}\|_{S,\overline{V}}:
+		V\subset\mathbb{P}[z]\ \text{subespacio vectorial},\ \operatorname{codim}_{\mathcal{H}}(\overline{V})<k\right\},
+	\]
+	donde $\overline{V}$ denota la clausura de $V$ en $\mathcal{H}$ y
+	\[
+		\|\mathcal{D}\|_{S,\overline{V}}
+		:=
+		\sup_{\substack{p\in V\\ p\neq 0}}\frac{\|\mathcal{D}p\|_S}{\|p\|_S}
+		\in [0,+\infty].
+	\]
+	Si $\mathcal{D}$ extiende continuamente a $\overline{V}$, esta cantidad coincide con la norma operatorial usual $\|\mathcal{D}|_{\overline{V}}\|$.
+\end{definition}
 
 \begin{proposition}[Subaditividad y Perturbación Acotada]\label{prop:Qk_perturbacion}
 	Sea $\mathcal{D}$ un operador en $\mathbb{P}[z]$ y $\mathcal{E}$ un operador acotado en el mismo espacio ($\|\mathcal{E}\|_S < \infty$). Entonces, para todo $k \ge 1$:
@@ -956,6 +958,24 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\]
 \end{definition}
 
+\begin{definition}[Índice asintótico singular $\sigma_k$]\label{def:indice_Sigma_k}
+	Para cada $k\ge 1$, si existe el límite en la recta real extendida, definimos
+	\[
+		\sigma_k := \lim_{n\to\infty} \sigma_{k,n} \in [0,+\infty].
+	\]
+\end{definition}
+
+\begin{proposition}[Coincidencia total de índices en el caso acotado (pendiente)]\label{prop:coincidencia_total_acotado_pendiente}
+	Supongamos que $\mathcal{D}\in\mathcal{L}(\mathcal{H})$ y que, para cada $k\ge1$, existe el límite
+	\[
+		\sigma_k=\lim_{n\to\infty}\sigma_{k,n}.
+	\]
+	Entonces, para todo $k\ge1$,
+	\[
+		\sigma_k=S_k(\mathcal{D})=Q_k(\mathcal{D})=c_k(\mathcal{D}).
+	\]
+\end{proposition}
+
 \begin{proposition}[Comportamiento del primer valor singular]\label{prop:convergencia_sigma}
 	Sea $\mathcal{D}$ el operador multiplicación por $z$ y sea $\mathbf{D}_n$ la matriz de su compresión al subespacio $\operatorname{span}\{\phi_0,\dots,\phi_{n-1}\}$. Entonces:
 	\begin{enumerate}
@@ -1143,6 +1163,18 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 		\limsup_{n \to \infty} \sigma_{k,n} \le c_k(\mathcal{D}).
 	\]
 \end{proof}
+
+\begin{proposition}[Coincidencia de índices en el caso no acotado (pendiente)]\label{prop:coincidencia_no_acotado_pendiente}
+	Supongamos que $\mathcal{D}\notin\mathcal{L}(\mathcal{H})$, que para cada $k\ge1$ existe el límite
+	\[
+		\sigma_k=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
+	\]
+	y que $S_k(\mathcal{D})$ está bien definido según la Definición~\ref{def:indice_Sk}. Entonces, para todo $k\ge1$,
+	\[
+		\sigma_k=Q_k(\mathcal{D})=S_k(\mathcal{D}).
+	\]
+	En particular, $\sigma_1=Q_1(\mathcal{D})=S_1(\mathcal{D})=+\infty$. En este régimen, los números de Gelfand clásicos $c_k(\mathcal{D})$ no se consideran, al no pertenecer $\mathcal{D}$ a $\mathcal{L}(\mathcal{H})$.
+\end{proposition}
 
 \subsection{Matrices de Momentos de Sobolev y de Dirac}
 

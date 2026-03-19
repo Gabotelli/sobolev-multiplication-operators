@@ -12,8 +12,7 @@
 \contentsline {subsection}{\numberline {2.3}El Operador de Multiplicación y los Números de Gelfand}{14}{}%
 \contentsline {subsubsection}{\numberline {2.3.1}El Primer Número de Gelfand: La Norma Global}{14}{}%
 \contentsline {subsection}{\numberline {2.4}Un Nuevo Índice de Acotación Algebraica: El Índice $Q_k$}{17}{}%
-\contentsline {subsection}{\numberline {2.5}Los Cuatro Índices y la Estrategia de Equivalencia}{19}{}%
-\contentsline {subsubsection}{\numberline {2.5.1}Consistencia con los Números de Gelfand Topológicos}{20}{}%
+\contentsline {subsubsection}{\numberline {2.4.1}Consistencia con los Números de Gelfand Topológicos}{20}{}%
 \contentsline {section}{\numberline {3}Análisis Matricial y Comportamiento Asintótico}{22}{}%
 \contentsline {subsection}{\numberline {3.1}Representación Matricial y Secciones Truncadas}{22}{}%
 \contentsline {subsection}{\numberline {3.2}Valores Singulares y Operadores Truncados}{23}{}%
@@ -22,4 +21,4 @@
 \contentsline {subsection}{\numberline {3.5}Matrices de Momentos de Sobolev y de Dirac}{28}{}%
 \contentsline {section}{\numberline {4}Localización y Acotación Asintótica de los Ceros}{29}{}%
 \contentsline {subsection}{\numberline {4.1}Los Ceros como Autovalores}{29}{}%
-\contentsline {subsection}{\numberline {4.2}Control Exterior de los Ceros de Sobolev}{29}{}%
+\contentsline {subsection}{\numberline {4.2}Control Exterior de los Ceros de Sobolev}{30}{}%
