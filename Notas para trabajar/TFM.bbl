@@ -69,6 +69,15 @@ Paul~R. Halmos.
   in Mathematics}.
 \newblock Springer-Verlag, New York, 2 edition, 1982.
 
+\bibitem{hormander1989linearfunctionalanalysis}
+Lars H{\"o}rmander.
+\newblock {\em Linear Functional Analysis: Lectures Fall Term 1988}.
+\newblock 1989.
+\newblock This work consists of unpublished lecture notes used in courses given
+  by the author at the department of mathematics at Lund University. This work
+  is made public under the license CC BY-NC-ND by permission from Sofia
+  Brostr{\"o}m, the author's daughter and heir.
+
 \bibitem{kreyszig1989introductory}
 Erwin Kreyszig.
 \newblock {\em Introductory Functional Analysis with Applications}.
@@ -133,5 +142,12 @@ G{\'a}bor Szeg{\H{o}}.
 \newblock {\em Orthogonal Polynomials}, volume~23 of {\em American Mathematical
   Society Colloquium Publications}.
 \newblock American Mathematical Society, Providence, RI, 4 edition, 1975.
+
+\bibitem{Aizpuru2009Apuntes}
+Antonio~Aizpuru Tom{\'a}s.
+\newblock {\em Apuntes incompletos de An{\'a}lisis Funcional}.
+\newblock Servicio de Publicaciones de la Universidad de C{\'a}diz, C{\'a}diz,
+  2009.
+\newblock Dep{\'o}sito Legal: CA 432-2009.
 
 \end{thebibliography}

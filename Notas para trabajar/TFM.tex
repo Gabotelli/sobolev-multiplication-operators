@@ -7,6 +7,13 @@
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage{geometry}
 \usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+  pdftitle={Análisis Espectral y Matricial del Operador de Multiplicación en Espacios de Sobolev Discretos},
+  pdfauthor={Gabriel Suárez},
+  pdfstartview={FitH}
+}
 
 % --- CONFIGURACIÓN ---
 \geometry{left=25mm, right=25mm, top=25mm, bottom=25mm}
@@ -621,7 +628,7 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 	\[
 		\operatorname{codim}_{alg}(V):=\dim(\mathbb P[z]/V)\in \mathbb N\cup\{\infty\}.
 	\]
-	Aquí $\dim(\cdot)$ denota dimensión algebraica (cardinal de una base de Hamel).
+	Aquí $\dim(\cdot)$ denota dimensión algebraica (cardinal de una base de Hamel) \cite{hormander1989linearfunctionalanalysis,Aizpuru2009Apuntes}.
 	Diremos que $V$ es de codimensión algebraica finita si
 	\[
 		\operatorname{codim}_{alg}(V)<\infty.
