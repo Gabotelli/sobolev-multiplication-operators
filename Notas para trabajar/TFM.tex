@@ -298,6 +298,44 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{o
 	Lo que demuestra que existe una constante $C = M/r < \infty$ tal que $|\delta'_c(p)| \le C \|p\|_S$, probando así que la evaluación de la derivada es un funcional lineal continuo.
 \end{proof}
 
+\begin{lemma}[Normalización de un funcional no acotado]\label{lem:normalizacion_funcional_no_acotado}
+	Sea $X$ un espacio normado complejo y sea $\varphi:X\to\mathbb C$ un funcional lineal no acotado.
+	Entonces existe una sucesión $(x_n)_{n\ge1}\subset X$ tal que
+	\[
+		\|x_n\|_X\to 0,
+		\qquad
+		\varphi(x_n)=1
+		\quad \text{para todo } n.
+	\]
+\end{lemma}
+
+\begin{proof}
+	Como $\varphi$ no es acotado, no está acotado en la bola unidad. Por tanto, para cada
+	$n\ge1$ existe $y_n\in X$ tal que
+	\[
+		\|y_n\|_X\le 1,
+		\qquad
+		|\varphi(y_n)|\ge n.
+	\]
+	Definimos
+	\[
+		x_n:=\frac{y_n}{\varphi(y_n)}.
+	\]
+	Entonces
+	\[
+		\varphi(x_n)=1,
+	\]
+	y además
+	\[
+		\|x_n\|_X
+		=
+		\frac{\|y_n\|_X}{|\varphi(y_n)|}
+		\le
+		\frac1n
+		\xrightarrow[n\to\infty]{}0.
+	\]
+\end{proof}
+
 \subsection{Organización del Artículo}
 
 El artículo se organiza como sigue:
@@ -517,30 +555,30 @@ La conexión entre la teoría de polinomios ortogonales y la teoría espectral d
 \end{definition}
 
 \begin{remark}[Convención de notación]
-	A partir de este punto distinguiremos sistemáticamente tres niveles de descripción. En el nivel de análisis funcional, $\mathcal{D}$ denota el operador abstracto actuando sobre $\mathcal{H}$ o sobre $\Poly$, y cantidades como $c_k(\mathcal{D})$, $Q_k(\mathcal{D})$ o $\|\mathcal{D}\|$ se refieren siempre a ese operador. En el nivel matricial, $\mathbf{D}$ denota la matriz infinita que representa a $\mathcal{D}$ en una base ortonormal de polinomios, y $\mathbf{D}_n$ sus secciones principales de tamaño $n \times n$. Finalmente, cuando identifiquemos un polinomio $p = \sum_{j=0}^{n-1} x_j \phi_j$ con su vector de coordenadas $x \in \mathbb{C}^n$, la norma euclídea de $x$ coincidirá con la norma de Sobolev de $p$ en ese subespacio finito-dimensional.
+	A partir de este punto distinguiremos sistemáticamente tres niveles de descripción. En el nivel de análisis funcional, $\mathcal{D}$ denota el operador abstracto actuando sobre $\mathcal{H}$ o sobre $\Poly$, y cantidades como $c_k(\mathcal{D})$, $Q_k(\mathcal{D})$ o $\|\mathcal{D}\|$ se refieren siempre a ese operador. En el nivel matricial, $\mathbf{D}$ denota la matriz infinita que representa a $\mathcal{D}$ en una base ortonormal de polinomios, y $\mathbf{D}_n$ su sección principal indexada por $\{0,\dots,n\}$ (por tanto, de tamaño $(n+1)\times(n+1)$). Finalmente, cuando identifiquemos un polinomio $p = \sum_{j=0}^{n} x_j \phi_j$ con su vector de coordenadas $x \in \mathbb{C}^{n+1}$, la norma euclídea de $x$ coincidirá con la norma de Sobolev de $p$ en ese subespacio finito-dimensional.
 \end{remark}
 
 En el marco de la teoría de ideales de operadores, los números de Gelfand constituyen la herramienta natural para cuantificar el comportamiento espectral direccional de un operador acotado.
 
 \begin{definition}[Números de Gelfand]\label{def:numeros_gelfand}
-	Sea $T \in \mathcal{L}(\mathcal{H})$ un operador acotado en un espacio de Hilbert. El $m$-ésimo número de Gelfand de $T$ se define como:
+	Sea $T \in \mathcal{L}(\mathcal{H})$ un operador acotado en un espacio de Hilbert. Para cada $k\ge 0$, el número de Gelfand de índice $k$ de $T$ se define como:
 	\begin{equation}
-		c_m(T) = \inf \{ \|T|_V\| : V \subset \mathcal{H}, \; \operatorname{codim}_{\mathcal{H}}(V) < m \}.
+		c_k(T) = \inf \{ \|T|_V\| : V \subset \mathcal{H}, \; \operatorname{codim}_{\mathcal{H}}(V) < k+1 \}.
 	\end{equation}
-	En particular, $c_1(T) = \|T\|$ es la norma global del operador. En este trabajo usaremos siempre la notación $c_k(\mathcal{D})$ para los números de Gelfand del operador de multiplicación.
+	En particular, $c_0(T) = \|T\|$ es la norma global del operador. En este trabajo usaremos siempre la notación $c_k(\mathcal{D})$ para los números de Gelfand del operador de multiplicación.
 \end{definition}
 
 Con el fin de analizar el impacto que las derivadas discretas tienen sobre la estructura espectral del operador multiplicación $\mathcal{D}(p) = zp$, se estudia el caso particular de un único punto en la derivada. Específicamente, se considera la perturbación de la medida continua, soportada en la circunferencia unidad $S_1$, mediante la adición de un único término discreto en la derivada, evaluado en un punto $c_1 \in \C$. A lo largo de esta subsección, se asume que $c_1$ es un punto BPE.
 
 \subsubsection{El Primer Número de Gelfand: La Norma Global}
 
-Por definición, el primer número de Gelfand, $c_1(\mathcal{D})$, corresponde al ínfimo sobre subespacios de codimensión topológica estrictamente menor que 1. El único subespacio que cumple esta condición es el espacio total $\mathcal{H}$. Por consiguiente:
-$$ c_1(\mathcal{D}) = \|\mathcal{D}\|. $$
-Este primer número refleja el comportamiento global del operador: cuanto mayor es la contribución del término discreto a la norma de Sobolev, mayor es la dilatación de $c_1(\mathcal{D})$ respecto al radio de la circunferencia.
+Por definición, el primer índice de Gelfand (en la convención que empieza en $0$), $c_0(\mathcal{D})$, corresponde al ínfimo sobre subespacios de codimensión topológica estrictamente menor que 1. El único subespacio que cumple esta condición es el espacio total $\mathcal{H}$. Por consiguiente:
+$$ c_0(\mathcal{D}) = \|\mathcal{D}\|. $$
+Este primer índice refleja el comportamiento global del operador: cuanto mayor es la contribución del término discreto a la norma de Sobolev, mayor es la dilatación de $c_0(\mathcal{D})$ respecto al radio de la circunferencia.
 
 Los cálculos explícitos más simples ya muestran dos rasgos del problema: la dependencia respecto del radio del soporte continuo y la sensibilidad a la posición del átomo discreto.
 
-\begin{example}[Dos cálculos básicos para $c_1(\mathcal{D})$]
+\begin{example}[Dos cálculos básicos para $c_0(\mathcal{D})$]
 	Consideremos primero el espacio de polinomios $\Poly$ dotado de la medida de Lebesgue normalizada en la circunferencia unidad $S_1$ y un único punto en la derivada situado en el origen ($c_1 = 0$). El producto interno de Sobolev toma la forma
 	\begin{equation}
 		\ip{p}{q} = \int_{S_1} p(z)\overline{q(z)} \frac{\abs{dz}}{2\pi} + p'(0)\overline{q'(0)}.
@@ -557,7 +595,7 @@ Los cálculos explícitos más simples ya muestran dos rasgos del problema: la d
 	\begin{equation}
 		\frac{\norm{\D p}^2}{\norm{p}^2} = 2 - \frac{3\abs{a_1}^2 + \sum_{k \ge 2} \abs{a_k}^2}{\norm{p}^2} \le 2,
 	\end{equation}
-	y el máximo se alcanza en las funciones constantes. En consecuencia, $c_1(\D) = \sqrt{2}$.
+	y el máximo se alcanza en las funciones constantes. En consecuencia, $c_0(\D) = \sqrt{2}$.
 
 	Si ahora sustituimos $S_1$ por la circunferencia $S_R$ manteniendo el átomo en el origen, la ortogonalidad da
 	\[\int_{S_R} |z|^{2k} \frac{|dz|}{2\pi R} = R^{2k}.\]
@@ -572,19 +610,19 @@ Los cálculos explícitos más simples ya muestran dos rasgos del problema: la d
 	\end{equation}
 	con máximo de nuevo en las funciones constantes. Por tanto,
 	\[
-		c_1(\D) = \sqrt{R^2 + 1}.
+		c_0(\D) = \sqrt{R^2 + 1}.
 	\]
 \end{example}
 
-El siguiente resultado muestra que, aun cuando $c_1(\mathcal{D})$ refleje la perturbación discreta, al pasar a codimensión topológica uno se recupera exactamente la escala geométrica de la circunferencia.
+El siguiente resultado muestra que, aun cuando $c_0(\mathcal{D})$ refleje la perturbación discreta, al pasar a codimensión topológica uno se recupera exactamente la escala geométrica de la circunferencia.
 
-\begin{theorem}[Valor exacto de $c_2$ para un punto]
+\begin{theorem}[Valor exacto de $c_1$ para un punto]
 	\label{thm:c2_punto}
 	Sea $\mathcal{H} = \overline{\Poly}^{\|\cdot\|_S}$, donde
 	\begin{equation}
 		\langle p, q \rangle_S = \int_{S_1} p(z)\overline{q(z)} \, d\mathbf{m}(z) + p'(c_1)\overline{q'(c_1)}, \qquad p,q \in \Poly,
 	\end{equation}
-	y supongamos que $c_1$ es un punto BPE. Entonces $c_2(\mathcal{D}) = 1$.
+	y supongamos que $c_1$ es un punto BPE. Entonces $c_1(\mathcal{D}) = 1$.
 \end{theorem}
 
 \begin{proof}
@@ -596,7 +634,7 @@ El siguiente resultado muestra que, aun cuando $c_1(\mathcal{D})$ refleje la per
 	\[
 		\norm{\mathcal{D}p}^2 = \int_{S_1} \abs{zp}^2 d\mu + \underbrace{\abs{(zp)'(c_1)}^2}_{=0} = \|p\|_{L^2}^2 \le \norm{p}^2,
 	\]
-	luego $\|\mathcal{D}|_{V_{opt}}\| \le 1$ y $c_2(\mathcal{D}) \le 1$.
+	luego $\|\mathcal{D}|_{V_{opt}}\| \le 1$ y $c_1(\mathcal{D}) \le 1$.
 
 	\textbf{Cota inferior.} Supóngase que existe $V$ de codimensión topológica 1 y $\epsilon > 0$ con $\norm{\mathcal{D}p}^2 \le (1-\epsilon)\norm{p}^2$ para todo $p \in V$. Desarrollando las normas:
 	\[
@@ -606,7 +644,7 @@ El siguiente resultado muestra que, aun cuando $c_1(\mathcal{D})$ refleje la per
 	\[
 		\epsilon \|q\|_{L^2}^2 + \abs{q(c_1)}^2 \le 0.
 	\]
-	Esto es imposible, ya que ambos términos del lado izquierdo son no negativos y, además, $\|q\|_{L^2} \neq 0$ porque de otro modo se tendría $\|q\|_S^2 = \|q\|_{L^2}^2 + \abs{q'(c_1)}^2 = 0$, contradiciendo que $q \neq 0$. Por tanto $c_2(\mathcal{D}) \ge 1$.
+	Esto es imposible, ya que ambos términos del lado izquierdo son no negativos y, además, $\|q\|_{L^2} \neq 0$ porque de otro modo se tendría $\|q\|_S^2 = \|q\|_{L^2}^2 + \abs{q'(c_1)}^2 = 0$, contradiciendo que $q \neq 0$. Por tanto $c_1(\mathcal{D}) \ge 1$.
 \end{proof}
 
 Cuando el punto de derivada se sitúa en la región exterior ($c \in I_{out}$), la dificultad ya no es simplemente cuantitativa sino estructural. En efecto, el funcional algebraico
@@ -659,16 +697,16 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 \end{proposition}
 
 \begin{definition}[Índice Algebraico $Q_k$]\label{def:indice_Qk}
-	Sea $\mathcal{D}:\mathbb{P}[z]\to\mathbb{P}[z]$ el operador multiplicación en el espacio pre-Hilbertiano de Sobolev. Para cada $k\ge1$, definimos
+	Sea $\mathcal{D}:\mathbb{P}[z]\to\mathbb{P}[z]$ el operador multiplicación en el espacio pre-Hilbertiano de Sobolev. Para cada $k\ge0$, definimos
 	\[
 		Q_k(\mathcal{D})
-		:=\inf\{\|\mathcal{D}|_V\|_S:V\subset\mathbb{P}[z]\ \text{admisible y}\ \operatorname{codim}_{alg}(V)<k\},
+		:=\inf\{\|\mathcal{D}|_V\|_S:V\subset\mathbb{P}[z]\ \text{admisible y}\ \operatorname{codim}_{alg}(V)<k+1\},
 	\]
 	donde
 	\[
 		\|\mathcal{D}|_V\|_S:=\sup_{\substack{p\in V\\p\ne0}}\frac{\|\mathcal{D}p\|_S}{\|p\|_S}.
 	\]
-	Por la convención anterior, $Q_1(\mathcal{D})=\|\mathcal{D}\|_S$, admitiendo el valor $+\infty$.
+	Por la convención anterior, $Q_0(\mathcal{D})=\|\mathcal{D}\|_S$, admitiendo el valor $+\infty$.
 \end{definition}
 
 \begin{remark}[Lectura min-max]
@@ -705,15 +743,15 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 \begin{theorem}[Explosión y Estabilización del Índice $Q_k$]\label{thm:Qk_no_BPE}
 	Consideremos un producto de Sobolev cuya medida continua $\mu$ tiene un soporte compacto contenido en $\overline{\mathbb{D}_R(0)}$ y que posee un único átomo de derivada no acotada (no-BPE) en un punto exterior $c \in I_{out}$. Entonces:
 	\begin{enumerate}
-		\item $Q_1(\mathcal{D}) = \infty$ (El operador global no está acotado).
-		\item $Q_2(\mathcal{D}) \le R$ (El operador se estabiliza al restringir una única dimensión).
+		\item $Q_0(\mathcal{D}) = \infty$ (El operador global no está acotado).
+		\item $Q_1(\mathcal{D}) \le R$ (El operador se estabiliza al restringir una única dimensión).
 	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	Para $k=1$, la condición $\operatorname{codim}_{alg}(V)<1$ fuerza $V=\mathbb{P}[z]$. Dado que el funcional $p \mapsto p(c)+cp'(c)$ es no acotado en $\mathbb{P}[z]$ respecto a la norma de Sobolev, se obtiene $\|\mathcal{D}\|_S=\infty$, y por tanto $Q_1(\mathcal{D})=\infty$.
+	Para $k=0$, la condición $\operatorname{codim}_{alg}(V)<1$ fuerza $V=\mathbb{P}[z]$. Dado que el funcional $p \mapsto p(c)+cp'(c)$ es no acotado en $\mathbb{P}[z]$ respecto a la norma de Sobolev, se obtiene $\|\mathcal{D}\|_S=\infty$, y por tanto $Q_0(\mathcal{D})=\infty$.
 
-	Para $k=2$, basta exhibir un subespacio admisible de codimensión algebraica 1 sobre el que la restricción sea acotada. Tomamos
+	Para $k=1$, basta exhibir un subespacio admisible de codimensión algebraica 1 sobre el que la restricción sea acotada. Tomamos
 	\[
 		V_0:=\{p\in\mathbb{P}[z]:p(c)+cp'(c)=0\}.
 	\]
@@ -723,37 +761,37 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	$$ \|\mathcal{D}p\|_S^2 = \int |zp(z)|^2 d\mu(z) + |\phi(p)|^2 = \int |zp(z)|^2 d\mu(z) + 0 $$
 	Acotando la integral por el radio máximo del soporte continuo, obtenemos:
 	$$ \|\mathcal{D}p\|_S^2 \le R^2 \int |p(z)|^2 d\mu(z) \le R^2 \|p\|_S^2 $$
-	En consecuencia, $\|\mathcal{D}|_{V_0}\| \le R$. Al tomar el ínfimo sobre todos los subespacios admisibles con codimensión algebraica menor que 2, se concluye que $Q_2(\mathcal{D}) \le R$.
+	En consecuencia, $\|\mathcal{D}|_{V_0}\| \le R$. Al tomar el ínfimo sobre todos los subespacios admisibles con codimensión algebraica menor que 2, se concluye que $Q_1(\mathcal{D}) \le R$.
 \end{proof}
 
 \begin{proposition}[Propiedades Básicas del Índice $Q_k$]\label{prop:propiedades_Qk}
 	Para el operador multiplicación $\mathcal{D}$ definido sobre el espacio pre-Hilbertiano $\mathbb{P}[z]$, el índice algebraico $Q_k(\mathcal{D})$ forma una sucesión monótona no creciente cuyo primer término coincide exactamente con la norma global del operador. Es decir:
-	$$ \|\mathcal{D}\|_S = Q_1(\mathcal{D}) \ge Q_2(\mathcal{D}) \ge \dots \ge Q_k(\mathcal{D}) \ge Q_{k+1}(\mathcal{D}) \ge \dots \ge 0 $$
+	$$ \|\mathcal{D}\|_S = Q_0(\mathcal{D}) \ge Q_1(\mathcal{D}) \ge \dots \ge Q_k(\mathcal{D}) \ge Q_{k+1}(\mathcal{D}) \ge \dots \ge 0 $$
 	(admitiendo el valor $+\infty$ cuando $\mathcal{D}$ es no acotado).
 \end{proposition}
 
 \begin{proof}
-	Para $k=1$, por la convención de la Definición~\ref{def:codim_alg}, solo aparece el conjunto vacío de restricciones y por tanto $V(\varnothing)=\mathbb{P}[z]$. Así,
-	$$ Q_1(\mathcal{D}) = \|\mathcal{D}|_{\mathbb{P}[z]}\|_S = \|\mathcal{D}\|_S. $$
+	Para $k=0$, por la convención de la Definición~\ref{def:codim_alg}, solo aparece el conjunto vacío de restricciones y por tanto $V(\varnothing)=\mathbb{P}[z]$. Así,
+	$$ Q_0(\mathcal{D}) = \|\mathcal{D}|_{\mathbb{P}[z]}\|_S = \|\mathcal{D}\|_S. $$
 
-	Probemos ahora la monotonía. Sea $\Phi_k=(\phi_1,\dots,\phi_{k-1})$ un sistema de $k-1$ funcionales y definamos
-	$$V_k=V(\Phi_k)=\{p\in\mathbb{P}[z]:\phi_j(p)=0,\ j=1,\dots,k-1\}.$$
-	Si añadimos una restricción lineal más $\phi_k$, obtenemos
-	$$V_{k+1}=V(\phi_1,\dots,\phi_k)=\{p\in V_k:\phi_k(p)=0\}\subseteq V_k.$$
+	Probemos ahora la monotonía. Sea $\Phi_k=(\phi_1,\dots,\phi_k)$ un sistema de $k$ funcionales y definamos
+	$$V_k=V(\Phi_k)=\{p\in\mathbb{P}[z]:\phi_j(p)=0,\ j=1,\dots,k\}.$$
+	Si añadimos una restricción lineal más $\phi_{k+1}$, obtenemos
+	$$V_{k+1}=V(\phi_1,\dots,\phi_k,\phi_{k+1})=\{p\in V_k:\phi_{k+1}(p)=0\}\subseteq V_k.$$
 	Por inclusión de subespacios,
 	$$\|\mathcal{D}|_{V_{k+1}}\|_S\le \|\mathcal{D}|_{V_k}\|_S.$$
-	Tomando ínfimo sobre todos los sistemas de $k$ y $k-1$ restricciones, respectivamente, se concluye
+	Tomando ínfimo sobre todos los sistemas de $k+1$ y $k$ restricciones, respectivamente, se concluye
 	$$Q_{k+1}(\mathcal{D})\le Q_k(\mathcal{D}).$$
 	La no negatividad es inmediata al ser ínfimo de normas operatoriales (posiblemente infinitas).
 \end{proof}
 
 \begin{definition}[Índice Topológico $S_k$]\label{def:indice_Sk}
-	Sea $\mathcal{D}:\mathbb{P}[z]\to\mathbb{P}[z]$ el operador multiplicación y sea $k\ge 1$. Definimos
+	Sea $\mathcal{D}:\mathbb{P}[z]\to\mathbb{P}[z]$ el operador multiplicación y sea $k\ge 0$. Definimos
 	\[
 		S_k(\mathcal{D})
 		:=
 		\inf\!\left\{\,\|\mathcal{D}\|_{S,\overline{V}}:
-		V\subset\mathbb{P}[z]\ \text{subespacio vectorial},\ \operatorname{codim}_{\mathcal{H}}(\overline{V})<k\right\},
+		V\subset\mathbb{P}[z]\ \text{subespacio vectorial},\ \operatorname{codim}_{\mathcal{H}}(\overline{V})<k+1\right\},
 	\]
 	donde $\overline{V}$ denota la clausura de $V$ en $\mathcal{H}$ y
 	\[
@@ -766,33 +804,1035 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 \end{definition}
 
 \begin{proposition}[Subaditividad y Perturbación Acotada]\label{prop:Qk_perturbacion}
-	Sea $\mathcal{D}$ un operador en $\mathbb{P}[z]$ y $\mathcal{E}$ un operador acotado en el mismo espacio ($\|\mathcal{E}\|_S < \infty$). Entonces, para todo $k \ge 1$:
+	Sea $\mathcal{D}$ un operador en $\mathbb{P}[z]$ y $\mathcal{E}$ un operador acotado en el mismo espacio ($\|\mathcal{E}\|_S < \infty$). Entonces, para todo $k \ge 0$:
 	$$ Q_k(\mathcal{D} + \mathcal{E}) \le Q_k(\mathcal{D}) + \|\mathcal{E}\|_S $$
 \end{proposition}
 
 \begin{proof}
-	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k$. Por la desigualdad triangular de la norma de operadores, la restricción de la suma satisface:
+	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k+1$. Por la desigualdad triangular de la norma de operadores, la restricción de la suma satisface:
 	$$ \|(\mathcal{D} + \mathcal{E})|_V\|_S \le \|\mathcal{D}|_V\|_S + \|\mathcal{E}|_V\|_S $$
 	Dado que la norma de una restricción nunca puede superar la norma global del operador, sabemos que $\|\mathcal{E}|_V\|_S \le \|\mathcal{E}\|_S$. Sustituyendo:
 	$$ \|(\mathcal{D} + \mathcal{E})|_V\|_S \le \|\mathcal{D}|_V\|_S + \|\mathcal{E}\|_S $$
-	Tomando el ínfimo sobre todos los subespacios admisibles con $\operatorname{codim}_{alg}(V)<k$ a ambos lados de la desigualdad, obtenemos directamente:
+	Tomando el ínfimo sobre todos los subespacios admisibles con $\operatorname{codim}_{alg}(V)<k+1$ a ambos lados de la desigualdad, obtenemos directamente:
 	$$ Q_k(\mathcal{D} + \mathcal{E}) \le Q_k(\mathcal{D}) + \|\mathcal{E}\|_S $$
 \end{proof}
+
+\begin{theorem}[Umbral algebraico exacto en el régimen no-BPE]
+	\label{thm:umbral_exacto_Qm_nobpe}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb{S}_r(0)} p(z)\overline{q(z)} \, d\mathbf{m}_{0;r}(z)
+		+
+		\sum_{k=1}^N p'(c_k)\,\overline{q'(c_k)},
+		\qquad p,q\in\mathbb P[z],
+	\]
+	y sea $\mathcal D:\mathbb P[z]\to\mathbb P[z]$ el operador de multiplicación
+	\[
+		(\mathcal D p)(z)=z\,p(z).
+	\]
+	Sea
+	\[
+		I_{\mathrm{out}}:=\{k\in\{1,\dots,N\}: |c_k|\ge R\},
+		\qquad
+		m:=|I_{\mathrm{out}}|.
+	\]
+	Para cada $k\in I_{\mathrm{out}}$, definimos el funcional lineal
+	\[
+		\psi_k:\mathbb P[z]\to\mathbb C,
+		\qquad
+		\psi_k(p):=(\mathcal D p)'(c_k)=p(c_k)+c_kp'(c_k).
+	\]
+
+	Supongamos que, para todo $k\in I_{\mathrm{out}}$, el funcional $\psi_k$ es no acotado
+	respecto de la norma $\|\cdot\|_S$.
+
+	Entonces
+	\[
+		Q_j(\mathcal D)=\infty
+		\qquad \text{para todo } 0\le j\le m-1,
+	\]
+	y
+	\[
+		Q_m(\mathcal D)<\infty.
+	\]
+
+	En particular, $m$ es el umbral algebraico exacto de estabilización del operador
+	de multiplicación.
+\end{theorem}
+
+\begin{proof}
+	Dividimos la demostración en dos partes.
+
+	\medskip
+	\noindent
+	\textbf{Paso 1: cota superior $Q_m(\mathcal D)<\infty$.}
+
+	Para cada $k\in I_{\mathrm{out}}$ definimos
+	\[
+		\psi_k(p):=(\mathcal D p)'(c_k)=p(c_k)+c_kp'(c_k),
+	\]
+	y consideramos
+	\[
+		V_*:=\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k).
+	\]
+	Como $V_*$ es intersección finita de núcleos de funcionales lineales, es admisible.
+	Además,
+	\[
+		\operatorname{codim}_{alg}(V_*)\le m.
+	\]
+
+	Sea ahora $p\in V_*$. Entonces, para todo $k\in I_{\mathrm{out}}$,
+	\[
+		(\mathcal D p)'(c_k)=0.
+	\]
+	Por tanto, todos los términos discretos correspondientes a los puntos no-BPE quedan
+	neutralizados en la norma de Sobolev de $\mathcal D p$.
+
+	Si $k\notin I_{\mathrm{out}}$, entonces $|c_k|<R$. En ese caso, por las estimaciones
+	de Cauchy en el interior y por la continuidad de la evaluación de la derivada en puntos
+	ABPE, existen constantes $A_k,B_k<\infty$ tales que
+	\[
+		|p(c_k)|\le A_k\|p\|_S,
+		\qquad
+		|p'(c_k)|\le B_k\|p\|_S.
+	\]
+	Luego
+	\[
+		|(\mathcal D p)'(c_k)|
+		=
+		|p(c_k)+c_kp'(c_k)|
+		\le
+		(A_k+|c_k|B_k)\|p\|_S.
+	\]
+
+	Además, como la parte continua está soportada en la circunferencia de radio $R$,
+	\[
+		\|zp\|_{L^2(dm_R)}\le R\,\|p\|_{L^2(dm_R)}\le R\,\|p\|_S.
+	\]
+	De aquí,
+	\[
+		\|\mathcal D p\|_S^2
+		=
+		\|zp\|_{L^2(dm_R)}^2
+		+
+		\sum_{k=1}^N |(\mathcal D p)'(c_k)|^2
+	\]
+	\[
+		\le
+		\left(
+		R^2+\sum_{k\notin I_{\mathrm{out}}}(A_k+|c_k|B_k)^2
+		\right)\|p\|_S^2.
+	\]
+	Esto prueba que $\mathcal D|_{V_*}$ es acotado. Como
+	$\operatorname{codim}_{alg}(V_*)\le m$, por definición de $Q_m$ se obtiene
+	\[
+		Q_m(\mathcal D)<\infty.
+	\]
+
+	\medskip
+	\noindent
+	\textbf{Paso 2: explosión estricta por debajo del umbral.}
+
+	Fijemos un subespacio admisible $V\subset \mathbb P[z]$ tal que
+	\[
+		\operatorname{codim}_{alg}(V)=r<m.
+	\]
+	Demostraremos que $\mathcal D|_V$ es no acotado. Como esto vale para todo tal $V$,
+	se seguirá que
+	\[
+		Q_j(\mathcal D)=\infty,\qquad j=0,1,\dots,m-1.
+	\]
+
+	\smallskip
+	\noindent
+	\emph{(a) Independencia lineal de los funcionales $\psi_k$.}
+
+	Los puntos $\{c_k\}_{k\in I_{\mathrm{out}}}$ son distintos. Por interpolación de Hermite,
+	para cada $j\in I_{\mathrm{out}}$ existe un polinomio $h_j$ tal que
+	\[
+		h_j(c_j)=1,\qquad h_j'(c_j)=0,
+	\]
+	y
+	\[
+		h_j(c_\ell)=0,\qquad h_j'(c_\ell)=0,
+		\qquad \ell\in I_{\mathrm{out}},\ \ell\neq j.
+	\]
+	Entonces
+	\[
+		\psi_\ell(h_j)=\delta_{\ell j}.
+	\]
+	Por consiguiente, $\{\psi_k\}_{k\in I_{\mathrm{out}}}$ es un sistema linealmente independiente,
+	y en particular
+	\[
+		\dim \operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}=m.
+	\]
+
+	\smallskip
+	\noindent
+	\emph{(b) Construcción de paquetes diagonales de norma pequeña.}
+
+	Como cada $\psi_j$ es no acotado respecto de $\|\cdot\|_S$, por el
+	Lema~\ref{lem:normalizacion_funcional_no_acotado}, para todo $n\ge1$
+	existe $x_{j,n}\in \mathbb P[z]$ tal que
+	\[
+		\|x_{j,n}\|_S<\frac1n,
+		\qquad
+		\psi_j(x_{j,n})=1.
+	\]
+
+	Ahora refinamos la interpolación de Hermite: para cada $j\in I_{\mathrm{out}}$ elegimos
+	un polinomio $g_j$ tal que
+	\[
+		g_j(c_j)=1,\qquad g_j'(c_j)=0,
+	\]
+	y, para todo $\ell\neq j$,
+	\[
+		g_j(c_\ell)=0,\qquad g_j'(c_\ell)=0,
+	\]
+	imponiendo estas condiciones en todos los puntos discretos
+	$\{c_1,\dots,c_N\}$.
+
+	Definimos
+	\[
+		u_{j,n}:=g_j\,x_{j,n}.
+	\]
+
+	Observemos primero que, para todo $p\in\mathbb P[z]$ y todo $\ell=1,\dots,N$,
+	por la regla del producto,
+	\[
+		(g_jp)'(c_\ell)
+		=
+		g_j'(c_\ell)p(c_\ell)+g_j(c_\ell)p'(c_\ell).
+	\]
+	Como $g_j'(c_\ell)=0$ para todo $\ell$, obtenemos
+	\[
+		(g_jp)'(c_\ell)=g_j(c_\ell)p'(c_\ell).
+	\]
+	Por consiguiente,
+	\[
+		\sum_{\ell=1}^N |(g_jp)'(c_\ell)|^2
+		\le
+		\Bigl(\max_{1\le \ell\le N}|g_j(c_\ell)|^2\Bigr)
+		\sum_{\ell=1}^N |p'(c_\ell)|^2.
+	\]
+
+	Por otra parte, en la circunferencia $|z|=R$ se tiene
+	\[
+		|g_j(z)p(z)|
+		\le
+		\|g_j\|_{L^\infty(|z|=R)}\,|p(z)|,
+	\]
+	y por tanto
+	\[
+		\int_{|z|=R}|g_jp|^2\,dm_R
+		\le
+		\|g_j\|_{L^\infty(|z|=R)}^2
+		\int_{|z|=R}|p|^2\,dm_R.
+	\]
+
+	Reuniendo ambas estimaciones, si definimos
+	\[
+		C_j:=
+		\max\Bigl\{
+		\|g_j\|_{L^\infty(|z|=R)},
+		\max_{1\le \ell\le N}|g_j(c_\ell)|
+		\Bigr\},
+	\]
+	obtenemos
+	\[
+		\|g_jp\|_S\le C_j\|p\|_S,
+		\qquad p\in\mathbb P[z].
+	\]
+	Es decir, la multiplicación por $g_j$ es un operador acotado sobre
+	$(\mathbb P[z],\|\cdot\|_S)$.
+
+	En particular,
+	\[
+		\|u_{j,n}\|_S=\|g_jx_{j,n}\|_S\le C_j\|x_{j,n}\|_S<\frac{C_j}{n}\xrightarrow[n\to\infty]{}0.
+	\]
+
+	Además, para $\ell\in I_{\mathrm{out}}$,
+	\[
+		u_{j,n}(c_\ell)=g_j(c_\ell)x_{j,n}(c_\ell),
+	\]
+	y
+	\[
+		u'_{j,n}(c_\ell)=g_j'(c_\ell)x_{j,n}(c_\ell)+g_j(c_\ell)x'_{j,n}(c_\ell)
+		=g_j(c_\ell)x'_{j,n}(c_\ell),
+	\]
+	porque $g_j'(c_\ell)=0$.
+
+	Si $\ell\neq j$, entonces $g_j(c_\ell)=0$, luego
+	\[
+		u_{j,n}(c_\ell)=0,
+		\qquad
+		u'_{j,n}(c_\ell)=0,
+	\]
+	y por tanto
+	\[
+		\psi_\ell(u_{j,n})=u_{j,n}(c_\ell)+c_\ell u'_{j,n}(c_\ell)=0.
+	\]
+
+	Si $\ell=j$, entonces $g_j(c_j)=1$ y $g_j'(c_j)=0$, luego
+	\[
+		u_{j,n}(c_j)=x_{j,n}(c_j),
+		\qquad
+		u'_{j,n}(c_j)=x'_{j,n}(c_j),
+	\]
+	y por tanto
+	\[
+		\psi_j(u_{j,n})
+		=
+		u_{j,n}(c_j)+c_j u'_{j,n}(c_j)
+		=
+		x_{j,n}(c_j)+c_jx'_{j,n}(c_j)
+		=
+		\psi_j(x_{j,n})=1.
+	\]
+	En resumen,
+	\[
+		\psi_\ell(u_{j,n})=\delta_{\ell j},
+		\qquad \ell,j\in I_{\mathrm{out}}.
+	\]
+
+	\smallskip
+	\noindent
+	\emph{(c) Imposición simultánea de las restricciones algebraicas de $V$.}
+
+	Como $V$ es admisible y de codimensión algebraica $r$, por la caracterización por
+	funcionales existe un sistema linealmente independiente
+	\[
+		\lambda_1,\dots,\lambda_r:\mathbb P[z]\to\mathbb C
+	\]
+	tal que
+	\[
+		V=\bigcap_{i=1}^r \ker(\lambda_i).
+	\]
+
+	Para cada $n$, consideremos la matriz
+	\[
+		A_n:=\bigl(\lambda_i(u_{j,n})\bigr)_{
+		\substack{1\le i\le r\\ j\in I_{\mathrm{out}}}}
+		\in \mathbb C^{r\times m}.
+	\]
+	Como $r<m$, el núcleo de $A_n$ es no trivial. Elegimos
+	\[
+		\beta^{(n)}=(\beta_j^{(n)})_{j\in I_{\mathrm{out}}}\in \ker(A_n),
+		\qquad
+		\|\beta^{(n)}\|_{\ell^2}=1.
+	\]
+	Definimos
+	\[
+		p_n:=\sum_{j\in I_{\mathrm{out}}}\beta_j^{(n)}u_{j,n}.
+	\]
+	Entonces, para cada $i=1,\dots,r$,
+	\[
+		\lambda_i(p_n)=\sum_{j\in I_{\mathrm{out}}}\beta_j^{(n)}\lambda_i(u_{j,n})=0,
+	\]
+	luego $p_n\in V$.
+
+	Además,
+	\[
+		\|p_n\|_S
+		\le
+		\sum_{j\in I_{\mathrm{out}}} |\beta_j^{(n)}|\,\|u_{j,n}\|_S
+		\le
+		\sqrt m \max_{j\in I_{\mathrm{out}}}\|u_{j,n}\|_S
+		\xrightarrow[n\to\infty]{}0.
+	\]
+
+	\smallskip
+	\noindent
+	\emph{(d) Cota inferior uniforme para $\|\mathcal D p_n\|_S$.}
+
+	Definimos el funcional
+	\[
+		\Psi_n:=\sum_{j\in I_{\mathrm{out}}}\overline{\beta_j^{(n)}}\,\psi_j.
+	\]
+	Entonces, usando la diagonalidad anterior,
+	\[
+		\Psi_n(p_n)
+		=
+		\sum_{j,\ell\in I_{\mathrm{out}}}
+		\overline{\beta_j^{(n)}}\beta_\ell^{(n)}\psi_j(u_{\ell,n})
+		=
+		\sum_{j\in I_{\mathrm{out}}}|\beta_j^{(n)}|^2
+		=1.
+	\]
+	Por otra parte, por Cauchy--Schwarz,
+	\[
+		|\Psi_n(p)|
+		\le
+		\Bigl(\sum_{j\in I_{\mathrm{out}}}|\beta_j^{(n)}|^2\Bigr)^{1/2}
+		\Bigl(\sum_{j\in I_{\mathrm{out}}}|\psi_j(p)|^2\Bigr)^{1/2}
+		\le
+		\|\mathcal D p\|_S,
+		\qquad p\in\mathbb P[z],
+	\]
+	ya que los términos $|\psi_j(p)|^2=|(\mathcal D p)'(c_j)|^2$ forman parte de la suma discreta
+	de $\|\mathcal D p\|_S^2$.
+
+	Aplicando esto a $p_n$ obtenemos
+	\[
+		1=|\Psi_n(p_n)|\le \|\mathcal D p_n\|_S.
+	\]
+	Por tanto,
+	\[
+		\frac{\|\mathcal D p_n\|_S}{\|p_n\|_S}\xrightarrow[n\to\infty]{}\infty.
+	\]
+	Esto prueba que $\mathcal D|_V$ es no acotado.
+
+	Como $V$ era arbitrario entre los subespacios admisibles de codimensión algebraica
+	$r<m$, concluimos que
+	\[
+		Q_j(\mathcal D)=\infty,\qquad j=0,1,\dots,m-1.
+	\]
+	Junto con el Paso 1, queda demostrado.
+\end{proof}
+
+
+\begin{corollary}[Caso puramente exterior]\label{cor:umbral_m_puramente_exterior}
+	Si en el Teorema~\ref{thm:umbral_exacto_Qm_nobpe} todos los átomos discretos son no-BPE, es decir,
+	\[
+		m=N,
+	\]
+	entonces
+	\[
+		Q_m(\mathcal D)\le R.
+	\]
+	En particular, el umbral algebraico en el índice $m$ es finito y está controlado explícitamente por el radio del soporte continuo.
+\end{corollary}
+
+\begin{proof}
+	En este caso
+	\[
+		I_{\mathrm{out}}=\{1,\dots,N\},
+		\qquad
+		m=N.
+	\]
+	Consideremos el subespacio admisible
+	\[
+		V_*:=\bigcap_{k=1}^N \ker(\psi_k),
+		\qquad
+		\psi_k(p):=(\mathcal D p)'(c_k)=p(c_k)+c_kp'(c_k).
+	\]
+	Por construcción,
+	\[
+		\operatorname{codim}_{alg}(V_*)\le N=m.
+	\]
+
+	Sea ahora $p\in V_*$. Entonces, para todo $k=1,\dots,N$,
+	\[
+		(\mathcal D p)'(c_k)=0.
+	\]
+	Por tanto, todos los términos discretos de la norma de Sobolev de $\mathcal D p$ se anulan y queda
+	\[
+		\|\mathcal D p\|_S^2
+		=
+		\int_{|z|=R} |z\,p(z)|^2\,dm_R(z).
+	\]
+	Como $|z|=R$ en el soporte continuo, se obtiene
+	\[
+		\|\mathcal D p\|_S^2
+		=
+		R^2\int_{|z|=R}|p(z)|^2\,dm_R(z)
+		\le
+		R^2\|p\|_S^2.
+	\]
+	En consecuencia,
+	\[
+		\|\mathcal D|_{V_*}\|_S\le R.
+	\]
+	Finalmente, como $V_*$ es admisible y $\operatorname{codim}_{alg}(V_*)\le m$, por definición de $Q_m(\mathcal D)$,
+	\[
+		Q_m(\mathcal D)\le \|\mathcal D|_{V_*}\|_S\le R.
+	\]
+\end{proof}
+
+\begin{definition}[Ideal anulador de un subespacio]
+	Sea $V\subset \mathbb P[z]$ un subespacio vectorial. Definimos
+	\[
+		I(V):=\{A\in \mathbb P[z]: A\,\mathbb P[z]\subset V\}.
+	\]
+\end{definition}
+
+\begin{theorem}[Subespacio estable canónico y anulador polinómico]
+	\label{thm:Vout_anulador}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{|z|=R} p(z)\,\overline{q(z)}\,dm_R(z)
+		+
+		\sum_{k=1}^N p'(c_k)\,\overline{q'(c_k)},
+		\qquad p,q\in \mathbb P[z],
+	\]
+	donde $R>0$ y los puntos $c_1,\dots,c_N$ son distintos. Sea
+	\[
+		(\mathcal D p)(z)=z\,p(z),
+	\]
+	y definamos
+	\[
+		I_{\mathrm{out}}:=\{k\in\{1,\dots,N\}: |c_k|\ge R\},
+		\qquad
+		m:=|I_{\mathrm{out}}|.
+	\]
+	Para cada $k\in I_{\mathrm{out}}$ consideremos el funcional lineal
+	\[
+		\psi_k:\mathbb P[z]\to\mathbb C,
+		\qquad
+		\psi_k(p):=(\mathcal D p)'(c_k)=p(c_k)+c_kp'(c_k),
+	\]
+	y el subespacio
+	\[
+		V_{\mathrm{out}}:=\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k).
+	\]
+	Entonces se verifican las siguientes propiedades:
+
+	\begin{enumerate}
+		\item $V_{\mathrm{out}}$ es admisible y
+		      \[
+			      \operatorname{codim}_{alg}(V_{\mathrm{out}})=m.
+		      \]
+
+		\item La restricción $\mathcal D|_{V_{\mathrm{out}}}$ es acotada respecto de la norma
+		      de Sobolev. Más precisamente, existe una constante $C_{\mathrm{out}}<\infty$ tal que
+		      \[
+			      \|\mathcal D p\|_S\le C_{\mathrm{out}}\|p\|_S,
+			      \qquad p\in V_{\mathrm{out}}.
+		      \]
+
+		\item Si definimos
+		      \[
+			      A_{\mathrm{out}}(z):=\prod_{k\in I_{\mathrm{out}}}(z-c_k)^2,
+		      \]
+		      entonces
+		      \[
+			      A_{\mathrm{out}}\mathbb P[z]\subset V_{\mathrm{out}}.
+		      \]
+		      En particular,
+		      \[
+			      I(V_{\mathrm{out}})\neq \{0\}.
+		      \]
+
+		\item Más aún,
+		      \[
+			      I(V_{\mathrm{out}})=(A_{\mathrm{out}}).
+		      \]
+		      Es decir, el ideal anulador de $V_{\mathrm{out}}$ está generado exactamente por
+		      $A_{\mathrm{out}}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\textbf{(1) Admisibilidad y codimensión exacta.}
+	Por definición,
+	\[
+		V_{\mathrm{out}}=\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k),
+	\]
+	luego $V_{\mathrm{out}}$ es admisible.
+
+	Probemos ahora que los funcionales $\{\psi_k\}_{k\in I_{\mathrm{out}}}$ son linealmente
+	independientes. Fijado $j\in I_{\mathrm{out}}$, por interpolación de Hermite existe un
+	polinomio $h_j\in\mathbb P[z]$ tal que
+	\[
+		h_j(c_j)=1,\qquad h_j'(c_j)=0,
+	\]
+	y
+	\[
+		h_j(c_\ell)=0,\qquad h_j'(c_\ell)=0,
+		\qquad \ell\in I_{\mathrm{out}},\ \ell\neq j.
+	\]
+	Entonces, para todo $\ell\in I_{\mathrm{out}}$,
+	\[
+		\psi_\ell(h_j)=h_j(c_\ell)+c_\ell h_j'(c_\ell)=\delta_{\ell j}.
+	\]
+	Por tanto, los funcionales $\psi_k$ son linealmente independientes y
+	\[
+		\dim\operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}=m.
+	\]
+	Aplicando la caracterización de la codimensión algebraica por funcionales, obtenemos
+	\[
+		\operatorname{codim}_{alg}(V_{\mathrm{out}})
+		=
+		\dim\operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}
+		=
+		m.
+	\]
+
+	\medskip
+	\textbf{(2) Acotación de $\mathcal D$ sobre $V_{\mathrm{out}}$.}
+	Sea $p\in V_{\mathrm{out}}$. Entonces, para todo $k\in I_{\mathrm{out}}$,
+	\[
+		(\mathcal D p)'(c_k)=\psi_k(p)=0.
+	\]
+	Es decir, todos los términos discretos correspondientes a los puntos exteriores/no-BPE
+	desaparecen en la norma de Sobolev de $\mathcal D p$.
+
+	Si $k\notin I_{\mathrm{out}}$, entonces $|c_k|<R$. En ese caso, por las estimaciones
+	interiores habituales, existen constantes $A_k,B_k<\infty$ tales que
+	\[
+		|p(c_k)|\le A_k\|p\|_S,
+		\qquad
+		|p'(c_k)|\le B_k\|p\|_S.
+	\]
+	Luego
+	\[
+		|(\mathcal D p)'(c_k)|
+		=
+		|p(c_k)+c_kp'(c_k)|
+		\le
+		(A_k+|c_k|B_k)\|p\|_S.
+	\]
+
+	Además, como $|z|=R$ en el soporte continuo,
+	\[
+		\|zp\|_{L^2(dm_R)}\le R\|p\|_{L^2(dm_R)}\le R\|p\|_S.
+	\]
+	Por consiguiente,
+	\[
+		\|\mathcal D p\|_S^2
+		=
+		\|zp\|_{L^2(dm_R)}^2
+		+
+		\sum_{k=1}^N |(\mathcal D p)'(c_k)|^2
+	\]
+	\[
+		=
+		\|zp\|_{L^2(dm_R)}^2
+		+
+		\sum_{k\notin I_{\mathrm{out}}} |(\mathcal D p)'(c_k)|^2
+	\]
+	\[
+		\le
+		\left(
+		R^2+\sum_{k\notin I_{\mathrm{out}}}(A_k+|c_k|B_k)^2
+		\right)\|p\|_S^2.
+	\]
+	Esto prueba la acotación de $\mathcal D|_{V_{\mathrm{out}}}$.
+
+	\medskip
+	\textbf{(3) Existencia de anulador polinómico.}
+	Sea
+	\[
+		A_{\mathrm{out}}(z)=\prod_{k\in I_{\mathrm{out}}}(z-c_k)^2.
+	\]
+	Entonces, para cada $k\in I_{\mathrm{out}}$,
+	\[
+		A_{\mathrm{out}}(c_k)=0,
+		\qquad
+		A_{\mathrm{out}}'(c_k)=0.
+	\]
+	Sea ahora $q\in\mathbb P[z]$. Entonces
+	\[
+		(A_{\mathrm{out}}q)(c_k)=0,
+		\qquad
+		(A_{\mathrm{out}}q)'(c_k)=0,
+		\qquad k\in I_{\mathrm{out}}.
+	\]
+	Por tanto,
+	\[
+		\psi_k(A_{\mathrm{out}}q)
+		=
+		(A_{\mathrm{out}}q)(c_k)+c_k(A_{\mathrm{out}}q)'(c_k)
+		=
+		0.
+	\]
+	Esto vale para todo $k\in I_{\mathrm{out}}$, luego
+	\[
+		A_{\mathrm{out}}q\in V_{\mathrm{out}}
+		\qquad \forall q\in\mathbb P[z].
+	\]
+	En consecuencia,
+	\[
+		A_{\mathrm{out}}\mathbb P[z]\subset V_{\mathrm{out}},
+	\]
+	y por tanto
+	\[
+		A_{\mathrm{out}}\in I(V_{\mathrm{out}}),
+		\qquad
+		I(V_{\mathrm{out}})\neq\{0\}.
+	\]
+
+	\medskip
+	\textbf{(4) Cálculo exacto del ideal anulador.}
+	Ya sabemos que
+	\[
+		(A_{\mathrm{out}})\subset I(V_{\mathrm{out}}).
+	\]
+	Veamos la inclusión opuesta.
+
+	Sea $B\in I(V_{\mathrm{out}})$. Entonces
+	\[
+		Bq\in V_{\mathrm{out}}
+		\qquad \forall q\in\mathbb P[z].
+	\]
+	En particular, para cada $k\in I_{\mathrm{out}}$ y todo $q\in\mathbb P[z]$,
+	\[
+		\psi_k(Bq)=0.
+	\]
+
+	Fijemos $k\in I_{\mathrm{out}}$. Tomemos primero
+	\[
+		q(z)=z-c_k.
+	\]
+	Entonces $q(c_k)=0$ y $q'(c_k)=1$. Aplicando la regla del producto,
+	\[
+		(Bq)'(c_k)=B'(c_k)q(c_k)+B(c_k)q'(c_k)=B(c_k).
+	\]
+	Por tanto,
+	\[
+		0=\psi_k(Bq)=(Bq)(c_k)+c_k(Bq)'(c_k)=c_kB(c_k).
+	\]
+	Como $|c_k|\ge R$ y $R>0$, se tiene $c_k\neq 0$. Luego
+	\[
+		B(c_k)=0.
+	\]
+
+	Ahora tomamos $q\equiv 1$. Entonces
+	\[
+		0=\psi_k(B)=B(c_k)+c_kB'(c_k)=c_kB'(c_k),
+	\]
+	y de nuevo, como $c_k\neq 0$, se sigue que
+	\[
+		B'(c_k)=0.
+	\]
+
+	Hemos probado que cada $c_k$, con $k\in I_{\mathrm{out}}$, es raíz doble de $B$.
+	Por consiguiente,
+	\[
+		A_{\mathrm{out}}(z)=\prod_{k\in I_{\mathrm{out}}}(z-c_k)^2
+	\]
+	divide a $B$. Es decir,
+	\[
+		B\in (A_{\mathrm{out}}).
+	\]
+	Luego
+	\[
+		I(V_{\mathrm{out}})\subset (A_{\mathrm{out}}).
+	\]
+	Junto con la inclusión opuesta, obtenemos
+	\[
+		I(V_{\mathrm{out}})=(A_{\mathrm{out}}).
+	\]
+\end{proof}
+
+\begin{corollary}[Existencia de subespacio estable con anulador no trivial]
+	\label{cor:existencia_V_estable_anulador}
+	Bajo las hipótesis del Teorema~\ref{thm:Vout_anulador}, existe un subespacio admisible
+	$V\subset \mathbb P[z]$ tal que
+	\[
+		\operatorname{codim}_{alg}(V)\le m,
+		\qquad
+		\|\mathcal D|_V\|_S<\infty,
+		\qquad
+		I(V)\neq \{0\}.
+	\]
+	De hecho, puede tomarse
+	\[
+		V=V_{\mathrm{out}}=\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k),
+		\qquad
+		\psi_k(p)=p(c_k)+c_kp'(c_k).
+	\]
+	En particular,
+	\[
+		Q_m(\mathcal D)\le \|\mathcal D|_{V_{\mathrm{out}}}\|_S<\infty.
+	\]
+\end{corollary}
+
+\begin{proof}
+	Basta tomar
+	\[
+		V=V_{\mathrm{out}}.
+	\]
+	Por el Teorema~\ref{thm:Vout_anulador},
+	\[
+		\operatorname{codim}_{alg}(V_{\mathrm{out}})=m,
+		\qquad
+		\|\mathcal D|_{V_{\mathrm{out}}}\|_S<\infty,
+		\qquad
+		I(V_{\mathrm{out}})=(A_{\mathrm{out}})\neq\{0\}.
+	\]
+	Finalmente, como $V_{\mathrm{out}}$ es admisible y $\operatorname{codim}_{alg}(V_{\mathrm{out}})=m< m+1$,
+	la definición de $Q_m(\mathcal D)$ da
+	\[
+		Q_m(\mathcal D)\le \|\mathcal D|_{V_{\mathrm{out}}}\|_S<\infty.
+	\]
+\end{proof}
+
+\begin{corollary}[Anulador canónico asociado al umbral exterior]
+	\label{cor:anulador_canonico_umbral}
+	Bajo las hipótesis del Teorema~\ref{thm:Vout_anulador}, el polinomio
+	\[
+		A_{\mathrm{out}}(z)=\prod_{k\in I_{\mathrm{out}}}(z-c_k)^2
+	\]
+	satisface
+	\[
+		A_{\mathrm{out}}\mathbb P[z]\subset V_{\mathrm{out}},
+	\]
+	donde $V_{\mathrm{out}}$ es un subespacio admisible de codimensión exacta $m$
+	sobre el cual $\mathcal D$ es acotado.
+\end{corollary}
+
+\begin{proof}
+	Es una reformulación inmediata de los apartados (1), (2) y (3) del
+	Teorema~\ref{thm:Vout_anulador}.
+\end{proof}
+
+\begin{theorem}[Subespacio estable canónico con anulador polinómico]
+	\label{thm:subespacio_canonico_anulador}
+	Consideremos el producto interno de Sobolev
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{|z|=R} p(z)\,\overline{q(z)}\,dm_R(z)
+		+
+		\sum_{k=1}^N p'(c_k)\,\overline{q'(c_k)},
+		\qquad p,q\in\mathbb P[z],
+	\]
+	donde los puntos $c_1,\dots,c_N$ son distintos, y sea
+	\[
+		(\mathcal Dp)(z)=z\,p(z).
+	\]
+	Definimos
+	\[
+		I_{\mathrm{out}}:=\{k\in\{1,\dots,N\}:|c_k|\ge R\},
+		\qquad
+		m:=|I_{\mathrm{out}}|.
+	\]
+	Para cada $k\in I_{\mathrm{out}}$, definimos
+	\[
+		\psi_k:\mathbb P[z]\to\mathbb C,
+		\qquad
+		\psi_k(p):=(\mathcal Dp)'(c_k)=p(c_k)+c_kp'(c_k),
+	\]
+	y consideramos
+	\[
+		V_{\mathrm{out}}
+		:=
+		\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k).
+	\]
+	Entonces:
+
+	\begin{enumerate}
+		\item $V_{\mathrm{out}}$ es admisible y
+		      \[
+			      \operatorname{codim}_{alg}(V_{\mathrm{out}})=m.
+		      \]
+
+		\item La restricción $\mathcal D|_{V_{\mathrm{out}}}$ es acotada, es decir, existe
+		      $C_{\mathrm{out}}<\infty$ tal que
+		      \[
+			      \|\mathcal Dp\|_S\le C_{\mathrm{out}}\|p\|_S,
+			      \qquad p\in V_{\mathrm{out}}.
+		      \]
+
+		\item Si definimos
+		      \[
+			      A_{\mathrm{out}}(z):=\prod_{k\in I_{\mathrm{out}}}(z-c_k)^2,
+		      \]
+		      entonces
+		      \[
+			      A_{\mathrm{out}}\mathbb P[z]\subset V_{\mathrm{out}}.
+		      \]
+		      En particular,
+		      \[
+			      I(V_{\mathrm{out}})\neq\{0\}.
+		      \]
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\textbf{(1) Admisibilidad y codimensión.}
+	Por definición,
+	\[
+		V_{\mathrm{out}}=\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k),
+	\]
+	luego $V_{\mathrm{out}}$ es admisible.
+
+	Veamos que los funcionales $\psi_k$, $k\in I_{\mathrm{out}}$, son linealmente independientes.
+	Fijado $j\in I_{\mathrm{out}}$, por interpolación de Hermite existe un polinomio $h_j$ tal que
+	\[
+		h_j(c_j)=1,\qquad h_j'(c_j)=0,
+	\]
+	y
+	\[
+		h_j(c_\ell)=0,\qquad h_j'(c_\ell)=0,
+		\qquad \ell\in I_{\mathrm{out}},\ \ell\neq j.
+	\]
+	Entonces
+	\[
+		\psi_\ell(h_j)=h_j(c_\ell)+c_\ell h_j'(c_\ell)=\delta_{\ell j}.
+	\]
+	Por tanto, $\{\psi_k\}_{k\in I_{\mathrm{out}}}$ es linealmente independiente y
+	\[
+		\dim\operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}=m.
+	\]
+	Por la caracterización de la codimensión algebraica mediante funcionales,
+	\[
+		\operatorname{codim}_{alg}(V_{\mathrm{out}})
+		=
+		\dim\operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}
+		=
+		m.
+	\]
+
+	\medskip
+	\textbf{(2) Acotación de $\mathcal D$ sobre $V_{\mathrm{out}}$.}
+	Sea $p\in V_{\mathrm{out}}$. Entonces, para todo $k\in I_{\mathrm{out}}$,
+	\[
+		(\mathcal Dp)'(c_k)=\psi_k(p)=0.
+	\]
+	Así, todos los términos discretos exteriores desaparecen en la norma de Sobolev de
+	$\mathcal Dp$.
+
+	Si $k\notin I_{\mathrm{out}}$, entonces $|c_k|<R$. Por las estimaciones interiores de Cauchy
+	y la continuidad de la evaluación de la derivada en puntos interiores/ABPE, existen constantes
+	$A_k,B_k<\infty$ tales que
+	\[
+		|p(c_k)|\le A_k\|p\|_S,
+		\qquad
+		|p'(c_k)|\le B_k\|p\|_S.
+	\]
+	Luego
+	\[
+		|(\mathcal Dp)'(c_k)|
+		=
+		|p(c_k)+c_kp'(c_k)|
+		\le
+		(A_k+|c_k|B_k)\|p\|_S.
+	\]
+
+	Además, como $|z|=R$ en el soporte continuo,
+	\[
+		\|zp\|_{L^2(dm_R)}\le R\|p\|_{L^2(dm_R)}\le R\|p\|_S.
+	\]
+	Por tanto,
+	\[
+		\|\mathcal Dp\|_S^2
+		=
+		\|zp\|_{L^2(dm_R)}^2+\sum_{k=1}^N |(\mathcal Dp)'(c_k)|^2
+	\]
+	\[
+		=
+		\|zp\|_{L^2(dm_R)}^2+\sum_{k\notin I_{\mathrm{out}}}|(\mathcal Dp)'(c_k)|^2
+	\]
+	\[
+		\le
+		\left(
+		R^2+\sum_{k\notin I_{\mathrm{out}}}(A_k+|c_k|B_k)^2
+		\right)\|p\|_S^2.
+	\]
+	Esto prueba que $\mathcal D|_{V_{\mathrm{out}}}$ es acotada.
+
+	\medskip
+	\textbf{(3) Existencia de anulador polinómico.}
+	Sea
+	\[
+		A_{\mathrm{out}}(z):=\prod_{k\in I_{\mathrm{out}}}(z-c_k)^2.
+	\]
+	Entonces, para cada $k\in I_{\mathrm{out}}$,
+	\[
+		A_{\mathrm{out}}(c_k)=0,
+		\qquad
+		A'_{\mathrm{out}}(c_k)=0.
+	\]
+	Por consiguiente, para todo $q\in\mathbb P[z]$,
+	\[
+		(A_{\mathrm{out}}q)(c_k)=0,
+		\qquad
+		(A_{\mathrm{out}}q)'(c_k)=0.
+	\]
+	Así,
+	\[
+		\psi_k(A_{\mathrm{out}}q)
+		=
+		(A_{\mathrm{out}}q)(c_k)+c_k(A_{\mathrm{out}}q)'(c_k)=0,
+		\qquad k\in I_{\mathrm{out}}.
+	\]
+	Por tanto,
+	\[
+		A_{\mathrm{out}}q\in V_{\mathrm{out}}
+		\qquad \forall q\in\mathbb P[z].
+	\]
+	Es decir,
+	\[
+		A_{\mathrm{out}}\mathbb P[z]\subset V_{\mathrm{out}}.
+	\]
+	Luego
+	\[
+		A_{\mathrm{out}}\in I(V_{\mathrm{out}}),
+	\]
+	y en particular
+	\[
+		I(V_{\mathrm{out}})\neq\{0\}.
+	\]
+\end{proof}
+
+\begin{corollary}[Existencia de subespacio estable con ideal anulador no trivial]
+	\label{cor:existencia_subespacio_anulador}
+	Bajo las hipótesis del Teorema~\ref{thm:subespacio_canonico_anulador}, si
+	\[
+		Q_m(\mathcal D)<\infty,
+	\]
+	entonces existe un subespacio admisible $V\subset\mathbb P[z]$ tal que
+	\[
+		\operatorname{codim}_{alg}(V)\le m,
+		\qquad
+		\|\mathcal D|_V\|_S<\infty,
+		\qquad
+		I(V)\neq\{0\}.
+	\]
+	De hecho, puede tomarse
+	\[
+		V=V_{\mathrm{out}}
+		=
+		\bigcap_{k\in I_{\mathrm{out}}}\ker\psi_k,
+		\qquad
+		\psi_k(p)=(zp)'(c_k).
+	\]
+\end{corollary}
+
+\begin{proof}
+	Por el Teorema~\ref{thm:subespacio_canonico_anulador}, el subespacio $V_{\mathrm{out}}$
+	es admisible, satisface
+	\[
+		\operatorname{codim}_{alg}(V_{\mathrm{out}})=m,
+		\qquad
+		\|\mathcal D|_{V_{\mathrm{out}}}\|_S<\infty,
+		\qquad
+		I(V_{\mathrm{out}})\neq\{0\}.
+	\]
+	Tomando $V:=V_{\mathrm{out}}$ se obtiene el resultado.
+\end{proof}
+
+\begin{remark}[Sobre el papel de la hipótesis $Q_m(\mathcal D)<\infty$]
+	En el modelo concreto considerado, la conclusión del Corolario~\ref{cor:existencia_subespacio_anulador}
+	no depende realmente de la hipótesis $Q_m(\mathcal D)<\infty$, puesto que el
+	Teorema~\ref{thm:subespacio_canonico_anulador} construye directamente un subespacio
+	canónico $V_{\mathrm{out}}$ con todas las propiedades requeridas. La hipótesis
+	\[
+		Q_m(\mathcal D)<\infty
+	\]
+	queda entonces automáticamente satisfecha como consecuencia de dicha construcción.
+\end{remark}
 
 \subsubsection{Consistencia con los Números de Gelfand Topológicos}
 
 Para que el índice $Q_k$ sea una generalización válida y robusta, es imperativo demostrar que, en ausencia de patologías topológicas (es decir, cuando el operador sí es acotado de forma natural en $\mathcal{H}$), el índice puramente algebraico coincide exactamente con los números de Gelfand definidos en la completación de Hilbert.
 
 \begin{theorem}[Equivalencia en el Caso Acotado]\label{thm:equivalencia_Qk_Gelfand}
-	Si el operador multiplicación $\mathcal{D}$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todas las masas discretas son puntos BPE), entonces para todo $k \ge 1$:
+	Si el operador multiplicación $\mathcal{D}$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todas las masas discretas son puntos BPE), entonces para todo $k \ge 0$:
 	$$ Q_k(\mathcal{D}) = c_k(\mathcal{D}) $$
 \end{theorem}
 
 \begin{proof}
-	Procederemos probando ambas desigualdades. Recordemos que $c_k(\mathcal{D})$ calcula el ínfimo sobre subespacios \textit{cerrados} $M \subset \mathcal{H}$ de codimensión topológica $m < k$.
+	Procederemos probando ambas desigualdades. Recordemos que $c_k(\mathcal{D})$ calcula el ínfimo sobre subespacios \textit{cerrados} $M \subset \mathcal{H}$ de codimensión topológica $m < k+1$.
 
 	\textbf{Paso 1: $Q_k(\mathcal{D}) \le c_k(\mathcal{D})$.}
-	Sea $M \subset \mathcal{H}$ un subespacio cerrado de codimensión topológica $m < k$. Por propiedades elementales de Análisis Funcional, $M$ puede escribirse como intersección de $m$ hiperplanos cerrados, esto es, $M=\bigcap_{j=1}^m\ker\Phi_j$ con $\Phi_1,\dots,\Phi_m\in\mathcal{H}^*$ linealmente independientes. Tomando intersección con $\mathbb{P}[z]$, obtenemos
+	Sea $M \subset \mathcal{H}$ un subespacio cerrado de codimensión topológica $m < k+1$. Por propiedades elementales de Análisis Funcional, $M$ puede escribirse como intersección de $m$ hiperplanos cerrados, esto es, $M=\bigcap_{j=1}^m\ker\Phi_j$ con $\Phi_1,\dots,\Phi_m\in\mathcal{H}^*$ linealmente independientes. Tomando intersección con $\mathbb{P}[z]$, obtenemos
 	\[
 		V:=M\cap\mathbb{P}[z]=\bigcap_{j=1}^m\ker(\Phi_j|_{\mathbb{P}[z]}).
 	\]
@@ -810,26 +1850,80 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 	\]
 	entonces el funcional continuo $\Psi:=\sum_{j=1}^m \alpha_j\Phi_j\in\mathcal{H}^*$ se anula en $\mathbb{P}[z]$. Como $\mathbb{P}[z]$ es denso en $\mathcal{H}$ y $\Psi$ es continuo, se sigue que $\Psi\equiv 0$ en todo $\mathcal{H}$. Por independencia lineal de $\Phi_1,\dots,\Phi_m$, necesariamente $\alpha_1=\cdots=\alpha_m=0$.
 
-	Por la Proposición~\ref{prop:finite-codim-kernels}, se concluye que $\operatorname{codim}_{alg}(V)=m<k$.
-	Dado que $\mathcal{D}$ es continuo, su norma suprema sobre un subconjunto denso ($V$) es igual a la norma sobre su clausura ($M$). Por tanto, $\|\mathcal{D}|_V\| = \|\mathcal{D}|_M\|$. Al ser $V$ un subespacio candidato en la definición de $Q_k$, deducimos que $Q_k(\mathcal{D}) \le c_k(\mathcal{D})$.
+	Por la Proposición~\ref{prop:finite-codim-kernels}, se concluye que $\operatorname{codim}_{alg}(V)=m<k+1$.
+	Probemos ahora que $\overline V=M$. La inclusión $\overline V\subset M$ es inmediata, ya que $V\subset M$ y $M$ es cerrado. Para la inclusión recíproca, sea $x\in M$. Como $\mathbb P[z]$ es denso en $\mathcal H$, existe una sucesión $p_n\in \mathbb P[z]$ tal que $p_n\to x$ en $\mathcal H$. Definimos
+	\[
+		a_n:=\bigl(\Phi_1(p_n),\dots,\Phi_m(p_n)\bigr)\in\mathbb C^m.
+	\]
+	Como $x\in M=\bigcap_{j=1}^m\ker\Phi_j$, se tiene $\Phi_j(x)=0$ para todo $j$, y por continuidad de cada $\Phi_j$ resulta $a_n\to 0$ en $\mathbb C^m$.
+
+	Consideremos la aplicación lineal
+	\[
+		T:\mathbb P[z]\to\mathbb C^m,\qquad T(p):=\bigl(\Phi_1(p),\dots,\Phi_m(p)\bigr).
+	\]
+	Las restricciones $\Phi_j|_{\mathbb P[z]}$ son linealmente independientes, luego $\dim\operatorname{Im}T=m$; en particular, $T$ es sobreyectiva. Elegimos polinomios $u_1,\dots,u_m\in\mathbb P[z]$ tales que
+	\[
+		T(u_i)=e_i\quad (i=1,\dots,m),
+	\]
+	donde $\{e_i\}$ es la base canónica de $\mathbb C^m$. Definimos el operador lineal continuo finito-dimensional
+	\[
+		R:\mathbb C^m\to\mathbb P[z],\qquad R(b_1,\dots,b_m):=\sum_{i=1}^m b_i u_i,
+	\]
+	de modo que $T\circ R=\mathrm{Id}_{\mathbb C^m}$.
+
+	Para cada $n$, ponemos
+	\[
+		v_n:=p_n-R(a_n)\in\mathbb P[z].
+	\]
+	Entonces
+	\[
+		T(v_n)=T(p_n)-T(R(a_n))=a_n-a_n=0,
+	\]
+	luego $v_n\in\ker T=V$. Además,
+	\[
+		\|v_n-x\|_S\le \|p_n-x\|_S+\|R(a_n)\|_S\xrightarrow[n\to\infty]{}0,
+	\]
+	porque $p_n\to x$, $a_n\to0$ y $R$ es continuo. Por tanto $x\in\overline V$, y se concluye $M\subset\overline V$. En consecuencia,
+	\[
+		\overline V=M.
+	\]
+
+	Como $\mathcal D\in\mathcal L(\mathcal H)$ y $V$ es denso en $M$, se obtiene
+	\[
+		\|\mathcal D|_V\|=\|\mathcal D|_M\|.
+	\]
+	Al ser $V$ un subespacio admisible en la definición de $Q_k$ (pues $\operatorname{codim}_{alg}(V)=m<k+1$), resulta
+	\[
+		Q_k(\mathcal D)\le \|\mathcal D|_V\|=\|\mathcal D|_M\|.
+	\]
+	Tomando ínfimo sobre todos los subespacios cerrados $M\subset\mathcal H$ con $\operatorname{codim}_{\mathcal H}(M)<k+1$, concluimos
+	\[
+		Q_k(\mathcal D)\le c_k(\mathcal D).
+	\]
 
 	\textbf{Paso 2: $c_k(\mathcal{D}) \le Q_k(\mathcal{D})$.}
-	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) = m < k$. Consideremos su clausura topológica $M = \overline{V}$ en el espacio de Hilbert $\mathcal{H}$.
+	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) = m < k+1$. Consideremos su clausura topológica $M = \overline{V}$ en el espacio de Hilbert $\mathcal{H}$.
 	Como $\operatorname{codim}_{alg}(V)=m$, existe $F\subset\mathbb{P}[z]$ con $\dim(F)=m$ tal que
 	\[
 		\mathbb{P}[z]=V\oplus F.
 	\]
 	Tomando clausuras en $\mathcal{H}$ y usando que $F$ es finito-dimensional (luego cerrado),
 	\[
-		\mathcal{H}=\overline{\mathbb{P}[z]}=\overline{V\oplus F}=\overline{V}+F=M+F.
+		\mathcal{H}=\overline{\mathbb{P}[z]}=\overline{V\oplus F}=\overline{V+F}=\overline V+F=M+F.
 	\]
-	Por tanto, el cociente $\mathcal{H}/M$ está generado por las clases de $F$, y se obtiene
+	La última igualdad se justifica porque siempre $\overline{A+B}\subset \overline A+\overline B$, y aquí además $\overline F=F$.
+
+	Ahora consideremos la aplicación lineal
 	\[
-		\dim(\mathcal{H}/M)\le \dim(F)=m,
+		q:F\to \mathcal H/M,\qquad q(f)=f+M.
+	\]
+	Como $\mathcal H=M+F$, toda clase $h+M\in\mathcal H/M$ puede escribirse como $(m+f)+M=f+M=q(f)$; luego $q$ es sobreyectiva. En consecuencia,
+	\[
+		\dim(\mathcal{H}/M)=\dim(\operatorname{Im}q)\le \dim(F)=m,
 	\]
 	es decir,
 	\[
-		\operatorname{codim}_{\mathcal{H}}(M)\le m<k.
+		\operatorname{codim}_{\mathcal{H}}(M)\le m<k+1.
 	\]
 	Así, $M$ es admisible en la definición de $c_k(\mathcal{D})$.
 
@@ -847,15 +1941,24 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 		\qquad
 		\|\mathcal{D}v_n\|_S\to \|\mathcal{D}x\|_S.
 	\]
-	En particular, para $n$ grande,
+	En particular, fijado $\varepsilon>0$, para $n$ suficientemente grande se cumple simultáneamente
 	\[
-		\frac{\|\mathcal{D}v_n\|_S}{\|v_n\|_S}>\|\mathcal{D}|_M\|-2\varepsilon,
+		\|\mathcal D v_n\|_S>\|\mathcal D|_M\|-\varepsilon,
+		\qquad
+		\|v_n\|_S<1+\varepsilon.
 	\]
+	Por tanto,
+	\[
+		\frac{\|\mathcal{D}v_n\|_S}{\|v_n\|_S}
+		>
+		\frac{\|\mathcal D|_M\|-\varepsilon}{1+\varepsilon}.
+	\]
+	Haciendo $\varepsilon\downarrow 0$, esta cota tiende a $\|\mathcal D|_M\|$.
 	y por definición de norma operatorial sobre $V$,
 	\[
-		\|\mathcal{D}|_V\|\ge \|\mathcal{D}|_M\|-2\varepsilon.
+		\|\mathcal{D}|_V\|\ge \|\mathcal D|_M\|.
 	\]
-	Como $\varepsilon>0$ es arbitrario,
+	Junto con la desigualdad opuesta $\|\mathcal D|_V\|\le \|\mathcal D|_M\|$, concluimos
 	\[
 		\|\mathcal{D}|_V\|=\|\mathcal{D}|_M\|.
 	\]
@@ -863,9 +1966,9 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 	\[
 		c_k(\mathcal{D})\le \|\mathcal{D}|_M\|=\|\mathcal{D}|_V\|.
 	\]
-	Tomando ínfimo sobre todos los $V\subset\mathbb{P}[z]$ con $\operatorname{codim}_{alg}(V)<k$:
+	Tomando ínfimo sobre todos los $V\subset\mathbb{P}[z]$ con $\operatorname{codim}_{alg}(V)<k+1$:
 	\[
-		c_k(\mathcal{D})\le \inf_{\operatorname{codim}_{alg}(V)<k}\|\mathcal{D}|_V\|=Q_k(\mathcal{D}).
+		c_k(\mathcal{D})\le \inf_{\operatorname{codim}_{alg}(V)<k+1}\|\mathcal{D}|_V\|=Q_k(\mathcal{D}).
 	\]
 
 	Al cumplirse ambas desigualdades, se concluye la identidad $Q_k(\mathcal{D}) = c_k(\mathcal{D})$.
@@ -882,7 +1985,7 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 
 El estudio asintótico del operador multiplicación $\mathcal{D}$ se lleva a cabo a través de sus aproximaciones de rango finito, denominadas secciones principales. El paso del espacio de Hilbert abstracto al álgebra de polinomios finitos permite emplear herramientas de álgebra lineal numérica para analizar las matrices que gobiernan la disposición de los ceros.
 
-En esta sección, la discusión matricial se hará siempre sobre la representación de $\mathcal{D}$ en la base ortonormal $\{\phi_n\}_{n\ge 0}$. Así, $\mathbf{D}$ denotará la matriz infinita de esa representación y $\mathbf{D}_n$ su compresión a $\operatorname{span}\{\phi_0,\dots,\phi_{n-1}\}$; cuando usemos vectores $x \in \mathbb{C}^n$, estos serán los vectores de coordenadas de polinomios en dicha base.
+En esta sección, la discusión matricial se hará siempre sobre la representación de $\mathcal{D}$ en la base ortonormal $\{\phi_n\}_{n\ge 0}$. Así, $\mathbf{D}$ denotará la matriz infinita de esa representación y $\mathbf{D}_n$ su compresión a $\operatorname{span}\{\phi_0,\dots,\phi_n\}$; cuando usemos vectores $x \in \mathbb{C}^{n+1}$, estos serán los vectores de coordenadas de polinomios en dicha base.
 
 % -------------------------------------------------------------
 \subsection{Representación Matricial y Secciones Truncadas}
@@ -891,17 +1994,17 @@ En esta sección, la discusión matricial se hará siempre sobre la representaci
 \begin{definition}[Sección principal de orden $n$]\label{def:seccion_truncada}
 	Sea $A = (a_{ij})_{i,j \geq 0}$ una matriz infinita. Para cada $n \in \mathbb{N}$, la \emph{sección principal de orden $n$} de $A$ es la submatriz finita
 	\[
-		A_n = (a_{ij})_{0 \leq i,j \leq n-1} \in \mathcal{M}_n(\mathbb{C}).
+		A_n = (a_{ij})_{0 \leq i,j \leq n} \in \mathcal{M}_{n+1}(\mathbb{C}).
 	\]
 	Denotamos por $\mathbf{D}_n$ la sección de orden $n$ de la matriz $\mathbf{D}$ que representa al operador $\mathcal{D}$ en la base de polinomios ortonormales $\{\phi_k\}$.
 \end{definition}
 
 \begin{definition}[Norma espectral de una sección truncada]\label{def:norma_espectral_truncada}
-	Para cada $n \in \mathbb{N}$, la norma espectral de la matriz $\mathbf{D}_n \in \mathcal{M}_n(\mathbb{C})$ se define por
+	Para cada $n \in \mathbb{N}$, la norma espectral de la matriz $\mathbf{D}_n \in \mathcal{M}_{n+1}(\mathbb{C})$ se define por
 	\[
-		\|\mathbf{D}_n\|_2 = \sup_{\substack{x \in \mathbb{C}^n \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2}.
+		\|\mathbf{D}_n\|_2 = \sup_{\substack{x \in \mathbb{C}^{n+1} \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2}.
 	\]
-	Bajo la identificación entre polinomios de $\operatorname{span}\{\phi_0,\dots,\phi_{n-1}\}$ y sus vectores de coordenadas, esta norma coincide con la norma operatorial de la compresión finito-dimensional de $\mathcal{D}$ a dicho subespacio.
+	Bajo la identificación entre polinomios de $\operatorname{span}\{\phi_0,\dots,\phi_n\}$ y sus vectores de coordenadas, esta norma coincide con la norma operatorial de la compresión finito-dimensional de $\mathcal{D}$ a dicho subespacio.
 \end{definition}
 
 La representación matricial del operador $\mathcal{D}$ en la base ortonormal $\{\phi_n\}$ posee una estructura algebraica especialmente conveniente. Esta representación recibe el nombre de matriz de Hessenberg.
@@ -932,7 +2035,7 @@ Las secciones $\mathbf{D}_n$ de esta matriz poseen las siguientes propiedades re
 
 \begin{itemize}
 	\item Si el producto interno procede de una medida real en un intervalo, la relación de recurrencia de tres términos hace que $\mathbf{D}$ sea tridiagonal y simétrica (matriz de Jacobi).
-	\item El determinante característico $|\mathbf{D}_n - z\mathbf{I}_n|$ es un polinomio proporcional a $\phi_n(z)$; en particular, ambos comparten exactamente los mismos ceros.
+	\item El determinante característico $|\mathbf{D}_n - z\mathbf{I}_{n+1}|$ es un polinomio proporcional a $\phi_{n+1}(z)$; en particular, ambos comparten exactamente los mismos ceros.
 \end{itemize}
 
 % -------------------------------------------------------------
@@ -957,52 +2060,52 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 \begin{definition}[Valores singulares de las secciones: notación $\sigma_{k,n}$]\label{def:sigma_kn}
 	Los valores singulares de la sección $\mathbf{D}_n$, ordenados de forma decreciente, se denotan
 	\[
-		\sigma_{1,n} \geq \sigma_{2,n} \geq \cdots \geq \sigma_{n,n} \geq 0.
+		\sigma_{0,n} \geq \sigma_{1,n} \geq \cdots \geq \sigma_{n,n} \geq 0.
 	\]
-	En particular, $\sigma_{1,n} = \|\mathbf{D}_n\|_2$ es la norma espectral (norma operatorial inducida por la norma euclídea) de $\mathbf{D}_n$. Por el principio min-max de Courant-Fischer,
+	En particular, $\sigma_{0,n} = \|\mathbf{D}_n\|_2$ es la norma espectral (norma operatorial inducida por la norma euclídea) de $\mathbf{D}_n$. Por el principio min-max de Courant-Fischer,
 	\[
-		\sigma_{2,n}^2 = \min_{\substack{V \subset \mathbb{C}^n \\ \operatorname{codim}(V) = 1}} \max_{\substack{x \in V \\ \|x\| = 1}} \|\mathbf{D}_n x\|^2.
+		\sigma_{1,n}^2 = \min_{\substack{V \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(V) = 1}} \max_{\substack{x \in V \\ \|x\| = 1}} \|\mathbf{D}_n x\|^2.
 	\]
 \end{definition}
 
 \begin{definition}[Índice asintótico singular $\sigma_k$]\label{def:indice_Sigma_k}
-	Para cada $k\ge 1$, si existe el límite en la recta real extendida, definimos
+	Para cada $k\ge 0$, si existe el límite en la recta real extendida, definimos
 	\[
 		\sigma_k := \lim_{n\to\infty} \sigma_{k,n} \in [0,+\infty].
 	\]
 \end{definition}
 
 \begin{proposition}[Coincidencia total de índices en el caso acotado (pendiente)]\label{prop:coincidencia_total_acotado_pendiente}
-	Supongamos que $\mathcal{D}\in\mathcal{L}(\mathcal{H})$ y que, para cada $k\ge1$, existe el límite
+	Supongamos que $\mathcal{D}\in\mathcal{L}(\mathcal{H})$ y que, para cada $k\ge0$, existe el límite
 	\[
 		\sigma_k=\lim_{n\to\infty}\sigma_{k,n}.
 	\]
-	Entonces, para todo $k\ge1$,
+	Entonces, para todo $k\ge0$,
 	\[
 		\sigma_k=S_k(\mathcal{D})=Q_k(\mathcal{D})=c_k(\mathcal{D}).
 	\]
 \end{proposition}
 
-\begin{proposition}[Comportamiento del primer valor singular]\label{prop:convergencia_sigma}
-	Sea $\mathcal{D}$ el operador multiplicación por $z$ y sea $\mathbf{D}_n$ la matriz de su compresión al subespacio $\operatorname{span}\{\phi_0,\dots,\phi_{n-1}\}$. Entonces:
+\begin{proposition}[Comportamiento del valor singular de índice $0$]\label{prop:convergencia_sigma}
+	Sea $\mathcal{D}$ el operador multiplicación por $z$ y sea $\mathbf{D}_n$ la matriz de su compresión al subespacio $\operatorname{span}\{\phi_0,\dots,\phi_n\}$. Entonces:
 	\begin{enumerate}
 		\item si $\mathcal{D}$ extiende a un operador acotado en $\mathcal{H}$, se tiene
 		      \[
-			      \lim_{n \to \infty} \sigma_{1,n} = \lim_{n \to \infty} \|\mathbf{D}_n\|_2 = \|\mathcal{D}\|;
+			      \lim_{n \to \infty} \sigma_{0,n} = \lim_{n \to \infty} \|\mathbf{D}_n\|_2 = \|\mathcal{D}\|;
 		      \]
 		\item si $\mathcal{D}$ no es acotado en $\mathcal{H}$, entonces $\|\mathbf{D}_n\|_2 \to +\infty$.
 	\end{enumerate}
 \end{proposition}
 
-En particular, cuando la medida continua tiene soporte acotado con radio máximo $R$ y el operador multiplicación es acotado, se obtiene $\|\mathcal{D}\| = R$ y, por tanto, $\lim_{n \to \infty} \sigma_{1,n} = R$.
+En particular, cuando la medida continua tiene soporte acotado con radio máximo $R$ y el operador multiplicación es acotado, se obtiene $\|\mathcal{D}\| = R$ y, por tanto, $\lim_{n \to \infty} \sigma_{0,n} = R$.
 
 \subsection{Estabilización Algebraica de los Valores Singulares}
 
 Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathcal{H}$ sugieren que $\|\mathbf{D}_n\|_2 \to \infty$ en el caso no-BPE, la estructura algebraica del espacio de polinomios $\mathbb{P}[z]$ restringe la dimensionalidad de esta divergencia.
 
-\begin{theorem}[Acotación del Segundo Valor Singular]
-	Sea $\langle \cdot, \cdot \rangle_S$ un producto de Sobolev con medida continua de radio esencial $R$ y un único átomo de derivada en $c \in I_{out}$. Entonces, el segundo valor singular de las secciones principales satisface:
-	$$ \limsup_{n \to \infty} \sigma_{2,n} \le R. $$
+\begin{theorem}[Acotación del valor singular de índice $1$]
+	Sea $\langle \cdot, \cdot \rangle_S$ un producto de Sobolev con medida continua de radio esencial $R$ y un único átomo de derivada en $c \in I_{out}$. Entonces, el valor singular de índice $1$ de las secciones principales satisface:
+	$$ \limsup_{n \to \infty} \sigma_{1,n} \le R. $$
 \end{theorem}
 
 \begin{proof}
@@ -1010,19 +2113,19 @@ Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathca
 
 	Definimos $V_0 = \{ p \in \mathbb{P}[z] : (zp)'(c) = 0 \} = \{ p \in \mathbb{P}[z] : p(c) + c p'(c) = 0 \}$. Al ser el núcleo de un único funcional lineal, su codimensión algebraica en $\mathbb{P}[z]$ es exactamente 1. Para cualquier $p \in V_0$, la componente discreta de la imagen se anula:
 	$$ \|\mathcal{D}p\|_S^2 = \|zp\|_{L^2(\mu)}^2 + |(zp)'(c)|^2 = \|zp\|_{L^2(\mu)}^2 \le R^2 \|p\|_{L^2(\mu)}^2 \le R^2 \|p\|_S^2. $$
-	Al intersecar $V_0$ con el subespacio generado por los primeros $n$ polinomios ortonormales, obtenemos un subespacio de codimensión algebraica a lo sumo 1 en $\mathbb{C}^n$ donde la norma de la matriz $\mathbf{D}_n$ está acotada por $R$. Por el principio min-max, esto fuerza a que $\sigma_{2,n} \le R$ para todo $n$.
+	Al intersecar $V_0$ con el subespacio generado por los primeros $n+1$ polinomios ortonormales, obtenemos un subespacio de codimensión algebraica a lo sumo 1 en $\mathbb{C}^{n+1}$ donde la norma de la matriz $\mathbf{D}_n$ está acotada por $R$. Por el principio min-max, esto fuerza a que $\sigma_{1,n} \le R$ para todo $n$.
 \end{proof}
 
-Este resultado muestra que, en el caso de un único átomo exterior, la divergencia asintótica de las secciones truncadas queda confinada a una sola dirección: $\sigma_{1,n} \to \infty$, mientras que $\sigma_{2,n}$ permanece uniformemente acotado por $R$.
+Este resultado muestra que, en el caso de un único átomo exterior, la divergencia asintótica de las secciones truncadas queda confinada a una sola dirección: $\sigma_{0,n} \to \infty$, mientras que $\sigma_{1,n}$ permanece uniformemente acotado por $R$.
 
 \begin{theorem}[Control singular del escape exterior]\label{thm:control_singular_escape}
 	Sea $\mu$ una medida de Borel positiva con soporte compacto tal que $\operatorname{supp}(\mu) \subseteq \overline{\mathbb{D}_R(0)}$ con $R < \infty$. Sea $\langle \cdot, \cdot \rangle_S$ un producto interno de Sobolev definido sobre $\mathbb{P}[z]$ como:
 	\begin{equation}\label{eq:sobolev_general_singular}
 		\langle p, q \rangle_S = \int p(z)\overline{q(z)} d\mu(z) + \sum_{k=1}^N \lambda_k p^{(j_k)}(c_k) \overline{q^{(j_k)}(c_k)}
 	\end{equation}
-	donde $\lambda_k > 0$, $j_k \ge 0$, y $\{c_k\}_{k=1}^N \subset \mathbb{C}$ son puntos finitos. Entonces, para toda sección principal $\mathbf{D}_n$ con $n > N$, se verifica
+	donde $\lambda_k > 0$, $j_k \ge 0$, y $\{c_k\}_{k=1}^N \subset \mathbb{C}$ son puntos finitos. Entonces, para toda sección principal $\mathbf{D}_n$ con $n \ge N$, se verifica
 	\[
-		\sigma_{N+1,n} \le R.
+		\sigma_{N,n} \le R.
 	\]
 	En particular, cada $\mathbf{D}_n$ admite una descomposición
 	\[
@@ -1052,16 +2155,16 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\end{equation}
 	Esto demuestra que la restricción del operador cumple $\|\mathcal{D}|_{V_0}\| \le R$.
 
-	Sea $\mathbf{D}_n$ la matriz de la compresión de $\mathcal{D}$ al subespacio $\mathbb{P}_{n-1}$. Definimos $V_{0,n} = V_0 \cap \mathbb{P}_{n-1}$. Por la fórmula de Grassmann, $\dim(V_{0,n}) \ge n - N$. Identificando ahora cada polinomio $p \in \mathbb{P}_{n-1}$ con su vector de coordenadas $x \in \mathbb{C}^n$ en la base ortonormal, el subespacio $V_{0,n}$ induce un subespacio vectorial $\mathcal{V}_{0,n} \subset \mathbb{C}^n$ de dimensión al menos $n-N$.
+	Sea $\mathbf{D}_n$ la matriz de la compresión de $\mathcal{D}$ al subespacio $\mathbb{P}_{n}$. Definimos $V_{0,n} = V_0 \cap \mathbb{P}_{n}$. Por la fórmula de Grassmann, $\dim(V_{0,n}) \ge n+1 - N$. Identificando ahora cada polinomio $p \in \mathbb{P}_{n}$ con su vector de coordenadas $x \in \mathbb{C}^{n+1}$ en la base ortonormal, el subespacio $V_{0,n}$ induce un subespacio vectorial $\mathcal{V}_{0,n} \subset \mathbb{C}^{n+1}$ de dimensión al menos $n+1-N$.
 
-	El $(N+1)$-ésimo valor singular de $\mathbf{D}_n$, denotado como $\sigma_{N+1,n}$, se caracteriza mediante el teorema minimax de Courant-Fischer:
+	El valor singular de índice $N$ de $\mathbf{D}_n$, denotado como $\sigma_{N,n}$, se caracteriza mediante el teorema minimax de Courant-Fischer:
 	\begin{equation}
-		\sigma_{N+1,n} = \min_{\dim(S) = n-N} \max_{\substack{x \in S \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le \max_{\substack{x \in \mathcal{V}_{0,n} \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le R
+		\sigma_{N,n} = \min_{\dim(S) = n+1-N} \max_{\substack{x \in S \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le \max_{\substack{x \in \mathcal{V}_{0,n} \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le R
 	\end{equation}
-	Dado que $\sigma_{N+1,n} \le R$ para todo $n > N$, podemos utilizar la descomposición en valores singulares. La matriz truncada se escribe como $\mathbf{D}_n = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^*$, donde $\mathbf{\Sigma}$ es diagonal y contiene los valores singulares en orden decreciente.
+	Dado que $\sigma_{N,n} \le R$ para todo $n \ge N$, podemos utilizar la descomposición en valores singulares. La matriz truncada se escribe como $\mathbf{D}_n = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^*$, donde $\mathbf{\Sigma}$ es diagonal y contiene los valores singulares en orden decreciente.
 	Separando los primeros $N$ valores singulares (que pueden ser mayores que $R$) del resto, la matriz se descompone de forma exacta como una suma:
 	$$ \mathbf{D}_n = \mathbf{M}_n + \mathbf{E}_n $$
-	donde $\mathbf{E}_n$ contiene únicamente la contribución de los $N$ primeros valores singulares (por lo que $\operatorname{rango}(\mathbf{E}_n) \le N$) y $\mathbf{M}_n$ contiene el resto de los valores singulares acotados por $\sigma_{N+1,n} \le R$. Por definición, esto garantiza que la norma espectral de esta última cumple $\|\mathbf{M}_n\|_2 \le R$.
+	donde $\mathbf{E}_n$ contiene únicamente la contribución de los $N$ primeros valores singulares (por lo que $\operatorname{rango}(\mathbf{E}_n) \le N$) y $\mathbf{M}_n$ contiene el resto de los valores singulares acotados por $\sigma_{N,n} \le R$. Por definición, esto garantiza que la norma espectral de esta última cumple $\|\mathbf{M}_n\|_2 \le R$.
 \end{proof}
 
 \begin{remark}[Límite del argumento matricial]
@@ -1076,18 +2179,28 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	pero este subespacio depende de $\lambda$. Por ello, no es válido concluir que todos los autovectores correspondientes a autovalores exteriores queden contenidos en un único subespacio de dimensión $N$. Esta es precisamente la obstrucción que aparece en matrices no normales, como las truncaciones de Hessenberg consideradas aquí.
 \end{remark}
 
+\begin{theorem}[Criterio algebraico para acotación de ceros (objetivo)]\label{thm:criterio_singular_ceros_objetivo}
+	Bajo las hipótesis del Capítulo~\ref{sec:ceros_acotacion}, sea $m=|I_{out}|$. Si
+	\[
+		Q_m(\mathcal D)<\infty,
+	\]
+	entonces la familia de ceros de los polinomios ortogonales de Sobolev es uniformemente acotada en $\mathbb C$.
+\end{theorem}
+
 \subsection{Relación entre los Valores Singulares y el Índice $Q_k$}
 
 En esta subsección comparamos los valores singulares de las secciones truncadas $\mathbf{D}_n$ con el índice algebraico $Q_k(\mathcal{D})$ introducido en la Sección~\ref{sec:espectral}. Como el espíritu del trabajo incluye operadores no acotados, admitiremos de manera explícita valores en la recta real extendida $[0,+\infty]$: cada $\sigma_{k,n}$ es finito para $n$ fijo, pero sus límites pueden divergir, del mismo modo que $Q_k(\mathcal{D})$ puede ser infinito.
 
-Sea $\mathbf{D}_n$ la matriz de la compresión de $\mathcal{D}$ al subespacio $\mathbb{P}_{n-1}$, y denotemos por
+Usaremos la convención global de este trabajo: $Q_k$ está indexado desde $0$, con $Q_0$ como norma global y, en general, $Q_k$ asociado a codimensión algebraica $<k+1$.
+
+Sea $\mathbf{D}_n$ la matriz de la compresión de $\mathcal{D}$ al subespacio $\mathbb{P}_{n}$, y denotemos por
 \[
-	\sigma_{1,n} \ge \sigma_{2,n} \ge \dots \ge \sigma_{n,n} \ge 0
+	\sigma_{0,n} \ge \sigma_{1,n} \ge \dots \ge \sigma_{n,n} \ge 0
 \]
 sus valores singulares.
 
 \begin{proposition}[Cota de $\sigma_{k,n}$ en términos de $Q_k$]\label{prop:sigma_qk}
-	Para cualesquiera enteros $n \ge 1$ y $1 \le k \le n$, se tiene
+	Para cualesquiera enteros $n \ge 1$ y $0 \le k \le n$, se tiene
 	\[
 		\sigma_{k,n} \le Q_k(\mathcal{D}).
 	\]
@@ -1098,70 +2211,70 @@ sus valores singulares.
 \end{proposition}
 
 \begin{proof}
-	Por el principio minimax de Courant-Fischer aplicado a la matriz $\mathbf{D}_n$, el $k$-ésimo valor singular satisface
+	Por el principio minimax de Courant-Fischer aplicado a la matriz $\mathbf{D}_n$, el valor singular de índice $k$ satisface
 	\[
-		\sigma_{k,n} = \inf_{\substack{W \subset \mathbb{C}^n \\ \operatorname{codim}(W) < k}} \|\mathbf{D}_n|_W\|_2.
+		\sigma_{k,n} = \inf_{\substack{W \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(W) < k+1}} \|\mathbf{D}_n|_W\|_2.
 	\]
-	Sea ahora $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k$, y definamos
+	Sea ahora $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k+1$, y definamos
 	\[
-		V_n = V \cap \mathbb{P}_{n-1}.
+		V_n = V \cap \mathbb{P}_{n}.
 	\]
-	Entonces $V_n$ induce, en coordenadas respecto de la base ortonormal $\{\phi_0,\dots,\phi_{n-1}\}$, un subespacio $W_n \subset \mathbb{C}^n$ de codimensión algebraica menor que $k$. Por la caracterización minimax anterior,
+	Entonces $V_n$ induce, en coordenadas respecto de la base ortonormal $\{\phi_0,\dots,\phi_{n}\}$, un subespacio $W_n \subset \mathbb{C}^{n+1}$ de codimensión algebraica menor que $k+1$. Por la caracterización minimax anterior,
 	\[
 		\sigma_{k,n} \le \|\mathbf{D}_n|_{W_n}\|_2.
 	\]
-	Bajo la identificación entre polinomios y vectores de coordenadas, esta norma coincide con la norma de la compresión de $\mathcal{D}$ a $V_n$; como la proyección ortogonal sobre $\mathbb{P}_{n-1}$ es contractiva, se obtiene
+	Bajo la identificación entre polinomios y vectores de coordenadas, esta norma coincide con la norma de la compresión de $\mathcal{D}$ a $V_n$; como la proyección ortogonal sobre $\mathbb{P}_{n}$ es contractiva, se obtiene
 	\[
 		\|\mathbf{D}_n|_{W_n}\|_2 \le \|\mathcal{D}|_{V_n}\|_S \le \|\mathcal{D}|_V\|_S.
 	\]
-	Por tanto, $\sigma_{k,n} \le \|\mathcal{D}|_V\|_S$ para todo subespacio admisible $V$ con codimensión algebraica menor que $k$. Tomando ínfimo sobre todos esos subespacios, concluimos que
+	Por tanto, $\sigma_{k,n} \le \|\mathcal{D}|_V\|_S$ para todo subespacio admisible $V$ con codimensión algebraica menor que $k+1$. Tomando ínfimo sobre todos esos subespacios, concluimos que
 	\[
 		\sigma_{k,n} \le Q_k(\mathcal{D}).
 	\]
 	La cota sobre el $\limsup$ es inmediata.
 \end{proof}
 
-\begin{theorem}[Coincidencia exacta en el primer índice]\label{thm:sigma1_q1_extendido}
+\begin{theorem}[Coincidencia exacta en el índice $0$]\label{thm:sigma1_q1_extendido}
 	Se tiene
 	\[
-		\lim_{n \to \infty} \sigma_{1,n} = Q_1(\mathcal{D}),
+		\lim_{n \to \infty} \sigma_{0,n} = Q_0(\mathcal{D}),
 	\]
 	entendiendo la igualdad en la recta real extendida $[0,+\infty]$. En particular:
 	\begin{enumerate}
 		\item si $\mathcal{D}$ es acotado en $\mathcal{H}$, entonces
 		      \[
-			      \lim_{n \to \infty} \sigma_{1,n} = \|\mathcal{D}\| = c_1(\mathcal{D}) = Q_1(\mathcal{D});
+			      \lim_{n \to \infty} \sigma_{0,n} = \|\mathcal{D}\| = c_0(\mathcal{D}) = Q_0(\mathcal{D});
 		      \]
 		\item si $\mathcal{D}$ no es acotado, entonces
 		      \[
-			      \lim_{n \to \infty} \sigma_{1,n} = Q_1(\mathcal{D}) = +\infty.
+			      \lim_{n \to \infty} \sigma_{0,n} = Q_0(\mathcal{D}) = +\infty.
 		      \]
 	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	Por la Proposición~\ref{prop:propiedades_Qk}, se tiene $Q_1(\mathcal{D}) = \|\mathcal{D}\|_S$, con valores en $[0,+\infty]$. Si $\mathcal{D}$ es acotado, la Proposición~\ref{prop:convergencia_sigma} da
+	Por la convención reindexada de esta subsección, $Q_0(\mathcal{D})$ coincide con la norma global $\|\mathcal{D}\|_S$, con valores en $[0,+\infty]$. Si $\mathcal{D}$ es acotado, la Proposición~\ref{prop:convergencia_sigma} da
 	\[
-		\lim_{n \to \infty} \sigma_{1,n} = \|\mathcal{D}\| = Q_1(\mathcal{D}),
+		\lim_{n \to \infty} \sigma_{0,n} = \|\mathcal{D}\| = Q_0(\mathcal{D}),
 	\]
-	y además $c_1(\mathcal{D}) = \|\mathcal{D}\|$. Si $\mathcal{D}$ no es acotado, entonces nuevamente por la Proposición~\ref{prop:convergencia_sigma} se tiene $\sigma_{1,n} \to +\infty$, mientras que la identidad $Q_1(\mathcal{D}) = \|\mathcal{D}\|_S$ implica $Q_1(\mathcal{D}) = +\infty$. Esto prueba la coincidencia en ambos regímenes.
+	y además $c_0(\mathcal{D}) = \|\mathcal{D}\|$. Si $\mathcal{D}$ no es acotado, entonces nuevamente por la Proposición~\ref{prop:convergencia_sigma} se tiene $\sigma_{0,n} \to +\infty$, mientras que la identidad $Q_0(\mathcal{D}) = \|\mathcal{D}\|_S$ implica $Q_0(\mathcal{D}) = +\infty$. Esto prueba la coincidencia en ambos regímenes.
 \end{proof}
 
 Para índices superiores, los resultados obtenidos en este trabajo proporcionan de manera natural una cota asintótica superior. En el caso acotado, esta cota puede expresarse directamente en términos de los números de Gelfand del operador global.
 
 \begin{corollary}[Cota asintótica superior en el caso acotado]\label{cor:convergencia_qk_condicional}
-	Supongamos que el operador multiplicación $\mathcal{D}$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todos los átomos de derivada son puntos BPE). Entonces, para todo $k \ge 1$,
+	Supongamos que el operador multiplicación $\mathcal{D}$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todos los átomos de derivada son puntos BPE). Entonces, para todo $k \ge 0$,
 	\[
 		\limsup_{n \to \infty} \sigma_{k,n} \le c_k(\mathcal{D}).
 	\]
 \end{corollary}
 
 \begin{proof}
-	Por la Proposición~\ref{prop:sigma_qk}, para todo $k \ge 1$ se tiene
+	Por la Proposición~\ref{prop:sigma_qk}, para todo $k \ge 0$ se tiene
 	\[
 		\limsup_{n \to \infty} \sigma_{k,n} \le Q_k(\mathcal{D}).
 	\]
-	Como $\mathcal{D}$ es acotado en $\mathcal{H}$, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} implica que
+	Como $\mathcal{D}$ es acotado en $\mathcal{H}$, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} junto con esta reindexación implica que
 	\[
 		Q_k(\mathcal{D}) = c_k(\mathcal{D}).
 	\]
@@ -1172,15 +2285,15 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 \end{proof}
 
 \begin{proposition}[Coincidencia de índices en el caso no acotado (pendiente)]\label{prop:coincidencia_no_acotado_pendiente}
-	Supongamos que $\mathcal{D}\notin\mathcal{L}(\mathcal{H})$, que para cada $k\ge1$ existe el límite
+	Supongamos que $\mathcal{D}\notin\mathcal{L}(\mathcal{H})$, que para cada $k\ge0$ existe el límite
 	\[
 		\sigma_k=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
 	\]
-	y que $S_k(\mathcal{D})$ está bien definido según la Definición~\ref{def:indice_Sk}. Entonces, para todo $k\ge1$,
+	y que $S_k(\mathcal{D})$ está bien definido según la Definición~\ref{def:indice_Sk}. Entonces, para todo $k\ge0$,
 	\[
-		\sigma_k=Q_k(\mathcal{D})=S_k(\mathcal{D}).
+		\sigma_{k}=Q_k(\mathcal{D})=S_k(\mathcal{D}).
 	\]
-	En particular, $\sigma_1=Q_1(\mathcal{D})=S_1(\mathcal{D})=+\infty$. En este régimen, los números de Gelfand clásicos $c_k(\mathcal{D})$ no se consideran, al no pertenecer $\mathcal{D}$ a $\mathcal{L}(\mathcal{H})$.
+	En particular, $\sigma_0=Q_0(\mathcal{D})=S_0(\mathcal{D})=+\infty$. En este régimen, los números de Gelfand clásicos $c_k(\mathcal{D})$ no se consideran, al no pertenecer $\mathcal{D}$ a $\mathcal{L}(\mathcal{H})$.
 \end{proposition}
 
 \subsection{Matrices de Momentos de Sobolev y de Dirac}
@@ -1249,9 +2362,9 @@ La combinación de la caracterización de los ceros como autovalores de seccione
 % -------------------------------------------------------------
 
 \begin{proposition}[Ceros como autovalores de la sección truncada]\label{prop:autovalores_ceros}
-	Para cada $n \ge 1$, los ceros del polinomio ortonormal $\phi_n(z)$ coinciden exactamente con los autovalores de la sección transpuesta $\mathbf{D}_n^t$:
+	Para cada $n \ge 0$, los ceros del polinomio ortonormal $\phi_{n+1}(z)$ coinciden exactamente con los autovalores de la sección transpuesta $\mathbf{D}_n^t$:
 	\[
-		\sigma(\mathbf{D}_n^t) = \{z \in \mathbb{C} : \phi_n(z) = 0\}.
+		\sigma(\mathbf{D}_n^t) = \{z \in \mathbb{C} : \phi_{n+1}(z) = 0\}.
 	\]
 \end{proposition}
 
@@ -1262,7 +2375,7 @@ La combinación de la caracterización de los ceros como autovalores de seccione
 	\]
 \end{definition}
 
-La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral, dada por $\rho(\mathbf{D}_n^t) \le \sigma_{1,n}$, sigue siendo útil para controlar el tamaño de las truncaciones. Sin embargo, para obtener una acotación uniforme de todos los ceros resulta más eficaz explotar que la ortogonalidad de Sobolev induce, tras anular los términos discretos, una condición de cuasi-ortogonalidad de orden fijo respecto a una medida compleja de soporte compacto \cite{lopez1999zero,marcellan2015sobolev}.
+La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral, dada por $\rho(\mathbf{D}_n^t) \le \sigma_{0,n}$, sigue siendo útil para controlar el tamaño de las truncaciones. Sin embargo, para obtener una acotación uniforme de todos los ceros resulta más eficaz explotar que la ortogonalidad de Sobolev induce, tras anular los términos discretos, una condición de cuasi-ortogonalidad de orden fijo respecto a una medida compleja de soporte compacto \cite{lopez1999zero,marcellan2015sobolev}.
 
 % -------------------------------------------------------------
 \subsection{Control Exterior de los Ceros de Sobolev}
