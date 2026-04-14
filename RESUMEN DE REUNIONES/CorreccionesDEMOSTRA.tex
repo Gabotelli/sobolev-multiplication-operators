@@ -342,29 +342,7 @@ El siguiente resultado establece que la imposición de restricciones lineales co
 
     Esto implica que existe al menos un punto inestable $c^* \in I_{out}$ tal que el funcional de evaluación $\delta_{c^*}$ no se anula idénticamente sobre $V$. En consecuencia, el operador actúa sobre $V$ de forma no acotada, ya que el módulo del punto $c^*$ es estrictamente mayor que $R$.
 
-    Para formalizar la divergencia, construimos la sucesión de polinomios prueba $\{Q_n\}_{n \geq 1}$ definida por:
-    $$ Q_n(z) = (n+1)c^* z^n - n z^{n+1}. $$
-    Esta sucesión está diseñada para anular la derivada en el punto crítico, $Q_n'(c^*) = 0$, minimizando la norma de entrada, mientras maximiza el valor de la función $Q_n(c^*) = (c^*)^{n+1}$.
-
-    Analizamos el cociente de Rayleigh asintótico $\frac{\norm{DQ_n}}{\norm{Q_n}}$:
-
-    \textbf{1. Norma de entrada ($\norm{Q_n}$):}
-    Dado que $Q_n'(c^*) = 0$, la parte discreta en $c^*$ se anula. La norma está dominada por la parte integral ($L^2$):
-    $$ \norm{Q_n}^2 \approx \textcolor{red}{=}\int_{S_1} \abs{(n+1)c^* z^n - n z^{n+1}}^2 d{\bf m
-    }  \textcolor{red}{+ \vert Q'_n(c)\vert^2}=
-    \int \vert (n+1)c-nz\vert^2d{\bf m
-    } \geq n^2(\vert c \vert -1)^2  $$
-    \textbf{2. Norma de salida ($\norm{DQ_n}$):}
-    La derivada de la imagen es $(zQ_n)'(c^*) = Q_n(c^*) + c^* Q_n'(c^*) = (c^*)^{n+1}$.
-    La contribución de este término atómico a la norma es:
-    $$ \abs{(zQ_n)'(c^*)}^2 = \abs{c^*}^{2n+2}. $$
-
-    \textbf{3. Divergencia del cociente:}
-    Comparando los órdenes de magnitud cuando $n \to \infty$:
-    $$ \frac{\norm{DQ_n}^2}{\norm{Q_n}^2} \approx \frac{\abs{c^*}^{2n+2}}{n^2 R^{2n}} = \frac{\abs{c^*}^2}{n^2} \left( \frac{\abs{c^*}}{R} \right)^{2n}. $$
-    Puesto que $c^* \in I_{out}$, tenemos $\abs{c^*} > R$. El término exponencial $(\abs{c^*}/R)^{2n}$ domina sobre el factor polinomial $n^{-2}$, haciendo que el cociente tienda a infinito.
-
-    Dado que la restricción $\delta_{c^*}|_V$ es no trivial, existen elementos en $V$ cuyo comportamiento bajo $D$ reproduce la singularidad en $c^*$. En particular, los polinomios $\{Q_n\}$ pueden aproximarse mediante elementos de $V$, de donde se concluye que $\sup_{p \in V} \frac{\norm{Dp}}{\norm{p}} = \infty$. Por tanto, $\sigma_m = \infty$.
+    
 \end{proof}
 
 \begin{proposicion}[Dominancia del Soporte]
