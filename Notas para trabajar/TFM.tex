@@ -259,7 +259,7 @@ Esta distinción entre $I_{in}$ y $I_{out}$ constituye la base del análisis esp
 	Equivalentemente, por el Teorema de Representación de Riesz, esto corresponde a la existencia de un núcleo reproductor $K_a \in \overline{\mathbb{P}[z]}^{L^2(\mu)}$ tal que $p(a) = \langle p, K_a \rangle_{L^2(\mu)}$ para todo $p \in \mathbb{P}[z]$.
 \end{definition}
 
-En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{out}$ (Definición \ref{def:class_points}) se traduce en términos de BPEs para las derivadas. Si $c_k \in I_{out}$, el funcional $p \mapsto p'(c_k)$ no es acotado en la norma estándar $L^2(\mu)$.
+En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{out}$ se interpreta como una dicotomía de continuidad de evaluaciones. Para $k\in I_{in}$, la evaluación puntual y la evaluación de la derivada son continuas (véanse la Proposición siguiente y el Lema~\ref{lema:ABPE_derivada}). En cambio, en el régimen exterior no-BPE la evaluación puntual deja de ser continua respecto a la norma $L^2(\mu)$ de la componente continua. Esta pérdida de continuidad es precisamente la que obliga, más adelante, a reemplazar el enfoque topológico por uno algebraico en el estudio de $\mathcal D$.
 
 \begin{proposition}[Acotación y Extensión Continua en el Interior]
 	Para los puntos interiores ($k \in I_{in}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
@@ -296,6 +296,47 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{in}$ y $I_{o
 		|p'(c)| \le \frac{M}{r} \|p\|_{L^2(\mu)} \le \frac{M}{r} \|p\|_S
 	\]
 	Lo que demuestra que existe una constante $C = M/r < \infty$ tal que $|\delta'_c(p)| \le C \|p\|_S$, probando así que la evaluación de la derivada es un funcional lineal continuo.
+\end{proof}
+
+\begin{lemma}[No acotación de la evaluación de derivada en frontera y exterior]
+	\label{lem:no_acotacion_derivada_exterior_lebesgue}
+	Sea $\mu=\mathbf m_{0;R}$ la medida de Lebesgue normalizada en la circunferencia
+	$S_R=\{z\in\C:\,|z|=R\}$. Si $c\in\C$ satisface $|c|\ge R$, entonces el funcional
+	\[
+		\delta'_c:\mathbb P[z]\to\C,
+		\qquad
+		\delta'_c(p)=p'(c),
+	\]
+	no es acotado respecto de la norma $L^2(\mu)$.
+\end{lemma}
+
+\begin{proof}
+	Para $n\ge 1$, consideremos
+	\[
+		p_n(z):=\left(\frac{z}{R}\right)^n.
+	\]
+	Entonces $\|p_n\|_{L^2(\mu)}=1$, pues $|z|=R$ sobre $S_R$. Además,
+	\[
+		p_n'(z)=\frac{n}{R}\left(\frac{z}{R}\right)^{n-1},
+		\qquad
+		|p_n'(c)|=\frac{n}{R}\left(\frac{|c|}{R}\right)^{n-1}.
+	\]
+	Si $|c|>R$, se tiene $|p_n'(c)|\to\infty$ exponencialmente. Si $|c|=R$,
+	entonces $|p_n'(c)|=n/R\to\infty$. En ambos casos,
+	\[
+		\sup_{\|p\|_{L^2(\mu)}=1}|p'(c)|=\infty,
+	\]
+	luego $\delta'_c$ no es acotado.
+\end{proof}
+
+\begin{corollary}[Implicación en el caso no-BPE de Lebesgue]
+	En el marco del Lema~\ref{lem:no_acotacion_derivada_exterior_lebesgue}, si
+	la evaluación puntual $\delta_c$ no es acotada en $L^2(\mu)$ (equivalentemente,
+	$|c|\ge R$), entonces la evaluación de derivada $\delta'_c$ tampoco es acotada.
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia inmediata del Lema~\ref{lem:no_acotacion_derivada_exterior_lebesgue}.
 \end{proof}
 
 \begin{lemma}[Normalización de un funcional no acotado]\label{lem:normalizacion_funcional_no_acotado}
@@ -622,7 +663,7 @@ El siguiente resultado muestra que, aun cuando $c_0(\mathcal{D})$ refleje la per
 	\begin{equation}
 		\langle p, q \rangle_S = \int_{S_1} p(z)\overline{q(z)} \, d\mathbf{m}(z) + p'(c_1)\overline{q'(c_1)}, \qquad p,q \in \Poly,
 	\end{equation}
-	y supongamos que $c_1$ es un punto BPE. Entonces $c_1(\mathcal{D}) = 1$.
+	y supongamos que $c_1$ es un punto BPE para la medida continua $\mathbf m$ (equivalentemente, $\abs{c_1}<1$; véase \cite{duren1970theory}). Entonces $c_1(\mathcal{D}) = 1$.
 \end{theorem}
 
 \begin{proof}
@@ -647,11 +688,139 @@ El siguiente resultado muestra que, aun cuando $c_0(\mathcal{D})$ refleje la per
 	Esto es imposible, ya que ambos términos del lado izquierdo son no negativos y, además, $\|q\|_{L^2} \neq 0$ porque de otro modo se tendría $\|q\|_S^2 = \|q\|_{L^2}^2 + \abs{q'(c_1)}^2 = 0$, contradiciendo que $q \neq 0$. Por tanto $c_1(\mathcal{D}) \ge 1$.
 \end{proof}
 
-Cuando el punto de derivada se sitúa en la región exterior ($c \in I_{out}$), la dificultad ya no es simplemente cuantitativa sino estructural. En efecto, el funcional algebraico
+Cuando el punto de derivada se sitúa en la región exterior ($c \in I_{out}$), la dificultad ya no es simplemente cuantitativa sino estructural. En efecto, aparece el funcional lineal
 \[
-	p \longmapsto p(c) + c p'(c)
+	\Psi_c:\Poly\to\C,
+	\qquad
+	\Psi_c(p)=p(c)+c p'(c)=(\mathcal D p)'(c).
 \]
-no es continuo respecto a la norma de Sobolev sobre el subespacio denso de polinomios. Por ello, no puede extenderse de manera continua a toda la completación $\mathcal{H}$. Dicho de otro modo, en el régimen no-BPE el problema deja de encajar de forma natural en la teoría de operadores acotados sobre $\mathcal{H}$.
+En el caso modelo de Lebesgue en circunferencia y átomo no-BPE ($\abs{c}\ge R$), la Proposición~\ref{prop:no_acotacion_modelo_exterior} demuestra que $\Psi_c$ es no acotado respecto a la norma de Sobolev; por tanto, $\mathcal D$ no es acotado. Dicho de otro modo, en el régimen no-BPE el problema deja de encajar de forma natural en la teoría de operadores acotados sobre $\mathcal{H}$.
+
+\begin{proposition}[No acotación en el caso modelo no-BPE]
+	\label{prop:no_acotacion_modelo_exterior}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{S_R} p(z)\overline{q(z)}\, d\mathbf m_{0;R}(z)
+		+
+		p'(c)\overline{q'(c)},
+		\qquad p,q\in\mathbb P[z],
+	\]
+	con $\abs{c}\ge R$, y sea $\mathcal Dp(z)=zp(z)$. Entonces el funcional
+	\[
+		\Psi_c(p):=(\mathcal Dp)'(c)=p(c)+cp'(c)
+	\]
+	es no acotado respecto de $\|\cdot\|_S$. En particular, $\mathcal D$ no es acotado y
+	\[
+		Q_0(\mathcal D)=\|\mathcal D\|_S=\infty.
+	\]
+\end{proposition}
+
+\begin{proof}
+	\textbf{Caso 1: $|c|>R$.}
+	Definimos, para $n\ge 1$,
+	\[
+		Q_n(z):=(n+1)c\,z^n-nz^{n+1}.
+	\]
+	Un cálculo directo da
+	\[
+		Q_n'(z)=n(n+1)c\,z^{n-1}-n(n+1)z^n,
+	\]
+	y por tanto
+	\[
+		Q_n'(c)=0,
+		\qquad
+		Q_n(c)=c^{n+1}.
+	\]
+	Luego
+	\[
+		\|Q_n\|_S^2
+		=
+		\int_{S_R}|Q_n(z)|^2\,d\mathbf m_{0;R}(z)
+		+
+		|Q_n'(c)|^2
+		=
+		\int_{S_R}|Q_n(z)|^2\,d\mathbf m_{0;R}(z).
+	\]
+	Como los monomios $z^n$ y $z^{n+1}$ son ortogonales respecto a $\mathbf m_{0;R}$,
+	\[
+		\|Q_n\|_S^2
+		=
+		(n+1)^2|c|^2R^{2n}+n^2R^{2n+2}.
+	\]
+	Además,
+	\[
+		|\Psi_c(Q_n)|^2
+		=
+		|Q_n(c)+cQ_n'(c)|^2
+		=
+		|c|^{2n+2}.
+	\]
+	Por tanto,
+	\[
+		\frac{|\Psi_c(Q_n)|^2}{\|Q_n\|_S^2}
+		=
+		\frac{|c|^{2n+2}}{(n+1)^2|c|^2R^{2n}+n^2R^{2n+2}}
+		\sim
+		\frac{1}{n^2}\left(\frac{|c|}{R}\right)^{2n}
+		\xrightarrow[n\to\infty]{}\infty,
+	\]
+	porque $|c|>R$. En consecuencia, $\Psi_c$ no es acotado.
+
+	\textbf{Caso 2: $|c|=R$.}
+	Para $n\ge1$ definimos
+	\[
+		\alpha_n:=\frac{\sum_{k=1}^{n}k}{\sum_{k=1}^{n}k^2}=\frac{3}{2n+1},
+		\qquad
+		P_n(z):=\sum_{k=0}^{n}(1-\alpha_n k)\left(\frac{z}{c}\right)^k.
+	\]
+	Como
+	\[
+		cP_n'(c)=\sum_{k=1}^{n}k(1-\alpha_n k)=0,
+	\]
+	se tiene $P_n'(c)=0$ y, en consecuencia,
+	\[
+		\|P_n\|_S^2=\|P_n\|_{\mu}^2=
+		\sum_{k=0}^{n}|1-\alpha_n k|^2.
+	\]
+	Desarrollando la suma,
+	\[
+		\|P_n\|_S^2
+		=(n+1)-2\alpha_n\sum_{k=1}^{n}k+\alpha_n^2\sum_{k=1}^{n}k^2
+		=\frac{(n+1)(n+2)}{2(2n+1)}.
+	\]
+	Además,
+	\[
+		\Psi_c(P_n)=P_n(c)+cP_n'(c)=\sum_{k=0}^{n}(1-\alpha_n k)
+		=\frac{(n+1)(n+2)}{2(2n+1)}.
+	\]
+	Por tanto,
+	\[
+		\frac{|\Psi_c(P_n)|^2}{\|P_n\|_S^2}
+		=
+		\frac{(n+1)(n+2)}{2(2n+1)}
+		\xrightarrow[n\to\infty]{}\infty.
+	\]
+	Luego $\Psi_c$ también es no acotado cuando $|c|=R$.
+
+	Si $\mathcal D$ fuera acotado, existiría $M>0$ tal que
+	\[
+		\|\mathcal Dp\|_S\le M\|p\|_S
+		\qquad (p\in\mathbb P[z]).
+	\]
+	Pero
+	\[
+		|\Psi_c(p)|
+		=
+		|(\mathcal Dp)'(c)|
+		\le
+		\|\mathcal Dp\|_S
+		\le
+		M\|p\|_S,
+	\]
+	lo que haría a $\Psi_c$ acotado, contradicción. Luego $\mathcal D$ no es acotado y, por definición, $Q_0(\mathcal D)=\|\mathcal D\|_S=\infty$.
+\end{proof}
 
 Esta observación explica por qué el enfoque puramente topológico pierde eficacia en el caso exterior: la información relevante no está en la clausura de subespacios de $\mathcal{H}$, sino en la estructura algebraica de aquellos subespacios de polinomios donde la parte discreta del operador sí puede neutralizarse. Como las matrices truncadas de Hessenberg actúan precisamente sobre espacios finito-dimensionales de polinomios, resulta más natural introducir un índice de acotación definido directamente en $\mathbb{P}[z]$.
 
@@ -740,8 +909,75 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 
 La ventaja principal de este nuevo índice es que permite aislar las singularidades generadas por los átomos exteriores, revelando que la inestabilidad, aunque topológicamente densa, es algebraicamente de rango finito.
 
+\begin{proposition}[Caso de Lebesgue previo al umbral $Q_k$]
+	\label{prop:lebesgue_pre_umbral_Qk}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{S_R} p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		p'(c)\overline{q'(c)},
+		\qquad p,q\in\mathbb P[z],
+	\]
+	con $|c|\ge R$, y sea $\mathcal Dp(z)=zp(z)$. Entonces
+	\[
+		Q_0(\mathcal D)=\infty,
+		\qquad
+		Q_1(\mathcal D)\le R.
+	\]
+	En particular, en la circunferencia unidad ($R=1$) y para $|c|\ge1$, se tiene
+	$Q_0(\mathcal D)=\infty$ y $Q_1(\mathcal D)\le1$.
+\end{proposition}
+
+\begin{proof}
+	Por la Proposición~\ref{prop:no_acotacion_modelo_exterior}, el funcional
+	\(
+	\Psi_c(p)=(\mathcal Dp)'(c)=p(c)+cp'(c)
+	\)
+	es no acotado, y por tanto $\mathcal D$ no es acotado. En consecuencia,
+	\(
+	Q_0(\mathcal D)=\|\mathcal D\|_S=\infty.
+	\)
+
+	Para $Q_1$, tomamos
+	\[
+		V_0:=\{p\in\mathbb P[z]:\Psi_c(p)=0\}.
+	\]
+	Este subespacio es admisible y satisface $\operatorname{codim}_{alg}(V_0)=1$.
+	Si $p\in V_0$, entonces
+	\[
+		\|\mathcal Dp\|_S^2
+		=
+		\int_{S_R}|zp(z)|^2\,d\mathbf m_{0;R}(z)
+		+
+		|\Psi_c(p)|^2
+		=
+		\int_{S_R}|zp(z)|^2\,d\mathbf m_{0;R}(z)
+		\le
+		R^2\int_{S_R}|p(z)|^2\,d\mathbf m_{0;R}(z)
+		\le
+		R^2\|p\|_S^2.
+	\]
+	Luego $\|\mathcal D|_{V_0}\|\le R$, y al tomar ínfimo sobre subespacios
+	admisibles con codimensión algebraica $<2$, se obtiene $Q_1(\mathcal D)\le R$.
+\end{proof}
+
 \begin{theorem}[Explosión y Estabilización del Índice $Q_k$]\label{thm:Qk_no_BPE}
-	Consideremos un producto de Sobolev cuya medida continua $\mu$ tiene un soporte compacto contenido en $\overline{\mathbb{D}_R(0)}$ y que posee un único átomo de derivada no acotada (no-BPE) en un punto exterior $c \in I_{out}$. Entonces:
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int p(z)\overline{q(z)}\,d\mu(z)
+		+
+		p'(c)\overline{q'(c)},
+		\qquad p,q\in\mathbb P[z],
+	\]
+	donde $\mu$ es una medida de Borel positiva con soporte compacto contenido en $\overline{\mathbb D_R(0)}$, y sea $\mathcal Dp(z)=zp(z)$. Supongamos que $|c|\ge R$ y que el funcional lineal
+	\[
+		\Psi_c(p):=(\mathcal Dp)'(c)=p(c)+cp'(c)
+	\]
+	es no acotado respecto de $\|\cdot\|_S$ (como ocurre en el caso modelo de la Proposición~\ref{prop:no_acotacion_modelo_exterior}). Entonces:
 	\begin{enumerate}
 		\item $Q_0(\mathcal{D}) = \infty$ (El operador global no está acotado).
 		\item $Q_1(\mathcal{D}) \le R$ (El operador se estabiliza al restringir una única dimensión).
@@ -758,7 +994,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	Este subespacio está definido por una única restricción lineal, luego su codimensión algebraica es 1.
 
 	Al evaluar la norma del operador para cualquier polinomio $p \in V_0$, la parte discreta se anula por definición:
-	$$ \|\mathcal{D}p\|_S^2 = \int |zp(z)|^2 d\mu(z) + |\phi(p)|^2 = \int |zp(z)|^2 d\mu(z) + 0 $$
+	$$ \|\mathcal{D}p\|_S^2 = \int |zp(z)|^2 d\mu(z) + |\Psi_c(p)|^2 = \int |zp(z)|^2 d\mu(z) + 0 $$
 	Acotando la integral por el radio máximo del soporte continuo, obtenemos:
 	$$ \|\mathcal{D}p\|_S^2 \le R^2 \int |p(z)|^2 d\mu(z) \le R^2 \|p\|_S^2 $$
 	En consecuencia, $\|\mathcal{D}|_{V_0}\| \le R$. Al tomar el ínfimo sobre todos los subespacios admisibles con codimensión algebraica menor que 2, se concluye que $Q_1(\mathcal{D}) \le R$.
@@ -861,6 +1097,10 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	En particular, $m$ es el umbral algebraico exacto de estabilización del operador
 	de multiplicación.
 \end{theorem}
+
+\begin{remark}[Sobre la hipótesis de no acotación de $\psi_k$]
+	En el caso modelo de Lebesgue normalizada en circunferencia y puntos no-BPE ($|c_k|\ge R$), esta hipótesis se verifica mediante la Proposición~\ref{prop:no_acotacion_modelo_exterior} aplicada punto a punto. En la formulación general del teorema, se mantiene como hipótesis operativa para cubrir también configuraciones mixtas o medidas continuas distintas del caso modelo.
+\end{remark}
 
 \begin{proof}
 	Dividimos la demostración en dos partes.

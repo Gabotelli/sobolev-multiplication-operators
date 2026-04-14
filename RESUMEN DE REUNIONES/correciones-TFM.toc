@@ -1,0 +1,24 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción y Preliminares}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexto y Motivación}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Medidas de Borel, Regularidad y Medida de Lebesgue}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Espacios de Polinomios y Ortogonalidad}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Espacios de Sobolev y Productos Discretos}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Evaluaciones Puntuales Acotadas (BPE)}{7}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Organización del Artículo}{9}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Análisis Espectral y Topología en Espacios de Sobolev}{9}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Codimensión y Subespacios en el Espacio de Hilbert}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}La Dicotomía Topológica}{11}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}El Operador de Multiplicación y los Números de Gelfand}{14}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}El Primer Número de Gelfand: La Norma Global}{15}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.4}Un Nuevo Índice de Acotación Algebraica: El Índice $Q_k$}{17}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Consistencia con los Números de Gelfand Topológicos}{33}{subsubsection.2.4.1}%
+\contentsline {section}{\numberline {3}Análisis Matricial y Comportamiento Asintótico}{36}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Representación Matricial y Secciones Truncadas}{36}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Valores Singulares y Operadores Truncados}{37}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Estabilización Algebraica de los Valores Singulares}{39}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Relación entre los Valores Singulares y el Índice $Q_k$}{41}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Matrices de Momentos de Sobolev y de Dirac}{43}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Localización y Acotación Asintótica de los Ceros}{44}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Los Ceros como Autovalores}{44}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Control Exterior de los Ceros de Sobolev}{44}{subsection.4.2}%
