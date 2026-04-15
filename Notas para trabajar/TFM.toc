@@ -16,9 +16,9 @@
 \contentsline {section}{\numberline {3}Análisis Matricial y Comportamiento Asintótico}{38}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Representación Matricial y Secciones Truncadas}{38}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Valores Singulares y Operadores Truncados}{39}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Estabilización Algebraica de los Valores Singulares}{40}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Relación entre los Valores Singulares y el Índice $Q_k$}{42}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Matrices de Momentos de Sobolev y de Dirac}{44}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Localización y Acotación Asintótica de los Ceros}{45}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Los Ceros como Autovalores}{46}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Control Exterior de los Ceros de Sobolev}{46}{subsection.4.2}%
+\contentsline {subsection}{\numberline {3.3}Estabilización Algebraica de los Valores Singulares}{41}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Relación entre los Valores Singulares y el Índice $Q_k$}{46}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Matrices de Momentos de Sobolev y de Dirac}{49}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Localización y Acotación Asintótica de los Ceros}{50}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Los Ceros como Autovalores}{50}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Control Exterior de los Ceros de Sobolev}{50}{subsection.4.2}%
