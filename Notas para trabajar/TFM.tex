@@ -963,43 +963,6 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	admisibles con codimensión algebraica $<2$, se obtiene $Q_1(\mathcal D)\le R$.
 \end{proof}
 
-\begin{theorem}[Explosión y Estabilización del Índice $Q_k$]\label{thm:Qk_no_BPE}
-	Sea
-	\[
-		\langle p,q\rangle_S
-		=
-		\int_{S_R} p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
-		+
-		p'(c)\overline{q'(c)},
-		\qquad p,q\in\mathbb P[z],
-	\]
-	y sea $\mathcal Dp(z)=zp(z)$. Supongamos que $|c|\ge R$ (equivalentemente, $c$ es no-BPE en el caso modelo). Definimos
-	\[
-		\Psi_c(p):=(\mathcal Dp)'(c)=p(c)+cp'(c)
-	\]
-	y entonces:
-	\begin{enumerate}
-		\item $Q_0(\mathcal{D}) = \infty$ (El operador global no está acotado).
-		\item $Q_1(\mathcal{D}) \le R$ (El operador se estabiliza al restringir una única dimensión).
-	\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-	Para $k=0$, la condición $\operatorname{codim}_{alg}(V)<1$ fuerza $V=\mathbb{P}[z]$. Como $|c|\ge R$, la Proposición~\ref{prop:no_acotacion_modelo_exterior} implica que el funcional $p \mapsto p(c)+cp'(c)$ es no acotado en $\mathbb{P}[z]$ respecto a la norma de Sobolev. Por tanto $\|\mathcal{D}\|_S=\infty$, y se obtiene $Q_0(\mathcal{D})=\infty$.
-
-	Para $k=1$, basta exhibir un subespacio admisible de codimensión algebraica 1 sobre el que la restricción sea acotada. Tomamos
-	\[
-		V_0:=\{p\in\mathbb{P}[z]:p(c)+cp'(c)=0\}.
-	\]
-	Este subespacio está definido por una única restricción lineal, luego su codimensión algebraica es 1.
-
-	Al evaluar la norma del operador para cualquier polinomio $p \in V_0$, la parte discreta se anula por definición:
-	$$ \|\mathcal{D}p\|_S^2 = \int_{S_R} |zp(z)|^2 d\mathbf m_{0;R}(z) + |\Psi_c(p)|^2 = \int_{S_R} |zp(z)|^2 d\mathbf m_{0;R}(z) + 0 $$
-	Acotando la integral por el radio máximo del soporte continuo, obtenemos:
-	$$ \|\mathcal{D}p\|_S^2 \le R^2 \int_{S_R} |p(z)|^2 d\mathbf m_{0;R}(z) \le R^2 \|p\|_S^2 $$
-	En consecuencia, $\|\mathcal{D}|_{V_0}\| \le R$. Al tomar el ínfimo sobre todos los subespacios admisibles con codimensión algebraica menor que 2, se concluye que $Q_1(\mathcal{D}) \le R$.
-\end{proof}
-
 \begin{proposition}[Propiedades Básicas del Índice $Q_k$]\label{prop:propiedades_Qk}
 	Para el operador multiplicación $\mathcal{D}$ definido sobre el espacio pre-Hilbertiano $\mathbb{P}[z]$, el índice algebraico $Q_k(\mathcal{D})$ forma una sucesión monótona no creciente cuyo primer término coincide exactamente con la norma global del operador. Es decir:
 	$$ \|\mathcal{D}\|_S = Q_0(\mathcal{D}) \ge Q_1(\mathcal{D}) \ge \dots \ge Q_k(\mathcal{D}) \ge Q_{k+1}(\mathcal{D}) \ge \dots \ge 0 $$
@@ -1176,17 +1139,22 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 
 	\medskip
 	\noindent
-	\textbf{Paso 2: explosión estricta por debajo del umbral.}
+	\textbf{Paso 2: prueba de $Q_{m-1}(\mathcal D)=\infty$ y uso de monotonía.}
+
+	Por definición,
+	\[
+		Q_{m-1}(\mathcal D)
+		=
+		\inf\{\|\mathcal D|_V\|_S:\ V\subset\mathbb P[z]\ \text{admisible y}\ \operatorname{codim}_{alg}(V)<m\}.
+	\]
+	Basta, por tanto, demostrar que toda restricción admisible con
+	$\operatorname{codim}_{alg}(V)<m$ es no acotada.
 
 	Fijemos un subespacio admisible $V\subset \mathbb P[z]$ tal que
 	\[
 		\operatorname{codim}_{alg}(V)=r<m.
 	\]
-	Demostraremos que $\mathcal D|_V$ es no acotado. Como esto vale para todo tal $V$,
-	se seguirá que
-	\[
-		Q_j(\mathcal D)=\infty,\qquad j=0,1,\dots,m-1.
-	\]
+	Demostraremos que $\mathcal D|_V$ es no acotado.
 
 	\smallskip
 	\noindent
@@ -1427,12 +1395,24 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\]
 	Esto prueba que $\mathcal D|_V$ es no acotado.
 
-	Como $V$ era arbitrario entre los subespacios admisibles de codimensión algebraica
-	$r<m$, concluimos que
+	Como $V$ era arbitrario entre los subespacios admisibles con codimensión algebraica
+	$<m$, toda restricción que interviene en la definición de $Q_{m-1}(\mathcal D)$ es no
+	acotada. En consecuencia,
 	\[
-		Q_j(\mathcal D)=\infty,\qquad j=0,1,\dots,m-1.
+		Q_{m-1}(\mathcal D)=\infty.
 	\]
-	Junto con el Paso 1, queda demostrado.
+
+	Finalmente, por la Proposición~\ref{prop:propiedades_Qk}, la sucesión
+	$\{Q_k(\mathcal D)\}_{k\ge0}$ es monótona no creciente:
+	\[
+		Q_0(\mathcal D)\ge Q_1(\mathcal D)\ge\cdots\ge Q_{m-1}(\mathcal D).
+	\]
+	Como $Q_{m-1}(\mathcal D)=\infty$, se obtiene para todo $0\le j\le m-1$ que
+	\[
+		Q_j(\mathcal D)\ge Q_{m-1}(\mathcal D)=\infty,
+	\]
+	y por tanto $Q_j(\mathcal D)=\infty$ para $j=0,1,\dots,m-1$. Junto con el Paso 1,
+	queda demostrado.
 \end{proof}
 
 
