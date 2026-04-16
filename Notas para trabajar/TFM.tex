@@ -422,7 +422,7 @@ Para el estudio del operador de multiplicación, es fundamental distinguir el co
 	A lo largo del trabajo distinguiremos dos nociones:
 	\begin{itemize}
 		\item $\operatorname{codim}_{\mathcal{H}}(M)$ para subespacios cerrados $M$ de un espacio de Hilbert (noción topológica).
-		\item $\operatorname{codim}_{alg}(V)$ para subespacios vectoriales $V\subset \mathbb{P}[z]$ (noción puramente algebraica; véase la Definición~\ref{def:codim_alg}).
+		\item $\operatorname{codim}_{\Poly}(V)$ para subespacios vectoriales $V\subset \mathbb{P}[z]$ (noción puramente algebraica; véase la Definición~\ref{def:codim_alg}).
 	\end{itemize}
 	En el primer caso, la dimensión se entiende en sentido hilbertiano (cardinal de una base ortonormal); en el segundo, en sentido algebraico (cardinal de una base de Hamel).
 	Cuando el espacio ambiente sea finito-dimensional (por ejemplo, $\mathbb{C}^n$), usaremos $\operatorname{codim}(\cdot)$ sin subíndice.
@@ -833,19 +833,19 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 \begin{definition}[Codimensión algebraica finita]\label{def:codim_alg}
 	Para un subespacio vectorial $V\subset \mathbb P[z]$, definimos
 	\[
-		\operatorname{codim}_{alg}(V):=\dim(\mathbb P[z]/V)\in \mathbb N\cup\{\infty\}.
+		\operatorname{codim}_{\Poly}(V):=\dim(\mathbb P[z]/V)\in \mathbb N\cup\{\infty\}.
 	\]
 	Aquí $\dim(\cdot)$ denota dimensión algebraica (cardinal de una base de Hamel) \cite{hormander1989linearfunctionalanalysis,Aizpuru2009Apuntes}.
 	Diremos que $V$ es de codimensión algebraica finita si
 	\[
-		\operatorname{codim}_{alg}(V)<\infty.
+		\operatorname{codim}_{\Poly}(V)<\infty.
 	\]
 \end{definition}
 
 \begin{proposition}[Caracterización por funcionales]\label{prop:finite-codim-kernels}
 	Para un subespacio vectorial $V\subset \mathbb P[z]$, son equivalentes:
 	\begin{enumerate}
-		\item $\operatorname{codim}_{alg}(V)<\infty$;
+		\item $\operatorname{codim}_{\Poly}(V)<\infty$;
 		\item existe un sistema finito de funcionales lineales $\Phi=(\phi_1,\dots,\phi_m)$
 		      tal que
 		      \[
@@ -854,14 +854,14 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 	\end{enumerate}
 	Además, en tal caso,
 	\[
-		\operatorname{codim}_{alg}(V)
+		\operatorname{codim}_{\Poly}(V)
 		=
 		\min\Bigl\{m:\exists\,\Phi=(\phi_1,\dots,\phi_m),\
 		V=\bigcap_{j=1}^m\ker\phi_j\Bigr\}.
 	\]
 	Más precisamente, si $V=\bigcap_{j=1}^m\ker\phi_j$, entonces
 	\[
-		\operatorname{codim}_{alg}(V)=\dim\operatorname{span}\{\phi_1,\dots,\phi_m\}.
+		\operatorname{codim}_{\Poly}(V)=\dim\operatorname{span}\{\phi_1,\dots,\phi_m\}.
 	\]
 \end{proposition}
 
@@ -869,7 +869,7 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 	Sea $\mathcal{D}:\mathbb{P}[z]\to\mathbb{P}[z]$ el operador multiplicación en el espacio pre-Hilbertiano de Sobolev. Para cada $k\ge0$, definimos
 	\[
 		Q_k(\mathcal{D})
-		:=\inf\{\|\mathcal{D}|_V\|_S:V\subset\mathbb{P}[z]\ \text{admisible y}\ \operatorname{codim}_{alg}(V)<k+1\},
+		:=\inf\{\|\mathcal{D}|_V\|_S:V\subset\mathbb{P}[z]\ \text{admisible y}\ \operatorname{codim}_{\Poly}(V)<k+1\},
 	\]
 	donde
 	\[
@@ -897,13 +897,13 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 	\]
 	y
 	\[
-		\operatorname{codim}_{alg}(V_\perp(F))
+		\operatorname{codim}_{\Poly}(V_\perp(F))
 		=
 		\dim\operatorname{span}\{f_1,\dots,f_m\}.
 	\]
 	En particular, si $f_1,\dots,f_m$ son linealmente independientes, entonces
 	\[
-		\operatorname{codim}_{alg}(V_\perp(F))=m.
+		\operatorname{codim}_{\Poly}(V_\perp(F))=m.
 	\]
 \end{proposition}
 
@@ -944,7 +944,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\[
 		V_0:=\{p\in\mathbb P[z]:\Psi_c(p)=0\}.
 	\]
-	Este subespacio es admisible y satisface $\operatorname{codim}_{alg}(V_0)=1$.
+	Este subespacio es admisible y satisface $\operatorname{codim}_{\Poly}(V_0)=1$.
 	Si $p\in V_0$, entonces
 	\[
 		\|\mathcal Dp\|_S^2
@@ -1008,11 +1008,11 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 \end{proposition}
 
 \begin{proof}
-	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k+1$. Por la desigualdad triangular de la norma de operadores, la restricción de la suma satisface:
+	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{\Poly}(V) < k+1$. Por la desigualdad triangular de la norma de operadores, la restricción de la suma satisface:
 	$$ \|(\mathcal{D} + \mathcal{E})|_V\|_S \le \|\mathcal{D}|_V\|_S + \|\mathcal{E}|_V\|_S $$
 	Dado que la norma de una restricción nunca puede superar la norma global del operador, sabemos que $\|\mathcal{E}|_V\|_S \le \|\mathcal{E}\|_S$. Sustituyendo:
 	$$ \|(\mathcal{D} + \mathcal{E})|_V\|_S \le \|\mathcal{D}|_V\|_S + \|\mathcal{E}\|_S $$
-	Tomando el ínfimo sobre todos los subespacios admisibles con $\operatorname{codim}_{alg}(V)<k+1$ a ambos lados de la desigualdad, obtenemos directamente:
+	Tomando el ínfimo sobre todos los subespacios admisibles con $\operatorname{codim}_{\Poly}(V)<k+1$ a ambos lados de la desigualdad, obtenemos directamente:
 	$$ Q_k(\mathcal{D} + \mathcal{E}) \le Q_k(\mathcal{D}) + \|\mathcal{E}\|_S $$
 \end{proof}
 
@@ -1086,7 +1086,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	Como $V_*$ es intersección finita de núcleos de funcionales lineales, es admisible.
 	Además,
 	\[
-		\operatorname{codim}_{alg}(V_*)\le m.
+		\operatorname{codim}_{\Poly}(V_*)\le m.
 	\]
 
 	Sea ahora $p\in V_*$. Entonces, para todo $k\in I_{\mathrm{out}}$,
@@ -1132,7 +1132,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 		\right)\|p\|_S^2.
 	\]
 	Esto prueba que $\mathcal D|_{V_*}$ es acotado. Como
-	$\operatorname{codim}_{alg}(V_*)\le m$, por definición de $Q_m$ se obtiene
+	$\operatorname{codim}_{\Poly}(V_*)\le m$, por definición de $Q_m$ se obtiene
 	\[
 		Q_m(\mathcal D)<\infty.
 	\]
@@ -1145,14 +1145,14 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\[
 		Q_{m-1}(\mathcal D)
 		=
-		\inf\{\|\mathcal D|_V\|_S:\ V\subset\mathbb P[z]\ \text{admisible y}\ \operatorname{codim}_{alg}(V)<m\}.
+		\inf\{\|\mathcal D|_V\|_S:\ V\subset\mathbb P[z]\ \text{admisible y}\ \operatorname{codim}_{\Poly}(V)<m\}.
 	\]
 	Basta, por tanto, demostrar que toda restricción admisible con
-	$\operatorname{codim}_{alg}(V)<m$ es no acotada.
+	$\operatorname{codim}_{\Poly}(V)<m$ es no acotada.
 
 	Fijemos un subespacio admisible $V\subset \mathbb P[z]$ tal que
 	\[
-		\operatorname{codim}_{alg}(V)=r<m.
+		\operatorname{codim}_{\Poly}(V)=r<m.
 	\]
 	Demostraremos que $\mathcal D|_V$ es no acotado.
 
@@ -1443,7 +1443,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\]
 	Por construcción,
 	\[
-		\operatorname{codim}_{alg}(V_*)\le N=m.
+		\operatorname{codim}_{\Poly}(V_*)\le N=m.
 	\]
 
 	Sea ahora $p\in V_*$. Entonces, para todo $k=1,\dots,N$,
@@ -1468,7 +1468,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\[
 		\|\mathcal D|_{V_*}\|_S\le R.
 	\]
-	Finalmente, como $V_*$ es admisible y $\operatorname{codim}_{alg}(V_*)\le m$, por definición de $Q_m(\mathcal D)$,
+	Finalmente, como $V_*$ es admisible y $\operatorname{codim}_{\Poly}(V_*)\le m$, por definición de $Q_m(\mathcal D)$,
 	\[
 		Q_m(\mathcal D)\le \|\mathcal D|_{V_*}\|_S\le R.
 	\]
@@ -1517,7 +1517,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\begin{enumerate}
 		\item $V_{\mathrm{out}}$ es admisible y
 		      \[
-			      \operatorname{codim}_{alg}(V_{\mathrm{out}})=m.
+			      \operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m.
 		      \]
 
 		\item La restricción $\mathcal D|_{V_{\mathrm{out}}}$ es acotada respecto de la norma
@@ -1578,7 +1578,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\]
 	Aplicando la caracterización de la codimensión algebraica por funcionales, obtenemos
 	\[
-		\operatorname{codim}_{alg}(V_{\mathrm{out}})
+		\operatorname{codim}_{\Poly}(V_{\mathrm{out}})
 		=
 		\dim\operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}
 		=
@@ -1747,7 +1747,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	Bajo las hipótesis del Teorema~\ref{thm:Vout_anulador}, existe un subespacio admisible
 	$V\subset \mathbb P[z]$ tal que
 	\[
-		\operatorname{codim}_{alg}(V)\le m,
+		\operatorname{codim}_{\Poly}(V)\le m,
 		\qquad
 		\|\mathcal D|_V\|_S<\infty,
 		\qquad
@@ -1772,13 +1772,13 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\]
 	Por el Teorema~\ref{thm:Vout_anulador},
 	\[
-		\operatorname{codim}_{alg}(V_{\mathrm{out}})=m,
+		\operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m,
 		\qquad
 		\|\mathcal D|_{V_{\mathrm{out}}}\|_S<\infty,
 		\qquad
 		I(V_{\mathrm{out}})=(A_{\mathrm{out}})\neq\{0\}.
 	\]
-	Finalmente, como $V_{\mathrm{out}}$ es admisible y $\operatorname{codim}_{alg}(V_{\mathrm{out}})=m< m+1$,
+	Finalmente, como $V_{\mathrm{out}}$ es admisible y $\operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m< m+1$,
 	la definición de $Q_m(\mathcal D)$ da
 	\[
 		Q_m(\mathcal D)\le \|\mathcal D|_{V_{\mathrm{out}}}\|_S<\infty.
@@ -1842,7 +1842,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\begin{enumerate}
 		\item $V_{\mathrm{out}}$ es admisible y
 		      \[
-			      \operatorname{codim}_{alg}(V_{\mathrm{out}})=m.
+			      \operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m.
 		      \]
 
 		\item La restricción $\mathcal D|_{V_{\mathrm{out}}}$ es acotada, es decir, existe
@@ -1895,7 +1895,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\]
 	Por la caracterización de la codimensión algebraica mediante funcionales,
 	\[
-		\operatorname{codim}_{alg}(V_{\mathrm{out}})
+		\operatorname{codim}_{\Poly}(V_{\mathrm{out}})
 		=
 		\dim\operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}
 		=
@@ -2002,7 +2002,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	\]
 	entonces existe un subespacio admisible $V\subset\mathbb P[z]$ tal que
 	\[
-		\operatorname{codim}_{alg}(V)\le m,
+		\operatorname{codim}_{\Poly}(V)\le m,
 		\qquad
 		\|\mathcal D|_V\|_S<\infty,
 		\qquad
@@ -2022,7 +2022,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 	Por el Teorema~\ref{thm:subespacio_canonico_anulador}, el subespacio $V_{\mathrm{out}}$
 	es admisible, satisface
 	\[
-		\operatorname{codim}_{alg}(V_{\mathrm{out}})=m,
+		\operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m,
 		\qquad
 		\|\mathcal D|_{V_{\mathrm{out}}}\|_S<\infty,
 		\qquad
@@ -2073,7 +2073,7 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 	\]
 	entonces el funcional continuo $\Psi:=\sum_{j=1}^m \alpha_j\Phi_j\in\mathcal{H}^*$ se anula en $\mathbb{P}[z]$. Como $\mathbb{P}[z]$ es denso en $\mathcal{H}$ y $\Psi$ es continuo, se sigue que $\Psi\equiv 0$ en todo $\mathcal{H}$. Por independencia lineal de $\Phi_1,\dots,\Phi_m$, necesariamente $\alpha_1=\cdots=\alpha_m=0$.
 
-	Por la Proposición~\ref{prop:finite-codim-kernels}, se concluye que $\operatorname{codim}_{alg}(V)=m<k+1$.
+	Por la Proposición~\ref{prop:finite-codim-kernels}, se concluye que $\operatorname{codim}_{\Poly}(V)=m<k+1$.
 	Probemos ahora que $\overline V=M$. La inclusión $\overline V\subset M$ es inmediata, ya que $V\subset M$ y $M$ es cerrado. Para la inclusión recíproca, sea $x\in M$. Como $\mathbb P[z]$ es denso en $\mathcal H$, existe una sucesión $p_n\in \mathbb P[z]$ tal que $p_n\to x$ en $\mathcal H$. Definimos
 	\[
 		a_n:=\bigl(\Phi_1(p_n),\dots,\Phi_m(p_n)\bigr)\in\mathbb C^m.
@@ -2115,7 +2115,7 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 	\[
 		\|\mathcal D|_V\|=\|\mathcal D|_M\|.
 	\]
-	Al ser $V$ un subespacio admisible en la definición de $Q_k$ (pues $\operatorname{codim}_{alg}(V)=m<k+1$), resulta
+	Al ser $V$ un subespacio admisible en la definición de $Q_k$ (pues $\operatorname{codim}_{\Poly}(V)=m<k+1$), resulta
 	\[
 		Q_k(\mathcal D)\le \|\mathcal D|_V\|=\|\mathcal D|_M\|.
 	\]
@@ -2125,8 +2125,8 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 	\]
 
 	\textbf{Paso 2: $c_k(\mathcal{D}) \le Q_k(\mathcal{D})$.}
-	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) = m < k+1$. Consideremos su clausura topológica $M = \overline{V}$ en el espacio de Hilbert $\mathcal{H}$.
-	Como $\operatorname{codim}_{alg}(V)=m$, existe $F\subset\mathbb{P}[z]$ con $\dim(F)=m$ tal que
+	Sea $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{\Poly}(V) = m < k+1$. Consideremos su clausura topológica $M = \overline{V}$ en el espacio de Hilbert $\mathcal{H}$.
+	Como $\operatorname{codim}_{\Poly}(V)=m$, existe $F\subset\mathbb{P}[z]$ con $\dim(F)=m$ tal que
 	\[
 		\mathbb{P}[z]=V\oplus F.
 	\]
@@ -2189,9 +2189,9 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es imperati
 	\[
 		c_k(\mathcal{D})\le \|\mathcal{D}|_M\|=\|\mathcal{D}|_V\|.
 	\]
-	Tomando ínfimo sobre todos los $V\subset\mathbb{P}[z]$ con $\operatorname{codim}_{alg}(V)<k+1$:
+	Tomando ínfimo sobre todos los $V\subset\mathbb{P}[z]$ con $\operatorname{codim}_{\Poly}(V)<k+1$:
 	\[
-		c_k(\mathcal{D})\le \inf_{\operatorname{codim}_{alg}(V)<k+1}\|\mathcal{D}|_V\|=Q_k(\mathcal{D}).
+		c_k(\mathcal{D})\le \inf_{\operatorname{codim}_{\Poly}(V)<k+1}\|\mathcal{D}|_V\|=Q_k(\mathcal{D}).
 	\]
 
 	Al cumplirse ambas desigualdades, se concluye la identidad $Q_k(\mathcal{D}) = c_k(\mathcal{D})$.
@@ -2428,7 +2428,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\begin{equation}
 		V_0 = \bigcap_{k=1}^N \ker(\phi_k) = \left\{ p \in \mathbb{P}[z] : (zp)^{(j_k)}(c_k) = 0, \quad \forall k=1,\dots,N \right\}
 	\end{equation}
-	Al ser la intersección de $N$ hiperplanos, la codimensión algebraica de $V_0$ en $\mathbb{P}[z]$ cumple $\operatorname{codim}_{alg}(V_0) \le N$.
+	Al ser la intersección de $N$ hiperplanos, la codimensión algebraica de $V_0$ en $\mathbb{P}[z]$ cumple $\operatorname{codim}_{\Poly}(V_0) \le N$.
 
 	Para todo polinomio $p \in V_0$, el término discreto de $\|\mathcal{D}p\|_S^2$ se anula idénticamente por definición. Por tanto, acotando la integral sobre el soporte de $\mu$:
 	\begin{equation}
@@ -2605,7 +2605,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	Por independencia lineal de los funcionales $\{\psi_k\}_{k\in I_{\mathrm{out}}}$
 	(interpolación de Hermite),
 	\[
-		\operatorname{codim}_{alg}(V_{\mathrm{out}})=m.
+		\operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m.
 	\]
 	Si $p\in V_{\mathrm{out}}$, entonces $(\mathcal Dp)'(c_k)=0$ para todo átomo discreto
 	(activo) y, bajo la hipótesis puramente no-BPE, toda la parte discreta de
@@ -2754,7 +2754,7 @@ sus valores singulares.
 	\[
 		\sigma_{k,n} = \inf_{\substack{W \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(W) < k+1}} \|\mathbf{D}_n|_W\|_2.
 	\]
-	Sea ahora $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{alg}(V) < k+1$, y definamos
+	Sea ahora $V \subset \mathbb{P}[z]$ un subespacio admisible con $\operatorname{codim}_{\Poly}(V) < k+1$, y definamos
 	\[
 		V_n = V \cap \mathbb{P}_{n}.
 	\]
