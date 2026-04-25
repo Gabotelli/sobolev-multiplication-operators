@@ -51,6 +51,8 @@ if [ $? -ne 0 ]; then
     # Restaurar archivos .tex y .bib desde master si fueron eliminados
     git checkout master -- "Notas para trabajar"/*.tex "Notas para trabajar"/*.bib 2>/dev/null
     git checkout master -- "RESUMEN DE REUNIONES"/*.tex "RESUMEN DE REUNIONES"/*.bib 2>/dev/null
+    # Recuperar "Artículos Base" desde el servidor de Overleaf
+    git checkout overleaf/master -- "Artículos Base" 2>/dev/null
     git commit -m "Remove config files and non-tex files after merge" --no-verify 2>/dev/null
     git push overleaf overleaf-sync:master
 fi

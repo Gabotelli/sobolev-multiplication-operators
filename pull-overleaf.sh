@@ -16,6 +16,9 @@ git checkout HEAD -- PRUEBAS 2>/dev/null
 # Restaurar carpeta TFG_GABRIEL (no viene de Overleaf)
 git checkout HEAD -- TFG_GABRIEL 2>/dev/null
 
+# Eliminar carpeta que solo debe estar en Overleaf
+git rm -rf "Artículos Base" 2>/dev/null
+
 # Completar el merge
 if git diff --cached --quiet; then
     echo "No hay cambios nuevos desde Overleaf"

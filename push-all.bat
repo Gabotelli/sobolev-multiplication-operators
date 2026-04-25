@@ -50,6 +50,8 @@ if %errorlevel% neq 0 (
     REM Restaurar archivos .tex y .bib desde master si fueron eliminados
     git checkout master -- "Notas para trabajar/*.tex" "Notas para trabajar/*.bib" 2>nul
     git checkout master -- "RESUMEN DE REUNIONES/*.tex" "RESUMEN DE REUNIONES/*.bib" 2>nul
+    REM Recuperar "Artículos Base" desde el servidor de Overleaf para que no se borre
+    git checkout overleaf/master -- "Artículos Base" 2>nul
     git commit -m "Remove config files and non-tex files after merge" --no-verify 2>nul
     git push overleaf overleaf-sync:master
 )
