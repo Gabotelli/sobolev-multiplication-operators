@@ -17,6 +17,9 @@ git fetch overleaf
 git branch -D overleaf-sync 2>/dev/null
 git checkout -b overleaf-sync master
 
+# Recuperar "Artículos Base" desde Overleaf ANTES del commit para que no se borre allí
+git checkout overleaf/master -- "Artículos Base" 2>/dev/null
+
 # Eliminar archivos de configuración
 git rm -f README.md .gitignore push-all.bat push-all.sh pull-overleaf.bat pull-overleaf.sh 2>/dev/null
 

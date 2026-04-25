@@ -16,6 +16,9 @@ REM Crear branch temporal desde master
 git branch -D overleaf-sync 2>nul
 git checkout -b overleaf-sync master
 
+REM Traer la carpeta desde Overleaf para que no se borre en el push
+git checkout overleaf/master -- "Artículos Base" 2>nul
+
 REM Eliminar archivos de configuración
 git rm -f README.md .gitignore push-all.bat push-all.sh pull-overleaf.bat pull-overleaf.sh 2>nul
 
