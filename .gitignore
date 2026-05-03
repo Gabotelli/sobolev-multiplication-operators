@@ -2,9 +2,10 @@
 /*
 
 # Permitir las carpetas del proyecto
-!/Artículos Base/
+!/Plantilla TFM/
 !/Notas para trabajar/
 !/RESUMEN DE REUNIONES/
+!/Artículos Base/
 
 # Permitir archivos de configuración
 !.gitignore
@@ -15,3 +16,26 @@
 !pull-overleaf.sh
 !/PRUEBAS/
 !/TFG_GABRIEL/
+
+# IGNORAR archivos de compilación LaTeX en cualquier carpeta
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.idx
+*.ind
+*.ilg
+*.bak
+
+# IGNORAR PDFs generados en la raíz de las carpetas principales
+# (NO afecta a subcarpetas como figures/)
+/Plantilla\ TFM/*.pdf
+/Notas\ para\ trabajar/*.pdf
+/RESUMEN\ DE\ REUNIONES/*.pdf
