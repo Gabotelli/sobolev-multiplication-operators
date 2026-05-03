@@ -1,5 +1,4 @@
 % !TEX root = ../main.tex
-
 \chapter{Análisis Matricial y Comportamiento Asintótico}\label{sec:matricial}
 
 El estudio asintótico del operador multiplicación $\D$ se lleva a cabo a través de sus aproximaciones de rango finito, denominadas secciones principales. El paso del espacio de Hilbert abstracto al álgebra de polinomios finitos permite emplear herramientas de álgebra lineal numérica para analizar las matrices que gobiernan la disposición de los ceros.
@@ -102,7 +101,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\[
 		\sigma_k=\lim_{n\to\infty}\sigma_{k,n},
 	\]
-	y que, además, las truncaciones son estables en el sentido de que
+	 y que, además, las truncaciones son estables en el sentido de que
 	\[
 		Q_k(\D)\le \liminf_{n\to\infty}\sigma_{k,n},
 		\qquad k\ge0.
@@ -595,7 +594,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	vía Weyl--Horn. Estas dos vías son complementarias.
 \end{rmk}
 
-\section{Relación entre los Valores Singulares y el Índice $Q_k$}
+\section{Relación entre los Valores Singulares y el Índice \texorpdfstring{$Q_k$}{Q_k}}
 
 En esta subsección comparamos los valores singulares de las secciones truncadas $\mathbf{D}_n$ con el índice algebraico $Q_k(\D)$ introducido en la Sección~\ref{sec:espectral}. Como el espíritu del trabajo incluye operadores no acotados, admitiremos de manera explícita valores en la recta real extendida $[0,+\infty]$: cada $\sigma_{k,n}$ es finito para $n$ fijo, pero sus límites pueden divergir, del mismo modo que $Q_k(\D)$ puede ser infinito.
 
@@ -802,8 +801,3 @@ En esta subsección traducimos la estructura del producto de Sobolev a un lengua
 	Cuando $\mathbf{M}_j$ es la matriz de momentos de una medida $\mu_j$, esta definición recupera el producto de Sobolev integral de la Sección~\ref{sec:intro}. En particular, la positividad definida de $\mathbf{M}_1$ garantiza que la forma anterior sea un producto interno sobre $\Poly$.
 \end{defn}
 
-% =============================================================
-% CAPÍTULO 4: LOCALIZACIÓN Y ACOTACIÓN ASINTÓTICA DE LOS CEROS
-% 4.1 Los Ceros como Autovalores
-% 4.2 Control Exterior de los Ceros de Sobolev
-% =============================================================
