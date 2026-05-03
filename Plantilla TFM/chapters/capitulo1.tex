@@ -1,0 +1,469 @@
+% !TEX root = ../main.tex
+
+\chapter{Introducción y Preliminares}\label{sec:intro}
+
+\section{Contexto y Motivación}
+
+La teoría de Polinomios Ortogonales (PO) es una rama clásica del análisis matemático con profundas aplicaciones en teoría de la aproximación, física matemática y métodos numéricos. Clásicamente, la teoría estándar consolidada por autores como Szegő estudia medidas de ortogonalidad soportadas en la recta real o en la circunferencia unidad. En estos contextos, el operador de multiplicación por la variable independiente (o la matriz de Jacobi asociada) suele ser un operador acotado definidos sobre un espacio de Hilbert estándar $L^2(\mu)$.
+
+Sin embargo, en las últimas décadas ha surgido un gran interés en el estudio de los llamados \textbf{Polinomios Ortogonales de Sobolev}. A diferencia del caso estándar, estos polinomios son ortogonales respecto a un producto interno que involucra no solo evaluaciones de las funciones, sino también evaluaciones de sus derivadas. Formalmente, si $\mu$ es una medida positiva, el producto interno de Sobolev toma la forma general:
+\begin{equation}
+	\langle p, q \rangle_S = \langle p, q \rangle_{L^2(\mu)} + \sum_{k=1}^N \lambda_k p'(c_k) \overline{q'(c_k)},
+\end{equation}
+donde $\{c_k\}$ son puntos discretos en el plano complejo y $\lambda_k > 0$ son pesos.
+
+La introducción de derivadas en la métrica cambia radicalmente la geometría del espacio de Hilbert subyacente. Una de las consecuencias más notables, y que constituye el núcleo de este trabajo, es el comportamiento del \textbf{operador multiplicación}. Mientras que en la teoría clásica este operador es acotado y, según el contexto, autoadjunto o unitario, en los espacios de Sobolev discretos su comportamiento depende críticamente de la ubicación de los puntos $c_k$ respecto al soporte de la medida $\mu$.
+
+El objetivo principal es analizar la estructura espectral del operador multiplicación en el caso \textit{no acotado}. Específicamente, estudiamos la situación inestable donde los puntos $c_k$ se encuentran fuera del soporte esencial de la medida (el caso que denominaremos \textit{no-BPE} o de evaluaciones puntuales no acotadas). Para ello, se emplea la teoría de perturbaciones de rango finito y la teoría de los números-$s$ (valores singulares), con el fin de cuantificar la no-acotación del operador y su impacto en la asintótica de los ceros.
+
+Este enfoque no solo proporciona un marco riguroso para los fenómenos observados anteriormente, sino que conecta el problema de los polinomios ortogonales con problemas modernos de análisis espectral y teoría de la aproximación en espacios de codimensión topológica finita.
+
+\section{Medidas de Borel, Regularidad y Medida de Lebesgue}
+
+Antes de introducir la familia concreta de productos internos de Sobolev que estudiaremos, conviene fijar el marco general de medidas en el que estos aparecen de manera natural. En la formulación clásica, un producto interno de Sobolev se construye a partir de un vector finito de medidas de Borel positivas y finitas, que ponderan separadamente las distintas derivadas de los polinomios.
+
+\begin{defn}[Medida]
+	Sea $X$ un conjunto y sea $\mathcal{A}$ una $\sigma$-álgebra de subconjuntos de $X$. Una aplicación
+	\[
+		\mu : \mathcal{A} \to [0,+\infty]
+	\]
+	se llama \emph{medida} si satisface las siguientes propiedades \cite{folland1999real,rudin1987real}:
+	\begin{itemize}
+		\item $\mu(\varnothing)=0$.
+		\item Si $\{E_n\}_{n\geq 1} \subset \mathcal{A}$ es una familia numerable de conjuntos dos a dos disjuntos, entonces
+		      \[
+			      \mu\Bigl(\bigcup_{n=1}^{\infty} E_n\Bigr)=\sum_{n=1}^{\infty}\mu(E_n).
+		      \]
+	\end{itemize}
+	Diremos que $\mu$ es \emph{finita} si $\mu(X)<\infty$, y \emph{positiva} si toma únicamente valores no negativos, como ocurrirá en todo este trabajo.
+\end{defn}
+
+\begin{defn}[Medida de Borel]
+	Sea $X$ un espacio topológico. La $\sigma$-álgebra generada por los abiertos de $X$ se denomina $\sigma$-álgebra de Borel y se denota por $\mathcal{B}(X)$. Una \emph{medida de Borel} en $X$ es una medida definida sobre $\mathcal{B}(X)$ \cite{folland1999real,bogachev2007measure}. En particular, cuando $X=\mathbb{R}$ o $X=\mathbb{C}\cong\mathbb{R}^2$, las medidas de Borel permiten integrar funciones continuas, polinomios y sus derivadas sobre conjuntos geométricamente naturales como intervalos, discos o circunferencias.
+\end{defn}
+
+\begin{defn}[Soporte de una medida]
+	Sea $\mu$ una medida de Borel en un espacio topológico $X$. El \emph{soporte} de $\mu$, denotado por $\operatorname{supp}(\mu)$, es el menor cerrado $F \subset X$ tal que $\mu(X\setminus F)=0$. Equivalentemente, $\operatorname{supp}(\mu)$ es el conjunto de puntos $x \in X$ tales que toda vecindad abierta de $x$ tiene medida estrictamente positiva \cite{folland1999real,bogachev2007measure}.
+\end{defn}
+
+Las propiedades del soporte son esenciales en este trabajo por dos motivos. Por un lado, la parte continua del producto interno queda determinada por la geometría de $\operatorname{supp}(\mu)$; por otro, la localización de las masas discretas respecto a dicho soporte gobierna la aparición o no de evaluaciones puntuales acotadas.
+
+\begin{defn}[Medida de Lebesgue]
+	La \emph{medida de Lebesgue} en $\mathbb{R}$, y más generalmente en $\mathbb{R}^n$, es la medida de Borel que extiende la noción usual de longitud, área o volumen \cite{folland1999real,rudin1987real}. Mediante la identificación $\mathbb{C} \cong \mathbb{R}^2$, hablaremos también de medida de Lebesgue en el plano complejo. Esta medida es completa, invariante por traslaciones y regular; además, los conjuntos suaves de dimensión uno, como las circunferencias, inducen de manera natural medidas de longitud de arco que son absolutamente continuas respecto a la parametrización angular.
+\end{defn}
+
+En particular, cuando el soporte continuo del problema es una circunferencia, la medida de referencia adecuada no es el área bidimensional del plano, sino la medida de longitud de arco normalizada sobre dicha curva. Esta elección conserva la estructura analítica unidimensional compatible con la teoría de Hardy y con las fórmulas integrales de Cauchy \cite{duren1970theory,szego1975orthogonal}.
+
+\begin{rmk}[Propiedades relevantes para el producto de Sobolev]
+	Las medidas que intervienen en este trabajo serán siempre medidas de Borel positivas y finitas, con soporte compacto. Estas hipótesis garantizan que:
+	\begin{itemize}
+		\item todos los momentos de los polinomios que aparecen en el producto interno están bien definidos;
+		\item el producto $L^2(\mu)$ asociado a la componente continua tiene sentido y genera una estructura de pre-Hilbert natural sobre $\Poly$;
+		\item la posición relativa entre el soporte continuo y los puntos discretos $c_k$ puede analizarse mediante herramientas geométricas y de teoría del potencial \cite{stahl1992general,szego1975orthogonal}.
+	\end{itemize}
+\end{rmk}
+
+\begin{defn}[Medida de Lebesgue normalizada en $\mathbb{S}_r(a)$]
+	Denotamos por $\mathbf{m}_{a;r}$ la medida de Lebesgue normalizada en la circunferencia
+	$$\mathbb{S}_r(a) = \{z \in \C : \abs{z-a} = r\},$$
+	es decir,
+	\begin{equation}
+		d\mathbf{m}_{a;r}(z) = \frac{\abs{dz}}{2\pi r}.
+	\end{equation}
+	En el caso particular de la circunferencia unidad centrada en el origen escribiremos simplemente $\mathbf{m} = \mathbf{m}_{0;1}$.
+\end{defn}
+
+\begin{defn}[Descomposición de Lebesgue en la circunferencia]
+	Sea $\nu$ una medida de Borel finita sobre $\mathbb{S}_r(a)$. Entonces existe una descomposición única
+	\begin{equation}
+		d\nu = w\, d\mathbf{m}_{a;r} + d\nu_s,
+	\end{equation}
+	donde $w \in L^1(\mathbf{m}_{a;r})$ es la densidad de la parte absolutamente continua de $\nu$ respecto a la medida de Lebesgue normalizada, y $\nu_s$ es la parte singular. En particular, las masas discretas o átomos quedan contenidas en la componente singular.
+\end{defn}
+
+\begin{defn}[Condición de Szegő]
+	Sea $\nu$ una medida de Borel finita en la circunferencia unidad, con descomposición
+	\begin{equation}
+		d\nu(e^{i\theta}) = w(\theta)\, d\mathbf{m}(e^{i\theta}) + d\nu_s(e^{i\theta}).
+	\end{equation}
+	Diremos que $\nu$ satisface la condición de Szegő si
+	\begin{equation}
+		\int_0^{2\pi} \log w(\theta)\, d\theta > -\infty.
+	\end{equation}
+\end{defn}
+
+\begin{rmk}[El caso de la medida de Lebesgue]
+	Si $\nu = c\,\mathbf{m}$ con $c>0$, entonces $w(\theta)=c$ casi en todas partes y la condición de Szegő se satisface trivialmente, puesto que $\log(c)$ es integrable \cite{szego1975orthogonal}. Más aún, en este contexto la clausura de los polinomios analíticos en $L^2(\nu)$ se identifica con un espacio de Hardy ponderado, lo que proporciona el entorno funcional en el que aparecen de forma natural las evaluaciones puntuales acotadas en el interior del disco \cite{duren1970theory}. Esta observación explica por qué la medida de Lebesgue constituye la medida base idónea en nuestro problema.
+\end{rmk}
+
+\section{Espacios de Polinomios y Ortogonalidad}
+
+Esta sección recoge las nociones básicas de la teoría clásica de Polinomios Ortogonales que sirven de base para las generalizaciones de Sobolev desarrolladas en las secciones posteriores.
+
+Sea $\mu$ una medida de Borel positiva con soporte infinito en el plano complejo $\mathbb{C}$. Denotamos por $\mathbb{P}$ al espacio vectorial de los polinomios con coeficientes complejos.
+
+\begin{defn}[Producto Interno Estándar] \label{def:producto_estandar}
+	Definimos el producto interno estándar en el espacio de Hilbert $L^2(\mu)$ como:
+	\begin{equation}
+		\langle f, g \rangle_{L^2(\mu)} = \int_{\text{supp}(\mu)} f(z) \overline{g(z)} \, d\mu(z).
+	\end{equation}
+\end{defn}
+
+A partir de este producto interno, se construye la sucesión de Polinomios Ortogonales (PO) mediante el proceso de Gram-Schmidt aplicado a la base canónica $\{1, z, z^2, \dots\}$ \cite{szego1975orthogonal}.
+
+\begin{defn}[Polinomios Ortonormales] \label{def:polinomios_ortonormales}
+	Sea $\{\phi_n\}_{n \geq 0}$ la sucesión de polinomios ortonormales respecto a $\mu$, donde $\deg(\phi_n) = n$ y el coeficiente principal $\kappa_n > 0$. Estos satisfacen la condición de ortogonalidad:
+	\begin{equation}
+		\langle \phi_n, \phi_m \rangle_{L^2(\mu)} = \delta_{nm}, \quad \forall n,m \geq 0.
+	\end{equation}
+\end{defn}
+
+Una herramienta fundamental para el estudio algebraico de estos polinomios es la matriz que recoge los momentos de la medida.
+
+\begin{defn}[Matriz de Momentos] \label{def:matriz_momentos}
+	La matriz de momentos $\mathbf{M}$ asociada a la medida $\mu$ es la matriz de Gram de la base canónica, cuyos elementos están dados por:
+	\begin{equation}
+		(\mathbf{M})_{i,j} = \langle z^i, z^j \rangle_{L^2(\mu)} = \int z^i \overline{z^j} \, d\mu(z), \quad i,j \geq 0.
+	\end{equation}
+	La existencia y positividad de los menores principales de Gram de $\mathbf{M}$ es condición necesaria y suficiente para la existencia de la familia de polinomios ortogonales.
+\end{defn}
+
+Un concepto geométrico fundamental que conecta el soporte de la medida con los puntos de evaluación acotada es la envoltura convexa polinómica.
+
+\begin{defn}[Envoltura convexa polinómica]\label{def:envoltura_polinomica}
+	Para un compacto $K \subset \mathbb{C}$, la \emph{envoltura convexa polinómica} de $K$ se define como
+	\[
+		P_C(K) = \Bigl\{ z \in \mathbb{C} : |p(z)| \leq \max_{\xi \in K} |p(\xi)|\ \text{ para todo } p \in \Poly \Bigr\}.
+	\]
+\end{defn}
+
+Todo punto de evaluación acotada de una medida $\mu$ pertenece a $P_C(\operatorname{supp}(\mu))$. Para el caso en que $K = \mathbb{S}_r(a)$, se tiene $P_C(K) = \overline{\mathbb{D}_r(a)}$, lo que conecta la geometría del soporte con la región interior al disco.
+
+\section{Espacios de Sobolev y Productos Discretos}
+
+La generalización central de este trabajo consiste en perturbar el producto interno estándar $L^2(\mu)$ mediante la adición de términos que involucran derivadas en un conjunto finito de puntos discretos.
+
+Sea $C = \{c_1, \dots, c_N\} \subset \mathbb{C}$ un conjunto finito de puntos en el plano complejo.
+
+\begin{defn}[Producto Interno de Sobolev Discreto]
+	Definimos el producto interno de Sobolev $\langle \cdot, \cdot \rangle_S$ en el espacio de polinomios $\Poly$ como:
+	\begin{equation} \label{eq:sobolev_inner_prod}
+		\langle p, q \rangle_S = \langle p, q \rangle_{L^2(\mu)} + \sum_{k=1}^N p'(c_k) \overline{q'(c_k)}.
+	\end{equation}
+\end{defn}
+
+Un aspecto central que distingue este marco del caso clásico es la completitud del espacio. El espacio de Hilbert de Sobolev $\mathcal{H}$ se define como la clausura de los polinomios bajo la métrica inducida por $\langle \cdot, \cdot \rangle_S$.
+
+\begin{defn}[Espacio de Hilbert $\mathcal{H}$]
+	\begin{equation}
+		\mathcal{H} = \overline{\Poly}^{\|\cdot\|_S}
+	\end{equation}
+\end{defn}
+
+En el caso concreto estudiado en este trabajo, tomaremos como componente continua la medida de Lebesgue normalizada $\mathbf{m}_{a;r}$ introducida en la subsección anterior. Con esta notación, el producto interno de Sobolev objeto de estudio toma la forma
+\begin{equation} \label{eq:sobolev_concreto}
+	\langle p, q \rangle_S = \int_{\mathbb{S}_r(a)} p(z)\overline{q(z)} \, d\mathbf{m}_{a;r}(z) + \sum_{k=1}^N p'(c_k)\overline{q'(c_k)}, \qquad p, q \in \Poly.
+\end{equation}
+
+\section{Evaluaciones Puntuales Acotadas (BPE) y Puntos $\delta$-singulares}
+
+El comportamiento del espacio $\mathcal{H}$ y, en consecuencia, la estabilidad numérica de los ceros de los polinomios ortogonales, depende críticamente de la posición de los puntos $c_k$ respecto al soporte de la medida $\mu$.
+
+Denotamos por $R$ al radio del disco minimal que contiene al soporte de la medida $\mu$ (o el radio esencial en caso de medidas con soporte no compacto).
+
+\begin{defn}[Funcionales de Evaluación Algebraicos]
+	Para cualquier $\xi \in \C$, definimos el funcional de evaluación lineal sobre el espacio de polinomios $\delta_\xi : \Poly \to \C$ como $\delta_\xi(p) = p(\xi)$. Análogamente, definimos la evaluación de la derivada como $\delta'_\xi(p) = p'(\xi)$.
+\end{defn}
+
+\begin{defn}[Funcionales de evaluación restringidos]\label{def:funcionales_restringidos}
+	Sea $c\in\C$. Definimos los funcionales lineales
+	\[
+		\delta_c:\Poly\to\C,\qquad \delta_c(p)=p(c),
+	\]
+	\[
+		\delta'_c:\Poly\to\C,\qquad \delta'_c(p)=p'(c).
+	\]
+	Definimos el subespacio \emph{núcleo de la derivada en $c$} como
+	\[
+		N_c:=\ker(\delta'_c)=\{p\in\Poly:p'(c)=0\}.
+	\]
+	Notemos que $\operatorname{codim}_{\Poly}(N_c)=1$, ya que $\delta'_c$ no es el funcional nulo
+	(basta tomar $p(z)=z-c$, para el cual $p'(c)=1$).
+\end{defn}
+
+\begin{defn}[Punto $\delta$-singular respecto de $\|\cdot\|_S$]\label{def:delta_singular}
+	Sea $\langle\cdot,\cdot\rangle_S$ un producto interno de Sobolev sobre $\Poly$.
+	Diremos que un punto $c\in\C$ es \emph{$\delta$-singular} respecto a
+	$\|\cdot\|_S$ si la restricción del funcional de evaluación
+	$\delta_c$ al subespacio $N_c$ no es acotada respecto de la norma
+	$\|\cdot\|_S$, es decir, si
+	\[
+		\sup\Bigl\{\frac{|p(c)|}{\|p\|_S}:p\in N_c\setminus\{0\}\Bigr\}
+		=+\infty.
+	\]
+	Equivalentemente, existe una sucesión $(p_n)\subset N_c$ con
+	\[
+		\|p_n\|_S\to 0,\qquad |p_n(c)|=1\quad\text{para todo }n\ge1.
+	\]
+\end{defn}
+
+Basándonos en la geometría de los puntos respecto al soporte continuo, clasificamos el conjunto de índices $\mathcal{I} = \{1, \dots, N\}$ en dos categorías:
+
+% [REEMPLAZADO] Definición original de Puntos Interiores/Exteriores basada en |c_k|≥R — ahora generalizada mediante δ-singularidad
+\begin{defn}[Puntos BPE-derivada y puntos $\delta$-singulares]\label{def:class_points_new}
+	Para un producto de Sobolev discreto $\langle\cdot,\cdot\rangle_S$
+	fijado, dividimos el conjunto de masas discretas como
+	$C=I_{\mathrm{in}}\cup I_{\mathrm{out}}$, donde:
+	\begin{itemize}
+		\item $I_{\mathrm{in}}:=\{k:c_k\text{ no es }\delta\text{-singular}\}$
+		      (puntos donde $\delta_{c_k}$ y $\delta'_{c_k}$ son ambos acotados
+		      respecto a $\|\cdot\|_S$).
+		\item $I_{\mathrm{out}}:=\{k:c_k\text{ es }\delta\text{-singular}\}$.
+	\end{itemize}
+	Sea $m=|I_{\mathrm{out}}|$.
+\end{defn}
+
+\begin{rmk}[Compatibilidad con la versión anterior]\label{rem:compatibilidad_class_points}
+	En el caso modelo (Lebesgue normalizada en $\mathbb{S}_R$), por el
+	Teorema~\ref{thm:equivalencia_lebesgue},
+	\[
+		I_{\mathrm{in}}=\{k:|c_k|<R\},\qquad I_{\mathrm{out}}=\{k:|c_k|\ge R\}.
+	\]
+	Esto recupera exactamente la clasificación geométrica usada en el TFM
+	original. La nueva definición es estrictamente más general.
+\end{rmk}
+
+Esta distinción entre $I_{\mathrm{in}}$ y $I_{\mathrm{out}}$ constituye la base del análisis espectral y del estudio de la codimensión topológica del espacio desarrollado en la Sección~\ref{sec:espectral}. La noción de \textit{Bounded Point Evaluation} (BPE) formaliza esta separación.
+
+\begin{defn}[Punto de Evaluación Acotada (BPE)]
+	Decimos que $a \in \C$ es un punto de evaluación acotada (\textit{bounded point evaluation}, BPE) de una medida $\mu$ \cite{miller1999bounded,aleman2009nontangential} si existe una constante $C > 0$ tal que:
+	\begin{equation}
+		\abs{p(a)}^2 \leq C \int \abs{p(z)}^2 \, d\mu(z), \qquad p(z) \in \Poly.
+	\end{equation}
+	Equivalentemente, por el Teorema de Representación de Riesz, esto corresponde a la existencia de un núcleo reproductor $K_a \in \overline{\Poly}^{L^2(\mu)}$ tal que $p(a) = \langle p, K_a \rangle_{L^2(\mu)}$ para todo $p \in \Poly$.
+\end{defn}
+
+En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}$ y $I_{\mathrm{out}}$ se interpreta como una dicotomía de continuidad de evaluaciones. Para $k\in I_{\mathrm{in}}$, la evaluación puntual y la evaluación de la derivada son continuas (véanse la Proposición siguiente y el Lema~\ref{lema:ABPE_derivada}). En cambio, en el régimen exterior no-BPE la evaluación puntual deja de ser continua respecto a la norma $L^2(\mu)$ de la componente continua. Esta pérdida de continuidad es precisamente la que obliga, más adelante, a reemplazar el enfoque topológico por uno algebraico en el estudio de $\D$.
+
+\begin{prop}[Acotación y Extensión Continua en el Interior]
+	Para los puntos interiores ($k \in I_{\mathrm{in}}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\norm{\cdot}$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
+\end{prop}
+
+\begin{proof}
+	Para cualquier polinomio $p \in \Poly$ y un punto $c_k$ con $\abs{c_k} < R$, podemos aplicar la Fórmula Integral de Cauchy sobre la circunferencia $\mathbb{S}_R$:
+	$$ p(c_k) = \frac{1}{2\pi i} \int_{\mathbb{S}_R} \frac{p(z)}{z - c_k} dz. $$
+	Tomando valores absolutos y aplicando la desigualdad de Cauchy-Schwarz:
+	$$ \abs{p(c_k)}^2 \leq \left( \frac{1}{2\pi} \int_{\mathbb{S}_R} \frac{1}{\abs{z - c_k}^2} \abs{dz} \right) \left( \int_{\mathbb{S}_R} \abs{p(z)}^2 \abs{dz} \right). $$
+	Puesto que $\abs{c_k} < R$, la distancia al borde de la circunferencia está estrictamente acotada por abajo, luego la primera integral es una constante finita $M_{c_k} > 0$. Además, la segunda integral está dominada por la parte continua de la norma de Sobolev (salvo una constante de proporcionalidad dependiente de la medida de Lebesgue). Por tanto:
+	$$ \abs{p(c_k)}^2 \leq \tilde{M}_{c_k} \|p\|_{L^2(\mu)}^2 \leq \tilde{M}_{c_k} \norm{p}^2. $$
+	Esto demuestra que el funcional está acotado en $\Poly$. Por el Teorema de Extensión de Operadores Lineales Acotados en espacios densos \cite{kreyszig1989introductory}, el funcional se extiende de manera continua y única a todo $\mathcal{H}$. Al ser continuo, su núcleo es la preimagen de un conjunto cerrado (el $\{0\}$), por lo que es un subespacio cerrado.
+\end{proof}
+
+\begin{lem}[Continuidad del funcional derivada para puntos ABPE]
+	\label{lema:ABPE_derivada}
+	Sea $\mu$ la medida de Lebesgue (o, más generalmente, una medida que satisfaga la condición de Szegő) soportada en la circunferencia $\mathbb{T}_R = \{z \in \mathbb{C} : |z| = R\}$. Si $c \in \mathbb{C}$ es un punto de evaluación acotada (BPE) para la norma $L^2(\mu)$ y se encuentra en el interior de la curva ($|c| < R$), entonces $c$ es un punto de Evaluación Analítica Acotada (ABPE). En consecuencia, el funcional de evaluación de la derivada, $\delta'_c(p) = p'(c)$, es un funcional lineal continuo.
+\end{lem}
+
+\begin{proof}
+	Al ser $c$ un punto BPE situado en el interior de la región acotada por el soporte de la medida, la teoría clásica de espacios de Hardy y de los espacios $P^t(\mu)$ garantiza que $c$ es, de hecho, un punto ABPE \cite{miller1999bounded,aleman2009nontangential}. Esto implica que existe un entorno abierto $\mathcal{U}$ de $c$ contenido en el disco $|z| < R$ donde la evaluación puntual es uniformemente acotada.
+
+	Sea $r > 0$ suficientemente pequeño tal que la circunferencia cerrada $\gamma_r = \{z \in \mathbb{C} : |z-c| = r\}$ esté contenida en $\mathcal{U}$. Dado que los polinomios son funciones enteras, podemos aplicar la Fórmula Integral de Cauchy para la derivada:
+	\[
+		p'(c) = \frac{1}{2\pi i} \oint_{\gamma_r} \frac{p(z)}{(z-c)^2} dz
+	\]
+	Tomando valor absoluto y acotando la integral por el máximo de la función en la curva:
+	\[
+		|p'(c)| \le \frac{1}{2\pi} \left( 2\pi r \right) \frac{\max_{z \in \gamma_r} |p(z)|}{r^2} = \frac{1}{r} \max_{z \in \gamma_r} |p(z)|
+	\]
+	Como todos los puntos $z \in \gamma_r$ son BPEs, existe una constante $M > 0$ tal que $|p(z)| \le M \|p\|_{L^2(\mu)}$ para todo $z \in \gamma_r$. Sustituyendo esta cota obtenemos:
+	\[
+		|p'(c)| \le \frac{M}{r} \|p\|_{L^2(\mu)} \le \frac{M}{r} \|p\|_S
+	\]
+	Lo que demuestra que existe una constante $C = M/r < \infty$ tal que $|\delta'_c(p)| \le C \|p\|_S$, probando así que la evaluación de la derivada es un funcional lineal continuo.
+\end{proof}
+
+\begin{lem}[No acotación de la evaluación de derivada en frontera y exterior]
+	\label{lem:no_acotacion_derivada_exterior_lebesgue}
+	Sea $\mu=\mathbf m_{0;R}$ la medida de Lebesgue normalizada en la circunferencia
+	$\mathbb{S}_R=\{z\in\C:\,|z|=R\}$. Si $c\in\C$ satisface $|c|\ge R$, entonces el funcional
+	\[
+		\delta'_c:\Poly\to\C,
+		\qquad
+		\delta'_c(p)=p'(c),
+	\]
+	no es acotado respecto de la norma $L^2(\mu)$.
+\end{lem}
+
+\begin{proof}
+	Para $n\ge 1$, consideremos
+	\[
+		p_n(z):=\left(\frac{z}{R}\right)^n.
+	\]
+	Entonces $\|p_n\|_{L^2(\mu)}=1$, pues $|z|=R$ sobre $\mathbb{S}_R$. Además,
+	\[
+		p_n'(z)=\frac{n}{R}\left(\frac{z}{R}\right)^{n-1},
+		\qquad
+		|p_n'(c)|=\frac{n}{R}\left(\frac{|c|}{R}\right)^{n-1}.
+	\]
+	Si $|c|>R$, se tiene $|p_n'(c)|\to\infty$ exponencialmente. Si $|c|=R$,
+	entonces $|p_n'(c)|=n/R\to\infty$. En ambos casos,
+	\[
+		\sup_{\|p\|_{L^2(\mu)}=1}|p'(c)|=\infty,
+	\]
+	luego $\delta'_c$ no es acotado.
+\end{proof}
+
+% [REEMPLAZADO] Corolario original: Implicación en el caso no-BPE de Lebesgue — ahora subsumido por thm:equivalencia_lebesgue
+
+\begin{prop}[Caracterización equivalente vía $\psi_c$]\label{prop:caracterizacion_psi_c}
+	Sea $c\in\C$ y consideremos el funcional
+	\[
+		\psi_c:\Poly\to\C,\qquad \psi_c(p)=p(c)+cp'(c)=(\D p)'(c).
+	\]
+	Entonces son equivalentes:
+	\begin{enumerate}
+		\item $c$ es $\delta$-singular respecto a $\|\cdot\|_S$;
+		\item $\psi_c$ no es acotado respecto a $\|\cdot\|_S$;
+		\item $\delta_c$ no es acotado en $\Poly$ respecto a $\|\cdot\|_S$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	\textbf{(1)$\Rightarrow$(3):} es inmediato, pues $N_c\subset\Poly$.
+
+	\textbf{(3)$\Rightarrow$(1):} sea $(p_n)\subset\Poly$ con
+	$\|p_n\|_S\le 1$ y $|p_n(c)|\to\infty$. Definimos
+	\[
+		q_n(z):=p_n(z)-p_n'(c)(z-c).
+	\]
+	Entonces $q_n'(c)=p_n'(c)-p_n'(c)=0$, por tanto $q_n\in N_c$.
+	Por otra parte,
+	\[
+		q_n(c)=p_n(c).
+	\]
+	Solo falta acotar $\|q_n\|_S$. Como la proyección sobre $N_c$ respecto de la descomposición
+	$\Poly=N_c\oplus\operatorname{span}\{z-c\}$ es acotada (por ser $N_c$ de codimensión
+	finita), existe $C>0$ tal que $\|q_n\|_S\le C\|p_n\|_S$ para toda la sucesión
+	construida. En particular, la sucesión $(q_n)$ está acotada en $\|\cdot\|_S$
+	y cumple $q_n(c)=p_n(c)=1$. Normalizando $\tilde q_n=q_n/\|q_n\|_S$ se obtiene
+	$\tilde q_n\in N_c$, $\|\tilde q_n\|_S=1$ y $|\tilde q_n(c)|\to\infty$,
+	lo cual prueba que $c$ es $\delta$-singular.
+
+	\textbf{(2)$\iff$(3):} Si $\delta'_c$ es acotado, entonces
+	$\psi_c=\delta_c+c\delta'_c$ es no acotado si y solo si $\delta_c$ lo es.
+	Si $\delta'_c$ no es acotado, entonces \emph{a fortiori} $\psi_c$ es no
+	acotado (pues $\psi_c$ extiende a $\delta_c$ sobre $N_c$ más el término
+	$c\delta'_c$). Por tanto, en ambos casos, $\psi_c$ no acotado
+	$\Longleftrightarrow$ $\delta_c$ no acotado en $\Poly$.
+\end{proof}
+
+\begin{thm}[Equivalencia $\delta$-singular $\iff$ no-BPE en el caso Lebesgue]\label{thm:equivalencia_lebesgue}
+	Sea $\mu=\mathbf m_{0;R}$ la medida de Lebesgue normalizada en
+	la circunferencia $\mathbb{S}_R=\{z\in\C:|z|=R\}$, y consideremos el producto
+	de Sobolev discreto
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		\sum_{k=1}^N p'(c_k)\overline{q'(c_k)}.
+	\]
+	Para cualquier $c\in\C$, son equivalentes:
+	\begin{enumerate}
+		\item $c$ es $\delta$-singular respecto a $\|\cdot\|_S$;
+		\item $|c|\ge R$;
+		\item $c$ es no-BPE para $L^2(\mu)$.
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}
+	\textbf{(2)$\iff$(3):} es la caracterización clásica de los puntos BPE
+	para la medida de Lebesgue en circunferencia: los BPE son exactamente
+	los puntos del disco abierto $|c|<R$ (espacio de Hardy del disco)
+	\cite{duren1970theory,szego1975orthogonal}.
+
+	\textbf{(2)$\Rightarrow$(1):} suponemos $|c|\ge R$.
+	Por la Proposición~\ref{prop:no_acotacion_modelo_exterior},
+	el funcional $\psi_c(p)=p(c)+cp'(c)=(\D p)'(c)$ no es acotado
+	respecto a $\|\cdot\|_S$. Por la
+	Proposición~\ref{prop:caracterizacion_psi_c}, $c$ es $\delta$-singular.
+
+	\textbf{(1)$\Rightarrow$(2):} probamos el contrarrecíproco.
+	Suponemos $|c|<R$. Entonces $c$ es BPE para $L^2(\mu)$ (caso (3)
+	falso) y, por el Lema~\ref{lema:ABPE_derivada}, $c$ es ABPE: tanto $\delta_c$
+	como $\delta'_c$ son funcionales acotados respecto a $\|\cdot\|_{L^2(\mu)}$
+	y, en consecuencia, también respecto a $\|\cdot\|_S$ (porque
+	$\|\cdot\|_{L^2(\mu)}\le\|\cdot\|_S$). Como $\delta_c$ es acotado en
+	$\Poly$, en particular es acotado al restringirlo a $N_c\subset\Poly$,
+	luego $c$ no es $\delta$-singular.
+\end{proof}
+
+\begin{rmk}[Hipótesis primaria: $\delta$-singularidad]\label{rem:hipotesis_delta_singular}
+	El Teorema~\ref{thm:equivalencia_lebesgue} es un \emph{hecho geométrico}
+	propio del caso Lebesgue: la frontera entre la región BPE y la región
+	$\delta$-singular coincide exactamente con la circunferencia.
+	A partir de este punto, la condición de $\delta$-singularidad se utilizará
+	como hipótesis técnica primaria en todo el trabajo. La noción clásica
+	de punto no-BPE para $L^2(\mu)$ queda como caso geométrico particular,
+	válido en el caso modelo de la medida de Lebesgue normalizada en circunferencia.
+\end{rmk}
+
+\begin{lem}[Normalización de un funcional no acotado]\label{lem:normalizacion_funcional_no_acotado}
+	Sea $X$ un espacio normado complejo y sea $\varphi:X\to\mathbb C$ un funcional lineal no acotado.
+	Entonces existe una sucesión $(x_n)_{n\ge1}\subset X$ tal que
+	\[
+		\|x_n\|_X\to 0,
+		\qquad
+		\varphi(x_n)=1
+		\quad \text{para todo } n.
+	\]
+\end{lem}
+
+\begin{proof}
+	Como $\varphi$ no es acotado, no está acotado en la bola unidad. Por tanto, para cada
+	$n\ge1$ existe $y_n\in X$ tal que
+	\[
+		\|y_n\|_X\le 1,
+		\qquad
+		|\varphi(y_n)|\ge n.
+	\]
+	Definimos
+	\[
+		x_n:=\frac{y_n}{\varphi(y_n)}.
+	\]
+	Entonces
+	\[
+		\varphi(x_n)=1,
+	\]
+	y además
+	\[
+		\|x_n\|_X
+		=
+		\frac{\|y_n\|_X}{|\varphi(y_n)|}
+		\le
+		\frac1n
+		\xrightarrow[n\to\infty]{}0.
+	\]
+\end{proof}
+
+\section{Organización del Artículo}
+
+El artículo se organiza como sigue:
+
+\begin{itemize}
+	\item \textbf{Sección~\ref{sec:espectral}: Análisis Espectral y Topología.} Se desarrolla el núcleo teórico del trabajo. Se estudian la codimensión topológica del espacio de Sobolev, la estructura del operador multiplicación y los números de Gelfand, estableciendo la dicotomía entre puntos $\delta$-singulares y no $\delta$-singulares, y la relación con la propiedad BPE clásica en el caso modelo de Lebesgue.
+
+	\item \textbf{Sección~\ref{sec:matricial}: Análisis Matricial y Comportamiento Asintótico.} Se analizan las representaciones matriciales de los operadores. Se estudia el comportamiento asintótico de las secciones finitas (matrices de Hessenberg) mediante la teoría de perturbaciones y los valores singulares, se demuestra la estabilización algebraica, y se introduce la desigualdad de Weyl-Horn para el conteo de ceros excepcionales.
+
+	\item \textbf{Sección~\ref{sec:ceros_acotacion}: Localización y Acotación Asintótica de los Ceros.} Se aplican los resultados obtenidos para acotar la ubicación de los ceros de los polinomios ortogonales. La sección se organiza en cuatro subsecciones: ceros como autovalores, acotación uniforme vía cuasi-ortogonalidad (vía clásica), la cadena estructural $Q_m$--Weyl-Horn--atracción (contribución novedosa), y la equivalencia y comparación entre ambos enfoques.
+
+	\item \textbf{Conclusiones y Líneas Futuras.} Se resumen las aportaciones principales del trabajo y se proponen vías abiertas para investigación futura.
+\end{itemize}
+
+% =============================================================
+% CAPÍTULO 2: ANÁLISIS ESPECTRAL Y TOPOLOGÍA
+% 2.1 Codimensión y Subespacios en el Espacio de Hilbert
+% 2.2 La Dicotomía Topológica
+% 2.3 El Operador de Multiplicación y los Números de Gelfand
+% 2.4 El Caso No-BPE: La Explosión Topológica
+% =============================================================
