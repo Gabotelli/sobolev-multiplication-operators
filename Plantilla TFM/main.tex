@@ -1,85 +1,58 @@
-\documentclass[index,biblatex]{MUMAv-UPM}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PAQUETES ADICIONALES DEL TFM
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{xcolor}
-\usepackage[hidelinks]{hyperref}
-
-\hypersetup{
-  pdftitle={Análisis Espectral y Matricial del Operador de Multiplicación en Espacios de Sobolev Discretos},
-  pdfauthor={Gabriel Suárez},
-  pdfstartview={FitH}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COMANDOS PERSONALIZADOS DEL TFM
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Poly}{\mathbb{P}[z]}
-\newcommand{\norm}[1]{\left\| #1 \right\|_S}
-\newcommand{\abs}[1]{\left| #1 \right|}
-\newcommand{\ip}[2]{\langle #1, #2 \rangle_S}
-\newcommand{\D}{\mathcal{D}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ENTORNOS MATEMÁTICOS COMPATIBLES CON TFM.TEX
-% (La plantilla usa thm, prop, lem, defn, exm, rmk; TFM.tex usa nombres en inglés)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\theoremstyle{theoremMUMAv}
-\newtheorem{theorem}[thm]{Teorema}
-\newtheorem{corollary}[thm]{Corolario}
-\newtheorem{proposition}[thm]{Proposición}
-\newtheorem{lemma}[thm]{Lema}
-\theoremstyle{definitionMUMAv}
-\newtheorem{definition}[thm]{Definición}
-\newtheorem{example}[thm]{Ejemplo}
-\theoremstyle{remarkMUMAv}
-\newtheorem{remark}[thm]{Observación}
+\documentclass[index]{MUMAv-UPM}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TITULO, AUTORES Y DIRECTORES
 %
-\title{Análisis Espectral y Matricial del Operador de Multiplicación en Espacios de Sobolev Discretos}
-\author{Gabriel Suárez}
-\genderauthor{M}% Male or Female?
-\bibauthor{Suárez, Gabriel}
-\tutor{Tutor 1\\
-Tutor 2}
+\title{A template for Master Thesis in MUMAv}
+\author{Emmy Noether}
+\genderauthor{F}% Male or Female?
+\bibauthor{Noether, Emmy}
+\tutor{Sofía Kobaleskáya\\
+David Hilbert}
 % \tutor{Sofía Kobaleskáya}
 %\bibtutor{Kobaleskáya, Sofía \and Hilbert, David}
-\fecha{10 de junio de 2026}
+\fecha{10 de junio de 2025}
 %\fecha{10th June 2025}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ejemplos de entornos matemáticos nuevos
+%
+% \theoremstyle{theoremMUMAv}
+% \newtheorem{conj}[thm]{Conjetura}
+% \theoremstyle{remarkMUMAv}
+% \newtheorem{esk}{Escolio}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RESUMEN Y ABSTRACT
 %
 \abstract{spanish}{
-    Se estudia el operador de multiplicación por la variable compleja en espacios de polinomios dotados de un producto interno de Sobolev discreto, cuya componente continua es la medida de Lebesgue normalizada sobre una circunferencia de radio $R$. Se introduce la noción de punto $\delta$-singular ---un punto $c$ donde la evaluación puntual $\delta_c$ restringida al núcleo de la evaluación de la derivada no es acotada respecto a la norma de Sobolev--- y se demuestra que el número de puntos $\delta$-singulares determina exactamente la codimensión algebraica del subespacio donde el operador se estabiliza. Se obtienen cotas precisas para la localización de los ceros mediante la cadena $Q_m \to$ valores singulares $\to$ desigualdad de Weyl-Horn $\to$ atracción asintótica, y se establece que $Q_m(\D)$ desempeña en el régimen no acotado el papel que $\|\D\|$ juega en el caso clásico acotado. Para la medida de Lebesgue en circunferencia, se demuestra la equivalencia $\delta$-singular $\iff |c|\ge R \iff$ no-BPE.
+    El resumen de un TFM condensa en
+    unos pocos párrafos el contenido de la memoria. 
 }
 \keywords{spanish}{
-    Polinomios ortogonales de Sobolev;
-    Operador de multiplicación;
-    Análisis espectral;
-    Valores singulares;
-    Localización de ceros;
-    Puntos $\delta$-singulares
+    Cuatro o cinco;
+    Expresiones clave;
+    Que clasifiquen;
+    Nuestro proyecto o;
+    Investigación
 }
 
 \abstract{english}{
-    \noindent This work studies the multiplication operator by the complex variable in spaces of polynomials endowed with a discrete Sobolev inner product, whose continuous component is the normalized Lebesgue measure on a circle of radius $R$. The notion of $\delta$-singular point is introduced ---a point $c$ where the point evaluation $\delta_c$ restricted to the kernel of the derivative evaluation is not bounded with respect to the Sobolev norm--- and it is proved that the number of $\delta$-singular points determines exactly the algebraic codimension of the subspace where the operator stabilizes. Precise bounds for the localization of zeros are obtained via the chain $Q_m \to$ singular values $\to$ Weyl-Horn inequality $\to$ asymptotic attraction, and it is established that $Q_m(\D)$ plays in the unbounded regime the same role that $\|\D\|$ plays in the classical bounded case. For the Lebesgue measure on the circle, the equivalence $\delta$-singular $\iff |c|\ge R \iff$ non-BPE is proved.
+ \noindent   This section must contain the summary that we have written before in
+    Spanish, but in English, as well as the keywords.
 }
 \keywords{english}{
-    Sobolev orthogonal polynomials;
-    Multiplication operator;
-    Spectral analysis;
-    Singular values;
-    Zero location;
-    $\delta$-singular points
+    Four or five;
+    Key Expressions;
+    Summarising;
+    Our Project or;
+    Research
 }
 
 \acknowledgements{
-     Aquí van los agradecimientos.
+     Aquí van los agradecimientos.  Si no  se quiere poner agradecimientos, hay que borrar (o comentar anteponiendo el comando ~\texttt{\%} en las líneas correspondientes)  la entrada \texttt{\textbackslash acknowledgements} del
+    fichero \texttt{main.tex}.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,14 +61,11 @@ Tutor 2}
 
 \begin{document}
 
-\input{chapters/capitulo1}
-\input{chapters/capitulo2}
-\input{chapters/capitulo3}
-\input{chapters/capitulo4}
+\input{chapters/introduction}
+\input{chapters/estructura}
+\input{chapters/elementos}
 
 \appendix
 \input{appendices/anexo}
 \input{appendices/apendice}
-
-\printbibliography
 \end{document}

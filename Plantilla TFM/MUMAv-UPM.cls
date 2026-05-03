@@ -304,7 +304,7 @@
 \else
     %%%% pdfLaTeX
     \usepackage[notextcomp]{stix2}
-    \usepackage[scaled=0.95, semibold]{sourcesanspro}
+    \usepackage[scale=0.95, semibold]{sourcesanspro}
     %\usepackage[scale=0.925]{ClearSans}
     \usepackage[scaled=0.825]{beramono}
     % \renewcommand*\ttdefault{txtt}
