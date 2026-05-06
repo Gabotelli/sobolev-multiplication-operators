@@ -1,59 +1,67 @@
-\documentclass[index]{MUMAv-UPM}
+\documentclass[index,biblatex]{MUMAv-UPM}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TITULO, AUTORES Y DIRECTORES
 %
-\title{A template for Master Thesis in MUMAv}
-\author{Emmy Noether}
-\genderauthor{F}% Male or Female?
-\bibauthor{Noether, Emmy}
-\tutor{Sofía Kobaleskáya\\
-David Hilbert}
-% \tutor{Sofía Kobaleskáya}
-%\bibtutor{Kobaleskáya, Sofía \and Hilbert, David}
-\fecha{10 de junio de 2025}
-%\fecha{10th June 2025}
+\title{Análisis Espectral y Matricial del Operador de Multiplicación en Espacios de Sobolev Discretos}
+\author{Gabriel Suárez}
+\genderauthor{M}% Male or Female?
+\bibauthor{Suárez, Gabriel}
+\tutor{Carmen Escribano \ Raquel Gonzalo}
+\bibtutor{Escribano, Carmen and Gonzalo, Raquel}
+\fecha{2025}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Ejemplos de entornos matemáticos nuevos
+% Entornos matemáticos adicionales
 %
-% \theoremstyle{theoremMUMAv}
-% \newtheorem{conj}[thm]{Conjetura}
-% \theoremstyle{remarkMUMAv}
-% \newtheorem{esk}{Escolio}
+% La plantilla ya define thm, prop, lem, defn, rmk, exm.
+% Añadimos el entorno para corolarios siguiendo el ejemplo de la plantilla:
+\theoremstyle{theoremMUMAv}
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{conj}[thm]{Conjetura}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comandos personalizados del TFM
+%
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Poly}{\mathbb{P}}
+\newcommand{\norm}[1]{\left\| #1 \right\|_S}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle_S}
+\newcommand{\D}{\mathcal{D}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RESUMEN Y ABSTRACT
 %
 \abstract{spanish}{
-    El resumen de un TFM condensa en
-    unos pocos párrafos el contenido de la memoria. 
+Se estudia el operador de multiplicación por la variable compleja en espacios de polinomios dotados de un producto interno de Sobolev discreto, cuya componente continua es la medida de Lebesgue normalizada sobre una circunferencia de radio \texorpdfstring{$R$}{R}. Se introduce la noción de punto \texorpdfstring{$\delta$-singular}{delta-singular} ---un punto $c$ donde la evaluación puntual \texorpdfstring{$\delta_c$}{delta_c} restringida al núcleo de la evaluación de la derivada no es acotada respecto a la norma de Sobolev--- y se demuestra que el número de puntos \texorpdfstring{$\delta$-singulares}{delta-singulares} determina exactamente la codimensión algebraica del subespacio donde el operador se estabiliza. Se obtienen cotas precisas para la localización de los ceros mediante la cadena \texorpdfstring{$Q_m$}{Q_m} \texorpdfstring{$\to$}{->} valores singulares \texorpdfstring{$\to$}{->} desigualdad de Weyl-Horn \texorpdfstring{$\to$}{->} atracción asintótica, y se establece que \texorpdfstring{$Q_m(\D)$}{Q_m(D)} desempeña en el régimen no acotado el papel que \texorpdfstring{$\|\D\|$}{||D||} juega en el caso clásico acotado. Para la medida de Lebesgue en circunferencia, se demuestra la equivalencia \texorpdfstring{$\delta$-singular}{delta-singular} \texorpdfstring{$\iff$}{si y solo si} \texorpdfstring{$|c|\ge R$}{|c| >= R} \texorpdfstring{$\iff$}{si y solo si} no-BPE.
 }
 \keywords{spanish}{
-    Cuatro o cinco;
-    Expresiones clave;
-    Que clasifiquen;
-    Nuestro proyecto o;
-    Investigación
+Polinomios ortogonales de Sobolev;
+Operador de multiplicación;
+Puntos \texorpdfstring{$\delta$-singulares}{delta-singulares};
+Evaluaciones puntuales acotadas;
+Números de Gelfand;
+Valores singulares;
+Localización de ceros
 }
 
 \abstract{english}{
- \noindent   This section must contain the summary that we have written before in
-    Spanish, but in English, as well as the keywords.
+We study the multiplication operator by the complex variable in spaces of polynomials endowed with a discrete Sobolev inner product, whose continuous component is the normalized Lebesgue measure on a circle of radius \texorpdfstring{$R$}{R}. We introduce the notion of \texorpdfstring{$\delta$-singular}{delta-singular} point ---a point $c$ where the point evaluation \texorpdfstring{$\delta_c$}{delta_c} restricted to the kernel of the derivative evaluation is unbounded with respect to the Sobolev norm--- and prove that the number of \texorpdfstring{$\delta$-singular}{delta-singular} points exactly determines the algebraic codimension of the subspace where the operator stabilizes. Sharp bounds for the localization of zeros are obtained via the chain \texorpdfstring{$Q_m$}{Q_m} \texorpdfstring{$\to$}{->} singular values \texorpdfstring{$\to$}{->} Weyl-Horn inequality \texorpdfstring{$\to$}{->} asymptotic attraction, and it is established that \texorpdfstring{$Q_m(\D)$}{Q_m(D)} plays in the unbounded regime the same role that \texorpdfstring{$\|\D\|$}{||D||} plays in the classical bounded case. For the Lebesgue measure on the circle, the equivalence \texorpdfstring{$\delta$-singular}{delta-singular} \texorpdfstring{$\iff$}{if and only if} \texorpdfstring{$|c|\ge R$}{|c| >= R} \texorpdfstring{$\iff$}{if and only if} non-BPE is proved.
 }
 \keywords{english}{
-    Four or five;
-    Key Expressions;
-    Summarising;
-    Our Project or;
-    Research
+Sobolev orthogonal polynomials;
+Multiplication operator;
+\texorpdfstring{$\delta$-singular}{delta-singular} points;
+Bounded point evaluations;
+Gelfand numbers;
+Singular values;
+Zero localization
 }
 
-\acknowledgements{
-     Aquí van los agradecimientos.  Si no  se quiere poner agradecimientos, hay que borrar (o comentar anteponiendo el comando ~\texttt{\%} en las líneas correspondientes)  la entrada \texttt{\textbackslash acknowledgements} del
-    fichero \texttt{main.tex}.
-}
+% \acknowledgements{
+%      Aquí van los agradecimientos.
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DOCUMENTO
@@ -61,11 +69,13 @@ David Hilbert}
 
 \begin{document}
 
-\input{chapters/introduction}
-\input{chapters/estructura}
-\input{chapters/elementos}
+\input{chapters/capitulo1-introduccion}
+\input{chapters/capitulo2-espectral}
+\input{chapters/capitulo3-matricial}
+\input{chapters/capitulo4-ceros}
+\input{chapters/conclusiones}
 
 \appendix
-\input{appendices/anexo}
-\input{appendices/apendice}
+% \input{appendices/anexo}
+
 \end{document}
