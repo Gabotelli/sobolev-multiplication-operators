@@ -1,3 +1,29 @@
 % !TEX root = ../main.tex
-\chapter{Conclusiones y líneas futuras}
-En síntesis, este trabajo establece que $Q_m(\D)$ desempeña en el régimen $\delta$-singular exactamente el mismo papel que $\|\D\|$ juega en el caso clásico acotado: mientras que en el régimen interior la norma del operador controla la localización de los ceros, en el régimen exterior es el primer índice de Gelfand finito $Q_m(\D)$ el que gobierna la estabilización espectral y, a través de la cadena $Q_m \to$ valores singulares $\to$ Weyl--Horn $\to$ atracción, la acotación uniforme de los ceros. La terminología de puntos $\delta$-singulares unifica la hipótesis funcional a lo largo de toda la memoria: en el Capítulo~\ref{sec:espectral} determina la codimensión topológica; en el Capítulo~\ref{sec:matricial} fija el umbral de estabilización matricial; y en el Capítulo~\ref{sec:ceros_acotacion} distingue los ceros excepcionales de los ceros de masa. Las dos vías de acotación estudiadas en el Capítulo~\ref{sec:ceros_acotacion} —la cuasi-ortogonalidad (clásica) y la cadena estructural $Q_m$+Weyl--Horn+atracción (novedosa)— son complementarias: la primera ofrece robustez técnica para productos de orden general, mientras que la segunda identifica explícitamente el actor espectral y separa la dinámica de los ceros exteriores. Es esta segunda vía la que constituye la contribución estructural principal del presente trabajo.
+\chapter{Conclusiones y líneas futuras}\label{sec:conclusiones}
+
+% -------------------------------------------------------------
+\section{Resultados principales}
+% -------------------------------------------------------------
+
+En este trabajo hemos desarrollado un estudio sistemático de los polinomios ortogonales de Sobolev con medida de Lebesgue normalizada en la circunferencia y átomos discretos de primera derivada en puntos exteriores. Los resultados demostrados se organizan en tres ejes:
+
+\begin{enumerate}
+	\item \textbf{Análisis espectral y topológico} (Capítulo~\ref{sec:espectral}). Se ha establecido la dicotomía de la codimensión del operador de Sobolev (Teoremas~\ref{thm:dicotomia_1} y~\ref{thm:dicotomia_N_general}), la caracterización de los puntos $\delta$-singulares vía la equivalencia $\delta$-singular $\iff$ no-BPE (Teorema~\ref{thm:equivalencia_lebesgue}), y la determinación exacta del umbral de estabilización $Q_m(\D)=R$ en el caso puramente exterior (Teorema~\ref{thm:exactitud_Qm_R}).
+
+	\item \textbf{Análisis matricial y asintótico} (Capítulo~\ref{sec:matricial}). Se ha demostrado que los ceros de los polinomios ortogonales coinciden con los autovalores de las secciones truncadas de la matriz de Hessenberg (Proposición~\ref{prop:autovalores_ceros}), se han obtenido cotas explícitas para los valores singulares en términos de los índices de Gelfand $Q_k$ (Proposición~\ref{prop:sigma_qk}), y se ha establecido el teorema de conteo de ceros excepcionales: a lo sumo $m$ ceros escapan del disco $\overline{\mathbb{D}_R}$ (Teorema~\ref{thm:conteo_ceros}).
+
+	\item \textbf{Localización y acotación de ceros} (Capítulo~\ref{sec:ceros_acotacion}). Se ha obtenido la acotación uniforme incondicional de todos los ceros vía cuasi-ortogonalidad (Teorema~\ref{thm:acotacion_ceros}), y la acotación uniforme condicional vía la cadena estructural $Q_m$ + Weyl--Horn + atracción (Teorema~\ref{thm:acotacion_via_Q_m}). Se ha establecido la complementariedad de ambas vías (Proposición~\ref{prop:equivalencia_vias}).
+\end{enumerate}
+
+% -------------------------------------------------------------
+\section{Problemas abiertos}
+% -------------------------------------------------------------
+
+La conjetura de atracción asintótica uno a uno (Conjetura~\ref{conj:atraccion}) constituye el problema central pendiente. Su verificación permitiría elevar el Teorema~\ref{thm:acotacion_via_Q_m} a resultado incondicional, completando así la cadena estructural $Q_m$ + Weyl--Horn + atracción. La estrategia de prueba esbozada en la Sección~\ref{sec:cadena_Qm} identifica tres pasos naturales: conteo vía Weyl--Horn, confinamiento vía potencial logarítmico, y correspondencia uno a uno vía coeficientes de recurrencia; la adaptación rigurosa de este esquema queda planteada como línea abierta de investigación.
+
+Otras líneas de trabajo futuro incluyen:
+\begin{itemize}
+	\item La extensión de la cadena estructural a productos de Sobolev con derivadas de orden superior o con soporte continuo general, siguiendo el marco del umbral $m_*$ esbozado en la Sección~\ref{sec:cuasi_ortogonalidad}.
+	\item El estudio del comportamiento asintótico de la distribución de ceros, en particular la convergencia débil de la medida contadora normalizada hacia la medida de equilibrio del soporte continuo, cuando la medida es regular.
+	\item La conexión entre la estabilización singular y la teoría de aproximación Padé--Sobolev, que podría proporcionar herramientas analíticas alternativas para la conjetura de atracción.
+\end{itemize}

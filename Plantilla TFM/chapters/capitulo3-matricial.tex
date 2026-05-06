@@ -1,9 +1,10 @@
 % !TEX root = ../main.tex
 \chapter{Análisis Matricial y Comportamiento Asintótico}\label{sec:matricial}
 
+El análisis espectral del Capítulo~\ref{sec:espectral} demostró que la inestabilidad del operador multiplicación queda confinada a $m$ direcciones singulares. En este capítulo traducimos esos resultados funcionales al lenguaje de las matrices de Hessenberg truncadas, conectando los índices $Q_k$ con los valores singulares de las secciones finitas.
+
 El estudio asintótico del operador multiplicación $\D$ se lleva a cabo a través de sus aproximaciones de rango finito, denominadas secciones principales. El paso del espacio de Hilbert abstracto al álgebra de polinomios finitos permite emplear herramientas de álgebra lineal numérica para analizar las matrices que gobiernan la disposición de los ceros.
 
-% [CORRECCIÓN ESTRUCTURAL] Reforzada la motivación del paso a matrices.
 Para convertir estas estimaciones funcionales en predicciones sobre la distribución de los ceros de los polinomios ortogonales, necesitamos una representación finito-dimensional del operador. Las secciones truncadas de la matriz de multiplicación en la base ortonormal de polinomios de Sobolev constituyen el puente natural entre el análisis espectral abstracto y los cálculos efectivos.
 
 En esta sección, la discusión matricial se hará siempre sobre la representación de $\D$ en la base ortonormal $\{\phi_n\}_{n\ge 0}$. Así, $\mathbf{D}$ denotará la matriz infinita de esa representación y $\mathbf{D}_n$ su compresión a $\operatorname{span}\{\phi_0,\dots,\phi_n\}$; cuando usemos vectores $x \in \mathbb{C}^{n+1}$, estos serán los vectores de coordenadas de polinomios en dicha base.
@@ -74,6 +75,7 @@ Para el estudio del comportamiento asintótico de los operadores truncados, se e
 	\begin{equation}
 		a_n(T) = \inf \{ \|T - F\| : \text{rango}(F) < n+1 \}.
 	\end{equation}
+	En el caso particular de matrices finitas, que es el que nos ocupará, estos valores singulares coinciden con los de la descomposición SVD clásica.
 \end{defn}
 
 La tasa de decaimiento de estos números proporciona información precisa sobre la velocidad de convergencia de las aproximaciones finitas y la distribución asintótica de los ceros.
@@ -85,7 +87,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\]
 	En particular, $\sigma_{0,n} = \|\mathbf{D}_n\|_2$ es la norma espectral (norma operatorial inducida por la norma euclídea) de $\mathbf{D}_n$. Por el principio min-max de Courant-Fischer,
 	\[
-		\sigma_{1,n}^2 = \min_{\substack{V \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(V) = 1}} \max_{\substack{x \in V \\ \|x\| = 1}} \|\mathbf{D}_n x\|^2.
+		\sigma_{1,n}^2 = \min_{\substack{V \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(V) = 1}} \max_{\substack{x \in V \\ \|x\|_2 = 1}} \|\mathbf{D}_n x\|_2^2.
 	\]
 \end{defn}
 
@@ -96,7 +98,42 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\]
 \end{defn}
 
-\begin{prop}[Coincidencia total de índices en el caso acotado]\label{prop:coincidencia_total_acotado_pendiente}
+\begin{prop}[Cota de $\sigma_{k,n}$ en términos de $Q_k$]\label{prop:sigma_qk}
+	Para cualesquiera enteros $n \ge 0$ y $0 \le k \le n$, se tiene
+	\[
+		\sigma_{k,n} \le Q_k(\D).
+	\]
+	En particular,
+	\[
+		\limsup_{n \to \infty} \sigma_{k,n} \le Q_k(\D).
+	\]
+\end{prop}
+
+\begin{proof}
+	Por el principio minimax de Courant-Fischer aplicado a la matriz $\mathbf{D}_n$, el valor singular de índice $k$ satisface
+	\[
+		\sigma_{k,n} = \inf_{\substack{W \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(W) < k+1}} \|\mathbf{D}_n|_W\|_2.
+	\]
+	Sea ahora $V \subset \Poly$ un subespacio admisible (recuérdese que un subespacio es admisible si es intersección finita de núcleos de funcionales lineales; véase la Definición~\ref{def:subespacio_admisible}) con $\operatorname{codim}_{\Poly}(V) < k+1$, y definamos
+	\[
+		V_n = V \cap \Poly_{n}.
+	\]
+	Entonces $V_n$ induce, en coordenadas respecto de la base ortonormal $\{\phi_0,\dots,\phi_{n}\}$, un subespacio $W_n \subset \mathbb{C}^{n+1}$ de codimensión algebraica menor que $k+1$. Por la caracterización minimax anterior,
+	\[
+		\sigma_{k,n} \le \|\mathbf{D}_n|_{W_n}\|_2.
+	\]
+	Bajo la identificación entre polinomios y vectores de coordenadas, esta norma coincide con la norma de la compresión de $\D$ a $V_n$; como la proyección ortogonal sobre $\Poly_{n}$ es contractiva, se obtiene
+	\[
+		\|\mathbf{D}_n|_{W_n}\|_2 \le \|\D|_{V_n}\|_S \le \|\D|_V\|_S.
+	\]
+	Por tanto, $\sigma_{k,n} \le \|\D|_V\|_S$ para todo subespacio admisible $V$ con codimensión algebraica menor que $k+1$. Tomando ínfimo sobre todos esos subespacios, concluimos que
+	\[
+		\sigma_{k,n} \le Q_k(\D).
+	\]
+	La cota sobre el $\limsup$ es inmediata.
+\end{proof}
+
+\begin{prop}[Coincidencia total de índices en el caso acotado]\label{prop:coincidencia_total_acotado}
 	Supongamos que $\D\in\mathcal{L}(\mathcal{H})$, que para cada $k\ge0$ existe el límite
 	\[
 		\sigma_k=\lim_{n\to\infty}\sigma_{k,n},
@@ -176,13 +213,33 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\end{enumerate}
 \end{prop}
 
+\begin{proof}
+	\textbf{Caso 1 (acotado).} Supongamos que $\D\in\mathcal{L}(\mathcal{H})$. Para cada $n$, la sección $\mathbf{D}_n$ es la compresión de $\D$ al subespacio $\mathcal{P}_n:=\operatorname{span}\{\phi_0,\dots,\phi_n\}$. Como la proyección ortogonal $P_n:\mathcal{H}\to\mathcal{P}_n$ es contractiva, se tiene
+	\[
+		\|\mathbf{D}_n\|_2=\|P_n\D|_{\mathcal{P}_n}\|\le\|\D\|,
+	\]
+	de donde $\limsup_{n\to\infty}\|\mathbf{D}_n\|_2\le\|\D\|$.
+
+	Recíprocamente, fijado $\varepsilon>0$, existe $p\in\Poly$ con $\|p\|_S=1$ tal que $\|\D p\|_S>\|\D\|-\varepsilon$. Para $n$ suficientemente grande, $p\in\mathcal{P}_n$ y entonces
+	\[
+		\|\mathbf{D}_n\|_2\ge\|\mathbf{D}_n p\|_S=\|P_n(\D p)\|_S.
+	\]
+	Como $P_n(\D p)\to\D p$ en $\|\cdot\|_S$, para $n$ grande se tiene $\|P_n(\D p)\|_S>\|\D\|-\varepsilon$, luego $\|\mathbf{D}_n\|_2>\|\D\|-\varepsilon$. Por tanto, $\liminf_{n\to\infty}\|\mathbf{D}_n\|_2\ge\|\D\|$, y ambas desigualdades dan la igualdad deseada.
+
+	\textbf{Caso 2 (no acotado).} Si $\D$ no es acotado, existe una sucesión $(p_k)\subset\Poly$ con $\|p_k\|_S=1$ y $\|\D p_k\|_S\to+\infty$. Para cada $k$ fijo, sea $n_k$ tal que $p_k\in\mathcal{P}_{n_k}$. Entonces
+	\[
+		\|\mathbf{D}_{n_k}\|_2\ge\|\mathbf{D}_{n_k}p_k\|_S=\|P_{n_k}(\D p_k)\|_S.
+	\]
+	Como $\D p_k\in\Poly$ y $P_n$ converge fuertemente a la identidad, se tiene $\|P_{n_k}(\D p_k)\|_S\to\|\D p_k\|_S$ cuando $k\to\infty$ (con $n_k$ suficientemente grande). Por consiguiente, $\|\mathbf{D}_{n_k}\|_2\to+\infty$, y como la sucesión $\|\mathbf{D}_n\|_2$ es monótona no decreciente, concluimos que $\|\mathbf{D}_n\|_2\to+\infty$.
+\end{proof}
+
 En particular, cuando la medida continua tiene soporte acotado con radio máximo $R$ y el operador multiplicación es acotado, se obtiene $\|\D\| = R$ y, por tanto, $\lim_{n \to \infty} \sigma_{0,n} = R$.
 
 \section{Estabilización Algebraica de los Valores Singulares}
 
-Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathcal{H}$ sugieren que $\|\mathbf{D}_n\|_2 \to \infty$ en el caso $\delta$-singular, la estructura algebraica del espacio de polinomios $\Poly$ restringe la dimensionalidad de esta divergencia.
+Pasamos ahora al régimen no acotado, donde los átomos exteriores inducen la divergencia de los valores singulares. Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathcal{H}$ sugieren que $\|\mathbf{D}_n\|_2 \to \infty$ en el caso $\delta$-singular, la estructura algebraica del espacio de polinomios $\Poly$ restringe la dimensionalidad de esta divergencia.
 
-\begin{thm}[Acotación del valor singular de índice $1$]
+\begin{thm}[Acotación del valor singular de índice $1$]\label{thm:acotacion_sigma_1}
 	Sea $\langle \cdot, \cdot \rangle_S$ un producto de Sobolev con medida continua de radio esencial $R$ y un único átomo de derivada en $c \in I_{\mathrm{out}}$. Entonces, el valor singular de índice $1$ de las secciones principales satisface:
 	$$ \limsup_{n \to \infty} \sigma_{1,n} \le R. $$
 \end{thm}
@@ -234,11 +291,11 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\end{equation}
 	Esto demuestra que la restricción del operador cumple $\|\D|_W\| \le R$.
 
-	Sea $\mathbf{D}_n$ la matriz de la compresión de $\D$ al subespacio $\mathbb{P}_{n}$. Definimos $W_n = W \cap \mathbb{P}_{n}$. Por la fórmula de Grassmann, $\dim(W_n) \ge n+1 - N$. Identificando ahora cada polinomio $p \in \mathbb{P}_{n}$ con su vector de coordenadas $x \in \mathbb{C}^{n+1}$ en la base ortonormal, el subespacio $W_n$ induce un subespacio vectorial $\mathcal{W}_n \subset \mathbb{C}^{n+1}$ de dimensión al menos $n+1-N$.
+	Sea $\mathbf{D}_n$ la matriz de la compresión de $\D$ al subespacio $\Poly_{n}$. Definimos $W_n = W \cap \Poly_{n}$. Por la fórmula de Grassmann, $\dim(W_n) \ge n+1 - N$. Identificando ahora cada polinomio $p \in \Poly_{n}$ con su vector de coordenadas $x \in \mathbb{C}^{n+1}$ en la base ortonormal, el subespacio $W_n$ induce un subespacio vectorial $\mathcal{W}_n \subset \mathbb{C}^{n+1}$ de dimensión al menos $n+1-N$.
 
 	El valor singular de índice $N$ de $\mathbf{D}_n$, denotado como $\sigma_{N,n}$, se caracteriza mediante el teorema minimax de Courant-Fischer:
 	\begin{equation}
-		\sigma_{N,n} = \min_{\dim(S) = n+1-N} \max_{\substack{x \in S \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le \max_{\substack{x \in \mathcal{V}_{0,n} \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le R
+		\sigma_{N,n} = \min_{\dim(S) = n+1-N} \max_{\substack{x \in S \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le \max_{\substack{x \in \mathcal{W}_n \\ x \neq 0}} \frac{\|\mathbf{D}_n x\|_2}{\|x\|_2} \le R
 	\end{equation}
 	Dado que $\sigma_{N,n} \le R$ para todo $n \ge N$, podemos utilizar la descomposición en valores singulares. La matriz truncada se escribe como $\mathbf{D}_n = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^*$, donde $\mathbf{\Sigma}$ es diagonal y contiene los valores singulares en orden decreciente.
 	Separando los primeros $N$ valores singulares (que pueden ser mayores que $R$) del resto, la matriz se descompone de forma exacta como una suma:
@@ -246,7 +303,6 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	donde $\mathbf{E}_n$ contiene únicamente la contribución de los $N$ primeros valores singulares (por lo que $\operatorname{rango}(\mathbf{E}_n) \le N$) y $\mathbf{M}_n$ contiene el resto de los valores singulares acotados por $\sigma_{N,n} \le R$. Por definición, esto garantiza que la norma espectral de esta última cumple $\|\mathbf{M}_n\|_2 \le R$.
 \end{proof}
 
-% [CORRECCIÓN ESTRUCTURAL] Se añade remark sobre generalidad del teorema anterior.
 \begin{rmk}[Sobre la generalidad del Teorema~\ref{thm:control_singular_escape}]
 	El Teorema~\ref{thm:control_singular_escape} admite derivadas de orden arbitrario $j_k$ en los átomos discretos. En el resto del trabajo, salvo indicación contraria, se asume $j_k=1$ para todo $k$, lo cual corresponde al producto de Sobolev estándar considerado en las Secciones~\ref{sec:intro} y~\ref{sec:espectral}.
 \end{rmk}
@@ -373,7 +429,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 		n_L:=1+\max_{j\in I_{\mathrm{out}}}\deg(u_j).
 	\]
 	Si $n\ge n_L$, entonces $F\subset\mathbb P_{n-1}$ y por tanto
-	$\D p\in\mathbb{P}_n$ para todo $p\in F$; en consecuencia,
+	$\D p\in\Poly_n$ para todo $p\in F$; en consecuencia,
 	$\mathbf D_n p=\D p$ sobre $F$.
 
 	Usando la forma max--min de Courant--Fischer para valores singulares (índices desde $0$),
@@ -427,7 +483,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 		\|\D|_{V_{\mathrm{out}}}\|\le R.
 	\]
 
-	Definamos $V_{\mathrm{out},n}:=V_{\mathrm{out}}\cap\mathbb{P}_n$. Entonces
+	Definamos $V_{\mathrm{out},n}:=V_{\mathrm{out}}\cap\Poly_n$. Entonces
 	\[
 		\dim(V_{\mathrm{out},n})\ge n+1-m.
 	\]
@@ -524,16 +580,14 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	Para los índices finitos $0\le n\le L$, el conjunto de ceros involucrado es finito; su unión también es acotada. Uniéndolo con $K$, obtenemos un único compacto que contiene los ceros de todos los $p_n$. En consecuencia, la familia de ceros de los polinomios ortogonales de Sobolev es uniformemente acotada.
 \end{proof}
 
-% [FUENTE] El siguiente bloque se adapta de cadena_argumentativa.tex, §Paso (d)
-
 \section{Conteo de Ceros Excepcionales: la Desigualdad de Weyl-Horn}
 
-\begin{lem}[Desigualdad de Weyl--Horn para matrices cuadradas]\label{lem:weyl_horn}
-	Sea $A\in\mathcal M_{n+1}(\C)$ con autovalores $\lambda_0,\dots,\lambda_n$
+\begin{lem}[Desigualdad de Weyl--Horn \cite{horn2012matrix}]\label{lem:weyl_horn}
+	Sea $A\in\mathcal{M}_{n+1}(\mathbb{C})$ con autovalores $\lambda_0,\dots,\lambda_n$
 	ordenados por módulo decreciente y valores singulares
 	$\sigma_0\ge\sigma_1\ge\cdots\ge\sigma_n\ge 0$. Entonces
 	\[
-		\prod_{i=0}^{k-1}|\lambda_i|\;\le\;\prod_{i=0}^{k-1}\sigma_i,
+		\prod_{j=0}^{k-1}|\lambda_j|\;\le\;\prod_{j=0}^{k-1}\sigma_j,
 		\qquad k=1,\dots,n+1,
 	\]
 	con igualdad para $k=n+1$. En particular, para todo $\alpha>0$,
@@ -542,14 +596,29 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\]
 \end{lem}
 
-\begin{proof}[Referencia]
-	Es la desigualdad clásica de Weyl (1949), véase
-	Horn--Johnson, \emph{Topics in Matrix Analysis}, Cap.~3.
-	La consecuencia sobre el conteo se obtiene tomando logaritmos:
-	si hubiera $k+1$ autovalores con módulo $>\alpha$ y solo $k$ valores
-	singulares con módulo $>\alpha$, los productos correspondientes
-	contradirían la desigualdad.
+\begin{proof}
+	Véase \cite[Thm.~3.3.2]{horn2012matrix}.
 \end{proof}
+
+\begin{prop}[Ceros como autovalores de la sección truncada]\label{prop:autovalores_ceros}
+	Para cada $n \ge 0$, los ceros del polinomio ortonormal $\phi_{n+1}(z)$ coinciden exactamente con los autovalores de la sección transpuesta $\mathbf{D}_n^t$:
+	\[
+		\sigma(\mathbf{D}_n^t) = \{z \in \mathbb{C} : \phi_{n+1}(z) = 0\}.
+	\]
+\end{prop}
+
+\begin{proof}
+	La matriz $\mathbf{D}_n$ representa la compresión del operador de multiplicación $\D$ al subespacio $\operatorname{span}\{\phi_0,\dots,\phi_n\}$ en la base $\{\phi_k\}_{k=0}^n$. Como la multiplicación por $z$ aumenta el grado en una unidad, $\mathbf{D}_n$ tiene estructura de Hessenberg superior: sus entradas satisfacen $d_{ij}=0$ para $i>j+1$. Esto implica que para cualquier $\lambda\in\C$,
+	\[
+		\det(\lambda I_{n+1}-\mathbf{D}_n^t)=\det(\lambda I_{n+1}-\mathbf{D}_n)
+		=\phi_{n+1}(\lambda)/\gamma_{n+1},
+	\]
+	donde $\gamma_{n+1}$ es el coeficiente director de $\phi_{n+1}$. La última igualdad es la identidad característica estándar para matrices de Hessenberg asociadas a polinomios ortogonales (véase \cite{szego1975orthogonal}, §3.1, o \cite{gohberg1969introduction}, Cap.~VI). Por tanto, $\lambda$ es autovalor de $\mathbf{D}_n^t$ si y solo si $\phi_{n+1}(\lambda)=0$.
+\end{proof}
+
+\begin{rmk}[Diferencia con el Teorema~\ref{thm:control_singular_escape}]\label{rem:weyl_horn_vs_control}
+	El Teorema~\ref{thm:control_singular_escape} proporciona una descomposición estructural $\mathbf D_n=\mathbf M_n+\mathbf E_n$ con $\mathbf E_n$ de rango $\le m$. Esa conclusión es correcta y útil, pero por sí sola \emph{no} acota el número de autovalores excepcionales, como el propio teorema señala en su remark. La desigualdad de Weyl--Horn, combinada con la estabilización singular del índice $m$, sí permite obtener una cota de conteo explícita para los ceros que escapan del disco $\overline{\mathbb D_{R+\varepsilon}}$. Estas dos vías ---estructural y espectral--- son complementarias y se reúnen en el Teorema~\ref{thm:conteo_ceros}.
+\end{rmk}
 
 \begin{thm}[Conteo de ceros excepcionales]\label{thm:conteo_ceros}
 	Sea $\phi_{n+1}$ el polinomio ortonormal de Sobolev de grado $n+1$
@@ -584,16 +653,6 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	Esto concluye la prueba.
 \end{proof}
 
-\begin{rmk}[Diferencia con el Teorema~\ref{thm:control_singular_escape}]\label{rem:weyl_horn_vs_control}
-	El Teorema~\ref{thm:control_singular_escape} tiene una conclusión
-	\emph{estructural} (descomposición $\mathbf D_n=\mathbf M_n+\mathbf E_n$
-	con $\mathbf E_n$ de rango $\le m$). Esa conclusión es correcta y útil,
-	pero por sí sola \emph{no} acota el número de autovalores excepcionales,
-	como el propio remark señala. El Teorema~\ref{thm:conteo_ceros},
-	en cambio, sí da la cota de conteo, y se obtiene del Teorema~\ref{thm:umbral_singular_indice_m_enunciado}
-	vía Weyl--Horn. Estas dos vías son complementarias.
-\end{rmk}
-
 \section{Relación entre los Valores Singulares y el Índice \texorpdfstring{$Q_k$}{Q_k}}
 
 En esta subsección comparamos los valores singulares de las secciones truncadas $\mathbf{D}_n$ con el índice algebraico $Q_k(\D)$ introducido en la Sección~\ref{sec:espectral}. Como el espíritu del trabajo incluye operadores no acotados, admitiremos de manera explícita valores en la recta real extendida $[0,+\infty]$: cada $\sigma_{k,n}$ es finito para $n$ fijo, pero sus límites pueden divergir, del mismo modo que $Q_k(\D)$ puede ser infinito.
@@ -602,46 +661,11 @@ Usaremos la convención global de este trabajo: $Q_k$ está indexado desde $0$, 
 
 En la misma convención, las familias $c_k$, $S_k$, $Q_k$, $\sigma_{k,n}$ y $\sigma_k$ comienzan en $0$. La numeración $\{1,\dots,N\}$ se reserva exclusivamente para etiquetar el conjunto finito de átomos discretos.
 
-Sea $\mathbf{D}_n$ la matriz de la compresión de $\D$ al subespacio $\mathbb{P}_{n}$, y denotemos por
+Sea $\mathbf{D}_n$ la matriz de la compresión de $\D$ al subespacio $\Poly_{n}$, y denotemos por
 \[
 	\sigma_{0,n} \ge \sigma_{1,n} \ge \dots \ge \sigma_{n,n} \ge 0
 \]
 sus valores singulares.
-
-\begin{prop}[Cota de $\sigma_{k,n}$ en términos de $Q_k$]\label{prop:sigma_qk}
-	Para cualesquiera enteros $n \ge 0$ y $0 \le k \le n$, se tiene
-	\[
-		\sigma_{k,n} \le Q_k(\D).
-	\]
-	En particular,
-	\[
-		\limsup_{n \to \infty} \sigma_{k,n} \le Q_k(\D).
-	\]
-\end{prop}
-
-\begin{proof}
-	Por el principio minimax de Courant-Fischer aplicado a la matriz $\mathbf{D}_n$, el valor singular de índice $k$ satisface
-	\[
-		\sigma_{k,n} = \inf_{\substack{W \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(W) < k+1}} \|\mathbf{D}_n|_W\|_2.
-	\]
-	Sea ahora $V \subset \Poly$ un subespacio admisible con $\operatorname{codim}_{\Poly}(V) < k+1$, y definamos
-	\[
-		V_n = V \cap \mathbb{P}_{n}.
-	\]
-	Entonces $V_n$ induce, en coordenadas respecto de la base ortonormal $\{\phi_0,\dots,\phi_{n}\}$, un subespacio $W_n \subset \mathbb{C}^{n+1}$ de codimensión algebraica menor que $k+1$. Por la caracterización minimax anterior,
-	\[
-		\sigma_{k,n} \le \|\mathbf{D}_n|_{W_n}\|_2.
-	\]
-	Bajo la identificación entre polinomios y vectores de coordenadas, esta norma coincide con la norma de la compresión de $\D$ a $V_n$; como la proyección ortogonal sobre $\mathbb{P}_{n}$ es contractiva, se obtiene
-	\[
-		\|\mathbf{D}_n|_{W_n}\|_2 \le \|\D|_{V_n}\|_S \le \|\D|_V\|_S.
-	\]
-	Por tanto, $\sigma_{k,n} \le \|\D|_V\|_S$ para todo subespacio admisible $V$ con codimensión algebraica menor que $k+1$. Tomando ínfimo sobre todos esos subespacios, concluimos que
-	\[
-		\sigma_{k,n} \le Q_k(\D).
-	\]
-	La cota sobre el $\limsup$ es inmediata.
-\end{proof}
 
 \begin{thm}[Coincidencia exacta en el índice $0$]\label{thm:sigma1_q1_extendido}
 	Se tiene
@@ -693,7 +717,7 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 	\]
 \end{proof}
 
-\begin{prop}[Coincidencia de índices en el caso no acotado]\label{prop:coincidencia_no_acotado_pendiente}
+\begin{prop}[Coincidencia de índices en el caso no acotado]\label{prop:coincidencia_no_acotado}
 	Supongamos que $\D\notin\mathcal{L}(\mathcal{H})$, que para cada $k\ge0$ existe el límite
 	\[
 		\sigma_k=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
@@ -749,55 +773,5 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 	La observación sobre la no consideración de $c_k(\D)$ en este régimen es inmediata.
 \end{proof}
 
-\section{Matrices de Momentos de Sobolev y de Dirac}\label{sec:momentos_sobolev}
-
-En esta subsección traducimos la estructura del producto de Sobolev a un lenguaje matricial en la base monomial. El objetivo es distinguir con claridad entre la forma sesquilineal abstracta y las matrices de momentos que la representan.
-
-\begin{defn}[Matrices secuencialmente dominadas]\label{def:dominacion_secuencial}
-	Un par de matrices hermíticas semidefinidas positivas $\{\mathbf{M}_1, \mathbf{M}_2\}$ se dice \emph{secuencialmente dominado} si existe una constante $C > 0$ tal que
-	\[
-		\mathbf{M}_2 \leq C \cdot \mathbf{M}_1,
-	\]
-	donde $\mathbf{A} \leq \mathbf{B}$ significa $v \mathbf{A} v^* \leq v \mathbf{B} v^*$ para todo $v \in c_{00}$.
-\end{defn}
-
-\begin{rmk}
-	En el caso de productos de Sobolev con medidas sobre circunferencias, el par $\{\mathbf{M}(\mathbf{m}_{b;r_b}), \mathbf{M}(\mathbf{m}_{a;r_a})\}$ es secuencialmente dominado si y solo si $\mathbb{S}_{r_a}(a) \subset \mathbb{D}_{r_b}(b)$, donde $\mathbb{D}_{r_b}(b)$ denota el disco abierto de centro $b$ y radio $r_b$.
-\end{rmk}
-
-\begin{defn}[Matriz de momentos de Sobolev $\mathbf{M}_S$]\label{def:matriz_sobolev}
-	Sea $\boldsymbol{\mu} = (\mu_1, \mu_2)$ un par de medidas de Borel positivas con soporte compacto en $\mathbb{C}$. Denótense por $\mathbf{M}_j = (c^{(j)}_{n,m})_{n,m \geq 0}$ sus respectivas matrices de momentos, donde $c^{(j)}_{n,m} = \int z^n \bar{z}^m \, d\mu_j(z)$, $j = 1, 2$. La \emph{matriz de momentos de Sobolev} asociada a $\boldsymbol{\mu}$ es
-	\[
-		\mathbf{M}_S = \mathbf{M}_1 + \boldsymbol{\Lambda}\, \mathbf{M}_2\, \boldsymbol{\Lambda}^*,
-	\]
-	donde $\boldsymbol{\Lambda} = (\lambda_{i,j})_{i,j \geq 0}$ es la matriz que representa el operador de derivación en la base monomial:
-	\[
-		\lambda_{i,j} = \begin{cases} j & \text{si } i = j - 1, \\ 0 & \text{en otro caso.} \end{cases}
-	\]
-	La \emph{forma sesquilineal matricial de Sobolev} inducida por el par $\{\mathbf{M}_1, \mathbf{M}_2\}$ se define como
-	\[
-		\langle p, q \rangle_{\mathbf{M}_S} = v\, \mathbf{M}_S\, w^*, \qquad p(z) = \sum_k v_k z^k,\ q(z) = \sum_k w_k z^k.
-	\]
-\end{defn}
-
-\begin{defn}[Matriz de momentos de la medida de Dirac]\label{def:matriz_dirac}
-	Sea $\delta_a$ la medida de Dirac concentrada en $a \in \mathbb{C}$. Su matriz de momentos, denotada $\mathbf{M}(a) = \mathbf{M}(\delta_a)$, tiene entradas $c_{n,m} = a^n \bar{a}^m$ y puede representarse como
-	\[
-		\mathbf{M}(a) = \begin{pmatrix}
-			1      & \bar{a}    & \bar{a}^2  & \bar{a}^3    & \cdots \\
-			a      & |a|^2      & a\bar{a}^2 & a\bar{a}^3   & \cdots \\
-			a^2    & a^2\bar{a} & |a|^4      & a^2\bar{a}^3 & \cdots \\
-			\vdots & \vdots     & \vdots     & \vdots       & \ddots
-		\end{pmatrix}.
-	\]
-	Obsérvese que $\mathbf{M}(a)$ es semidefinida positiva pero no definida positiva, por lo que no induce por sí sola un producto interno en $\Poly$.
-\end{defn}
-
-\begin{defn}[Producto matricial de Sobolev generalizado]\label{def:producto_sobolev_matricial}
-	Sea $\{\mathbf{M}_1, \mathbf{M}_2\}$ un par de matrices hermíticas semidefinidas positivas con $\mathbf{M}_1$ definida positiva. El \emph{producto matricial de Sobolev} inducido se define como
-	\[
-		\langle p, q \rangle_{\mathbf{M}_S} = \langle p, q \rangle_{\mathbf{M}_1} + \langle p', q' \rangle_{\mathbf{M}_2}, \qquad p, q \in \Poly.
-	\]
-	Cuando $\mathbf{M}_j$ es la matriz de momentos de una medida $\mu_j$, esta definición recupera el producto de Sobolev integral de la Sección~\ref{sec:intro}. En particular, la positividad definida de $\mathbf{M}_1$ garantiza que la forma anterior sea un producto interno sobre $\Poly$.
-\end{defn}
+Los detalles de la formulación matricial general se recogen en el Apéndice~\ref{ap:matrices_momentos}.
 
