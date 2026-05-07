@@ -269,7 +269,7 @@ En resumen, esta sección ha establecido el marco de codimensión topológica en
 	Afirmamos que toda combinación lineal no nula de las componentes de $T$ es no acotada en $X$. En efecto, sea
 	\[
 		\eta=\sum_{j=k+1}^N a_j\psi_j|_X,
-	\qquad (a_{k+1},\dots,a_N)\neq 0.
+		\qquad (a_{k+1},\dots,a_N)\neq 0.
 	\]
 	Si $\eta$ fuese acotado en $X$, como $X$ es denso en $M$, se extendería a un funcional continuo en $M$; por Hahn--Banach, existe además una extensión continua $\widehat\eta\in\mathcal H^*$. El funcional lineal
 	\[
@@ -425,7 +425,7 @@ Sea $N_0$ el numerador evaluado en $p_K$ y $D_0$ el denominador evaluado en $p_K
 
 Por lo tanto, la búsqueda en dimensión infinita colapsa a una optimización en el subespacio de dimensión dos $V_K$. Identificando $p_K$ con el vector de coeficientes $v = (\alpha, \beta)^T \in \C^2$, las normas se expresan como formas cuadráticas:
 \begin{align*}
-	\|p_K\|_S^2   & = v^* \mathbf{A} v, \\
+	\|p_K\|_S^2    & = v^* \mathbf{A} v, \\
 	\|\D p_K\|_S^2 & = v^* \mathbf{B} v,
 \end{align*}
 donde $\mathbf{A}$ y $\mathbf{B}$ son matrices hermíticas de orden $2 \times 2$ cuyas entradas dependen exclusivamente de los productos escalares $\langle K_i, K_j \rangle_{L^2}$ y las evaluaciones de los núcleos en el punto $c$.
@@ -467,7 +467,7 @@ La norma de salida es $\|\D p\|_S^2 = \|p\|_{L^2}^2 + \abs{(\D p)'(c)}^2$. Obser
 \begin{exm}[Ejemplo numérico: punto en $c = 0.5$]
 	Particularicemos para un punto real en $c=1/2$. Los valores de los núcleos y sus derivadas son:
 	\begin{align*}
-		k_{00} & = \frac{4}{3}, \quad k_{01} = \frac{8}{9}, \\
+		k_{00} & = \frac{4}{3}, \quad k_{01} = \frac{8}{9},                                               \\
 		k_{11} & = \frac{1+(1/2)^2}{(1-(1/2)^2)^3} = \frac{1.25}{0.421875} = \frac{80}{27} \approx 2.963.
 	\end{align*}
 
@@ -862,7 +862,6 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	Por tanto, los funcionales $\psi_k$ son linealmente independientes y
 	\[
 		\dim \operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}=m.
-\qedhere
 	\]
 \end{proof}
 
@@ -993,7 +992,6 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	\[
 		\psi_\ell(u_{j,n})=\delta_{\ell j},
 		\qquad \ell,j\in I_{\mathrm{out}}.
-\qedhere
 	\]
 \end{proof}
 
@@ -1047,7 +1045,6 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 		\le
 		\sqrt m \max_{j\in I_{\mathrm{out}}}\|u_{j,n}\|_S
 		\xrightarrow[n\to\infty]{}0.
-\qedhere
 	\]
 \end{proof}
 
@@ -1110,7 +1107,6 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	acotada. En consecuencia,
 	\[
 		Q_{m-1}(\D)=\infty.
-\qedhere
 	\]
 \end{proof}
 
@@ -1245,7 +1241,7 @@ En el caso puramente exterior, el Teorema~\ref{thm:umbral_puramente_exterior} da
 	\]
 	En particular,
 	\[
-	\infty=Q_0(\D)=\dots=Q_{m-1}(\D)>Q_m(\D)=R\ge Q_{m+1}(\D)\ge\dots\ge0.
+		\infty=Q_0(\D)=\dots=Q_{m-1}(\D)>Q_m(\D)=R\ge Q_{m+1}(\D)\ge\dots\ge0.
 	\]
 \end{thm}
 
@@ -1261,7 +1257,7 @@ En el caso puramente exterior, el Teorema~\ref{thm:umbral_puramente_exterior} da
 	Su núcleo $W=\ker(T)$ tiene codimensión exacta $m$. Como $V$ tiene codimensión a lo sumo $m$, la intersección $V\cap W$ es no trivial (de hecho, infinito-dimensional). Para cualquier $p\in V\cap W$ se cumple $p'(c_k)=0$ para todo $k$, luego
 	\[
 		\|p\|_S=\|p\|_{L^2},
-	\qquad
+		\qquad
 		\|\D p\|_S\ge\|zp\|_{L^2}=R\|p\|_{L^2}=R\|p\|_S.
 	\]
 	En consecuencia, $\|\D|_V\|\ge\|\D|_{V\cap W}\|\ge R$. Como $V$ era arbitrario entre los subespacios admisibles con codimensión a lo sumo $m$, tomando ínfimo se obtiene $Q_m(\D)\ge R$.
@@ -1308,25 +1304,25 @@ En el caso puramente exterior, el Teorema~\ref{thm:umbral_puramente_exterior} da
 		\item Cada $\ell_k$ y cada $\eta_i$ se extiende continuamente a $\mathcal H_{\mathrm{out}}$.
 		\item Si $u_k, v_i\in \mathcal H_{\mathrm{out}}$ son los representadores de Riesz de $\ell_k$ y $\eta_i$, y si
 		      \[
-		      	E:=\operatorname{span}\Bigl(\{u_k:1\le k\le N\}\cup\{v_i:i\in I_{\mathrm{in}}\}\Bigr),
+			      E:=\operatorname{span}\Bigl(\{u_k:1\le k\le N\}\cup\{v_i:i\in I_{\mathrm{in}}\}\Bigr),
 		      \]
 		      entonces
 		      \[
-		      	\|\D|_{V_{\mathrm{out}}}\|_S^2
-		      	=
-		      	\max\!\left\{R^2,\ \sup_{\substack{p\in E\\p\neq0}}\frac{\|\D p\|_S^2}{\|p\|_S^2}\right\}.
+			      \|\D|_{V_{\mathrm{out}}}\|_S^2
+			      =
+			      \max\!\left\{R^2,\ \sup_{\substack{p\in E\\p\neq0}}\frac{\|\D p\|_S^2}{\|p\|_S^2}\right\}.
 		      \]
 		      En particular, si $e_1,\dots,e_d$ es una base de $E$ y
 		      \[
-		      	\mathbf A=(\langle e_j,e_i\rangle_S)_{i,j=1}^d,
-		      	\qquad
-		      	\mathbf B=(\langle \D e_j,\D e_i\rangle_S)_{i,j=1}^d,
+			      \mathbf A=(\langle e_j,e_i\rangle_S)_{i,j=1}^d,
+			      \qquad
+			      \mathbf B=(\langle \D e_j,\D e_i\rangle_S)_{i,j=1}^d,
 		      \]
 		      se obtiene la caracterización exacta
 		      \[
-		      	\|\D|_{V_{\mathrm{out}}}\|_S^2
-		      	=
-		      	\max\{R^2,\lambda_{\max}(\mathbf B,\mathbf A)\},
+			      \|\D|_{V_{\mathrm{out}}}\|_S^2
+			      =
+			      \max\{R^2,\lambda_{\max}(\mathbf B,\mathbf A)\},
 		      \]
 		      donde $\lambda_{\max}(\mathbf B,\mathbf A)$ denota el máximo cociente de Rayleigh generalizado $v^*\mathbf Bv/v^*\mathbf Av$.
 	\end{enumerate}
@@ -1657,7 +1653,6 @@ En el caso puramente exterior, el Teorema~\ref{thm:umbral_puramente_exterior} da
 	Luego $I(V_{\mathrm{out}})\subset (A_{\mathrm{out}})$, y junto con la inclusión opuesta obtenemos
 	\[
 		I(V_{\mathrm{out}})=(A_{\mathrm{out}}).
-\qedhere
 	\]
 \end{proof}
 
