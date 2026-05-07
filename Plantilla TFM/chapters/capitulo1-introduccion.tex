@@ -3,13 +3,13 @@
 
 \section{Contexto y Motivación}
 
-La teoría de Polinomios Ortogonales (PO) es una rama clásica del análisis matemático con profundas aplicaciones en teoría de la aproximación, física matemática y métodos numéricos. Clásicamente, la teoría estándar consolidada por autores como Szegő estudia medidas de ortogonalidad soportadas en la recta real o en la circunferencia unidad. En estos contextos, el operador de multiplicación por la variable independiente (o la matriz de Jacobi asociada) suele ser un operador acotado definido sobre un espacio de Hilbert estándar $L^2(\mu)$.
+La teoría de Polinomios Ortogonales (PO) es una rama clásica del análisis matemático con profundas aplicaciones en teoría de la aproximación, física matemática y métodos numéricos. La teoría estándar, consolidada por autores como Szegő, estudia medidas de ortogonalidad soportadas en la recta real o en la circunferencia unidad. En estos contextos, el operador de multiplicación por la variable independiente es un operador acotado definido sobre un espacio de Hilbert estándar $L^2(\mu)$; lo mismo ocurre con la matriz de Jacobi asociada.
 
 Sin embargo, en las últimas décadas ha surgido un gran interés en el estudio de los llamados \textbf{Polinomios Ortogonales de Sobolev}. A diferencia del caso estándar, estos polinomios son ortogonales respecto a un producto interno que involucra no solo evaluaciones de las funciones, sino también evaluaciones de sus derivadas. Formalmente, si $\mu$ es una medida positiva, el producto interno de Sobolev toma la forma general:
 \begin{equation}
 	\langle p, q \rangle_S = \langle p, q \rangle_{L^2(\mu)} + \sum_{k=1}^N \lambda_k p'(c_k) \overline{q'(c_k)},
 \end{equation}
-donde $\{c_k\}$ son puntos discretos en el plano complejo y $\lambda_k > 0$ son pesos.
+donde $\{c_k\}$ son puntos discretos en el plano complejo y $\lambda_k > 0$ son pesos. En la mayoría de este trabajo, salvo indicación explícita, tomaremos $\lambda_k = 1$ como caso modelo.
 
 La introducción de derivadas en la métrica cambia radicalmente la geometría del espacio de Hilbert subyacente. Una de las consecuencias más notables, y que constituye el núcleo de este trabajo, es el comportamiento del \textbf{operador multiplicación}. Mientras que en la teoría clásica este operador es acotado y, según el contexto, autoadjunto o unitario, en los espacios de Sobolev discretos su comportamiento depende críticamente de la ubicación de los puntos $c_k$ respecto al soporte de la medida $\mu$.
 
@@ -176,7 +176,7 @@ En el caso concreto estudiado en este trabajo, tomaremos como componente continu
 
 El comportamiento del espacio $\mathcal{H}$ y, en consecuencia, la estabilidad numérica de los ceros de los polinomios ortogonales, depende críticamente de la posición de los puntos $c_k$ respecto al soporte de la medida $\mu$.
 
-Denotamos por $R$ al radio del disco minimal que contiene al soporte de la medida $\mu$ (o el radio esencial en caso de medidas con soporte no compacto).
+Denotamos por $R := R(\mu)$ al radio esencial del soporte de la medida $\mu$ (véase la Definición~\ref{def:radio_esencial}).
 
 \begin{defn}[Funcionales de Evaluación Algebraicos]
 	Para cualquier $\xi \in \C$, definimos el funcional de evaluación lineal sobre el espacio de polinomios $\delta_\xi : \Poly \to \C$ como $\delta_\xi(p) = p(\xi)$. Análogamente, definimos la evaluación de la derivada como $\delta'_\xi(p) = p'(\xi)$.
@@ -218,22 +218,38 @@ Basándonos en la geometría de los puntos respecto al soporte continuo, clasifi
 
 \begin{defn}[Puntos BPE-derivada y puntos $\delta$-singulares]\label{def:class_points_new}
 	Para un producto de Sobolev discreto $\langle\cdot,\cdot\rangle_S$
-	fijado, dividimos el conjunto de masas discretas como
-	$C=I_{\mathrm{in}}\cup I_{\mathrm{out}}$, donde:
+	fijado, dividimos el conjunto de índices
+	\[
+		\mathcal I=I_{\mathrm{in}}\sqcup I_{\mathrm{out}},
+	\]
+	donde:
 	\begin{itemize}
 		\item $I_{\mathrm{in}}:=\{k:c_k\text{ no es }\delta\text{-singular}\}$
 		      (puntos donde $\delta_{c_k}$ y $\delta'_{c_k}$ son ambos acotados
 		      respecto a $\|\cdot\|_S$).
 		\item $I_{\mathrm{out}}:=\{k:c_k\text{ es }\delta\text{-singular}\}$.
 	\end{itemize}
+	Denotamos por
+	\[
+		C_{\mathrm{in}}:=\{c_k:k\in I_{\mathrm{in}}\},
+		\qquad
+		C_{\mathrm{out}}:=\{c_k:k\in I_{\mathrm{out}}\}
+	\]
+	a los conjuntos de puntos correspondientes.
 	Sea $m=|I_{\mathrm{out}}|$.
 \end{defn}
+
+Nótese que $I_{\mathrm{in}}$ e $I_{\mathrm{out}}$ están definidos \emph{a priori} en términos de la noción analítica de $\delta$-singularidad; la caracterización geométrica de estos conjuntos en el caso modelo de Lebesgue se establece como resultado en el Teorema~\ref{thm:equivalencia_lebesgue}.
 
 \begin{rmk}[Compatibilidad con la versión anterior]\label{rem:compatibilidad_class_points}
 	En el caso modelo (Lebesgue normalizada en $\mathbb{S}_R$), por el
 	Teorema~\ref{thm:equivalencia_lebesgue},
 	\[
-		I_{\mathrm{in}}=\{k:|c_k|<R\},\qquad I_{\mathrm{out}}=\{k:|c_k|\ge R\}.
+		I_{\mathrm{in}}=\{k:|c_k|<R\},\qquad I_{\mathrm{out}}=\{k:|c_k|\ge R\},
+	\]
+	y por tanto
+	\[
+		C_{\mathrm{in}}=\{c_k:|c_k|<R\},\qquad C_{\mathrm{out}}=\{c_k:|c_k|\ge R\}.
 	\]
 	Esto recupera exactamente la clasificación geométrica usada en el TFM
 	original. La nueva definición es estrictamente más general.
@@ -249,9 +265,9 @@ Esta distinción entre $I_{\mathrm{in}}$ y $I_{\mathrm{out}}$ constituye la base
 	Equivalentemente, por el Teorema de Representación de Riesz, esto corresponde a la existencia de un núcleo reproductor $K_a \in \overline{\Poly}^{L^2(\mu)}$ tal que $p(a) = \langle p, K_a \rangle_{L^2(\mu)}$ para todo $p \in \Poly$.
 \end{defn}
 
-En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}$ y $I_{\mathrm{out}}$ se interpreta como una dicotomía de continuidad de evaluaciones. Para $k\in I_{\mathrm{in}}$, la evaluación puntual y la evaluación de la derivada son continuas (véanse la Proposición siguiente y el Lema~\ref{lema:ABPE_derivada}). En cambio, en el régimen exterior no-BPE la evaluación puntual deja de ser continua respecto a la norma $L^2(\mu)$ de la componente continua. Esta pérdida de continuidad es precisamente la que obliga, más adelante, a reemplazar el enfoque topológico por uno algebraico en el estudio del operador de multiplicación.
+En el contexto de nuestro problema, la distinción entre los índices $I_{\mathrm{in}}$ y $I_{\mathrm{out}}$ ---y, equivalentemente, entre los conjuntos de puntos $C_{\mathrm{in}}$ y $C_{\mathrm{out}}$--- se interpreta como una dicotomía de continuidad de evaluaciones. Para $k\in I_{\mathrm{in}}$ en el caso modelo de Lebesgue en circunferencia (donde $|c_k|<R$), tanto la evaluación puntual como la de la derivada son continuas (véanse la Proposición siguiente y el Lema~\ref{lema:ABPE_derivada}). En cambio, en el régimen exterior no-BPE la evaluación puntual deja de ser continua respecto a la norma $L^2(\mu)$ de la componente continua. Esta pérdida de continuidad es precisamente la que obliga, más adelante, a reemplazar el enfoque topológico por uno algebraico en el estudio del operador de multiplicación.
 
-\begin{prop}[Acotación y Extensión Continua en el Interior]
+\begin{prop}[Acotación y Extensión Continua en el Interior]\label{prop:acotacion_extension_continua}
 	Para los puntos interiores ($k \in I_{\mathrm{in}}$), el funcional de evaluación $\delta_{c_k}$ es continuo respecto a la norma de Sobolev $\|\cdot\|_S$. En consecuencia, puede extenderse de forma única a un funcional lineal acotado en todo el espacio de Hilbert $\mathcal{H}$, y su núcleo es un subespacio cerrado.
 \end{prop}
 
@@ -341,7 +357,7 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 \end{prop}
 
 \begin{proof}
-	\textbf{Caso 1: $|c|>R$.}
+	\emph{Caso 1: $|c|>R$.}
 	Definimos, para $n\ge 1$,
 	\[
 		Q_n(z):=(n+1)c\,z^n-nz^{n+1}.
@@ -391,7 +407,7 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 	\]
 	porque $|c|>R$. En consecuencia, $\psi_c$ no es acotado.
 
-	\textbf{Caso 2: $|c|=R$.}
+	\emph{Caso 2: $|c|=R$.}
 	Para $n\ge1$ definimos
 	\[
 		\alpha_n:=\frac{\sum_{k=1}^{n}k}{\sum_{k=1}^{n}k^2}=\frac{3}{2n+1},
@@ -445,23 +461,41 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 	lo que haría a $\psi_c$ acotado, contradicción. Luego $\D$ no es acotado y, por definición, $Q_0(\D)=\|\D\|_S=\infty$.
 \end{proof}
 
-\begin{prop}[Caracterización equivalente vía $\psi_c$]\label{prop:caracterizacion_psi_c}
+\begin{prop}[Implicaciones válidas entre $\delta$-singularidad, $\delta_c$ y $\psi_c$]\label{prop:caracterizacion_psi_c}
 	Sea $c\in\C$ y consideremos el funcional
 	\[
 		\psi_c:\Poly\to\C,\qquad \psi_c(p)=p(c)+cp'(c)=(\D p)'(c).
 	\]
-	Entonces son equivalentes:
+	Entonces se verifican las siguientes implicaciones:
 	\begin{enumerate}
-		\item $c$ es $\delta$-singular respecto a $\|\cdot\|_S$;
-		\item $\psi_c$ no es acotado respecto a $\|\cdot\|_S$;
-		\item $\delta_c$ no es acotado en $\Poly$ respecto a $\|\cdot\|_S$.
+		\item Si $c$ es $\delta$-singular respecto a $\|\cdot\|_S$, entonces $\delta_c$ no es acotado en $\Poly$ respecto a $\|\cdot\|_S$.
+		\item Si $c$ es $\delta$-singular respecto a $\|\cdot\|_S$, entonces $\psi_c$ no es acotado respecto a $\|\cdot\|_S$.
+		\item Si $\delta'_c$ es acotado respecto a $\|\cdot\|_S$ y $\delta_c$ no es acotado en $\Poly$, entonces $c$ es $\delta$-singular.
+		\item Si $\delta'_c$ es acotado respecto a $\|\cdot\|_S$ y $\psi_c$ no es acotado, entonces $c$ es $\delta$-singular.
 	\end{enumerate}
 \end{prop}
 
 \begin{proof}
-	\textbf{(1)$\Rightarrow$(3):} es inmediato, pues $N_c\subset\Poly$.
+	La primera implicación es inmediata, pues la no acotación de $\delta_c|_{N_c}$ implica la no acotación de $\delta_c$ sobre el espacio mayor $\Poly$.
 
-	\textbf{(3)$\Rightarrow$(1):} sea $(p_n)\subset\Poly$ con
+	Para la segunda, si $c$ es $\delta$-singular, existe una sucesión $(p_n)\subset N_c$ tal que
+	\[
+		\|p_n\|_S\to 0,
+		\qquad
+		|p_n(c)|=1
+		\quad (n\ge1).
+	\]
+	Como $p_n'(c)=0$, se tiene
+	\[
+		\psi_c(p_n)=p_n(c)+cp_n'(c)=p_n(c),
+	\]
+	de donde
+	\[
+		\frac{|\psi_c(p_n)|}{\|p_n\|_S}=\frac{|p_n(c)|}{\|p_n\|_S}=\frac1{\|p_n\|_S}\xrightarrow[n\to\infty]{}\infty.
+	\]
+	Por tanto, $\psi_c$ no es acotado.
+
+	Probemos ahora la tercera implicación. Sea $(p_n)\subset\Poly$ con
 	$\|p_n\|_S\le 1$ y $|p_n(c)|\to\infty$. Definimos
 	\[
 		q_n(z):=p_n(z)-p_n'(c)(z-c).
@@ -471,20 +505,23 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 	\[
 		q_n(c)=p_n(c).
 	\]
-	Solo falta acotar $\|q_n\|_S$. Como la proyección sobre $N_c$ respecto de la descomposición
-	$\Poly=N_c\oplus\operatorname{span}\{z-c\}$ es acotada (por ser $N_c$ de codimensión
-	finita), existe $C>0$ tal que $\|q_n\|_S\le C\|p_n\|_S$ para toda la sucesión
-	construida. En particular, la sucesión $(q_n)$ está acotada en $\|\cdot\|_S$
-	y cumple $q_n(c)=p_n(c)=1$. Normalizando $\tilde q_n=q_n/\|q_n\|_S$ se obtiene
-	$\tilde q_n\in N_c$, $\|\tilde q_n\|_S=1$ y $|\tilde q_n(c)|\to\infty$,
-	lo cual prueba que $c$ es $\delta$-singular.
+	Como $\delta'_c$ es acotado, existe $A_c>0$ tal que
+	$|p_n'(c)|\le A_c\|p_n\|_S\le A_c$ para todo $n$. Por consiguiente,
+	\[
+		\|q_n\|_S
+		\le
+		\|p_n\|_S+|p_n'(c)|\,\|z-c\|_S
+		\le
+		1+A_c\|z-c\|_S.
+	\]
+	La sucesión $(q_n)$ queda uniformemente acotada en $\|\cdot\|_S$, pertenece a $N_c$ y satisface $|q_n(c)|=|p_n(c)|\to\infty$. Luego
+	\[
+		\sup_{q\in N_c\setminus\{0\}}\frac{|q(c)|}{\|q\|_S}=\infty,
+	\]
+	es decir, $c$ es $\delta$-singular.
 
-	\textbf{(2)$\iff$(3):} Si $\delta'_c$ es acotado, entonces
-	$\psi_c=\delta_c+c\delta'_c$ es no acotado si y solo si $\delta_c$ lo es.
-	Si $\delta'_c$ no es acotado, entonces \emph{a fortiori} $\psi_c$ es no
-	acotado (pues $\psi_c$ extiende a $\delta_c$ sobre $N_c$ más el término
-	$c\delta'_c$). Por tanto, en ambos casos, $\psi_c$ no acotado
-	$\Longleftrightarrow$ $\delta_c$ no acotado en $\Poly$.
+	Finalmente, si $\delta'_c$ es acotado y $\psi_c$ no es acotado, entonces
+	$\delta_c=\psi_c-c\delta'_c$ también es no acotado. Aplicando la tercera implicación ya demostrada, concluimos que $c$ es $\delta$-singular.
 \end{proof}
 
 \begin{thm}[Equivalencia $\delta$-singular $\iff$ no-BPE en el caso Lebesgue]\label{thm:equivalencia_lebesgue}
@@ -513,10 +550,26 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 	\cite{duren1970theory,szego1975orthogonal}.
 
 	\textbf{(2)$\Rightarrow$(1):} suponemos $|c|\ge R$.
-	Por la Proposición~\ref{prop:no_acotacion_modelo_exterior},
-	el funcional $\psi_c(p)=p(c)+cp'(c)=(\D p)'(c)$ no es acotado
-	respecto a $\|\cdot\|_S$. Por la
-	Proposición~\ref{prop:caracterizacion_psi_c}, $c$ es $\delta$-singular.
+	En la prueba de la Proposición~\ref{prop:no_acotacion_modelo_exterior}
+	se construyen explícitamente polinomios con derivada nula en $c$ y con
+	crecimiento descontrolado en la evaluación en $c$:
+	\begin{itemize}
+		\item si $|c|>R$, los polinomios $Q_n$ satisfacen $Q_n'(c)=0$ y
+		      \[
+			      \frac{|Q_n(c)|^2}{\|Q_n\|_S^2}
+			      =
+			      \frac{|c|^{2n+2}}{(n+1)^2|c|^2R^{2n}+n^2R^{2n+2}}
+			      \xrightarrow[n\to\infty]{}\infty;
+		      \]
+		\item si $|c|=R$, los polinomios $P_n$ satisfacen $P_n'(c)=0$ y
+		      \[
+			      \frac{|P_n(c)|^2}{\|P_n\|_S^2}
+			      =
+			      \frac{(n+1)(n+2)}{2(2n+1)}
+			      \xrightarrow[n\to\infty]{}\infty.
+		      \]
+	\end{itemize}
+	En ambos casos, por la Definición~\ref{def:delta_singular}, el punto $c$ es $\delta$-singular.
 
 	\textbf{(1)$\Rightarrow$(2):} probamos el contrarrecíproco.
 	Suponemos $|c|<R$. Entonces $c$ es BPE para $L^2(\mu)$ (caso (3)
@@ -589,7 +642,7 @@ La memoria se organiza como sigue:
 
 	\item \textbf{Sección~\ref{sec:matricial}: Análisis Matricial y Comportamiento Asintótico.} Se analizan las representaciones matriciales de los operadores. Se estudia el comportamiento asintótico de las secciones finitas (matrices de Hessenberg) mediante la teoría de perturbaciones y los valores singulares, se demuestra la estabilización algebraica, y se introduce la desigualdad de Weyl-Horn para el conteo de ceros excepcionales.
 
-	\item \textbf{Sección~\ref{sec:ceros_acotacion}: Localización y Acotación Asintótica de los Ceros.} Se aplican los resultados obtenidos para acotar la ubicación de los ceros de los polinomios ortogonales. La sección se organiza en cuatro subsecciones: ceros como autovalores, acotación uniforme vía cuasi-ortogonalidad (vía clásica), la cadena estructural $Q_m$--Weyl-Horn--atracción (contribución novedosa), y la equivalencia y comparación entre ambos enfoques.
+	\item \textbf{Sección~\ref{sec:ceros_acotacion}: Localización y Acotación Asintótica de los Ceros.} Se aplican los resultados obtenidos para acotar la ubicación de los ceros de los polinomios ortogonales. La sección se organiza en cuatro subsecciones: ceros como autovalores, acotación uniforme vía cuasi-ortogonalidad, la cadena estructural $Q_m$--Weyl-Horn--atracción en el régimen estrictamente exterior, y la comparación entre ambos enfoques.
 
 	\item \textbf{Conclusiones y Líneas Futuras.} Se resumen las aportaciones principales del trabajo y se proponen vías abiertas para investigación futura.
 \end{itemize}
@@ -620,11 +673,13 @@ A lo largo de esta memoria se emplean sistemáticamente los siguientes símbolos
 		$c_k(\D)$                                                            & $k$-ésimo número de Gelfand de $\D$                                  \\
 		$\operatorname{codim}_{\mathcal{H}}$, $\operatorname{codim}_{\Poly}$ & Codimensión topológica y algebraica                                  \\
 		\midrule
-		$I_{\mathrm{in}}$, $I_{\mathrm{out}}$                                & Índices de átomos interiores y exteriores                            \\
-		$m=|I_{\mathrm{out}}|$                                               & Número de puntos $\delta$-singulares                                 \\
-		$c_k$                                                                & Ubicación del $k$-ésimo átomo discreto                               \\
+		$\mathcal I=\{1,\dots,N\}$                                         & Conjunto de índices de las masas discretas                           \\
+		$I_{\mathrm{in}}$, $I_{\mathrm{out}}$                                & Partición de $\mathcal I$ en índices interiores y exteriores        \\
+		$C_{\mathrm{in}}$, $C_{\mathrm{out}}$                                & Conjuntos de puntos $\{c_k:k\in I_{\mathrm{in}}\}$ y $\{c_k:k\in I_{\mathrm{out}}\}$ \\
+		$m=|I_{\mathrm{out}}|$                                               & Número de índices exteriores (equiv., puntos $\delta$-singulares)   \\
+		$c_k$                                                                & Ubicación del átomo discreto indexado por $k\in\mathcal I$         \\
 		$\delta_c$, $\delta'_c$                                              & Funcionales de evaluación puntual y de derivada                      \\
-		$\psi_k(p)$                                                          & $(\D p)'(c_k)=p(c_k)+c_kp'(c_k)$                                     \\
+		$\psi_k(p)$                                                          & Funcional $(\D p)'(c_k)=p(c_k)+c_kp'(c_k)$                           \\
 		$V_{\mathrm{out}}$                                                   & Subespacio estable $\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k)$     \\
 		\bottomrule
 	\end{tabular}

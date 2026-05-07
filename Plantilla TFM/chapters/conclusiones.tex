@@ -1,4 +1,31 @@
 % !TEX root = ../main.tex
-\chapter{Conclusiones y líneas futuras}
+\chapter{Conclusiones y líneas futuras}\label{sec:conclusiones}
 
-% Las conclusiones se redactarán una vez finalizado el contenido de los capítulos.
+% -------------------------------------------------------------
+\section{Resultados demostrados}
+% -------------------------------------------------------------
+
+En este trabajo se estudian polinomios ortogonales de Sobolev con medida de Lebesgue normalizada en la circunferencia y átomos discretos de primera derivada. Los resultados cerrados en esta memoria se agrupan en tres bloques:
+
+\begin{enumerate}
+	\item \textbf{Análisis espectral y topológico} (Capítulo~\ref{sec:espectral}). Se establecen la dicotomía de la codimensión del operador de Sobolev (Teoremas~\ref{thm:dicotomia_1} y~\ref{thm:dicotomia_N_general}) y la caracterización de los puntos $\delta$-singulares en el caso de Lebesgue sobre $\mathbb{S}_R$ mediante la equivalencia $\delta$-singular $\iff$ no-BPE (Teorema~\ref{thm:equivalencia_lebesgue}). Para el umbral de estabilización, el caso puramente exterior satisface $Q_m(\D)=R$ (Teorema~\ref{thm:exactitud_Qm_R}); en el caso mixto sigue abierto el valor exacto de $Q_m(\D)$, pero la restricción canónica $\D|_{V_{\mathrm{out}}}$ admite una caracterización exacta por autovalores generalizados en dimensión finita (Teorema~\ref{thm:caracterizacion_finita_vout_mixto}), lo que hace explícita la dependencia respecto de la configuración interior.
+
+	\item \textbf{Análisis matricial y asintótico} (Capítulo~\ref{sec:matricial}). Se demuestra que los ceros de los polinomios ortogonales coinciden con los autovalores de las secciones truncadas de la matriz de Hessenberg (Proposición~\ref{prop:autovalores_ceros}), se obtienen cotas para los valores singulares en términos de los números de Gelfand $Q_k$ (Proposición~\ref{prop:sigma_qk}), y se prueba que, en el régimen puramente exterior, a lo sumo $m$ ceros pueden escapar de $\overline{\mathbb{D}_R}$ (Teorema~\ref{thm:conteo_ceros}).
+
+	\item \textbf{Localización y acotación de ceros} (Capítulo~\ref{sec:ceros_acotacion}). Se obtiene una acotación uniforme de todos los ceros por la vía de cuasi-ortogonalidad (Teorema~\ref{thm:acotacion_ceros}). Además, en el régimen estrictamente exterior $|c_k|>R$, se demuestra la atracción uno a uno de los ceros excepcionales hacia los átomos exteriores (Teorema~\ref{thm:atraccion}) y, con ello, la acotación uniforme por la vía estructural $Q_m$ + Weyl--Horn + atracción (Teorema~\ref{thm:acotacion_via_Q_m}). La Proposición~\ref{prop:equivalencia_vias} compara ambas estrategias dentro de sus respectivos alcances.
+\end{enumerate}
+
+% -------------------------------------------------------------
+\section{Problemas abiertos y líneas futuras}
+% -------------------------------------------------------------
+
+El problema abierto principal ya no es la existencia de atracción en el régimen estrictamente exterior, sino el análisis del caso frontera $|c_k|=R$, donde la prueba del Teorema~\ref{thm:atraccion} deja de ser uniforme y requiere herramientas distintas. También permanece abierta la exactitud espectral del caso mixto: en esta memoria no se demuestra todavía el valor exacto de $Q_m(\D)$ cuando coexisten átomos interiores y exteriores, aunque sí se reduce la constante canónica $\|\D|_{V_{\mathrm{out}}}\|$ a un problema explícito de autovalores generalizados y se identifica que la optimización de $Q_m$ recorre una familia más amplia de subespacios admisibles.
+
+La estrategia en seis pasos desarrollada en la Sección~\ref{sec:cadena_Qm} queda así validada para el régimen estrictamente exterior y puede servir como guía para estudiar estos dos escenarios pendientes: el paso de modelo de un átomo, el sistema finito para las derivadas, la separación geométrica, la localización tipo Rouché y el cierre con Weyl--Horn ya fueron ejecutados en el caso probado, pero deberán adaptarse cuando aparezca la frontera o la interacción exacta con átomos interiores.
+
+Otras líneas de trabajo futuro incluyen:
+\begin{itemize}
+	\item La extensión de la cadena estructural a productos de Sobolev con derivadas de orden superior o con soporte continuo general, siguiendo el marco del umbral $m_*$ esbozado en la Sección~\ref{sec:cuasi_ortogonalidad}.
+	\item El estudio del comportamiento asintótico de la distribución de ceros, en particular la convergencia débil de la medida contadora normalizada hacia la medida de equilibrio del soporte continuo, cuando la medida es regular.
+	\item La conexión entre la estabilización singular y la teoría de aproximación Padé--Sobolev, que podría proporcionar herramientas analíticas alternativas para los casos abiertos de frontera y de exactitud en el régimen mixto.
+\end{itemize}

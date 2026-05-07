@@ -24,15 +24,7 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 \section{Acotación uniforme vía cuasi-ortogonalidad}\label{sec:cuasi_ortogonalidad}
 % -------------------------------------------------------------
 
-\begin{rmk}[La clase $\mathrm{Reg}$ y la relevancia asintótica]
-	Sea $\mu$ una medida de Borel positiva con soporte compacto $S(\mu) \subset \mathbb{C}$ regular desde el punto de vista de la teoría del potencial. Denotemos por $Q_n$ al polinomio ortogonal mónico de grado $n$ respecto a $\mu$. Diremos que $\mu$ pertenece a la clase $\mathrm{Reg}$ si
-	\[
-		\lim_{n \to \infty} \|Q_n\|_{L^2(\mu)}^{1/n} = \operatorname{cap}(S(\mu)),
-	\]
-	donde $\operatorname{cap}(S(\mu))$ denota la capacidad logarítmica del soporte.
-
-	Cuando la medida continua $\mu_0$ es regular, la teoría clásica de polinomios ortogonales garantiza, bajo las hipótesis habituales sobre el soporte, que la medida contadora normalizada de ceros de los polinomios ortogonales converge débilmente hacia la medida de equilibrio de $S(\mu_0)$ \cite{stahl1992general}. Por ello, la regularidad de la componente continua constituye la referencia natural frente a la cual se mide el efecto de las perturbaciones de Sobolev. En este trabajo no exigimos explícitamente que $\mu$ sea regular, ya que las cotas de localización que obtenemos son válidas para cualquier medida de Borel positiva con soporte compacto.
-\end{rmk}
+Cuando la medida continua es regular en el sentido de la teoría del potencial, la teoría clásica garantiza la convergencia de la medida contadora de ceros hacia la medida de equilibrio \cite{stahl1992general}. Las cotas de localización que obtenemos en este capítulo son válidas para cualquier medida de Borel positiva con soporte compacto, sin necesidad de exigir regularidad.
 
 \begin{thm}[Acotación uniforme de los ceros]\label{thm:acotacion_ceros}
 	Sea $\mu$ una medida de Borel positiva con soporte compacto tal que $\operatorname{supp}(\mu) \subseteq \overline{\mathbb{D}_R(0)}$ con $R < \infty$. Sea $\langle \cdot, \cdot \rangle_S$ un producto interno de Sobolev definido sobre $\Poly$ como:
@@ -45,10 +37,13 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 		\qquad
 		L = \deg A = \sum_{k=1}^N (j_k+1).
 	\]
-	Entonces, para todo $n \ge L+1$, el polinomio $p_n$ es cuasi-ortogonal de orden $L$ respecto de la medida compleja
+	Supongamos además que los resultados de localización de ceros citados en
+	\cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev} se aplican a la
+	medida compleja compactamente soportada
 	\[
 		d\nu(z)=\overline{A(z)}\,d\mu(z),
 	\]
+	y a la forma cuasi-ortogonal no degenerada que induce. Entonces, para todo $n \ge L+1$, el polinomio $p_n$ es cuasi-ortogonal de orden $L$ respecto de $\nu$,
 	y, en consecuencia, existe un compacto $K \subset \mathbb{C}$, independiente de $n$, tal que todos los ceros de $p_n$ pertenecen a $K$. En particular, la familia de ceros de los polinomios ortogonales de Sobolev es uniformemente acotada.
 \end{thm}
 
@@ -67,14 +62,14 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 	\]
 	Esto prueba que $p_n$ es cuasi-ortogonal de orden $L$ respecto de la medida compleja compactamente soportada $\nu$.
 
-	La localización de ceros para polinomios ortogonales de Sobolev y, más generalmente, para polinomios cuasi-ortogonales de orden fijo respecto de medidas de soporte compacto implica entonces que los ceros de $p_n$ permanecen en un compacto independiente de $n$; véanse \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}. En consecuencia, existe un compacto $K \subset \mathbb{C}$ tal que todo cero de $p_n$ pertenece a $K$ para todo $n$.
+	Bajo la hipótesis bibliográfica explícita del enunciado, la localización de ceros para polinomios cuasi-ortogonales de orden fijo respecto de esta medida compleja compactamente soportada implica que los ceros de $p_n$ permanecen en un compacto independiente de $n$; véanse \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}. En consecuencia, existe un compacto $K \subset \mathbb{C}$ tal que todo cero de $p_n$ pertenece a $K$ para todo $n$.
 \end{proof}
 
 \begin{rmk}[Vía clásica de cuasi-ortogonalidad]\label{rem:via_clasica}
 	Esta vía, basada en cuasi-ortogonalidad de orden fijo, es la prueba clásica de la acotación uniforme \cite{lopez1999zero,marcellan2015sobolev}. La Sección~\ref{sec:cadena_Qm} presenta una vía alternativa estructuralmente más informativa.
 \end{rmk}
 
-\begin{prop}[Marco de generalización vía umbral singular (enunciado de programa)]\label{prop:marco_generalizacion_umbral_singular}
+\begin{rmk}[Marco de generalización vía umbral singular]\label{prop:marco_generalizacion_umbral_singular}
 	Sea $\langle\cdot,\cdot\rangle_S$ un producto de Sobolev discreto con soporte continuo compacto y sea
 	\[
 		m_*:=\min\{k\ge 0: Q_k(\D)<\infty\}.
@@ -83,10 +78,10 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 	entonces la familia de ceros de los polinomios ortogonales de Sobolev asociados es uniformemente acotada.
 	En particular, el mismo esquema de umbral ligado a los puntos $\delta$-singulares puede emplearse para productos de Sobolev más generales que el caso Lebesgue más $n$ átomos.
 	Cuando además se disponga de una identificación asintótica entre $Q_{m_*}(\D)$ y magnitudes singulares de las truncaciones, este criterio admite una lectura computacional.
-\end{prop}
+\end{rmk}
 
 \begin{rmk}[Enlace con la cadena estructural]\label{rem:enlace_marco_Qm}
-	La proposición anterior establece un criterio general de acotación vía el umbral $m_*$. En la Sección~\ref{sec:cadena_Qm} se desarrolla la cadena estructural completa ---estabilización, Weyl--Horn, atracción--- que permite, en el caso particular del producto de Sobolev discreto, identificar $m_*$ con el número de puntos $\delta$-singulares y obtener una cota explícita de conteo.
+	La observación anterior establece un criterio general de acotación vía el umbral $m_*$. En la Sección~\ref{sec:cadena_Qm} se desarrolla la cadena estructural completa ---estabilización, Weyl--Horn, atracción--- que permite, en el caso particular del producto de Sobolev discreto, identificar $m_*$ con el número de puntos $\delta$-singulares y obtener una cota explícita de conteo.
 \end{rmk}
 
 \begin{rmk}[Orden efectivo de la cuasi-ortogonalidad]
@@ -94,7 +89,7 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 	\[
 		L = \sum_{k=1}^N (j_k+1)
 	\]
-	es el número natural de restricciones algebraicas necesarias para anular todos los términos discretos. En el caso particular tratado con mayor detalle en este trabajo, donde solo intervienen primeras derivadas, se tiene $j_k=1$ para todo $k$ y, por tanto, $L=2N$. Así, la acotación uniforme de los ceros procede de una cuasi-ortogonalidad de orden fijo $2N$, no de una cota matricial del tipo ``a lo sumo $N$ ceros exteriores''.
+	es el número natural de restricciones algebraicas necesarias para anular todos los términos discretos. En el caso particular tratado con mayor detalle en este trabajo, donde solo intervienen primeras derivadas, se tiene $j_k=1$ para todo $k$ y, por tanto, $L=2N$. En particular, la vía estructural basada en $Q_m$ proporciona una cota de conteo más fina: a lo sumo $m$ ceros excepcionales (donde $m \le N$), mientras que la vía clásica de cuasi-ortogonalidad de orden $L=2N$ garantiza acotación global pero no proporciona un conteo explícito de ceros exteriores.
 \end{rmk}
 
 \begin{rmk}[Localización más fina]
@@ -104,6 +99,10 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 % -------------------------------------------------------------
 \section{La cadena estructural: \texorpdfstring{$Q_m$}{Q_m}, Weyl--Horn y atracción}\label{sec:cadena_Qm}
 % -------------------------------------------------------------
+
+\begin{rmk}[Retorno al caso particular]
+	A partir de esta sección, salvo indicación explícita en contrario, volvemos al caso particular del producto de Sobolev discreto con medida de Lebesgue normalizada en $\mathbb{S}_R$ y átomos de primera derivada ($j_k=1$), estudiado en los Capítulos~\ref{sec:espectral} y~\ref{sec:matricial}.
+\end{rmk}
 
 \begin{cor}[Estabilización singular en el índice $m$]\label{cor:estabilizacion}
 	Para los valores singulares de las secciones truncadas $\mathbf{D}_n$,
@@ -115,55 +114,592 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 \end{cor}
 
 \begin{proof}
-	Por la Proposición~\ref{prop:sigma_qk} del Capítulo~\ref{sec:matricial}, los valores singulares de las truncaciones satisfacen $\sigma_{k,n}\le Q_k(\D)+\varepsilon$ para $n$ suficientemente grande. Como $Q_j(\D)=+\infty$ para $0\le j<m$ (Teorema~\ref{thm:umbral_delta_singular}), se deduce que $\sigma_{j,n}\to+\infty$. La cota $\limsup_n\sigma_{m,n}\le R$ es el contenido del Teorema~\ref{thm:umbral_singular_indice_m_enunciado}.
-\end{proof}
-
-Por el Corolario~\ref{cor:estabilizacion}, los valores singulares estabilizan en el índice $m$. Estos resultados de estabilización singular se combinan con la desigualdad de Weyl--Horn (Lema~\ref{lem:weyl_horn}) para obtener una cota de conteo para los ceros excepcionales (Teorema~\ref{thm:conteo_ceros}). El paso siguiente es garantizar que esos ceros excepcionales no divergen, sino que son atraídos hacia los átomos exteriores.
-
-\begin{conj}[Atracción de ceros excepcionales hacia los átomos exteriores]\label{conj:atraccion}
-	En el marco considerado (medida de Lebesgue normalizada en $\mathbb{S}_R$ más átomos de primera derivada en $c_1,\dots,c_N$), sea $m=|I_{\mathrm{out}}|$.
-	Para todo $\varepsilon>0$ existe $n_\varepsilon\in\mathbb{N}$ tal que, para todo $n\ge n_\varepsilon$, los ceros de $\phi_{n+1}$ con módulo mayor que $R+\varepsilon$ pertenecen a la unión de bolas
+	La divergencia
 	\[
-		\bigcup_{k\in I_{\mathrm{out}}}\overline{\mathbb{D}_{\varepsilon}(c_k)}.
+		\sigma_{j,n}\xrightarrow[n\to\infty]{}+\infty,
+		\qquad 0\le j\le m-1,
 	\]
-	Más aún, para cada $k\in I_{\mathrm{out}}$ con $\varepsilon$ suficientemente pequeño, exactamente un cero de $\phi_{n+1}$ tiende a $c_k$ cuando $n\to\infty$.
-\end{conj}
-
-\begin{proof}[Esquema de prueba]
-	La prueba completa de esta conjetura no ha sido establecida en la bibliografía 
-	consultada para el caso exacto ``Lebesgue en circunferencia + primeras derivadas 
-	en puntos exteriores con atracción uno a uno''. El esquema natural consta de tres pasos:
-	\begin{enumerate}
-		\item La desigualdad de Weyl--Horn (Lema~\ref{lem:weyl_horn}) da el conteo: 
-		      a lo sumo $m$ ceros escapan del disco $\overline{\mathbb{D}_{R+\varepsilon}}$.
-		\item El principio de mínimo de potencial logarítmico fuerza a que los ceros 
-		      excepcionales no puedan acumularse fuera de $\{c_k:k\in I_{\mathrm{out}}\}$.
-		\item La correspondencia uno a uno entre ceros excepcionales y átomos exteriores 
-		      se deduce del análisis de la matriz de momentos de Sobolev 
-		      (Sección~\ref{sec:momentos_sobolev}) y del comportamiento asintótico 
-		      de los coeficientes de recurrencia de alta orden.
-	\end{enumerate}
-	La adaptación rigurosa de este esquema al caso Sobolev discreto queda planteada 
-	como línea abierta de investigación.
+	es exactamente la primera conclusión del Teorema~\ref{thm:umbral_singular_indice_m_enunciado}. La segunda conclusión de ese mismo teorema da
+	\[
+		\limsup_{n\to\infty}\sigma_{m,n}\le R.
+	\]
+	No interviene aquí ninguna deducción del tipo ``$\sigma_{j,n}\le +\infty$ implica divergencia''.
 \end{proof}
+
+Por el Corolario~\ref{cor:estabilizacion}, los valores singulares estabilizan en el índice $m$. Estos resultados se combinan con la desigualdad de Weyl--Horn (Lema~\ref{lem:weyl_horn}) para obtener una cota de conteo para los ceros excepcionales (Teorema~\ref{thm:conteo_ceros}). Falta ahora identificar su destino asintótico. En esta subsección cerramos ese paso en el régimen estrictamente exterior
+\[
+	|c_k|>R,\qquad k\in I_{\mathrm{out}},
+\]
+que es precisamente el marco donde la conjetura de atracción fue formulada con mayor fuerza.
+
+\begin{lem}[Sumas geométricas ponderadas]\label{lem:sumas_geometricas_ponderadas}
+	Para $\xi\in\mathbb C\setminus\{1\}$ y $n\ge1$ definimos
+	\[
+		S_n(\xi):=\sum_{j=1}^n j\xi^{j-1},
+		\qquad
+		T_n(\xi):=\sum_{j=1}^n j^2\xi^{j-1}.
+	\]
+	Entonces
+	\[
+		S_n(\xi)=\frac{1-(n+1)\xi^n+n\xi^{n+1}}{(1-\xi)^2}
+	\]
+	y
+	\[
+		T_n(\xi)=\frac{1+\xi-(n+1)^2\xi^n+(2n^2+2n-1)\xi^{n+1}-n^2\xi^{n+2}}{(1-\xi)^3}.
+	\]
+	En particular, para todo compacto $K\subset\{\xi\in\mathbb C:|\xi|>1\}$,
+	\[
+		\frac{S_n(\xi)}{n\xi^n}\longrightarrow \frac{1}{\xi-1},
+		\qquad
+		\frac{T_n(\xi)}{n^2\xi^n}\longrightarrow \frac{1}{\xi-1}
+	\]
+	uniformemente en $K$.
+\end{lem}
+
+\begin{proof}
+	Las identidades cerradas se obtienen derivando las sumas geométricas finitas
+	\[
+		\sum_{j=0}^n \xi^j=\frac{1-\xi^{n+1}}{1-\xi}
+	\]
+	y multiplicando luego por $\xi$ cuando corresponde. Si $|\xi|>1$, en las fórmulas anteriores los términos dominantes son $n\xi^{n+1}$ en $S_n$ y $-n^2\xi^{n+2}$ en $T_n$, de donde se siguen las dos convergencias. La uniformidad en compactos de $\{|\xi|>1\}$ es inmediata porque los denominadores $(\xi-1)$ quedan uniformemente separados de cero.
+\end{proof}
+
+\begin{lem}[Modelo de un átomo exterior]\label{lem:modelo_un_atomo_exterior}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		p'(c)\overline{q'(c)},
+		\qquad |c|>R,
+	\]
+	y sea $\pi_{n+1}$ el polinomio mónico ortogonal de Sobolev de grado $n+1$.
+	Entonces
+	\[
+		\pi_{n+1}(z)=z^{n+1}-\alpha_n\sum_{j=1}^n j\frac{\overline c^{\,j-1}}{R^{2j}}z^j,
+	\]
+	donde
+	\[
+		\alpha_n=
+		\frac{(n+1)c^n}{1+\dfrac1{R^2}\sum_{j=1}^n j^2\left(\dfrac{|c|^2}{R^2}\right)^{j-1}}.
+	\]
+	Además,
+	\[
+		\frac{\pi_{n+1}(z)}{z^{n+1}}
+		\xrightarrow[n\to\infty]{}
+		\frac{\overline c\,(z-c)}{\overline c z-R^2}
+	\]
+	uniformemente en compactos de $\{z\in\mathbb C:|z|>R\}$. En consecuencia, para todo $\varepsilon>0$ suficientemente pequeño, $\pi_{n+1}$ tiene exactamente un cero en $\overline{\mathbb D_\varepsilon(c)}$ y ese cero converge a $c$.
+\end{lem}
+
+\begin{proof}
+	Escribimos
+	\[
+		\pi_{n+1}(z)=z^{n+1}+\sum_{j=0}^n a_{j,n}z^j.
+	\]
+	La ortogonalidad frente a $1$ da $a_{0,n}=0$, porque la parte derivativa de $1$ es nula y $z^{n+1}$ es ortogonal a las constantes en $L^2(\mathbf m_{0;R})$.
+
+	Para $1\le k\le n$, la ortogonalidad frente a $z^k$ da
+	\[
+		0=\langle \pi_{n+1},z^k\rangle_S
+		=a_{k,n}R^{2k}+\pi_{n+1}'(c)\,k\overline c^{\,k-1},
+	\]
+	de donde
+	\[
+		a_{k,n}=-\pi_{n+1}'(c)\,k\frac{\overline c^{\,k-1}}{R^{2k}}.
+	\]
+	Sustituyendo en la identidad para la derivada en $c$ se obtiene
+	\begin{align*}
+		\pi_{n+1}'(c)
+		&=(n+1)c^n+\sum_{j=1}^n j a_{j,n}c^{j-1}\\
+		&=(n+1)c^n-\pi_{n+1}'(c)\,\frac1{R^2}
+		\sum_{j=1}^n j^2\left(\frac{|c|^2}{R^2}\right)^{j-1},
+	\end{align*}
+	y por tanto $\pi_{n+1}'(c)=\alpha_n$. Esto prueba la fórmula exacta.
+
+	Sea ahora
+	\[
+		t=\frac{\overline c z}{R^2}.
+	\]
+	Como $|c|>R$ y trabajamos sobre compactos contenidos en $\{|z|>R\}$, se tiene $|t|>1$ uniformemente. La expresión anterior puede reescribirse como
+	\[
+		\frac{\pi_{n+1}(z)}{z^{n+1}}
+		=
+		1-
+		\frac{n\overline c^{\,n}\alpha_n}{R^{2n}}
+		\frac{1}{R^2}
+		\frac{S_n(t)}{nt^n}.
+	\]
+	Por el Lema~\ref{lem:sumas_geometricas_ponderadas},
+	\[
+		\frac{n\overline c^{\,n}\alpha_n}{R^{2n}}
+		\longrightarrow |c|^2-R^2,
+		\qquad
+		\frac{1}{R^2}\frac{S_n(t)}{nt^n}\longrightarrow \frac{1}{\overline c z-R^2},
+	\]
+	uniformemente en compactos de $\{|z|>R\}$. En consecuencia,
+	\[
+		\frac{\pi_{n+1}(z)}{z^{n+1}}
+		\longrightarrow
+		1-\frac{|c|^2-R^2}{\overline c z-R^2}
+		=
+		\frac{\overline c z-|c|^2}{\overline c z-R^2}
+		=
+		\frac{\overline c\,(z-c)}{\overline c z-R^2}.
+	\]
+
+	Tomemos ahora $\varepsilon>0$ con $\overline{\mathbb D_\varepsilon(c)}\subset\{|z|>R\}$. El límite tiene un cero simple en $c$ y no se anula sobre $\partial\mathbb D_\varepsilon(c)$. Por convergencia uniforme, para $n$ grande las funciones $\pi_{n+1}(z)/z^{n+1}$ y $\overline c(z-c)/(\overline c z-R^2)$ tienen el mismo número de ceros en $\mathbb D_\varepsilon(c)$; por el teorema de Rouché, ese número es $1$.
+
+	Además, el Teorema~\ref{thm:conteo_ceros} con $m=1$ garantiza que para todo $\eta>0$ fijo solo puede haber un cero con módulo mayor que $R+\eta$ cuando $n$ es grande. Ese cero es precisamente el localizado en $\mathbb D_\varepsilon(c)$, luego converge a $c$. El gate del diseño queda, por tanto, resuelto positivamente: el atractor correcto del modelo de un átomo es el propio átomo $c$.
+\end{proof}
+
+\begin{lem}[Sistema finito para los nodos exteriores]\label{lem:sistema_finito_atraccion}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		\sum_{\ell=1}^m p'(c_\ell)\overline{q'(c_\ell)},
+		\qquad |c_\ell|>R,
+	\]
+	con $c_1,\dots,c_m$ distintos, y sea $\pi_{n+1}(z)=z^{n+1}+\sum_{j=0}^n a_{j,n}z^j$ el polinomio mónico ortogonal de Sobolev.
+	Definiendo
+	\[
+		v_{\ell,n}:=\pi_{n+1}'(c_\ell),
+		\qquad 1\le \ell\le m,
+	\]
+	se tiene $a_{0,n}=0$ y, para $1\le j\le n$,
+	\[
+		a_{j,n}=-jR^{-2j}\sum_{\ell=1}^m v_{\ell,n}\overline c_\ell^{\,j-1}.
+	\]
+	Además, el vector $v_n=(v_{1,n},\dots,v_{m,n})^t$ satisface el sistema lineal
+	\[
+		\sum_{\ell=1}^m
+		\left[
+		\delta_{r\ell}+
+		\frac1{R^2}T_n\!\left(\frac{c_r\overline c_\ell}{R^2}\right)
+		\right]v_{\ell,n}
+		=(n+1)c_r^n,
+		\qquad 1\le r\le m.
+	\]
+\end{lem}
+
+\begin{proof}
+	La ortogonalidad frente a $1$ da, de nuevo, $a_{0,n}=0$. Para $1\le k\le n$,
+	\[
+		0=\langle \pi_{n+1},z^k\rangle_S
+		=a_{k,n}R^{2k}+k\sum_{\ell=1}^m v_{\ell,n}\overline c_\ell^{\,k-1},
+	\]
+	y por tanto
+	\[
+		a_{k,n}=-kR^{-2k}\sum_{\ell=1}^m v_{\ell,n}\overline c_\ell^{\,k-1}.
+	\]
+	Derivando y evaluando en $c_r$ obtenemos
+	\begin{align*}
+		v_{r,n}
+		&=(n+1)c_r^n+\sum_{j=1}^n ja_{j,n}c_r^{j-1}\\
+		&=(n+1)c_r^n-
+		\frac1{R^2}
+		\sum_{\ell=1}^m v_{\ell,n}
+		\sum_{j=1}^n j^2\left(\frac{c_r\overline c_\ell}{R^2}\right)^{j-1},
+	\end{align*}
+	que es exactamente el sistema anunciado.
+\end{proof}
+
+\begin{thm}[Atracción de ceros excepcionales hacia los átomos exteriores]\label{thm:atraccion}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		\sum_{k=1}^m p'(c_k)\overline{q'(c_k)},
+	\]
+	donde $c_1,\dots,c_m$ son distintos y satisfacen $|c_k|>R$ para todo $k$.
+	Sea $\phi_{n+1}$ el polinomio ortonormal de Sobolev de grado $n+1$.
+	Entonces, para todo $\varepsilon>0$ suficientemente pequeño, existe $n_\varepsilon\in\mathbb N$ tal que para todo $n\ge n_\varepsilon$ los ceros de $\phi_{n+1}$ fuera de $\overline{\mathbb D_{R+\varepsilon}}$ pertenecen a
+	\[
+		\bigcup_{k=1}^m\overline{\mathbb D_\varepsilon(c_k)},
+	\]
+	y cada disco $\overline{\mathbb D_\varepsilon(c_k)}$ contiene exactamente un cero.
+\end{thm}
+
+\begin{proof}
+	Sea $\pi_{n+1}$ el polinomio mónico asociado a $\phi_{n+1}$; ambos tienen los mismos ceros. Fijemos
+	\[
+		0<\varepsilon<\frac12\min\left\{\min_{r\ne \ell}|c_r-c_\ell|,\ \min_{1\le r\le m}(|c_r|-R)\right\}.
+	\]
+	En particular, los discos $\overline{\mathbb D_\varepsilon(c_r)}$ son disjuntos y están contenidos en $\{|z|>R+\varepsilon\}$.
+
+	Sea
+	\[
+		C=(C_{r\ell})_{1\le r,\ell\le m},
+		\qquad
+		C_{r\ell}:=\frac{1}{c_r\overline c_\ell-R^2}.
+	\]
+	Esta es una matriz de Cauchy con parámetros $x_r=c_r$ y $y_\ell=-R^2/\overline c_\ell$. Como los $c_r$ son distintos y también lo son los $R^2/\overline c_\ell$, se tiene $x_r-y_\ell\neq0$ para todo par $(r,\ell)$ y el determinante de Cauchy es no nulo; luego $C$ es invertible.
+
+	Definimos
+	\[
+		\beta_n:=\bigl(\beta_{1,n},\dots,\beta_{m,n}\bigr)^t,
+		\qquad
+		\beta_{\ell,n}:=\frac{n\overline c_\ell^{\,n}}{R^{2n}}v_{\ell,n}.
+	\]
+	Dividiendo el sistema del Lema~\ref{lem:sistema_finito_atraccion} por $nc_r^n$ obtenemos
+	\[
+		C_n\beta_n=\left(1+\frac1n\right)\mathbf 1,
+	\]
+	donde $\mathbf 1=(1,\dots,1)^t$ y
+	\[
+		(C_n)_{r\ell}
+		=
+		\delta_{r\ell}\frac{R^{2n}}{n^2|c_r|^{2n}}
+		+
+		\frac{1}{n^2R^2}
+		\frac{T_n\!\left(\dfrac{c_r\overline c_\ell}{R^2}\right)}{\left(\dfrac{c_r\overline c_\ell}{R^2}\right)^n}.
+	\]
+	Puesto que $\bigl|c_r\overline c_\ell/R^2\bigr|>1$, el Lema~\ref{lem:sumas_geometricas_ponderadas} da
+	\[
+		(C_n)_{r\ell}\longrightarrow \frac{1}{c_r\overline c_\ell-R^2}=C_{r\ell}.
+	\]
+	Por invertibilidad de $C$, también $C_n$ es invertible para $n$ grande y
+	\[
+		\beta_n\longrightarrow \beta:=C^{-1}\mathbf 1.
+	\]
+
+	Ahora usamos la fórmula exacta de los coeficientes:
+	\[
+		\frac{\pi_{n+1}(z)}{z^{n+1}}
+		=
+		1-
+		\sum_{\ell=1}^m
+		\beta_{\ell,n}
+		\frac{1}{R^2}
+		\frac{S_n\!\left(\dfrac{\overline c_\ell z}{R^2}\right)}{n\left(\dfrac{\overline c_\ell z}{R^2}\right)^n}.
+	\]
+	Si $K\subset\{|z|>R+\varepsilon\}$ es compacto, entonces $\bigl|\overline c_\ell z/R^2\bigr|>1$ uniformemente en $K$; por el Lema~\ref{lem:sumas_geometricas_ponderadas},
+	\[
+		\frac{1}{R^2}
+		\frac{S_n\!\left(\dfrac{\overline c_\ell z}{R^2}\right)}{n\left(\dfrac{\overline c_\ell z}{R^2}\right)^n}
+		\longrightarrow
+		\frac{1}{\overline c_\ell z-R^2}
+	\]
+	uniformemente en $K$. Concluimos que
+	\[
+		\frac{\pi_{n+1}(z)}{z^{n+1}}
+		\longrightarrow
+		F(z):=1-\sum_{\ell=1}^m\frac{\beta_\ell}{\overline c_\ell z-R^2}
+	\]
+	uniformemente en compactos de $\{|z|>R+\varepsilon\}$.
+
+	Además, para cada $r$,
+	\[
+		F(c_r)=1-\sum_{\ell=1}^m\frac{\beta_\ell}{c_r\overline c_\ell-R^2}=0,
+	\]
+	porque $C\beta=\mathbf 1$. Como $F(\infty)=1$ y todos sus polos $R^2/\overline c_\ell$ están dentro de $\mathbb D_R$, la unicidad de la descomposición racional implica
+	\[
+		F(z)=\prod_{\ell=1}^m\frac{z-c_\ell}{z-R^2/\overline c_\ell}.
+	\]
+	En particular, $F$ tiene exactamente un cero simple en cada $c_r$ y no tiene otros ceros en $\{|z|>R+\varepsilon\}$.
+
+	Sea ahora $\Gamma_r:=\partial\mathbb D_\varepsilon(c_r)$. Como $F$ no se anula sobre $\Gamma_r$, existe $\eta_r>0$ tal que $|F(z)|\ge\eta_r$ para todo $z\in\Gamma_r$. Por la convergencia uniforme, para $n$ suficientemente grande se cumple
+	\[
+		\left|\frac{\pi_{n+1}(z)}{z^{n+1}}-F(z)\right|<\eta_r,
+		\qquad z\in\Gamma_r.
+	\]
+	Aplicando Rouché sobre $\Gamma_r$, concluimos que $\pi_{n+1}$ y $F(z)z^{n+1}$ tienen el mismo número de ceros en $\mathbb D_\varepsilon(c_r)$; ese número es $1$.
+
+	Por tanto, para $n$ grande ya hemos localizado $m$ ceros de $\pi_{n+1}$ en la unión disjunta $\bigcup_{r=1}^m\mathbb D_\varepsilon(c_r)$, todos ellos con módulo mayor que $R+\varepsilon$. El Teorema~\ref{thm:conteo_ceros} afirma que fuera de $\overline{\mathbb D_{R+\varepsilon}}$ no puede haber más de $m$ ceros. Luego esos son exactamente todos los ceros exteriores. Como $\phi_{n+1}$ y $\pi_{n+1}$ comparten ceros, la afirmación vale para $\phi_{n+1}$.
+\end{proof}
+
+\begin{rmk}[Alcance del teorema de atracción]\label{rem:alcance_atraccion}
+	El Teorema~\ref{thm:atraccion} cierra por completo la conjetura en el régimen estrictamente exterior $|c_k|>R$. En la frontera $|c_k|=R$ el mecanismo macroscópico anterior deja de ser válido, porque el cociente $\pi_{n+1}(z)/z^{n+1}$ ya no converge a una función racional no trivial cuando $|z|>R$ queda fijo. Sin embargo, el análisis fino a escala $1/n$ sí produce atracción radial hacia los átomos frontera; ese es el contenido de los resultados siguientes.
+\end{rmk}
+
+\begin{lem}[Un átomo frontera: perfil límite a escala $1/n$]\label{lem:atomo_frontera_escala_n}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		p'(c)\overline{q'(c)},
+		\qquad |c|=R,
+	\]
+	y sea $\pi_{n+1}$ el polinomio mónico ortogonal de Sobolev de grado $n+1$. Definamos
+	\[
+		H(x):=e^x-3\int_0^1 t e^{xt}\,dt.
+	\]
+	Entonces, para todo compacto $K\subset\mathbb C$,
+	\[
+		G_n(x):=\frac{\pi_{n+1}\!\left(c\left(1+\frac{x}{n}\right)\right)}{c^{n+1}}
+		\longrightarrow H(x)
+	\]
+	uniformemente en $K$. Además, la ecuación
+	\[
+		e^x(x^2-3x+3)=3
+	\]
+	tiene una única raíz real positiva $x_*\in(1,2)$, y dicha raíz es simple. En consecuencia, existe una sucesión de ceros $z_n$ de $\pi_{n+1}$ tal que
+	\[
+		n\left(\frac{z_n}{c}-1\right)\longrightarrow x_*.
+	\]
+	En particular, $|z_n|>R$ para $n$ suficientemente grande.
+\end{lem}
+
+\begin{proof}
+	La fórmula exacta del Lema~\ref{lem:modelo_un_atomo_exterior} sigue siendo válida algebraicamente para $|c|=R$:
+	\[
+		\pi_{n+1}(z)=z^{n+1}-\alpha_n\sum_{j=1}^n j\frac{\overline c^{\,j-1}}{R^{2j}}z^j,
+	\qquad
+		\alpha_n=
+		\frac{(n+1)c^n}{1+\dfrac1{R^2}\sum_{j=1}^n j^2}.
+	\]
+	Escribiendo
+	\[
+		z=c\left(1+\frac{x}{n}\right),
+		\qquad
+		t_n(x):=1+\frac{x}{n},
+	\]
+	y usando que $\overline c=R^2/c$, obtenemos
+	\[
+		\frac{\pi_{n+1}(c t_n(x))}{c^{n+1}}
+		=
+		t_n(x)^{n+1}-\gamma_n\sum_{j=1}^n j t_n(x)^j,
+	\]
+	donde
+	\[
+		\gamma_n:=\frac{\alpha_n}{R^2c^n}=
+		\frac{n+1}{R^2+\sum_{j=1}^n j^2}.
+	\]
+	Como
+	\[
+		\sum_{j=1}^n j^2=\frac{n(n+1)(2n+1)}{6},
+	\]
+	se sigue que
+	\[
+		n^2\gamma_n\longrightarrow 3.
+	\]
+
+	Fijemos ahora un compacto $K\subset\mathbb C$. La convergencia
+	\[
+		t_n(x)^{n+1}\longrightarrow e^x
+	\]
+	es uniforme en $K$. Además,
+	\[
+		n^{-2}\sum_{j=1}^n j t_n(x)^j
+		=
+		\frac1n\sum_{j=1}^n \frac{j}{n}\left(1+\frac{x}{n}\right)^j
+	\]
+	y, uniformemente para $x\in K$ y $1\le j\le n$, se cumple
+	\[
+		\left(1+\frac{x}{n}\right)^j-e^{xj/n}\longrightarrow 0.
+	\]
+	Por tanto, la expresión anterior es una suma de Riemann para la función $t\mapsto t e^{xt}$ en $[0,1]$; en consecuencia,
+	\[
+		n^{-2}\sum_{j=1}^n j t_n(x)^j
+		\longrightarrow
+		\int_0^1 t e^{xt}\,dt
+	\]
+	uniformemente en $K$. Combinando ambas convergencias concluimos que $G_n\to H$ uniformemente en compactos.
+
+	Para estudiar las raíces positivas, observemos que
+	\[
+		\int_0^1 t e^{xt}\,dt=
+		\frac{e^x(x-1)+1}{x^2}
+		\qquad (x\neq 0),
+	\]
+	de modo que, para $x\neq 0$,
+	\[
+		H(x)=\frac{f(x)}{x^2},
+		\qquad
+		f(x):=e^x(x^2-3x+3)-3.
+	\]
+	Además,
+	\[
+		f'(x)=e^x x(x-1).
+	\]
+	Así, $f$ es estrictamente decreciente en $(0,1)$ y estrictamente creciente en $(1,\infty)$. Como
+	\[
+		f(1)=e-3<0,
+		\qquad
+		f(2)=e^2-3>0,
+	\]
+	el teorema del valor intermedio da una única raíz real positiva $x_*\in(1,2)$. Además, como $x_*>1$,
+	\[
+		f'(x_*)=e^{x_*}x_*(x_*-1)>0,
+	\]
+	y por tanto $x_*$ es simple.
+
+	Elijamos $\rho>0$ de modo que $\overline{\mathbb D_\rho(x_*)}$ no contenga otras raíces de $H$ y $H$ no se anule sobre $\partial\mathbb D_\rho(x_*)$. Por convergencia uniforme, para $n$ grande las funciones $G_n$ y $H$ tienen el mismo número de ceros en $\mathbb D_\rho(x_*)$; como $x_*$ es un cero simple de $H$, existe un único cero $x_n\in\mathbb D_\rho(x_*)$ de $G_n$, y necesariamente $x_n\to x_*$. Definiendo
+	\[
+		z_n:=c\left(1+\frac{x_n}{n}\right),
+	\]
+	se obtiene $\pi_{n+1}(z_n)=0$ y
+	\[
+		n\left(\frac{z_n}{c}-1\right)=x_n\longrightarrow x_*.
+	\]
+	Finalmente, como $x_*>0$, se tiene $\Re x_n>x_*/2>0$ para $n$ suficientemente grande, y entonces
+	\[
+		\left|1+\frac{x_n}{n}\right|^2
+		=
+		1+\frac{2\Re x_n}{n}+\frac{|x_n|^2}{n^2}>1.
+	\]
+	Luego $|z_n|=|c|\,\bigl|1+x_n/n\bigr|>R$ eventualmente.
+\end{proof}
+
+\begin{thm}[Varios átomos frontera: atracción local a escala $1/n$]\label{thm:atraccion_frontera}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		\sum_{k=1}^m p'(c_k)\overline{q'(c_k)},
+	\]
+	donde $c_1,\dots,c_m$ son distintos y satisfacen $|c_k|=R$ para todo $k$. Sea $x_*>0$ la raíz del Lema~\ref{lem:atomo_frontera_escala_n}. Entonces existe $\rho>0$ tal que, para cada $r\in\{1,\dots,m\}$, el polinomio mónico ortogonal de Sobolev $\pi_{n+1}$ tiene exactamente un cero $z_{r,n}$ en el vecindario escalado
+	\[
+		\left\{c_r\left(1+\frac{x}{n}\right): |x-x_*|<\rho\right\}
+	\]
+	cuando $n$ es suficientemente grande, y además
+	\[
+		n\left(\frac{z_{r,n}}{c_r}-1\right)\longrightarrow x_*.
+	\]
+	En particular, cada átomo frontera atrae un cero exterior.
+\end{thm}
+
+\begin{proof}
+	Las identidades del Lema~\ref{lem:sistema_finito_atraccion} siguen siendo válidas palabra por palabra en el caso $|c_k|=R$, ya que su demostración es puramente algebraica. Escribimos
+	\[
+		v_{\ell,n}:=\pi_{n+1}'(c_\ell),
+		\qquad
+		u_{\ell,n}:=c_\ell^{-n}v_{\ell,n},
+	\]
+	y fijamos
+	\[
+		D_n:=1+\frac1{R^2}\sum_{j=1}^n j^2.
+	\]
+	Si
+	\[
+		\omega_{r\ell}:=\frac{c_r\overline c_\ell}{R^2},
+	\]
+	entonces $\omega_{rr}=1$ y, para $r\neq \ell$, se tiene $\omega_{r\ell}\in\mathbb T\setminus\{1\}$ porque los $c_k$ son distintos. Dividiendo el sistema lineal de dicho lema por $c_r^n$ obtenemos
+	\[
+		D_n u_{r,n}
+		+
+		\frac1{R^2}\sum_{\ell\neq r}\omega_{r\ell}^{-n}T_n(\omega_{r\ell})u_{\ell,n}
+		=
+		n+1,
+		\qquad 1\le r\le m.
+	\]
+
+	Como el conjunto
+	\[
+		\{\omega_{r\ell}: 1\le r\neq \ell\le m\}
+	\]
+	es finito y está contenido en $\mathbb T\setminus\{1\}$, la fórmula cerrada de $T_n$ dada en el Lema~\ref{lem:sumas_geometricas_ponderadas} implica la cota uniforme
+	\[
+		|T_n(\omega_{r\ell})|\le C n^2,
+		\qquad r\neq \ell,
+	\]
+	para una constante $C>0$ independiente de $n$. En notación matricial,
+	\[
+		(D_n I+B_n)u_n=(n+1)\mathbf 1,
+	\]
+	donde $\|B_n\|=O(n^2)$. Como $D_n\sim n^3/(3R^2)$, se sigue que
+	\[
+		\|D_n^{-1}B_n\|=O\!\left(\frac1n\right).
+	\]
+	Por tanto, para $n$ grande la matriz $I+D_n^{-1}B_n$ es invertible y
+	\[
+		u_n=\frac{n+1}{D_n}(I+D_n^{-1}B_n)^{-1}\mathbf 1.
+	\]
+	Concluimos que, uniformemente en $1\le r\le m$,
+	\[
+		u_{r,n}=\frac{n+1}{D_n}+O\!\left(\frac1{n^3}\right),
+		\qquad
+		n^2u_{r,n}\longrightarrow 3R^2.
+	\]
+
+	Fijemos ahora $r\in\{1,\dots,m\}$ y un compacto $K\subset\mathbb C$. Para $x\in K$ escribimos $t_n(x)=1+x/n$. La fórmula exacta de los coeficientes da
+	\[
+		\frac{\pi_{n+1}(c_r t_n(x))}{c_r^{n+1}}
+		=
+		t_n(x)^{n+1}
+		-
+		\frac{t_n(x)}{R^2}
+		\sum_{\ell=1}^m u_{\ell,n}\omega_{r\ell}^{-n}S_n\!\bigl(\omega_{r\ell}t_n(x)\bigr).
+	\]
+	Separamos el término diagonal $\ell=r$ de los no diagonales. Para $\ell=r$, como $\omega_{rr}=1$,
+	\[
+		\frac{t_n(x)}{R^2}u_{r,n}S_n(t_n(x))
+		=
+		\frac{u_{r,n}}{R^2}\sum_{j=1}^n j t_n(x)^j
+		\longrightarrow
+		3\int_0^1 t e^{xt}\,dt
+	\]
+	uniformemente en $K$, exactamente como en el Lema~\ref{lem:atomo_frontera_escala_n}. Si $\ell\neq r$, entonces $\omega_{r\ell}\neq 1$; para $n$ grande, el conjunto
+	\[
+		\{\omega_{r\ell}t_n(x): x\in K\}
+	\]
+	permanece en un compacto disjunto de $1$, de modo que la fórmula cerrada de $S_n$ en el Lema~\ref{lem:sumas_geometricas_ponderadas} da la cota uniforme
+	\[
+		\sup_{x\in K}|S_n(\omega_{r\ell}t_n(x))|\le C_K n.
+	\]
+	Como $u_{\ell,n}=O(n^{-2})$, cada término no diagonal es $O(n^{-1})$ uniformemente en $K$, y por tanto desaparece en el límite.
+
+	Hemos probado así que, para cada $r$,
+	\[
+		\frac{\pi_{n+1}(c_r t_n(x))}{c_r^{n+1}}
+		\longrightarrow
+		H(x)=e^x-3\int_0^1 t e^{xt}\,dt
+	\]
+	uniformemente en compactos de $\mathbb C$. Sea $\rho>0$ tal que $\overline{\mathbb D_\rho(x_*)}$ no contenga más ceros de $H$ que el cero simple $x_*$. Entonces, por convergencia uniforme y Rouché, para $n$ grande existe exactamente un cero $x_{r,n}\in\mathbb D_\rho(x_*)$ del cociente anterior. Definiendo
+	\[
+		z_{r,n}:=c_r\left(1+\frac{x_{r,n}}{n}\right),
+	\]
+	obtenemos un cero de $\pi_{n+1}$ con
+	\[
+		n\left(\frac{z_{r,n}}{c_r}-1\right)=x_{r,n}\longrightarrow x_*.
+	\]
+	Además, como $x_* >0$, se tiene $|z_{r,n}|>R$ para $n$ suficientemente grande. Esto prueba la atracción local anunciada.\qedhere
+\end{proof}
+
+\begin{rmk}[Caso mixto: átomos interiores no generan ceros exteriores]\label{rem:atomos_interiores}
+	El Teorema~\ref{thm:atraccion} asume que todos los átomos discretos satisfacen $|c_k|>R$. En el caso mixto, donde algunos átomos cumplen $|c_k|<R$ (interiores) y otros $|c_k|>R$ (exteriores), la situación es conceptualmente la misma: únicamente los átomos exteriores son $\delta$-singulares y, por tanto, solo ellos contribuyen al índice $m=|I_{\mathrm{out}}|$.
+
+	En efecto, si $c$ es un átomo interior con $|c|<R$, entonces tanto $\delta_c$ como $\delta'_c$ son funcionales acotados en $\mathcal H$ (Proposición~\ref{prop:acotacion_extension_continua}). En consecuencia, $c$ no pertenece a $I_{\mathrm{out}}$ y no produce ningún cero excepcional fuera del disco $\overline{\mathbb D_R}$. Los átomos interiores sí influyen en la constante de finitud de $Q_m(\D)$ (Teorema~\ref{thm:umbral_caso_mixto}) y en la caracterización espectral finito-dimensional de la restricción canónica $\D|_{V_{\mathrm{out}}}$ (Teorema~\ref{thm:caracterizacion_finita_vout_mixto}), pero no alteran el conteo de ceros exteriores: siguen habiendo a lo sumo $m$ ceros fuera de $\overline{\mathbb D_{R+\varepsilon}}$, donde $m$ es el número de átomos exteriores.
+
+	Más aún, la vía de cuasi-ortogonalidad del Teorema~\ref{thm:acotacion_ceros} sigue aplicándose incondicionalmente en el caso mixto, proporcionando una acotación uniforme global sin necesidad de separar interiores de exteriores. Así pues, la presencia de átomos interiores no representa una obstrucción: simplemente modifica la constante de finitud del umbral sin afectar la estructura de ceros exteriores.
+\end{rmk}
 
 \begin{thm}[Acotación uniforme de ceros vía $Q_m$]\label{thm:acotacion_via_Q_m}
-	Bajo las hipótesis del Teorema~\ref{thm:conteo_ceros}, y asumiendo la Conjetura~\ref{conj:atraccion} sobre la atracción de ceros excepcionales hacia los átomos exteriores, sean $\phi_n$ los polinomios ortonormales de Sobolev.
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		+
+		\sum_{k=1}^m p'(c_k)\overline{q'(c_k)},
+	\]
+	donde $c_1,\dots,c_m$ son distintos y satisfacen $|c_k|>R$. Sean $\phi_n$ los polinomios ortonormales de Sobolev asociados.
 	Entonces existe un compacto $K\subset\mathbb{C}$ tal que todo cero de $\phi_n$, para todo $n\ge 1$, pertenece a $K$.
 \end{thm}
 
-\begin{rmk}[Dependencia condicional de la acotación uniforme]\label{rem:dependencia_condicional}
-	El Teorema~\ref{thm:acotacion_via_Q_m} depende crucialmente de la Conjetura~\ref{conj:atraccion}. En ausencia de esta conjetura, los Teoremas~\ref{thm:conteo_ceros} y~\ref{thm:control_singular_escape} garantizan únicamente que a lo sumo $m$ ceros pueden escapar del disco $\overline{\mathbb{D}_{R+\varepsilon}}$, pero no proporcionan una cota uniforme global para la localización de todos los ceros. La atracción hacia los átomos exteriores es el ingrediente que permite confinar los ceros excepcionales en bolas fijas alrededor de los puntos $\delta$-singulares, obteniendo así el compacto $K$ independiente de $n$.
+\begin{rmk}[Estatus matemático de la acotación estructural]\label{rem:dependencia_condicional}
+	Bajo la hipótesis estrictamente exterior $|c_k|>R$, el Teorema~\ref{thm:acotacion_via_Q_m} ya es incondicional: la cadena $Q_m$ + Weyl--Horn + atracción queda cerrada por los Teoremas~\ref{thm:conteo_ceros} y~\ref{thm:atraccion}. Además, el Lema~\ref{lem:atomo_frontera_escala_n} y el Teorema~\ref{thm:atraccion_frontera} muestran que la frontera pura $|c_k|=R$ también presenta atracción, aunque a escala fina $1/n$. Lo que permanece abierto son las configuraciones mixtas que combinan átomos frontera con otros regímenes y, en ese marco, un principio global de conteo/localización tan limpio como el del caso estrictamente exterior.
 \end{rmk}
 
 \begin{proof}
-	Fijemos $\varepsilon>0$ tal que las bolas $\overline{\mathbb{D}_{\varepsilon}(c_k)}$, $k\in I_{\mathrm{out}}$, sean disjuntas dos a dos.
+	Fijemos $\varepsilon>0$ tal que las bolas $\overline{\mathbb{D}_{\varepsilon}(c_k)}$, $1\le k\le m$, sean disjuntas dos a dos.
 
-	Por los Teoremas~\ref{thm:conteo_ceros} y~\ref{conj:atraccion}, existe $n_\varepsilon$ tal que para todo $n\ge n_\varepsilon$ los ceros de $\phi_{n+1}$ pertenecen al compacto
+	Por el Teorema~\ref{thm:atraccion}, existe $n_\varepsilon$ tal que para todo $n\ge n_\varepsilon$ los ceros de $\phi_{n+1}$ con módulo mayor que $R+\varepsilon$ pertenecen al compacto
 	\[
 		K_\varepsilon:=\overline{\mathbb{D}_{R+\varepsilon}}\cup
-		\bigcup_{k\in I_{\mathrm{out}}}\overline{\mathbb{D}_{\varepsilon}(c_k)}.
+		\bigcup_{k=1}^m\overline{\mathbb{D}_{\varepsilon}(c_k)}.
 	\]
+	Los restantes ceros ya pertenecen a $\overline{\mathbb D_{R+\varepsilon}}$, luego todos los ceros de $\phi_{n+1}$ están en $K_\varepsilon$ para $n\ge n_\varepsilon$.
 	Para los grados $1\le n\le n_\varepsilon$, el conjunto total de ceros es finito; sea $K_0$ su envoltura compacta.
 
 	Tomando $K:=K_\varepsilon\cup K_0$ se concluye.
@@ -177,15 +713,15 @@ Por el Corolario~\ref{cor:estabilizacion}, los valores singulares estabilizan en
 \subsection{Consecuencias espectrales para la localización de ceros}
 % -------------------------------------------------------------
 
-El Teorema~\ref{thm:umbral_delta_singular} del Capítulo~\ref{sec:espectral} establece la cota superior $Q_m(\D)\le R$ para el índice de estabilización. En el caso particular en que todos los átomos discretos son $\delta$-singulares, el Teorema~\ref{thm:exactitud_Qm_R} prueba que esta cota es una igualdad exacta: $Q_m(\D)=R$. Este resultado espectral es el punto de partida para conectar la teoría de $Q_k$ con la localización de ceros, como se desarrolla en las secciones siguientes.
+En el régimen puramente exterior, el Teorema~\ref{thm:umbral_puramente_exterior} del Capítulo~\ref{sec:espectral} establece la cota superior $Q_m(\D)\le R$ para el índice de estabilización. En ese mismo régimen, el Teorema~\ref{thm:exactitud_Qm_R} prueba que esta cota es una igualdad exacta: $Q_m(\D)=R$. En el caso mixto, en cambio, el resultado disponible es solo la finitud de $Q_m(\D)$ con constante dependiente de los átomos interiores (Teorema~\ref{thm:umbral_caso_mixto}).
 
 % -------------------------------------------------------------
 
 \section{Equivalencia y comparación de las dos vías}\label{sec:equivalencia_vias}
 % -------------------------------------------------------------
 
-\begin{prop}[Equivalencia de las dos vías de acotación]\label{prop:equivalencia_vias}
-	Tanto la vía de cuasi-ortogonalidad (Sección~\ref{sec:cuasi_ortogonalidad}) como la vía estructural $Q_m$ + Weyl--Horn + atracción (Sección~\ref{sec:cadena_Qm}) producen el mismo compacto $K\subset\mathbb{C}$ que contiene uniformemente todos los ceros de los polinomios ortogonales de Sobolev.
+\begin{prop}[Complementariedad de las dos vías de acotación]\label{prop:equivalencia_vias}
+	Tanto la vía de cuasi-ortogonalidad (Sección~\ref{sec:cuasi_ortogonalidad}) como la vía estructural $Q_m$ + Weyl--Horn + atracción (Sección~\ref{sec:cadena_Qm}) producen compactos $K_1, K_2 \subset \mathbb{C}$ que contienen uniformemente todos los ceros de los polinomios ortogonales de Sobolev.
 \end{prop}
 
 \begin{rmk}[Comparación con el argumento por cuasi-ortogonalidad]\label{rem:comparacion_vias}
@@ -195,7 +731,19 @@ El Teorema~\ref{thm:umbral_delta_singular} del Capítulo~\ref{sec:espectral} est
 		\item La vía de \emph{$Q_m$ + Weyl--Horn + atracción} desarrollada aquí es estructuralmente más informativa: identifica explícitamente que el actor central es el primer índice de Gelfand finito ($Q_m$), conecta con los valores singulares de las truncaciones, y separa los $n-m$ ceros ``masa'' (que están en $\overline{\mathbb{D}_R}$) de los $m$ ceros ``excepcionales'' (que están en bolas alrededor de $c_k\in I_{\mathrm{out}}$).
 	\end{itemize}
 
-	Conviene presentarlas ambas: la primera como prueba clásica alternativa, la segunda como prueba principal por su valor explicativo. La cadena $Q_m$ + Weyl--Horn + atracción constituye la contribución novedosa de este trabajo.
+	Conviene presentarlas ambas: la primera como prueba clásica alternativa y la segunda como una vía estructural que hace visible el papel del umbral $Q_m$ y de los valores singulares en la localización de ceros.
 \end{rmk}
+
+% -------------------------------------------------------------
+\subsection{Discusión y perspectivas}
+% -------------------------------------------------------------
+
+La cadena estructural desarrollada en este capítulo ---estabilización de valores singulares en el índice $m$, desigualdad de Weyl--Horn para el conteo de ceros excepcionales, y atracción asintótica hacia los átomos exteriores--- constituye una vía alternativa a la clásica de cuasi-ortogonalidad para la localización de ceros en polinomios ortogonales de Sobolev. En el régimen estrictamente exterior $|c_k|>R$, esta cadena queda ahora completamente cerrada: no solo acota todos los ceros, sino que distingue entre los $n-m$ ceros de masa (situados en $\overline{\mathbb{D}_R}$) y los $m$ ceros excepcionales (atraídos uno a uno hacia los puntos $c_k$).
+
+En el caso frontera puro $|c_k|=R$, la atracción también subsiste, pero cambia de naturaleza: los ceros excepcionales no se separan a distancia macroscópica del círculo, sino que aparecen en una capa radial de grosor $O(1/n)$ alrededor de cada átomo y satisfacen la ley fina $n(z_{r,n}/c_r-1)\to x_*>0$ del Teorema~\ref{thm:atraccion_frontera}.
+
+Lo que permanece abierto dentro de esta familia son los regímenes mixtos con coexistencia de átomos frontera e interiores/exteriores, y la obtención en ese marco de un principio global de conteo/localización tan limpio como el del caso estrictamente exterior.
+
+En cuanto a las dos vías de acotación, la de cuasi-ortogonalidad proporciona una cota global robusta aplicable a productos de Sobolev de orden arbitrario, mientras que la vía $Q_m$ ofrece un conteo fino de ceros excepcionales y una conexión explícita con la estructura espectral del operador de Sobolev. Su complementariedad sugiere que la combinación de ambos enfoques puede resultar fructífera en el estudio de productos de Sobolev más generales.
 
 

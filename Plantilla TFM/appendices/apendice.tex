@@ -1,4 +1,54 @@
 \chapter{Apéndice}
 \label{ch:an2}
 
-\lipsum[2]
+\section{Matrices de Momentos de Sobolev y de Dirac}\label{ap:matrices_momentos}
+
+Este apéndice recoge únicamente notación matricial complementaria para los capítulos~\ref{sec:espectral} y~\ref{sec:matricial}. No introduce resultados nuevos: su función es fijar de manera compacta la relación entre el producto de Sobolev y sus matrices de momentos en la base monomial.
+
+\begin{defn}[Matrices secuencialmente dominadas]\label{def:dominacion_secuencial}
+	Un par de matrices hermíticas semidefinidas positivas $\{\mathbf{M}_1, \mathbf{M}_2\}$ se dice \emph{secuencialmente dominado} si existe una constante $C > 0$ tal que
+	\[
+		\mathbf{M}_2 \leq C \cdot \mathbf{M}_1,
+	\]
+	donde $\mathbf{A} \leq \mathbf{B}$ significa $v \mathbf{A} v^* \leq v \mathbf{B} v^*$ para todo $v \in c_{00}$.
+\end{defn}
+
+\begin{defn}[Matriz de momentos de Sobolev $\mathbf{M}_S$]\label{def:matriz_sobolev}
+	Sea $\boldsymbol{\mu} = (\mu_1, \mu_2)$ un par de medidas de Borel positivas con soporte compacto en $\mathbb{C}$. Denótense por $\mathbf{M}_j = (c^{(j)}_{n,m})_{n,m \geq 0}$ sus respectivas matrices de momentos, donde $c^{(j)}_{n,m} = \int z^n \bar{z}^m \, d\mu_j(z)$, $j = 1, 2$. La \emph{matriz de momentos de Sobolev} asociada a $\boldsymbol{\mu}$ es
+	\[
+		\mathbf{M}_S = \mathbf{M}_1 + \boldsymbol{\Lambda}\, \mathbf{M}_2\, \boldsymbol{\Lambda}^*,
+	\]
+	donde $\boldsymbol{\Lambda} = (\lambda_{i,j})_{i,j \geq 0}$ es la matriz que representa el operador de derivación en la base monomial:
+	\[
+		\lambda_{i,j} = \begin{cases} j & \text{si } i = j - 1, \\ 0 & \text{en otro caso.} \end{cases}
+	\]
+	La \emph{forma sesquilineal matricial de Sobolev} inducida por el par $\{\mathbf{M}_1, \mathbf{M}_2\}$ se define como
+	\[
+		\langle p, q \rangle_{\mathbf{M}_S} = v\, \mathbf{M}_S\, w^*, \qquad p(z) = \sum_k v_k z^k,\ q(z) = \sum_k w_k z^k.
+	\]
+\end{defn}
+
+\begin{defn}[Matriz de momentos de la medida de Dirac]\label{def:matriz_dirac}
+	Sea $\delta_a$ la medida de Dirac concentrada en $a \in \mathbb{C}$. Su matriz de momentos, denotada $\mathbf{M}(a) = \mathbf{M}(\delta_a)$, tiene entradas $c_{n,m} = a^n \bar{a}^m$ y puede representarse como
+	\[
+		\mathbf{M}(a) = \begin{pmatrix}
+			1      & \bar{a}    & \bar{a}^2  & \bar{a}^3    & \cdots \\
+			a      & |a|^2      & a\bar{a}^2 & a\bar{a}^3   & \cdots \\
+			a^2    & a^2\bar{a} & |a|^4      & a^2\bar{a}^3 & \cdots \\
+			\vdots & \vdots     & \vdots     & \vdots       & \ddots
+		\end{pmatrix}.
+	\]
+	Obsérvese que $\mathbf{M}(a)$ es semidefinida positiva pero no definida positiva, por lo que no induce por sí sola un producto interno en $\Poly$.
+\end{defn}
+
+\begin{defn}[Producto matricial de Sobolev generalizado]\label{def:producto_sobolev_matricial}
+	Sea $\{\mathbf{M}_1, \mathbf{M}_2\}$ un par de matrices hermíticas semidefinidas positivas con $\mathbf{M}_1$ definida positiva. El \emph{producto matricial de Sobolev} inducido se define como
+	\[
+		\langle p, q \rangle_{\mathbf{M}_S} = \langle p, q \rangle_{\mathbf{M}_1} + \langle p', q' \rangle_{\mathbf{M}_2}, \qquad p, q \in \Poly.
+	\]
+	Cuando $\mathbf{M}_j$ es la matriz de momentos de una medida $\mu_j$, esta definición recupera el producto de Sobolev integral de la Sección~\ref{sec:intro}. En particular, la positividad definida de $\mathbf{M}_1$ garantiza que la forma anterior sea un producto interno sobre $\Poly$.
+\end{defn}
+
+\begin{rmk}[Conexión con el Capítulo~\ref{sec:matricial}]
+	Las definiciones anteriores sirven como trasfondo para la representación matricial usada en el Capítulo~\ref{sec:matricial}. En particular, la matriz de Hessenberg asociada al operador multiplicación actúa sobre una base ortonormal de polinomios, mientras que $\mathbf{M}_S$ describe la forma sesquilineal original en la base monomial. Esta distinción evita confundir la geometría del producto con la representación espectral empleada después.
+\end{rmk}
