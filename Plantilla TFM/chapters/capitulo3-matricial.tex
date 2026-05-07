@@ -133,7 +133,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	La cota sobre el $\limsup$ es inmediata.
 \end{proof}
 
-\begin{prop}[Coincidencia total de índices en el caso acotado]\label{prop:coincidencia_total_acotado}
+\begin{prop}[Criterio condicional de coincidencia en el caso acotado]\label{prop:coincidencia_total_acotado}
 	Supongamos que $\D\in\mathcal{L}(\mathcal{H})$, que para cada $k\ge0$ existe el límite
 	\[
 		\sigma_k=\lim_{n\to\infty}\sigma_{k,n},
@@ -147,6 +147,10 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\[
 		\sigma_k=S_k(\D)=Q_k(\D)=c_k(\D).
 	\]
+Es decir, si la desigualdad inferior $Q_k(\D)\le \liminf_{n\to\infty}\sigma_{k,n}$
+se prueba por una vía independiente, la coincidencia completa de índices sigue
+formalmente de esa hipótesis junto con la cota superior de la
+Proposición~\ref{prop:sigma_qk}.
 \end{prop}
 
 \begin{proof}
@@ -214,7 +218,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 \end{prop}
 
 \begin{proof}
-	\textbf{Caso 1 (acotado).} Supongamos que $\D\in\mathcal{L}(\mathcal{H})$. Para cada $n$, la sección $\mathbf{D}_n$ es la compresión de $\D$ al subespacio $\mathcal{P}_n:=\operatorname{span}\{\phi_0,\dots,\phi_n\}$. Como la proyección ortogonal $P_n:\mathcal{H}\to\mathcal{P}_n$ es contractiva, se tiene
+	\emph{Caso 1 (acotado).} Supongamos que $\D\in\mathcal{L}(\mathcal{H})$. Para cada $n$, la sección $\mathbf{D}_n$ es la compresión de $\D$ al subespacio $\mathcal{P}_n:=\operatorname{span}\{\phi_0,\dots,\phi_n\}$. Como la proyección ortogonal $P_n:\mathcal{H}\to\mathcal{P}_n$ es contractiva, se tiene
 	\[
 		\|\mathbf{D}_n\|_2=\|P_n\D|_{\mathcal{P}_n}\|\le\|\D\|,
 	\]
@@ -226,7 +230,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\]
 	Como $P_n(\D p)\to\D p$ en $\|\cdot\|_S$, para $n$ grande se tiene $\|P_n(\D p)\|_S>\|\D\|-\varepsilon$, luego $\|\mathbf{D}_n\|_2>\|\D\|-\varepsilon$. Por tanto, $\liminf_{n\to\infty}\|\mathbf{D}_n\|_2\ge\|\D\|$, y ambas desigualdades dan la igualdad deseada.
 
-	\textbf{Caso 2 (no acotado).} Si $\D$ no es acotado, existe una sucesión $(p_k)\subset\Poly$ con $\|p_k\|_S=1$ y $\|\D p_k\|_S\to+\infty$. Para cada $k$ fijo, sea $n_k$ tal que $p_k\in\mathcal{P}_{n_k}$. Entonces
+	\emph{Caso 2 (no acotado).} Si $\D$ no es acotado, existe una sucesión $(p_k)\subset\Poly$ con $\|p_k\|_S=1$ y $\|\D p_k\|_S\to+\infty$. Para cada $k$ fijo, sea $n_k$ tal que $p_k\in\mathcal{P}_{n_k}$. Entonces
 	\[
 		\|\mathbf{D}_{n_k}\|_2\ge\|\mathbf{D}_{n_k}p_k\|_S=\|P_{n_k}(\D p_k)\|_S.
 	\]
@@ -237,7 +241,7 @@ En particular, cuando la medida continua tiene soporte acotado con radio máximo
 
 \section{Estabilización Algebraica de los Valores Singulares}
 
-Pasamos ahora al régimen no acotado, donde los átomos exteriores inducen la divergencia de los valores singulares. Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathcal{H}$ sugieren que $\|\mathbf{D}_n\|_2 \to \infty$ en el caso $\delta$-singular, la estructura algebraica del espacio de polinomios $\Poly$ restringe la dimensionalidad de esta divergencia.
+Consideramos ahora el régimen no acotado, donde los átomos exteriores inducen la divergencia de los valores singulares. Aunque la Proposición~\ref{prop:convergencia_sigma} y la topología de $\mathcal{H}$ sugieren que $\|\mathbf{D}_n\|_2 \to \infty$ en el caso $\delta$-singular, la estructura algebraica del espacio de polinomios $\Poly$ restringe la dimensionalidad de esta divergencia.
 
 \begin{thm}[Acotación del valor singular de índice $1$]\label{thm:acotacion_sigma_1}
 	Sea $\langle \cdot, \cdot \rangle_S$ un producto de Sobolev con medida continua de radio esencial $R$ y un único átomo de derivada en $c \in I_{\mathrm{out}}$. Entonces, el valor singular de índice $1$ de las secciones principales satisface:
@@ -319,14 +323,11 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	pero este subespacio depende de $\lambda$. Por ello, no es válido concluir que todos los autovectores correspondientes a autovalores exteriores queden contenidos en un único subespacio de dimensión $N$. Esta es precisamente la obstrucción que aparece en matrices no normales, como las truncaciones de Hessenberg consideradas aquí.
 \end{rmk}
 
-\begin{thm}[Umbral singular en el índice $m$ (enunciado de cierre)]\label{thm:umbral_singular_indice_m_enunciado}
+\begin{thm}[Umbral singular en el índice $m$ (caso puramente exterior)]\label{thm:umbral_singular_indice_m_enunciado}
 	Sea $\langle\cdot,\cdot\rangle_S$ un producto de Sobolev con componente continua soportada en
 	$\overline{\mathbb D_R(0)}$, y sea $m=|I_{\mathrm{out}}|$ el número de puntos $\delta$-singulares.
 	Suponemos además que estamos en régimen puramente $\delta$-singular en la parte discreta, es decir,
 	que todos los átomos discretos del producto corresponden a índices de $I_{\mathrm{out}}$.
-	(En el caso modelo de Lebesgue normalizada en circunferencia, esta condición implica la
-	no acotación de los funcionales $\psi_k(p)=(\D p)'(c_k)$ por la
-	Proposición~\ref{prop:no_acotacion_modelo_exterior}, aplicada punto a punto.)
 	Entonces se verifica el patrón umbral
 	\[
 		\lim_{n\to\infty}\sigma_{j,n}=+\infty,
@@ -351,7 +352,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 
 	\medskip
 	\noindent
-	\textbf{Paso 1: explosión de $\sigma_{j,n}$ para $0\le j\le m-1$.}
+	\emph{Paso 1: explosión de $\sigma_{j,n}$ para $0\le j\le m-1$.}
 
 	Basta probarla para $j=m-1$, pues
 	\[
@@ -455,7 +456,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 
 	\medskip
 	\noindent
-	\textbf{Paso 2: cota estable en el índice $m$.}
+	\emph{Paso 2: cota estable en el índice $m$.}
 
 	Consideremos el subespacio canónico
 	\[
@@ -521,6 +522,12 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\[
 		Q_m(\D)<\infty,
 	\]
+	y si además los resultados de localización citados en
+	\cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev} son aplicables a la
+	medida compleja compactamente soportada
+	\[
+		d\nu(z):=\overline{A(z)}\,d\mu(z),
+	\]
 	entonces la familia de ceros de los polinomios ortogonales de Sobolev es uniformemente acotada en $\mathbb C$.
 	Aquí la dependencia respecto del índice $m$ es de tipo umbral: no se requiere una cota explícita en función de $Q_m(\D)$, sino únicamente su finitud.
 \end{thm}
@@ -575,7 +582,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 		d\nu(z):=\overline{A(z)}\,d\mu(z).
 	\]
 
-	Luego $p_n$ es cuasi-ortogonal de orden fijo $L$ respecto de la medida compleja $\nu$, cuyo soporte coincide con el de $\mu$ y, por hipótesis, es compacto. Aplicando los resultados de localización de ceros para cuasi-ortogonalidad de orden fijo con soporte compacto \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}, existe un compacto $K\subset\mathbb C$, independiente de $n$, tal que todos los ceros de $p_n$ pertenecen a $K$ para $n\ge L+1$.
+	Luego $p_n$ es cuasi-ortogonal de orden fijo $L$ respecto de la medida compleja $\nu$, cuyo soporte coincide con el de $\mu$ y, por hipótesis, es compacto. Bajo la hipótesis bibliográfica explícita del enunciado ---a saber, que los resultados de \cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev} cubren esta clase de medidas complejas compactamente soportadas y con forma no degenerada--- existe un compacto $K\subset\mathbb C$, independiente de $n$, tal que todos los ceros de $p_n$ pertenecen a $K$ para $n\ge L+1$.
 
 	Para los índices finitos $0\le n\le L$, el conjunto de ceros involucrado es finito; su unión también es acotada. Uniéndolo con $K$, obtenemos un único compacto que contiene los ceros de todos los $p_n$. En consecuencia, la familia de ceros de los polinomios ortogonales de Sobolev es uniformemente acotada.
 \end{proof}
@@ -622,7 +629,8 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 
 \begin{thm}[Conteo de ceros excepcionales]\label{thm:conteo_ceros}
 	Sea $\phi_{n+1}$ el polinomio ortonormal de Sobolev de grado $n+1$
-	asociado al producto de Sobolev discreto. Para cada $\varepsilon>0$ existe $n_\varepsilon\in\mathbb N$
+	asociado a un producto de Sobolev discreto con medida de Lebesgue normalizada en $\mathbb S_R$ y
+	átomos de primera derivada todos pertenecientes a $I_{\mathrm{out}}$ (régimen puramente exterior). Para cada $\varepsilon>0$ existe $n_\varepsilon\in\mathbb N$
 	tal que para todo $n\ge n_\varepsilon$,
 	\[
 		\#\{z\in\C:\phi_{n+1}(z)=0,\ |z|>R+\varepsilon\}\le m.
@@ -717,7 +725,7 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 	\]
 \end{proof}
 
-\begin{prop}[Coincidencia de índices en el caso no acotado]\label{prop:coincidencia_no_acotado}
+\begin{prop}[Criterio condicional de coincidencia en el caso no acotado]\label{prop:coincidencia_no_acotado}
 	Supongamos que $\D\notin\mathcal{L}(\mathcal{H})$, que para cada $k\ge0$ existe el límite
 	\[
 		\sigma_k=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
@@ -737,6 +745,7 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 		\sigma_{k}=Q_k(\D)=S_k(\D).
 	\]
 	En particular, $\sigma_0=Q_0(\D)=S_0(\D)=+\infty$. En este régimen, los números de Gelfand clásicos $c_k(\D)$ no se consideran, al no pertenecer $\D$ a $\mathcal{L}(\mathcal{H})$.
+De nuevo, el contenido de la proposición es puramente condicional: una vez probada por separado la desigualdad $Q_k(\D)\le \liminf_{n\to\infty}\sigma_{k,n}$ y la identificación $S_k(\D)=Q_k(\D)$, la coincidencia se obtiene sin pasos adicionales.
 \end{prop}
 
 \begin{proof}

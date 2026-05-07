@@ -136,9 +136,9 @@ En resumen, esta sección ha establecido el marco de codimensión topológica en
 \end{thm}
 
 \begin{proof}
-	\textbf{Caso 1 ($\phi$ no acotado):} Por propiedades fundamentales de los espacios normados, si un funcional lineal no está acotado, su núcleo es denso en el espacio topológico. Por lo tanto, su clausura es todo el espacio: $\overline{\ker(\phi)} = \mathcal{H}$. Trivialmente, al no faltar ninguna dimensión para generar $\mathcal{H}$, su codimensión topológica es 0.
+	\emph{Caso 1 ($\phi$ no acotado).} Por propiedades fundamentales de los espacios normados, si un funcional lineal no está acotado, su núcleo es denso en el espacio topológico. Por lo tanto, su clausura es todo el espacio: $\overline{\ker(\phi)} = \mathcal{H}$. Trivialmente, al no faltar ninguna dimensión para generar $\mathcal{H}$, su codimensión topológica es 0.
 
-	\textbf{Caso 2 ($\phi$ acotado):} Dado que $\phi$ es continuo, su núcleo ya es un subespacio cerrado, por lo que $\overline{\ker(\phi)} = \ker(\phi)$ (tomando la clausura en $\mathcal{H}$).
+	\emph{Caso 2 ($\phi$ acotado).} Dado que $\phi$ es continuo, su núcleo ya es un subespacio cerrado, por lo que $\overline{\ker(\phi)} = \ker(\phi)$ (tomando la clausura en $\mathcal{H}$).
 
 	Para calcular su codimensión topológica, utilizaremos una aproximación constructiva mediante subespacios de dimensión finita. Sea $\Poly_n$ el espacio de polinomios de grado menor o igual a $n$, el cual tiene dimensión finita $n+1$.
 	Consideremos la restricción del funcional a este subespacio, $\phi_n = \phi|_{\Poly_n} : \Poly_n \to \mathbb{C}$.
@@ -158,6 +158,45 @@ En resumen, esta sección ha establecido el marco de codimensión topológica en
 	Finalmente, como el funcional es continuo en $\mathcal{H}$, esta suma directa algebraica se preserva al tomar la completación topológica, resultando en $\mathcal{H} = \overline{\ker(\phi)} \oplus \operatorname{span}\{q\}$. En consecuencia, la codimensión topológica es exactamente 1.
 \end{proof}
 
+\begin{lem}[Anulador de una intersección de núcleos continuos]\label{lem:anulador_interseccion_nucleos_continuos}
+	Sea $\psi_1,\dots,\psi_k:\Poly\to\C$ un sistema linealmente independiente de funcionales continuos respecto a la norma de $\mathcal H$. Definimos
+	\[
+		X:=\bigcap_{j=1}^k\ker(\psi_j).
+	\]
+	Entonces existe una familia $q_1,\dots,q_k\in\Poly$ tal que
+	\[
+		\psi_i(q_j)=\delta_{ij},\qquad 1\le i,j\le k,
+	\]
+	y todo funcional lineal $\lambda:\Poly\to\C$ que se anule en $X$ pertenece a $\operatorname{span}\{\psi_1,\dots,\psi_k\}$. Más precisamente,
+	\[
+		\lambda(p)=\sum_{j=1}^k \lambda(q_j)\psi_j(p),\qquad p\in\Poly.
+	\]
+\end{lem}
+
+\begin{proof}
+	Consideremos la aplicación lineal
+	\[
+		\Psi:\Poly\to\C^k,
+		\qquad
+		\Psi(p)=(\psi_1(p),\dots,\psi_k(p)).
+	\]
+	La independencia lineal de $\psi_1,\dots,\psi_k$ implica que $\operatorname{rank}(\Psi)=k$, luego $\Psi$ es sobreyectiva. Elegimos $q_1,\dots,q_k\in\Poly$ tales que $\Psi(q_j)=e_j$, donde $e_j$ es la $j$-ésima base canónica de $\C^k$.
+
+	Sea ahora $\lambda:\Poly\to\C$ un funcional que se anula en $X=\ker(\Psi)$. Para todo $p\in\Poly$ definimos
+	\[
+		r:=p-\sum_{j=1}^k \psi_j(p)q_j.
+	\]
+	Entonces, para cada $i=1,\dots,k$,
+	\[
+		\psi_i(r)=\psi_i(p)-\sum_{j=1}^k\psi_j(p)\psi_i(q_j)=\psi_i(p)-\psi_i(p)=0,
+	\]
+	así que $r\in X$. Como $\lambda(r)=0$, obtenemos
+	\[
+		\lambda(p)=\sum_{j=1}^k \psi_j(p)\lambda(q_j),
+	\]
+	que es exactamente la afirmación deseada.
+\end{proof}
+
 \begin{thm}[Dicotomía Generalizada para $N$ Funcionales]\label{thm:dicotomia_N_general}
 	Sean $\phi_1, \dots, \phi_N : \Poly \to \mathbb{C}$ funcionales lineales linealmente independientes. Definimos su núcleo conjunto como el subespacio algebraico $W_0 = \bigcap_{j=1}^N \ker(\phi_j)$.
 	Sea $k$ el número máximo de funcionales linealmente independientes en $\operatorname{span}\{\phi_1, \dots, \phi_N\}$ que son continuos (acotados) respecto a la norma de $\mathcal{H}$.
@@ -171,27 +210,98 @@ En resumen, esta sección ha establecido el marco de codimensión topológica en
 \end{thm}
 
 \begin{proof}
-	Sin pérdida de generalidad, podemos realizar un cambio de base en el espacio de funcionales $\operatorname{span}\{\phi_1, \dots, \phi_N\}$ para obtener una nueva base de funcionales $\{\psi_1, \dots, \psi_N\}$ tal que los primeros $k$ funcionales ($\psi_1, \dots, \psi_k$) sean continuos en $\mathcal{H}$, y cualquier combinación lineal que involucre a los restantes $N-k$ funcionales ($\psi_{k+1}, \dots, \psi_N$) sea estrictamente no acotada. Notemos que la intersección de los núcleos no cambia: $W_0 = \bigcap_{j=1}^N \ker(\psi_j)$.
+	Sea
+	\[
+		F:=\operatorname{span}\{\phi_1,\dots,\phi_N\}\subset \Poly^*
+	\]
+	y sea $E\subset F$ el subespacio de los funcionales que son continuos respecto a la norma de $\mathcal H$. Por definición, $\dim E=k$. Elegimos una base $\psi_1,\dots,\psi_k$ de $E$ y la completamos a una base $\psi_1,\dots,\psi_N$ de $F$. Entonces
+	\[
+		W_0=\bigcap_{j=1}^N\ker(\psi_j).
+	\]
 
-	Definimos el subespacio $M_c = \bigcap_{j=1}^k \ker(\psi_j)$ formado por los funcionales continuos.
-	Aplicando el razonamiento constructivo sobre polinomios de grado finito $\Poly_n$, sabemos que para $n$ suficientemente grande, la restricción de estos $k$ funcionales a $\Poly_n$ es exhaustiva. Por el Teorema del Rango-Nulidad:
-	$$ \dim(M_c \cap \Poly_n) = \dim(\Poly_n) - k $$
-	Algebraicamente, podemos descomponer $\Poly_n = (M_c \cap \Poly_n) \oplus \operatorname{span}\{q_1, \dots, q_k\}$. Extendiendo a todo el espacio polinómico, obtenemos $\Poly = M_c \oplus \operatorname{span}\{q_1, \dots, q_k\}$.
-	Al ser los $k$ funcionales continuos por hipótesis, $M_c$ es un subespacio cerrado en $\mathcal{H}$ ($\overline{M_c} = M_c$). La descomposición se hereda al espacio completo, $\mathcal{H} = M_c \oplus \operatorname{span}\{q_1, \dots, q_k\}$, demostrando que $\operatorname{codim}_\mathcal{H}(M_c) = k$.
+	Sea $\widetilde\psi_j\in\mathcal H^*$ la extensión continua de $\psi_j$ para $1\le j\le k$, y definamos
+	\[
+		\widetilde\Psi:\mathcal H\to\C^k,
+		\qquad
+		\widetilde\Psi(x)=(\widetilde\psi_1(x),\dots,\widetilde\psi_k(x)).
+	\]
+	Puesto que $\psi_1,\dots,\psi_k$ son linealmente independientes, la aplicación $\Psi:=\widetilde\Psi|_{\Poly}$ tiene rango $k$, luego es sobreyectiva. Por el Lema~\ref{lem:anulador_interseccion_nucleos_continuos}, existen polinomios $q_1,\dots,q_k\in\Poly$ con $\psi_i(q_j)=\delta_{ij}$.
 
-	Ahora, analizamos la restricción de los funcionales no acotados restantes $\{\psi_{k+1}, \dots, \psi_N\}$ actuando \textit{dentro} del subespacio cerrado $M_c$.
-	Como estas aplicaciones son no acotadas, por el Teorema~\ref{thm:dicotomia_1} para un funcional no acotado, la restricción de cualquiera de ellas a $M_c$ sigue siendo no acotada.
-	Por el mismo principio del Teorema para un funcional (Teorema \ref{thm:dicotomia_1}), la intersección de los núcleos de funcionales no acotados es densa en el espacio donde actúan.
-	Por lo tanto, la clausura topológica de la intersección total dentro de $M_c$ es todo $M_c$:
-	$$ \overline{W_0} = \overline{M_c \cap \bigcap_{j=k+1}^N \ker(\psi_j)} = M_c $$
+	Definimos
+	\[
+		M:=\ker(\widetilde\Psi)=\bigcap_{j=1}^k\ker(\widetilde\psi_j).
+	\]
+	Como $\widetilde\Psi$ es continua, $M$ es cerrado. Además, $\widetilde\Psi$ es sobreyectiva porque $\Psi(\Poly)=\C^k$ y $\Poly\subset\mathcal H$, de modo que
+	\[
+		\mathcal H/M\cong \C^k.
+	\]
+	En consecuencia,
+	\[
+		\operatorname{codim}_{\mathcal H}(M)=k.
+	\]
 
-	Finalmente, dado que la clausura topológica del subespacio total es exactamente $\overline{W_0} = M_c$, y ya habíamos probado que $\operatorname{codim}_\mathcal{H}(M_c) = k$, concluimos que:
-	$$ \operatorname{codim}_\mathcal{H}(\overline{W_0}) = k \le N. $$
+	Introduzcamos ahora el subespacio denso
+	\[
+		X:=M\cap \Poly=\bigcap_{j=1}^k\ker(\psi_j).
+	\]
+	Veamos que $X$ es denso en $M$. Sea $x\in M$ y sea $(p_n)\subset\Poly$ tal que $p_n\to x$ en $\mathcal H$. Definimos
+	\[
+		r_n:=p_n-\sum_{j=1}^k\psi_j(p_n)q_j.
+	\]
+	Entonces $r_n\in X$ para todo $n$, y como $\widetilde\psi_j(x)=0$,
+	\[
+		r_n-x=(p_n-x)-\sum_{j=1}^k\widetilde\psi_j(p_n-x)q_j\xrightarrow[n\to\infty]{}0
+	\]
+	en $\mathcal H$. Por tanto $\overline X=M$.
 
-	Los casos extremos se siguen trivialmente: si $k=0$, $\overline{W_0} = \mathcal{H}$ y la codimensión topológica es 0; si $k=N$, $\overline{W_0} = W_0$ es cerrado y su codimensión topológica es máxima e igual a $N$.
+	Consideremos la aplicación lineal
+	\[
+		T:X\to\C^{N-k},
+		\qquad
+		T(p)=(\psi_{k+1}(p),\dots,\psi_N(p)).
+	\]
+	Entonces
+	\[
+		\ker(T)=\bigcap_{j=1}^N\ker(\psi_j)=W_0,
+	\]
+	porque en $X$ ya se imponen las anulaciones $\psi_1=\cdots=\psi_k=0$.
+
+	Afirmamos que toda combinación lineal no nula de las componentes de $T$ es no acotada en $X$. En efecto, sea
+	\[
+		\eta=\sum_{j=k+1}^N a_j\psi_j|_X,
+	\qquad (a_{k+1},\dots,a_N)\neq 0.
+	\]
+	Si $\eta$ fuese acotado en $X$, como $X$ es denso en $M$, se extendería a un funcional continuo en $M$; por Hahn--Banach, existe además una extensión continua $\widehat\eta\in\mathcal H^*$. El funcional lineal
+	\[
+		\lambda:=\sum_{j=k+1}^N a_j\psi_j-\widehat\eta|_{\Poly}
+	\]
+	se anula en $X$. Por el Lema~\ref{lem:anulador_interseccion_nucleos_continuos}, se sigue que $\lambda\in E=\operatorname{span}\{\psi_1,\dots,\psi_k\}$. Como $\widehat\eta|_{\Poly}$ es continuo, concluimos que $\sum_{j=k+1}^N a_j\psi_j$ también es continuo, contradiciendo el hecho de que $\psi_1,\dots,\psi_k$ forman una base del subespacio total de funcionales continuos dentro de $F$. La afirmación queda probada.
+
+	Probemos ahora que $W_0$ es denso en $M$. Si no lo fuera, su clausura propia $\overline{W_0}^{\mathcal H}\subsetneq M$ tendría un anulador continuo no trivial: existiría $\Lambda\in M^*$, $\Lambda\neq 0$, tal que $\Lambda$ se anula en $\overline{W_0}^{\mathcal H}$, y por tanto en $W_0=\ker(T)$. Definiendo $L$ sobre $T(X)$ por
+	\[
+		L(Tp):=\Lambda(p),\qquad p\in X,
+	\]
+	la aplicación es correcta porque $\Lambda$ se anula en $\ker(T)$. Como $T(X)$ es un subespacio de dimensión finita de $\C^{N-k}$, existe un funcional lineal no nulo $\ell:(\C^{N-k})\to\C$ que extiende a $L$. Entonces, sobre $X$,
+	\[
+		\Lambda=\ell\circ T.
+	\]
+	Pero $\Lambda$ es continuo, de modo que $\ell\circ T$ es una combinación lineal no nula y acotada de las componentes de $T$, contradicción. Luego
+	\[
+		\overline{W_0}^{\mathcal H}=M.
+	\]
+
+	Finalmente,
+	\[
+		\operatorname{codim}_{\mathcal H}(\overline{W_0})
+		=
+		\operatorname{codim}_{\mathcal H}(M)
+		=
+		k.
+	\]
+	Los casos extremos quedan incluidos: si $k=0$, entonces $M=\mathcal H$ y $W_0$ es denso; si $k=N$, entonces $W_0=X=M$ y su codimensión es $N$.
 \end{proof}
 
-La dicotomía topológica demuestra que la codimensión del espacio de Sobolev respecto al espacio de Hardy está gobernada exclusivamente por el número de puntos exteriores $\delta$-singulares. Pasamos ahora a analizar cómo esta pérdida dimensional se manifiesta en el espectro del operador multiplicación.
+La dicotomía topológica demuestra que la codimensión del espacio de Sobolev respecto al espacio de Hardy está gobernada exclusivamente por el número de puntos exteriores $\delta$-singulares. Analizamos ahora cómo esta pérdida dimensional se manifiesta en el espectro del operador multiplicación.
 
 % -------------------------------------------------------------
 \section{El Operador de Multiplicación y los Números de Gelfand}
@@ -406,7 +516,7 @@ El siguiente resultado muestra que, aun cuando $c_0(\D)$ refleje la perturbació
 \end{thm}
 
 \begin{proof}
-	\textbf{Cota superior.} Como $c_1$ es un punto BPE y la evaluación de la derivada en $c_1$ es continua por el Lema~\ref{lema:ABPE_derivada}, el funcional
+	\emph{Cota superior.} Como $c_1$ es un punto BPE y la evaluación de la derivada en $c_1$ es continua por el Lema~\ref{lema:ABPE_derivada}, el funcional
 	\[
 		\Psi(p) = p(c_1) + c_1 p'(c_1), \qquad p \in \Poly,
 	\]
@@ -416,7 +526,7 @@ El siguiente resultado muestra que, aun cuando $c_0(\D)$ refleje la perturbació
 	\]
 	luego $\|\D|_{V_{opt}}\| \le 1$ y $c_1(\D) \le 1$.
 
-	\textbf{Cota inferior.} Supóngase que existe $V$ de codimensión topológica 1 y $\epsilon > 0$ con $\|\D p\|_S^2 \le (1-\epsilon)\|p\|_S^2$ para todo $p \in V$. Desarrollando las normas:
+	\emph{Cota inferior.} Supóngase que existe $V$ de codimensión topológica 1 y $\epsilon > 0$ con $\|\D p\|_S^2 \le (1-\epsilon)\|p\|_S^2$ para todo $p \in V$. Desarrollando las normas:
 	\[
 		\epsilon \|p\|_{L^2(\mu)}^2 + \abs{p(c_1) + c_1 p'(c_1)}^2 \le (1-\epsilon)\abs{p'(c_1)}^2, \quad \forall p \in V.
 	\]
@@ -752,7 +862,6 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	Por tanto, los funcionales $\psi_k$ son linealmente independientes y
 	\[
 		\dim \operatorname{span}\{\psi_k:\ k\in I_{\mathrm{out}}\}=m.
-\qedhere
 	\]
 \end{proof}
 
@@ -883,7 +992,6 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	\[
 		\psi_\ell(u_{j,n})=\delta_{\ell j},
 		\qquad \ell,j\in I_{\mathrm{out}}.
-\qedhere
 	\]
 \end{proof}
 
@@ -937,7 +1045,6 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 		\le
 		\sqrt m \max_{j\in I_{\mathrm{out}}}\|u_{j,n}\|_S
 		\xrightarrow[n\to\infty]{}0.
-\qedhere
 	\]
 \end{proof}
 
@@ -1000,24 +1107,26 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	acotada. En consecuencia,
 	\[
 		Q_{m-1}(\D)=\infty.
-\qedhere
 	\]
 \end{proof}
 
-\begin{thm}[Umbral algebraico exacto de estabilización, versión $\delta$-singular]
-	\label{thm:umbral_delta_singular}
-	Sea $\langle\cdot,\cdot\rangle_S$ un producto de Sobolev discreto general
-	con $N$ átomos $c_1,\dots,c_N$, y sea
-	$m=|I_{\mathrm{out}}|$ el número de puntos $\delta$-singulares. Asumamos
-	además que la parte continua del producto induce una norma
-	$\|\cdot\|_{L^2(\mu)}$ tal que la multiplicación por $z$ es acotada en
-	$L^2(\mu)$ con norma a lo sumo $R$. Entonces
+\begin{thm}[Umbral en el caso puramente exterior]
+	\label{thm:umbral_puramente_exterior}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_{0;R}(z)
+		+
+		\sum_{k=1}^{m} p'(c_k)\,\overline{q'(c_k)},
+	\]
+	donde $|c_k|\ge R$ para todo $k=1,\dots,m$. Entonces
 	\[
 		Q_j(\D)=\infty\ \text{ para }\ 0\le j\le m-1,
 		\qquad
 		Q_m(\D)\le R.
 	\]
-	En particular, el número de puntos $\delta$-singulares $m = |I_{\mathrm{out}}|$ es el umbral algebraico exacto de estabilización del operador de multiplicación $\D$.
+	En particular, el primer índice algebraico finito del operador de multiplicación es $m$.
 \end{thm}
 
 \begin{proof}
@@ -1029,7 +1138,75 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	\[
 		Q_j(\D)\ge Q_{m-1}(\D)=\infty,
 	\]
-	y por tanto $Q_j(\D)=\infty$ para $j=0,1,\dots,m-1$. Finalmente, por la Proposición~\ref{prop:umbral_fase1}, $Q_m(\D)<\infty$, lo cual concluye la demostración.
+	y por tanto $Q_j(\D)=\infty$ para $j=0,1,\dots,m-1$.
+
+	Como en el caso puramente exterior no hay átomos interiores, la estimación de la prueba de la Proposición~\ref{prop:umbral_fase1} se reduce a
+	\[
+		\|\D p\|_S\le R\|p\|_S,
+		\qquad p\in V_{\mathrm{out}}.
+	\]
+	Puesto que $\operatorname{codim}_{\Poly}(V_{\mathrm{out}})\le m$, concluimos que
+	\[
+		Q_m(\D)\le \|\D|_{V_{\mathrm{out}}}\|_S\le R.
+	\]
+\end{proof}
+
+\begin{thm}[Umbral en el caso mixto]
+	\label{thm:umbral_caso_mixto}
+	Sea
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_{0;R}(z)
+		+
+		\sum_{k=1}^{N} p'(c_k)\,\overline{q'(c_k)},
+	\]
+	donde los puntos $c_1,\dots,c_N$ son distintos y los conjuntos $I_{\mathrm{in}}$ e $I_{\mathrm{out}}$ son ambos no vacíos. Sea $m=|I_{\mathrm{out}}|$. Entonces
+	\[
+		Q_j(\D)=\infty\ \text{ para }\ 0\le j\le m-1,
+	\]
+	y además existen constantes $A_k,B_k<\infty$ para $k\in I_{\mathrm{in}}$ tales que
+	\[
+		Q_m(\D)
+		\le
+		\left(
+		R^2+\sum_{k\in I_{\mathrm{in}}}(A_k+|c_k|B_k)^2
+		\right)^{1/2}
+		<\infty.
+	\]
+	En particular, en el caso mixto este capítulo solo prueba la finitud de $Q_m(\D)$; no prueba la cota $Q_m(\D)\le R$.
+\end{thm}
+
+\begin{proof}
+	Por la Proposición~\ref{prop:propiedades_Qk}, la sucesión $\{Q_k(\D)\}_{k\ge0}$ es monótona no creciente. Como la Proposición~\ref{prop:umbral_fase2} da $Q_{m-1}(\D)=\infty$, se deduce otra vez que
+	\[
+		Q_j(\D)=\infty,
+		\qquad 0\le j\le m-1.
+	\]
+
+	Por la prueba de la Proposición~\ref{prop:umbral_fase1}, para cada $k\in I_{\mathrm{in}}$ existen constantes $A_k,B_k<\infty$ tales que
+	\[
+		|(\D p)'(c_k)|\le (A_k+|c_k|B_k)\|p\|_S,
+		\qquad p\in V_{\mathrm{out}}.
+	\]
+	Como además $(\D p)'(c_k)=0$ para $k\in I_{\mathrm{out}}$ y $\|zp\|_{L^2(\mathbf m_{0;R})}\le R\|p\|_S$, se obtiene
+	\[
+		\|\D p\|_S^2
+		\le
+		\left(
+		R^2+\sum_{k\in I_{\mathrm{in}}}(A_k+|c_k|B_k)^2
+		\right)\|p\|_S^2,
+		\qquad p\in V_{\mathrm{out}}.
+	\]
+	Por tanto,
+	\[
+		\|\D|_{V_{\mathrm{out}}}\|_S
+		\le
+		\left(
+		R^2+\sum_{k\in I_{\mathrm{in}}}(A_k+|c_k|B_k)^2
+		\right)^{1/2}.
+	\]
+	Como $\operatorname{codim}_{\Poly}(V_{\mathrm{out}})\le m$, la definición de $Q_m(\D)$ da la cota anunciada.
 \end{proof}
 
 \begin{cor}[Lectura BPE del umbral en el caso Lebesgue]\label{cor:lectura_BPE_lebesgue}
@@ -1040,69 +1217,12 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 		I_{\mathrm{out}}=\{k:c_k\text{ es no-BPE para }L^2(\mathbf m_{0;R})\}
 		=\{k:|c_k|\ge R\},
 	\]
-	y el Teorema~\ref{thm:umbral_delta_singular} recupera el resultado
-	clásico de umbral exacto controlado por el número de puntos no-BPE.
+	y los Teoremas~\ref{thm:umbral_puramente_exterior} y~\ref{thm:umbral_caso_mixto}
+	se leen en términos del número de puntos no-BPE, distinguiendo explícitamente
+	el régimen puramente exterior del régimen mixto.
 \end{cor}
 
-\begin{cor}[Aplicación BPE: caso puramente exterior]\label{cor:umbral_m_puramente_exterior}
-	Si en el Teorema~\ref{thm:umbral_delta_singular} todos los átomos discretos son $\delta$-singulares (equivalentemente, $|c_k|\ge R$ para todo $k$), entonces
-	\[
-		m=N,
-	\]
-	se cumple
-	\[
-		Q_m(\D)\le R.
-	\]
-	En particular, el umbral algebraico en el índice $m$ es finito y está controlado explícitamente por el radio del soporte continuo.
-\end{cor}
-
-\begin{proof}
-	En este caso
-	\[
-		I_{\mathrm{out}}=\{1,\dots,N\},
-		\qquad
-		m=N.
-	\]
-	Consideremos el subespacio admisible
-	\[
-		V_*:=\bigcap_{k=1}^N \ker(\psi_k),
-		\qquad
-		\psi_k(p):=(\D p)'(c_k)=p(c_k)+c_kp'(c_k).
-	\]
-	Por construcción,
-	\[
-		\operatorname{codim}_{\Poly}(V_*)\le N=m.
-	\]
-
-	Sea ahora $p\in V_*$. Entonces, para todo $k=1,\dots,N$,
-	\[
-		(\D p)'(c_k)=0.
-	\]
-	Por tanto, todos los términos discretos de la norma de Sobolev de $\D p$ se anulan y queda
-	\[
-		\|\D p\|_S^2
-		=
-		\int_{|z|=R} |z\,p(z)|^2\,d\mathbf{m}_{0;R}(z).
-	\]
-	Como $|z|=R$ en el soporte continuo, se obtiene
-	\[
-		\|\D p\|_S^2
-		=
-		R^2\int_{|z|=R}|p(z)|^2\,d\mathbf{m}_{0;R}(z)
-		\le
-		R^2\|p\|_S^2.
-	\]
-	En consecuencia,
-	\[
-		\|\D|_{V_*}\|_S\le R.
-	\]
-	Finalmente, como $V_*$ es admisible y $\operatorname{codim}_{\Poly}(V_*)\le m$, por definición de $Q_m(\D)$,
-	\[
-		Q_m(\D)\le \|\D|_{V_*}\|_S\le R.
-	\]
-\end{proof}
-
-En el caso particular en que todos los átomos discretos son $\delta$-singulares, la cota superior $Q_m(\D)\le R$ se convierte en una igualdad exacta. Este resultado, que refina el Teorema~\ref{thm:umbral_delta_singular}, se establece a continuación.
+En el caso puramente exterior, el Teorema~\ref{thm:umbral_puramente_exterior} da la cota superior $Q_m(\D)\le R$. El siguiente resultado muestra que dicha cota es exacta.
 
 \begin{thm}[Exactitud del umbral en el caso puramente exterior]\label{thm:exactitud_Qm_R}
 	Sea
@@ -1126,11 +1246,11 @@ En el caso particular en que todos los átomos discretos son $\delta$-singulares
 \end{thm}
 
 \begin{proof}
-	La explosión $Q_{m-1}(\D)=\infty$ es el contenido del Teorema~\ref{thm:umbral_delta_singular}. Probaremos la igualdad exacta $Q_m(\D)=R$ en dos pasos.
+	La explosión $Q_{m-1}(\D)=\infty$ es el contenido del Teorema~\ref{thm:umbral_puramente_exterior}. La igualdad exacta $Q_m(\D)=R$ se obtiene combinando las dos estimaciones siguientes.
 
-	\textbf{Cota superior ($Q_m(\D)\le R$).} Tomando $V_{\mathrm{out}}=\bigcap_{k=1}^m\ker(\psi_k)$ con $\psi_k(p)=(\D p)'(c_k)$, sabemos por la Proposición~\ref{prop:umbral_fase1} que $\|\D|_{V_{\mathrm{out}}}\|\le R$. Como $\operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m$, se deduce $Q_m(\D)\le R$.
+	\emph{Cota superior ($Q_m(\D)\le R$).} Tomando $V_{\mathrm{out}}=\bigcap_{k=1}^m\ker(\psi_k)$ con $\psi_k(p)=(\D p)'(c_k)$, sabemos por la Proposición~\ref{prop:umbral_fase1} que $\|\D|_{V_{\mathrm{out}}}\|\le R$. Como $\operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m$, se deduce $Q_m(\D)\le R$.
 
-	\textbf{Cota inferior ($Q_m(\D)\ge R$).} Sea $V\subset\Poly$ un subespacio admisible con $\operatorname{codim}_{\Poly}(V)\le m$. Consideremos la aplicación lineal
+	\emph{Cota inferior ($Q_m(\D)\ge R$).} Sea $V\subset\Poly$ un subespacio admisible con $\operatorname{codim}_{\Poly}(V)\le m$. Consideremos la aplicación lineal
 	\[
 		T:\Poly\to\mathbb C^m,\qquad T(p)=\bigl(p'(c_1),\dots,p'(c_m)\bigr).
 	\]
@@ -1146,11 +1266,174 @@ En el caso particular en que todos los átomos discretos son $\delta$-singulares
 \end{proof}
 
 \begin{rmk}[El caso de la frontera $|c|=R$]\label{rem:frontera_Qm}
-	Cuando $|c_k|=R$ para algún $k$, el funcional $\psi_k$ sigue siendo no acotado (véase la Proposición~\ref{prop:no_acotacion_modelo_exterior}), por lo que $c_k$ se clasifica como $\delta$-singular. La demostración del Teorema~\ref{thm:exactitud_Qm_R} no depende de que $|c_k|>R$ o $|c_k|=R$; únicamente utiliza que los términos discretos están presentes en la norma de Sobolev. Por tanto, la igualdad $Q_m(\D)=R$ sigue siendo válida cuando algunos (o todos) los átomos exteriores se sitúan exactamente sobre la circunferencia de radio $R$. Este hecho subraya que la frontera $|c|=R$ es, desde el punto de vista espectral, parte del régimen $\delta$-singular: la evaluación puntual deja de ser acotada y el operador multiplicación requiere la neutralización de $m$ direcciones para recuperar la acotación.
+	Cuando $|c_k|=R$ para algún $k$, el funcional $\psi_k$ sigue siendo no acotado (véase la Proposición~\ref{prop:no_acotacion_modelo_exterior}), por lo que $c_k$ se clasifica como $\delta$-singular. La demostración del Teorema~\ref{thm:exactitud_Qm_R} no depende de que $|c_k|>R$ o $|c_k|=R$; únicamente utiliza que los términos discretos están presentes en la norma de Sobolev. Por tanto, la igualdad $Q_m(\D)=R$ sigue siendo válida cuando algunos (o todos) los átomos exteriores se sitúan exactamente sobre la circunferencia de radio $R$.
+
+	El Capítulo~\ref{sec:ceros_acotacion} muestra además que esta coincidencia espectral no implica un comportamiento macroscópico idéntico de los ceros: en frontera la atracción persiste, pero en una capa radial de grosor $O(1/n)$ alrededor de cada átomo (Lema~\ref{lem:atomo_frontera_escala_n} y Teorema~\ref{thm:atraccion_frontera}), no a distancia fija de la circunferencia. Este hecho subraya que la frontera $|c|=R$ pertenece al régimen $\delta$-singular desde el punto de vista espectral, aunque su geometría de ceros requiera una escala fina distinta del caso estrictamente exterior.
 \end{rmk}
 
-\begin{rmk}[Caso mixto: átomos interiores y exteriores]
-	Si el producto de Sobolev contiene tanto átomos interiores ($|c_k|<R$) como exteriores ($|c_k|\ge R$), el Teorema~\ref{thm:umbral_delta_singular} garantiza $Q_m(\D)\le R$, donde $m=|I_{\mathrm{out}}|$. La cota inferior $Q_m(\D)\ge R$ no es inmediata en este contexto porque los términos discretos asociados a los puntos interiores contribuyen a la norma de entrada pero no a la de salida cuando $p\in V_{\mathrm{out}}$. No obstante, en el caso modelo de Lebesgue con un número finito de átomos, los experimentos computacionales y la teoría de perturbaciones de rango finito sugieren fuertemente que $Q_m(\D)=R$ sigue siendo cierto; la prueba rigurosa en el caso mixto queda planteada como línea abierta de investigación.
+\begin{rmk}[Caso mixto: alcance probado]
+	Si el producto de Sobolev contiene tanto átomos interiores ($|c_k|<R$) como exteriores ($|c_k|\ge R$), el resultado disponible es el Teorema~\ref{thm:umbral_caso_mixto}: $Q_j(\D)=\infty$ para $0\le j<m$ y $Q_m(\D)<\infty$ con una constante que depende de los átomos interiores. En este trabajo no probamos la cota uniforme $Q_m(\D)\le R$ en el caso mixto, ni tampoco la igualdad $Q_m(\D)=R$.
+
+	No obstante, si se neutralizan \emph{todos} los átomos (interiores y exteriores), es decir, si se trabaja en el subespacio $V=\bigcap_{k=1}^N\ker(\delta'_{c_k})$ de codimensión $N$, la norma de Sobolev se reduce a la norma $L^2(\mathbf m_{0;R})$ pura. En ese subespacio $\|\D|_V\|=R$, y la misma prueba del Teorema~\ref{thm:exactitud_Qm_R} muestra que
+	\[
+		Q_N(\D)=R.
+	\]
+	En otras palabras: anular todos los términos discretos recupera exactamente la norma clásica del operador de multiplicación en $L^2(\mathbb S_R)$.
+\end{rmk}
+
+\begin{thm}[Caracterización finito-dimensional de la restricción canónica en el caso mixto]
+	\label{thm:caracterizacion_finita_vout_mixto}
+	Bajo las hipótesis del Teorema~\ref{thm:umbral_caso_mixto}, sea
+	\[
+		V_{\mathrm{out}}:=\bigcap_{k\in I_{\mathrm{out}}}\ker(\psi_k),
+		\qquad
+		\psi_k(p)=(\D p)'(c_k),
+	\]
+	y sea $\mathcal H_{\mathrm{out}}$ la completación de $V_{\mathrm{out}}$ para la norma de Sobolev. Para $1\le k\le N$ definimos
+	\[
+		\ell_k(p):=p'(c_k),
+		\qquad p\in V_{\mathrm{out}},
+	\]
+	y, para $i\in I_{\mathrm{in}}$,
+	\[
+		\eta_i(p):=(\D p)'(c_i)=p(c_i)+c_ip'(c_i),
+		\qquad p\in V_{\mathrm{out}}.
+	\]
+	Entonces:
+	\begin{enumerate}
+		\item Cada $\ell_k$ y cada $\eta_i$ se extiende continuamente a $\mathcal H_{\mathrm{out}}$.
+		\item Si $u_k, v_i\in \mathcal H_{\mathrm{out}}$ son los representadores de Riesz de $\ell_k$ y $\eta_i$, y si
+		      \[
+		      	E:=\operatorname{span}\Bigl(\{u_k:1\le k\le N\}\cup\{v_i:i\in I_{\mathrm{in}}\}\Bigr),
+		      \]
+		      entonces
+		      \[
+		      	\|\D|_{V_{\mathrm{out}}}\|_S^2
+		      	=
+		      	\max\!\left\{R^2,\ \sup_{\substack{p\in E\\p\neq0}}\frac{\|\D p\|_S^2}{\|p\|_S^2}\right\}.
+		      \]
+		      En particular, si $e_1,\dots,e_d$ es una base de $E$ y
+		      \[
+		      	\mathbf A=(\langle e_j,e_i\rangle_S)_{i,j=1}^d,
+		      	\qquad
+		      	\mathbf B=(\langle \D e_j,\D e_i\rangle_S)_{i,j=1}^d,
+		      \]
+		      se obtiene la caracterización exacta
+		      \[
+		      	\|\D|_{V_{\mathrm{out}}}\|_S^2
+		      	=
+		      	\max\{R^2,\lambda_{\max}(\mathbf B,\mathbf A)\},
+		      \]
+		      donde $\lambda_{\max}(\mathbf B,\mathbf A)$ denota el máximo cociente de Rayleigh generalizado $v^*\mathbf Bv/v^*\mathbf Av$.
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}
+	Por el Lema~\ref{lem:vout_acotacion}, $\D|_{V_{\mathrm{out}}}$ es acotado; por tanto se extiende de manera única a un operador acotado en $\mathcal H_{\mathrm{out}}$, que seguimos denotando por $\D$.
+
+	Para cada $k$, la cota
+	\[
+		|\ell_k(p)|=|p'(c_k)|\le \|p\|_S,
+		\qquad p\in V_{\mathrm{out}},
+	\]
+	es inmediata por la propia definición de la norma de Sobolev. Así, $\ell_k$ se extiende continuamente a $\mathcal H_{\mathrm{out}}$.
+	Si $i\in I_{\mathrm{in}}$, las estimaciones interiores usadas en la prueba del Teorema~\ref{thm:umbral_caso_mixto} proporcionan constantes $A_i,B_i<\infty$ tales que
+	\[
+		|\eta_i(p)|=|p(c_i)+c_ip'(c_i)|\le (A_i+|c_i|B_i)\|p\|_S,
+		\qquad p\in V_{\mathrm{out}}.
+	\]
+	Por consiguiente, cada $\eta_i$ también se extiende continuamente a $\mathcal H_{\mathrm{out}}$. El Teorema de Representación de Riesz produce entonces los vectores $u_k$ y $v_i$ anunciados.
+
+	Sea ahora $p\in \mathcal H_{\mathrm{out}}$. Escribimos su descomposición ortogonal respecto de $E$:
+	\[
+		p=x+y,
+		\qquad x\in E,
+		\quad y\in E^{\perp}.
+	\]
+	Como $y$ es ortogonal a todos los representadores de Riesz, se tiene
+	\[
+		\ell_k(y)=0\quad (1\le k\le N),
+		\qquad
+		\eta_i(y)=0\quad (i\in I_{\mathrm{in}}).
+	\]
+	En particular,
+	\[
+		\|y\|_S^2=\|y\|_{L^2(\mathbf m_{0;R})}^2.
+	\]
+	Además, como $\mathcal H_{\mathrm{out}}$ es la completación de $V_{\mathrm{out}}$ y en $V_{\mathrm{out}}$ se cumple $(\D q)'(c_k)=0$ para todo $k\in I_{\mathrm{out}}$, por paso al límite obtenemos que la parte discreta exterior de $\D y$ desaparece. Junto con $\eta_i(y)=0$ para $i\in I_{\mathrm{in}}$, esto da
+	\[
+		\|\D y\|_S^2=R^2\|y\|_{L^2(\mathbf m_{0;R})}^2=R^2\|y\|_S^2.
+	\]
+
+	Como además las derivadas puntuales de $y$ se anulan, de $\langle x,y\rangle_S=0$ se deduce $\langle x,y\rangle_{L^2(\mathbf m_{0;R})}=0$. Por tanto,
+	\[
+		\|p\|_S^2=\|x\|_S^2+\|y\|_S^2.
+	\]
+	Análogamente, usando de nuevo que todas las contribuciones discretas de $\D y$ se anulan,
+	\[
+		\langle \D x,\D y\rangle_S
+		=
+		R^2\langle x,y\rangle_{L^2(\mathbf m_{0;R})}
+		+
+		\sum_{i\in I_{\mathrm{in}}}\eta_i(x)\overline{\eta_i(y)}
+		=0,
+	\]
+	y por consiguiente
+	\[
+		\|\D p\|_S^2=\|\D x\|_S^2+R^2\|y\|_S^2.
+	\]
+
+	Si $p\neq0$, de las dos identidades anteriores se sigue
+	\[
+		\frac{\|\D p\|_S^2}{\|p\|_S^2}
+		=
+		\frac{\|x\|_S^2}{\|x\|_S^2+\|y\|_S^2}\,
+		\frac{\|\D x\|_S^2}{\|x\|_S^2}
+		+
+		\frac{\|y\|_S^2}{\|x\|_S^2+\|y\|_S^2}\,R^2
+		\le
+		\max\!\left\{R^2,\sup_{\substack{q\in E\\q\neq0}}\frac{\|\D q\|_S^2}{\|q\|_S^2}\right\}.
+	\]
+	Tomando supremo en $p$ obtenemos la desigualdad “$\le$”. La desigualdad opuesta es inmediata, pues tanto $E\subset \mathcal H_{\mathrm{out}}$ como cualquier vector no nulo de $E^{\perp}$ pertenecen al dominio variacional de la izquierda. Esto prueba la segunda afirmación.
+
+	La formulación matricial es ahora el principio de Rayleigh--Ritz en el espacio finito-dimensional $E$: si $x=\sum_{j=1}^d v_j e_j$, entonces
+	\[
+		\|x\|_S^2=v^*\mathbf Av,
+		\qquad
+		\|\D x\|_S^2=v^*\mathbf Bv,
+	\]
+	y por tanto
+	\[
+		\sup_{\substack{x\in E\\x\neq0}}\frac{\|\D x\|_S^2}{\|x\|_S^2}
+		=
+		\lambda_{\max}(\mathbf B,\mathbf A).
+	\]
+	Sustituyendo en la identidad anterior se obtiene la caracterización anunciada.
+\end{proof}
+
+\begin{rmk}[Qué queda abierto para el valor exacto de $Q_m(\D)$]
+	\label{rem:q_m_mixto_abierto_finito_dimensional}
+	El Teorema~\ref{thm:caracterizacion_finita_vout_mixto} caracteriza exactamente la constante canónica
+	\[
+		C_{\mathrm{out}}:=\|\D|_{V_{\mathrm{out}}}\|_S,
+	\]
+	y en particular da la cota superior
+	\[
+		Q_m(\D)\le C_{\mathrm{out}}.
+	\]
+	Sin embargo, esto no identifica todavía el valor exacto de $Q_m(\D)$, porque en la definición de $Q_m$ el ínfimo se toma sobre \emph{todos} los subespacios admisibles de codimensión $\le m$, no solo sobre el subespacio canónico $V_{\mathrm{out}}$.
+
+	La obstrucción no es meramente formal. Incluso con un único átomo exterior $c_e\in I_{\mathrm{out}}$ y un único átomo interior $c_i\in I_{\mathrm{in}}$, para cada $\alpha\in\mathbb C$ el subespacio
+	\[
+		V_{\alpha}:=\ker\bigl(\psi_e+\alpha\eta_i\bigr)
+	\]
+	es admisible, tiene codimensión $1$ y sobre él $\D$ sigue siendo acotado: en efecto, para $p\in V_{\alpha}$,
+	\[
+		|(\D p)'(c_e)|=|\psi_e(p)|=|\alpha|\,|\eta_i(p)|\le |\alpha|(A_i+|c_i|B_i)\|p\|_S.
+	\]
+	Por tanto, el problema exacto para $Q_m(\D)$ contiene una optimización adicional sobre combinaciones de funcionales exteriores no acotados con funcionales interiores acotados. Eso explica por qué, en el estado actual de esta memoria, no afirmamos la identidad $Q_m(\D)=C_{\mathrm{out}}$.
+
+	La reducción finito-dimensional anterior también muestra que la constante canónica $C_{\mathrm{out}}$ depende, en general, de toda la configuración interior y no solo del átomo más cercano a la frontera. En efecto, el haz matricial viene determinado por la matriz de Gram finita de los representadores $\{u_k\}_{k=1}^N\cup\{v_i\}_{i\in I_{\mathrm{in}}}$; sus entradas contienen todos los productos cruzados $\langle v_i,v_j\rangle_S$ y $\langle u_k,v_i\rangle_S$, de modo que intervienen simultáneamente las posiciones relativas de todos los átomos interiores.
 \end{rmk}
 
 \begin{defn}[Ideal anulador de un subespacio]
@@ -1370,7 +1653,6 @@ En el caso particular en que todos los átomos discretos son $\delta$-singulares
 	Luego $I(V_{\mathrm{out}})\subset (A_{\mathrm{out}})$, y junto con la inclusión opuesta obtenemos
 	\[
 		I(V_{\mathrm{out}})=(A_{\mathrm{out}}).
-\qedhere
 	\]
 \end{proof}
 
@@ -1455,7 +1737,7 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es necesari
 \begin{proof}
 	Procederemos probando ambas desigualdades. Recordemos que $c_k(\D)$ calcula el ínfimo sobre subespacios \textit{cerrados} $M \subset \mathcal{H}$ de codimensión topológica $m < k+1$.
 
-	\textbf{Paso 1: $Q_k(\D) \le c_k(\D)$.}
+	\emph{Paso 1: $Q_k(\D) \le c_k(\D)$.}
 	Sea $M \subset \mathcal{H}$ un subespacio cerrado de codimensión topológica $m < k+1$. Por propiedades elementales de Análisis Funcional, $M$ puede escribirse como intersección de $m$ hiperplanos cerrados, esto es, $M=\bigcap_{j=1}^m\ker\Phi_j$ con $\Phi_1,\dots,\Phi_m\in\mathcal{H}^*$ linealmente independientes. Tomando intersección con $\Poly$, obtenemos
 	\[
 		V:=M\cap\Poly=\bigcap_{j=1}^m\ker(\Phi_j|_{\Poly}).
@@ -1525,7 +1807,7 @@ Para que el índice $Q_k$ sea una generalización válida y robusta, es necesari
 		Q_k(\D)\le c_k(\D).
 	\]
 
-	\textbf{Paso 2: $c_k(\D) \le Q_k(\D)$.}
+	\emph{Paso 2: $c_k(\D) \le Q_k(\D)$.}
 	Sea $V \subset \Poly$ un subespacio admisible con $\operatorname{codim}_{\Poly}(V) = m < k+1$. Consideremos su clausura topológica $M = \overline{V}$ en el espacio de Hilbert $\mathcal{H}$.
 	Como $\operatorname{codim}_{\Poly}(V)=m$, existe $F\subset\Poly$ con $\dim(F)=m$ tal que
 	\[
