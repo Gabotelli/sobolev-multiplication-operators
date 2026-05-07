@@ -1,11 +1,9 @@
 \chapter{Apéndice}
 \label{ch:an2}
 
-\lipsum[2]
-
 \section{Matrices de Momentos de Sobolev y de Dirac}\label{ap:matrices_momentos}
 
-En esta sección traducimos la estructura del producto de Sobolev a un lenguaje matricial en la base monomial. El objetivo es distinguir con claridad entre la forma sesquilineal abstracta y las matrices de momentos que la representan.
+Este apéndice recoge únicamente notación matricial complementaria para los capítulos~\ref{sec:espectral} y~\ref{sec:matricial}. No introduce resultados nuevos: su función es fijar de manera compacta la relación entre el producto de Sobolev y sus matrices de momentos en la base monomial.
 
 \begin{defn}[Matrices secuencialmente dominadas]\label{def:dominacion_secuencial}
 	Un par de matrices hermíticas semidefinidas positivas $\{\mathbf{M}_1, \mathbf{M}_2\}$ se dice \emph{secuencialmente dominado} si existe una constante $C > 0$ tal que
@@ -14,10 +12,6 @@ En esta sección traducimos la estructura del producto de Sobolev a un lenguaje 
 	\]
 	donde $\mathbf{A} \leq \mathbf{B}$ significa $v \mathbf{A} v^* \leq v \mathbf{B} v^*$ para todo $v \in c_{00}$.
 \end{defn}
-
-\begin{rmk}
-	En el caso de productos de Sobolev con medidas sobre circunferencias, el par $\{\mathbf{M}(\mathbf{m}_{b;r_b}), \mathbf{M}(\mathbf{m}_{a;r_a})\}$ es secuencialmente dominado si y solo si $\mathbb{S}_{r_a}(a) \subset \mathbb{D}_{r_b}(b)$, donde $\mathbb{D}_{r_b}(b)$ denota el disco abierto de centro $b$ y radio $r_b$.
-\end{rmk}
 
 \begin{defn}[Matriz de momentos de Sobolev $\mathbf{M}_S$]\label{def:matriz_sobolev}
 	Sea $\boldsymbol{\mu} = (\mu_1, \mu_2)$ un par de medidas de Borel positivas con soporte compacto en $\mathbb{C}$. Denótense por $\mathbf{M}_j = (c^{(j)}_{n,m})_{n,m \geq 0}$ sus respectivas matrices de momentos, donde $c^{(j)}_{n,m} = \int z^n \bar{z}^m \, d\mu_j(z)$, $j = 1, 2$. La \emph{matriz de momentos de Sobolev} asociada a $\boldsymbol{\mu}$ es
@@ -55,6 +49,6 @@ En esta sección traducimos la estructura del producto de Sobolev a un lenguaje 
 	Cuando $\mathbf{M}_j$ es la matriz de momentos de una medida $\mu_j$, esta definición recupera el producto de Sobolev integral de la Sección~\ref{sec:intro}. En particular, la positividad definida de $\mathbf{M}_1$ garantiza que la forma anterior sea un producto interno sobre $\Poly$.
 \end{defn}
 
-\begin{rmk}[Hacia productos de Sobolev de orden superior]
-	Las definiciones matriciales anteriores sientan las bases para extender el análisis espectral a productos de Sobolev que involucren derivadas de orden superior o medidas de Borel generales no necesariamente soportadas en circunferencias. Aunque en el resto de este trabajo nos centramos en el caso discreto de primer orden sobre la circunferencia, la formulación matricial es compatible con perturbaciones de rango finito arbitrarias y podría emplearse en trabajos futuros para estudiar la estabilización del operador multiplicación en escenarios más generales.
+\begin{rmk}[Conexión con el Capítulo~\ref{sec:matricial}]
+	Las definiciones anteriores sirven como trasfondo para la representación matricial usada en el Capítulo~\ref{sec:matricial}. En particular, la matriz de Hessenberg asociada al operador multiplicación actúa sobre una base ortonormal de polinomios, mientras que $\mathbf{M}_S$ describe la forma sesquilineal original en la base monomial. Esta distinción evita confundir la geometría del producto con la representación espectral empleada después.
 \end{rmk}

@@ -123,6 +123,7 @@ Cuando la medida continua es regular en el sentido de la teoría del potencial, 
 	\[
 		\limsup_{n\to\infty}\sigma_{m,n}\le R.
 	\]
+	No interviene aquí ninguna deducción del tipo ``$\sigma_{j,n}\le +\infty$ implica divergencia''.
 \end{proof}
 
 Por el Corolario~\ref{cor:estabilizacion}, los valores singulares estabilizan en el índice $m$. Estos resultados se combinan con la desigualdad de Weyl--Horn (Lema~\ref{lem:weyl_horn}) para obtener una cota de conteo para los ceros excepcionales (Teorema~\ref{thm:conteo_ceros}). Falta ahora identificar su destino asintótico. En esta subsección cerramos ese paso en el régimen estrictamente exterior
@@ -211,8 +212,8 @@ que es precisamente el marco donde la conjetura de atracción fue formulada con 
 	Sustituyendo en la identidad para la derivada en $c$ se obtiene
 	\begin{align*}
 		\pi_{n+1}'(c)
-		&=(n+1)c^n+\sum_{j=1}^n j a_{j,n}c^{j-1}\\
-		&=(n+1)c^n-\pi_{n+1}'(c)\,\frac1{R^2}
+		 & =(n+1)c^n+\sum_{j=1}^n j a_{j,n}c^{j-1} \\
+		 & =(n+1)c^n-\pi_{n+1}'(c)\,\frac1{R^2}
 		\sum_{j=1}^n j^2\left(\frac{|c|^2}{R^2}\right)^{j-1},
 	\end{align*}
 	y por tanto $\pi_{n+1}'(c)=\alpha_n$. Esto prueba la fórmula exacta.
@@ -277,9 +278,9 @@ que es precisamente el marco donde la conjetura de atracción fue formulada con 
 	\[
 		\sum_{\ell=1}^m
 		\left[
-		\delta_{r\ell}+
-		\frac1{R^2}T_n\!\left(\frac{c_r\overline c_\ell}{R^2}\right)
-		\right]v_{\ell,n}
+			\delta_{r\ell}+
+			\frac1{R^2}T_n\!\left(\frac{c_r\overline c_\ell}{R^2}\right)
+			\right]v_{\ell,n}
 		=(n+1)c_r^n,
 		\qquad 1\le r\le m.
 	\]
@@ -298,8 +299,8 @@ que es precisamente el marco donde la conjetura de atracción fue formulada con 
 	Derivando y evaluando en $c_r$ obtenemos
 	\begin{align*}
 		v_{r,n}
-		&=(n+1)c_r^n+\sum_{j=1}^n ja_{j,n}c_r^{j-1}\\
-		&=(n+1)c_r^n-
+		 & =(n+1)c_r^n+\sum_{j=1}^n ja_{j,n}c_r^{j-1} \\
+		 & =(n+1)c_r^n-
 		\frac1{R^2}
 		\sum_{\ell=1}^m v_{\ell,n}
 		\sum_{j=1}^n j^2\left(\frac{c_r\overline c_\ell}{R^2}\right)^{j-1},
@@ -451,7 +452,7 @@ que es precisamente el marco donde la conjetura de atracción fue formulada con 
 	La fórmula exacta del Lema~\ref{lem:modelo_un_atomo_exterior} sigue siendo válida algebraicamente para $|c|=R$:
 	\[
 		\pi_{n+1}(z)=z^{n+1}-\alpha_n\sum_{j=1}^n j\frac{\overline c^{\,j-1}}{R^{2j}}z^j,
-	\qquad
+		\qquad
 		\alpha_n=
 		\frac{(n+1)c^n}{1+\dfrac1{R^2}\sum_{j=1}^n j^2}.
 	\]
