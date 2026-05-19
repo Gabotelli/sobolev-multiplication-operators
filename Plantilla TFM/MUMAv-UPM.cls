@@ -720,6 +720,7 @@
 \makeatletter
 %\AtBeginDocument{%
 \AddToHook{begindocument/end}{
+    \hypersetup{pageanchor=false}
     \extrachapter
     \maketitle% Título
     \makelicense% Licencia
@@ -729,6 +730,7 @@
 
     % Comienzo de los índices
     \frontmatter
+    \hypersetup{pageanchor=true}
 
     \begingroup
         \parskip=0pt% Espaciado entre las líneas del índice

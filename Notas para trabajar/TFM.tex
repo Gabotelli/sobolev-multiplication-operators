@@ -68,7 +68,7 @@
 
 \subsection{Contexto y Motivación}
 
-La teoría de Polinomios Ortogonales (PO) es una rama clásica del análisis matemático con profundas aplicaciones en teoría de la aproximación, física matemática y métodos numéricos. Clásicamente, la teoría estándar consolidada por autores como Szegő estudia medidas de ortogonalidad soportadas en la recta real o en la circunferencia unidad. En estos contextos, el operador de multiplicación por la variable independiente (o la matriz de Jacobi asociada) suele ser un operador acotado definidos sobre un espacio de Hilbert estándar $L^2(\mu)$.
+La teoría de Polinomios Ortogonales (PO) es una rama clásica del análisis matemático con aplicaciones profundas en teoría de la aproximación, física matemática y métodos numéricos. En su formulación clásica, consolidada por autores como Szegő, se estudian medidas de ortogonalidad soportadas en la recta real o en la circunferencia unidad. En esos contextos, el operador de multiplicación por la variable independiente (o, equivalentemente, la matriz de Jacobi asociada) suele ser un operador acotado definido sobre un espacio de Hilbert estándar $L^2(\mu)$.
 
 Sin embargo, en las últimas décadas ha surgido un gran interés en el estudio de los llamados \textbf{Polinomios Ortogonales de Sobolev}. A diferencia del caso estándar, estos polinomios son ortogonales respecto a un producto interno que involucra no solo evaluaciones de las funciones, sino también evaluaciones de sus derivadas. Formalmente, si $\mu$ es una medida positiva, el producto interno de Sobolev toma la forma general:
 \begin{equation}
@@ -76,9 +76,9 @@ Sin embargo, en las últimas décadas ha surgido un gran interés en el estudio 
 \end{equation}
 donde $\{c_k\}$ son puntos discretos en el plano complejo y $\lambda_k > 0$ son pesos.
 
-La introducción de derivadas en la métrica cambia radicalmente la geometría del espacio de Hilbert subyacente. Una de las consecuencias más notables, y que constituye el núcleo de este trabajo, es el comportamiento del \textbf{operador multiplicación}. Mientras que en la teoría clásica este operador es acotado y, según el contexto, autoadjunto o unitario, en los espacios de Sobolev discretos su comportamiento depende críticamente de la ubicación de los puntos $c_k$ respecto al soporte de la medida $\mu$.
+La introducción de derivadas en la métrica modifica de manera sustancial la geometría del espacio de Hilbert subyacente. Una de las consecuencias más relevantes, que constituye además el eje de este trabajo, es el comportamiento del \textbf{operador de multiplicación}. Mientras que en la teoría clásica dicho operador es acotado y, según el contexto, autoadjunto o unitario, en los espacios de Sobolev discretos su comportamiento depende críticamente de la posición de los puntos $c_k$ respecto del soporte de la medida $\mu$.
 
-El objetivo principal es analizar la estructura espectral del operador multiplicación en el caso \textit{no acotado}. Específicamente, estudiamos la situación inestable donde los puntos $c_k$ se encuentran fuera del soporte esencial de la medida (el caso que denominaremos \textit{no-BPE} o de evaluaciones puntuales no acotadas). Para ello, se emplea la teoría de perturbaciones de rango finito y la teoría de los números-$s$ (valores singulares), con el fin de cuantificar la no-acotación del operador y su impacto en la asintótica de los ceros.
+El objetivo principal es analizar la estructura espectral del operador de multiplicación en el caso \textit{no acotado}. Más precisamente, estudiamos el régimen inestable en el que los puntos $c_k$ quedan fuera de la región BPE asociada a la medida continua; en el caso modelo, esto coincide con el régimen \textit{no-BPE} de evaluaciones puntuales no acotadas. Para ello empleamos teoría de perturbaciones de rango finito y teoría de números-$s$ (valores singulares), con el propósito de cuantificar la no acotación del operador y su efecto sobre la asintótica de los ceros.
 
 Este enfoque no solo proporciona un marco riguroso para los fenómenos observados anteriormente, sino que conecta el problema de los polinomios ortogonales con problemas modernos de análisis espectral y teoría de la aproximación en espacios de codimensión topológica finita.
 
@@ -294,7 +294,7 @@ Basándonos en la geometría de los puntos respecto al soporte continuo, clasifi
 		I_{\mathrm{in}}=\{k:|c_k|<R\},\qquad I_{\mathrm{out}}=\{k:|c_k|\ge R\}.
 	\]
 	Esto recupera exactamente la clasificación geométrica usada en el TFM
-	original. La nueva definición es estrictamente más general.
+	original. La nueva formulación amplía ese marco sin alterar el caso modelo.
 \end{remark}
 
 Esta distinción entre $I_{\mathrm{in}}$ y $I_{\mathrm{out}}$ constituye la base del análisis espectral y del estudio de la codimensión topológica del espacio desarrollado en la Sección~\ref{sec:espectral}. La noción de \textit{Bounded Point Evaluation} (BPE) formaliza esta separación.
@@ -314,7 +314,7 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 \end{proposition}
 
 \begin{proof}
-	Para cualquier polinomio $p \in \Poly$ y un punto $c_k$ con $\abs{c_k} < R$, podemos aplicar la Fórmula Integral de Cauchy sobre la circunferencia $\mathbb{S}_R$:
+	Para cualquier polinomio $p \in \Poly$ y cualquier punto $c_k$ con $\abs{c_k} < R$, aplicamos la Fórmula Integral de Cauchy sobre la circunferencia $\mathbb{S}_R$:
 	$$ p(c_k) = \frac{1}{2\pi i} \int_{\mathbb{S}_R} \frac{p(z)}{z - c_k} dz. $$
 	Tomando valores absolutos y aplicando la desigualdad de Cauchy-Schwarz:
 	$$ \abs{p(c_k)}^2 \leq \left( \frac{1}{2\pi} \int_{\mathbb{S}_R} \frac{1}{\abs{z - c_k}^2} \abs{dz} \right) \left( \int_{\mathbb{S}_R} \abs{p(z)}^2 \abs{dz} \right). $$
@@ -325,7 +325,7 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 
 \begin{lemma}[Continuidad del funcional derivada para puntos ABPE]
 	\label{lema:ABPE_derivada}
-	Sea $\mu$ la medida de Lebesgue (o, más generalmente, una medida que satisfaga la condición de Szegő) soportada en la circunferencia $\mathbb{T}_R = \{z \in \mathbb{C} : |z| = R\}$. Si $c \in \mathbb{C}$ es un punto de evaluación acotada (BPE) para la norma $L^2(\mu)$ y se encuentra en el interior de la curva ($|c| < R$), entonces $c$ es un punto de Evaluación Analítica Acotada (ABPE). En consecuencia, el funcional de evaluación de la derivada, $\delta'_c(p) = p'(c)$, es un funcional lineal continuo.
+	Sea $\mu$ la medida de Lebesgue (o, más generalmente, una medida que satisfaga la condición de Szegő) soportada en la circunferencia $\mathbb{T}_R = \{z \in \mathbb{C} : |z| = R\}$. Si $c \in \mathbb{C}$ es un punto de evaluación acotada (BPE) para la norma $L^2(\mu)$ y se encuentra en el interior de la curva ($|c| < R$), entonces $c$ es un punto de evaluación analítica acotada (ABPE). En consecuencia, el funcional de evaluación de la derivada, $\delta'_c(p) = p'(c)$, es lineal y continuo.
 \end{lemma}
 
 \begin{proof}
@@ -515,7 +515,7 @@ En el contexto de nuestro problema, la distinción entre puntos $I_{\mathrm{in}}
 El artículo se organiza como sigue:
 
 \begin{itemize}
-	\item \textbf{Sección~\ref{sec:espectral}: Análisis Espectral y Topología.} Se desarrolla el núcleo teórico del trabajo. Se estudian la codimensión topológica del espacio de Sobolev, la estructura del operador multiplicación y los números de Gelfand, estableciendo la dicotomía entre puntos $\delta$-singulares y no $\delta$-singulares, y la relación con la propiedad BPE clásica en el caso modelo de Lebesgue.
+	\item \textbf{Sección~\ref{sec:espectral}: Análisis Espectral y Topología.} Se desarrolla el núcleo teórico del trabajo. Se estudian la codimensión topológica del espacio de Sobolev, la estructura del operador de multiplicación y los números de Gelfand, estableciendo la dicotomía entre puntos $\delta$-singulares y no $\delta$-singulares, así como su relación con la propiedad BPE clásica en el caso modelo de Lebesgue.
 
 	\item \textbf{Sección~\ref{sec:matricial}: Análisis Matricial y Comportamiento Asintótico.} Se analizan las representaciones matriciales de los operadores. Se estudia el comportamiento asintótico de las secciones finitas (matrices de Hessenberg) mediante la teoría de perturbaciones y los valores singulares, se demuestra la estabilización algebraica, y se introduce la desigualdad de Weyl-Horn para el conteo de ceros excepcionales.
 
@@ -573,7 +573,7 @@ Dado que nuestra medida $\mu$ es la medida de Lebesgue en la circunferencia unid
 	$$ \sup_{0 \le r < 1} \frac{1}{2\pi} \int_{0}^{2\pi} \abs{f(re^{i\theta})}^2 d\theta < \infty. $$
 \end{definition}
 
-Existe un isomorfismo isométrico natural entre $H^2(\mathbb{D})$ y el subespacio cerrado de $L^2(\mathbb{S}_1)$ formado por funciones cuyos coeficientes de Fourier de índice negativo son nulos. En nuestro contexto de aproximación polinómica, podemos caracterizar $H^2$ de manera equivalente como la clausura del espacio de polinomios $\mathbb{P}$ bajo la norma $L^2$ estándar en la frontera:
+Existe un isomorfismo isométrico natural entre $H^2(\mathbb{D})$ y el subespacio cerrado de $L^2(\mathbb{S}_1)$ formado por las funciones cuyos coeficientes de Fourier de índice negativo son nulos. En nuestro contexto de aproximación polinómica, también puede identificarse $H^2$ con la clausura del espacio de polinomios $\mathbb{P}$ bajo la norma $L^2$ estándar en la frontera:
 $$ H^2 \cong \overline{\mathbb{P}}^{L^2(\mathbb{S}_1)}. $$
 Esta identificación es fundamental, ya que nos permite utilizar la estructura de \textit{Reproducing Kernel Hilbert Space} (RKHS) de $H^2$. En particular, para cualquier $c \in \mathbb{D}$, el núcleo reproductor de Szegő viene dado por $K_c(z) = (1-\bar{c}z)^{-1}$.
 
@@ -638,7 +638,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 	Sea $\mathcal{H}$ la clausura de $\Poly$ respecto a una norma de Hilbert y sea $a \in \C$. Sea $V = \overline{\{p \in \Poly : p(a)=0\}}$. Entonces, solo existen dos posibilidades:
 	\begin{enumerate}
 		\item Si $a$ es un punto de evaluación acotada (BPE), entonces $V$ es un hiperplano cerrado y $\operatorname{codim}_{\mathcal{H}}(V) = 1$.
-		\item Si $a$ no es un BPE, entonces $V$ es denso en $\mathcal{H}$ y $\operatorname{codim}_{\mathcal{H}}(V) = 0$.
+		\item Si $a$ no es un punto BPE, entonces $V$ es denso en $\mathcal{H}$ y $\operatorname{codim}_{\mathcal{H}}(V) = 0$.
 	\end{enumerate}
 \end{theorem}
 
@@ -665,7 +665,7 @@ Esta identificación es fundamental, ya que nos permite utilizar la estructura d
 \end{theorem}
 
 \begin{proof}
-	\textbf{Caso 1 ($\phi$ no acotado):} Por propiedades fundamentales de los espacios normados, si un funcional lineal no está acotado, su núcleo es denso en el espacio topológico. Por lo tanto, su clausura es todo el espacio: $\overline{\ker(\phi)} = \mathcal{H}$. Trivilamente, al no faltar ninguna dimensión para generar $\mathcal{H}$, su codimensión topológica es 0.
+	\textbf{Caso 1 ($\phi$ no acotado):} Por propiedades fundamentales de los espacios normados, si un funcional lineal no está acotado, su núcleo es denso en el espacio topológico. Por lo tanto, su clausura es todo el espacio: $\overline{\ker(\phi)} = \mathcal{H}$. Trivialmente, al no faltar ninguna dimensión para generar $\mathcal{H}$, su codimensión topológica es $0$.
 
 	\textbf{Caso 2 ($\phi$ acotado):} Dado que $\phi$ es continuo, su núcleo ya es un subespacio cerrado, por lo que $\overline{\ker(\phi)} = \ker(\phi)$ (tomando la clausura en $\mathcal{H}$).
 
@@ -747,7 +747,7 @@ En el marco de la teoría de ideales de operadores, los números de Gelfand cons
 	En particular, $c_0(T) = \|T\|$ es la norma global del operador. En este trabajo usaremos siempre la notación $c_k(\D)$ para los números de Gelfand del operador de multiplicación.
 \end{definition}
 
-Con el fin de analizar el impacto que las derivadas discretas tienen sobre la estructura espectral del operador multiplicación $\D(p) = zp$, se estudia el caso particular de un único punto en la derivada. Específicamente, se considera la perturbación de la medida continua, soportada en la circunferencia unidad $\mathbb{S}_1$, mediante la adición de un único término discreto en la derivada, evaluado en un punto $c_1 \in \C$. A lo largo de esta subsección, se asume que $c_1$ es un punto BPE.
+Con el fin de analizar el impacto de los términos discretos de derivada sobre la estructura espectral del operador de multiplicación $\D(p)=zp$, comenzamos con el caso de un único átomo en la derivada. En concreto, consideramos la perturbación de la medida continua, soportada en la circunferencia unidad $\mathbb{S}_1$, mediante la adición de un único término discreto evaluado en un punto $c_1 \in \C$. A lo largo de esta subsección asumimos que $c_1$ es un punto BPE.
 
 \subsubsection{El Primer Número de Gelfand: La Norma Global}
 
@@ -832,7 +832,7 @@ Cuando el punto de derivada se sitúa en la región exterior ($c \in I_{\mathrm{
 	\qquad
 	\psi_c(p)=p(c)+c p'(c)=(\D p)'(c).
 \]
-En el caso modelo de Lebesgue en circunferencia y átomo $\delta$-singular ($\abs{c}\ge R$), la Proposición~\ref{prop:no_acotacion_modelo_exterior} demuestra que $\psi_c$ es no acotado respecto a la norma de Sobolev; por tanto, $\D$ no es acotado. Dicho de otro modo, en el régimen $\delta$-singular el problema deja de encajar de forma natural en la teoría de operadores acotados sobre $\mathcal{H}$.
+En el caso modelo de Lebesgue en circunferencia y átomo $\delta$-singular ($\abs{c}\ge R$), la Proposición~\ref{prop:no_acotacion_modelo_exterior} muestra que $\psi_c$ no es acotado respecto de la norma de Sobolev; en consecuencia, $\D$ tampoco lo es. En otras palabras, en el régimen $\delta$-singular el problema deja de encajar de manera natural en la teoría de operadores acotados sobre $\mathcal{H}$.
 
 \begin{proposition}[No acotación en el caso modelo $\delta$-singular]
 	\label{prop:no_acotacion_modelo_exterior}
@@ -964,7 +964,7 @@ Esta observación explica por qué el enfoque puramente topológico pierde efica
 
 \subsection{Un Nuevo Índice de Acotación Algebraica: El Índice $Q_k$}
 
-En el régimen en que aparecen átomos sobre la frontera o en el exterior ($|c_k|\ge R$), el estudio topológico del operador multiplicación $\D$ en la completación de Hilbert $\mathcal{H}$ deja de ser la herramienta adecuada, porque los funcionales de evaluación que gobiernan la parte discreta no admiten extensión continua. Por ello, conviene reemplazar el punto de vista topológico por uno puramente algebraico que siga siendo compatible con las truncaciones finitas y con el análisis de los ceros.
+En el régimen en que aparecen átomos sobre la frontera o en el exterior ($|c_k|\ge R$), el estudio topológico del operador de multiplicación $\D$ en la completación de Hilbert $\mathcal{H}$ deja de ser la herramienta adecuada, porque los funcionales de evaluación que gobiernan la parte discreta no admiten extensión continua. Por ello, conviene reemplazar el punto de vista topológico por uno puramente algebraico que siga siendo compatible con las truncaciones finitas y con el análisis de los ceros.
 
 Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas operan exclusivamente sobre polinomios, resulta natural definir un nuevo índice que mida la acotación de forma puramente algebraica dentro del espacio pre-Hilbertiano $\Poly$.
 
@@ -1004,7 +1004,7 @@ Para superar este obstáculo, y dado que las matrices de Hessenberg truncadas op
 \end{proposition}
 
 \begin{definition}[Índice Algebraico $Q_k$]\label{def:indice_Qk}
-	Sea $\D:\Poly\to\Poly$ el operador multiplicación en el espacio pre-Hilbertiano de Sobolev. Para cada $k\ge0$, definimos
+	Sea $\D:\Poly\to\Poly$ el operador de multiplicación en el espacio pre-Hilbertiano de Sobolev. Para cada $k\ge0$, definimos
 	\[
 		Q_k(\D)
 		:=\inf\{\|\D|_V\|_S:V\subset\Poly\ \text{admisible y}\ \operatorname{codim}_{\Poly}(V)<k+1\},
@@ -1102,7 +1102,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 \end{proof}
 
 \begin{proposition}[Propiedades Básicas del Índice $Q_k$]\label{prop:propiedades_Qk}
-	Para el operador multiplicación $\D$ definido sobre el espacio pre-Hilbertiano $\Poly$, el índice algebraico $Q_k(\D)$ forma una sucesión monótona no creciente cuyo primer término coincide exactamente con la norma global del operador. Es decir:
+	Para el operador de multiplicación $\D$ definido sobre el espacio pre-Hilbertiano $\Poly$, el índice algebraico $Q_k(\D)$ forma una sucesión monótona no creciente cuyo primer término coincide exactamente con la norma global del operador. Es decir:
 	$$ \|\D\|_S = Q_0(\D) \ge Q_1(\D) \ge \dots \ge Q_k(\D) \ge Q_{k+1}(\D) \ge \dots \ge 0 $$
 	(admitiendo el valor $+\infty$ cuando $\D$ es no acotado).
 \end{proposition}
@@ -1123,7 +1123,7 @@ La ventaja principal de este nuevo índice es que permite aislar las singularida
 \end{proof}
 
 \begin{definition}[Índice Topológico $S_k$]\label{def:indice_Sk}
-	Sea $\D:\Poly\to\Poly$ el operador multiplicación y sea $k\ge 0$. Definimos
+	Sea $\D:\Poly\to\Poly$ el operador de multiplicación y sea $k\ge 0$. Definimos
 	\[
 		S_k(\D)
 		:=
@@ -1532,9 +1532,9 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 	\[
 		Q_j(\D)=\infty\ \text{ para }\ 0\le j\le m-1,
 		\qquad
-		Q_m(\D)\le R.
+		Q_m(\D)<\infty.
 	\]
-	En particular, el número de puntos $\delta$-singulares $m = |I_{\mathrm{out}}|$ es el umbral algebraico exacto de estabilización del operador de multiplicación $\D$.
+	En particular, el número de puntos $\delta$-singulares $m = |I_{\mathrm{out}}|$ es el umbral algebraico exacto a partir del cual la restricción de $\D$ puede estabilizarse sobre subespacios de codimensión algebraica finita.
 \end{theorem}
 
 \begin{proof}
@@ -1954,10 +1954,10 @@ Dividiremos el análisis del umbral en varias partes para facilitar su lectura: 
 
 \subsubsection{Consistencia con los Números de Gelfand Topológicos}
 
-Para que el índice $Q_k$ sea una generalización válida y robusta, es imperativo demostrar que, en ausencia de patologías topológicas (es decir, cuando el operador sí es acotado de forma natural en $\mathcal{H}$), el índice puramente algebraico coincide exactamente con los números de Gelfand definidos en la completación de Hilbert.
+Para justificar que el índice $Q_k$ constituye una generalización adecuada, conviene demostrar que, en ausencia de patologías topológicas ---esto es, cuando el operador sí es acotado de manera natural en $\mathcal{H}$---, dicho índice puramente algebraico coincide con los números de Gelfand definidos en la completación de Hilbert.
 
 \begin{theorem}[Equivalencia en el Caso Acotado]\label{thm:equivalencia_Qk_Gelfand}
-	Si el operador multiplicación $\D$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todas las masas discretas son puntos BPE), entonces para todo $k \ge 0$:
+	Si el operador de multiplicación $\D$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todas las masas discretas son puntos BPE), entonces para todo $k \ge 0$:
 	$$ Q_k(\D) = c_k(\D) $$
 \end{theorem}
 
@@ -2119,7 +2119,7 @@ Los resultados de esta sección establecen el marco funcional que relaciona los 
 % =============================================================
 \section{Análisis Matricial y Comportamiento Asintótico}\label{sec:matricial}
 
-El estudio asintótico del operador multiplicación $\D$ se lleva a cabo a través de sus aproximaciones de rango finito, denominadas secciones principales. El paso del espacio de Hilbert abstracto al álgebra de polinomios finitos permite emplear herramientas de álgebra lineal numérica para analizar las matrices que gobiernan la disposición de los ceros.
+El estudio asintótico del operador de multiplicación $\D$ se lleva a cabo a través de sus aproximaciones de rango finito, denominadas secciones principales. El paso del espacio de Hilbert abstracto al álgebra de polinomios finitos permite emplear herramientas de álgebra lineal numérica para analizar las matrices que gobiernan la disposición de los ceros.
 
 % [CORRECCIÓN ESTRUCTURAL] Reforzada la motivación del paso a matrices.
 Para convertir estas estimaciones funcionales en predicciones sobre la distribución de los ceros de los polinomios ortogonales, necesitamos una representación finito-dimensional del operador. Las secciones truncadas de la matriz de multiplicación en la base ortonormal de polinomios de Sobolev constituyen el puente natural entre el análisis espectral abstracto y los cálculos efectivos.
@@ -2284,7 +2284,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 \end{proof}
 
 \begin{proposition}[Comportamiento del valor singular de índice $0$]\label{prop:convergencia_sigma}
-	Sea $\D$ el operador multiplicación por $z$ y sea $\mathbf{D}_n$ la matriz de su compresión al subespacio $\operatorname{span}\{\phi_0,\dots,\phi_n\}$. Entonces:
+	Sea $\D$ el operador de multiplicación por $z$ y sea $\mathbf{D}_n$ la matriz de su compresión al subespacio $\operatorname{span}\{\phi_0,\dots,\phi_n\}$. Entonces:
 	\begin{enumerate}
 		\item si $\D$ extiende a un operador acotado en $\mathcal{H}$, se tiene
 		      \[
@@ -2294,7 +2294,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\end{enumerate}
 \end{proposition}
 
-En particular, cuando la medida continua tiene soporte acotado con radio máximo $R$ y el operador multiplicación es acotado, se obtiene $\|\D\| = R$ y, por tanto, $\lim_{n \to \infty} \sigma_{0,n} = R$.
+En particular, cuando la medida continua tiene soporte acotado con radio máximo $R$ y el operador de multiplicación es acotado, se obtiene $\|\D\| = R$ y, por tanto, $\lim_{n \to \infty} \sigma_{0,n} = R$.
 
 \subsection{Estabilización Algebraica de los Valores Singulares}
 
@@ -2332,7 +2332,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 \end{theorem}
 
 \begin{proof}
-	Analizaremos la acción del operador multiplicación $\D: p \mapsto zp$ sobre la norma inducida por (\ref{eq:sobolev_general_singular}). Para cualquier polinomio $p \in \Poly$, la norma de su imagen es:
+	Analizaremos la acción del operador de multiplicación $\D: p \mapsto zp$ sobre la norma inducida por (\ref{eq:sobolev_general_singular}). Para cualquier polinomio $p \in \Poly$, la norma de su imagen es:
 	\begin{equation}
 		\|\D p\|_S^2 = \int |zp(z)|^2 d\mu(z) + \sum_{k=1}^N \lambda_k \left| (zp)^{(j_k)}(c_k) \right|^2
 	\end{equation}
@@ -2594,7 +2594,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\(
 	V_{\mathrm{out}}
 	\)
-	es admisible, tiene codimensión exacta $m$, y satisface $\|\D|_{V_{\mathrm{out}}}\|_S<\infty$. En consecuencia, la hipótesis $Q_m(\D)<\infty$ queda automáticamente satisfecha, y podemos tomar $V_{\mathrm{out}}$
+	es admisible, tiene codimensión exacta $m$ y satisface $\|\D|_{V_{\mathrm{out}}}\|_S<\infty$. En consecuencia, la hipótesis $Q_m(\D)<\infty$ queda verificada, y podemos trabajar con $V_{\mathrm{out}}$
 	de codimensión $m$. Por el Corolario~\ref{cor:anulador_canonico_umbral}, el polinomio
 	\[
 		A_{\mathrm{out}}(z)=\prod_{k\in I_{\mathrm{out}}}(z-c_k)^2
@@ -2790,7 +2790,7 @@ sus valores singulares.
 Para índices superiores, los resultados obtenidos en este trabajo proporcionan de manera natural una cota asintótica superior. En el caso acotado, esta cota puede expresarse directamente en términos de los números de Gelfand del operador global.
 
 \begin{corollary}[Cota asintótica superior en el caso acotado]\label{cor:convergencia_qk_condicional}
-	Supongamos que el operador multiplicación $\D$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todos los átomos de derivada son puntos BPE). Entonces, para todo $k \ge 0$,
+	Supongamos que el operador de multiplicación $\D$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todos los átomos de derivada son puntos BPE). Entonces, para todo $k \ge 0$,
 	\[
 		\limsup_{n \to \infty} \sigma_{k,n} \le c_k(\D).
 	\]
@@ -3058,47 +3058,22 @@ La conexión entre los valores singulares de $\mathbf{D}_n$ y el radio espectral
 \end{corollary}
 
 \begin{proof}
-	Por la Proposición~\ref{prop:sigma_qk} del Capítulo~\ref{sec:matricial}, los valores singulares de las truncaciones satisfacen $\sigma_{k,n}\le Q_k(\D)+\varepsilon$ para $n$ suficientemente grande. Como $Q_j(\D)=+\infty$ para $0\le j<m$ (Teorema~\ref{thm:umbral_delta_singular}), se deduce que $\sigma_{j,n}\to+\infty$. La cota $\limsup_n\sigma_{m,n}\le R$ es el contenido del Teorema~\ref{thm:umbral_singular_indice_m_enunciado}.
+	La afirmación coincide exactamente con el contenido del Teorema~\ref{thm:umbral_singular_indice_m_enunciado}; se la enuncia aquí de nuevo para incorporarla a la cadena argumental del presente capítulo.
 \end{proof}
 
 Por el Corolario~\ref{cor:estabilizacion}, los valores singulares estabilizan en el índice $m$. Estos resultados de estabilización singular se combinan con la desigualdad de Weyl--Horn (Lema~\ref{lem:weyl_horn}) para obtener una cota de conteo para los ceros excepcionales (Teorema~\ref{thm:conteo_ceros}). El paso siguiente es garantizar que esos ceros excepcionales no divergen, sino que son atraídos hacia los átomos exteriores.
 
-\begin{theorem}[Atracción de ceros excepcionales hacia los átomos exteriores]\label{thm:atraccion}
-	En el marco considerado (medida de Lebesgue normalizada en $\mathbb{S}_R$ más átomos de primera derivada en $c_1,\dots,c_N$), sea $m=|I_{\mathrm{out}}|$.
-	Para todo $\varepsilon>0$ existe $n_\varepsilon\in\mathbb{N}$ tal que, para todo $n\ge n_\varepsilon$, los ceros de $\phi_{n+1}$ con módulo mayor que $R+\varepsilon$ pertenecen a la unión de bolas
+\begin{remark}[Sobre la atracción esperada de los ceros excepcionales]\label{rem:atraccion_esperada}
+	En el marco considerado (medida de Lebesgue normalizada en $\mathbb{S}_R$ más átomos de primera derivada en $c_1,\dots,c_N$), es natural esperar un fenómeno de atracción de los ceros excepcionales hacia los puntos de $I_{\mathrm{out}}$. Más precisamente, la heurística sugiere que, dado $\varepsilon>0$, para $n$ suficientemente grande los ceros de $\phi_{n+1}$ con módulo mayor que $R+\varepsilon$ deberían concentrarse en
 	\[
-		\bigcup_{k\in I_{\mathrm{out}}}\overline{\mathbb{D}_{\varepsilon}(c_k)}.
+		\bigcup_{k\in I_{\mathrm{out}}}\overline{\mathbb{D}_{\varepsilon}(c_k)},
 	\]
-	Más aún, para cada $k\in I_{\mathrm{out}}$ con $\varepsilon$ suficientemente pequeño, exactamente un cero de $\phi_{n+1}$ tiende a $c_k$ cuando $n\to\infty$.
-\end{theorem}
+	y, bajo hipótesis adicionales, cabría esperar una correspondencia asintótica uno a uno entre esos ceros y los átomos exteriores. Sin embargo, en la bibliografía consultada (\cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}) no hemos localizado una demostración completa de esta afirmación en el caso exacto ``Lebesgue en circunferencia + primeras derivadas en puntos exteriores''. El caso estándar puede rastrearse en \cite[Cap.~5]{stahl1992general}; la adaptación rigurosa al marco Sobolev discreto requiere un desarrollo adicional y se deja indicada como línea natural de cierre del argumento estructural.
+\end{remark}
 
-\begin{proof}[Esquema y referencias]
-	Este resultado es la versión discreta del fenómeno de atracción de ceros hacia el soporte exterior, bien conocido para polinomios ortogonales estándar (Mhaskar--Saff \cite{stahl1992general}, López-Lagomasino \cite{lopez1999zero}). Para productos de Sobolev discretos con átomos exteriores, la prueba sigue tres pasos:
-	\begin{enumerate}
-		\item La desigualdad de Weyl--Horn (Lema~\ref{lem:weyl_horn}) da el conteo: a lo sumo $m$ ceros escapan del disco $\overline{\mathbb{D}_{R+\varepsilon}}$.
-		\item El principio de mínimo de potencial logarítmico (aplicado a la medida de conteo de ceros) fuerza a que los ceros excepcionales no puedan acumularse fuera de $\{c_k:k\in I_{\mathrm{out}}\}$; de lo contrario, la norma de Sobolev de los polinomios ortonormales crecería contradictoriamente.
-		\item La correspondencia uno a uno entre ceros excepcionales y átomos exteriores se deduce del análisis de la matriz de momentos de Sobolev (sección \ref{sec:momentos_sobolev}) y del comportamiento asintótico de los coeficientes de recurrencia de alta orden.
-	\end{enumerate}
-	\textbf{Nota para el lector/ tribunal:} En la bibliografía consultada (\cite{lopez1999zero,lopez2001sobolev,marcellan2015sobolev}) no he localizado una demostración completa del caso exacto ``Lebesgue en circunferencia + primeras derivadas en puntos exteriores con atracción uno a uno''. La prueba detallada puede consultarse en \cite[Cap.~5]{stahl1992general} para el caso estándar; la adaptación al caso Sobolev discreto requiere las estimaciones de la sección~\ref{sec:matricial} y queda como completación para una versión final del TFM.
-\end{proof}
-
-\begin{theorem}[Acotación uniforme de ceros vía $Q_m$]\label{thm:acotacion_via_Q_m}
-	En el marco considerado, sean $\phi_n$ los polinomios ortonormales de Sobolev.
-	Existe un compacto $K\subset\mathbb{C}$ tal que todo cero de $\phi_n$, para todo $n\ge 1$, pertenece a $K$.
-\end{theorem}
-
-\begin{proof}
-	Fijemos $\varepsilon>0$ tal que las bolas $\overline{\mathbb{D}_{\varepsilon}(c_k)}$, $k\in I_{\mathrm{out}}$, sean disjuntas dos a dos.
-
-	Por los Teoremas~\ref{thm:conteo_ceros} y~\ref{thm:atraccion}, existe $n_\varepsilon$ tal que para todo $n\ge n_\varepsilon$ los ceros de $\phi_{n+1}$ pertenecen al compacto
-	\[
-		K_\varepsilon:=\overline{\mathbb{D}_{R+\varepsilon}}\cup
-		\bigcup_{k\in I_{\mathrm{out}}}\overline{\mathbb{D}_{\varepsilon}(c_k)}.
-	\]
-	Para los grados $1\le n\le n_\varepsilon$, el conjunto total de ceros es finito; sea $K_0$ su envoltura compacta.
-
-	Tomando $K:=K_\varepsilon\cup K_0$ se concluye.
-\end{proof}
+\begin{remark}[Alcance actual de la vía estructural]\label{rem:alcance_via_Q_m}
+	La acotación uniforme de los ceros ya queda establecida rigurosamente por la vía de cuasi-ortogonalidad (Teorema~\ref{thm:acotacion_ceros}) y, en el caso particular tratado aquí, por el criterio del Teorema~\ref{thm:criterio_singular_ceros_objetivo}. La cadena estructural basada en $Q_m$, valores singulares y Weyl--Horn proporciona de manera completa el conteo de ceros excepcionales y la identificación del umbral espectral; para convertirla en una prueba autónoma de acotación uniforme resta completar de forma rigurosa el paso de atracción señalado en la Observación~\ref{rem:atraccion_esperada}.
+\end{remark}
 
 \begin{remark}[Lectura: $Q_m$ como nueva ``norma efectiva'']\label{rem:Q_m_norma_efectiva}
 	En el caso clásico acotado se tiene $\sigma_{0,n}\to\|\D\|<\infty$, y esa norma ($Q_0$) es la que controla los ceros. En el régimen $\delta$-singular, $\sigma_{0,n},\dots,\sigma_{m-1,n}$ explotan, pero $\sigma_{m,n}$ se estabiliza en $R$ (controlada por $Q_m$). Es razonable pensar que \emph{$Q_m$ es la norma efectiva} del operador en el régimen $\delta$-singular: la norma global del operador restringido al subespacio donde la inestabilidad se neutraliza.
@@ -3109,9 +3084,9 @@ Por el Corolario~\ref{cor:estabilizacion}, los valores singulares estabilizan en
 % -------------------------------------------------------------
 % [FUENTE: cadena_argumentativa.tex, §Comparación, lineas 373--395]
 
-\begin{proposition}[Equivalencia de las dos vías de acotación]\label{prop:equivalencia_vias}
-	Tanto la vía de cuasi-ortogonalidad (Sección~\ref{sec:cuasi_ortogonalidad}) como la vía estructural $Q_m$ + Weyl--Horn + atracción (Sección~\ref{sec:cadena_Qm}) producen el mismo compacto $K\subset\mathbb{C}$ que contiene uniformemente todos los ceros de los polinomios ortogonales de Sobolev.
-\end{proposition}
+\begin{remark}[Comparación de las dos vías de acotación]\label{prop:equivalencia_vias}
+	La vía de cuasi-ortogonalidad (Sección~\ref{sec:cuasi_ortogonalidad}) y la vía estructural $Q_m$ + Weyl--Horn + atracción (Sección~\ref{sec:cadena_Qm}) conducen a la misma conclusión cualitativa: la familia de ceros de los polinomios ortogonales de Sobolev permanece uniformemente acotada. La primera aporta una demostración completa dentro del marco del presente texto; la segunda ofrece una lectura espectral más fina del fenómeno y deja aislado el único paso que requiere completación adicional.
+\end{remark}
 
 \begin{remark}[Comparación con el argumento por cuasi-ortogonalidad]\label{rem:comparacion_vias}
 	El Teorema~\ref{thm:acotacion_ceros} obtiene la misma conclusión por una vía distinta: la cuasi-ortogonalidad de $\phi_n$ de orden $L=2N$ respecto a una medida modificada $d\nu=\overline{A}\,d\mu$. Las dos vías son complementarias:
@@ -3120,11 +3095,11 @@ Por el Corolario~\ref{cor:estabilizacion}, los valores singulares estabilizan en
 		\item La vía de \emph{$Q_m$ + Weyl--Horn + atracción} desarrollada aquí es estructuralmente más informativa: identifica explícitamente que el actor central es el primer índice de Gelfand finito ($Q_m$), conecta con los valores singulares de las truncaciones, y separa los $n-m$ ceros ``masa'' (que están en $\overline{\mathbb{D}_R}$) de los $m$ ceros ``excepcionales'' (que están en bolas alrededor de $c_k\in I_{\mathrm{out}}$).
 	\end{itemize}
 
-	Conviene presentarlas ambas: la primera como prueba clásica alternativa, la segunda como prueba principal por su valor explicativo. La cadena $Q_m$ + Weyl--Horn + atracción constituye la contribución novedosa de este trabajo.
+	Conviene presentar ambas perspectivas: la primera como demostración clásica completa, y la segunda como programa estructural con mayor poder explicativo. La cadena $Q_m$ + Weyl--Horn + atracción constituye, en ese sentido, la contribución conceptual novedosa de este trabajo.
 \end{remark}
 
 % [AÑADIDO] Párrafo de cierre sintetizando la contribución estructural y la unificación mediante δ-singularidad.
-En síntesis, este trabajo establece que $Q_m(\D)$ desempeña en el régimen $\delta$-singular exactamente el mismo papel que $\|\D\|$ juega en el caso clásico acotado: mientras que en el régimen interior la norma del operador controla la localización de los ceros, en el régimen exterior es el primer índice de Gelfand finito $Q_m(\D)$ el que gobierna la estabilización espectral y, a través de la cadena $Q_m \to$ valores singulares $\to$ Weyl--Horn $\to$ atracción, la acotación uniforme de los ceros. La terminología de puntos $\delta$-singulares unifica la hipótesis funcional a lo largo de toda la memoria: en el Capítulo~\ref{sec:espectral} determina la codimensión topológica; en el Capítulo~\ref{sec:matricial} fija el umbral de estabilización matricial; y en el Capítulo~\ref{sec:ceros_acotacion} distingue los ceros excepcionales de los ceros de masa. Las dos vías de acotación estudiadas en el Capítulo~\ref{sec:ceros_acotacion} —la cuasi-ortogonalidad (clásica) y la cadena estructural $Q_m$+Weyl--Horn+atracción (novedosa)— son complementarias: la primera ofrece robustez técnica para productos de orden general, mientras que la segunda identifica explícitamente el actor espectral y separa la dinámica de los ceros exteriores. Es esta segunda vía la que constituye la contribución estructural principal del presente trabajo.
+En síntesis, este trabajo establece que $Q_m(\D)$ desempeña en el régimen $\delta$-singular un papel análogo al de $\|\D\|$ en el caso clásico acotado: mientras que en el régimen interior la norma del operador controla la localización de los ceros, en el régimen exterior es el primer índice de Gelfand finito $Q_m(\D)$ el que gobierna la estabilización espectral y organiza la cadena $Q_m \to$ valores singulares $\to$ Weyl--Horn. La terminología de puntos $\delta$-singulares unifica la hipótesis funcional a lo largo de toda la memoria: en el Capítulo~\ref{sec:espectral} determina el umbral de estabilización algebraica; en el Capítulo~\ref{sec:matricial} fija el umbral de estabilización matricial; y en el Capítulo~\ref{sec:ceros_acotacion} separa los ceros excepcionales de los ceros de masa. Las dos vías de acotación estudiadas en el Capítulo~\ref{sec:ceros_acotacion} ---la cuasi-ortogonalidad (clásica) y la cadena estructural $Q_m$+Weyl--Horn+atracción (novedosa)--- son complementarias: la primera ofrece una demostración completa y robusta para productos de orden general, mientras que la segunda identifica explícitamente el actor espectral y aísla el mecanismo que gobierna los ceros exteriores. Es esta segunda lectura estructural la que constituye la aportación conceptual principal del presente trabajo.
 
 \nocite{*}
 \bibliographystyle{plain}
