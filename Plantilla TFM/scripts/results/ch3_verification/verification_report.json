@@ -1,0 +1,1135 @@
+{
+  "methodology_note": "Las secciones 'direct_verifications' contienen chequeos algebraicos finitos. Las secciones 'experimental_verifications' son SOLO evidencia numérica y no sustituyen una prueba matemática.",
+  "direct_verifications": {
+    "lem:independencia_funcionales_psi": {
+      "scenario": {
+        "radius_R": 1.0,
+        "atoms_out": [
+          {
+            "real": 1.4,
+            "imag": 0.0
+          },
+          {
+            "real": -1.6,
+            "imag": 0.0
+          }
+        ],
+        "degree": 5
+      },
+      "psi_matrix_shape": [
+        2,
+        6
+      ],
+      "rank": 2,
+      "expected_rank": 2,
+      "nullity": 4,
+      "expected_nullity": 4,
+      "smallest_singular_value": 32.029019322610125
+    },
+    "lem:vout_codimension": {
+      "scenario": {
+        "radius_R": 1.0,
+        "atoms_out": [
+          {
+            "real": 1.4,
+            "imag": 0.0
+          },
+          {
+            "real": -1.6,
+            "imag": 0.0
+          }
+        ],
+        "degree": 8
+      },
+      "psi_matrix_shape": [
+        2,
+        9
+      ],
+      "rank": 2,
+      "expected_rank": 2,
+      "nullity": 7,
+      "expected_nullity": 7,
+      "smallest_singular_value": 147.21518153630927
+    },
+    "thm:Vout_anulador": {
+      "scenario": {
+        "atoms_out": [
+          {
+            "real": 1.4,
+            "imag": 0.0
+          },
+          {
+            "real": -1.6,
+            "imag": 0.0
+          }
+        ],
+        "degree_bound": 10
+      },
+      "A_out_coefficients_ascending": [
+        {
+          "real": 5.017600000000001,
+          "imag": 0.0
+        },
+        {
+          "real": -0.8960000000000017,
+          "imag": 0.0
+        },
+        {
+          "real": -4.439999999999999,
+          "imag": 0.0
+        },
+        {
+          "real": 0.40000000000000036,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "direct_inclusion_checks": [
+        {
+          "q_degree": 0,
+          "psi_values": [
+            {
+              "real": 8.08242361927114e-15,
+              "imag": 0.0
+            },
+            {
+              "real": 1.580957587066223e-14,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "q_degree": 1,
+          "psi_values": [
+            {
+              "real": 8.526512829121202e-15,
+              "imag": 0.0
+            },
+            {
+              "real": -1.8474111129762605e-14,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "q_degree": 2,
+          "psi_values": [
+            {
+              "real": 2.1671553440683054e-14,
+              "imag": 0.0
+            },
+            {
+              "real": 6.323830348264892e-14,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "q_degree": 3,
+          "psi_values": [
+            {
+              "real": 1.483257960899209e-14,
+              "imag": 0.0
+            },
+            {
+              "real": -1.412203687323199e-13,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "q_degree": 4,
+          "psi_values": [
+            {
+              "real": 3.197442310920451e-14,
+              "imag": 0.0
+            },
+            {
+              "real": 1.6484591469634326e-13,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "q_degree": 5,
+          "psi_values": [
+            {
+              "real": 9.023892744153272e-14,
+              "imag": 0.0
+            },
+            {
+              "real": -4.3485215428518133e-13,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "q_degree": 6,
+          "psi_values": [
+            {
+              "real": 1.4424017535930032e-13,
+              "imag": 0.0
+            },
+            {
+              "real": 6.30961949354969e-13,
+              "imag": 0.0
+            }
+          ]
+        }
+      ],
+      "truncated_solution_dimension": 7,
+      "expected_solution_dimension": 7,
+      "multiples_dimension": 7,
+      "combined_rank": 7,
+      "expected_combined_rank": 7
+    }
+  },
+  "experimental_verifications": {
+    "lem:no_acotacion_derivada_exterior_lebesgue": {
+      "strict_exterior": {
+        "c": 1.4,
+        "rows": [
+          {
+            "n": 2,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 2.8,
+            "formula": 2.8
+          },
+          {
+            "n": 4,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 10.975999999999997,
+            "formula": 10.975999999999997
+          },
+          {
+            "n": 8,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 84.33080319999996,
+            "formula": 84.33080319999996
+          },
+          {
+            "n": 12,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 485.94782035967967,
+            "formula": 485.94782035967967
+          },
+          {
+            "n": 16,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 2489.0895289249934,
+            "formula": 2489.0895289249934
+          },
+          {
+            "n": 20,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 11952.607917897814,
+            "formula": 11952.607917897814
+          }
+        ],
+        "trend": "|p_n'(c)| crece exponencialmente con ||p_n||_{L2}=1."
+      },
+      "boundary": {
+        "c": 1.0,
+        "rows": [
+          {
+            "n": 2,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 2.0,
+            "formula": 2.0
+          },
+          {
+            "n": 4,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 4.0,
+            "formula": 4.0
+          },
+          {
+            "n": 8,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 8.0,
+            "formula": 8.0
+          },
+          {
+            "n": 12,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 12.0,
+            "formula": 12.0
+          },
+          {
+            "n": 16,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 16.0,
+            "formula": 16.0
+          },
+          {
+            "n": 20,
+            "norm_L2": 1.0,
+            "abs_delta_prime_c": 20.0,
+            "formula": 20.0
+          }
+        ],
+        "trend": "|p_n'(c)| = n/R crece linealmente con ||p_n||_{L2}=1."
+      },
+      "interpretation": "EVIDENCIA EXPERIMENTAL fuerte para lem:no_acotacion_derivada_exterior_lebesgue; la no acotación infinita no puede certificarse solo con cálculo finito."
+    },
+    "prop:no_acotacion_modelo_exterior": {
+      "strict_exterior_case": [
+        {
+          "n": 2,
+          "Qn_prime_c": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "psi_c_Qn": {
+            "real": 2.743999999999999,
+            "imag": 0.0
+          },
+          "norm_sq": 21.640000000000036,
+          "ratio_sq": 0.34794528650646867
+        },
+        {
+          "n": 4,
+          "Qn_prime_c": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "psi_c_Qn": {
+            "real": 5.378240000000002,
+            "imag": 0.0
+          },
+          "norm_sq": 65.00000000000091,
+          "ratio_sq": 0.4450071615015325
+        },
+        {
+          "n": 8,
+          "Qn_prime_c": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "psi_c_Qn": {
+            "real": 20.66104678399998,
+            "imag": 0.0
+          },
+          "norm_sq": 222.76000000030618,
+          "ratio_sq": 1.916317355943837
+        },
+        {
+          "n": 12,
+          "Qn_prime_c": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "psi_c_Qn": {
+            "real": 79.37147732541439,
+            "imag": 0.0
+          },
+          "norm_sq": 475.24000000339,
+          "ratio_sq": 13.256105152709857
+        },
+        {
+          "n": 16,
+          "Qn_prime_c": {
+            "real": 7.275957614183426e-12,
+            "imag": 0.0
+          },
+          "psi_c_Qn": {
+            "real": 304.9134672933216,
+            "imag": 0.0
+          },
+          "norm_sq": 822.4400007605552,
+          "ratio_sq": 113.04438311713805
+        }
+      ],
+      "boundary_case": [
+        {
+          "n": 2,
+          "Pn_prime_c": {
+            "real": 1.1102230246251565e-16,
+            "imag": 0.0
+          },
+          "psi_c_Pn": {
+            "real": 1.2000000000000002,
+            "imag": 0.0
+          },
+          "norm_sq": 1.2000000000000002,
+          "ratio_sq": 1.2000000000000002
+        },
+        {
+          "n": 4,
+          "Pn_prime_c": {
+            "real": 4.440892098500626e-16,
+            "imag": 0.0
+          },
+          "psi_c_Pn": {
+            "real": 1.6666666666666672,
+            "imag": 0.0
+          },
+          "norm_sq": 1.6666666666666665,
+          "ratio_sq": 1.6666666666666679
+        },
+        {
+          "n": 8,
+          "Pn_prime_c": {
+            "real": -1.7763568394002505e-15,
+            "imag": 0.0
+          },
+          "psi_c_Pn": {
+            "real": 2.6470588235294095,
+            "imag": 0.0
+          },
+          "norm_sq": 2.64705882352941,
+          "ratio_sq": 2.647058823529409
+        },
+        {
+          "n": 12,
+          "Pn_prime_c": {
+            "real": 1.7763568394002505e-15,
+            "imag": 0.0
+          },
+          "psi_c_Pn": {
+            "real": 3.640000000000002,
+            "imag": 0.0
+          },
+          "norm_sq": 3.639999999999991,
+          "ratio_sq": 3.640000000000013
+        },
+        {
+          "n": 16,
+          "Pn_prime_c": {
+            "real": -3.552713678800501e-15,
+            "imag": 0.0
+          },
+          "psi_c_Pn": {
+            "real": 4.636363636363633,
+            "imag": 0.0
+          },
+          "norm_sq": 4.6363636363636305,
+          "ratio_sq": 4.636363636363636
+        },
+        {
+          "n": 24,
+          "Pn_prime_c": {
+            "real": 1.0658141036401503e-14,
+            "imag": 0.0
+          },
+          "psi_c_Pn": {
+            "real": 6.632653061224501,
+            "imag": 0.0
+          },
+          "norm_sq": 6.632653061224451,
+          "ratio_sq": 6.632653061224552
+        }
+      ],
+      "interpretation": "EVIDENCIA EXPERIMENTAL fuerte para prop:no_acotacion_modelo_exterior: las sucesiones explícitas del manuscrito reproducen Q_n'(c)=0 o P_n'(c)=0 y muestran crecimiento del cociente |psi_c(p_n)|^2 / ||p_n||_S^2."
+    },
+    "prop:lebesgue_pre_umbral_Qk": {
+      "scenario": {
+        "radius_R": 1.0,
+        "c": {
+          "real": 1.4,
+          "imag": 0.0
+        }
+      },
+      "rows": [
+        {
+          "degree": 2,
+          "restricted_norm": 1.0000000000000004
+        },
+        {
+          "degree": 3,
+          "restricted_norm": 1.0000000000000004
+        },
+        {
+          "degree": 4,
+          "restricted_norm": 1.0000000000000038
+        },
+        {
+          "degree": 5,
+          "restricted_norm": 1.000000000000026
+        },
+        {
+          "degree": 6,
+          "restricted_norm": 1.0000000000000195
+        },
+        {
+          "degree": 7,
+          "restricted_norm": 1.0000000000000815
+        },
+        {
+          "degree": 8,
+          "restricted_norm": 1.0000000000004834
+        },
+        {
+          "degree": 9,
+          "restricted_norm": 1.0000000000021092
+        },
+        {
+          "degree": 10,
+          "restricted_norm": 1.0000000000030003
+        },
+        {
+          "degree": 11,
+          "restricted_norm": 1.0000000000075446
+        },
+        {
+          "degree": 12,
+          "restricted_norm": 1.0000000000082305
+        },
+        {
+          "degree": 13,
+          "restricted_norm": 1.000000000032542
+        },
+        {
+          "degree": 14,
+          "restricted_norm": 1.0000000000713603
+        },
+        {
+          "degree": 15,
+          "restricted_norm": 1.0000000002273648
+        },
+        {
+          "degree": 16,
+          "restricted_norm": 1.000000000297955
+        }
+      ],
+      "max_restricted_norm": 1.000000000297955,
+      "interpretation": "EVIDENCIA finita para prop:lebesgue_pre_umbral_Qk: sobre truncaciones de ker(psi_c), la norma restringida se mantiene en R dentro del error numérico."
+    },
+    "lem:vout_acotacion": {
+      "scenario": {
+        "radius_R": 1.0,
+        "atoms_out": [
+          {
+            "real": 1.4,
+            "imag": 0.0
+          },
+          {
+            "real": -1.6,
+            "imag": 0.0
+          }
+        ],
+        "atoms_in": [
+          {
+            "real": 0.25,
+            "imag": 0.0
+          }
+        ]
+      },
+      "rows": [
+        {
+          "degree": 4,
+          "restricted_norm": 1.2592571778964239
+        },
+        {
+          "degree": 5,
+          "restricted_norm": 1.2685869297890446
+        },
+        {
+          "degree": 6,
+          "restricted_norm": 1.3458854933534259
+        },
+        {
+          "degree": 7,
+          "restricted_norm": 1.3596373813382139
+        },
+        {
+          "degree": 8,
+          "restricted_norm": 1.4039740516811554
+        },
+        {
+          "degree": 9,
+          "restricted_norm": 1.4108612297085783
+        },
+        {
+          "degree": 10,
+          "restricted_norm": 1.4289425854151774
+        },
+        {
+          "degree": 11,
+          "restricted_norm": 1.4321189707277582
+        },
+        {
+          "degree": 12,
+          "restricted_norm": 1.4386120057707963
+        },
+        {
+          "degree": 13,
+          "restricted_norm": 1.4400377953513017
+        },
+        {
+          "degree": 14,
+          "restricted_norm": 1.4422558713703124
+        },
+        {
+          "degree": 15,
+          "restricted_norm": 1.442858221774659
+        },
+        {
+          "degree": 16,
+          "restricted_norm": 1.4435953163812063
+        },
+        {
+          "degree": 17,
+          "restricted_norm": 1.4438326856666417
+        },
+        {
+          "degree": 18,
+          "restricted_norm": 1.4440724558684022
+        }
+      ],
+      "max_restricted_norm": 1.4440724558684022,
+      "interpretation": "EVIDENCIA EXPERIMENTAL para lem:vout_acotacion: las normas restringidas en V_out ∩ P_n permanecen acotadas en el rango computado."
+    },
+    "thm:estabilizacion_Qm": {
+      "scenario": {
+        "r1": 1.0,
+        "c1": 0.0,
+        "atoms": [
+          1.4,
+          -1.6
+        ],
+        "m": 2,
+        "radius_R": 1.0,
+        "n_range": [
+          4,
+          24
+        ]
+      },
+      "interpretation": "EVIDENCIA EXPERIMENTAL reutilizada del capítulo 4: para m=2, sigma_0,n y sigma_1,n crecen mientras sigma_2,n se mantiene cerca de R=1 en el rango computado.",
+      "rows": [
+        {
+          "n": 4,
+          "sigma_0_n": 2.9896193440431835,
+          "sigma_1_n": 2.4580197978072853,
+          "sigma_m_n": 0.9034352475281825,
+          "count_s_gt_1": 2,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 5,
+          "sigma_0_n": 3.3787708640393888,
+          "sigma_1_n": 2.741511914646064,
+          "sigma_m_n": 0.9999999999999994,
+          "count_s_gt_1": 2,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 6,
+          "sigma_0_n": 4.21196854916613,
+          "sigma_1_n": 2.982299138984133,
+          "sigma_m_n": 1.0000000000000018,
+          "count_s_gt_1": 3,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 7,
+          "sigma_0_n": 5.411250836233924,
+          "sigma_1_n": 3.491364448348654,
+          "sigma_m_n": 1.0000000000000004,
+          "count_s_gt_1": 3,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 8,
+          "sigma_0_n": 7.322019458190294,
+          "sigma_1_n": 4.07506515962647,
+          "sigma_m_n": 1.0000000000000093,
+          "count_s_gt_1": 3,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 9,
+          "sigma_0_n": 10.144372064301535,
+          "sigma_1_n": 4.949596614388511,
+          "sigma_m_n": 1.0000000000016416,
+          "count_s_gt_1": 4,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 10,
+          "sigma_0_n": 14.38958789403441,
+          "sigma_1_n": 6.061987437042881,
+          "sigma_m_n": 1.0000000000009588,
+          "count_s_gt_1": 5,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 11,
+          "sigma_0_n": 20.701719282345113,
+          "sigma_1_n": 7.585142376111526,
+          "sigma_m_n": 1.0000000000013343,
+          "count_s_gt_1": 5,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 12,
+          "sigma_0_n": 30.137590176385995,
+          "sigma_1_n": 9.579377072607098,
+          "sigma_m_n": 1.0000000000204163,
+          "count_s_gt_1": 5,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 13,
+          "sigma_0_n": 44.25682506852939,
+          "sigma_1_n": 12.24369195870925,
+          "sigma_m_n": 1.0000000002286513,
+          "count_s_gt_1": 6,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 14,
+          "sigma_0_n": 65.46216251580606,
+          "sigma_1_n": 15.763989666935386,
+          "sigma_m_n": 1.0000000001595073,
+          "count_s_gt_1": 7,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 15,
+          "sigma_0_n": 97.4023082764352,
+          "sigma_1_n": 20.445509620691656,
+          "sigma_m_n": 1.0000000007833019,
+          "count_s_gt_1": 7,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 16,
+          "sigma_0_n": 145.6620730098588,
+          "sigma_1_n": 26.661700375516915,
+          "sigma_m_n": 1.0000000008087824,
+          "count_s_gt_1": 7,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 17,
+          "sigma_0_n": 218.78469721300456,
+          "sigma_1_n": 34.94094887836553,
+          "sigma_m_n": 1.0000000020989266,
+          "count_s_gt_1": 8,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 18,
+          "sigma_0_n": 329.87254469965296,
+          "sigma_1_n": 45.97906065472097,
+          "sigma_m_n": 1.0000000146488992,
+          "count_s_gt_1": 8,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 19,
+          "sigma_0_n": 499.0456302464303,
+          "sigma_1_n": 60.72674150409881,
+          "sigma_m_n": 1.0000000610544721,
+          "count_s_gt_1": 9,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 20,
+          "sigma_0_n": 757.2499347883355,
+          "sigma_1_n": 80.46139939130599,
+          "sigma_m_n": 1.000000179545134,
+          "count_s_gt_1": 10,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 21,
+          "sigma_0_n": 1152.148676720074,
+          "sigma_1_n": 106.91608574301551,
+          "sigma_m_n": 1.0000002401966295,
+          "count_s_gt_1": 11,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 22,
+          "sigma_0_n": 1757.2516202033976,
+          "sigma_1_n": 142.43470471651128,
+          "sigma_m_n": 1.0000007473877397,
+          "count_s_gt_1": 10,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 23,
+          "sigma_0_n": 2686.063014157653,
+          "sigma_1_n": 190.19627384495953,
+          "sigma_m_n": 1.0000008055724598,
+          "count_s_gt_1": 11,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 24,
+          "sigma_0_n": 4114.099985087268,
+          "sigma_1_n": 254.51024868931987,
+          "sigma_m_n": 1.000000844738602,
+          "count_s_gt_1": 11,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        }
+      ],
+      "summary": {
+        "max_sigma_m_n": 1.000000844738602,
+        "min_sigma_m_n": 0.9034352475281825,
+        "last_sigma_m_n": 1.000000844738602,
+        "max_abs_deviation_from_R": 0.0965647524718175
+      }
+    },
+    "thm:exactitud_Qm_R": {
+      "scenario": {
+        "r1": 1.0,
+        "c1": 0.0,
+        "atoms": [
+          1.4,
+          -1.6
+        ],
+        "m": 2,
+        "radius_R": 1.0,
+        "n_range": [
+          4,
+          24
+        ]
+      },
+      "interpretation": "EVIDENCIA EXPERIMENTAL reutilizada de capítulos 4--5 para thm:exactitud_Qm_R: el valor singular de índice m=2 permanece numéricamente cerca de R=1, pero esto NO reemplaza la prueba exacta de Q_m(D)=R.",
+      "rows": [
+        {
+          "n": 4,
+          "sigma_0_n": 2.9896193440431835,
+          "sigma_1_n": 2.4580197978072853,
+          "sigma_m_n": 0.9034352475281825,
+          "count_s_gt_1": 2,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 5,
+          "sigma_0_n": 3.3787708640393888,
+          "sigma_1_n": 2.741511914646064,
+          "sigma_m_n": 0.9999999999999994,
+          "count_s_gt_1": 2,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 6,
+          "sigma_0_n": 4.21196854916613,
+          "sigma_1_n": 2.982299138984133,
+          "sigma_m_n": 1.0000000000000018,
+          "count_s_gt_1": 3,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 7,
+          "sigma_0_n": 5.411250836233924,
+          "sigma_1_n": 3.491364448348654,
+          "sigma_m_n": 1.0000000000000004,
+          "count_s_gt_1": 3,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 8,
+          "sigma_0_n": 7.322019458190294,
+          "sigma_1_n": 4.07506515962647,
+          "sigma_m_n": 1.0000000000000093,
+          "count_s_gt_1": 3,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 9,
+          "sigma_0_n": 10.144372064301535,
+          "sigma_1_n": 4.949596614388511,
+          "sigma_m_n": 1.0000000000016416,
+          "count_s_gt_1": 4,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 10,
+          "sigma_0_n": 14.38958789403441,
+          "sigma_1_n": 6.061987437042881,
+          "sigma_m_n": 1.0000000000009588,
+          "count_s_gt_1": 5,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 11,
+          "sigma_0_n": 20.701719282345113,
+          "sigma_1_n": 7.585142376111526,
+          "sigma_m_n": 1.0000000000013343,
+          "count_s_gt_1": 5,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 12,
+          "sigma_0_n": 30.137590176385995,
+          "sigma_1_n": 9.579377072607098,
+          "sigma_m_n": 1.0000000000204163,
+          "count_s_gt_1": 5,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 13,
+          "sigma_0_n": 44.25682506852939,
+          "sigma_1_n": 12.24369195870925,
+          "sigma_m_n": 1.0000000002286513,
+          "count_s_gt_1": 6,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 14,
+          "sigma_0_n": 65.46216251580606,
+          "sigma_1_n": 15.763989666935386,
+          "sigma_m_n": 1.0000000001595073,
+          "count_s_gt_1": 7,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 15,
+          "sigma_0_n": 97.4023082764352,
+          "sigma_1_n": 20.445509620691656,
+          "sigma_m_n": 1.0000000007833019,
+          "count_s_gt_1": 7,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 16,
+          "sigma_0_n": 145.6620730098588,
+          "sigma_1_n": 26.661700375516915,
+          "sigma_m_n": 1.0000000008087824,
+          "count_s_gt_1": 7,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 17,
+          "sigma_0_n": 218.78469721300456,
+          "sigma_1_n": 34.94094887836553,
+          "sigma_m_n": 1.0000000020989266,
+          "count_s_gt_1": 8,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 18,
+          "sigma_0_n": 329.87254469965296,
+          "sigma_1_n": 45.97906065472097,
+          "sigma_m_n": 1.0000000146488992,
+          "count_s_gt_1": 8,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 19,
+          "sigma_0_n": 499.0456302464303,
+          "sigma_1_n": 60.72674150409881,
+          "sigma_m_n": 1.0000000610544721,
+          "count_s_gt_1": 9,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 20,
+          "sigma_0_n": 757.2499347883355,
+          "sigma_1_n": 80.46139939130599,
+          "sigma_m_n": 1.000000179545134,
+          "count_s_gt_1": 10,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 21,
+          "sigma_0_n": 1152.148676720074,
+          "sigma_1_n": 106.91608574301551,
+          "sigma_m_n": 1.0000002401966295,
+          "count_s_gt_1": 11,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 22,
+          "sigma_0_n": 1757.2516202033976,
+          "sigma_1_n": 142.43470471651128,
+          "sigma_m_n": 1.0000007473877397,
+          "count_s_gt_1": 10,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 23,
+          "sigma_0_n": 2686.063014157653,
+          "sigma_1_n": 190.19627384495953,
+          "sigma_m_n": 1.0000008055724598,
+          "count_s_gt_1": 11,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        },
+        {
+          "n": 24,
+          "sigma_0_n": 4114.099985087268,
+          "sigma_1_n": 254.51024868931987,
+          "sigma_m_n": 1.000000844738602,
+          "count_s_gt_1": 11,
+          "count_s_gt_1.02": 2,
+          "count_s_gt_1.05": 2,
+          "count_s_gt_1.1": 2,
+          "count_s_gt_1.25": 2
+        }
+      ],
+      "summary": {
+        "max_sigma_m_n": 1.000000844738602,
+        "min_sigma_m_n": 0.9034352475281825,
+        "last_sigma_m_n": 1.000000844738602,
+        "max_abs_deviation_from_R": 0.0965647524718175
+      }
+    },
+    "thm:caracterizacion_finita_vout_mixto": {
+      "scenario": {
+        "radius_R": 1.0,
+        "atoms_out": [
+          {
+            "real": 1.4,
+            "imag": 0.0
+          },
+          {
+            "real": -1.6,
+            "imag": 0.0
+          }
+        ],
+        "atoms_in": [
+          {
+            "real": 0.25,
+            "imag": 0.0
+          }
+        ],
+        "degree": 12
+      },
+      "lambda_full": 2.0696045031478736,
+      "lambda_E": 2.069604503132993,
+      "predicted_max": 2.069604503132993,
+      "difference": 1.4880541243655898e-11,
+      "functional_norms": {
+        "ell_1": 0.9866916251860692,
+        "ell_2": 0.9981336306346108,
+        "ell_3": 0.7394858791585317,
+        "eta_{'real': 0.25, 'imag': 0.0}": 1.0524066105596854
+      }
+    }
+  },
+  "reproducibility": {
+    "output_dir": "Plantilla TFM/scripts/results/ch3_verification",
+    "command": "python3 \"Plantilla TFM/scripts/verify_chapter3.py\" --output-dir \"Plantilla TFM/scripts/results/ch3_verification\" --n-min 4 --n-max 24"
+  }
+}

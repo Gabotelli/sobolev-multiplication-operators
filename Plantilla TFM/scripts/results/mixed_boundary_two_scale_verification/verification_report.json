@@ -1,0 +1,1212 @@
+{
+  "methodology_note": "Sistema exacto reducido a los átomos + reconstrucción del polinomio mónico. Solo evidencia numérica.",
+  "x_star": 1.3607795323484022,
+  "reproducibility": {
+    "output_dir": "Plantilla TFM/scripts/results/mixed_boundary_two_scale_verification",
+    "command": "python3 \"Plantilla TFM/scripts/verify_mixed_boundary_two_scale.py\" --output-dir \"Plantilla TFM/scripts/results/mixed_boundary_two_scale_verification\""
+  },
+  "experiments": {
+    "mixed_boundary_single_each_exact": {
+      "scenario": {
+        "name": "mixed_boundary_single_each_exact",
+        "radius_R": 1.0,
+        "atoms_out": [
+          {
+            "real": 1.4,
+            "imag": 0.0
+          }
+        ],
+        "atoms_boundary": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ],
+        "atoms_in": [
+          {
+            "real": 0.25,
+            "imag": 0.0
+          }
+        ],
+        "n_values": [
+          20,
+          30,
+          40,
+          60,
+          80,
+          100,
+          120
+        ],
+        "sample_x": [
+          0.5,
+          1.0,
+          2.0
+        ]
+      },
+      "rows": [
+        {
+          "n": 20,
+          "max_zero_modulus": 1.4667194340861847,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4667194340861847,
+                "imag": -2.4472319740371595e-16
+              },
+              "distance": 0.06671943408618475
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.3999999999999997,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0873351013411483,
+                "imag": 1.3370089373518896e-16
+              },
+              "scaled_x": {
+                "real": 1.746702026822966,
+                "imag": 2.674017874703779e-15
+              },
+              "error_against_x_star": 0.38592249447456384,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.7027886642596249,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.6425315471387436,
+                    "imag": -0.0
+                  },
+                  "difference": 0.06025711712088133
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.556787463828539,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.3944054401573368,
+                    "imag": -0.0
+                  },
+                  "difference": 0.16238202367120225
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -0.3252416088680299,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.5361696346257279,
+                    "imag": 0.0
+                  },
+                  "difference": 1.210928025757698
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 30,
+          "max_zero_modulus": 1.4464043494728736,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4464043494728736,
+                "imag": 1.105436171747031e-15
+              },
+              "distance": 0.04640434947287364
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.3999999999999997,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.054088833758337,
+                "imag": 4.488760627298037e-16
+              },
+              "scaled_x": {
+                "real": 1.6226650127501085,
+                "imag": 1.346628188189411e-14
+              },
+              "error_against_x_star": 0.26188548040170634,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.6976231951223585,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.6425315471387436,
+                    "imag": -0.0
+                  },
+                  "difference": 0.05509164798361488
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.5269746325155809,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.3944054401573368,
+                    "imag": -0.0
+                  },
+                  "difference": 0.13256919235824405
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -0.5914214184912572,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.5361696346257279,
+                    "imag": 0.0
+                  },
+                  "difference": 0.9447482161344707
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 40,
+          "max_zero_modulus": 1.4351630468655108,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4351630468655108,
+                "imag": 1.1388560858430987e-15
+              },
+              "distance": 0.03516304686551086
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.3999999999999997,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0389472624219858,
+                "imag": -5.837445735305204e-16
+              },
+              "scaled_x": {
+                "real": 1.5578904968794305,
+                "imag": -2.3349782941220817e-14
+              },
+              "error_against_x_star": 0.19711096453102828,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.6889342281671308,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.6425315471387436,
+                    "imag": -0.0
+                  },
+                  "difference": 0.04640268102838718
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.5028800689482207,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.3944054401573368,
+                    "imag": -0.0
+                  },
+                  "difference": 0.10847462879088388
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -0.7672948691356138,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.5361696346257279,
+                    "imag": 0.0
+                  },
+                  "difference": 0.768874765490114
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 60,
+          "max_zero_modulus": 1.4235314253297868,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4235314253297868,
+                "imag": -5.601380980151905e-17
+              },
+              "distance": 0.023531425329786915
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.3999999999999997,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0248668672202408,
+                "imag": 8.331699270391286e-16
+              },
+              "scaled_x": {
+                "real": 1.492012033214447,
+                "imag": 4.9990195622347716e-14
+              },
+              "error_against_x_star": 0.13123250086604488,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.6764301120310002,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.6425315471387436,
+                    "imag": -0.0
+                  },
+                  "difference": 0.03389856489225662
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.47252630702428666,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.3944054401573368,
+                    "imag": -0.0
+                  },
+                  "difference": 0.07812086686694986
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -0.978871462369642,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.5361696346257279,
+                    "imag": 0.0
+                  },
+                  "difference": 0.5572981722560859
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 80,
+          "max_zero_modulus": 1.4176437289630472,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4176437289630472,
+                "imag": -9.992007221626409e-16
+              },
+              "distance": 0.017643728963047334
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.3999999999999997,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0182367958439915,
+                "imag": -3.3306690738754696e-16
+              },
+              "scaled_x": {
+                "real": 1.4589436675193213,
+                "imag": -2.6645352591003757e-14
+              },
+              "error_against_x_star": 0.09816413517091904,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.6689228103579501,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.6425315471387436,
+                    "imag": -0.0
+                  },
+                  "difference": 0.026391263219206484
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.4550848941544374,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.3944054401573368,
+                    "imag": -0.0
+                  },
+                  "difference": 0.06067945399710062
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.1000102202659807,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.5361696346257279,
+                    "imag": 0.0
+                  },
+                  "difference": 0.43615941435974714
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 100,
+          "max_zero_modulus": 1.414103739360166,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.414103739360166,
+                "imag": -9.992007221626409e-16
+              },
+              "distance": 0.014103739360166179
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.3999999999999997,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0143913587879971,
+                "imag": -4.440892098500626e-16
+              },
+              "scaled_x": {
+                "real": 1.4391358787997133,
+                "imag": -4.440892098500626e-14
+              },
+              "error_against_x_star": 0.07835634645131107,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.6640695714337572,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.6425315471387436,
+                    "imag": -0.0
+                  },
+                  "difference": 0.021538024295013614
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.4439268366283211,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.3944054401573368,
+                    "imag": -0.0
+                  },
+                  "difference": 0.0495213964709843
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.178114441497649,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.5361696346257279,
+                    "imag": 0.0
+                  },
+                  "difference": 0.3580551931280789
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 120,
+          "max_zero_modulus": 1.4117439587371567,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4117439587371567,
+                "imag": -5.551115123125783e-16
+              },
+              "distance": 0.011743958737156834
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.3999999999999997,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0118830181150322,
+                "imag": 1.7763568394002505e-15
+              },
+              "scaled_x": {
+                "real": 1.4259621738038675,
+                "imag": 2.1316282072803006e-13
+              },
+              "error_against_x_star": 0.06518264145546526,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.6607021558324749,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.6425315471387436,
+                    "imag": -0.0
+                  },
+                  "difference": 0.018170608693731327
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.43620773822344816,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.3944054401573368,
+                    "imag": -0.0
+                  },
+                  "difference": 0.041802298066111354
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.2325729012885143,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.5361696346257279,
+                    "imag": 0.0
+                  },
+                  "difference": 0.3035967333372136
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "mixed_boundary_two_plus_two_exact": {
+      "scenario": {
+        "name": "mixed_boundary_two_plus_two_exact",
+        "radius_R": 1.0,
+        "atoms_out": [
+          {
+            "real": 1.4,
+            "imag": 0.0
+          },
+          {
+            "real": -1.3,
+            "imag": 0.0
+          }
+        ],
+        "atoms_boundary": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          }
+        ],
+        "atoms_in": [
+          {
+            "real": 0.4,
+            "imag": 0.0
+          }
+        ],
+        "n_values": [
+          24,
+          40,
+          60,
+          80,
+          100
+        ],
+        "sample_x": [
+          0.5,
+          1.0,
+          2.0
+        ]
+      },
+      "rows": [
+        {
+          "n": 24,
+          "max_zero_modulus": 1.4573850786430709,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4573850786430709,
+                "imag": -1.8318679906315083e-15
+              },
+              "distance": 0.057385078643070964
+            },
+            "-1.3": {
+              "nearest_zero": {
+                "real": -1.3514832394185212,
+                "imag": 6.190252303805988e-16
+              },
+              "distance": 0.051483239418521176
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0698162250513292,
+                "imag": 1.3317014264447653e-15
+              },
+              "scaled_x": {
+                "real": 1.6755894012319015,
+                "imag": 3.1960834234674367e-14
+              },
+              "error_against_x_star": 0.31480986888349927,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.9817239634548988,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.14643295217453212
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.7574190988156984,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.24469202661116052
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -0.6488850215207922,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 1.348135503492654
+                }
+              ]
+            },
+            "-1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": -1.076019224464875,
+                "imag": -1.2707557847416046e-15
+              },
+              "scaled_x": {
+                "real": 1.8244613871569992,
+                "imag": 3.049813883379851e-14
+              },
+              "error_against_x_star": 0.463681854808597,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 1.0431275986272084,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.20783658734684174
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.8499367732526473,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.33720970104810943
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -0.30567925660032813,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 1.6913412684131182
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 40,
+          "max_zero_modulus": 1.4353008186522849,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4353008186522849,
+                "imag": -2.7801064725967818e-15
+              },
+              "distance": 0.03530081865228496
+            },
+            "-1.3": {
+              "nearest_zero": {
+                "real": -1.3326136804948865,
+                "imag": 1.605486577016535e-15
+              },
+              "distance": 0.03261368049488644
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0389193876230278,
+                "imag": -7.17478803629396e-16
+              },
+              "scaled_x": {
+                "real": 1.556775504921113,
+                "imag": -2.869915214517584e-14
+              },
+              "error_against_x_star": 0.19599597257271073,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.9446226516457574,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.10933164036539078
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.6886900652103867,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.17596299300584883
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.0542647535046603,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 0.942755771508786
+                }
+              ]
+            },
+            "-1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": -1.0408207165302126,
+                "imag": 7.454567379799323e-18
+              },
+              "scaled_x": {
+                "real": 1.632828661208503,
+                "imag": -2.981826951919729e-16
+              },
+              "error_against_x_star": 0.2720491288601008,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.966605929551196,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.1313149182708293
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.7357514309871371,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.2230243587825993
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -0.7948132755215616,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 1.2022072494918847
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 60,
+          "max_zero_modulus": 1.4235896510432222,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4235896510432222,
+                "imag": -1.671847386300499e-15
+              },
+              "distance": 0.023589651043222304
+            },
+            "-1.3": {
+              "nearest_zero": {
+                "real": -1.321925748700476,
+                "imag": -1.2809306566829992e-15
+              },
+              "distance": 0.021925748700476033
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0248777997814398,
+                "imag": -3.1391982435506116e-16
+              },
+              "scaled_x": {
+                "real": 1.4926679868863868,
+                "imag": -1.8835189461303668e-14
+              },
+              "error_against_x_star": 0.1318884545379846,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.9135083085660793,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.0782172972857127
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.6383145823983716,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.12558751019383374
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.3173108562961007,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 0.6797096687173456
+                }
+              ]
+            },
+            "-1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": -1.0256573100987056,
+                "imag": 1.5372171009923648e-15
+              },
+              "scaled_x": {
+                "real": 1.5394386059223386,
+                "imag": -9.223302605954188e-14
+              },
+              "error_against_x_star": 0.1786590735739364,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.9244622440404131,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.08917123276004646
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.6683753664882444,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.15564829428370652
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.118813520505559,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 0.8782070045078874
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 80,
+          "max_zero_modulus": 1.4176753623639522,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4176753623639522,
+                "imag": -2.3135286174064563e-15
+              },
+              "distance": 0.017675362363952285
+            },
+            "-1.3": {
+              "nearest_zero": {
+                "real": -1.3164480935310883,
+                "imag": 5.371716981719588e-16
+              },
+              "distance": 0.016448093531088226
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0182489115843696,
+                "imag": 7.724575740604756e-16
+              },
+              "scaled_x": {
+                "real": 1.459912926749567,
+                "imag": 6.179660592483804e-14
+              },
+              "error_against_x_star": 0.09913339440116475,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.8955681086169338,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.060277097336567165
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.6097135905606645,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.0969865183561267
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.4665630021850955,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 0.5304575228283508
+                }
+              ]
+            },
+            "-1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": -1.0186688145686438,
+                "imag": 1.4432899320127035e-15
+              },
+              "scaled_x": {
+                "real": 1.4935051654915021,
+                "imag": -1.1546319456101628e-13
+              },
+              "error_against_x_star": 0.13272563314309993,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.9025481646645395,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.06725715338417282
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.6319570429739154,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.11922997076937758
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.306505211520486,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 0.6905153134929602
+                }
+              ]
+            }
+          }
+        },
+        {
+          "n": 100,
+          "max_zero_modulus": 1.4141235187951882,
+          "outer_atom_tracking": {
+            "1.4": {
+              "nearest_zero": {
+                "real": 1.4141235187951882,
+                "imag": -8.330423452458235e-18
+              },
+              "distance": 0.01412351879518825
+            },
+            "-1.3": {
+              "nearest_zero": {
+                "real": -1.3131454833113567,
+                "imag": 8.239936510889834e-18
+              },
+              "distance": 0.013145483311356676
+            }
+          },
+          "boundary_atom_tracking": {
+            "1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": 1.0144012858351097,
+                "imag": 1.915134717478395e-15
+              },
+              "scaled_x": {
+                "real": 1.440128583510969,
+                "imag": 1.915134717478395e-13
+              },
+              "error_against_x_star": 0.07934905116256674,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.8841906063752072,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.04889959509484054
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.5915809872575948,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.07885391505305694
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.5623087800953117,
+                    "imag": 0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 0.4347117449181346
+                }
+              ]
+            },
+            "-1.0": {
+              "F_out_at_atom": {
+                "real": -1.8199999999999996,
+                "imag": 0.0
+              },
+              "nearest_zero": {
+                "real": -1.0146627864042876,
+                "imag": 2.220446049250313e-16
+              },
+              "scaled_x": {
+                "real": 1.4662786404287642,
+                "imag": -2.220446049250313e-14
+              },
+              "error_against_x_star": 0.105499108080362,
+              "profile_samples": [
+                {
+                  "x": 0.5,
+                  "G_n": {
+                    "real": 0.8892084479334224,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.8352910112803666,
+                    "imag": -0.0
+                  },
+                  "difference": 0.053917436653055706
+                },
+                {
+                  "x": 1.0,
+                  "G_n": {
+                    "real": 0.6092664430346715,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": 0.5127270722045378,
+                    "imag": -0.0
+                  },
+                  "difference": 0.09653937083013364
+                },
+                {
+                  "x": 2.0,
+                  "G_n": {
+                    "real": -1.428446179264335,
+                    "imag": -0.0
+                  },
+                  "limit_Fout_times_H": {
+                    "real": -1.9970205250134463,
+                    "imag": 0.0
+                  },
+                  "difference": 0.5685743457491113
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,101 @@
+% !TEX root = ../main.tex
+\chapter{Introducción y Estado del Arte}\label{sec:intro}
+
+\section{Contexto y motivación}
+
+La teoría de los polinomios ortogonales ocupa un lugar central en el análisis, la teoría de la aproximación y la física matemática. En su formulación clásica, consolidada por Szegő, se estudian familias de polinomios ortogonales respecto a medidas positivas sobre la recta real o sobre una circunferencia, y esa ortogonalidad refleja con gran fidelidad la geometría del soporte de la medida y la estructura del espacio funcional subyacente \cite{szego1975orthogonal}.
+
+En esta memoria nos situamos en una extensión natural de ese marco: los \emph{polinomios ortogonales de Sobolev}. El antecedente histórico suele situarse en el trabajo de Lewis, donde aparecen productos de este tipo ligados a problemas de aproximación simultánea de funciones y derivadas \cite{Lew47}. Más tarde, Althammer mostró ya en un ejemplo temprano que, al introducir términos derivativos, los ceros dejan de obedecer automáticamente el confinamiento geométrico característico del caso clásico \cite{Alt62}.
+
+Una de las preguntas más naturales en esta teoría es la localización de los ceros. En el caso clásico, los ceros suelen reflejar con notable precisión la geometría del soporte de la medida y esa regularidad puede leerse a través del operador de multiplicación por la variable independiente. En el contexto de Sobolev discreto, en cambio, la información local aportada por masas derivativas altera esa imagen: el operador pierde propiedades estructurales básicas y la localización de los ceros deja de venir gobernada por el esquema clásico de manera directa \cite{lopez2001sobolev,marcellan2015sobolev}.
+
+La motivación de este trabajo nace precisamente de esa ruptura. El objetivo inicial era entender hasta qué punto la perspectiva operatorial seguía permitiendo controlar los ceros cuando la geometría continua de la medida base compite con perturbaciones discretas concentradas en puntos aislados. El hecho de que la norma del operador de multiplicación pueda dejar de ser informativa en la métrica de Sobolev obliga a reformular el problema con herramientas más finas, pero sin perder de vista que el origen de la cuestión sigue siendo geométrico: cómo cambia la ubicación de los ceros al pasar del marco clásico al de Sobolev.
+
+\section{Medidas de Borel, regularidad y medida de Lebesgue}
+
+Antes de formular el producto de Sobolev que servirá de modelo, conviene fijar la notación geométrica y funcional mínima que se usará desde este capítulo: el tamaño del soporte de la medida y la medida de referencia sobre una circunferencia.
+
+\begin{defn}\label{def:radio_esencial}
+	Sea $\mu$ una medida de Borel con soporte compacto $\operatorname{supp}(\mu)\subset\mathbb C$. Definimos el \emph{radio esencial} del soporte de $\mu$ como
+	\[
+		R(\mu):=\inf\{r>0:\operatorname{supp}(\mu)\subseteq\overline{\mathbb{D}_r(0)}\}.
+	\]
+	Equivalentemente, $R(\mu)=\max\{|z|:z\in\operatorname{supp}(\mu)\}$. Cuando el contexto sea claro, escribiremos simplemente $R$.
+\end{defn}
+
+\begin{defn}\label{def:leb_measure_c1}
+	Denotamos por $\mathbf{m}_{a;r}$ la medida de Lebesgue normalizada en la circunferencia
+	$$\mathbb{S}_r(a)=\{z\in\C:\abs{z-a}=r\},$$
+	es decir,
+	\begin{equation}\label{eq:leb_measure_c1}
+		d\mathbf{m}_{a;r}(z)=\frac{\abs{dz}}{2\pi r}.
+	\end{equation}
+	En el caso particular de la circunferencia unidad centrada en el origen escribiremos simplemente $\mathbf{m}=\mathbf{m}_{0;1}$.
+\end{defn}
+
+La medida de Lebesgue normalizada sobre una circunferencia será nuestro caso modelo. Es lo bastante simple como para permitir cálculos explícitos y, al mismo tiempo, lo bastante rica como para capturar el fenómeno que motiva esta memoria: al añadir masas discretas de derivada, la teoría de ceros conduce de manera natural a operadores de multiplicación que pueden dejar de ser acotados.
+
+Cuando hablemos de regularidad de una medida lo haremos en el sentido de Stahl y Totik: como una hipótesis asintótica útil para describir la distribución de los ceros, no como parte de la formulación básica del producto de Sobolev que se estudiará aquí \cite{stahl1992general}.
+
+\section{Espacios de polinomios y ortogonalidad clásica}
+
+\begin{defn}\label{def:producto_estandar}
+	Sea $\mu$ una medida de Borel positiva con soporte compacto infinito. Definimos el producto interno estándar en $L^2(\mu)$ por
+	\begin{equation}\label{eq:producto_estandar}
+		\langle f,g\rangle_{L^2(\mu)}=\int_{\operatorname{supp}(\mu)} f(z)\overline{g(z)}\,d\mu(z).
+	\end{equation}
+\end{defn}
+
+\begin{defn}\label{def:polinomios_ortonormales}
+	Sea $\{\phi_n\}_{n\ge 0}$ la sucesión de polinomios ortonormales respecto a $\mu$, con $\deg(\phi_n)=n$ y coeficiente principal positivo. Entonces
+	\begin{equation}\label{eq:pol_ortonormales}
+		\langle \phi_n,\phi_m\rangle_{L^2(\mu)}=\delta_{nm},\qquad n,m\ge 0.
+	\end{equation}
+\end{defn}
+
+Estos polinomios se obtienen aplicando Gram--Schmidt a la base canónica $\{1,z,z^2,\dots\}$, y constituyen uno de los objetos básicos de la teoría clásica \cite{szego1975orthogonal}. Sus ceros, su recurrencia y su comportamiento asintótico codifican información fina sobre la medida de ortogonalidad.
+
+En este marco clásico, el operador de multiplicación por la variable independiente,
+\[
+M_z(p)=zp,
+\]
+aparece como el vínculo natural entre la geometría del soporte y la estructura algebraica de la familia ortogonal. Cuando la medida está soportada en un compacto, el operador actúa de forma regular sobre el espacio de polinomios, y esa regularidad se refleja en la localización de los ceros. En la recta real, además, la simetría del problema fuerza que dichos ceros sean reales, simples y situados en la envoltura convexa del soporte \cite{Chi78}. En la circunferencia unidad, la teoría clásica muestra que los ceros quedan confinados en el disco unidad abierto, y la medida de Lebesgue proporciona el modelo más transparente de este comportamiento \cite{Ger61,szego1975orthogonal}.
+
+Desde una perspectiva más general, la teoría clásica permite leer el problema de los ceros en clave operatorial y matricial: la representación de $M_z$ en bases ortogonales traduce la geometría del soporte en información espectral de matrices de Jacobi o de Hessenberg, y esa compatibilidad explica por qué el confinamiento de los ceros deja de ser misterioso mientras el soporte continuo controla efectivamente la norma del operador \cite{szego1975orthogonal,Ger61,stahl1992general}.
+
+\section{Espacios de Sobolev y productos discretos}
+
+\begin{defn}\label{def:producto_sobolev_discreto}
+	Sea $C=\{c_1,\dots,c_N\}\subset\mathbb C$ un conjunto finito. Definimos el producto interno de Sobolev discreto sobre $\Poly$ por
+	\begin{equation}\label{eq:sobolev_inner_prod}
+		\langle p,q\rangle_S=\langle p,q\rangle_{L^2(\mu)}+\sum_{k=1}^N \lambda_k p'(c_k)\overline{q'(c_k)},
+	\end{equation}
+	donde $\lambda_k>0$.
+\end{defn}
+
+El caso concreto estudiado a lo largo del trabajo toma como parte continua la medida de Lebesgue sobre una circunferencia y, salvo indicación explícita, pesos unitarios en la parte discreta. Así, el producto modelo es
+\begin{equation}\label{eq:sobolev_concreto}
+	\langle p,q\rangle_S=\int_{\mathbb{S}_r(a)} p(z)\overline{q(z)}\,d\mathbf m_{a;r}(z)+\sum_{k=1}^N p'(c_k)\overline{q'(c_k)},\qquad p,q\in\Poly.
+\end{equation}
+
+Denotaremos por $\mathcal H$ a la completación de $\Poly$ respecto de la norma inducida por $\langle\cdot,\cdot\rangle_S$. Este será el espacio natural en el que actuará el operador de multiplicación estudiado en los capítulos posteriores, de modo que el problema de los ceros podrá reformularse en términos operatoriales sin cambiar el marco de ortogonalidad.
+
+Este tipo de productos aparece de manera natural en problemas de aproximación simultánea y en la evolución posterior de la teoría de polinomios ortogonales de Sobolev \cite{Lew47,marcellan2015sobolev}. En particular, permite formular una teoría de ortogonalidad donde la información local en puntos discretos influye en la estructura global de la familia ortogonal.
+
+En el contexto de Sobolev discreto la situación cambia de manera sustancial. La parte continua del producto conserva la geometría global impuesta por la medida base, mientras que las masas derivativas concentran información local en un número finito de puntos. Esa combinación de geometría continua y restricciones puntuales rompe la simetría habitual del problema y altera al mismo tiempo la ubicación de los ceros y el comportamiento del operador de multiplicación por la variable independiente. En el régimen clásico dicho operador se comporta de forma estable; aquí, en cambio, puede dejar de ser acotado \cite{AMRR92,Rod01}.
+
+Este es el punto conceptual central de esta memoria: la perspectiva operatorial no aparece como un desvío abstracto, sino como una consecuencia directa del problema de los ceros. Al intentar entender por qué ciertos ceros podían escapar de la región esperada, apareció de manera natural un operador de multiplicación cuya norma puede dejar de ser útil en la métrica de Sobolev. Una vez detectado ese fenómeno, la norma operatorial clásica deja de ofrecer por sí sola un criterio satisfactorio de localización y se hace necesario pasar a invariantes más finos.
+
+La organización de los capítulos siguientes responde precisamente a esa dificultad. Primero se identifica qué parte de la obstrucción puede verse en términos hilbertianos y qué parte exige una lectura algebraica; después se traduce esa información a truncaciones matriciales y a valores singulares; finalmente, se vuelve al problema inicial de la localización de ceros con esas herramientas ya estabilizadas.
+
+\section{Estado del arte}
+
+La teoría clásica de polinomios ortogonales sobre la recta real y la circunferencia tiene puntos de referencia obligados en Szegő, Geronimus y Chihara \cite{szego1975orthogonal,Ger61,Chi78}. En esa tradición, el estudio de los ceros se apoya en una geometría bien controlada por la medida de ortogonalidad, mientras que la monografía de Stahl y Totik proporciona el marco adecuado para describir fenómenos de regularidad y distribución asintótica en el plano complejo \cite{stahl1992general}.
+
+En el ámbito específico de los polinomios ortogonales de Sobolev, el desarrollo moderno muestra que la adición de términos discretos de derivada produce una teoría con rasgos propios y no meramente una perturbación menor del caso clásico. Los trabajos de López Lagomasino y Pijeira analizan la localización de ceros y la asintótica en distintos regímenes, mientras que las contribuciones de Rodríguez precisan condiciones que permiten recuperar acotación del operador de multiplicación en espacios de Sobolev definidos mediante medidas \cite{lopez1999zero,lopez2001sobolev,Rod01,RS08}. Por su parte, Marcellán y Xu ofrecen una panorámica amplia del área, y los trabajos de Alfaro, Marcellán y Rezola documentan desde fechas tempranas la pérdida de propiedades algebraicas clásicas y sus consecuencias sobre los ceros \cite{marcellan2015sobolev,AMRR92,AMR93,AlfRez01}.
+
+Dentro del caso en circunferencia, los productos de tipo Bernstein--Szegő--Lebesgue Sobolev aportan un laboratorio especialmente transparente para estudiar cómo interactúan la geometría del soporte continuo y las masas discretas \cite{berriochoa2000bernstein}. Ese entorno permite detectar con claridad el régimen estable y el régimen inestable, y convierte al modelo de Lebesgue en una plataforma natural para estudiar el paso desde acotación operatorial hacia descriptores espectrales más finos.
+
+En esta misma línea, la literatura sobre evaluaciones puntuales acotadas proporciona una lectura geométrica útil para distinguir el comportamiento interior del comportamiento en frontera o exterior. En particular, el lenguaje de los espacios de Hardy y de las evaluaciones puntuales acotadas ayuda a entender por qué ciertas perturbaciones discretas son compatibles con la geometría de la medida base y otras introducen un régimen mucho más inestable \cite{duren1970theory,miller1999bounded}. En el caso de Lebesgue sobre una circunferencia, esa dicotomía es especialmente nítida: los puntos interiores quedan dentro del régimen de evaluaciones acotadas, mientras que los puntos exteriores marcan el inicio de la inestabilidad que después se reflejará en el operador de multiplicación. En una dirección complementaria, el trabajo reciente de Escribano y Gonzalo muestra que la acotación de los ceros también puede recuperarse mediante autovalores generalizados, confirmando que el problema requiere cantidades espectrales más finas que la norma operatorial bruta \cite{EG25}. En este capítulo esa perspectiva se recoge solo como parte del mapa conceptual del problema, no como desarrollo técnico autónomo.
+
+Desde la perspectiva de esta memoria, el estado del arte deja dos ideas muy claras. Primero, que el problema de los ceros ya ocupaba un lugar central en la literatura de Sobolev. Segundo, que ese problema obliga a examinar con cuidado la acción del operador de multiplicación. El punto menos desarrollado en esa cadena es qué hacer cuando la norma del operador deja de ser informativa en regímenes no acotados. La aportación de esta memoria se sitúa precisamente allí: los valores singulares y sus análogos algebraicos proporcionan una escala adecuada para medir el fenómeno y relacionarlo con la aparición de ceros exteriores.
