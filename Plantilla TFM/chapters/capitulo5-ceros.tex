@@ -9,7 +9,7 @@ La lectura correcta tiene dos niveles. Primero aparece un puente macroscópico: 
 
 Antes de distinguir regímenes, fijamos el mecanismo común que solo da control macroscópico. El problema de los ceros ya quedó traducido al lenguaje matricial en el Capítulo~\ref{sec:matricial}. En la Proposición~\ref{prop:charpoly_truncada} vimos que la matriz de Hessenberg truncada $\mathbf D_n$ codifica la acción de multiplicar por $z$ sobre
 \[
-\mathcal P_n=\operatorname{span}\{\phi_0,\dots,\phi_n\},
+	\mathcal P_n=\operatorname{span}\{\phi_0,\dots,\phi_n\},
 \]
 y que su polinomio característico reproduce, salvo normalización, al polinomio ortogonal siguiente.
 
@@ -38,11 +38,11 @@ y que su polinomio característico reproduce, salvo normalización, al polinomio
 
 Aplicado a $A=\mathbf D_n^t$, este radio espectral mide directamente el módulo del cero más exterior de $\phi_{n+1}$. Además, para toda matriz se tiene
 \[
-\rho(A)\le \|A\|_2=\sigma_0(A),
+	\rho(A)\le \|A\|_2=\sigma_0(A),
 \]
 de modo que
 \[
-\rho(\mathbf D_n^t)\le \sigma_{0,n}.
+	\rho(\mathbf D_n^t)\le \sigma_{0,n}.
 \]
 Esto da un control grosero del tamaño de los ceros. El siguiente paso macroscópico consiste en mirar no un solo autovalor, sino el producto de los $k$ autovalores de mayor módulo.
 
@@ -63,13 +63,13 @@ Esto da un control grosero del tamaño de los ceros. El siguiente paso macroscó
 
 La desigualdad anterior muestra que el producto de los $k$ autovalores de mayor módulo no puede superar el producto de los $k$ valores singulares mayores. Por tanto, una vez fijado el umbral singular, el escape espectral queda restringido. En el régimen puramente exterior,
 \[
-\sigma_{j,n}\to +\infty\quad (j<m),
-\qquad
-\limsup_{n\to\infty}\sigma_{m,n}\le R,
+	\sigma_{j,n}\to +\infty\quad (j<m),
+	\qquad
+	\lim_{n\to\infty}\sigma_{m,n}\le R,
 \]
 y en el caso mixto al menos se conserva la cota abstracta
 \[
-\limsup_{n\to\infty}\sigma_{m,n}\le Q_m(\D)<\infty.
+	\lim_{n\to\infty}\sigma_{m,n}\le Q_m(\D)<\infty.
 \]
 En consecuencia, a partir del índice $m$ el escape de autovalores deja de comportarse como en un régimen completamente inestable. Este control sigue siendo solo macroscópico: acota cuántos ceros pueden quedar en $|z|>R+\varepsilon$, pero no decide todavía junto a qué átomos aparecen ni qué escala local rige en frontera. Para eso hará falta pasar a la reducción racional exterior y a Rouché.
 
@@ -162,7 +162,7 @@ Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una f
 		\xrightarrow[n\to\infty]{}
 		\frac{\overline c\,(z-c)}{\overline c z-R^2}
 	\]
-uniformemente en compactos de $\{z\in\mathbb C:|z|>R\}$. En consecuencia, para todo $\varepsilon>0$ suficientemente pequeño, $\pi_{n+1}$ tiene, para $n$ suficientemente grande, exactamente un cero en $\overline{\mathbb D_\varepsilon(c)}$, y ese cero converge a $c$.
+	uniformemente en compactos de $\{z\in\mathbb C:|z|>R\}$. En consecuencia, para todo $\varepsilon>0$ suficientemente pequeño, $\pi_{n+1}$ tiene, para $n$ suficientemente grande, exactamente un cero en $\overline{\mathbb D_\varepsilon(c)}$, y ese cero converge a $c$.
 \end{lem}
 
 \begin{proof}
@@ -252,7 +252,7 @@ uniformemente en compactos de $\{z\in\mathbb C:|z|>R\}$. En consecuencia, para t
 		\left[
 			\delta_{r\ell}+
 			\frac1{R^2}T_n\!\left(\frac{c_r\overline c_\ell}{R^2}\right)
-		\right]v_{\ell,n}
+			\right]v_{\ell,n}
 		=(n+1)c_r^n,
 		\qquad 1\le r\le m.
 	\]
@@ -277,7 +277,7 @@ uniformemente en compactos de $\{z\in\mathbb C:|z|>R\}$. En consecuencia, para t
 		\sum_{\ell=1}^m v_{\ell,n}
 		\sum_{j=1}^n j^2\left(\frac{c_r\overline c_\ell}{R^2}\right)^{j-1},
 	\end{align*}
-		que es exactamente el sistema anunciado.
+	que es exactamente el sistema anunciado.
 \end{proof}
 
 \begin{lem}[Reducción racional exterior y conteo]\label{lem:conteo_exterior_reciproco}
@@ -485,10 +485,10 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	Para $\lambda=(\lambda_1,\dots,\lambda_q)^t\in\C^q$ se tiene
 	\begin{align*}
 		\lambda^*D\lambda
-		&=\sum_{s=1}^q |\lambda_s|^2
+		 & =\sum_{s=1}^q |\lambda_s|^2
 		+\frac1{R^2}\sum_{s,u=1}^q \lambda_s\overline{\lambda_u}
 		\sum_{j=1}^{\infty} j^2\left(\frac{b_s\overline b_u}{R^2}\right)^{j-1} \\
-		&=\sum_{s=1}^q |\lambda_s|^2
+		 & =\sum_{s=1}^q |\lambda_s|^2
 		+\frac1{R^2}\sum_{j=1}^{\infty} j^2
 		\left|\sum_{s=1}^q \lambda_s\left(\frac{b_s}{R}\right)^{j-1}\right|^2.
 	\end{align*}
@@ -549,13 +549,13 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	Derivando y evaluando en los átomos exteriores e interiores obtenemos, respectivamente,
 	\begin{align}
 		x_{r,n}
-		&=(n+1)a_r^n
+		 & =(n+1)a_r^n
 		-\frac1{R^2}\sum_{t=1}^m x_{t,n}T_n\!\left(\frac{a_r\overline a_t}{R^2}\right)
 		-\frac1{R^2}\sum_{s=1}^q y_{s,n}T_n\!\left(\frac{a_r\overline b_s}{R^2}\right),
 		\label{eq:sistema_exterior_mixto}
 		\\
 		y_{s,n}
-		&=(n+1)b_s^n
+		 & =(n+1)b_s^n
 		-\frac1{R^2}\sum_{t=1}^m x_{t,n}T_n\!\left(\frac{b_s\overline a_t}{R^2}\right)
 		-\frac1{R^2}\sum_{u=1}^q y_{u,n}T_n\!\left(\frac{b_s\overline b_u}{R^2}\right).
 		\label{eq:sistema_interior_mixto}
@@ -629,7 +629,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	\[
 		C_0n^3\times
 		\begin{cases}
-			\left(\dfrac{|b_s|}{|a_r|}\right)^n, & \text{si } \dfrac{|a_r||b_s|}{R^2}\le1,\\[1.2ex]
+			\left(\dfrac{|b_s|}{|a_r|}\right)^n, & \text{si } \dfrac{|a_r||b_s|}{R^2}\le1, \\[1.2ex]
 			\left(\dfrac{|b_s|^2}{R^2}\right)^n, & \text{si } \dfrac{|a_r||b_s|}{R^2}>1.
 		\end{cases}
 	\]
@@ -673,7 +673,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	Fijamos ahora un compacto $K\subset\{|z|>R\}$. La identidad \eqref{eq:coeficientes_mixto_sin_frontera} da
 	\begin{align*}
 		\frac{\pi_{n+1}(z)}{z^{n+1}}
-		&=1
+		 & =1
 		-\sum_{r=1}^m \beta_{r,n}\frac1{R^2}\frac{S_n\!\left(\dfrac{\overline a_r z}{R^2}\right)}{n\left(\dfrac{\overline a_r z}{R^2}\right)^n}
 		-\sum_{s=1}^q \frac{y_{s,n}}{R^2z^n}S_n\!\left(\frac{\overline b_s z}{R^2}\right).
 	\end{align*}
@@ -702,7 +702,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 		\left|\frac{y_{s,n}}{R^2z^n}S_n\!\left(\frac{\overline b_s z}{R^2}\right)\right|
 		\le C_K n^5\times
 		\begin{cases}
-			\left(\dfrac{\eta}{|z|}\right)^n, & \text{si } \dfrac{|b_s||z|}{R^2}\le1,\\[1.2ex]
+			\left(\dfrac{\eta}{|z|}\right)^n,      & \text{si } \dfrac{|b_s||z|}{R^2}\le1, \\[1.2ex]
 			\left(\dfrac{\eta|b_s|}{R^2}\right)^n, & \text{si } \dfrac{|b_s||z|}{R^2}>1.
 		\end{cases}
 	\]
@@ -1179,7 +1179,7 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 	Fijado ahora un compacto $K\subset\{|z|>R\}$, la fórmula exacta de los coeficientes da
 	\begin{align*}
 		\frac{\pi_{n+1}(z)}{z^{n+1}}
-		&=1
+		 & =1
 		-\sum_{r=1}^m \beta_{r,n}\frac1{R^2}\frac{S_n\!\left(\dfrac{\overline a_r z}{R^2}\right)}{n\left(\dfrac{\overline a_r z}{R^2}\right)^n}
 		-\sum_{\ell=1}^p \frac{u_{\ell,n}}{R^2z^n}S_n\!\left(\frac{\overline c_\ell z}{R^2}\right)
 		-\sum_{s=1}^q \frac{R^n w_{s,n}}{R^2z^n}S_n\!\left(\frac{\overline b_s z}{R^2}\right).
@@ -1272,11 +1272,11 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 	La fórmula exacta de los coeficientes da
 	\begin{align*}
 		G_{\ell,n}(x)
-		&=t_n(x)^{n+1}
+		 & =t_n(x)^{n+1}
 		-\sum_{r=1}^m \beta_{r,n}\,\frac{t_n(x)}{R^2}\,
 		\frac{S_n\!\left(\dfrac{\overline a_r c_\ell}{R^2}t_n(x)\right)}{n\left(\dfrac{\overline a_r c_\ell}{R^2}\right)^n}
 		-\frac{u_{\ell,n}}{R^2}\sum_{j=1}^n j t_n(x)^j \\
-		&\quad
+		 & \quad
 		-\sum_{k\neq \ell}\frac{u_{k,n}t_n(x)}{R^2}\,\omega_{\ell k}^{-n}S_n\!\bigl(\omega_{\ell k}t_n(x)\bigr)
 		-\sum_{s=1}^q \frac{R^n w_{s,n}t_n(x)}{R^2c_\ell^n}
 		S_n\!\left(\frac{\overline b_s c_\ell}{R^2}t_n(x)\right),
@@ -1307,10 +1307,10 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 	Reuniendo los límites obtenemos
 	\begin{align*}
 		G_{\ell,n}(x)
-		&\longrightarrow
+		 & \longrightarrow
 		e^x-e^x\sum_{r=1}^m\frac{\beta_r}{\overline a_r c_\ell-R^2}
-		-3F_{\mathrm{out}}(c_\ell)\int_0^1 t e^{xt}\,dt \\
-		&=F_{\mathrm{out}}(c_\ell)\left(e^x-3\int_0^1 t e^{xt}\,dt\right)
+		-3F_{\mathrm{out}}(c_\ell)\int_0^1 t e^{xt}\,dt                     \\
+		 & =F_{\mathrm{out}}(c_\ell)\left(e^x-3\int_0^1 t e^{xt}\,dt\right)
 		=F_{\mathrm{out}}(c_\ell)H(x)
 	\end{align*}
 	uniformemente en compactos. Como $F_{\mathrm{out}}(c_\ell)\neq0$ y $x_*$ es un cero simple de $H$, el producto $F_{\mathrm{out}}(c_\ell)H$ tiene también un único cero simple en $x_*$. El argumento final de Rouché es exactamente el mismo que en los Teoremas~\ref{thm:atraccion_frontera} y~\ref{thm:atraccion_mixta_sin_frontera}: existe $\rho>0$ tal que, para $n$ grande, $G_{\ell,n}$ tiene un único cero $x_{\ell,n}$ en $\mathbb D_\rho(x_*)$, y entonces
@@ -1328,133 +1328,133 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 
 Las secciones anteriores describen de forma teórica la cadena
 \[
-Q_k\longrightarrow \text{umbral singular}\longrightarrow \text{control de autovalores}\longrightarrow \text{localización de ceros}.
+	Q_k\longrightarrow \text{umbral singular}\longrightarrow \text{control de autovalores}\longrightarrow \text{localización de ceros}.
 \]
 En esta sección dejamos preparado el espacio para ilustraciones numéricas que permitan visualizar simultáneamente la geometría del soporte, la posición de los átomos, la distribución de ceros y la evolución de las ramas singulares relevantes de las truncaciones.
 
 Para cada grado $n$, escribimos
 \[
-\sigma_0^{(n)}\ge \sigma_1^{(n)}\ge\cdots\ge \sigma_n^{(n)}\ge 0
+	\sigma_0^{(n)}\ge \sigma_1^{(n)}\ge\cdots\ge \sigma_n^{(n)}\ge 0
 \]
 para los valores singulares de la sección truncada correspondiente, y denotamos por
 \[
-\rho_n:=\max\{|\zeta|:\zeta\text{ es cero del polinomio ortogonal de grado }n\}
+	\rho_n:=\max\{|\zeta|:\zeta\text{ es cero del polinomio ortogonal de grado }n\}
 \]
 el módulo máximo de sus ceros. Aunque cada $\sigma_j^{(n)}$ es finito para $n$ fijo, en los ejemplos interesa distinguir entre ramas divergentes, ramas acotadas y, cuando proceda, la primera rama que converge al radio $R$.
 
 \begin{exm}[Átomo interior]
 
-Consideramos el producto de Sobolev
-\[
-\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)},
-\]
-y fijamos un grado máximo $N$. El objetivo del ejemplo es visualizar el régimen estable: la geometría exterior no se activa, no aparecen ramas singulares divergentes asociadas a átomos exteriores y los ceros permanecen controlados por el soporte continuo.
+	Consideramos el producto de Sobolev
+	\[
+		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)},
+	\]
+	y fijamos un grado máximo $N$. El objetivo del ejemplo es visualizar el régimen estable: la geometría exterior no se activa, no aparecen ramas singulares divergentes asociadas a átomos exteriores y los ceros permanecen controlados por el soporte continuo.
 
-\begin{figure}[htbp]
-	\centering
-	\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-		TODO: insertar aquí la figura de soporte, átomos interiores y ceros hasta grado $N$.
-	}}
-	\hfill
-	\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-		TODO: insertar aquí la figura o gráfica de las ramas singulares relevantes en el caso interior.
-	}}
-	\caption{Esqueleto para el caso con átomos interiores. A la izquierda debe visualizarse el soporte continuo junto con los átomos y los ceros de los polinomios hasta un grado máximo fijado. A la derecha debe mostrarse la evolución de las ramas singulares seleccionadas y, si procede, la línea horizontal correspondiente al radio $R$.}
-	\label{fig:esqueleto_caso_interior}
-\end{figure}
+	\begin{figure}[htbp]
+		\centering
+		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
+				TODO: insertar aquí la figura de soporte, átomos interiores y ceros hasta grado $N$.
+			}}
+		\hfill
+		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
+				TODO: insertar aquí la figura o gráfica de las ramas singulares relevantes en el caso interior.
+			}}
+		\caption{Esqueleto para el caso con átomos interiores. A la izquierda debe visualizarse el soporte continuo junto con los átomos y los ceros de los polinomios hasta un grado máximo fijado. A la derecha debe mostrarse la evolución de las ramas singulares seleccionadas y, si procede, la línea horizontal correspondiente al radio $R$.}
+		\label{fig:esqueleto_caso_interior}
+	\end{figure}
 
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c|c|c|c|c}
-		$n$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
-		\hline
-		% TODO: completar con valores numéricos del caso interior.
-		% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
-		$\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$
-	\end{tabular}
-	\caption{Esqueleto de tabla para el caso con átomos interiores.}
-	\label{tab:esqueleto_caso_interior}
-\end{table}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c}
+			$n$      & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
+			\hline
+			% TODO: completar con valores numéricos del caso interior.
+			% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
+			$\cdots$ & $\cdots$         & $\cdots$         & $\cdots$           & $\cdots$
+		\end{tabular}
+		\caption{Esqueleto de tabla para el caso con átomos interiores.}
+		\label{tab:esqueleto_caso_interior}
+	\end{table}
 
-% TODO: Añadir aquí un párrafo corto de lectura del ejemplo interior,
-% explicando qué se observa en los ceros y en las ramas singulares.
+	% TODO: Añadir aquí un párrafo corto de lectura del ejemplo interior,
+	% explicando qué se observa en los ceros y en las ramas singulares.
 \end{exm}
 
 \begin{exm}[Átomo estrictamente exterior]
 
-Consideramos el producto de Sobolev
-\[
-\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(2)\overline{q'(2)},
-\]
-y fijamos un grado máximo $N$. En este caso hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El ejemplo debe ilustrar la coexistencia entre esa rama divergente, la primera rama acotada y un cero exterior atraído por el átomo responsable de la inestabilidad.
+	Consideramos el producto de Sobolev
+	\[
+		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(2)\overline{q'(2)},
+	\]
+	y fijamos un grado máximo $N$. En este caso hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El ejemplo debe ilustrar la coexistencia entre esa rama divergente, la primera rama acotada y un cero exterior atraído por el átomo responsable de la inestabilidad.
 
-\begin{figure}[htbp]
-	\centering
-	\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-		TODO: insertar aquí la figura del soporte, el átomo exterior y los ceros hasta grado $N$.
-	}}
-	\hfill
-	\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-		TODO: insertar aquí la figura o gráfica de $\sigma_0^{(n)}$, última rama divergente,
-		primera rama acotada, primera rama que converge a $R$ y $\rho_n$.
-	}}
-	\caption{Esqueleto para el caso con un átomo estrictamente exterior. La visualización debe poner en relación la rama singular divergente con la aparición de un cero exterior atraído por el átomo.}
-	\label{fig:esqueleto_caso_exterior}
-\end{figure}
+	\begin{figure}[htbp]
+		\centering
+		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
+				TODO: insertar aquí la figura del soporte, el átomo exterior y los ceros hasta grado $N$.
+			}}
+		\hfill
+		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
+				TODO: insertar aquí la figura o gráfica de $\sigma_0^{(n)}$, última rama divergente,
+				primera rama acotada, primera rama que converge a $R$ y $\rho_n$.
+			}}
+		\caption{Esqueleto para el caso con un átomo estrictamente exterior. La visualización debe poner en relación la rama singular divergente con la aparición de un cero exterior atraído por el átomo.}
+		\label{fig:esqueleto_caso_exterior}
+	\end{figure}
 
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c}
-		$n$ & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
-		\hline
-		% TODO: completar con valores numéricos del caso exterior.
-		% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
-		$\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$
-	\end{tabular}
-	\caption{Esqueleto de tabla para el caso con un átomo estrictamente exterior.}
-	\label{tab:esqueleto_caso_exterior}
-\end{table}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c|c}
+			$n$      & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
+			\hline
+			% TODO: completar con valores numéricos del caso exterior.
+			% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
+			$\cdots$ & $\cdots$         & $\cdots$         & $\cdots$         & $\cdots$           & $\cdots$
+		\end{tabular}
+		\caption{Esqueleto de tabla para el caso con un átomo estrictamente exterior.}
+		\label{tab:esqueleto_caso_exterior}
+	\end{table}
 
-% TODO: Añadir aquí un párrafo corto de lectura del ejemplo exterior,
-% conectando ramas divergentes, ramas acotadas y atracción del cero de mayor módulo.
+	% TODO: Añadir aquí un párrafo corto de lectura del ejemplo exterior,
+	% conectando ramas divergentes, ramas acotadas y atracción del cero de mayor módulo.
 \end{exm}
 
 \begin{exm}[Caso mixto]
 
-Consideramos el producto de Sobolev
-\[
-\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)}+p'(2)\overline{q'(2)},
-\]
-y fijamos un grado máximo $N$. En este ejemplo también hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El objetivo es visualizar simultáneamente el desacople entre la geometría exterior y el efecto del átomo interior.
+	Consideramos el producto de Sobolev
+	\[
+		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)}+p'(2)\overline{q'(2)},
+	\]
+	y fijamos un grado máximo $N$. En este ejemplo también hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El objetivo es visualizar simultáneamente el desacople entre la geometría exterior y el efecto del átomo interior.
 
-\begin{figure}[htbp]
-	\centering
-	\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-		TODO: insertar aquí la figura del soporte, los átomos mixtos y los ceros hasta grado $N$.
-	}}
-	\hfill
-	\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-		TODO: insertar aquí la figura o gráfica de las ramas singulares relevantes y del radio $R$ en el caso mixto.
-	}}
-	\caption{Esqueleto para un caso mixto. La figura debe mostrar qué parte del fenómeno sigue gobernada por el exterior estricto y qué parte responde a la presencia de frontera o átomos interiores.}
-	\label{fig:esqueleto_caso_mixto}
-\end{figure}
+	\begin{figure}[htbp]
+		\centering
+		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
+				TODO: insertar aquí la figura del soporte, los átomos mixtos y los ceros hasta grado $N$.
+			}}
+		\hfill
+		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
+				TODO: insertar aquí la figura o gráfica de las ramas singulares relevantes y del radio $R$ en el caso mixto.
+			}}
+		\caption{Esqueleto para un caso mixto. La figura debe mostrar qué parte del fenómeno sigue gobernada por el exterior estricto y qué parte responde a la presencia de frontera o átomos interiores.}
+		\label{fig:esqueleto_caso_mixto}
+	\end{figure}
 
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c|c|c|c|c|c}
-		$n$ & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
-		\hline
-		% TODO: completar con valores numéricos del caso mixto.
-		% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
-		$\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$
-	\end{tabular}
-	\caption{Esqueleto de tabla para un caso mixto.}
-	\label{tab:esqueleto_caso_mixto}
-\end{table}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c|c}
+			$n$      & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
+			\hline
+			% TODO: completar con valores numéricos del caso mixto.
+			% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
+			$\cdots$ & $\cdots$         & $\cdots$         & $\cdots$         & $\cdots$           & $\cdots$
+		\end{tabular}
+		\caption{Esqueleto de tabla para un caso mixto.}
+		\label{tab:esqueleto_caso_mixto}
+	\end{table}
 
-% TODO: Añadir aquí un párrafo corto de lectura del ejemplo mixto,
-% subrayando qué se observa en la separación entre ramas divergentes, ramas acotadas y ceros exteriores.
+	% TODO: Añadir aquí un párrafo corto de lectura del ejemplo mixto,
+	% subrayando qué se observa en la separación entre ramas divergentes, ramas acotadas y ceros exteriores.
 \end{exm}
 
 Como consecuencia colateral del régimen puramente exterior, se recupera también una acotación uniforme global de los ceros. La incluimos solo como corolario de cierre técnico, no como nuevo paso estructural del capítulo.
@@ -1488,11 +1488,11 @@ Como consecuencia colateral del régimen puramente exterior, se recupera tambié
 
 Queda así cerrada la cadena conceptual del capítulo:
 \[
-\begin{aligned}
-Q_k &\longrightarrow \text{umbral singular} \\
-&\longrightarrow \text{Weyl--Horn como techo} \\
-&\longrightarrow \text{reducción racional exterior + Rouché}.
-\end{aligned}
+	\begin{aligned}
+		Q_k & \longrightarrow \text{umbral singular}                       \\
+		    & \longrightarrow \text{Weyl--Horn como techo}                 \\
+		    & \longrightarrow \text{reducción racional exterior + Rouché}.
+	\end{aligned}
 \]
 El papel de cada pieza ya queda separado. El Capítulo~\ref{sec:codimension_qk} introdujo los índices $Q_k$, el Capítulo~\ref{sec:estabilizacion} identificó el umbral $m$, el Capítulo~\ref{sec:matricial} lo tradujo a valores singulares, y aquí ese umbral pasó a control de autovalores y finalmente a localización de ceros.
 

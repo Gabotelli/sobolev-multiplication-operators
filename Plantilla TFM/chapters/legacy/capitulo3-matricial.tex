@@ -105,7 +105,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\]
 	En particular,
 	\[
-		\limsup_{n \to \infty} \sigma_{k,n} \le Q_k(\D).
+		\lim_{n \to \infty} \sigma_{k,n} \le Q_k(\D).
 	\]
 \end{prop}
 
@@ -130,7 +130,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\[
 		\sigma_{k,n} \le Q_k(\D).
 	\]
-	La cota sobre el $\limsup$ es inmediata.
+	La cota sobre el $\lim$ es inmediata.
 \end{proof}
 
 \begin{prop}[Criterio condicional de coincidencia en el caso acotado]\label{prop:coincidencia_total_acotado}
@@ -222,7 +222,7 @@ La tasa de decaimiento de estos números proporciona información precisa sobre 
 	\[
 		\|\mathbf{D}_n\|_2=\|P_n\D|_{\mathcal{P}_n}\|\le\|\D\|,
 	\]
-	de donde $\limsup_{n\to\infty}\|\mathbf{D}_n\|_2\le\|\D\|$.
+	de donde $\lim_{n\to\infty}\|\mathbf{D}_n\|_2\le\|\D\|$.
 
 	Recíprocamente, fijado $\varepsilon>0$, existe $p\in\Poly$ con $\|p\|_S=1$ tal que $\|\D p\|_S>\|\D\|-\varepsilon$. Para $n$ suficientemente grande, $p\in\mathcal{P}_n$ y entonces
 	\[
@@ -245,7 +245,7 @@ Consideramos ahora el régimen no acotado, donde los átomos exteriores inducen 
 
 \begin{thm}[Acotación del valor singular de índice $1$]\label{thm:acotacion_sigma_1}
 	Sea $\langle \cdot, \cdot \rangle_S$ un producto de Sobolev con medida continua de radio esencial $R$ y un único átomo de derivada en $c \in I_{\mathrm{out}}$. Entonces, el valor singular de índice $1$ de las secciones principales satisface:
-	$$ \limsup_{n \to \infty} \sigma_{1,n} \le R. $$
+	$$ \lim_{n \to \infty} \sigma_{1,n} \le R. $$
 \end{thm}
 
 \begin{proof}
@@ -338,7 +338,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\]
 	y
 	\[
-		\limsup_{n\to\infty}\sigma_{m,n}\le R.
+		\lim_{n\to\infty}\sigma_{m,n}\le R.
 	\]
 	En particular, la inestabilidad queda confinada exactamente a $m$ direcciones singulares.
 \end{thm}
@@ -515,7 +515,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	\]
 	En consecuencia,
 	\[
-		\limsup_{n\to\infty}\sigma_{m,n}\le R.
+		\lim_{n\to\infty}\sigma_{m,n}\le R.
 	\]
 	Esto completa la prueba.
 \end{proof}
@@ -647,7 +647,7 @@ Este resultado muestra que, en el caso de un único átomo exterior, la divergen
 	$\phi_{n+1}$ coinciden con los autovalores de $\mathbf D_n^t$, que tiene
 	los mismos valores singulares y autovalores (en módulo) que $\mathbf D_n$.
 
-	Por el Teorema~\ref{thm:umbral_singular_indice_m_enunciado}, $\limsup_n\sigma_{m,n}\le R$.
+	Por el Teorema~\ref{thm:umbral_singular_indice_m_enunciado}, $\lim_n\sigma_{m,n}\le R$.
 	Por tanto existe $n_\varepsilon$ tal que para todo $n\ge n_\varepsilon$,
 	\[
 		\sigma_{m,n}\le R+\varepsilon.
@@ -709,14 +709,14 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 \begin{cor}[Cota asintótica superior en el caso acotado]\label{cor:convergencia_qk_condicional}
 	Supongamos que el operador multiplicación $\D$ está acotado en el espacio de Hilbert $\mathcal{H}$ (por ejemplo, si todos los átomos de derivada son puntos BPE). Entonces, para todo $k \ge 0$,
 	\[
-		\limsup_{n \to \infty} \sigma_{k,n} \le c_k(\D).
+		\lim_{n \to \infty} \sigma_{k,n} \le c_k(\D).
 	\]
 \end{cor}
 
 \begin{proof}
 	Por la Proposición~\ref{prop:sigma_qk}, para todo $k \ge 0$ se tiene
 	\[
-		\limsup_{n \to \infty} \sigma_{k,n} \le Q_k(\D).
+		\lim_{n \to \infty} \sigma_{k,n} \le Q_k(\D).
 	\]
 	Como $\D$ es acotado en $\mathcal{H}$, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} junto con esta reindexación implica que
 	\[
@@ -724,7 +724,7 @@ Para índices superiores, los resultados obtenidos en este trabajo proporcionan 
 	\]
 	Combinando ambas relaciones se obtiene directamente
 	\[
-		\limsup_{n \to \infty} \sigma_{k,n} \le c_k(\D).
+		\lim_{n \to \infty} \sigma_{k,n} \le c_k(\D).
 	\]
 \end{proof}
 
