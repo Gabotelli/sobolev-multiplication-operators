@@ -7,9 +7,9 @@
 \author{Gabriel Suárez}
 \genderauthor{M}% Male or Female?
 \bibauthor{Suárez, Gabriel}
-\tutor{Carmen Escribano \ Raquel Gonzalo}
+\tutor{Carmen Escribano y Raquel Gonzalo}
 \bibtutor{Escribano, Carmen and Gonzalo, Raquel}
-\fecha{2025}
+\fecha{2026}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Entornos matemáticos adicionales
@@ -34,7 +34,7 @@
 % RESUMEN Y ABSTRACT
 %
 \abstract{spanish}{
-Se estudia el operador de multiplicación por la variable compleja en espacios de polinomios dotados de un producto interno de Sobolev discreto, cuya componente continua es la medida de Lebesgue normalizada sobre una circunferencia de radio \texorpdfstring{$R$}{R}. Se introduce la noción de punto \texorpdfstring{$\delta$-singular}{delta-singular} ---un punto $c$ donde la evaluación puntual \texorpdfstring{$\delta_c$}{delta_c} restringida al núcleo de la evaluación de la derivada no es acotada respecto a la norma de Sobolev--- y se demuestra que el número de puntos \texorpdfstring{$\delta$-singular}{delta-singular} determina la codimensión algebraica del subespacio donde el operador se estabiliza. Para la medida de Lebesgue en la circunferencia se prueba la equivalencia \texorpdfstring{$\delta$-singular}{delta-singular} \texorpdfstring{$\iff$}{si y solo si} no-BPE \texorpdfstring{$\iff$}{si y solo si} \texorpdfstring{$|c|\ge R$}{|c| >= R}. En el régimen puramente exterior se obtiene el umbral exacto \texorpdfstring{$Q_m(\D)=R$}{Q_m(D)=R}; en el caso mixto se mantiene abierta la determinación exacta de \texorpdfstring{$Q_m(\D)$}{Q_m(D)}, pero se caracteriza exactamente la constante canónica \texorpdfstring{$\|\D|_{V_{\mathrm{out}}}\|$}{||D|V_out||} como el máximo de un problema finito-dimensional de autovalores generalizados. Además, se prueba que a lo sumo $m$ ceros pueden escapar de \texorpdfstring{$\overline{\mathbb{D}_R}$}{D_R}, se establece la atracción de esos ceros hacia los átomos exteriores cuando \texorpdfstring{$|c_k|>R$}{|c_k| > R}, y se deducen cotas uniformes para la localización de los ceros tanto por cuasi-ortogonalidad como por la vía estructural en ese régimen.
+Se estudian polinomios ortogonales de Sobolev asociados a una medida de Lebesgue normalizada sobre una circunferencia y a perturbaciones discretas de primera derivada. La memoria se organiza en cinco capítulos. El primero presenta el problema de localización de ceros, el marco funcional y el estado del arte; el segundo introduce un índice de codimensión finita que generaliza los números de Gelfand y permite medir la acotación del operador de multiplicación más allá del régimen clásico; el tercero demuestra un teorema de estabilización que clasifica la contribución de los átomos interiores, de frontera y exteriores; el cuarto traduce esa información a secciones matriciales finitas y a sus valores singulares; y el quinto aplica la desigualdad de Weyl--Horn para obtener conteo de ceros exteriores y resultados de atracción hacia los átomos responsables de la inestabilidad. En el caso puramente exterior se obtiene una descripción completa del umbral de estabilización y de la localización de los ceros excepcionales. En el caso mixto se mantiene abierto el valor exacto del umbral óptimo, aunque se obtiene una caracterización finito-dimensional de la constante canónica asociada.
 }
 \keywords{spanish}{
 Polinomios ortogonales de Sobolev;
@@ -47,7 +47,7 @@ Localización de ceros
 }
 
 \abstract{english}{
-We study the multiplication operator by the complex variable in spaces of polynomials endowed with a discrete Sobolev inner product whose continuous component is the normalized Lebesgue measure on a circle of radius \texorpdfstring{$R$}{R}. We introduce the notion of a \texorpdfstring{$\delta$-singular}{delta-singular} point ---a point $c$ where the point evaluation \texorpdfstring{$\delta_c$}{delta_c} restricted to the kernel of the derivative evaluation is unbounded with respect to the Sobolev norm--- and prove that the number of \texorpdfstring{$\delta$-singular}{delta-singular} points determines the algebraic codimension of the subspace where the operator stabilizes. For the Lebesgue measure on the circle, we prove the equivalence \texorpdfstring{$\delta$-singular}{delta-singular} \texorpdfstring{$\iff$}{if and only if} non-BPE \texorpdfstring{$\iff$}{if and only if} \texorpdfstring{$|c|\ge R$}{|c| >= R}. In the purely exterior regime we obtain the exact threshold \texorpdfstring{$Q_m(\D)=R$}{Q_m(D)=R}; in the mixed case the exact value of \texorpdfstring{$Q_m(\D)$}{Q_m(D)} remains open, but the canonical constant \texorpdfstring{$\|\D|_{V_{\mathrm{out}}}\|$}{||D|V_out||} is characterized exactly as the maximum generalized eigenvalue of a finite-dimensional pencil. We also show that at most $m$ zeros may escape \texorpdfstring{$\overline{\mathbb{D}_R}$}{D_R}, establish attraction of those exceptional zeros to the exterior atoms when \texorpdfstring{$|c_k|>R$}{|c_k| > R}, and derive uniform zero bounds both through quasi-orthogonality and through the structural route in that regime.
+We study Sobolev orthogonal polynomials associated with the normalized Lebesgue measure on a circle and with discrete first-derivative perturbations. The thesis is organized into five chapters. The first chapter introduces the zero-location problem, the functional setting, and the relevant background; the second defines a finite-codimension index that extends Gelfand numbers and measures boundedness of the multiplication operator beyond the classical regime; the third proves a stabilization theorem that classifies the role of interior, boundary, and exterior atoms; the fourth translates that information into finite matrix sections and their singular values; and the fifth uses the Weyl--Horn inequality to derive exterior zero counting and attraction results for the atoms that generate the instability. In the purely exterior regime we obtain a complete description of the stabilization threshold and of the exceptional zeros. In the mixed regime the exact optimal threshold remains open, although a finite-dimensional characterization of the associated canonical constant is obtained.
 }
 \keywords{english}{
 Sobolev orthogonal polynomials;
@@ -70,9 +70,10 @@ Zero localization
 \begin{document}
 
 \input{chapters/capitulo1-introduccion}
-\input{chapters/capitulo2-espectral}
-\input{chapters/capitulo3-matricial}
-\input{chapters/capitulo4-ceros}
+\input{chapters/capitulo2-codimension-qk}
+\input{chapters/capitulo3-estabilizacion}
+\input{chapters/capitulo4-matricial}
+\input{chapters/capitulo5-ceros}
 \input{chapters/conclusiones}
 
 \appendix
