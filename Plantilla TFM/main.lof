@@ -4,9 +4,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Esqueleto para el caso con átomos interiores. A la izquierda debe visualizarse el soporte continuo junto con los átomos y los ceros de los polinomios hasta un grado máximo fijado. A la derecha debe mostrarse la evolución de las ramas singulares seleccionadas y, si procede, la línea horizontal correspondiente al radio $R$.}}{73}{figure.caption.6}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Esqueleto para el caso con un átomo estrictamente exterior. La visualización debe poner en relación la rama singular divergente con la aparición de un cero exterior atraído por el átomo.}}{73}{figure.caption.8}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Esqueleto para un caso mixto. La figura debe mostrar qué parte del fenómeno sigue gobernada por el exterior estricto y qué parte responde a la presencia de frontera o átomos interiores.}}{74}{figure.caption.10}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Caso con átomo interior. A la izquierda se representan los ceros de los polinomios ortogonales de Sobolev hasta grado $50$. A la derecha se muestran los ceros del polinomio de grado $50$. Estas figuras permiten visualizar el régimen estable antes de incorporar la información cuantitativa de las ramas singulares y de $\rho _n$ en la tabla asociada.}}{73}{figure.caption.6}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Caso con un átomo estrictamente exterior. A la izquierda aparecen los ceros de los polinomios ortogonales de Sobolev hasta grado $50$; a la derecha, los ceros del polinomio de grado $50$. La tabla asociada recogerá la relación entre la rama singular divergente, la primera rama acotada y el comportamiento del cero de mayor módulo $\rho _n$.}}{73}{figure.caption.8}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Caso mixto. A la izquierda se representan los ceros de los polinomios ortogonales de Sobolev hasta grado $50$; a la derecha, los ceros del polinomio de grado $50$. La tabla asociada permitirá comparar la parte divergente, la primera rama acotada y el radio exterior $\rho _n$ en presencia simultánea de átomos interiores y exteriores.}}{74}{figure.caption.10}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 

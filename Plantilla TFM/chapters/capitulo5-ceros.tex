@@ -1342,39 +1342,35 @@ para los valores singulares de la sección truncada correspondiente, y denotamos
 \]
 el módulo máximo de sus ceros. Aunque cada $\sigma_j^{(n)}$ es finito para $n$ fijo, en los ejemplos interesa distinguir entre ramas divergentes, ramas acotadas y, cuando proceda, la primera rama que converge al radio $R$.
 
+En cada ejemplo, la figura de la izquierda representa todos los ceros de los polinomios ortogonales de Sobolev hasta grado $50$, mientras que la de la derecha muestra los ceros del polinomio de grado $50$. La tabla asociada recoge los valores singulares relevantes y el radio exterior $\rho_n$ para ese mismo grado.
+
 \begin{exm}[Átomo interior]
 
 	Consideramos el producto de Sobolev
 	\[
 		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)},
 	\]
-	y fijamos un grado máximo $N$. El objetivo del ejemplo es visualizar el régimen estable: la geometría exterior no se activa, no aparecen ramas singulares divergentes asociadas a átomos exteriores y los ceros permanecen controlados por el soporte continuo.
+	y fijamos el grado máximo $N=50$. El objetivo del ejemplo es visualizar el régimen estable: la geometría exterior no se activa, no aparecen ramas singulares divergentes asociadas a átomos exteriores y los ceros permanecen controlados por el soporte continuo.
 
-	\begin{figure}[htbp]
-		\centering
-		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-				TODO: insertar aquí la figura de soporte, átomos interiores y ceros hasta grado $N$.
-			}}
-		\hfill
-		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-				TODO: insertar aquí la figura o gráfica de las ramas singulares relevantes en el caso interior.
-			}}
-		\caption{Esqueleto para el caso con átomos interiores. A la izquierda debe visualizarse el soporte continuo junto con los átomos y los ceros de los polinomios hasta un grado máximo fijado. A la derecha debe mostrarse la evolución de las ramas singulares seleccionadas y, si procede, la línea horizontal correspondiente al radio $R$.}
-		\label{fig:esqueleto_caso_interior}
-	\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.46\textwidth]{figures/ceros_interior.png}
+	\hfill
+	\includegraphics[width=0.46\textwidth]{figures/cero_interior.png}
+	\caption{Caso con átomo interior.}
+	\label{fig:esqueleto_caso_interior}
+\end{figure}
 
 	\begin{table}[htbp]
 		\centering
-		\begin{tabular}{c|c|c|c|c}
-			$n$      & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
-			\hline
-			% TODO: completar con valores numéricos del caso interior.
-			% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
-			$\cdots$ & $\cdots$         & $\cdots$         & $\cdots$           & $\cdots$
-		\end{tabular}
-		\caption{Esqueleto de tabla para el caso con átomos interiores.}
-		\label{tab:esqueleto_caso_interior}
-	\end{table}
+	\begin{tabular}{c|c|c|c|c}
+		$n$      & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_1^{(n)}$ & $\rho_n$ \\
+		\hline
+		$50$ & $1.5417$ & $1.0000$ & $1.0000$ & $0.5333$
+	\end{tabular}
+	\caption{Valores singulares relevantes y radio exterior en el caso con átomo interior.}
+	\label{tab:esqueleto_caso_interior}
+\end{table}
 
 	% TODO: Añadir aquí un párrafo corto de lectura del ejemplo interior,
 	% explicando qué se observa en los ceros y en las ramas singulares.
@@ -1386,34 +1382,27 @@ el módulo máximo de sus ceros. Aunque cada $\sigma_j^{(n)}$ es finito para $n$
 	\[
 		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(2)\overline{q'(2)},
 	\]
-	y fijamos un grado máximo $N$. En este caso hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El ejemplo debe ilustrar la coexistencia entre esa rama divergente, la primera rama acotada y un cero exterior atraído por el átomo responsable de la inestabilidad.
+	y fijamos el grado máximo $N=50$. En este caso hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El ejemplo debe ilustrar la coexistencia entre esa rama divergente, la primera rama acotada y un cero exterior atraído por el átomo responsable de la inestabilidad.
 
-	\begin{figure}[htbp]
-		\centering
-		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-				TODO: insertar aquí la figura del soporte, el átomo exterior y los ceros hasta grado $N$.
-			}}
-		\hfill
-		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-				TODO: insertar aquí la figura o gráfica de $\sigma_0^{(n)}$, última rama divergente,
-				primera rama acotada, primera rama que converge a $R$ y $\rho_n$.
-			}}
-		\caption{Esqueleto para el caso con un átomo estrictamente exterior. La visualización debe poner en relación la rama singular divergente con la aparición de un cero exterior atraído por el átomo.}
-		\label{fig:esqueleto_caso_exterior}
-	\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.46\textwidth]{figures/ceros_exterior.png}
+	\hfill
+	\includegraphics[width=0.46\textwidth]{figures/cero_exterior.png}
+	\caption{Caso con un átomo estrictamente exterior.}
+	\label{fig:esqueleto_caso_exterior}
+\end{figure}
 
 	\begin{table}[htbp]
 		\centering
-		\begin{tabular}{c|c|c|c|c|c}
-			$n$      & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
-			\hline
-			% TODO: completar con valores numéricos del caso exterior.
-			% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
-			$\cdots$ & $\cdots$         & $\cdots$         & $\cdots$         & $\cdots$           & $\cdots$
-		\end{tabular}
-		\caption{Esqueleto de tabla para el caso con un átomo estrictamente exterior.}
-		\label{tab:esqueleto_caso_exterior}
-	\end{table}
+	\begin{tabular}{c|c|c|c|c|c}
+		$n$      & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_1^{(n)}$ & $\rho_n$ \\
+		\hline
+		$50$ & $8.9039\times 10^{12}$ & $8.9039\times 10^{12}$ & $1.0000$ & $1.0000$ & $2.0411$
+	\end{tabular}
+	\caption{Valores singulares relevantes y radio exterior en el caso estrictamente exterior.}
+	\label{tab:esqueleto_caso_exterior}
+\end{table}
 
 	% TODO: Añadir aquí un párrafo corto de lectura del ejemplo exterior,
 	% conectando ramas divergentes, ramas acotadas y atracción del cero de mayor módulo.
@@ -1425,33 +1414,27 @@ el módulo máximo de sus ceros. Aunque cada $\sigma_j^{(n)}$ es finito para $n$
 	\[
 		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)}+p'(2)\overline{q'(2)},
 	\]
-	y fijamos un grado máximo $N$. En este ejemplo también hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El objetivo es visualizar simultáneamente el desacople entre la geometría exterior y el efecto del átomo interior.
+	y fijamos el grado máximo $N=50$. En este ejemplo también hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El objetivo es visualizar simultáneamente el desacople entre la geometría exterior y el efecto del átomo interior.
 
-	\begin{figure}[htbp]
-		\centering
-		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-				TODO: insertar aquí la figura del soporte, los átomos mixtos y los ceros hasta grado $N$.
-			}}
-		\hfill
-		\fbox{\parbox[c][5cm][c]{0.46\textwidth}{\centering
-				TODO: insertar aquí la figura o gráfica de las ramas singulares relevantes y del radio $R$ en el caso mixto.
-			}}
-		\caption{Esqueleto para un caso mixto. La figura debe mostrar qué parte del fenómeno sigue gobernada por el exterior estricto y qué parte responde a la presencia de frontera o átomos interiores.}
-		\label{fig:esqueleto_caso_mixto}
-	\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.46\textwidth]{figures/ceros_mixto.png}
+	\hfill
+	\includegraphics[width=0.46\textwidth]{figures/cero_mixto.png}
+	\caption{Caso mixto.}
+	\label{fig:esqueleto_caso_mixto}
+\end{figure}
 
 	\begin{table}[htbp]
 		\centering
-		\begin{tabular}{c|c|c|c|c|c}
-			$n$      & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_{r}^{(n)}$ & $\rho_n$ \\
-			\hline
-			% TODO: completar con valores numéricos del caso mixto.
-			% Aquí r debe sustituirse por el primer índice cuya rama converge al radio R=1 en este ejemplo.
-			$\cdots$ & $\cdots$         & $\cdots$         & $\cdots$         & $\cdots$           & $\cdots$
-		\end{tabular}
-		\caption{Esqueleto de tabla para un caso mixto.}
-		\label{tab:esqueleto_caso_mixto}
-	\end{table}
+	\begin{tabular}{c|c|c|c|c|c}
+		$n$      & $\sigma_0^{(n)}$ & $\sigma_0^{(n)}$ & $\sigma_1^{(n)}$ & $\sigma_2^{(n)}$ & $\rho_n$ \\
+		\hline
+		$50$ & $8.9038\times 10^{12}$ & $8.9038\times 10^{12}$ & $1.5417$ & $1.0000$ & $2.0411$
+	\end{tabular}
+	\caption{Valores singulares relevantes y radio exterior en el caso mixto.}
+	\label{tab:esqueleto_caso_mixto}
+\end{table}
 
 	% TODO: Añadir aquí un párrafo corto de lectura del ejemplo mixto,
 	% subrayando qué se observa en la separación entre ramas divergentes, ramas acotadas y ceros exteriores.
