@@ -83,163 +83,210 @@
 
 \maketitle
 \begin{quotation} {\sc {\footnotesize Keywords}}. {\small Hermitian moment problem,  orthogonal polynomials,
-smallest eigenvalue, measures, approximation by polynomials,}
+            smallest eigenvalue, measures, approximation by polynomials,}
 \end{quotation}
 
 \section{Introduction}
+\noindent We are interested in the boundedness of the multiplication operator $\mathcal{D}$
+in the case of   discrete Sobolev inner products; that is, those associated with $\mu$, which are infinitely supported  in the complex plane and
+$a_1,\dots ,a_n\in \CC, $
+\begin{equation} \label{discrete}
+    \Vert p(z) \Vert^2_{\mathbf{S}}= \int \vert p(z) \vert^{2} d\mu + \sum_{k=1}^{n} \vert p'(a_k) \vert^{2}.
+\end{equation}
+
+\noindent In this direction, it is proved that a sufficient condition for the boundedness of this operator is given in terms of bounded point evaluation of a measure. Bounded point evaluations have  a great impact in polynomial approximation (see ,,,,).
+
+
+\noindent In [EG2],  it was proved that for discrete Sobolev inner products associated to a finite set of points, if all of them are bounded point of the measure then the multiplication operator is bounded.
+
+
+\noindent One can wonder if the condition of being bpe's of the measure is, indeed, a necessary condition. In this direction, we here prove that for discrete Sobolev inner products associated with normalized Lebesgue measures, the operator $\mathcal{D}$ is bounded if and only if the points are bpe's of the measure $\mu$.
+
+\medskip
+\noindent The key point of this research was to realize that although the multiplication operator is not a bounded operator in the case of the existence of non-bounded evaluation points,  nevertheless, the restriction of such an operator to large subspaces, more precisely, subspaces  of finite codimension, can be bounded. This leads us to  study the singular values of an operator that is not necessarily bounded and to apply spectral theory in the study of orthogonal polynomials.
+
+\medskip
+\noindent The theory of $s$-numbers was developed following their axiomatic introduction by Pietsch \cite{Pietsh}. In particular, Gelfand numbers are introduced in the general context of bounded operators in Banach spaces. Since the operators studied here are not necessarily bounded, we introduced an index that is indeed a singular number and generalizes the notion of Gelfand number for unbounded operators.
+
+\noindent Our main  result is that the number of non bounded evaluation points in a discrete Sobolev inner product associated with the Lebesgue normalized measure in a circle is exactly the point where the chain of the singular value $Q_k$ stabilizes. Since the bpe's with respect to these measures coincide with the points of  their interior, this provides a result of localization regarding how many points are not in the interior using spectral analysis. We also provide more general results for measures supported on Jordan curves.
+
+\noindent Finally, the last section is devoted to the matrix analysis of the multiplication operator from the point of view of spectral theory. In this direction,it is well known that multiplication operator is represented as a Hessenberg infinite matrix that has been widely studied (see .g. ??). Our proposal here is to relate  the singular values of this operator in terms of the singular values of the finite sections of these operators. We obtain some results in this direction.
 
 
 
 
-\subsection{El problema de la codimensión: definiciones precisas. }
-
-\noindent En primer lugar abordamos las definiciones algebraicas de la codimensión de un subespacio vectorial atendiendo simplemente a la estructura de espacio vectorial. Estas definiciones aparecen en Hormander para espacios vectoriales finito o infinito dimensionales. 
 
 
+\section{Finite codimensional subspaces. The singular number   $Q_k$}
 
-\section{Finite codimensional subspaces. Index $Q_k$}
+\noindent First of all, we recall the notion of algebraic dimension of the vector suspace.
 
-\noindent
-
-\begin{definition} Let  $V$ a vector space and $0 \leq k \leq {\it dim}(V)$.  We say that a vector subpace  $W$ {\it algebraical dimension}   $k$, denoted by  ${\it cod}_{alg}(W)=k.
-$, if the dimension of the space  $V/W$  is $k$, i.e. ${\it dim}(V/W)=k.$  
+\begin{definition} Let $V$ be a vector space and $0 \leq k \leq {\it dim}(V)$.  We say that a vector subspace $W$ has {\it algebraic dimension}   $k$ in $V$, denoted by  ${\it cod}_{V}(W)=k
+    $, if the dimension of the space  $V/W$  is $k$, i.e., ${\it dim}(V/W)=k.$
 \end{definition}
 
-\noindent En Hormander, pág. 10, se prueba el siguiente resultado que será de interés en adelante: 
-\begin{prop} Let $W\subset V$ a vector subspace.  The following are equivalent: 
-\begin{enumerate}
-    \item ${\it cod}_{alg}(W)=k.$
-\item There exist  $L_1,L_2,\dots,L_k$ linear applications  $L_j:V \to \mathbb{K}$ linearly independent such that 
-$$
-W=\cap_{j=1}^k {\it Ker} L_k.
-$$
+\noindent There are several characterizations of this notion (see. e.g. Hormander, pág. 10). The following one will be used in the sequel:
+\begin{prop} Let $W\subset V$ a vector subspace.  The following are equivalent:
+    \begin{enumerate}
+        \item ${\it cod}_{V}(W)=k.$
+        \item There exist  $L_1,L_2,\dots,L_k$ linear applications $L_j:V \to \mathbb{K}$ that are linearly independent such that
+              $$
+                  W=\cap_{j=1}^k {\it Ker} L_k.
+              $$
 
-\end{enumerate}    
+    \end{enumerate}
 \end{prop}
 
+\noindent Our interest is focused on the vector space of polynomials $\mathbb{P}[z]$ endowed with an inner product $<\cdot,\cdot>$. From now on, we consider the Hilbert space $\mathcal{H}$, which is the completion of polynomials with the inner product. This is a Hilbert space. We recall the definition of codimension in this context:
 
+\begin{definition} Let $\mathcal{H}$  be a Hilbert space. A closed vector subspace $V$ has {\it codimension} $k$, denoted by $cod(V)=k$ if the space $\mathcal{H}/V$ has dimension $k$.
+\end{definition}
 
-\noindent DEFINIR INDICE $Q_k$ y propiedades. Caracterizaciones, etc....
-\noindent Vemos la prueba para el caso de codimensión $1$, es decir, para hiperplanos. 
-\begin{lem} 	Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\mathcal{H}$ be the Hilbert completion. 
-Let $L: \mathbb{P}[z] \to \CC
-$ be a linear application and $V=\overline{{\it Ker}(L)}
-$ then either $V=\mathcal{H}$ or ${\it cod}
-}(V)=1$.
+\begin{prop} Let $V\subset \mathcal{H}$ a vector subspace.  The following are equivalent:
+    \begin{enumerate}
+        \item ${\it cod}(V)=k.$
+        \item There exist  $L_1,L_2,\dots,L_k$ bounded  linear applications $L_j:\mathcal{H} \to \mathbb{K}$ that are linearly independent such that
+              $$
+                  V=\cap_{j=1}^k {\it Ker} L_k.
+              $$
+
+    \end{enumerate}
+\end{prop}
+
+\noindent In the following result, we relate both notions of codimension suspaces in the case of hiperplanes.
+
+\begin{lem} 	Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\mathcal{H}$ be the Hilbert completion.
+    Let $L: \mathbb{P}[z] \to \CC
+    $ be a linear application and $V=\overline{{\it Ker}(L)}
+    $ then either $V=\mathcal{H}$ or ${\it cod}
+        }(V)=1$.
 \end{lem}
 
-\begin{proof} Assume  $L\neq 0$. In the case that 
- $\overline{{\it Ker} L}= \mathcal{H}$ the result holds. 
- 
- 
- \noindent Assume 
-$\overline{Y} \neq   \mathcal{H}$. In this case, there exists  a polynomial $p_0(z)\in \mathbb{P}[z]$ verifying    $p_0(z)\notin {\it Ker} L$; indeed, otherwise $\mathbb{P}[z]\subset {\it Ker} L
-$ and therefore  $Y=\mathcal{H}$. 
+\begin{proof} Assume  $L\neq 0$. In the case that
+    $\overline{{\it Ker} L}= \mathcal{H}$ the result holds.
 
 
-\noindent Let  $N$ be the degree of $p_0(z)$ and consider the finite dimensional Hilbert space   $\mathbb{P}_{N}[z]$ endowed with the inner product con  $<\cdot,\cdot>$. 
+    \noindent Assume
+    $\overline{Y} \neq   \mathcal{H}$. In this case, there exists  a polynomial $p_0(z)\in \mathbb{P}[z]$ verifying    $p_0(z)\notin {\it Ker} L$; indeed, otherwise $\mathbb{P}[z]\subset {\it Ker} L
+    $ and therefore  $Y=\mathcal{H}$.
 
 
-\noindent Consider the linear form 
-$$ L_N: \mathbb{P}_N[z] \to \CC , \qquad {\it Ker}(L_N)=Y_N.
-$$
-
-\noindent It is clear that ${\it dim}(Y_N)=N$. We consider an orthonormal basis in   $Y_n$ denoted by  $\{q_1(z),\dots,q_N(z)\}$. On the other hand, denoting by $\pi_{Y_n}$ the orthogonal projection we consider the polynomial $q_0(z)=p_0(z)-\pi_{Y_n}(p_0(z))\neq 0$ and obviously  $q_0\in [Y_N]^{\perp}$. 
-
-\noindent Consideramos
-$$
-\mathfrak{B}_N=\{ q_0(z)=, q_1(z), \dots,q_N(z)\}
-$$
+    \noindent Let  $N$ be the degree of $p_0(z)$ and consider the finite dimensional Hilbert space   $\mathbb{P}_{N}[z]$ endowed with the inner product con  $<\cdot,\cdot>$.
 
 
-\noindent que es una  base ortogonal de $\mathbb{P}_{n+1}[z]$, siendo $Y_N=[q_0(z)]^{\perp}\cap \mathbb{P}_{n}[z]={\it Ker}(L_N).
-$
-\noindent Completamos a una base ortogonal de polinomios  de la siguiente forma:
+    \noindent Consider the linear form
+    $$ L_N: \mathbb{P}_N[z] \to \CC , \qquad {\it Ker}(L_N)=Y_N.
+    $$
 
-\noindent para $k>N$ en el espacio $\mathbb{P}_k[z]$ basta considerar el polinomio 
-$$ p_{k}(z)=z^{k}-\pi_{\mathbb{P}_{k-1}[z]}(z^k).
-$$
-\noindent Es claro que  en cada subespacio vectorial $\mathbb{P}_{k}[z]$ se tiene que $[p_0(z)]^{\perp}=[p_1(z),\dots,p_k(z)]$
-y que: 
-$$
-\mathbb{P}[z]=[p_0(z),p_1(z),\dots,p_N(z), p_{N+1}(z),\dots,]
-$$
+    \noindent It is clear that ${\it dim}(Y_N)=N$. We consider an orthonormal basis in   $Y_n$ denoted by  $\{q_1(z),\dots,q_N(z)\}$. On the other hand, denoting by $\pi_{Y_n}$ the orthogonal projection we consider the polynomial $q_0(z)=p_0(z)-\pi_{Y_n}(p_0(z))\neq 0$ and obviously  $q_0\in [Y_N]^{\perp}$.
 
-\noindent Vemos que la codimensión  de $Y$   es exactamente uno. En efecto $p_0(z)\in Y$, si la codimensión de $Y$ fuese mayor que $1$, existiría $f_0\in Y$
-de modo que $f\perp g_0$, y $f\perp p_k$ para todo $k\geq 1$. Por lo tanto, $f\in \mathbb{P}[z]^{\perp}$ y puesto que es denso entonces $f=0$. 
+    \noindent Consideramos
+    $$
+        \mathfrak{B}_N=\{ q_0(z)=, q_1(z), \dots,q_N(z)\}
+    $$
+
+
+    \noindent que es una  base ortogonal de $\mathbb{P}_{n+1}[z]$, siendo $Y_N=[q_0(z)]^{\perp}\cap \mathbb{P}_{n}[z]={\it Ker}(L_N).
+    $
+    \noindent Completamos a una base ortogonal de polinomios  de la siguiente forma:
+
+    \noindent para $k>N$ en el espacio $\mathbb{P}_k[z]$ basta considerar el polinomio
+    $$ p_{k}(z)=z^{k}-\pi_{\mathbb{P}_{k-1}[z]}(z^k).
+    $$
+    \noindent Es claro que  en cada subespacio vectorial $\mathbb{P}_{k}[z]$ se tiene que $[p_0(z)]^{\perp}=[p_1(z),\dots,p_k(z)]$
+    y que:
+    $$
+        \mathbb{P}[z]=[p_0(z),p_1(z),\dots,p_N(z), p_{N+1}(z),\dots,]
+    $$
+
+    \noindent Vemos que la codimensión  de $Y$   es exactamente uno. En efecto $p_0(z)\in Y$, si la codimensión de $Y$ fuese mayor que $1$, existiría $f_0\in Y$
+    de modo que $f\perp g_0$, y $f\perp p_k$ para todo $k\geq 1$. Por lo tanto, $f\in \mathbb{P}[z]^{\perp}$ y puesto que es denso entonces $f=0$.
 
 \end{proof}
 
 
 
-\begin{corollary} Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\mathcal{H}$ be the Hilbert completion. 
-\begin{enumerate}
-    \item Let $V \subset \mathbb{P}[z]$ be a vector space with ${\it cod}_{alg}(V)=1$ then ${\it cod}(\overline{V})\leq 1.$    
-    \item Let  $V\subset \mathcal{H}$ a closed vector subspace with ${\it cod}(V)=1$ then $W=V\cap \mathbb{P}[z]$ verifies that ${\it cod}_{alg}(W)=1$ and 
-$$
-\overline{W\cap \mathbb{P}[z]} = V.
-$$
-    
-\end{enumerate}
+\begin{corollary} Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\mathcal{H}$ be the Hilbert completion.
+    \begin{enumerate}
+        \item Let $V \subset \mathbb{P}[z]$ be a vector space with ${\it cod}_{alg}(V)=1$ then ${\it cod}(\overline{V})\leq 1.$
+        \item Let  $V\subset \mathcal{H}$ a closed vector subspace with ${\it cod}(V)=1$ then $W=V\cap \mathbb{P}[z]$ verifies that ${\it cod}_{alg}(W)=1$ and
+              $$
+                  \overline{W\cap \mathbb{P}[z]} = V.
+              $$
+
+    \end{enumerate}
 \end{corollary}
 
 
 
 
-\begin{proof} To prove $ii)$ since  ${\it cod}(V)=1$ then 
-$V={\it Ker} L}$ with $L$ linear and continuous and $L:\mathcal{H}\to \CC$. 
+\begin{proof} To prove $ii)$ since  ${\it cod}(V)=1$ then
+$V={\it Ker} L}$ with $L$ linear and continuous and $L:\mathcal{H}\to \CC$.
 $$
-V \cap \mathbb{P}[z]= {\it Ker} L/\mathbb{P}[z]= \{ p(z): L(p(z))=0\}
-$$
-
-\noindent and therefore ${\it cod}_{alg}(V)=1$ (nótese que no puede coincidir con el Hilbert) and por lo que es el núcleo de una aplicación lineal $\Phi$ lineal y continua. Entonces $\phi- L=0$ en el espacio de Hilbert y por densidad (puesto que $L$ es continua) $\Phi=L$ y 
-$$
-\overline{Y\cap \mathbb{P}[z]} = {\it Ker}(L)=Y
+    V \cap \mathbb{P}[z]= {\it Ker} L/\mathbb{P}[z]= \{ p(z): L(p(z))=0\}
 $$
 
-\noindent Buscar el siguiente resultado en Conway, A course in Functional Analysis. 
+\noindent and therefore ${\it cod}_{alg}(V)=1$ (nótese que no puede coincidir con el Hilbert) and por lo que es el núcleo de una aplicación lineal $\Phi$ lineal y continua. Entonces $\phi- L=0$ en el espacio de Hilbert y por densidad (puesto que $L$ es continua) $\Phi=L$ y
+$$
+    \overline{Y\cap \mathbb{P}[z]} = {\it Ker}(L)=Y.
+$$
 
 
 
-\noindent {\bf INTERESANTE:} A linear functional is continuous in a Hilbert space if and only if its kernel is closed. 
-\end{proof}
 
-\begin{corollary} Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\mathcal{H}$ be the Hilbert completion. 
-\begin{enumerate}
-    \item Let $V \subset \mathbb{P}[z]$ be a vector space with ${\it cod}_{alg}(V)=k$ then ${\it cod}(\overline{V})\leq k.$    
-    \item Let  $V\subset \mathcal{H}$ a closed vector subspace with ${\it cod}(V)=k$ then $W=V\cap \mathbb{P}[z]$ verifies that ${\it cod}_{alg}(W)=k$ and 
+\noindent Recall that for a bounded operator in a Hilbert space $T: \mathcal{H} \to \mathcal{H}$ the Gelfand number is an s-number defined
+which is defined as:
 $$
-\overline{W\cap \mathbb{P}[z]} = V.
-$$
-    
-\end{enumerate}
-\end{corollary}
-
-\noindent Recall that for a bounded operator in a Hilbert space $T: \mathcal{H} \to \mathcal{H}$ the Gelfand number is an s-number which is defined as: 
-$$
-C_n(T):=\inf \{ \Vert T/V \Vert : V\subset \mathcal{H}, {\it cod}(V)<k\}. 
+    C_n(T):=\inf \{ \Vert T/V \Vert : V\subset \mathcal{H}, {\it cod}(V)<n\}.
 $$
 
-\noindent In the sequel, we introduce an index for those operators {\it densely} defined in  Hilbert spaces where polynomials are dense and that are not necessarily bounded. 
-
-\medskip 
-
-\begin{definition} Let $T: \mathbbf{P}[z]\to \mathbb{P}[z]$ be a linear operator, we define 
+\noindent An equivalent definition of this is
 $$
-Q_k(T):=\inf  \{ \Vert T/W \Vert : W \subset \mathbb{P}[z], {\it cod}_{alg}(W)<k\}.
+    c_n(T)= \inf_{v_1,\dots,v_k} \sup \{ \Vert Tx \Vert : \; <x,v_j>=0, k=1,\dots,k, k<n\}.
 $$
-    
+
+
+
+\noindent In the sequel, we introduce an index for those operators {\it densely} defined in  Hilbert spaces where polynomials are dense and that are not necessarily bounded.
+
+\medskip
+
+\begin{definition} Let $T: \mathbb{P}[z]\to \mathbb{P}[z]$ be a linear operator, we define
+    $$
+        Q_k(T):=\inf  \{ \Vert T/W \Vert : W \subset \mathbb{P}[z], {\it cod}_{alg}(W)<k\},
+    $$
+    \noindent where
+    $$
+        \Vert T/W \Vert= \sup_{p\in W,p\neq0} \{ \dfrac{\Vert T(p) \Vert}{\Vert p \Vert}\in [0,\infty].
+    $$
 \end{definition}
+
+\medskip
+
+\begin{remark} Note that the index $Q_k(T)$ may be infinite. Indeed, in these cases since
+    $$
+        Q_0(T) \geq Q_1(T) \dots
+    $$
+    \noindent it is interestintg to study the problem of the stabilization of this chain in the sense of the existence of a certain $k$ such that
+    $$
+        Q_{k-1}(T)<\infty, \qquad Q_k(T)<\infty.
+    $$
+    \noindent
+\end{remark}
+
+
+\noindent In the following result we prove that for bounded operators the index $Q_k$ coincides with the Gelfand index, and therefore $Q_k$ can be considered as  a generalization of the Gelfand index for unbounded operators.
+
 
 
 \begin{prop} Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\mathcal{H}$ be the Hilbert completion. Let $T: \mathcal{H} \to \mathcal{H}$ be a linear and continuous application. Then, for every $k\in \NN$
-$$
-c_{k}(T)=Q_k(T).
-$$
+    $$
+        c_{k}(T)=Q_k(T).
+    $$
 
 
 
-    
+
 \end{prop}
 
 
@@ -247,28 +294,49 @@ $$
 
 \section{Singular values of multiplication operator for discrete Sobolev spaces.}
 
-\noindent We look for conditions to assure that multiplication operator $\mathcal{D}$ is not bounded with respect to a Sobolev discrete norm
+\noindent Consider discrete Sobolev inner products of the type
+\begin{equation} \label{discrete}
+    \Vert p(z) \Vert^2_{\mathbf{S}}= \int \vert p(z) \vert^{2} d\mu + \sum_{k=1}^{n} \vert p'(a_k) \vert^{2}.
+\end{equation}
+\noindent Recall that $a\in \CC$ is a bounded point evaluation of a measure $\mu$. In short, a bpe of $\mu$ if there exists $C>0$ such that $$ \vert p (a) \vert^2 \leq C \int \vert p(z) \vert^2 \; d\mu, \qquad p(z)\in \mathbb{P}[z].
 $$
-\Vert p(z) \Vert^2_S=\Vert p(z)\Vert^2_{\mu} + \vert p(c) \vert^2.
+
+
+\noindent We denote by $bpe(\mu)= \{a\in \mathbb{C}: a \text{ is a bpe of  }  \mu\}$. It is known  (see e.g.   \cite{Conway}) that
+for a compact set $K\subset \mathbb{C}$, the {\it polynomially convex
+        hull } of $K$, denoted by $P_C{(K)}$, is defined as
 $$
+    P_C(K):=\{ z\in \CC:  \; \vert p(z) \vert \leq \max_{\xi \in K}\vert p(\xi) \vert,  \; \text{for all } p(z)\in \mathbb{P}[z] \}.
+$$
+
+\noindent A compact set is said to be {\it polynomially convex} if $K=P_C(K)$. Obviously, $K \subset P_C(K)$. In \cite{EG2} it is proved that bpe's of a measure are contained in the polynomially convex hall of its support. Note that the polynomially convex hall of a set is always contained in the convex hull.
+
+\begin{prop} Let $\mu$ be a measure with infinite support, and let
+    $a_1,\dots ,a_n$ be bounded point evaluations of the measure $\mu$.  Then $\mathcal{D}$ is bounded with respect to the discrete Sobolev norm (\ref{discrete}).
+\end{prop}
+
+
+
+
+
 
 \noindent In ?? it is proved that if $c$ is a bounded point of evaluation of $\mu$, or equivalently, the linear functional
 $$
-\delta_c: (\mathbb{P}[z], \Vert \cdot \Vert_{\mu})\to  (\mathbb{P}[z], \Vert \cdot \Vert_{\mu})
+    \delta_c: (\mathbb{P}[z], \Vert \cdot \Vert_{\mu})\to  (\mathbb{P}[z], \Vert \cdot \Vert_{\mu})
 $$
-\noindent is bounded, the multiplication operator is bounded. 
+\noindent is bounded, the multiplication operator is bounded.
 
-\noindent We do not know if the unboundedness of ?? implies that the multiplication operator is not bounded. Nevertheless, the result is true, assuming that this linear functional is not bounded in the subspace $\{p\in \mathbb{P}[z]: p'(z)=0\}$. 
+\noindent We do not know if the unboundedness of ?? implies that the multiplication operator is not bounded. Nevertheless, the result is true, assuming that this linear functional is not bounded in the subspace $\{p\in \mathbb{P}[z]: p'(z)=0\}$.
 
-\noindent Denote by 
+\noindent Denote by
 $$
-\delta'_c: (\mathbb{P}[z], \Vert \cdot \Vert_{\mu})\to  (\mathbb{P}[z], \Vert \cdot \Vert_{\mu}), \qquad \delta'_c(p(z))=p'(c).
+    \delta'_c: (\mathbb{P}[z], \Vert \cdot \Vert_{\mu})\to  (\mathbb{P}[z], \Vert \cdot \Vert_{\mu}), \qquad \delta'_c(p(z))=p'(c).
 $$
 
-\noindent In the following theorem we study the stabilization of the chain of singular values of multiplication operator: 
+\noindent In the following theorem we study the stabilization of the chain of singular values of multiplication operator:
 
 
-\begin{lem} Let $V$ a vector subspace in $\mathbb{P}[z]$ with ${\it cod}_{alg}(V)=m$ and $V_{m+1}$ a vector subspace with ${\it dim}(V_{m+1})=m+1$ then $V_{m+1}\cap V\neq \{0\}$.
+\begin{lem} Let $V$ a vector subspace in $\mathbb{P}[z]$ with ${\it cod}_{\mathbb{P}[z]}(V)=m$ and $V_{m+1}$ a vector subspace with ${\it dim}(V_{m+1})=m+1$ then $V_{m+1}\cap V\neq \{0\}$.
 \end{lem}
 
 
@@ -279,25 +347,25 @@ $$
 
 
 \begin{theorem}
-     Let $\mu$ be a  compactly supported measure and $R= \max \{\vert z \vert : z\in {\it supp}(\mu)\}$, 
-and $c_1,c_2,c_3,\dots c_{N}\in \CC$. and consider the discrete Sobolve norm 
-$$
-\Vert p(z) \Vert^2_S=\Vert p(z) \Vert^2_{\mu}+\sum_{k=1}^{m} +\vert p'(c_k)\vert^2.
-$$
-\noindent Assume that 
-\begin{enumerate}
-    \item For each $c_k, 1\leq k \leq m$,  the linear functional $\delta_{c_k}  $ is not bounded in ${\it Ker} \; \delta'_{c_k} $ with respect to $\mu$.
-    \item $c_k$ is bpe of $\mu$  for every $k=m+1,\dots,N$. 
-\end{enumerate}
+    Let $\mu$ be a  compactly supported measure and $R= \max \{\vert z \vert : z\in {\it supp}(\mu)\}$,
+    and $c_1,c_2,c_3,\dots c_{N}\in \CC$. and consider the discrete Sobolve norm
+    $$
+        \Vert p(z) \Vert^2_S=\Vert p(z) \Vert^2_{\mu}+\sum_{k=1}^{N} +\vert p'(c_k)\vert^2.
+    $$
+    \noindent Assume that
+    \begin{enumerate}
+        \item For each $ 1\leq k \leq m$,  the linear functional $\delta_{c_k}  $ is not bounded in ${\it Ker} \; \delta'_{c_k} $ with respect to $\mu$.
+        \item $c_k$ is bpe of $\mu$  for every $k=m+1,\dots,N$.
+    \end{enumerate}
 
-\smallskip
+    \smallskip
 
 
 
-\noindent Then, $Q_{m-1}(\mathcal{D})=\infty$ and $Q_{m}(\mathcal{D})\leq R$, i.e. 
-$$
-\infty = Q_{0}(\mathcal{D})= \dots = Q_{m-1}(\mathcal{D})=\infty > Q_{m}(\mathcal{D}) \geq Q_{m+1}(\mathcal{D}) \geq \dots  
-$$
+    \noindent Then, $Q_{m-1}(\mathcal{D})=\infty$ and $Q_{m}(\mathcal{D})\leq R$, i.e.
+    $$
+        \infty = Q_{0}(\mathcal{D})= \dots = Q_{m-1}(\mathcal{D})=\infty > Q_{m}(\mathcal{D}) \geq Q_{m+1}(\mathcal{D}) \geq \dots
+    $$
 \end{theorem}
 
 
@@ -305,481 +373,597 @@ $$
 
 
 \begin{proof} First of all, since $\delta'_{c_{k}}$ is bounded with respect to $\mu$ there exists a constant  $C>0$ such that for every $k=m+1,\dots,N$
-$$
-\vert p'(c_k)\vert^2 \leq C \int \vert p(z) \vert^2 d\mu, \qquad p(z)\in \mathbb{P}[z].
-$$ 
-
-
-
-\noindent We  prove that $Q_{m-1}(\mathcal{D})=\infty$. In order to do it, we have to show that for every vector subspace $V$ with 
-${\it cod}_{alg}(V)=m-1$ it is verified that $\Vert \mathcal{D}/V \Vert_S = \infty.$
-
-\noindent Let $V$ be  fixed a vector subpace in $\mathbb{P}[z]$ with ${\it cod}_{alg}(V)=m-1$. 
-
-\medskip
-\noindent We claim that it is possible find a  sequence of polynomials $(Q_n(z))_n \subset V$ verifying that 
-\begin{enumerate}
-    \item $Q_n(z) \in \cap_{k=1}^m  {\it Ker}(\delta'_{c_k})$,
-    \item $\Vert Q_n(z)\Vert_{\mu}$ uniformly bounded. 
-    \item for some $k=1,\dots,m $ it holds that   
-    $
-\displaystyle{\lim_{n\to \infty} 
-\vert Q_n
-(c_k)\vert^2=\infty}
- .$ 
-\end{enumerate}
-
-\noindent In this situation $\Vert \mathcal{D}/V\Vert_S=\infty.$ Indeed, 
-
-
-
-$$
-\dfrac{\Vert \mathcal{D}(Q_n(z)\Vert^2_S}{\Vert Q_n(z)\Vert^2_S}=\dfrac{\Vert zQ_n(z)\Vert^2_{\mu}+\sum_{k=1}^n \vert Q_n(c_k)\vert^2  }{\Vert Q_n(z)\Vert^2_{\mu}+ \sum_{k=m+1}^{N} \vert Q_n'(c_k)\vert^2 } \geq 
-\dfrac{ \vert Q_n
-(c_k)\vert^2
- }{  (1+(N-m)C)\Vert Q_n(z)\Vert^2_{\mu}  }
-$$
-\noindent and therefore, since $\Vert Q_n(z)\Vert_{\mu}$ is uniformly bounded it follow that 
-$\displaystyle{\lim_{n\to \infty} 
-\dfrac{\Vert \mathcal{D}(Q_n(z)\Vert^2_S}{\Vert Q_n(z)\Vert^2_S}=\infty}
-$ and consequently,  $\Vert \mathcal{D}/V \Vert= \infty.$
-
-\bigskip
-\noindent We construct this sequence of polynomials. First of all, since for each $k=1,\dots, m$ the linear functional $\delta'_{c_k}$ is not bounded in ${\it Ker}(\delta'_{c_k})$ with respect to $\mu$ me may find   sequences of polynomials $(P_{n,k}(z))_{n=1}^{\infty}$ for $k=1,\dots,m$ such that 
-\begin{enumerate}
-       \item $P_{n,k}(z) \in {\it Ker}(\delta'_{c_k})$,  $k=1,\dots,m,$
-    \item $\Vert P_{n,k} \Vert_\mu=1$ for all $n\in \NN,$ 
-    \item $\displaystyle{\lim_{n\to \infty}  \vert P_{n,k}(c_k)\vert = \infty}$
-\end{enumerate} 
-\noindent Since  $c_k\neq c_k$ if $k\neq j$ we can find Hermite polynomials $p_1(z),p_2(z), \dots,p_N(z)$ such that 
-$$
-\begin{array}{cc}
-   p_k(c_k)=1  &  p'_k(c_k)=0\\
-   p_k(c_j)=0, k\neq j  & p'_k(c_j)=0, k\neq j   
-\end{array}   
-$$
-
-
-
-\noindent Consider now for each $k=1,\dots,m$ the sequence of polynomials $$Q_{n,k}(z):=p_k(z)P_{n,k}(z).$$
-\noindent By construction, these sequences verify
-\begin{enumerate}
-    \item $Q_{n,k}(z) \in \cap_{k=1}^m {\it Ker}(\delta'_{c_k})$. 
-\item There exists $C>0$ such that $
-    \displaystyle{\Vert Q_{n,k}\Vert^2_{\mu}  \leq  C, k=1,\dots,m, \; n\in \mathbb{N}}.
-    $
-\item $$
-\lim_{n\to \infty} \vert Q_{n,k}(c_k)\vert  =  \lim_{n\to \infty} \vert P_{n,k}(c_k)\vert  =\infty.
-$$
-\end{enumerate}
-
-    \noindent Indeed, 
     $$
-    Q'_{n,k}(z)= p'_k(z)P_{n,k}(z)+ p_k(z)P'_{n,k}(z)
+        \vert p'(c_k)\vert^2 \leq C \int \vert p(z) \vert^2 d\mu, \qquad p(z)\in \mathbb{P}[z].
     $$
-   \noindent Since $P'_{n,k}(c_k)=0$ and $p'(c_k)=0$ 
-   $$
-    Q'_{n,k}(c_k)= p'_k(c_k)P_{n,k}(c_k)+ p_k(c_k)P'_{n,k}(c_k)=0.
+
+
+
+    \noindent We  prove that $Q_{m-1}(\mathcal{D})=\infty$. In order to do it, we have to show that for every vector subspace $V$ with
+    ${\it cod}_{alg}(V)=m-1$ it is verified that $\Vert \mathcal{D}/V \Vert_S = \infty.$
+
+    \noindent Let $V$ be  fixed a vector subpace in $\mathbb{P}[z]$ with ${\it cod}_{alg}(V)=m-1$.
+
+    \medskip
+    \noindent We claim that it is possible find a  sequence of polynomials $(Q_n(z))_n \subset V$ verifying that
+    \begin{enumerate}
+        \item $Q_n(z) \in \cap_{k=1}^m  {\it Ker}(\delta'_{c_k})$,
+        \item $\Vert Q_n(z)\Vert_{\mu}$ uniformly bounded.
+        \item for some $k=1,\dots,m $ it holds that
+              $
+                  \displaystyle{\lim_{n\to \infty}
+                      \vert Q_n
+                      (c_k)\vert^2=\infty}
+                  .$
+    \end{enumerate}
+
+    \noindent In this situation $\Vert \mathcal{D}/V\Vert_S=\infty.$ Indeed,
+
+
+
+    $$
+        \dfrac{\Vert \mathcal{D}(Q_n(z)\Vert^2_S}{\Vert Q_n(z)\Vert^2_S}=\dfrac{\Vert zQ_n(z)\Vert^2_{\mu}+\sum_{k=1}^n \vert Q_n(c_k)\vert^2  }{\Vert Q_n(z)\Vert^2_{\mu}+ \sum_{k=m+1}^{N} \vert Q_n'(c_k)\vert^2 } \geq
+        \dfrac{ \vert Q_n
+            (c_k)\vert^2
+        }{  (1+(N-m)C)\Vert Q_n(z)\Vert^2_{\mu}  }
+    $$
+    \noindent and therefore, since $\Vert Q_n(z)\Vert_{\mu}$ is uniformly bounded it follow that
+    $\displaystyle{\lim_{n\to \infty}
+            \dfrac{\Vert \mathcal{D}(Q_n(z)\Vert^2_S}{\Vert Q_n(z)\Vert^2_S}=\infty}
+    $ and consequently,  $\Vert \mathcal{D}/V \Vert= \infty.$
+
+    \bigskip
+    \noindent We construct this sequence of polynomials. First of all, since for each $k=1,\dots, m$ the linear functional $\delta'_{c_k}$ is not bounded in ${\it Ker}(\delta'_{c_k})$ with respect to $\mu$ me may find   sequences of polynomials $(P_{n,k}(z))_{n=1}^{\infty}$ for $k=1,\dots,m$ such that
+    \begin{enumerate}
+        \item $P_{n,k}(z) \in {\it Ker}(\delta'_{c_k})$,  $k=1,\dots,m,$
+        \item $\Vert P_{n,k} \Vert_\mu=1$ for all $n\in \NN,$
+        \item $\displaystyle{\lim_{n\to \infty}  \vert P_{n,k}(c_k)\vert = \infty}$
+    \end{enumerate}
+    \noindent Since  $c_k\neq c_k$ if $k\neq j$ we can find Hermite polynomials $p_1(z),p_2(z), \dots,p_N(z)$ such that
+    $$
+        \begin{array}{cc}
+            p_k(c_k)=1          & p'_k(c_k)=0          \\
+            p_k(c_j)=0, k\neq j & p'_k(c_j)=0, k\neq j
+        \end{array}
+    $$
+
+
+
+    \noindent Consider now for each $k=1,\dots,m$ the sequence of polynomials $$Q_{n,k}(z):=p_k(z)P_{n,k}(z).$$
+    \noindent By construction, these sequences verify
+    \begin{enumerate}
+        \item $Q_{n,k}(z) \in \cap_{k=1}^m {\it Ker}(\delta'_{c_k})$.
+        \item There exists $C>0$ such that $
+                  \displaystyle{\Vert Q_{n,k}\Vert^2_{\mu}  \leq  C, k=1,\dots,m, \; n\in \mathbb{N}}.
+              $
+        \item $$
+                  \lim_{n\to \infty} \vert Q_{n,k}(c_k)\vert  =  \lim_{n\to \infty} \vert P_{n,k}(c_k)\vert  =\infty.
+              $$
+    \end{enumerate}
+
+    \noindent Indeed,
+    $$
+        Q'_{n,k}(z)= p'_k(z)P_{n,k}(z)+ p_k(z)P'_{n,k}(z)
+    $$
+    \noindent Since $P'_{n,k}(c_k)=0$ and $p'(c_k)=0$
+    $$
+        Q'_{n,k}(c_k)= p'_k(c_k)P_{n,k}(c_k)+ p_k(c_k)P'_{n,k}(c_k)=0.
     $$
     \noindent Now, if $j\neq k,$
     $$
-    Q'_{n,k}(c_j)= p'_k(c_j)P_{n,k}(c_j)+ p_k(c_j)P'_{n,k}(c_j)=0
+        Q'_{n,k}(c_j)= p'_k(c_j)P_{n,k}(c_j)+ p_k(c_j)P'_{n,k}(c_j)=0
     $$
     \noindent Thus, $Q_{n,k}(z) \in \cap_{k=1}^m {\it Ker}(\delta'_{c_k})$. On the other hand, since ${\it supp}(\mu)
-    $ is a compact set, denoting by $C=\max \{ \vert p_k(z) \vert^2 : z\in {\it supp}(\mu), k=1,\dots,m\}$ it holds 
-$$
-    \Vert Q_{n,k}\Vert^2_{\mu} = \int \vert p_k(z)P_{n,k}(z)\vert^2\leq C\Vert P_{n,k
-    }\Vert_{\mu}^2 \leq C, k=1,\dots,m, \; n\in \mathbb{N}.
+    $ is a compact set, denoting by $C=\max \{ \vert p_k(z) \vert^2 : z\in {\it supp}(\mu), k=1,\dots,m\}$ it holds
     $$
-\noindent Consequently, for each $k=1,\dots,m$
-$$
-\lim_{n\to \infty} \dfrac{\vert Q_{n,k}(c_k) \vert^2}{ \Vert Q_{n,k}\Vert_{\mu}^2}=\infty.
-$$
-
-
-\medskip
-
-
-\noindent Finally, since for each $n\in \NN$, the subspace $V_{m}=[Q_{n,1},Q_{n,2}, \dots,Q_m(z)]$ is $m$ dimensional, then by lemma 1 it follows that $V\cap V_m\neq 0$. Consider for each $n\in \NN$, 
-$$
-0 \neq Q_n(z)=\sum_{k=1}^m 
-\alpha_{n,k} Q_{n,k}(z)
-\in V_m \cap V \; 
-$$
-
-\noindent with  $\sum_{k=1}^m \vert \alpha_{n,k} \vert^2=1$. Since $(\alpha_{n,k})_n$ is a bounded sequence for each $k=1,\dots,m$, by passing to a subsequence if necessary, we may assume that each $(\alpha_{n,k})_n$ converges to $\alpha_k$ and obviously 
-$\sum_{k=1}^m \vert \alpha_k \vert^2=1$. Then, there exists $k\in \{ 1,\dots,m\}$ such that $\alpha_k\neq 0.$
-
-\noindent Then the sequence $(Q_n(z))$ verifies **. Indeed, $(Q_n(z))_n \subset V$ and  $Q_n(z) \in \cap_{k=1}^m  {\it Ker}(\delta'_{c_k})$. On the other hand, since 
-$$
-\Vert Q_n(z) \Vert_{\mu}^2 = \int \vert \sum_{k=1}^m 
-\alpha_{n,k} Q_{n,k}(z) \vert^2 d\mu \leq \left( \sum_{k=1}^m \vert \alpha_{k,m}\vert^2\right)\left(\sum_{k=1}^m \Vert Q_{n,k}(z) \Vert^2_{\mu}\right) \leq mC
-$$
-\noindent If follows that 
-    
+        \Vert Q_{n,k}\Vert^2_{\mu} = \int \vert p_k(z)P_{n,k}(z)\vert^2\leq C\Vert P_{n,k
+            }\Vert_{\mu}^2 \leq C, k=1,\dots,m, \; n\in \mathbb{N}.
     $$
-\dfrac{ \vert Q_n
-(c_k)\vert^2
- }{  \Vert Q_n(z)\Vert^2_{\mu}} \geq \dfrac{ \vert \alpha_{n,k}Q_{n,k}(c_k)
-\vert^2
- }{mC}
-$$ 
+    \noindent Consequently, for each $k=1,\dots,m$
+    $$
+        \lim_{n\to \infty} \dfrac{\vert Q_{n,k}(c_k) \vert^2}{ \Vert Q_{n,k}\Vert_{\mu}^2}=\infty.
+    $$
 
-\noindent and consequently since $\displaystyle{\lim_{n\to \infty} \vert \alpha_{n,k}\vert =\vert \alpha_k \vert >0}$
-$$
-\lim_{n\to \infty} \dfrac{ \vert Q_n
-(c_k)\vert^2
- }{  \Vert Q_n(z)\Vert^2_{\mu}}= \infty
-$$
 
-\noindent as we required. 
+    \medskip
 
-\noindent To prove that $Q_{m}(\mathcal{D})<\infty$ se considera el operador lineal $L_k=\delta_{c_k}+c_k\delta'_{c_k}$ y el subespacio $V=\cap_{k=1}^m {\it Ker} L_k$ que tiene codimensión algebraica menor o igual que  $m$ y si $p(z)\in V$
-$$
-\dfrac{\Vert z p(z) \Vert^2_{S}}{\Vert  p(z) \Vert^2_{S}}= 
-\dfrac{\Vert z p(z) \Vert^2_{\mu}}{\Vert  p(z) \Vert^2_{\mu}+\sum_{k=1}^m \vert p'(c_k)\vert^2} \leq R^2 
-$$
-\noindent and therefore $Q_{m}(\mathcal{D})\leq R.$
+
+    \noindent Finally, since for each $n\in \NN$, the subspace $V_{m}=[Q_{n,1},Q_{n,2}, \dots,Q_m(z)]$ is $m$ dimensional, then by lemma 1 it follows that $V\cap V_m\neq 0$. Consider for each $n\in \NN$,
+    $$
+        0 \neq Q_n(z)=\sum_{k=1}^m
+        \alpha_{n,k} Q_{n,k}(z)
+        \in V_m \cap V \;
+    $$
+
+    \noindent with  $\sum_{k=1}^m \vert \alpha_{n,k} \vert^2=1$. Since $(\alpha_{n,k})_n$ is a bounded sequence for each $k=1,\dots,m$, by passing to a subsequence if necessary, we may assume that each $(\alpha_{n,k})_n$ converges to $\alpha_k$ and obviously
+    $\sum_{k=1}^m \vert \alpha_k \vert^2=1$. Then, there exists $k\in \{ 1,\dots,m\}$ such that $\alpha_k\neq 0.$
+
+    \noindent Then the sequence $(Q_n(z))$ verifies **. Indeed, $(Q_n(z))_n \subset V$ and  $Q_n(z) \in \cap_{k=1}^m  {\it Ker}(\delta'_{c_k})$. On the other hand, since
+    $$
+        \Vert Q_n(z) \Vert_{\mu}^2 = \int \vert \sum_{k=1}^m
+        \alpha_{n,k} Q_{n,k}(z) \vert^2 d\mu \leq \left( \sum_{k=1}^m \vert \alpha_{k,m}\vert^2\right)\left(\sum_{k=1}^m \Vert Q_{n,k}(z) \Vert^2_{\mu}\right) \leq mC
+    $$
+    \noindent If follows that
+
+    $$
+        \dfrac{ \vert Q_n
+            (c_k)\vert^2
+        }{  \Vert Q_n(z)\Vert^2_{\mu}} \geq \dfrac{ \vert \alpha_{n,k}Q_{n,k}(c_k)
+            \vert^2
+        }{mC}
+    $$
+
+    \noindent and consequently since $\displaystyle{\lim_{n\to \infty} \vert \alpha_{n,k}\vert =\vert \alpha_k \vert >0}$
+    $$
+        \lim_{n\to \infty} \dfrac{ \vert Q_n
+            (c_k)\vert^2
+        }{  \Vert Q_n(z)\Vert^2_{\mu}}= \infty
+    $$
+
+    \noindent as we required.
+
+    \noindent To prove that $Q_{m}(\mathcal{D})<\infty$ se considera el operador lineal $L_k=\delta_{c_k}+c_k\delta'_{c_k}$ y el subespacio $V=\cap_{k=1}^m {\it Ker} L_k$ que tiene codimensión algebraica menor o igual que  $m$ y si $p(z)\in V$
+    $$
+        \dfrac{\Vert z p(z) \Vert^2_{S}}{\Vert  p(z) \Vert^2_{S}}=
+        \dfrac{\Vert z p(z) \Vert^2_{\mu}}{\Vert  p(z) \Vert^2_{\mu}+\sum_{k=1}^m \vert p'(c_k)\vert^2} \leq R^2
+    $$
+    \noindent and therefore $Q_{m}(\mathcal{D})\leq R.$
 \end{proof}
 
 \section{Some applications}
-\noindent We obtain some applications of the above result. In order to do it, we look for conditions for localizing  points $c$ such that $\delta_c$ is not bounded in the subspace ${\it Ker} \delta'_c$. First of all,  $\delta_c$ should not be bounded, that is, $c$ is not a bounded point evaluation of $\mu$. 
-
-\noindent Recall that $a\in \CC$ is a bounded point evaluation of a measure $\mu$, in short a bpe of $\mu$,  if there exists $C>0$ such that $$ \vert p (a) \vert^2 \leq C \int \vert p(z) \vert^2 \; d\mu, \qquad p(z)\in \mathbb{P}[z].
-$$
+\noindent We obtain some applications of the above result. In order to do it, we look for conditions for localizing  points $c$ such that $\delta_c$ is not bounded in the subspace ${\it Ker} \delta'_c$. First of all,  $\delta_c$ should not be bounded, that is, $c$ is not a bounded point evaluation of $\mu$.
 
 
-\noindent We denote by $bpe(\mu)= \{a\in \mathbb{C}: a \text{ is a bpe of  }  \mu\}$. It is known  (see e.g.   \cite{Conway}) that 
-for a compact set  $K\subset \mathbb{C}$  the {\it polynomially convex 
-hull } of $K$, denoted by $P_C{(K)}$, is defined as
-$$
-P_C(K):=\{ z\in \CC:  \; \vert p(z) \vert \leq \max_{\xi \in K}\vert p(\xi) \vert,  \; \text{for all } p(z)\in \mathbb{P}[z] \}.
-$$
-
-\noindent A compact set is said to be {\it polynomially convex} if $K=P_C(K)$. Obviously, $K \subset P_C(K)$. In \cite{EG2} it is proved that bpe's of a measure are contained in the polynomially convex hall of its support. Note that the polynomially convex hall of a set is always contained in the convex hull. 
 \begin{prop} Let $\mu$ be a measure and $R=\max \{ \vert z \vert : z\in {\it supp
-(\mu)\}<\infty$. Then, 
-\begin{enumerate}
-\item If $c$ is a bpe of $\mu$ then $\vert c \vert \leq R.$ 
-    \item If $\vert c \vert >R$ then $\delta_c$ is not bounded in ${\it Ker}(\delta'_c)$.   
-\end{enumerate}
+        (\mu)\}<\infty$. Then,
+    \begin{enumerate}
+        \item If $c$ is a bpe of $\mu$ then $\vert c \vert \leq R.$
+        \item If $\vert c \vert >R$ then $\delta_c$ is not bounded in ${\it Ker}(\delta'_c)$.
+    \end{enumerate}
 \end{prop}
 
-\begin{proof} The first part is a consequence of ??. 
+\begin{proof} The first part is a consequence of ??.
 
-\noindent To prove (2) we  construct a sequence of polynomials $(Q_n(z))_n$ such that $Q'_n(c)=0$ for each $n\in \NN$ and
-$$
-\lim_{n\to \infty} \dfrac{\vert Q_n(c) \vert^2}{\Vert Q_n \Vert^2_{\mu}}= \infty.
-$$
-
-
-
-\noindent Consider the polynomials 
-$$
-Q_n(z)=(n+1)cz^n-nz^{n+1}, \qquad n\in \NN.
-$$
-\noindent For all $n\in \NN$, $Q_n(c)=c^{n+1}$ and 
-$$
-\Vert Q_n \Vert^2_{\mu}= \int \vert Q_n(z) \vert^2 d\mu= \int \vert (n+1)cz^n-nz^{n+1} \vert^2 d\mu=
-$$
-$$
-=  \int \vert z^n\vert^2 \; \vert  n(c-z)+c\vert^2d\mu\leq R^{2n}\int \vert  n(c-z)+c\vert^2d\mu \leq Cn^2R^{2n}
-$$
-
-\noindent for some constant $C>0$.
-\noindent Then, since $\vert c \vert >R$
-$$
-\lim_{n\to \infty} \dfrac{\vert Q_n(c) \vert^2}{\Vert Q_n \Vert^2_{\mu}} \geq \lim_{n\to \infty} \dfrac{c^{2n+2}}{Cn^2R^{2n
-}}= \infty.
-$$
+    \noindent To prove (2) we  construct a sequence of polynomials $(Q_n(z))_n$ such that $Q'_n(c)=0$ for each $n\in \NN$ and
+    $$
+        \lim_{n\to \infty} \dfrac{\vert Q_n(c) \vert^2}{\Vert Q_n \Vert^2_{\mu}}= \infty.
+    $$
 
 
+
+    \noindent Consider the polynomials
+    $$
+        Q_n(z)=(n+1)cz^n-nz^{n+1}, \qquad n\in \NN.
+    $$
+    \noindent For all $n\in \NN$, $Q_n(c)=c^{n+1}$ and
+    $$
+        \Vert Q_n \Vert^2_{\mu}= \int \vert Q_n(z) \vert^2 d\mu= \int \vert (n+1)cz^n-nz^{n+1} \vert^2 d\mu=
+    $$
+    $$
+        =  \int \vert z^n\vert^2 \; \vert  n(c-z)+c\vert^2d\mu\leq R^{2n}\int \vert  n(c-z)+c\vert^2d\mu \leq Cn^2R^{2n}
+    $$
+
+    \noindent for some constant $C>0$.
+    \noindent Then, since $\vert c \vert >R$
+    $$
+        \lim_{n\to \infty} \dfrac{\vert Q_n(c) \vert^2}{\Vert Q_n \Vert^2_{\mu}} \geq \lim_{n\to \infty} \dfrac{c^{2n+2}}{Cn^2R^{2n
+                }}= \infty.
+    $$
 
 
 
 
-%\noindent  By using this sequence 
+
+
+    %\noindent  By using this sequence 
 
 
 
 
-%$$
-%\Vert zQ_n(z) \Vert^2_S=\int \vert zQ_n(z) \vert^2 d\mu+\vert(zQ_n(z))'(c)\vert^2\geq \vert Q_n(c)\vert^2
-%$$
+    %$$
+    %\Vert zQ_n(z) \Vert^2_S=\int \vert zQ_n(z) \vert^2 d\mu+\vert(zQ_n(z))'(c)\vert^2\geq \vert Q_n(c)\vert^2
+    %$$
 
-%\noindent Thus, 
-%$$
-%\dfrac{\Vert zQ_n(z) \Vert^2_S}{\Vert Q_n(z) \Vert^2_S}\geq \dfrac{\vert Q_n(c)\vert^2}{\int \vert Q_n(z) \vert^2 d\mu} 
-%\geq \dfrac{\vert c\vert^{2(n+1)}}{Cn^2R^{2n}}
-%$$
+    %\noindent Thus, 
+    %$$
+    %\dfrac{\Vert zQ_n(z) \Vert^2_S}{\Vert Q_n(z) \Vert^2_S}\geq \dfrac{\vert Q_n(c)\vert^2}{\int \vert Q_n(z) \vert^2 d\mu} 
+    %\geq \dfrac{\vert c\vert^{2(n+1)}}{Cn^2R^{2n}}
+    %$$
 
-%\noindent Therefore, 
-%$$
-%\lim_{n\to \infty} 
-%\dfrac{  \Vert \mathcal{D}(Q_n(z)\Vert_S   }{  \Vert Q_n(z)\Vert_S    }=\infty,
-%$$
+    %\noindent Therefore, 
+    %$$
+    %\lim_{n\to \infty} 
+    %\dfrac{  \Vert \mathcal{D}(Q_n(z)\Vert_S   }{  \Vert Q_n(z)\Vert_S    }=\infty,
+    %$$
 
-%\noindent and consequently, $\mathcal{D}$ is not bounded with respect to the Sobolev norm. 
+    %\noindent and consequently, $\mathcal{D}$ is not bounded with respect to the Sobolev norm. 
 
 \end{proof}
 
-\begin{remark} Note that in the case $\vert z \vert =R$ we do not know if (2) is verified. This is true in the case of Lebesgue measures in circles, as we see in the following result. 
+\begin{remark} Note that in the case $\vert z \vert =R$ we do not know if (2) is verified. This is true in the case of Lebesgue measures in circles, as we see in the following result.
 \end{remark}
 
-\begin{prop} Let ${\bf m}_R$ be the normalized Lebesgue measure in $\mathbb{S}_R$. Then, the following are equivalent: 
-\begin{enumerate}
-    \item $c$ is not a bpe of ${\bf m}_R.$
-    \item $\vert c \vert \geq R$
-    \item $\delta_c$ is not bounded in ${\it Ker} \delta'_c$.
-\end{enumerate}
- 
+\begin{prop} Let ${\bf m}_R$ be the normalized Lebesgue measure in $\mathbb{S}_R$. Then, the following are equivalent:
+    \begin{enumerate}
+        \item $c$ is not a bpe of ${\bf m}_R.$
+        \item $\vert c \vert \geq R$
+        \item $\delta_c$ is not bounded in ${\it Ker} \delta'_c$.
+    \end{enumerate}
+
 \end{prop}
 
-\begin{proof} The equivalence $(1) \Leftrightarrow (2)$ is a well-known result (see e.g. ??). On the other hand, $(3)$ implies that $\delta_c$ is not bounded, and therefore $c$ is not a bpe of $\mu$. 
+\begin{proof} The equivalence $(1) \Leftrightarrow (2)$ is a well-known result (see e.g. ??). On the other hand, $(3)$ implies that $\delta_c$ is not bounded, and therefore $c$ is not a bpe of $\mu$.
 
 
-\noindent We prove that if 
-$\vert c \vert \geq R$ then $\delta_c$ is not bounded in ${\it Ker}(\delta'_c)$. For the case $\vert c \vert >R$ the result is a consequence of Proposition ??. 
+    \noindent We prove that if
+    $\vert c \vert \geq R$ then $\delta_c$ is not bounded in ${\it Ker}(\delta'_c)$. For the case $\vert c \vert >R$ the result is a consequence of Proposition ??.
 
-\noindent We prove the case $\vert c \vert =R$. 
-	We construct a sequence of polynomials $(P_n(z))_n$ verifying that $P'_n(c)=0$ and 
-\[
-		\frac{|P_n(c)|^2}{\|P_n\|_{\bf{m_R}}^2}
-		\xrightarrow[n\to\infty]{}\infty.
-	\]
+    \noindent We prove the case $\vert c \vert =R$.
+    We construct a sequence of polynomials $(P_n(z))_n$ verifying that $P'_n(c)=0$ and
+    \[
+        \frac{|P_n(c)|^2}{\|P_n\|_{\bf{m_R}}^2}
+        \xrightarrow[n\to\infty]{}\infty.
+    \]
 
 
 
-\noindent Consider the sequence 
+    \noindent Consider the sequence
 
-    
-  $$
-  P_n(z):=\sum_{k=0}^{n}(1-\alpha_n k)\left(\frac{z}{c}\right)^k  
-$$
-\noindent with 
+
+    $$
+        P_n(z):=\sum_{k=0}^{n}(1-\alpha_n k)\left(\frac{z}{c}\right)^k
+    $$
+    \noindent with
 
     \[
-		\alpha_n:=\frac{\sum_{k=1}^{n}k}{\sum_{k=1}^{n}k^2}=\frac{3}{2n+1}.
-		\qquad
-	\]
+        \alpha_n:=\frac{\sum_{k=1}^{n}k}{\sum_{k=1}^{n}k^2}=\frac{3}{2n+1}.
+        \qquad
+    \]
 
-    \noindent verifies these conditions. It can be easily checked that 
-	\[
-		cP_n'(c)=\sum_{k=1}^{n}k(1-\alpha_n k)=0,
-	\]
-	\noindent and consequently, $P_n'(c)=0$. On the other hand, since $\{\left(\dfrac{z}{c}\right)^n\}$ is the sequence of orthonormal polynomials with respect to the $L^{2}_{\bf m_R}$ norm, then 
-	$$
-		\|P_n\|_{{\bf m}_R}^2=
-		\sum_{k=0}^{n}(1-\alpha_n k)^2
-	=\sum_{k=0}^n (1-2\alpha_n k + \alpha_n^2k^2)=
-$$
-$$   
-(n+1)-2\alpha_n\sum_{k=1}^{n}k+\alpha_n^2\sum_{k=1}^{n}k^2
-		=\frac{(n+1)(n+2)}{2(2n+1)}.
-	$$
-	Moreover,
-	\[
-		P_n(c)=\sum_{k=0}^{n}(1-\alpha_n k)
-		=\frac{(n+1)(n+2)}{2(2n+1)}.
-	\]
-	\noindent Therefore, 
-	\[
-		\frac{|P_n(c)|^2}{\|P_n\|_{\mu}^2}
-		=
-		\frac{(n+1)(n+2)}{2(2n+1)}
-		\xrightarrow[n\to\infty]{}\infty.
-	\]
-	\noindent This means that $\delta_c$ is not bounded in ${\it Ker}(\delta'_c)$ with the $L^{2}_{{\bf m
-    _R}}$-norm as we required. 
-    
-    
-    
-    
+    \noindent verifies these conditions. It can be easily checked that
+    \[
+        cP_n'(c)=\sum_{k=1}^{n}k(1-\alpha_n k)=0,
+    \]
+    \noindent and consequently, $P_n'(c)=0$. On the other hand, since $\{\left(\dfrac{z}{c}\right)^n\}$ is the sequence of orthonormal polynomials with respect to the $L^{2}_{\bf m_R}$ norm, then
+    $$
+        \|P_n\|_{{\bf m}_R}^2=
+        \sum_{k=0}^{n}(1-\alpha_n k)^2
+        =\sum_{k=0}^n (1-2\alpha_n k + \alpha_n^2k^2)=
+    $$
+    $$
+        (n+1)-2\alpha_n\sum_{k=1}^{n}k+\alpha_n^2\sum_{k=1}^{n}k^2
+        =\frac{(n+1)(n+2)}{2(2n+1)}.
+    $$
+    Moreover,
+    \[
+        P_n(c)=\sum_{k=0}^{n}(1-\alpha_n k)
+        =\frac{(n+1)(n+2)}{2(2n+1)}.
+    \]
+    \noindent Therefore,
+    \[
+        \frac{|P_n(c)|^2}{\|P_n\|_{\mu}^2}
+        =
+        \frac{(n+1)(n+2)}{2(2n+1)}
+        \xrightarrow[n\to\infty]{}\infty.
+    \]
+    \noindent This means that $\delta_c$ is not bounded in ${\it Ker}(\delta'_c)$ with the $L^{2}_{{\bf m
+                    _R}}$-norm as we required.
+
+
+
+
 
 \end{proof}
 
 
-PUEDE SER INTERESANTE: MIRAR EL LA ELIPSE $2x^2+y^2=1$ con la medida normalizada donde $R=2$, 
-\begin{enumerate}
-    \item $R=2$ por lo que si $\vert z \vert >2$ son no bpe's y $\delta_c$ no acotado en ${\it Ker} \delta'_c$.
-    \item Si $z$ está en el interior es un bpe 
-    \item Qué ocurre en los puntos de fuera de la elipse y dentro del disco???
-\end{enumerate}
 
 
-IMPORTANTE: ESTUDIAR LA RELACIÓN ENTRE
-\begin{enumerate}
-    \item $\delta_c$ is not bounded with respect to $\mu$.
-    \item $\delta_c$ is not bounded in ${\it Ker}(\delta'_c).
-    $
-    \item $\delta'_c$ bounded. 
-\end{enumerate}
+\begin{theorem} Let  ${\bf m}_R$ be the normalized Lebesgue measure in $\mathbb{S}_R$ and $c_1,\dots,c_N\in \CC$. Consider the discrete Sobolev norm
+    $$
+        \Vert p(z) \Vert^2_S=\Vert p(z) \Vert^2_{\bf m_R}+\sum_{k=1}^{N} \vert p'(c_k)\vert^2.
+    $$
+    \noindent Assume that
+    \begin{enumerate}
+        \item $\vert c_k \vert \geq R $ $k=1,\dots,m$
+        \item $\vert c_k \vert <R$ for $k=m+1,\dots,N$
+    \end{enumerate}
 
-\noindent en el caso de medidas en las que 0 no está en el soporte, el número R no da una información adecuada y habría que elegir 
-el siguiente punto $a=\frac{z+w}{2}$ donde $z,w$ son dos puntos que verifican que  
-$$\vert z-w \vert  = {\it diam}(K),  \; K={\it supp}(\mu).
-$$
-
-\noindent en este sentido $R=\frac{1}{2}{\it diam}(K)$ y luego los valores singulares tendrían que ver con las distancias a este centro de los $c_k$??
+    \smallskip
 
 
 
-\begin{theorem} Let  ${\bf m}_R$ be the normalized Lebesgue measure in $\mathbb{S}_R$ and $c_1,\dots,c_N\in \CC$. Consider the discrete Sobolev norm 
-$$
-\Vert p(z) \Vert^2_S=\Vert p(z) \Vert^2_{\bf m_R}+\sum_{k=1}^{N} \vert p'(c_k)\vert^2.
-$$
-\noindent Assume that 
-\begin{enumerate}
-    \item $\vert c_k \vert \geq R $ $k=1,\dots,m$ 
-    \item $\vert c_k \vert <R$ for $k=m+1,\dots,N$    
-\end{enumerate}
-
-\smallskip
-
-
-
-\noindent Then, $Q_{m-1}(\mathcal{D})=\infty$ and $Q_{m}(\mathcal{D}) =R$, i.e. 
-$$
-\infty = Q_{0}(\mathcal{D})= \dots = Q_{m-1}(\mathcal{D})=\infty > Q_{m}(\mathcal{D}) =R \geq Q_{m+1}(\mathcal{D}) \geq \dots  
-$$
+    \noindent Then, $Q_{m-1}(\mathcal{D})=\infty$ and $Q_{m}(\mathcal{D}) =R$, i.e.
+    $$
+        \infty = Q_{0}(\mathcal{D})= \dots = Q_{m-1}(\mathcal{D})=\infty > Q_{m}(\mathcal{D}) =R \geq Q_{m+1}(\mathcal{D}) \geq \dots
+    $$
 \end{theorem}
 \begin{proof} The result is a consequence of Theorem ?? and Propositions ??. We only have to prove that $Q_m(\mathcal{D})=R.
 \end{proof}
 
-\noindent 
+\noindent
 \textcolor{blue}{CREO QUE LA ACOTACIÓN DEL MAYOR O IGUAL SE DA SIEMPRE, CON CUALQUIER CANTIDAD DE PUNTOS BPE'S O NO.}
-\noindent 
+\noindent
 
-\begin{prop} Let $c_1,\dots,c_N\in \mathbb{C}$ and the Sobolev inner product 
-	\begin{equation}
-		\langle p, q \rangle_S = \int_{\mathbb{S}_R} p(z)\overline{q(z)} \, d\mathbf{m}_R(z) + \sum_{k=1}^{N} p'(c_k)\overline{q'(c_k)}, \qquad p,q \in \mathbb{P}[z]. 
-	\end{equation}
-	 Then $Q_k(\mathcal{D}) \geq  R$, for all $k\in \mathbb{N}_0$.
+\begin{prop} Let $c_1,\dots,c_N\in \mathbb{C}$ and the Sobolev inner product
+    \begin{equation}
+        \langle p, q \rangle_S = \int_{\mathbb{S}_R} p(z)\overline{q(z)} \, d\mathbf{m}_R(z) + \sum_{k=1}^{N} p'(c_k)\overline{q'(c_k)}, \qquad p,q \in \mathbb{P}[z].
+    \end{equation}
+    Then $Q_k(\mathcal{D}) \geq  R$, for all $k\in \mathbb{N}_0$.
 \end{prop}
 
-\begin{proof} Let $W\subset \mathbb{P}[z]$ with ${\it cod}_{\mathbb{P}[z]}(W)=k<\infty$, we prove that 
-$\Vert \mathcal{D}/W\Vert_S \geq R$. In order to do it, \textcolor{blue}{it is enough to find a polynomial $0 \neq p(z)\in W$ verifying that $p'(c_1)=\dots = p'(c_N)=0$.} Indeed, in this case  
+\begin{proof} Let $W\subset \mathbb{P}[z]$ with ${\it cod}_{\mathbb{P}[z]}(W)=k<\infty$, we prove that
+    $\Vert \mathcal{D}/W\Vert_S \geq R$. In order to do it, \textcolor{blue}{it is enough to find a polynomial $0 \neq p(z)\in W$ verifying that $p'(c_1)=\dots = p'(c_N)=0$.} Indeed, in this case
 
-$$
-\dfrac{\Vert \mathcal{D}(p)\Vert^{2}_S}{\Vert p \Vert^2_S} = \dfrac{ \int_{\mathbb{S}_R} \vert zp(z) \vert^2\, d\mathbf{m}_R(z) + \sum_{k=1}^{N} \vert p(c_k)+c_kp'(c_k)\vert^2 }
-{ \int_{\mathbb{S}_R} \vert p(z) \vert^2\, d\mathbf{m}_R(z) + \sum_{k=1}^{N} \vert p'(c_k)\vert^2 } =
-$$
-$$\dfrac{ R^2\int_{\mathbb{S}_R} \vert p(z) \vert^2\, d\mathbf{m}_R(z) + \sum_{k=1}^{N} \vert p(c_k)\vert^2 }
-{ \int_{\mathbb{S}_R} \vert p(z) \vert^2\, d\mathbf{m}_R(z)  }
-\geq R^2. 
-$$
+    $$
+        \dfrac{\Vert \mathcal{D}(p)\Vert^{2}_S}{\Vert p \Vert^2_S} = \dfrac{ \int_{\mathbb{S}_R} \vert zp(z) \vert^2\, d\mathbf{m}_R(z) + \sum_{k=1}^{N} \vert p(c_k)+c_kp'(c_k)\vert^2 }
+        { \int_{\mathbb{S}_R} \vert p(z) \vert^2\, d\mathbf{m}_R(z) + \sum_{k=1}^{N} \vert p'(c_k)\vert^2 } =
+    $$
+    $$\dfrac{ R^2\int_{\mathbb{S}_R} \vert p(z) \vert^2\, d\mathbf{m}_R(z) + \sum_{k=1}^{N} \vert p(c_k)\vert^2 }
+        { \int_{\mathbb{S}_R} \vert p(z) \vert^2\, d\mathbf{m}_R(z)  }
+        \geq R^2.
+    $$
 
-\noindent Of course if ${\it cod}_{\mathbb{P}[z]}(W)=0$, that is $W=\mathbb{P}[z]$ the result is obviously true. Assume $k\geq 1$, then there exists $L_1,\dots,L_k$ with $L_j: \mathbb{P}[z] \to \mathbb{P}[z]$, $L_j\neq 0$ linear independent functionals such that 
-$$
-W=\cap_{j=1}^{k} {\it Ker} L_k.
-$$
+    \noindent Of course if ${\it cod}_{\mathbb{P}[z]}(W)=0$, that is $W=\mathbb{P}[z]$ the result is obviously true. Assume $k\geq 1$, then there exists $L_1,\dots,L_k$ with $L_j: \mathbb{P}[z] \to \mathbb{P}[z]$, $L_j\neq 0$ linear independent functionals such that
+    $$
+        W=\cap_{j=1}^{k} {\it Ker} L_k.
+    $$
 
 
-\noindent On the other hand, consider the linear functionals $\delta'_c_{i}:\mathbb{P}[z] \to \mathbb{P}[z]$  for $i=1,\dots,N$ which are not nulls. Then, \textcolor{blue}{it is possible to find  $m$ enough large to assure that $k+N$  hiperplanes  in $\mathbb{P}_m[z]$ have  not trivial intersection, i.e., intersection different to $\{0\}.}$ } Consider then the restrictions of these $k+N$ functionals in $\mathbb{P}_m[z]$,
-$$
-L_1/\mathbb{P}_m[z],\dots, L_k/\mathbb{P}_m[z], \delta'_{c_1}/\mathbb{P}_m[z], \dots, \delta'_{c_N}/\mathbb{P}_m[z].
-$$
+    \noindent On the other hand, consider the linear functionals $\delta'_c_{i}:\mathbb{P}[z] \to \mathbb{P}[z]$  for $i=1,\dots,N$ which are not nulls. Then, it is possible to find  $m$ enough large to assure that $k+N$  hiperplanes  in $\mathbb{P}_m[z]$ have  not trivial intersection, i.e., intersection different to $\{0\}.}$  Consider then the restrictions of these $k+N$ functionals in $\mathbb{P}_m[z]$,
+    $$
+        L_1/\mathbb{P}_m[z],\dots, L_k/\mathbb{P}_m[z], \delta'_{c_1}/\mathbb{P}_m[z], \dots, \delta'_{c_N}/\mathbb{P}_m[z].
+    $$
 
- \noindent Then, we obtain $0 \neq p(z)\in \cap_{j=1}^k {\it Ker} L_j \cap \cap_{j=1}^N {\it Ker} \delta'_{c_k}\cap \mathbb{P}_[z].
- $
-and therefore $p(z)\in W$ and $p'(c_1)= \dots = p'(c_N)=0$ as we requiered. 
+    \noindent Then, we obtain $0 \neq p(z)\in \cap_{j=1}^k {\it Ker} L_j \cap \cap_{j=1}^N {\it Ker} \delta'_{c_k}\cap \mathbb{P}_[z].
+    $
+    and therefore $p(z)\in W$ and $p'(c_1)= \dots = p'(c_N)=0$ as we requiered.
 \end{proof}
+\begin{theorem}  Let $\mu$ be a measure with infinite support, and let
+    $a_1,\dots ,a_n\in \CC$. Consider the discrete Sobolev norm
+    \begin{equation}
+        \Vert p(z) \Vert^2_{\mathbf{S}}= \int \vert p(z) \vert^{2} d\mu + \sum_{k=1}^{n} \vert p'(a_k) \vert^{2}.
+    \end{equation}
 
-\noindent  We do not know if, for a compactly supported measure the condition of  being a bpe of a measure, i.e. $\delta_c$ not bounded with respect to the $L^2_{\mu}$-norm is equivalent to the condition of $\delta_c$ not bounded in the hiperplane ${\it Ker} \delta'_c$. As we prove in ?? for the case of the Lebesgue matrix the result is true. Moreover, in the case of  measures supported in Jordan curves as a consequence of the  results obtained in  \cite{EGT-curvas} concerning bounded point evaluations of these measures we have: 
-
-
-\begin{theorem} Let  $\Gamma$ be a Jordan curve and let $\nu_{\Gamma}$ be a measure with support in $\Gamma$. Assume that polynomials are not dense in $L^{2}_{\nu_{\Gamma}}$. 
-\noindent Let  $c_1,\dots,c_N\in \CC$ and consider the discrete Sobolev norm 
-$$
-\Vert p(z) \Vert^2_S= \int_{\Gamma} \vert p(z) \vert^2d\nu_{\Gamma}+\sum_{k=1}^{N} \vert p'(c_k)\vert^2.
-$$
-\noindent Let  $R=\max \{\vert z \vert : z\in \Gamma\}$ and assume that 
-\begin{enumerate}
-    \item $\vert c_k \vert > R $ $k=1,\dots,m,$
-    \medskip
-    \item $ c_k \in {\it int}(\Gamma)$ for $k=m+1,\dots,N$    
-\end{enumerate}
+    \noindent The following are equivalent:
+    \begin{enumerate}
+        \item $\mathcal{D}:(\mathbb{P}[z], \Vert \cdot \Vert_{S})\to  (\mathbb{P}[z], \Vert \cdot \Vert_{S})$ is bounded.
+        \item $c_1,\dots,c_N$ are bounded point evaluations of $\mu$.
+    \end{enumerate}
 
 
-\noindent Then, $Q_{m-1}(\mathcal{D})=\infty$ and $Q_{m}(\mathcal{D}) =R$, i.e. 
-$$
-Q_{0}(\mathcal{D})= \dots = Q_{m-1}(\mathcal{D})=\infty > Q_{m}(\mathcal{D}) =R \geq Q_{m+1}(\mathcal{D}) \geq \dots  
-$$
 \end{theorem}
-\section{Appoximation of singular values of an operator by the singular values of the finite sections of the representing infinite matrix }
 
-\noindent Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\{P_n(z)\}_{n=0}^{\infty}$ be the sequence of orthonormal polynomials with respect to this inner product, i.e, $P_n(z)\in \mathbb{P}_n[z]$ and 
+\noindent  We do not know if, for a compactly supported measure the condition of  being a bpe of a measure, i.e. $\delta_c$ not bounded with respect to the $L^2_{\mu}$-norm is equivalent to the condition of $\delta_c$ not bounded in the hiperplane ${\it Ker} \delta'_c$. As we prove in ?? for the case of the Lebesgue matrix the result is true. Moreover, in the case of  measures supported in Jordan curves as a consequence of the  results obtained in  \cite{EGT-curvas} concerning bounded point evaluations of these measures we have:
+
+
+\begin{theorem} Let  $\Gamma$ be a Jordan curve and let $\nu_{\Gamma}$ be a measure with support in $\Gamma$. Assume that polynomials are not dense in $L^{2}_{\nu_{\Gamma}}$.
+    \noindent Let  $c_1,\dots,c_N\in \CC$ and consider the discrete Sobolev norm
+    $$
+        \Vert p(z) \Vert^2_S= \int_{\Gamma} \vert p(z) \vert^2d\nu_{\Gamma}+\sum_{k=1}^{N} \vert p'(c_k)\vert^2.
+    $$
+    \noindent Let  $R=\max \{\vert z \vert : z\in \Gamma\}$ and assume that
+    \begin{enumerate}
+        \item $\vert c_k \vert > R $ $k=1,\dots,m,$
+              \medskip
+        \item $ c_k \in {\it int}(\Gamma)$ for $k=m+1,\dots,N$
+    \end{enumerate}
+
+
+    \noindent Then, $Q_{m-1}(\mathcal{D})=\infty$ and $Q_{m}(\mathcal{D}) =R$, i.e.
+    $$
+        Q_{0}(\mathcal{D})= \dots = Q_{m-1}(\mathcal{D})=\infty > Q_{m}(\mathcal{D}) =R \geq Q_{m+1}(\mathcal{D}) \geq \dots
+    $$
+\end{theorem}
+\section{Matrix analysis of the singular values. }
+
+\noindent In this section we introduce the matrix analysis of infinite matrices representing linear operators in the space $\mathbb{P}_[z]$ via the matrix analysis, and indeed asymptotic spectral analysis, of finite matrices.
+
+
+\noindent Let $<\cdot,\cdot>$ be an inner product in $\mathbb{P}[z]$ and let $\{P_n(z)\}_{n=0}^{\infty}$ be the sequence of orthonormal polynomials with respect to this inner product, i.e, $P_n(z)\in \mathbb{P}_n[z]$ and
 $$
-<P_i(z),P_j(z)>=\begin{cases} 0 \; if \; i\neq j \\ 1 \; if \; i=j. \end{cases}
+    <P_i(z),P_j(z)>=\begin{cases} 0 \; if \; i\neq j \\ 1 \; if \; i=j. \end{cases}
 $$
 
 \noindent The sequence $\{P_n(z)\}_{n=0}^{\infty}$ is an orthonormal basis in the Hilbert space $\mathcal{H}=\overline{\mathbb{P}[z]}^{\Vert \cdot \Vert}.
-$ 
+$ and for every
+$p(z)=\sum_{k=0}^{n}v_kP_k(z)$, with $v=(v_0,\dots,v_n)\in \CC^{n+1}$.
+
+\noindent If $v\in \CC^{n+1}$, we  denote by
+$\tilde{v}=(v_0,v_1,\dots,v_n,0,\dots,0,\dots)\in c_{00}$, being   $c_{00}$  the space
+of all complex sequences with only finitely many non-zero entries.  The inner product $<\cdot,\cdot>$ induces an inner product in $c_{00}$ whose associated norm is $\ell_2$-norm, i.e,
+$$
+    \Vert p(z) \Vert= \Vert \tilde{v} \Vert_2.
+$$
+
+
 
 \medskip
 
-\noindent Let $\mathcal{A}:\mathbb{P}[z]\to \mathbb{P}[z]$ be a linear operator and let $\mathbf{A} = (a_{i,j})_{i,j=0}^{\infty}$ be the matrix representation of the operator $\mathcal{A}$ with respect to $\{P_n(z)\}_{n=0}^{\infty}.$  Note that in the case of the multiplication operator, $\mathcal{D}$, the infinite matrix $\mathbf{D}$ is an upper Hessemberg matrix that has been widely studied (see e.g. refeeencias....). 
+\noindent Let $\mathcal{A}:\mathbb{P}[z]\to \mathbb{P}[z]$ be a linear operator and let $\mathbf{A} = (a_{i,j})_{i,j=0}^{\infty}$ be the matrix representation of the operator $\mathcal{A}$ with respect to $\{P_n(z)\}_{n=0}^{\infty}.$ Note that $\mathbf{A}=(a_{i,j})_{i,j=0}^{\infty}$ with
+$$
+    a_{i,j}= <\mathcal{A}(P_{i}(z)),P_j(z)>.
+$$
+
+\noindent Since $\mathcal{A}(P_k(z))\in \mathbb{P}[z]$, let $k_n$ be the degree of such polynomial, and let denote by $\mathbf{A}_n$ the rectangular matrix $k_n\times (n+1)$ which represents the operator $\mathcal{A}/\mathbb{P}_n[z]$ with respect to the orthonormal basis in $\mathbb{P}_n[z]$.
+
+\noindent Following this matrix representation,
+$$
+    \Vert \mathcal{A}(p(z))\Vert =  \Vert \mathbf{A}\tilde{v}\Vert_2= \Vert\mathbf{A_n}v\Vert_2
+$$
 
 \noindent
 
-\noindent Let denote by $\mathbf{A}_n$ the rectangular matrix $k_n\times (n+1)$ which represents the operator $\mathcal{A}/\mathbb{P}_n[z]$ with respect to the orthonormal basis in $\mathbb{P}_n[z]$. 
 
 
-\noindent We consider the singular values of the matrix $\mathbf{A}_n$ ordered decreasingly 
+
+
+
+\noindent For each $n\in \NN_0$ we consider the singular values of the matrix $\mathbf{A}_n$ ordered decreasingly
 
 \[
-		\sigma_{0,n} \geq \sigma_{1,n} \geq \cdots \geq \sigma_{n,n} \geq 0.
-	\]
+    \sigma_{0,n} \geq \sigma_{1,n} \geq \cdots \geq \sigma_{n,n} \geq 0.
+\]
 
-\noindent where, it is well known that  using the  min-max de Courant-Fischer,
-	\[
-		\sigma_{k,n}^2 = \min_{\substack{V \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(V) \leq  k}} \max_{\substack{x \in V \\ \|x\|_2 = 1}} \|\mathbf{A}_n x\|_2^2.
-	\]
+\noindent It is well known that,  using the  min-max de Courant-Fischer,
+\medskip
+\[
+    \sigma_{k,n}^2 = \min_{\substack{V \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(V) \leq  k}} \max_{\substack{v \in V \\ \|x\|_2 = 1}} \|\mathbf{A}_n v\|_2^2.
+\]
 
-\begin{lem} With the notation above, for every $k\in \NN_0$, 
-$$
-\lim_{n\to \infty} \sigma_{k,n
-}\in [0,\infty]
-$$  
+\begin{lem} With the notation above, for every $k\in \NN_0$,
+    $$
+        \lim_{n\to \infty} \sigma_{k,n
+        }\in [0,\infty]
+    $$
 \end{lem}
 
 \medskip
-\begin{definition} Let $\mathcal{A}: \mathbb{P}[z] \to  \mathbb{P}[z]$, we define the singular values of the operator  $\mathcal{A}$ as  
+\begin{definition} Let $\mathcal{A}: \mathbb{P}[z] \to  \mathbb{P}[z]$, we define the singular values of the operator  $\mathcal{A}$ as
 
-	\[
-		\sigma_k(\mathcal{A}) := \lim_{n\to\infty} \sigma_{k,n} \in [0,+\infty].
-	\]
+    \[
+        \sigma_k(\mathcal{A}) := \lim_{n\to\infty} \sigma_{k,n} \in [0,+\infty].
+    \]
 \end{definition}
 
-\noindent In the following result we relate the singular value of the operator with the $Q_k$ index introduce in section 1. 
+\noindent In the following result we relate the singular value of the operator with the $Q_k$ index introduce in section 1.
 
-\begin{prop} Let $\mathcal{A}: \mathbb{P}[z] \to \mathbb{P}[z]$. For all $k\in \NN_0$ it follows 
-	\[
-	\sigma_k(\mathbf{A})=	\lim_{n\to \infty} \sigma_{k,n} \le Q_k(\mathcal{A}).
-	\]
+\begin{prop} Let $\mathcal{A}: \mathbb{P}[z] \to \mathbb{P}[z]$. For all $k\in \NN_0$,
+    \medskip
+    \[
+        \sigma_k(\mathcal{A})=	\lim_{n\to \infty} \sigma_{k,n} \le Q_k(\mathcal{A}).
+    \]
 \end{prop}
 
-\begin{proof}
-	Por el principio minimax de Courant-Fischer aplicado a la matriz $\mathbf{D}_n$, el valor singular de índice $k$ satisface
-	\[
-		\sigma_{k,n} = \inf_{\substack{W \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(W) < k+1}} \|\mathbf{D}_n|_W\|_2.
-	\]
-	Sea ahora $V \subset \Poly$ un subespacio admisible (recuérdese que un subespacio es admisible si es intersección finita de núcleos de funcionales lineales; véase la Definición~\ref{def:subespacio_admisible}) con $\operatorname{codim}_{\Poly}(V) < k+1$, y definamos
-	\[
-		V_n = V \cap \Poly_{n}.
-	\]
-	Entonces $V_n$ induce, en coordenadas respecto de la base ortonormal $\{\phi_0,\dots,\phi_{n}\}$, un subespacio $W_n \subset \mathbb{C}^{n+1}$ de codimensión algebraica menor que $k+1$. Por la caracterización minimax anterior,
-	\[
-		\sigma_{k,n} \le \|\mathbf{D}_n|_{W_n}\|_2.
-	\]
-	Bajo la identificación entre polinomios y vectores de coordenadas, esta norma coincide con la norma de la compresión de $\D$ a $V_n$; como la proyección ortogonal sobre $\Poly_{n}$ es contractiva, se obtiene
-	\[
-		\|\mathbf{D}_n|_{W_n}\|_2 \le \|\D|_{V_n}\|_S \le \|\D|_V\|_S.
-	\]
-	Por tanto, $\sigma_{k,n} \le \|\D|_V\|_S$ para todo subespacio admisible $V$ con codimensión algebraica menor que $k+1$. Tomando ínfimo sobre todos esos subespacios, concluimos que
-	\[
-		\sigma_{k,n} \le Q_k(\D).
-	\]
-	La cota sobre el $\limsup$ es inmediata.
+\begin{proof} First of all, for $k=0$,
+    $$
+        \{ \Vert \mathcal{A}(p) \Vert : p\in \mathbb{P}[z], \Vert p \Vert=1\}= \{ \Vert \mathbf{A}\tilde{v}\Vert_2 : \tilde{v}\in c_{00}, \Vert \tilde{v} \Vert_2=1\}= \cup_{n=0}^{\infty} \{ \Vert \mathbf{A_n}v\Vert_2: v\in \CC^{n+1}, \Vert v \Vert_2=1\}.
+    $$
+
+    \noindent where
+    $$
+        \{ \Vert \mathbf{A_n}v\Vert_2: v\in \CC^{n+1}, \Vert v \Vert_2=1\} \subset
+        \{ \Vert \mathbf{A_{n+1}}v\Vert_2: v\in \CC^{n+2}, \Vert v \Vert_2=1\}
+    $$
+
+    \noindent Then, it follows that
+    $$
+        \lim_{n\to \infty} \sigma_{0,n}=
+        \lim_{n\to \infty} \sup \{ \Vert \mathbf{A_n}v\Vert_2: v\in \CC^{n+1}, \Vert v \Vert_2=1\} =Q_0(\mathcal{A}).
+    $$
+
+    \noindent where this limit can be $\infty$.
+
+    \noindent For $k\neq 0$, let $W\subset \mathbb{P}[z]$ be a vector space with ${\it cod}_{\mathbb{P}[z]} W \leq k$, then obviouly for each $n\in \NN$, $W\cap \mathbb{P}_n[z]$ has codimension less or equal than $k$ in the space $\mathbb{P}_n[z]$ and therefore,
+    $$
+        \sigma_{k,n} = \min_{\substack{V \subset \mathbb{C}^{n+1} \\ \operatorname{codim}(V) \leq  k}} \max_{\substack{v \in V \\ \|x\|_2 = 1}} \|\mathbf{A}_n v\|_2^2 \leq
+        \Vert \mathcal{A}_n/W\cap \mathbb{P}_n[z] \leq \Vert \mathcal{A}/W \Vert.
+    $$
+    \noindent Passing to the limit,
+    $$
+        \lim_{n\to \infty} \sigma_{k,n} \leq \Vert \mathcal{A}/W \Vert
+    $$
+
+    \noindent Since this is true for each $n\in \NN$ it holds that
+    $$
+        \sigma_{k}(\mathcal{A}) =\lim_{n\to \infty} \sigma_{k,n} \leq Q_k(\mathcal{A}).
+    $$
 \end{proof}
+
+
+Note that in the case of the multiplication operator, $\mathcal{D}$, the infinite matrix $\mathbf{D}$ is an upper Hessemberg matrix that has been widely studied (see e.g. refeeencias....).
+
+\noindent
+
+\begin{thebibliography}{Man96}
+
+    %\bibitem{arom} Aron,R; Garcia,D, Pellegrino,D. Teixeira,V., 
+    %\emph{Reflexivity and non-weakly null maximizing sequences}, 
+    %  (2019),
+    %    https://arxiv.org/abs/1906.02162, 
+
+    \bibitem{AMRR1} Alfaro, M.; Marcell\'{a}n, F.;  M. L. Rezola, M.L. and Ronveaux, A. \emph{On orthogonal
+        polynomials of Sobolev type: algebraic properties and zeros,} SIAM J. Math. Anal.
+    23 (1992), 737–757.
+    \bibitem{AMRR2} M. Alfaro, F. Marcellan, M. L. Rezola, and A. Ronveaux,Alfaro, M.; \emph{ Sobolev type orthog
+        onal polynomials: the non-diagonal case}, J. Approx. Theory 83 (1995), 266–287.
+
+    \bibitem{APRR} Alvarez,V.; Pestana,D; Rodr\'{\i}guez,J.M.; Romera,E. \emph{Weighted Sobolev spaces on curves} J. Approx, Theory {\bf 119} (2002) 41-85
+
+    %\bibitem{Bhatia} Bhatia, R. \emph{Matrix Analysis} Graduate Texts in Matematics; 169 , Springer (1997)
+
+
+    \bibitem{Berg}  Berg, C. and  Szwarc,R.  The Smallest Eigenvalue of Hankel Matrices, Constr. Approx. 34 (2011) 107--133. https://doi.org/10.1007/s00365-010-9109-4.
+
+    \bibitem{Berg-Duran}Berg, C and  Dur\'{a}n,A.J.  Analytic function associated to positive definite infinite matrices, J. Math. Anal. Appl. 315 (2006) 54--67.
+
+
+    \bibitem{Cachafeiro} Berriochoa, E., \& Cachafeiro, A. \emph{Bernstein-szegö-lebesgue sobolev orthogonal polynomials on the unit circle.} Journal of Difference Equations and Applications, {\bf 6(6)}, (2000), 719–737. https://doi.org/10.1080/10236190008808254
+
+
+
+    \bibitem{Castro-Duran} Castro, M and Duran,A. \emph{Boundedness properties for Sobolev inner products} Journal of Approximation Theory {\bf 122} (2003) 97-111
+    \bibitem{Conway} Conway, J.B. \emph{A Curse in Functional Analysis}
+    Graduate Texts in Mathematics, 96, Springer-Verlag, New York, 1985.
+    \bibitem{APJ} D\'{\i}az Gonz\'{a}lez,A.; Pijeira-Cabrera, H. and Quintero-Roba,J. \emph{Polynomials of Least Deviation from Zero in Sobolev $p$-norm} Bull. Malays. Math. Sci. Soc.  (2022)
+
+
+    \bibitem{Pij23} Díaz-González, A.;
+    Hernández, J.; Pijeira-Cabrera, H.
+    \emph{ Sequentially Ordered Sobolev Inner
+        Product and Laguerre–Sobolev
+        Polynomials.} Mathematics 2023, 11,
+    1956. https://doi.org/10.3390/
+    math11081956
+
+
+
+
+    \bibitem{Duran-Saff} Dur\'{a}n, A. and Salff, E. \emph{Zero location for non standard orthogonal polynomials } J. Approx. Theory {\bf 113} (2001) 127-141
+
+
+
+    \bibitem{EGT1} Escribano,C; Gonzalo, R. and Torrano, E. \emph{ Small Eigenvalues of Large Hermitian
+        moment matrices.} J. Math. Anal. Appl. {\bf 374}  pp. 470-480 (2011)
+
+    \bibitem{EGT5} Escribano,C; Gonzalo, R. and Torrano, E. \emph{ A characterization of polynomial density on curves via matrix algebra} Mathematics 7, 1231,  (2019) doi:10.3390/math 712131.
+
+    \bibitem{EGT6}  Escribano,C; Gonzalo, R. and Torrano, E.  \emph{Smallest and largest generalized eigenvalues of large moment matrices and some applications} J. Math. Anal. App. {\bf 521(2)} (2023).
+
+    \bibitem{EG23} Escribano,C. and  Gonzalo, R. \emph{Boundedness of zeros of Sobolev orthogonal polynomials via generalised eigenvalues.} J. Comput. Appl. Math. \textbf{465}, 116556 (2025).
+
+    \bibitem{Forstneric} Forstneric, F., Stout, E.L. \emph{A new class of polynomially convex sets}. Ark. Mat. 29, 51 (1991).
+    https://doi.org/10.1007/BF0238433.
+    \bibitem{Grenader} Grenander, U. and Szegö, G. \emph{Toeplitz forms and their applications}; Chelsea Publishing Company, New York, (1955).
+    \bibitem{LP} L\'{o}pez Lagomasino,G. , Pijeira Cabrera, H. \emph{Zero location and n-th root asymptotics of Sobolev orthogonal polynomials} J. Approx. Theory {\bf 99} (1999) pp. 30-43
+
+
+    \bibitem{LPP} L\'{o}pez Lagomasino,G. , Pijeira Cabrera, H. and P\'{e}rez Izquiero,I. \emph{Sobolev orthogonal polynomials in the complex plane} J. Comp. Appl. Math. {\bf 127} (2001) pp.
+    219-230
+    \bibitem{Marcellan} Marcell\'an, F. and Yuan Xu, On Sobolev Orthogonal Polynomials, Expo. Math. 33 (2015).
+
+    \bibitem{Finkelshtein} Mart\'{\i}nez Finkelshtein, A. \emph{Analytic aspects of Sobolev orthogonal polynomials revisited} {\bf 127}  Journal of Computational and Applied Mathematics (2001) pp.255-266
+
+    \bibitem{Pietsch} Pietsch, A.
+    \emph{s-Numbers of operators in Banach spaces}, Studia Mathematica,
+        {\bf 51}, pp-
+    201-223, (1974)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
 \end{document}
