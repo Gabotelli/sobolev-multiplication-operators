@@ -1,42 +1,24 @@
 % !TEX root = ../main.tex
 \chapter{Análisis Asintótico y Secciones Matriciales}\label{sec:matricial}
 
-El Capítulo~\ref{sec:estabilizacion} resolvió el problema abstracto: el Teorema~\ref{thm:estabilizacion_Qm} muestra que la cadena de índices $Q_k(\D)$ se rompe en $m$. Pero ese resultado todavía vive en el nivel funcional. La pregunta natural ahora es cómo se ve esa ruptura cuando el operador se escribe en la base ortonormal de Sobolev y se lo observa a través de truncaciones finitas. Las secciones truncadas de la matriz de multiplicación y sus valores singulares proporcionan justamente esa traducción matricial.
-
-El programa de este capítulo es el siguiente. Primero fijamos la matriz de Hessenberg $\mathbf D$ asociada a $\D$ y sus compresiones finitas $\mathbf D_n$. Después introducimos los valores singulares
-\[
-	\sigma_{0,n}\ge \sigma_{1,n}\ge\cdots\ge \sigma_{n,n}\ge 0,
-\]
-y probamos, vía principio min--max, que
-\[
-	\lim_{n\to\infty}\sigma_{k,n}\le Q_k(\D).
-\]
-Esa desigualdad convierte el umbral algebraico del Capítulo~\ref{sec:estabilizacion} en un criterio matricial observable. La notación complementaria de matrices de momentos, útil para comparar esta representación con la base monomial, queda relegada al Apéndice~\ref{ap:matrices_momentos}; aquí solo necesitaremos la traducción Hessenberg-valores singulares que prepara el paso a los ceros.
-
 \section{Matriz de Hessenberg y secciones truncadas}
 
-Trabajaremos siempre en la base ortonormal de polinomios $\{\phi_n\}_{n\ge 0}$ asociada al producto de Sobolev activo. En esa base, el operador de multiplicación
-\[
-	\D p(z)=zp(z)
-\]
-queda representado por una matriz infinita que refleja directamente el crecimiento de grados.
-
 \begin{defn}\label{def:hessenberg}
-	La matriz de $\D$ en la base ortonormal $\{\phi_n\}_{n\ge0}$ es
+	Sea $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev. La representación matricial de $\D$ es
 	\[
 		\mathbf D=(d_{i,j})_{i,j\ge0},
 		\qquad
 		d_{i,j}=\langle z\phi_j,\phi_i\rangle_S.
 	\]
-	Como $\deg(z\phi_j)=j+1$, se tiene $d_{i,j}=0$ si $i>j+1$. En consecuencia, $\mathbf D$ es una matriz de Hessenberg superior.
 \end{defn}
 
 \begin{prop}\label{prop:hessenberg}
-	Para todos $i,j\ge0$ se verifica
+	Sea $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev.
+	Entonces la matriz $\mathbf D$ es de Hessenberg, es decir,
 	\[
-		d_{i,j}=0\qquad\text{si }i>j+1.
+		d_{i,j}=0,
+		\qquad i>j+1.
 	\]
-	En particular, la única subdiagonal potencialmente no nula es la inmediata inferior. En bases especiales ---por ejemplo, en algunos regímenes reales clásicos--- esta Hessenberg puede degenerar en una matriz tridiagonal de Jacobi; en la base monomial, en cambio, la multiplicación por $z$ aparece como un shift unilateral.
 \end{prop}
 
 \begin{proof}
@@ -59,52 +41,85 @@ queda representado por una matriz infinita que refleja directamente el crecimien
 	donde $P_n$ denota la proyección ortogonal sobre $\mathcal P_n$.
 \end{defn}
 
-La importancia de $\mathbf D_n$ es doble. Por un lado, conserva la estructura de Hessenberg de $\mathbf D$ y por tanto retiene la información esencial del operador en dimensión finita. Por otro, ya no actúa sobre un espacio abstracto sino sobre $\mathbb C^{n+1}$, de modo que sus valores singulares y autovalores son objetos directamente calculables.
+%%La importancia de $\mathbf D_n$ es doble. Por un lado, conserva la estructura de Hessenberg de $\mathbf D$ y por tanto retiene la información esencial del operador en dimensión finita. Por otro, ya no actúa sobre un espacio abstracto sino sobre $\mathbb C^{n+1}$, de modo que sus valores singulares y autovalores son objetos directamente calculables.
 
 \begin{prop}\label{prop:charpoly_truncada}
-	Existe una constante no nula $\kappa_n$ tal que
-	\begin{equation}\label{eq:pol_caracteristico_truncada}
-		\det(z\mathbf I-\mathbf D_n^t)=\kappa_n\,\phi_{n+1}(z).
-	\end{equation}
-	En particular, las raíces (ceros) del polinomio de Sobolev $\phi_{n+1}$ coinciden algebraicamente con los autovalores de la sección asintótica transpuesta $\mathbf D_n^t$. Esta es la relación fundamental que conecta la estructura matricial con nuestro problema original analítico.
+Sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev en $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea
+\(\mathbf D_n\) la sección truncada definida en
+Definición~\ref{def:seccion_truncada}.
+Entonces, para todo \(n\ge0\), existe una constante
+\[
+    \kappa_n\in\C\setminus\{0\}
+\]
+tal que
+\[
+    \det(z\mathbf I_{n+1}-\mathbf D_n^t)
+    =
+    \kappa_n\,\phi_{n+1}(z).
+\]
+En particular,
+\[
+    \sigma(\mathbf D_n^t)
+    =
+    \{z\in\C:\phi_{n+1}(z)=0\},
+\]
+contando multiplicidades algebraicas.
 \end{prop}
 
 \begin{proof}
-	La identidad es la forma matricial estándar de la relación de multiplicación en la base ortonormal. Como $\mathbf D_n$ representa la compresión de $\D$ a $\mathcal P_n$, el polinomio característico de $\mathbf D_n^t$ coincide, salvo una constante de normalización, con el polinomio ortogonal siguiente; véase la discusión clásica para matrices de Hessenberg asociadas a polinomios ortogonales. En consecuencia,
+	Como la multiplicación por $z$ aumenta el grado en una unidad, $\mathbf{D}_n$ tiene estructura de Hessenberg superior: sus entradas satisfacen $d_{i,j}=0$ para $i>j+1$. Esto implica que para cualquier $z\in\mathbb{C}$, resolviendo la relación matricial, se tiene
 	\[
-		\det(z\mathbf I-\mathbf D_n^t)=\kappa_n\,\phi_{n+1}(z)
+		\det(z\mathbf{I}_{n+1}-\mathbf{D}_n^t)=\det(z\mathbf{I}_{n+1}-\mathbf{D}_n)
+		=\frac{1}{\gamma_{n+1}}\phi_{n+1}(z),
 	\]
-	con $\kappa_n\neq0$, y por tanto los ceros de $\phi_{n+1}$ coinciden con los autovalores de $\mathbf D_n^t$.
+	donde $\gamma_{n+1}$ es el coeficiente director de $\phi_{n+1}$. La última igualdad es la identidad característica estándar para matrices de Hessenberg asociadas a polinomios ortogonales (véase por ejemplo \cite{szego1975orthogonal}, \S3.1). Por tanto, $z$ es autovalor de $\mathbf{D}_n^t$ si y solo si $\phi_{n+1}(z)=0$.
 \end{proof}
 
 \section{Valores singulares de \texorpdfstring{$\mathbf D_n$}{Dn}}
 
-Los autovalores controlan los ceros, pero antes de llegar a ellos conviene estudiar un objeto más robusto: los valores singulares. En matrices no normales ---y las truncaciones de Hessenberg lo son, en general--- esta es la cantidad correcta para detectar cuántas direcciones inestables sobreviven.
 
 \begin{defn}\label{def:sigma_kn}
-	Para cada $n\ge0$, denotamos por
+	Sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la sección truncada definida en
+	Definición~\ref{def:seccion_truncada}.
+	Para $$n\ge0$$, denotamos por
 	\[
-		\sigma_{0,n}\ge \sigma_{1,n}\ge\cdots\ge \sigma_{n,n}\ge0
+		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
 	\]
-	los valores singulares de $\mathbf D_n$, ordenados de forma decreciente. En particular,
+	los valores singulares de \(\mathbf D_n\), ordenados de forma decreciente.
+	En particular,
 	\[
 		\sigma_{0,n}=\|\mathbf D_n\|_2.
 	\]
-	Adoptamos indexación desde $0$, coherente con la usada para $Q_k$.
 \end{defn}
 
-La caracterización relevante es la fórmula min--max de Courant--Fischer:
+Nótese que indexamos desde $0$ para que el índice $k$ de $\sigma_{k,n}$ coincida con el índice $k$ de $Q_k(\D)$, lo que facilitará la comparación entre ambos objetos.
+
+\begin{lem}
+\label{lem:minmax_sigma_Dn}
+Sea \(n\ge0\). Para todo \(0\le k\le n\),
 \[
-	\sigma_{k,n}
-	=
-	\min_{\substack{S\subset\mathbb C^{n+1}\\ \dim S=n+1-k}}
-	\max_{\substack{x\in S\\ x\neq0}}
-	\frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
+    \sigma_{k,n}
+    =
+    \min_{\substack{S\subset\C^{n+1}\\ \dim S=n+1-k}}
+    \max_{\substack{x\in S\\ x\neq0}}
+    \frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
 \]
-Ese principio permite comparar directamente la geometría matricial con la definición algebraica de $Q_k$ del Capítulo~\ref{sec:codimension_qk}.
+Equivalentemente,
+\[
+    \sigma_{k,n}
+    =
+    \max_{\substack{S\subset\C^{n+1}\\ \dim S=k+1}}
+    \min_{\substack{x\in S\\ x\neq0}}
+    \frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
+\]
+\end{lem}
+
+A continuación veremos la relación entre la fórmula min--max de Courant--Fischer y el índice $Q:k$.
 
 \begin{prop}\label{prop:sigma_qk}
-	Para cualesquiera enteros $n\ge0$ y $0\le k\le n$, se tiene
+	Sea \(\mathbf D_n\) la sección truncada de \(\D\) en
+	\(\mathcal P_n=\operatorname{span}\{\phi_0,\dots,\phi_n\}\).
+	Entonces, para todo \(n\ge0\) y todo \(0\le k\le n\),
 	\[
 		\sigma_{k,n}\le Q_k(\D).
 	\]
@@ -144,23 +159,21 @@ Ese principio permite comparar directamente la geometría matricial con la defin
 	La afirmación sobre el $\lim$ es inmediata.
 \end{proof}
 
-La proposición anterior es el puente central del capítulo: cualquier cota algebraica sobre $Q_k$ se traduce en una cota singular uniforme sobre las truncaciones. Combinada con \eqref{eq:pol_caracteristico_truncada}, esta será en el capítulo siguiente la información macroscópica que pasa de $Q_k(\D)$ a la localización espectral de los ceros. Nótese además que la demostración usa exactamente el mismo ingrediente estructural que definió a $Q_k$: subespacios admisibles de codimensión finita.
-
 \section{Conexión con el teorema de estabilización}
 
-Ya podemos traducir el Teorema~\ref{thm:estabilizacion_Qm} al lenguaje matricial. La lectura correcta es asimétrica, y conviene destacarlo para no forzar inferencias falsas: del mundo abstracto al matricial se obtienen cotas superiores directas; la dirección inversa requiere argumentos adicionales y no se deduce inmediatamente del principio min--max.
+Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
 
-\begin{thm}[Umbral singular en el índice \texorpdfstring{$m$}{m} en el caso puramente exterior]\label{thm:umbral_singular_indice_m_enunciado}
+\begin{thm}\label{thm:umbral_singular_indice_m_enunciado}
 	Sea
 	\[
 		\langle p,q\rangle_S
 		=
-		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+		\int_{\mathbb S_R}p(z)\overline{q(z)}\,d\mathbf m_R(z)
 		+
 		\sum_{c\in I_{\mathrm{out}}} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly,
 	\]
-	y supongamos que $I_{\mathrm{in}}=\varnothing$. Sea $m=|I_{\mathrm{out}}|$. Entonces
+	y supongamos que $I_{\mathrm{in}}=\varnothing$ de la Definición \ref{def:class_points_new}. Sea $m=|I_{\mathrm{out}}|$. Entonces
 	\[
 		\lim_{n\to\infty}\sigma_{j,n}=+\infty,
 		\qquad 0\le j\le m-1,
@@ -169,11 +182,10 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion_Qm} al lenguaje matricial
 	\[
 		\lim_{n\to\infty}\sigma_{m,n}\le R.
 	\]
-	En particular, la inestabilidad singular queda confinada, en el sentido del teorema, a $m$ direcciones.
 \end{thm}
 
 \begin{proof}
-	La prueba sigue el mismo principio de construcción que el Teorema~\ref{thm:estabilizacion_Qm}, pero ahora trasladado a las compresiones finitas.
+	La prueba sigue el mismo principio de construcción que el Teorema~\ref{thm:estabilizacion}, pero ahora trasladado a las compresiones finitas.
 
 	\smallskip
 	\noindent\emph{Paso 1: explosión para $j<m$.}
@@ -262,33 +274,35 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion_Qm} al lenguaje matricial
 \end{proof}
 
 \begin{cor}\label{cor:estabilizacion_singular_umbral}
-	Bajo las hipótesis del Teorema~\ref{thm:estabilizacion_Qm}, el índice $m$ es el primer lugar donde disponemos de una cota singular uniforme demostrada. Más precisamente:
+	Bajo las hipótesis del Teorema~\ref{thm:estabilizacion} se tiene:
 	\begin{enumerate}
-		\item en el caso puramente exterior, el Teorema~\ref{thm:umbral_singular_indice_m_enunciado} da
-		      \[
-			      \sigma_{j,n}\to+\infty\quad (j<m),
-			      \qquad
-			      \lim_{n\to\infty}\sigma_{m,n}\le R;
-		      \]
-		\item en el caso mixto, la Proposición~\ref{prop:sigma_qk} combinada con el Teorema~\ref{thm:umbral_caso_mixto} implica
-		      \[
-			      \lim_{n\to\infty}\sigma_{m,n}\le Q_m(\D)<\infty,
-		      \]
-		      y, más finamente, la constante canónica viene controlada por la restricción descrita en el Teorema~\ref{thm:caracterizacion_finita_vout_mixto}.
+		 \item Si \(I_{\mathrm{in}}=\varnothing\), entonces
+    \[
+        \sigma_{j,n}\xrightarrow[n\to\infty]{}+\infty,
+        \qquad 0\le j<m,
+    \]
+    y
+    \[
+        \limsup_{n\to\infty}\sigma_{m,n}\le R.
+    \]
+
+    \item En general,
+    \[
+        \limsup_{n\to\infty}\sigma_{m,n}
+        \le
+        Q_m(\D)
+        <
+        \infty.
+    \]
 	\end{enumerate}
-	En otras palabras: el umbral $m$ se manifiesta matricialmente como el primer índice en el que la inestabilidad deja de ocupar una dirección singular nueva. Ese es exactamente el avatar matricial de la ruptura de la cadena $Q_0,Q_1,\dots$ obtenida en el Capítulo~\ref{sec:estabilizacion}.
 \end{cor}
 
 \begin{rmk}[Lectura matricial del umbral]
-	El contenido conceptual del Corolario~\ref{cor:estabilizacion_singular_umbral} es que el índice $m$ sigue siendo el punto de ruptura cuando el problema se traduce al lenguaje de las truncaciones. El Teorema de estabilización detecta esa ruptura en codimensión $m$; las matrices $\mathbf D_n$ la hacen visible como un cambio de régimen en la cadena de valores singulares.
+	El Corolario~\ref{cor:estabilizacion_singular_umbral} muestra que el índice
+	\(m=|I_{\mathrm{out}}|\) es el primer índice para el que se obtiene una cota
+	singular uniforme a partir del teorema de estabilización. En ausencia de
+	átomos interiores, los valores singulares de índices \(j<m\) divergen, mientras
+	que el índice \(m\) queda controlado por \(R\). En el caso mixto, el mismo índice
+	queda controlado por \(Q_m(\D)\).
 \end{rmk}
 
-\begin{rmk}[Lectura numérica]
-	Aunque el objetivo del capítulo es teórico, la señal matricial que debe observarse ya queda fijada. Para una configuración dada de átomos, la familia relevante es
-	\[
-		\sigma_{0,n},\sigma_{1,n},\dots,\sigma_{m,n}.
-	\]
-	En el régimen puramente exterior, la teoría predice que los índices $j<m$ reflejan la persistencia de las direcciones inestables, mientras que el índice $m$ es el primero que admite una cota uniforme. En el caso mixto, ese mismo índice sigue siendo el primer punto donde sobrevive una cota abstracta, aunque la constante exacta depende ya de la interacción con los átomos interiores.
-\end{rmk}
-
-El cálculo matricial no introduce un fenómeno nuevo: hace visible en dimensión finita la misma descomposición estructural estable/inestable obtenida en el Capítulo~\ref{sec:estabilizacion}. Con esto queda cerrado el puente entre el aparato abstracto-espectral y su traducción matricial. El capítulo siguiente dará el paso final: usar la información singular de las truncaciones para controlar los autovalores de $\mathbf D_n^t$ y, a través de ellos, la localización y el conteo de los ceros de $\phi_{n+1}$.

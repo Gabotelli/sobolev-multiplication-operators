@@ -65,6 +65,46 @@
 - No introducir notación propia antes del momento estructural en que el manuscrito ya la justifica.
 - Si un bloque parece adelantar resultados o notación que pertenecen a un capítulo posterior, reubicarlo o rebajarlo a motivación.
 
+## Lecciones adicionales importables desde `POSIBLE ARTÍCULO.tex`
+
+### Introducciones y arranque de sección
+
+- La introducción de cada capítulo debe abrir con el problema matemático exacto que resuelve ese capítulo y con la razón estructural de por qué hace falta.
+- Tras la apertura, basta un programa corto de 3 pasos: qué se fija, qué se prueba y qué transición deja preparada. Si el programa ocupa varios párrafos, ya es demasiado.
+- Antes del primer resultado serio solo debe quedar la motivación estrictamente necesaria. Si la sección tarda demasiado en llegar al primer teorema/proposición útil, hay exceso de prólogo.
+- En Capítulo 2 el arranque debe ser operador/hilbertiano solo para explicar por qué la topología falla; el protagonismo conceptual sigue siendo Gelfand/topología -> fracaso -> codimensión algebraica -> `Q_k`.
+- En Capítulo 3 el arranque debe ser geométrico: posición de los átomos, funcionales asociados y aparición del subespacio estable. La lectura operadorial entra al servicio de esa geometría.
+- En Capítulos 4 y 5 la apertura debe recordar solo el puente ya ganado, no recontar toda la historia de `Q_k`.
+
+### Jerarquía de resultados
+
+- Si un teorema contiene una equivalencia genuinamente nueva y otras equivalencias ya conocidas o de lectura más estándar, el teorema debe centrarse en la parte nueva y relegar lo demás a corolario o remarca.
+- No cargar un enunciado principal con toda la cadena conceptual a la vez. Separar: resultado estructural nuevo arriba; consecuencias, identificaciones clásicas y lecturas BPE en resultados secundarios.
+- Si un argumento se reutiliza más de una vez con el mismo patrón, convertirlo en lema técnico con nombre funcional, no repetirlo escondido en varias pruebas.
+- Regla práctica: si una construcción sirve para probar no acotación, estabilización y luego conteo, merece vivir como herramienta explícita y reusable.
+
+### Herramientas recurrentes que deben institucionalizarse
+
+- Interpolación de Hermite: si vuelve a usarse para aislar átomos, anular derivadas o diagonalizar restricciones locales, debe presentarse como lema técnico reutilizable, no reconstruirse ad hoc en cada prueba.
+- BPE: en la tesis debe entrar sobre todo como lectura geométrica y criterio de régimen. La identificación clásica BPE/interior no debe ocupar el centro del enunciado cuando la novedad real está en la estabilización o en `Q_k`.
+- Motivación Gelfand/`Q_k`: mantener siempre la secuencia "noción clásica -> insuficiencia en régimen no acotado -> generalización necesaria". No presentar `Q_k` como objeto aislado.
+- Puente matricial: introducir Hessenberg, truncaciones y valores singulares solo como traducción observable del umbral abstracto. No vender el capítulo matricial como teoría independiente.
+
+### Vocabulario y exposición matemática
+
+- Preferir léxico sobrio y matemático: "criterio", "equivalencia", "restricción", "umbral", "subespacio", "régimen", "consecuencia".
+- Evitar frases infladas del tipo "the key point of this research was...", "our proposal here is...", "we obtain some applications" si no añaden contenido matemático preciso.
+- Evitar anunciar demasiadas veces la misma intuición en prosa antes de formalizarla. Una formulación limpia y un resultado bien jerarquizado valen más que tres párrafos programáticos.
+- Cuando un resultado de la literatura es estándar, citarlo en prosa o en remarca breve; no convertir cada hecho conocido en un enunciado autónomo salvo que sea soporte estructural inmediato.
+- Cuando una equivalencia combina una parte clásica y otra nueva, dejar explícito en la redacción qué mitad es referencia conocida y cuál es aportación estructural del capítulo.
+
+### Regla de orientación por capítulo
+
+- Capítulo 2: vocabulario primero topológico/hilbertiano y luego algebraico; no invertir esa prioridad.
+- Capítulo 3: vocabulario primero geométrico y después funcional/operatorial.
+- Capítulo 4: vocabulario primero de traducción matricial, no de descubrimiento conceptual nuevo.
+- Capítulo 5: vocabulario primero geométrico-espectral de regímenes y escalas; el detalle técnico debe quedar subordinado al conteo y la localización.
+
 ## Terminología y notación que no debe volver a romperse
 
 - `I_in` e `I_out` son conjuntos de puntos, no conteos ni listas fijas.
@@ -98,6 +138,28 @@
 - NO convertir enumeraciones locales en notación global persistente.
 - NO dejar cierres blandos; el Capítulo 4 debe cerrar con resultado, lectura y transición.
 - NO dejar referencias vagas cuando el manuscrito ya dispone de etiquetas exactas.
+
+## Advertencias extraídas del artículo de referencia
+
+- NO importar introducciones con demasiados párrafos de "programa del paper" antes del primer resultado matemático fuerte.
+- NO duplicar resultados cercanos con distinta formulación si la tesis puede quedarse con una sola versión jerárquicamente clara.
+- NO repartir una misma idea entre teorema principal, aplicaciones y sección matricial sin dejar claro cuál es la versión canónica.
+- NO esconder la novedad en medio de equivalencias ya conocidas; la tesis debe destacar primero el salto nuevo y después sus lecturas clásicas.
+- NO reintroducir BPE, convexidad polinómica, soporte o Hessenberg desde cero cada vez que reaparecen; una vez fijados, se citan y se usan.
+- NO dejar construcciones repetidas sin encapsular: si Hermite, secuencias de prueba o restricciones tipo `\psi_c` reaparecen, deben consolidarse como lemas o herramientas con nombre.
+- NO usar secciones tipo "Some applications" como cajón de sastre si en realidad contienen parte del núcleo estructural. En la tesis, cada bloque debe tener función capitular nítida.
+- NO copiar tono de borrador con huecos, sobrepromesas, referencias `??`, comentarios en azul o afirmaciones pendientes de verificar. Si una afirmación no está cerrada, debe bajar a observación prudente o salir de la línea principal.
+- NO abusar de la prosa metadiscursiva del tipo "in this direction", "the key point", "finally". En la tesis conviene decir directamente el contenido matemático.
+- NO formular el puente matricial como si justificara por sí solo resultados inversos abstractos. La dirección abstracto -> matricial es la segura; la inversa exige prueba adicional.
+
+## Checklist extra para revisar Capítulos 2 y 3
+
+- [ ] La introducción local del capítulo llega al primer resultado serio sin prólogo excesivo.
+- [ ] El teorema central aísla la novedad real; las equivalencias clásicas han bajado a corolario o remarca si corresponde.
+- [ ] Las herramientas repetidas aparecen nombradas y encapsuladas como lemas técnicos, no rehechas en cada prueba.
+- [ ] BPE se usa como criterio geométrico/estructural y no invade en exceso la línea principal del capítulo.
+- [ ] `Q_k` aparece motivado por fracaso de la codimensión topológica o de la acotación clásica, no como definición descolgada.
+- [ ] No hay proposiciones casi duplicadas que puedan fusionarse o jerarquizarse mejor.
 
 ## Checklist de revisión para el Capítulo 5
 

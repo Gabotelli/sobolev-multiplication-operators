@@ -1,333 +1,404 @@
+\section{Clase 27 Gabriel}
 
+\subsection*{El haz dualizante de $\mathbb{P}^1_K$}
 
-\documentclass[11pt]{article}
-\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amsthm,amscd}
-%\usepackage{bbm}
-\usepackage[dvips]{graphicx}
-\usepackage{enumerate}
-\setlength{\textwidth}{16.0cm} \setlength{\textheight}{25cm}
-\voffset=-2.50cm \hoffset=-2.00cm \setlength{\topmargin}{0.4cm}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newtheorem{lem1}{Lema}%[chapter]
-\newtheorem{th1}{Teorema}%[chapter]
-\newtheorem{prop1}{Proposici\'{o}n}%[chapter]
-\newtheorem{defi1}{Definici\'{o}n}%[chapter]
-\newtheorem{coro1}{Corolario}%[chapter]
-\newtheorem{ob1}{Observaci\'{o}n}%[chapter]
-\newtheorem{obs1}{Observaci\'{o}n}%[chapter]
-\newtheorem{nota1}{Nota}%[chapter]
-\newtheorem{eje1}{Ejemplo}%[chapter]
-\newtheorem{ejes1}{Ejemplo}%[chapter]
-\newtheorem{ejerc1}{Ejercicio}%[chapter]
-\newtheorem{ejercs1}{Ejercicio}%[chapter]
-\newenvironment{prop}{\begin{prop1}\rm}{\end{prop1}}
-\newenvironment{defi}{\begin{defi1}}{\end{defi1}}
-\newenvironment{coro}{\begin{coro1}}{\end{coro1}}
-\newenvironment{th2}{\begin{th1}}{\end{th1}}
-\newenvironment{nota}{\begin{nota1}\rm}{\end{nota1}}
-\newenvironment{lem}{\begin{lem1}}{\end{lem1}}
-\newenvironment{ob}{\begin{ob1}\rm}{\end{ob1}}
-\newenvironment{obs}{\begin{obs1}\rm}{\end{obs1}}
-\newenvironment{eje}{\begin{eje1}\rm}{\end{eje1}}
-\newenvironment{ejes}{\begin{ejes1}\rm}{\end{ejes1}}
-\newenvironment{ejerc}{\begin{ejerc1}\rm}{\end{ejerc1}}
-\newenvironment{ejercs}{\begin{ejercs1}\rm}{\end{ejercs1}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\DeclareSymbolFont{cucu}{U}{bbmss}{m}{n}
-\DeclareMathOperator{\CC}{\mathbb C}%{\mathalpha}{cucu}{67}
-\DeclareMathOperator{\NN}{\mathbb N}%{\mathalpha}{cucu}{78}
-\DeclareMathOperator{\RR}{\mathbb R}%{\mathalpha}{cucu}{82}
-\DeclareMathOperator{\QQ}{\mathbb Q}%{\mathalpha}{cucu}{81}
-\DeclareMathOperator{\ZZ}{\mathbb Z}%{\mathalpha}{cucu}{90}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareMathOperator{\sen}{sen}
-\DeclareMathOperator{\arcsen}{arcsen}
-\DeclareMathOperator{\senh}{senh} \DeclareMathOperator{\fr}{Frac}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\ran}[1]{{\em Im\/}(#1)}
-\newcommand{\ca}[1]{{\em card\/}(#1)}
-\newcommand{\sop}[1]{{\em supp\/}(#1)}
-\newcommand{\tra}[1]{{\em traza\/}(#1)}
-\newcommand{\dis}[1]{d (#1)}
-\newcommand{\inte}[1]{{\em Int\/}(#1)}
-\newcommand{\conv}[1]{{\em conv\/}(#1)}
-\newcommand{\too}{\longrightarrow}
-\newcommand{\oo}{\overline}
-\newcommand{\cq}{\begin{flushright} $\Box$ \end{flushright}}
-\newcommand{\cqd}{\, \, \rule{7pt}{7pt}}
-\def\limsup{\mathop{\overline{\rm lim}}}
-\def\liminf{\mathop{\underline{\rm lim}}}
-\renewcommand{\theenumii}{\arabic{enumii}}
-\renewcommand{\labelenumii}{\theenumi.\theenumii.}
-\renewcommand{\theenumiii}{\arabic{enumiii}}
-\renewcommand{\labelenumiii}{\theenumi.\theenumii.\theenumiii
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}
-
-\section{ REUNIONES} 
-\subsection{Jueves 20 de noviembre}
-\noindent Nuevas ideas:
-\begin{enumerate}
-\item  {\bf SOBRE LA ACOTACIÓN DEL OPERADOR D CASO CIRCUNFERENCIA Y CONJUNTO FINITO DE ÁTOMOS.}Se considera una medida con soporte compacto en el plano $\mu$ y una cantidad finita de puntos $\{c_1,\dots,c_n\}$. Se considera la norma de Sobolev asociada $\Vert \cdot \Vert_{S}$ y el operador de multiplicación asociado. 
-\begin{enumerate}
-\item Si todos los puntos son bpe, el operador de multiplicación está acotado. (artículo EG2) En las medidas con soporte en la  circunferencia, los bpe's son los puntos del disco abierto. Probado en el caso de medida soportada en la circunferencia de radio R en el documento cota-sigma de Gabriel. 
-\item Si hay algún punto que no es bpe, {\bf HAY QUE PROBAR o buscar en los artículos de Rodríguez}  que el operador de multiplicación no está acotado. 
-\end{enumerate}
-
-\item {\bf MUY INTERESANTE: SOBRE EL COMPORTAMIENTO ASINTÓTICO DE LOS VALORES SINGULARES} , documento de Gabriel cota-sigma$_K$ 
-
-\item {\bf COMPORTAMIENTO ASINTÓTICO DE LA NORMA DE D CON CIRCUNFERENCIA Y ÁTOMO CUANDO EL ÁTOMO SE APROXIMA AL BORDE DE LA CIRCUNFERENCIA} , se observa que la constante de acotación va siendo mayor y tiende a infinito cuando consideramos la circunferencia de centro 0 y el átomo se desplaza desde 0 a 1. 
-Analizar 
-$$
-\lim_{a\to 1 } \Vert \mathcal{D}\Vert_{a}
-$$
-\noindent donde $\Vert \cdot \Vert_a$ es la Sobolev con un único átomo en $a$. 
-
-\item {\bf DIAGONAL Y SUBDIAGONAL DE D EN CASO DE ÁTOMO Y CIRCUNFERENCIA}
- Cuando consideramos la matriz infinita $\mathbf{D}$ asociada a una circunferencia y un átomo, se tiene que: 
-\begin{enumerate}
-\item La diagonal converge al centro de la circunferencia. 
-\item La subdiagonal converge al radio de la circunferencia. 
-
-\end{enumerate}
-
-\section{REUNIÓN DEL JUEVES 4 DE DICIEMBRE }
-
-\noindent Demostración de que si se considera la medida de Lebegue en la circunferencia unidad y un átomo fuera y el sobolev asociado entonces el operador multiplicación por $z$ no es acotado en el subespacio vectorial 
-$$
-V= \{p\in \mathbb{P}[z]: p(z_0)=0\}.
-$$
-
-
-\end{enumerate}
-
-
-\end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%CARMEN
-\subsection{Jueves 4 de diciembre}
-
-\begin{enumerate}
-    \item Hay que demostrar que 
-    $$
-\lim_{n\to \infty} \sigma_{2,n}(\widehat{D}_n )} \Vert \mathcal{D}\Vert%_{a}
-$$
-    \item 
-\end{enumerate}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\noindent Resultados sobre la acaotación de $\mathal{D}$ en el 
-
-\noindent {\bf CASO CONTINUO DOS CIRCUNFERENCIAS} : 
-
-
-\begin{enumerate} 
-\item cuando la circunferencia segunda está contenida en el disco abierto primero referencia artículo de Archiv ejemplo 1: 
-CASO SECUENCIALMENTE DOMINADO.....Y POR TANTO LA D ESTÁ ACOTADA. 
-\item cuando el centro de la circunferencia segundo está contenido en el disco de la primera...puede tener radio muy grande...D está acotada (referncia artículo de Archiv ) NO ES UN CASO SECUENCIALMENTE DOMINADO NI MATRICIALMENTE SECUENCIALMENTE 
-\item Cuando el centro de la segunda no está contenido en el disco de la primera entonces no sabemos qué pasa con D ????NO SECUENCIALEMENTE DOMINADO. 
-\end{enumerate} 
-
-\noindent {\bf CASO DE CIRCUNFERENCIA Y ATOMO.} 
-\begin{enumerate} 
-\item cuando el átomo está dentro del disco abierto  la D está acotada y 
-\begin{enumerate} 
-\item Puesto que $a$ pertenece al disco es un caso SECUENCIAlMENTE DOMINADA...COROLARIO 36
-\item cuando el átomo está fuera del disco abierto...D no sabemos qué pasa....pero parece no acotado en la experimentación. 
-\end{enumerate} 
-
-
-
-
-
-
-\section{CUANDO INTRODUCES LA MATRIZ D} 
-\noindent Consideremos el operador multiplicaci\'{o}n por $z$ 
-$$
-\mathcal{D}: \mathbb{P}[t] \to \mathbb{P}[z], \quad \mathcal{D}(p(t))=zp(z).
-$$
-
-\noindent La representación de este operador en la base de polinomios ortogonales de Sobolev $\{P_n(z)\}_{n=0}^{\infy}$ es una matriz de Hessemberg superior ya que 
-$zP_n(z)$ es un polinomio de grado $n+1$ que se puede expresar en términos de los polinomios $\{P_0(z),P_1(z), \dots,P_n(z),P_{n+1}(z)\}$ de la forma: 
-$$
-zP_n(z)= d_{0,0}P_0(z)+d_{1,0}P_1(z)+\dots+d_{n,0}P_n(z)+d_{n,n+1}P_{n+1}(z) 
-$$
-
-\noindent Consideremos la matriz infinita $\mathbf{D}=(d_{i,j})_{i,j=0}^{\infty}$ y llamaremos $\mathbf{D}_n$ a la sección de orden $(n+1)\times (n+1)$. 
-\noindent Probaremos que: 
-\begin{enumerate} 
-\item los ceros de $P_{n+1}(z)$ son  autovalores de $\mathbf{D}_n$. 
-\item El determinante de $\mathbf{D}_n -z \mathbf{I}_n$ denotado por $\vert \mathbf{D}_n -z \mathbf{I}_n\vert $ donde $\mathbf{I}_n$ es la matriz identidad de dimensiones $(n+1)\times (n+1)$ es un polinomio proporcional a $P_{n+1}(z)$, es decir, tienen las misma raíces.
-\end{enumerate} 
-
-
-\noindent PRUEBA DE QUE SI $Z_0$ es raíz de $\varphi_n(z)$ entonces $z_0$ es autovalor de $\mathbf{D}_n^{t}$ y por tanto de $\mathbf{D}_n$. 
-
-\begin{proof} 
-\noindent Sea $z_0$ una raíz de $P_{n+1}(z)$, es decir, $P_{n+1}(z_0)=0$. Entonces: 
-
-$$
-z_0P_0(z_0)= d_{0,0}P_0(z_0)+d_{1,0}P_1(z_0)
-$$
-$$
-z_0P_1(z_0)= d_{0,1}P_0(z_0)+d_{1,1}P_1(z_0)+d_{2,1)P_{2}(z_0)
-$$
-$$ 
-----------------
-$$
-$$
-z_0P_n(z_0)= d_{0,n}P_0(z_0)+d_{1,n}P_1(z_0)+\dots+d_{n,n}P_n(z_0)+d_{n+1,n}P_{n+1}(z_0) 
-$$
-
-\noindent Puesto que $P_{n+1}(z_0)=0$, la última igualdad queda: 
-$$
-z_0P_n(z_0)= d_{0,0}P_0(z_0)+d_{1,0}P_1(z_0)+\dots+d_{n,0}P_n(z_0). 
-$$
-
-\noindent Esto se puede expresar matricialmente de la siguiente forma 
-$$
-z_0\begin{pmatrix} P_0(z_0) \\ P_1(z_0) \\  \vdots \\ P_n(z_0) \end{pmatrix} = \mathbf{D}^{t}_n \begin{pmatrix} P_0(z_0) \\ P_1(z_0) \\  \vdots \\ P_n(z_0) \end{pmatrix}
-$$
-
-\noindent lo cual significa que $z_0$ es autovalor de la matriz $\mathbf{D}^{t}_n$ siendo el autovector $(P_0(z_0),P_1(z_0),\dots,P_n(z_0))$ (que es no nulo ya que $P_0(z)$ es constante). 
-
-\noindent Por lo tanto, todas las raíces de $P_n(z_0)$ son autovalores de la matriz $\mathbf{D}^{t}_n$. 
-
-\noindent 
-\end{proof} 
-
-\noindent Como consecuencia, El determinante de $\mathbf{D}_n -z \mathbf{I}_n$, denotado por $\vert \mathbf{D}_n -z \mathbf{I}_n\vert $, donde $\mathbf{I}_n$ es la matriz identidad de dimensiones $(n+1)\times (n+1)$, es EL POLINOMIO MÓNICO.  
-
-
-
-\section{COMENTARIOS ADICCIONALES} 
-\begin{enumerate} 
-\item El análisis de casos refleja  y constata los resultados sobre la acotación de $D$ (en el caso de dos circunferencias y átomos) de nuestros artículos....sobre la acotación del operador D en los espacios de Sobolev.
-\item Resaltar la convergencia de los $\rho(D_n)$, que es novedoso, pues en el caso de conocerse que los ceros están acotados  no tendría por qué ocurrir que este límite exista y esto ha quedado reflejado EN TODOS LOS EJEMPLOS.  
-
-
-\noindent Otro problema sería el de la convergencia de los números complejos donde se alcanzan estos  valores máximos ....que serían 
-por ejemplo los llamas $z_n$ siendo la definición de este: 
-
-
-$z_n\in Z_n$ tal que $\vert z_n \vert = \rho(\mathbf{D}_n)$.  
-
-
-que yo no me acuerdo de lo que ocurría. 
-
-\item Resaltar que es la primera vez que se  ha estudiado el problema de la convergencia del {\it segundo} valor singular de las matrices $D_n$ en el contexto de la localización o acotación de  ceros de polinomios Sobolev, o en relación con los soportes de las medidas involucradas.  
-
-\noindent Cuando pongas la conjetura de que en el caso de $\Vert \mathcal{D}\Vert = \infty$ y 
-$$
-\lim_{n\to \infty} \sigma_{2,n}=R
-$$
-
-\noindent {\bf es importante añadir que}: 
-
-\noindent  en el caso standard de polinomios ortogonales asociados a una única medida con soporte compacto, es decir, en el caso de 
-$$
-<p,q>= \int \vert p(z) \vert^{2} \; d\mu_1
-$$
-
-
- \noindent  es conocido que: 
- $$
- \lim_{n\to \infty} \sigma_{1,n} = \lim_{n\to \infty} \Vert \mathbf{D}_n \Vert = R 
- $$
- \noindent siendo $R= \max\{ \vert z \vert : z\in {\it supp}(\mu)\}$.  %%%%%%%%%%%%%%%%%%%%%%%
-
+El otro día vimos el teorema de representabilidad aplicado al funtor
 \[
-\text{Sea } \gamma(t)=e^{it},\quad 0\le t\le 2\pi,
+F:\operatorname{Coh}(X)^{\operatorname{op}}\longrightarrow K\text{-Vect},
+\qquad
+\mathcal{M}\longmapsto H^1(X,\mathcal{M})^\vee.
 \]
+Este funtor es representable. Es decir, existe un haz cuasicoherente
 \[
-dz=\gamma'(t)\,dt=ie^{it}\,dt.
+\omega
 \]
-Entonces,
+tal que, para todo haz coherente $\mathcal{M}$, se tiene un isomorfismo natural
 \[
-\int_{|z|=1} (z-a)\,dz
-=\int_{0}^{2\pi}\bigl(e^{it}-a\bigr)\,ie^{it}\,dt
-=\int_{0}^{2\pi} i e^{2it}\,dt
--a\int_{0}^{2\pi} i e^{it}\,dt.
+F(\mathcal{M}) = H^1(X,\mathcal{M})^\vee
+\simeq
+\operatorname{Hom}_{\mathcal{O}_X}(\mathcal{M},\omega).
 \]
-Calculamos cada integral:
+El haz $\omega$ se llama el \textbf{haz dualizante} de $X$.
+
+La pregunta que queremos responder ahora es:
+
 \[
-\int_{0}^{2\pi} i e^{2it}\,dt
-= i\left[\frac{e^{2it}}{2i}\right]_{0}^{2\pi}
-=\frac{1}{2}\bigl(e^{4\pi i}-1\bigr)=0,
+\text{¿quién es } \omega \text{ cuando } X=\mathbb{P}^1_K\text{?}
 \]
+
+\begin{theorem}
+Si
 \[
-\int_{0}^{2\pi} i e^{it}\,dt
-= i\left[\frac{e^{it}}{i}\right]_{0}^{2\pi}
-= e^{2\pi i}-1=0.
+X=\mathbb{P}^1_K,
+\]
+entonces
+\[
+\omega\simeq \mathcal{O}(-2).
+\]
+\end{theorem}
+
+Recordemos que
+\[
+\mathcal{O}(-2)
+\]
+puede pensarse como el haz de funciones racionales que tienen al menos un cero de orden $2$ en el punto del infinito.
+
+Además, ya calculamos la cohomología de los haces $\mathcal{O}(n)$ en $\mathbb{P}^1_K$:
+\[
+\dim_K H^p(\mathbb{P}^1_K,\mathcal{O}(n))=
+\begin{cases}
+n+1, & p=0,\ n\ge 0,\\
+0, & p=0,\ n<0,\\
+-n-1, & p=1,\ n\le -2,\\
+0, & p=1,\ n\ge -1,\\
+0, & p\neq 0,1.
+\end{cases}
+\]
+En particular,
+\[
+\dim_K H^1(\mathbb{P}^1_K,\mathcal{O}(-2))=1.
+\]
+Tomamos entonces un elemento no nulo
+\[
+\xi\in H^1(\mathbb{P}^1_K,\mathcal{O}(-2))^\vee.
+\]
+
+\begin{lemma}
+La pareja
+\[
+(\mathcal{O}(-2),\xi)
+\]
+es mínima.
+\end{lemma}
+
+\begin{proof}
+Supongamos que existe un morfismo epiyectivo de parejas
+\[
+(\mathcal{O}(-2),\xi)\longrightarrow (\mathcal{M},\xi_{\mathcal{M}}).
+\]
+Esto significa que tenemos un epimorfismo de haces
+\[
+\varphi:\mathcal{O}(-2)\longrightarrow \mathcal{M}
+\]
+tal que
+\[
+F(\varphi)(\xi_{\mathcal{M}})=\xi.
+\]
+
+Si $\ker\varphi$ tuviese rango $1$, entonces el cociente $\mathcal{M}$ sería un haz de torsión. Pero todo haz coherente de torsión en $\mathbb{P}^1_K$ tiene soporte en un número finito de puntos cerrados, luego es una suma finita de haces rascacielos. En particular es acíclico, y por tanto
+\[
+H^1(\mathbb{P}^1_K,\mathcal{M})=0.
+\]
+Esto implica
+\[
+\xi_{\mathcal{M}}=0,
+\]
+y entonces
+\[
+\xi=F(\varphi)(\xi_{\mathcal{M}})=0,
+\]
+contradicción.
+
+Por tanto, $\ker\varphi$ no puede tener rango $1$. Como $\mathcal{O}(-2)$ es localmente libre de rango $1$, su núcleo sólo puede tener rango $0$. Además, al ser un subhaz de un haz localmente libre, no puede ser de torsión salvo que sea cero. Luego
+\[
+\ker\varphi=0.
+\]
+Así, $\varphi$ es a la vez mono y epi, luego es un isomorfismo. Esto demuestra que la pareja $(\mathcal{O}(-2),\xi)$ es mínima.
+\end{proof}
+
+Por el teorema de representabilidad, el haz $\omega$ representa el funtor $F$. La clase $\xi$ determina entonces un morfismo
+\[
+\mathcal{O}(-2)\longrightarrow \omega.
+\]
+Por la minimalidad de la pareja $(\mathcal{O}(-2),\xi)$, este morfismo identifica $\mathcal{O}(-2)$ con un subhaz de $\omega$. Por tanto tenemos una sucesión exacta
+\[
+0\longrightarrow \mathcal{O}(-2)
+\longrightarrow \omega
+\longrightarrow \mathcal{K}
+\longrightarrow 0.
+\]
+Para concluir que
+\[
+\omega\simeq \mathcal{O}(-2),
+\]
+basta probar que
+\[
+\mathcal{K}=0.
+\]
+
+\subsection*{Una notación}
+
+Si $\mathcal{M}$ es un haz cuasicoherente en $\mathbb{P}^1_K$, escribiremos
+\[
+\mathcal{M}(n)
+=
+\mathcal{M}\otimes_{\mathcal{O}_{\mathbb{P}^1_K}}\mathcal{O}(n).
+\]
+Tensorizando la sucesión exacta anterior por $\mathcal{O}(n)$, obtenemos
+\[
+0\longrightarrow \mathcal{O}(n-2)
+\longrightarrow \omega(n)
+\longrightarrow \mathcal{K}(n)
+\longrightarrow 0.
+\]
+La sucesión sigue siendo exacta porque $\mathcal{O}(n)$ es localmente libre.
+
+\begin{lemma}
+Para todo $n\in\mathbb{Z}$, se tiene un isomorfismo natural
+\[
+\mathcal{O}(n)^\vee\simeq \mathcal{O}(-n).
+\]
+\end{lemma}
+
+\begin{proof}
+Recordemos que
+\[
+\mathcal{O}(n)^\vee=
+\mathcal{H}om_{\mathcal{O}_{\mathbb{P}^1_K}}(\mathcal{O}(n),\mathcal{O}_{\mathbb{P}^1_K}).
+\]
+Es una cuestión local.
+
+Sea $U\subset \mathbb{P}^1_K$ un abierto. Si $\infty\notin U$, entonces
+\[
+\mathcal{O}(n)|_U\simeq \mathcal{O}_U,
+\]
+y por tanto
+\[
+\mathcal{O}(n)^\vee(U)
+\simeq
+\mathcal{O}(U)
+\simeq
+\mathcal{O}(-n)(U).
+\]
+
+Supongamos ahora que $\infty\in U$. Tomamos como parámetro local en $\infty$
+\[
+\pi=\frac{1}{t}.
+\]
+Entonces, localmente,
+\[
+\mathcal{O}(n)(U)=\pi^{-n}\mathcal{O}(U).
 \]
 Por tanto,
 \[
-\int_{|z|=1} (z-a)\,dz=0.
+\mathcal{O}(n)^\vee(U)=
+\operatorname{Hom}_{\mathcal{O}(U)}
+(\pi^{-n}\mathcal{O}(U),\mathcal{O}(U)).
+\]
+Un homomorfismo queda determinado por la imagen de $\pi^{-n}$, y esta imagen debe ser un elemento $g\in\mathcal{O}(U)$. Equivalentemente, podemos identificar estos homomorfismos con los elementos $h\in K(t)$ tales que
+\[
+h\pi^{-n}\in \mathcal{O}(U).
+\]
+Es decir,
+\[
+h\in \pi^n\mathcal{O}(U).
+\]
+Pero
+\[
+\pi^n\mathcal{O}(U)=\mathcal{O}(-n)(U).
+\]
+Así,
+\[
+\mathcal{O}(n)^\vee(U)\simeq \mathcal{O}(-n)(U).
+\]
+Estos isomorfismos son compatibles con las restricciones, luego definen un isomorfismo de haces
+\[
+\mathcal{O}(n)^\vee\simeq \mathcal{O}(-n).
+\]
+\end{proof}
+
+\begin{lemma}
+Para todo $n\ge 1$, se tiene
+\[
+H^0(\mathbb{P}^1_K,\mathcal{K}(n))=0.
+\]
+\end{lemma}
+
+\begin{proof}
+Primero observamos que, para todo haz cuasicoherente $\mathcal{M}$, hay una identificación natural
+\[
+\mathcal{M}(X)=
+\operatorname{Hom}_{\mathcal{O}_X}(\mathcal{O}_X,\mathcal{M}).
+\]
+En efecto, a una sección $m\in \mathcal{M}(X)$ le asociamos el morfismo
+\[
+\mathcal{O}_X\longrightarrow \mathcal{M},
+\qquad
+f\longmapsto fm.
+\]
+Recíprocamente, todo morfismo $\mathcal{O}_X\to \mathcal{M}$ queda determinado por la imagen de $1$.
+
+Aplicando esto a $\omega(n)$, obtenemos
+\[
+H^0(\mathbb{P}^1_K,\omega(n))=
+\operatorname{Hom}_{\mathcal{O}_{\mathbb{P}^1_K}}(\mathcal{O},\omega(n)).
+\]
+Como
+\[
+\omega(n)=\omega\otimes\mathcal{O}(n),
+\]
+y como
+\[
+\mathcal{O}(n)^\vee\simeq \mathcal{O}(-n),
+\]
+tenemos
+\[
+\operatorname{Hom}_{\mathcal{O}_{\mathbb{P}^1_K}}(\mathcal{O},\omega(n))
+\simeq
+\operatorname{Hom}_{\mathcal{O}_{\mathbb{P}^1_K}}(\mathcal{O}(-n),\omega).
+\]
+Por representabilidad de $\omega$,
+\[
+\operatorname{Hom}_{\mathcal{O}_{\mathbb{P}^1_K}}(\mathcal{O}(-n),\omega)
+\simeq
+H^1(\mathbb{P}^1_K,\mathcal{O}(-n))^\vee.
+\]
+Luego
+\[
+\dim_K H^0(\mathbb{P}^1_K,\omega(n))
+=
+\dim_K H^1(\mathbb{P}^1_K,\mathcal{O}(-n)).
+\]
+Para $n\ge 1$, esto vale
+\[
+\dim_K H^0(\mathbb{P}^1_K,\omega(n))=n-1.
 \]
 
-%%%%%%%%%%%%%%%%%%%
+Por otro lado,
+\[
+\dim_K H^0(\mathbb{P}^1_K,\mathcal{O}(n-2))=n-1
+\]
+para todo $n\ge 1$.
 
- 
+Tomamos ahora cohomología en la sucesión exacta
+\[
+0\longrightarrow \mathcal{O}(n-2)
+\longrightarrow \omega(n)
+\longrightarrow \mathcal{K}(n)
+\longrightarrow 0.
+\]
+Obtenemos
+\[
+0\longrightarrow
+H^0(\mathbb{P}^1_K,\mathcal{O}(n-2))
+\longrightarrow
+H^0(\mathbb{P}^1_K,\omega(n))
+\longrightarrow
+H^0(\mathbb{P}^1_K,\mathcal{K}(n))
+\longrightarrow
+H^1(\mathbb{P}^1_K,\mathcal{O}(n-2)).
+\]
+Pero para $n\ge 1$,
+\[
+H^1(\mathbb{P}^1_K,\mathcal{O}(n-2))=0.
+\]
+Así, tenemos una sucesión exacta
+\[
+0\longrightarrow
+H^0(\mathbb{P}^1_K,\mathcal{O}(n-2))
+\longrightarrow
+H^0(\mathbb{P}^1_K,\omega(n))
+\longrightarrow
+H^0(\mathbb{P}^1_K,\mathcal{K}(n))
+\longrightarrow 0.
+\]
+Los dos primeros espacios tienen la misma dimensión, igual a $n-1$. Por tanto el primer morfismo es un isomorfismo y
+\[
+H^0(\mathbb{P}^1_K,\mathcal{K}(n))=0.
+\]
+\end{proof}
 
-\end{enumerate} 
- 
-\end{document} 
+Ya podemos terminar la demostración del teorema.
 
-\noindent Producto Sobolev continuo: caso secuencialmente dominado. 
+\begin{proof}[Conclusión de la demostración del teorema]
+Queremos probar que
+\[
+\mathcal{K}=0.
+\]
 
-\noindent Estimaci\'{o}n de la cota de acotaci\'{o}n de ceros de polinomios ortogonales de Sobolev. 
+Primero veamos que $\mathcal{K}$ no tiene torsión. Si tuviese torsión no nula, esa parte de torsión tendría soporte en un número finito de puntos cerrados. Los haces rascacielos siempre tienen secciones globales no nulas. Además, tensorizar por $\mathcal{O}(n)$ no cambia el hecho de tener soporte finito. Por tanto, para todo $n$, el haz $\mathcal{K}(n)$ tendría alguna sección global no nula. Esto contradice que
+\[
+H^0(\mathbb{P}^1_K,\mathcal{K}(n))=0
+\]
+para $n\ge 1$. Luego $\mathcal{K}$ no tiene torsión.
 
-\noindent Consideremos el siguiente producto de Sobolev: 
-$$
-<p(t),q(t)>=  \int_{a}^{b} p(t)q(t)w_0(t)\; dt +  \int_{a}^{b} p'(t)q'(t)w_1(t)\; dt
-$$
+Nos queda ver que tampoco tiene parte libre. Basta probar que su tallo genérico es cero:
+\[
+\mathcal{K}_\eta=0.
+\]
+Supongamos, por contradicción, que existe
+\[
+0\neq s\in \mathcal{K}_\eta.
+\]
+Entonces $s$ está definido en algún abierto no vacío
+\[
+U\subset \mathbb{P}^1_K.
+\]
+El complemento
+\[
+\mathbb{P}^1_K\setminus U
+\]
+es finito. Escribamos
+\[
+\mathbb{P}^1_K\setminus U=\{p_1,\dots,p_r\}.
+\]
+La sección racional $s$ puede tener polos en esos puntos. Tomamos enteros $n_i$ suficientemente grandes para compensar esos polos, y consideramos el divisor efectivo
+\[
+D=\sum_{i=1}^r n_i p_i.
+\]
+Entonces $s$ define una sección global no nula de
+\[
+\mathcal{K}\otimes L_D.
+\]
+Como en $\mathbb{P}^1_K$ se tiene
+\[
+\operatorname{Pic}(\mathbb{P}^1_K)\simeq \mathbb{Z},
+\]
+y
+\[
+L_D\simeq \mathcal{O}(\deg D),
+\]
+obtenemos una sección global no nula de
+\[
+\mathcal{K}(\deg D).
+\]
+Tomando $\deg D\ge 1$, esto contradice el lema anterior, que dice que
+\[
+H^0(\mathbb{P}^1_K,\mathcal{K}(n))=0
+\qquad
+\text{para todo } n\ge 1.
+\]
+Por tanto
+\[
+\mathcal{K}_\eta=0.
+\]
 
-\noindent donde $w_0(t),w_1(t)$ son pesos continuos de modo que est\'{a}n sequencialmente dominados en el sentido de que: Existe una constante $C>0$ tal que: 
-$$
-w_1(t) \leq Cw_0(t) , \qquad t\in [a,b]
-$$
+Hemos probado que $\mathcal{K}$ no tiene torsión y que su tallo genérico es cero. En consecuencia,
+\[
+\mathcal{K}=0.
+\]
+Así, la sucesión exacta
+\[
+0\longrightarrow \mathcal{O}(-2)
+\longrightarrow \omega
+\longrightarrow \mathcal{K}
+\longrightarrow 0
+\]
+se reduce a un isomorfismo
+\[
+\omega\simeq \mathcal{O}(-2).
+\]
+\end{proof}
 
-\noindent Puesto que $\dfrac{w_1(t)}{w_0(t)}$ es una funci\'{o}n continua en $[a,b]$ consideremos 
-$$
-\alpha= \max \{ \dfrac{w_1(t)}{w_0(t)}, t\in [a,b]\}.
-$$
+\begin{corollary}[Dualidad de Serre en $\mathbb{P}^1_K$]
+Para todo haz coherente $\mathcal{M}$ en $\mathbb{P}^1_K$, se tiene un isomorfismo natural
+\[
+H^1(\mathbb{P}^1_K,\mathcal{M})^\vee
+\simeq
+\operatorname{Hom}_{\mathcal{O}_{\mathbb{P}^1_K}}(\mathcal{M},\mathcal{O}(-2)).
+\]
+\end{corollary}
 
-\noindent Consideremos el operador multiplicaci\'{o}n por $t$ 
-$$
-\mathcal{D}: \mathbb{P}[t} \to \mathbb{P}[t], \quad \mathcal{D}(p(t))=tp(t).
-$$
-
-\noindent Veamos que $\mathcal{D}$ es acotado en este caso adem\'{a}s: 
-$$
- \Vert \mathcal{D} \Vert \leq C= (R^{2}+2\alpha)^{1/2}.
- $$
-
-$$
-\Vert \mathcal{D}(p(t))\Vert^{2} = \int_{a}^{b} t^2p^2(t)w_0(t)\; dt +  \int_{a}^{b} (tp'(t))^2w_1(t)\; dt= \int_{a}^{b} t^2p^2(t)w_0(t)\; dt +  \int_{a}^{b} (p(t)+tp'(t))^2w_1(t)\; dt \leq 
-$$
-\noindent utilizando que $(a+b)^2\leq 2(a^2+b^2)$ si $a,b\geq 0$ se tiene que: 
-$$
- \int_{a}^{b} t^2p^2(t)w_0(t)\; dt+2\int_{a}^{b} p(t)^2w_1(t)\; dt +\int_{a}^{b} +t^2p'(t))^2w_1(t)\; dt \leq
- $$
- $$
-  R^{2}\left( \int_{a}^{b} p^2(t)w_0(t)\; dt +  \int_{a}^{b} (p'(t)^2w_1(t)\; dt+ 2\int_{a}^{b} p(t)^2w_1(t)\; dt \leq 
-$$
-$$
-R^{2} \Vert p(t)\Vert^{2} + 2\alpha \int_{a}^{b} p(t)^2w_0(t)\; dt \leq (R^{2}+2\alpha)\Vert p(t) \Vert^{2}
-$$
-
-\noindent Por ejemplo, si $[a,b]=[-1,1]$ y $\alpha =1$ quedar\'{\i}a $C=\sqrt{1+2}=\sqrt{3}$. 
-
-\begin{enumerate} 
-\item Experimentar con ejemplos secuencialmente dominados $w_0(t)=t^n$ y $w_1(t)=t^{2n}$ con $n$ par en el intervalo $[-1,1]$, se aprecia que la cota es buena ???
-\item Experimentar con ejemplos que no sean secuencialmente dominados $w_0(t)=t^{2n}$ y $w_1(t)=t^{n}$ con $n$ par en el intervalo $[-1,1]$, se aprecian resultados an\'{a}logos al caso anterior. 
-\item Observar que en los casos anteriores todos los ceros están en el círculo cerrado de centro el origen y radio $\sqrt{3}$.
-
-\end{enumerate} 
-\noindent 
-
-\end{document} 
+\begin{remark}
+La idea geométrica es que el haz dualizante de $\mathbb{P}^1_K$ es el haz que representa los funcionales lineales sobre la cohomología $H^1$. El cálculo anterior muestra que dicho representante es precisamente $\mathcal{O}(-2)$, que coincide con el haz canónico de la recta proyectiva.
+\end{remark}

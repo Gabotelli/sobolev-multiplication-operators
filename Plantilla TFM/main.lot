@@ -4,9 +4,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Valores singulares relevantes y radio exterior $\rho _n$ en el caso con átomo interior, para $n=50$. En este ejemplo la primera rama acotada coincide con la primera rama que converge al radio $R=1$.}}{72}{table.caption.7}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Valores singulares relevantes y radio exterior $\rho _n$ en el caso con un átomo estrictamente exterior, para $n=50$. Aquí la única rama divergente es $\sigma _0^{(n)}$, mientras que la primera rama acotada y la primera rama que converge a $R=1$ coinciden en $\sigma _1^{(n)}$.}}{73}{table.caption.9}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Valores singulares relevantes y radio exterior $\rho _n$ en el caso mixto, para $n=50$. En este ejemplo la única rama divergente es $\sigma _0^{(n)}$, la primera rama acotada es $\sigma _1^{(n)}$ y la primera rama que converge a $R=1$ es $\sigma _2^{(n)}$.}}{74}{table.caption.11}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Valores singulares relevantes y radio exterior en el caso con átomo interior.}}{82}{table.caption.8}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Valores singulares relevantes y radio exterior en el caso estrictamente exterior.}}{84}{table.caption.10}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Valores singulares relevantes y radio exterior en el caso mixto.}}{84}{table.caption.12}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 

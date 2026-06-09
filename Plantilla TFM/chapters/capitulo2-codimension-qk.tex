@@ -1,9 +1,7 @@
 % !TEX root = ../main.tex
 \chapter{Codimensión, Dicotomía topológica e índice \texorpdfstring{$Q_k$}{Qk}}\label{sec:codimension_qk}
 
-En este capítulo fijamos el lenguaje con el que se medirá la inestabilidad del operador de multiplicación. El punto de partida es hilbertiano, pero la cantidad que necesitaremos no es puramente topológica. La razón es simple: las restricciones relevantes en el régimen no acotado vienen dadas por funcionales lineales que pueden no ser continuos en la completación. Cuando eso ocurre, la clausura destruye la codimensión que queremos contar. Por eso el capítulo pasa de la codimensión topológica a la algebraica y culmina con la definición del índice $Q_k$.
-
-\section{Marco hilbertiano y codimensión topológica}
+\section{Codimensión topológica}
 
 Partimos del producto interno de Sobolev introducido en el Capítulo~\ref{sec:intro}. Denotamos por $\mathcal H$ la completación de $\Poly$ respecto de la norma inducida por ese producto. En particular,
 \[
@@ -13,32 +11,16 @@ y $\Poly$ es un subespacio denso de $\mathcal H$.
 
 La noción clásica de codimensión en este contexto es la siguiente.
 
-\begin{defn}[Codimensión topológica en Hilbert]\label{def:codim_top_hilbert}
+\begin{defn}[Codimensión topológica en Hilbert \cite{halmos1982hilbert}]\label{def:codim_top_hilbert}
     Sea $\mathcal H$ un espacio de Hilbert y sea $M\subset \mathcal H$ un subespacio cerrado. Definimos
     \[
         \operatorname{codim}_{\mathcal H}(M):=\dim(\mathcal H/M).
     \]
     Equivalentemente,
     \[
-        \operatorname{codim}_{\mathcal H}(M)=\dim(M^\perp)
+        \operatorname{codim}_{\mathcal H}(M)=\dim(M^\perp).
     \]
-    \cite{halmos1982hilbert}.
 \end{defn}
-
-Recordemos que para un subespacio vectorial $M$ se define la restricción de un operador como $T|_M$ y la norma es $\|T|_M\|=\sup_{\substack{p\in M\\ p\ne0}}\frac{\|Tp\|}{\|p\|} \leq \|T\| < +\infty$
-
-\begin{defn}\label{def:numeros_gelfand}
-    Sea $T\in\mathcal L(\mathcal H)$. Para cada $k\ge 0$, definimos
-    \begin{equation}\label{eq:gelfand_numbers}
-        c_k(T)=\inf\{\|T|_M\|:M\subset \mathcal H,\ M\text{ cerrado},\ \operatorname{codim}_{\mathcal H}(M)<k+1\}.
-    \end{equation}
-    En particular, $c_0(T)=\|T\|$. \cite{}
-\end{defn}
-\begin{rmk}
-    Nuestro índice $c_0(T)$ corresponde con el índice $c_1(T)$ para coherencia en notación al trabajar en espacios de polinomios.
-\end{rmk}
-
-El índice de Gelfand se define para operadores acotados, en este trabajo aparecerán operadores no acotados. Esto justifica la introducción de una nueva codimensión, de la que hablaremos más adelante. Ahora vemos un resultado de dimensión topológica de funcionales lineales.
 
 \begin{prop}[Dicotomía topológica para un funcional]\label{thm:dicotomia_1}
     Sea $\phi:\Poly\to\mathbb C$ un funcional lineal no nulo y $(\mathcal{H}, \langle\cdot, \cdot\rangle)$. Entonces ocurre exactamente una de las dos posibilidades siguientes:
@@ -84,16 +66,20 @@ El índice de Gelfand se define para operadores acotados, en este trabajo aparec
 \end{proof}
 
 \begin{prop}
-    Interseccion de N nucleos linealmente independientes
+    Sea $\mathcal{H}$ un espacio de Hilbert y sean $\phi_1, \dots, \phi_N$ funcionales lineales continuos y linealmente independientes. Entonces, el subespacio cerrado
+    \[
+        V = \bigcap_{i=1}^N \ker(\phi_i)
+    \]
+    tiene codimensión topológica $\operatorname{codim}_{\mathcal{H}}(V) = N$.
 \end{prop}
 
-\begin{rmk}\label{obs:fracaso_topologia}
-    La proposición~\ref{thm:dicotomia_1} marca que la codimensión de la intersección es igual o menor que el número de funcionales lineales.
-\end{rmk}
+\begin{proof}
+    Al ser cada $\phi_i$ continuo en $\mathcal{H}$, por el Teorema de Riesz existen representantes $f_1, \dots, f_N \in \mathcal{H}$ linealmente independientes tales que $\phi_i(x) = \langle x, f_i \rangle_{\mathcal{H}}$. El subespacio $V$ es el complemento ortogonal del subespacio $F = \operatorname{span}\{f_1, \dots, f_N\}$. Como $\dim(F) = N$, se concluye que $\operatorname{codim}_{\mathcal{H}}(V) = N$.
+\end{proof}
 
 \section{Codimensión algebraica}
 
-\textcolor{blue}{Colocar nexo}
+Dado que la codimensión topológica puede colapsar al clausurar subespacios definidos por funcionales no continuos, necesitamos una noción que preserve exactamente el número de condiciones lineales impuestas.
 
 \begin{defn}\label{def:codim_alg}
     Sea $V\subset \Poly$ un subespacio vectorial. Definimos
@@ -109,7 +95,7 @@ La primera caracterización es la que usaremos de manera sistemática.
     Para un subespacio vectorial $V\subset \Poly$, son equivalentes:
     \begin{enumerate}
         \item $\operatorname{codim}_{\Poly}(V)<\infty$;
-        \item existe un sistema finito de funcionales lineales $\Phi=(\phi_1,\dots,\phi_m)$ tal que
+        \item existe un sistema de $m\in\mathbb N$ funcionales lineales $\{\phi_1,\dots,\phi_m\}$ tales que
               \[
                   V=\bigcap_{j=1}^m \ker \phi_j.
               \]
@@ -118,7 +104,7 @@ La primera caracterización es la que usaremos de manera sistemática.
     \[
         \operatorname{codim}_{\Poly}(V)
         =
-        \min\Bigl\{m:\exists\,\Phi=(\phi_1,\dots,\phi_m),\ V=\bigcap_{j=1}^m\ker\phi_j\Bigr\},
+        \min\Bigl\{m:\exists\,\{\phi_1,\dots,\phi_m\},\ V=\bigcap_{j=1}^m\ker\phi_j\Bigr\},
     \]
     y más precisamente, si $V=\bigcap_{j=1}^m\ker\phi_j$, entonces
     \[
@@ -179,28 +165,6 @@ La primera caracterización es la que usaremos de manera sistemática.
         \dim\operatorname{span}\{\phi_1,\dots,\phi_m\}.
     \]
     La fórmula del mínimo se deduce de inmediato de esta identidad.
-\end{proof}
-
-La proposición anterior admite una reformulación útil en términos de aplicaciones lineales de rango finito.
-
-\begin{cor}
-    Sea $V\subset\Poly$. Son equivalentes:
-    \begin{enumerate}
-        \item $\operatorname{codim}_{\Poly}(V)=m<\infty$;
-        \item existe una aplicación lineal sobreyectiva $A:\Poly\to\mathbb C^m$ tal que $V=\ker A$.
-    \end{enumerate}
-\end{cor}
-
-\begin{proof}
-    Si $V=\bigcap_{j=1}^m\ker\phi_j$ con $\phi_1,\dots,\phi_m$ linealmente independientes, basta tomar
-    \[
-        A(p)=(\phi_1(p),\dots,\phi_m(p)).
-    \]
-    Recíprocamente, si $A=(A_1,\dots,A_m):\Poly\to\mathbb C^m$ es sobreyectiva, entonces
-    \[
-        \ker A=\bigcap_{j=1}^m\ker A_j,
-    \]
-    y la Proposición~\ref{prop:finite-codim-kernels} da la equivalencia.
 \end{proof}
 
 A continuación damos una caracterización de la codimensión algebraica atendiendo a la ortogonalidad dada por el producto escalar.
@@ -288,15 +252,36 @@ En este trabajo son relevantes los siguientes funcionales de evaluación y evalu
 \end{defn}
 
 \begin{lem}
-    N puntos distintos, sus funcionales son independientes
+    Sea $\mathcal{A} = \{z_1, \dots, z_N\} \subset \C$ un conjunto finito de $N$ puntos distintos. Entonces el conjunto de funcionales de evaluación $\{\delta_{z_1}, \dots, \delta_{z_N}\}$ es linealmente independiente en el espacio dual de funcionales lineales$\Poly^*$.
 \end{lem}
+
+\begin{proof}
+    Supongamos que existe una combinación lineal nula $\sum_{i=1}^N \alpha_i \delta_{z_i} = 0$.
+    Para cada índice $j \in \{1, \dots, N\}$, construimos el polinomio de interpolación de Lagrange:
+    \[
+        L_j(z) = \prod_{\substack{l=1 \\ l \neq j}}^{N} \frac{z - z_l}{z_j - z_l}
+    \]
+    Satisface que $L_j(z_i) = \delta_{ji}$ (Delta de Kronecker). Evaluando la combinación lineal nula en el polinomio $L_j$, obtenemos:
+    \[
+        0 = \sum_{i=1}^N \alpha_i \delta_{z_i}(L_j) = \sum_{i=1}^N \alpha_i L_j(z_i) = \alpha_j \cdot 1
+    \]
+    Por tanto, $\alpha_j = 0$ para todo $j$, lo que demuestra la independencia.
+\end{proof}
+
 \begin{cor}
-    N puntos distintos, la interseccion del nucleo de los funcionales tiene codimension
+    Sean $z_1, \dots, z_N \in \C$ puntos todos distintos. El subespacio cerrado de los polinomios que se anulan en dichos puntos, dado por
+    \[
+        V = \bigcap_{i=1}^N \ker(\delta_{z_i}),
+    \]
+    tiene codimensión algebraica exacta $N$ en $\Poly$.
 \end{cor}
 
-\begin{defn}\label{def:subespacio_admisible} %TODO: quitar definición
-    Diremos que un subespacio $V\subset\Poly$ es \emph{admisible} si tiene codimensión algebraica finita. Equivalentemente, por la Proposición~\ref{prop:finite-codim-kernels}, si puede escribirse como intersección finita de núcleos de funcionales lineales sobre $\Poly$.
-\end{defn}
+\begin{proof}
+    Por el lema anterior, el sistema de funcionales de evaluación $\{\delta_{z_1}, \dots, \delta_{z_N}\}$ es linealmente independiente. Como $V$ está definido como la intersección de los núcleos de estos $N$ funcionales, la Proposición~\ref{prop:finite-codim-kernels} establece que su codimensión algebraica es exactamente la dimensión del subespacio que generan. Por tanto,
+    \[
+        \operatorname{codim}_{\Poly}(V) = \dim\operatorname{span}\{\delta_{z_1}, \dots, \delta_{z_N}\} = N.
+    \]
+\end{proof}
 
 \section{Relación entre codimensión algebraica y topológica}
 
@@ -334,17 +319,15 @@ En esta sección estudiaremos la relación entre las codimensiones algebraicas y
         \dim(\mathcal H/\overline V)\le \dim(F)=m.
     \]
 
-    Probemos $(2)$. Como $M$ es cerrado y de codimensión $m$, existe una base ortonormal $e_1,\dots,e_m$ de $M^\perp$. Entonces
+    Probemos $(2)$. Como $M$ es cerrado y de codimensión $m$, existen $m$funcionales lineales continuos $\Phi_1,\dots,\Phi_m$ tal que
     \[
         M=\bigcap_{j=1}^m \ker \Phi_j,
-        \qquad
-        \Phi_j(x):=\langle x,e_j\rangle_{\mathcal H}.
     \]
     Restringiendo a $\Poly$, obtenemos
     \[
         M\cap\Poly=\bigcap_{j=1}^m \ker(\Phi_j|_{\Poly}).
     \]
-    Las restricciones $\Phi_j|_{\Poly}$ son linealmente independientes: si una combinación lineal se anula en $\Poly$, también se anula en todo $\mathcal H$ por densidad, y entonces todos los coeficientes son nulos. Por la Proposición~\ref{prop:finite-codim-kernels},
+    Las restricciones $\Phi_j|_{\Poly}$ son linealmente independientes: si una combinación lineal se anula en $\Poly$, también se anula en todo $\mathcal H$ por densidad, puesto que todos los funcionales son continuos; y entonces todos los coeficientes son nulos. Por la Proposición~\ref{prop:finite-codim-kernels},
     \[
         \operatorname{codim}_{\Poly}(M\cap\Poly)=m.
     \]
@@ -352,7 +335,7 @@ En esta sección estudiaremos la relación entre las codimensiones algebraicas y
     \[
         a_n:=(\Phi_1(p_n),\dots,\Phi_m(p_n))\in\mathbb C^m.
     \]
-    Como $x\in M$, se tiene $a_n\to 0$. Consideremos ahora la aplicación lineal
+    Como $x\in M$, se tiene $a_n\to 0$, ya que al ser los funcionales continuos, $\Phi_j(p_n)\to\Phi_j(x)=0$ para cada $j$. Consideremos ahora la aplicación lineal
     \[
         S:\Poly\to\mathbb C^m,
         \qquad
@@ -376,23 +359,46 @@ En esta sección estudiaremos la relación entre las codimensiones algebraicas y
 \end{proof}
 
 \begin{rmk}
-    La desigualdad de la parte $(1)$ puede ser estricta. Ese es exactamente lo que muestra la Proposición~\ref{thm:dicotomia_1}: un subespacio de codimensión algebraica uno puede tener clausura total en $\mathcal H$, y por tanto tener codimensioón topológica 0.
+    La desigualdad de la parte $(1)$ puede ser estricta. Eso es exactamente lo que muestra la Proposición~\ref{thm:dicotomia_1}: un subespacio de codimensión algebraica uno puede tener clausura total en $\mathcal H$ y, por tanto, codimensión topológica de su adherencia es $0$.
 \end{rmk}
 
 \section{Índice \texorpdfstring{$Q_k$}{Qk}}
 
-A continuacón vamos a introducir un nuevo índice que extiende la noción de los índice de Gelfand para operadores no acotados sobre $\Poly$
+Recordemos que dado un operador lineal $T \in \mathcal{L}(\mathcal{H})$ un subespacio vectorial $M$ se define la restricción de un operador $T$ como $T|_M$ y la norma es $\|T|_M\|=\sup_{\substack{p\in M\\ p\ne0}}\frac{\|Tp\|}{\|p\|} \leq \|T\| < +\infty$
+
+\begin{defn}\label{def:numeros_gelfand}
+    Sea $T\in\mathcal L(\mathcal H)$. Para cada $k\ge 0$, definimos
+    \begin{equation}\label{eq:gelfand_numbers}
+        c_k(T)=\inf\{\|T|_M\|:M\subset \mathcal H,\ M\text{ cerrado},\ \operatorname{codim}_{\mathcal H}(M)<k+1\}.
+    \end{equation}
+    En particular, $c_0(T)=\|T\|$. \cite{Ullrich2024}
+\end{defn}
+\begin{rmk}
+    Nuestro índice $c_0(T)$ corresponde con el índice $c_1(T)$, y en general $c_{k-1}(T)$ será $c_k(T)$. Lo definimos de esta manera para coherencia en notación al trabajar en espacios de polinomios.
+\end{rmk}
+
+El índice de Gelfand se define para operadores acotados, en este trabajo aparecerán operadores no acotados. Esto justifica la introducción de un nuevo índice para lo que tenemos que introducir una nueva noción de codimensión, de la que hablaremos más adelante.
+
+A continuación introducimos un nuevo índice que extiende la noción de los números de Gelfand a operadores no acotados sobre $\Poly$.
 \begin{defn}\label{def:indice_Qk}
-    Sea $T:\Poly\to\Poly$ un operador lineal definido sobre $(\Poly,\|\cdot\|)$, donde la norma proviene del producto interno. Para cada $k\ge0$, definimos
+    Sea $T:\Poly\to\Poly$ un operador lineal no necesariamente acotado definido sobre $(\Poly,\|\cdot\|)$, donde la norma está inducida por un producto interno. Para cada $k\ge0$, definimos
     \[
         Q_k(T)
         :=\inf\bigl\{\|T|_V\|:V\subset\Poly\ \ \operatorname{codim}_{\Poly}(V)<k+1\bigr\},
     \]
-    donde $Q_k(T)\in [0,+\infty]$
+    donde $Q_k(T)\in [0,+\infty]$.
 \end{defn}
 
 \begin{rmk}
-    $Q_0(T)=\|T\|$, siendo $+\infty$ cuando $T$ no es acotado.
+    En particular, para $k=0$ la condición
+    \(
+    \operatorname{codim}_{\Poly}(V)<1
+    \)
+    fuerza $V=\Poly$, y por tanto
+    \[
+        Q_0(T)=\|T\|,
+    \]
+    admitiendo el valor $+\infty$ cuando $T$ no es acotado.
 \end{rmk}
 
 \begin{prop}\label{prop:propiedades_Qk}
@@ -404,44 +410,86 @@ A continuacón vamos a introducir un nuevo índice que extiende la noción de lo
 \end{prop}
 
 \begin{proof}
-    La identidad $Q_0(T)=\|T\|$ es inmediata de la definición. Si $V$ es admisible y $W\subset V$ también es admisible, entonces
+    La identidad $Q_0(T)=\|T\|$ es inmediata de la definición.
+
+    Para probar la monotonía, consideremos la familia de subespacios admisibles para el índice $k$:
     \[
-        \|T|_W\|\le \|T|_V\|.
+        \mathcal{F}_k = \{ V \subset \Poly : \operatorname{codim}_{\Poly}(V) < k+1 \}.
     \]
-    Al aumentar $k$, el ínfimo se toma sobre una familia más grande de subespacios. Por tanto,
+    Si un subespacio $V$ pertenece a $\mathcal{F}_k$, su codimensión es como máximo $k$, lo que implica que también es estrictamente menor que $k+2$. Por tanto, el subespacio también es admisible para $k+1$, de modo que tenemos la inclusión de conjuntos $\mathcal{F}_k \subset \mathcal{F}_{k+1}$.
+
+    Como $Q_k(T) = \inf_{V \in \mathcal{F}_k} \|T|_V\|$, tomando el ínfimo:
     \[
-        Q_{k+1}(T)\le Q_k(T).
+        Q_{k+1}(T) \le Q_k(T).
     \]
-    La no negatividad es obvia.
+    La no negatividad es trivial.
 \end{proof}
 
-En el caso de operdadores no acotados, diremos que la cadena anterior de los índices $Q_k$ estabiliza en $k$ si $Q_{k-1}(T)=\infty$ y $Q_k(T)<\infty$.
-
-\begin{prop}\label{prop:qk_rango_finito}
-    Sea $T:\Poly\to\Poly$ un operador de rango algebraico finito $r$. Entonces $Q_r(T)=0$.
-\end{prop}
-
-\begin{proof}
-    Como $\dim(\operatorname{Im}T)=r$, el primer teorema de isomorfía da
+\begin{defn}
+    Sea $T:\Poly\to\Poly$ un operador lineal no necesariamente acotado, diremos que la cadena 
     \[
-        \operatorname{codim}_{\Poly}(\ker T)=r.
+        Q_0(T)\ge Q_1(T)\ge \cdots \ge Q_k(T)\ge Q_{k+1}(T)\ge \cdots \ge 0,
     \]
-    Por la Proposición~\ref{prop:finite-codim-kernels}, $\ker T$ es admisible. Además,
-    \[
-        \|T|_{\ker T}\|=0.
-    \]
-    Luego $Q_r(T)=0$.
-\end{proof}
+    estabiliza en $k$ si $Q_{k-1}(T)=\infty$ y $Q_k(T)<\infty$.
+\end{defn}
 
-A continuación vemos un ejemplo de un operador no acotado que estabiliza en $k=1$.
+A continuación fijamos un modelo elemental en el que la cadena se rompe por primera vez en $k=1$.
 
 \begin{exm}
-    Ejemplo de un caso con un atomo fuera que estabiliza $Q_1$
+    Consideremos el producto de Sobolev
+    \[
+        \langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m(z)+p'(2)\overline{q'(2)},
+        \qquad p,q\in\Poly,
+    \]
+    y el operador de multiplicación $\mathcal D p(z)=zp(z)$. Para analizar su acotación, calculamos la norma de $\mathcal D p$:
+    \[
+        \|\mathcal D p\|_S^2=\int_{\mathbb S_1}|zp(z)|^2\,d\mathbf m(z)+|(\mathcal D p)'(2)|^2=\|p\|_{L^2(\mathbf m)}^2+|p(2)+2p'(2)|^2.
+    \]
+    Podemos construir una sucesión explícita de polinomios $\{p_n\}_{n\in\mathbb{N}}$ para comprobar que $\mathcal D$ no es acotado. Consideremos:
+    \[
+        p_n(z) = \frac{n^2}{2^n} \left( z^n - \frac{n}{2(n+1)} z^{n+1} \right).
+    \]
+    Es directo comprobar que su derivada se anula en $z=2$:
+    \[
+        p_n'(z) = \frac{n^2}{2^n} \left( n z^{n-1} - \frac{n}{2} z^n \right) \implies p_n'(2) = \frac{n^2}{2^n} \left( n 2^{n-1} - n 2^{n-1} \right) = 0.
+    \]
+    Recordando que los monomios son ortonormales en $L^2(\mathbf m)$, su norma es:
+    \[
+        \|p_n\|_{L^2(\mathbf m)}^2 = \frac{n^4}{4^n} \left( 1 + \frac{n^2}{4(n+1)^2} \right) \xrightarrow[n\to\infty]{} 0.
+    \]
+    Sin embargo, su evaluación en $z=2$ diverge:
+    \[
+        p_n(2) = \frac{n^2}{2^n} \left( 2^n - \frac{n}{2(n+1)} 2^{n+1} \right) = n^2 \left( 1 - \frac{n}{n+1} \right) = \frac{n^2}{n+1} \xrightarrow[n\to\infty]{} \infty.
+    \]
+    Para esta sucesión se tiene que
+    \[
+        \|p_n\|_S^2 = \|p_n\|_{L^2(\mathbf m)}^2 + |p_n'(2)|^2 = \|p_n\|_{L^2(\mathbf m)}^2 \to 0,
+    \]
+    mientras que
+    \[
+        \|\mathcal D p_n\|_S^2 = \|p_n\|_{L^2(\mathbf m)}^2 + |p_n(2)|^2 \to \infty.
+    \]
+    Esto demuestra que el operador $\mathcal D$ no es acotado globalmente, es decir, $Q_0(\mathcal D)=\infty$. 
+    
+    Sin embargo, la no acotación proviene del término libre $p(2)$. Si consideramos el subespacio de codimensión algebraica 1:
+    \[
+        V = \{p \in \Poly : p(2) = 0\},
+    \]
+    para cualquier $p \in V$ se tiene que $(\mathcal D p)'(2) = p(2) + 2p'(2) = 2p'(2)$. Evaluando nuevamente la norma obtenemos:
+    \[
+        \|\mathcal D p\|_S^2 = \|p\|_{L^2(\mathbf m)}^2 + |2p'(2)|^2 \le 4\left(\|p\|_{L^2(\mathbf m)}^2 + |p'(2)|^2\right) = 4\|p\|_S^2.
+    \]
+    Por tanto, la restricción del operador a este subespacio es acotada, lo que implica que
+    \[
+        Q_1(\mathcal D) \le 2 < \infty.
+    \]
 \end{exm}
+
+De este ejemplo es importante observar que existen operadores lineales no acotados sobre $\Poly$ y sin embargo su restricción a subespacios ``grandes'' (en el sentido de que tienen codimensión 1)  es acotado. Esto justifica el estudio de la estabilización de la cadena de los $Q_k$ para encontrar subespacios de codimensión finita donde los operadores son acotados.
 
 \section{Equivalencia con los números de Gelfand}
 
-En el régimen acotado, $Q_k$ no introduce una teoría paralela. Recupera exactamente los números de Gelfand.
+A continuación, probaremos que cuando consideramos operadores lineales acotados sobre $\Poly$, que admiten por tanto una extensión al espacio de Hilbert $\mathcal H$, entonces los índices $Q_k$ coinciden con los números de Gelfand.
 
 \begin{thm}\label{thm:equivalencia_Qk_Gelfand}
     Sea $(\mathcal H,\langle\cdot,\cdot\rangle)$ un espacio de Hilbert tal que $\mathcal H=\overline{\Poly}$, y sea $T\in\mathcal L(\mathcal H)$ con $T(\Poly)\subset\Poly$. Entonces, para todo $k\ge0$,
@@ -452,7 +500,7 @@ En el régimen acotado, $Q_k$ no introduce una teoría paralela. Recupera exacta
 \end{thm}
 
 \begin{proof}
-    Probemos primero que $c_k(T)\le Q_k(T)$. Sea $V\subset\Poly$ admisible con
+    Probemos primero que $c_k(T)\le Q_k(T)$. Sea $V\subset\Poly$ tal que
     \[
         \operatorname{codim}_{\Poly}(V)=m<k+1.
     \]
@@ -460,7 +508,7 @@ En el régimen acotado, $Q_k$ no introduce una teoría paralela. Recupera exacta
     \[
         \operatorname{codim}_{\mathcal H}(M)\le m<k+1.
     \]
-    Por tanto, $M$ es admisible en la definición de $c_k(T)$. Como $T$ es continuo y $V$ es denso en $M$,
+    Por tanto, $M$ es un subespacio admisible en la definición de $c_k(T)$. Como $T$ es continuo y $V$ es denso en $M$,
     \[
         \|T|_M\|=\|T|_V\|.
     \]
@@ -481,7 +529,7 @@ En el régimen acotado, $Q_k$ no introduce una teoría paralela. Recupera exacta
     \[
         V:=M\cap\Poly
     \]
-    es admisible, satisface
+    satisface
     \[
         \operatorname{codim}_{\Poly}(V)=m,
         \qquad

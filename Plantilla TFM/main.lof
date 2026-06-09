@@ -2,11 +2,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Configuración geométrica del soporte continuo $\mathbb {S}_R$ y de la posición de los átomos discretos.}}{31}{figure.caption.6}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Caso con átomo interior. A la izquierda se representan los ceros de los polinomios ortogonales de Sobolev hasta grado $50$. A la derecha se muestran los ceros del polinomio de grado $50$. Estas figuras permiten visualizar el régimen estable antes de incorporar la información cuantitativa de las ramas singulares y de $\rho _n$ en la tabla asociada.}}{73}{figure.caption.6}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Caso con un átomo estrictamente exterior. A la izquierda aparecen los ceros de los polinomios ortogonales de Sobolev hasta grado $50$; a la derecha, los ceros del polinomio de grado $50$. La tabla asociada recogerá la relación entre la rama singular divergente, la primera rama acotada y el comportamiento del cero de mayor módulo $\rho _n$.}}{73}{figure.caption.8}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Caso mixto. A la izquierda se representan los ceros de los polinomios ortogonales de Sobolev hasta grado $50$; a la derecha, los ceros del polinomio de grado $50$. La tabla asociada permitirá comparar la parte divergente, la primera rama acotada y el radio exterior $\rho _n$ en presencia simultánea de átomos interiores y exteriores.}}{74}{figure.caption.10}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Caso con átomo interior.}}{83}{figure.caption.7}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Caso con un átomo estrictamente exterior.}}{83}{figure.caption.9}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Caso mixto.}}{84}{figure.caption.11}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 
