@@ -453,7 +453,7 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
 \begin{lem}\label{lem:independencia_funcionales_psi}
     Sea $R>0$, sea $I_{\mathrm{in}}\subset\C$ el conjunto de atomos interiores y sea $\psi_c(p)$ el funcional asociado al operador de multiplicación \ref{eq:def_psi_c} para cada $c\in I_{\mathrm{out}}$. El sistema $\{\psi_c\}_{c\in I_{\mathrm{out}}}$ es linealmente independiente. En particular,
     \[
-        \dim\operatorname{span}\{\psi_c:c\in I_{\mathrm{out}}\}=m,
+        \dim[\psi_c:c\in I_{\mathrm{out}}]=m,
         \qquad m:=|I_{\mathrm{out}}|.
     \]
 \end{lem}
@@ -830,7 +830,7 @@ Veamos ahora que la codimensión $m$ es necesaria para estabilizar el operador d
     \]
     Para cada $n\ge1$ definimos
     \[
-        W_n:=\operatorname{span}\{u_{c,n}:c\in I_{\mathrm{out}}\},
+        W_n:=[u_{c,n}:c\in I_{\mathrm{out}}],
     \]
     donde los paquetes diagonales $u_{c,n}$ son los del Lema~\ref{lem:paquetes_diagonales}. Entonces, para cada $n\ge1$, existe un polinomio no nulo
     \[
@@ -909,7 +909,7 @@ Ahora procedemos a ver que la codimensión $m$ es necesaria para estabilizar el 
 \begin{proof}
     Sea $V\subset\Poly$ con $\operatorname{codim}_{\Poly}(V)<m$. Para cada $n\ge1$ consideramos el subespacio
     \[
-        W_n:=\operatorname{span}\{u_{c,n}:c\in I_{\mathrm{out}}\},
+        W_n:=[u_{c,n}:c\in I_{\mathrm{out}}],
     \]
     donde los $u_{c,n}$ son los paquetes diagonales del Lema~\ref{lem:paquetes_diagonales}. Por el Lema~\ref{lem:imposicion_restricciones}, para cada $n$ existe un polinomio no nulo
     \[

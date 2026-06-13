@@ -3,6 +3,8 @@
 
 \section{Matriz de Hessenberg y secciones truncadas}
 
+Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, su representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ viene dada por los coeficientes $\langle Te_j,e_i\rangle$. En este capítulo aplicaremos la misma construcción a $\D p(z)=zp(z)$, con la diferencia de que no necesitamos su acotación en toda $\mathcal H$: basta que $\D$ esté definida en el subespacio denso $\Poly$ y que $\D\phi_j=z\phi_j\in\Poly$ para todo $j$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y tamaños singulares de manera directa.
+
 \begin{defn}\label{def:hessenberg}
 	Sea $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev. La representación matricial de $\D$ es
 	\[
@@ -26,22 +28,23 @@
 \end{proof}
 
 \begin{defn}\label{def:seccion_truncada}
-	Para cada $n\in\mathbb N$, definimos la \emph{sección principal} de orden $n$ de $\mathbf D$ por
+	Para cada $n\in\mathbb N$, sea
+	\[
+		\mathbb P_n:=[\phi_0,\dots,\phi_n],
+	\]
+	y sea $\pi_n:\mathcal H\to\mathbb P_n$ la proyección ortogonal. Definimos la aplicación lineal
+	\[
+		T_n:\mathbb P_n\to\mathbb P_n,
+		\qquad
+		T_n(p):=\pi_n(\D p).
+	\]
+	Como $\mathbb P_n\subset\Poly$ y $\D(\mathbb P_n)\subset\Poly$, la aplicación $T_n$ está bien definida. La matriz de $T_n$ respecto de la base $\{\phi_0,\dots,\phi_n\}$ se llama la \emph{sección principal} de orden $n+1$ de $\mathbf D$ y viene dada por
 	\[
 		\mathbf D_n:=(d_{i,j})_{0\le i,j\le n}\in\mathcal M_{n+1}(\mathbb C).
 	\]
-	Equivale a la compresión proyectada de $\D$ al subespacio
-	\[
-		\mathcal P_n:=\operatorname{span}\{\phi_0,\dots,\phi_n\},
-	\]
-	es decir,
-	\[
-		\mathbf D_n\ \widehat{=}\ P_n\D|_{\mathcal P_n},
-	\]
-	donde $P_n$ denota la proyección ortogonal sobre $\mathcal P_n$.
 \end{defn}
 
-%%La importancia de $\mathbf D_n$ es doble. Por un lado, conserva la estructura de Hessenberg de $\mathbf D$ y por tanto retiene la información esencial del operador en dimensión finita. Por otro, ya no actúa sobre un espacio abstracto sino sobre $\mathbb C^{n+1}$, de modo que sus valores singulares y autovalores son objetos directamente calculables.
+Estas truncaciones son la primera escala finita del operador de multiplicación. En particular, permiten relacionar la geometría de $\mathbb P_n$ con cantidades espectrales concretas, y constituyen el punto de entrada natural para recuperar, en dimensión $n+1$, la información codificada por el polinomio ortonormal siguiente.
 
 \begin{prop}\label{prop:charpoly_truncada}
 Sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev en $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea
@@ -53,13 +56,17 @@ Entonces, para todo \(n\ge0\), existe una constante
 \]
 tal que
 \[
+    \det(z\mathbf I_{n+1}-\mathbf D_n)
+    =
     \det(z\mathbf I_{n+1}-\mathbf D_n^t)
     =
     \kappa_n\,\phi_{n+1}(z).
 \]
 En particular,
 \[
-    \sigma(\mathbf D_n^t)
+    \operatorname{spec}(\mathbf D_n)
+    =
+    \operatorname{spec}(\mathbf D_n^t)
     =
     \{z\in\C:\phi_{n+1}(z)=0\},
 \]
@@ -67,21 +74,34 @@ contando multiplicidades algebraicas.
 \end{prop}
 
 \begin{proof}
-	Como la multiplicación por $z$ aumenta el grado en una unidad, $\mathbf{D}_n$ tiene estructura de Hessenberg superior: sus entradas satisfacen $d_{i,j}=0$ para $i>j+1$. Esto implica que para cualquier $z\in\mathbb{C}$, resolviendo la relación matricial, se tiene
+	Como la multiplicación por $z$ aumenta el grado en una unidad, la matriz $\mathbf D_n$ es de Hessenberg superior. Para este tipo de matrices asociadas a polinomios ortogonales, es un hecho clásico que el polinomio característico de la truncación coincide, salvo una constante no nula, con el polinomio ortonormal del grado siguiente; más precisamente,
 	\[
-		\det(z\mathbf{I}_{n+1}-\mathbf{D}_n^t)=\det(z\mathbf{I}_{n+1}-\mathbf{D}_n)
-		=\frac{1}{\gamma_{n+1}}\phi_{n+1}(z),
+		\det(z\mathbf I_{n+1}-\mathbf D_n)=\frac{1}{\gamma_{n+1}}\phi_{n+1}(z),
 	\]
-	donde $\gamma_{n+1}$ es el coeficiente director de $\phi_{n+1}$. La última igualdad es la identidad característica estándar para matrices de Hessenberg asociadas a polinomios ortogonales (véase por ejemplo \cite{szego1975orthogonal}, \S3.1). Por tanto, $z$ es autovalor de $\mathbf{D}_n^t$ si y solo si $\phi_{n+1}(z)=0$.
+	donde $\gamma_{n+1}$ es el coeficiente director de $\phi_{n+1}$; véase, por ejemplo, \cite[\S3.1]{szego1975orthogonal}. Por tanto, tomando
+	\[
+		\kappa_n:=\frac{1}{\gamma_{n+1}},
+	\]
+	obtenemos la primera igualdad anunciada.
+
+	Además, para toda matriz cuadrada $A$ se tiene
+	\[
+		\det(z\mathbf I-A^t)=\det\bigl((z\mathbf I-A)^t\bigr)=\det(z\mathbf I-A).
+	\]
+	Aplicado a $A=\mathbf D_n$, concluimos que $\mathbf D_n$ y $\mathbf D_n^t$ tienen el mismo polinomio característico y, por tanto, el mismo espectro algebraico. Esto prueba que los autovalores de ambas matrices coinciden exactamente con los ceros de $\phi_{n+1}$, contando multiplicidades.
 \end{proof}
+
+La proposición anterior identifica a $\mathbf D_n$ como una realización matricial finita cuya información espectral queda gobernada por $\phi_{n+1}$. Así, cada truncación selecciona exactamente los ceros del siguiente polinomio ortonormal, lo que fija el vínculo entre la estructura de Hessenberg y la localización espectral en dimensión finita.
 
 \section{Valores singulares de \texorpdfstring{$\mathbf D_n$}{Dn}}
 
+Además del espectro, necesitaremos medir el tamaño de estas truncaciones en distintas direcciones. Para ello introducimos ahora sus valores singulares, que proporcionan una noción intrínseca de amplificación matricial y serán el objeto adecuado para la lectura asintótica de la sección final.
 
 \begin{defn}\label{def:sigma_kn}
 	Sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la sección truncada definida en
 	Definición~\ref{def:seccion_truncada}.
-	Para $$n\ge0$$, denotamos por
+	Recordemos que los valores singulares de una matriz $A$ son los autovalores de $(A^*A)^{1/2}$, o equivalentemente las raíces cuadradas de los autovalores de $A^*A$.
+	Para $n\ge0$, denotamos por
 	\[
 		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
 	\]
@@ -92,7 +112,9 @@ contando multiplicidades algebraicas.
 	\]
 \end{defn}
 
-Nótese que indexamos desde $0$ para que el índice $k$ de $\sigma_{k,n}$ coincida con el índice $k$ de $Q_k(\D)$, lo que facilitará la comparación entre ambos objetos.
+La indexación desde $0$ es la natural para esta familia ordenada: $\sigma_{0,n}$ recoge el mayor tamaño singular de la truncación y los índices sucesivos describen niveles cada vez más restringidos de amplificación.
+
+Para explotar esta jerarquía necesitaremos una herramienta variacional estándar. Usaremos la caracterización min--max de Courant--Fischer para valores singulares; véase, por ejemplo, \cite[Section~3.1]{horn2012matrix}.
 
 \begin{lem}
 \label{lem:minmax_sigma_Dn}
@@ -114,11 +136,11 @@ Equivalentemente,
 \]
 \end{lem}
 
-A continuación veremos la relación entre la fórmula min--max de Courant--Fischer y el índice $Q:k$.
+Solo después de fijar este marco matricial conviene compararlo con las cantidades abstractas introducidas en el capítulo anterior. La siguiente proposición establece esa comparación en un único sentido, desde las truncaciones hacia el índice $Q_k(\D)$.
 
 \begin{prop}\label{prop:sigma_qk}
 	Sea \(\mathbf D_n\) la sección truncada de \(\D\) en
-	\(\mathcal P_n=\operatorname{span}\{\phi_0,\dots,\phi_n\}\).
+	\(\mathbb P_n=[\phi_0,\dots,\phi_n]\).
 	Entonces, para todo \(n\ge0\) y todo \(0\le k\le n\),
 	\[
 		\sigma_{k,n}\le Q_k(\D).
@@ -130,13 +152,13 @@ A continuación veremos la relación entre la fórmula min--max de Courant--Fisc
 \end{prop}
 
 \begin{proof}
-	Fijemos un subespacio admisible $V\subset\Poly$ con
+	Fijemos un subespacio $V\subset\Poly$ con
 	\[
 		\operatorname{codim}_{\Poly}(V)<k+1.
 	\]
 	Para cada $n$, consideramos
 	\[
-		V_n:=V\cap\mathcal P_n.
+		V_n:=V\cap\mathbb P_n.
 	\]
 	Al pasar a coordenadas en la base $\{\phi_0,\dots,\phi_n\}$ obtenemos un subespacio $S_n\subset\mathbb C^{n+1}$ con codimensión menor que $k+1$, o equivalentemente con dimensión al menos $n+1-k$. Por Courant--Fischer,
 	\[
@@ -146,22 +168,30 @@ A continuación veremos la relación entre la fórmula min--max de Courant--Fisc
 	\]
 	Si $x$ corresponde al polinomio $p\in V_n$, entonces
 	\[
-		\|\mathbf D_nx\|_2=\|P_n(\D p)\|_S\le \|\D p\|_S\le \|\D|_V\|_S\,\|p\|_S=\|\D|_V\|_S\,\|x\|_2.
+		\|\mathbf D_nx\|_2=\|\pi_n(\D p)\|_S\le \|\D p\|_S\le \|\D|_V\|_S\,\|p\|_S=\|\D|_V\|_S\,\|x\|_2.
 	\]
 	Por tanto,
 	\[
 		\sigma_{k,n}\le \|\D|_V\|_S.
 	\]
-	Tomando ínfimo sobre todos los subespacios admisibles $V$ con codimensión $<k+1$, obtenemos
+	Tomando ínfimo sobre todos los subespacios $V$ con codimensión $<k+1$, obtenemos
 	\[
 		\sigma_{k,n}\le Q_k(\D).
 	\]
-	La afirmación sobre el $\lim$ es inmediata.
+	La afirmación sobre el límite es inmediata.
 \end{proof}
 
 \section{Conexión con el teorema de estabilización}
 
-Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
+En esta última parte no introducimos nuevos objetos matriciales, sino una lectura asintótica de los ya definidos. El objetivo es interpretar el teorema de estabilización anterior a través del comportamiento, cuando $n\to\infty$, de las secciones $\mathbf D_n$ y de sus valores singulares.
+
+Comenzamos con el caso $I_{\mathrm{in}}=\varnothing$, donde la traducción al lenguaje matricial es más directa porque el índice crítico queda determinado únicamente por las contribuciones exteriores.
+
+Además, para cada $n\ge 0$, la Definición~\ref{def:sigma_kn} da
+\[
+    \sigma_{0,n}\ge \sigma_{1,n}\ge \cdots \ge \sigma_{n,n}\ge 0.
+\]
+En particular, si para algún índice $r$ se tiene $\sigma_{r,n}\to +\infty$, entonces también $\sigma_{j,n}\to +\infty$ para todo $0\le j\le r$.
 
 \begin{thm}\label{thm:umbral_singular_indice_m_enunciado}
 	Sea
@@ -188,8 +218,17 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
 	La prueba sigue el mismo principio de construcción que el Teorema~\ref{thm:estabilizacion}, pero ahora trasladado a las compresiones finitas.
 
 	\smallskip
-	\noindent\emph{Paso 1: explosión para $j<m$.}
-	Basta probarla para $j=m-1$ por monotonía en el índice. En el Lema~\ref{lem:paquetes_diagonales} del capítulo anterior se construyeron, para cada $n$, polinomios
+	\noindent\emph{Paso 1: $j<m$.}
+	Basta probar que
+	\[
+		\sigma_{m-1,n}\xrightarrow[n\to\infty]{}+\infty,
+	\]
+	pues entonces, por la desigualdad
+	\[
+		\sigma_{j,n}\ge \sigma_{m-1,n},
+		\qquad 0\le j\le m-1,
+	\]
+	se obtiene inmediatamente la misma conclusión para todos los índices anteriores. En el Lema~\ref{lem:paquetes_diagonales} del capítulo anterior se construyeron, para cada $n$, polinomios
 	\[
 		u_{c,n}\in\Poly,
 		\qquad c\in I_{\mathrm{out}},
@@ -202,7 +241,7 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
 	\]
 	Sea
 	\[
-		F_n:=\operatorname{span}\{u_{c,n}:c\in I_{\mathrm{out}}\}.
+		F_n:=[u_{c,n}:c\in I_{\mathrm{out}}].
 	\]
 	Por la diagonalidad anterior, estos vectores son linealmente independientes, luego $\dim(F_n)=m$. Además, si
 	\[
@@ -236,7 +275,7 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
 	\[
 		\inf_{0\neq p\in F_{n(L)}}\frac{\|\D p\|_S}{\|p\|_S}>L.
 	\]
-	Sea $F:=F_{n(L)}$ y sea $N_L$ un entero tal que $F\subset \mathcal P_{N_L-1}$. Entonces, para todo $N\ge N_L$, se tiene $F\subset \mathcal P_{N-1}$ y por tanto $\D p\in\mathcal P_N$ para todo $p\in F$. En consecuencia, sobre $F$ la compresión coincide con $\D$, y la forma max--min de Courant--Fischer da
+	Sea $F:=F_{n(L)}$ y sea $N_L$ un entero tal que $F\subset \mathbb P_{N_L-1}$. Entonces, para todo $N\ge N_L$, se tiene $F\subset \mathbb P_{N-1}$ y por tanto $\D p\in\mathbb P_N$ para todo $p\in F$. En consecuencia, sobre $F$ la compresión coincide con $\D$, y la forma max--min de Courant--Fischer da
 	\[
 		\sigma_{m-1,N}\ge \inf_{0\neq p\in F}\frac{\|\D p\|_S}{\|p\|_S}>L,
 		\qquad N\ge N_L.
@@ -245,30 +284,21 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
 	\[
 		\sigma_{m-1,N}\xrightarrow[N\to\infty]{}+\infty.
 	\]
-	La monotonía de los valores singulares respecto del índice implica entonces
+	Por la observación inicial sobre el orden de los valores singulares, concluimos entonces que
 	\[
 		\sigma_{j,n}\to+\infty,
 		\qquad 0\le j<m.
 	\]
 
 	\smallskip
-	\noindent\emph{Paso 2: cota en el índice $m$.}
-	Sea
+	\noindent\emph{Paso 2: $m$.}
+	La cota para el índice $m$ es ahora consecuencia directa de la Proposición~\ref{prop:sigma_qk} y del Corolario~\ref{cor:sin_interiores} del capítulo anterior, que da
 	\[
-		V_{\mathrm{out}}:=\bigcap_{c\in I_{\mathrm{out}}}\ker(\psi_c).
+		Q_m(\D)\le R.
 	\]
-	Por el Capítulo~\ref{sec:estabilizacion}, este subespacio tiene codimensión exacta $m$ y satisface
+	En efecto,
 	\[
-		\|\D p\|_S\le R\|p\|_S,
-		\qquad p\in V_{\mathrm{out}}.
-	\]
-	Al intersectarlo con $\mathcal P_n$ obtenemos un subespacio de dimensión al menos $n+1-m$ donde la compresión $\mathbf D_n$ sigue estando acotada por $R$. De nuevo por Courant--Fischer,
-	\[
-		\sigma_{m,n}\le R,
-	\]
-	para todo $n$ suficientemente grande, y por tanto
-	\[
-		\lim_{n\to\infty}\sigma_{m,n}\le R.
+		\lim_{n\to\infty}\sigma_{m,n}\le Q_m(\D)\le R.
 	\]
 	Esto completa la prueba.
 \end{proof}
@@ -283,12 +313,12 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
     \]
     y
     \[
-        \limsup_{n\to\infty}\sigma_{m,n}\le R.
+		\lim_{n\to\infty}\sigma_{m,n}\le R.
     \]
 
     \item En general,
     \[
-        \limsup_{n\to\infty}\sigma_{m,n}
+		\lim_{n\to\infty}\sigma_{m,n}
         \le
         Q_m(\D)
         <
@@ -299,10 +329,11 @@ Ya podemos traducir el Teorema~\ref{thm:estabilizacion} al lenguaje matricial.
 
 \begin{rmk}[Lectura matricial del umbral]
 	El Corolario~\ref{cor:estabilizacion_singular_umbral} muestra que el índice
-	\(m=|I_{\mathrm{out}}|\) es el primer índice para el que se obtiene una cota
+	\(m=|I_{\mathrm{out}}|\) marca el paso entre dos regímenes asintóticos: es el número de valores singulares iniciales que pueden escapar hacia infinito y, al mismo tiempo, el primer índice para el que se obtiene una cota
 	singular uniforme a partir del teorema de estabilización. En ausencia de
 	átomos interiores, los valores singulares de índices \(j<m\) divergen, mientras
 	que el índice \(m\) queda controlado por \(R\). En el caso mixto, el mismo índice
 	queda controlado por \(Q_m(\D)\).
 \end{rmk}
 
+Esta lectura matricial prepara el paso al capítulo siguiente, donde el análisis de los ceros y de las cantidades extremales volverá a ponerse en primer plano desde una perspectiva más global.

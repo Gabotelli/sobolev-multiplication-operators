@@ -39,3 +39,5 @@
 /Plantilla\ TFM/*.pdf
 /Notas\ para\ trabajar/*.pdf
 /RESUMEN\ DE\ REUNIONES/*.pdf
+# Local Pi runtime state
+.atl/
