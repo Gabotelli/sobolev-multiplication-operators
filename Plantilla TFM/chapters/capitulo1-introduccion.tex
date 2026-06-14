@@ -1082,7 +1082,7 @@ Más concretamente, consideraremos el producto de Sobolev discreto
 \[
     \langle p,q\rangle_S
     =
-    \int_{M_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
+    \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
     +
     \sum_{j=1}^{N}
     p'(c_j)\overline{q'(c_j)},
@@ -1090,9 +1090,9 @@ Más concretamente, consideraremos el producto de Sobolev discreto
 \]
 donde
 \[
-    M_R=\{z\in\C:|z|=R\}
+    \mathbb{S}_R=\{z\in\C:|z|=R\}
 \]
-y \(\mathbf m_{0;R}\) es la medida de Lebesgue normalizada sobre \(M_R\). En este
+y \(\mathbf m_{0;R}\) es la medida de Lebesgue normalizada sobre \(\mathbb{S}_R\). En este
 modelo puede ocurrir que no exista una constante \(C>0\) tal que
 \[
     \|\D p\|_S
@@ -1133,7 +1133,7 @@ por una pregunta más precisa:
 
 En el modelo discreto sobre la circunferencia, la respuesta estará determinada por
 la posición geométrica de los átomos discretos respecto del soporte continuo
-\(M_R\). De esta manera, la teoría de restricciones de codimensión finita permitirá
+\(\mathbb{S}_R\). De esta manera, la teoría de restricciones de codimensión finita permitirá
 cuantificar la inestabilidad del operador de multiplicación y traducirla después al
 lenguaje matricial de valores singulares y a la localización de ceros.
 
@@ -1197,6 +1197,144 @@ fuente de los fenómenos que estudiaremos: dependiendo de la posición geométri
 de los átomos respecto del soporte continuo \(\mathbb{S}_R\), el operador de multiplicación
 puede ser acotado, no acotado, o estabilizarse después de imponer un número finito
 de restricciones lineales.
+
+Antes de fijar definitivamente estas normalizaciones, conviene registrar una
+invariancia elemental bajo semejanzas. La formulamos para un producto ligeramente
+más general, permitiendo coeficientes discretos positivos arbitrarios, pues esa será
+la versión natural del cambio de variables.
+
+\begin{prop}[Normalización por semejanzas]\label{prop:semejanza_modelo_sobolev}
+    Sean \(a\in\C\), \(R>0\), \(F=\{c_1,\ldots,c_N\}\subset\C\) y
+    \(\lambda_1,\ldots,\lambda_N>0\). Consideremos en \(\Poly\) el producto
+    \[
+        \langle p,q\rangle_{a,R,F,\Lambda}
+        :=
+        \int_{\mathbb S_R(a)}p(z)\overline{q(z)}\,d\mathbf m_{a;R}(z)
+        +
+        \sum_{j=1}^{N}\lambda_j\,p'(c_j)\overline{q'(c_j)},
+        \qquad p,q\in\Poly,
+    \]
+    donde
+    \[
+        \mathbb S_R(a):=\{z\in\C:|z-a|=R\}
+    \]
+    y \(\mathbf m_{a;R}\) es la medida de Lebesgue normalizada sobre
+    \(\mathbb S_R(a)\).
+
+    Sea ahora
+    \[
+        f(w)=\alpha w+\beta,
+        \qquad \alpha\in\C\setminus\{0\},\quad \beta\in\C,
+    \]
+    con \(|\alpha|=R\) y \(\beta=a\), de modo que
+    \(f(\mathbb S_1)=\mathbb S_R(a)\). Definimos
+    \[
+        d_j:=f^{-1}(c_j)=\frac{c_j-\beta}{\alpha},
+        \qquad j=1,\ldots,N.
+    \]
+    Si \(P,Q\in\Poly\) y
+    \[
+        p=P\circ f^{-1},
+        \qquad
+        q=Q\circ f^{-1},
+    \]
+    entonces
+    \[
+        \langle p,q\rangle_{a,R,F,\Lambda}
+        =
+        \int_{\mathbb S_1}P(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w)
+        +
+        |\alpha|^{-2}\sum_{j=1}^{N}\lambda_j\,P'(d_j)\overline{Q'(d_j)}.
+    \]
+    Equivalentemente,
+    \[
+        |\alpha|^2\langle p,q\rangle_{a,R,F,\Lambda}
+        =
+        |\alpha|^2\int_{\mathbb S_1}P(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w)
+        +
+        \sum_{j=1}^{N}\lambda_j\,P'(d_j)\overline{Q'(d_j)}.
+    \]
+    En particular, si \(\{P_n\}_{n\ge0}\) es la sucesión de polinomios mónicos
+    ortogonales para el producto del segundo miembro, entonces la sucesión
+    \(\{p_n\}_{n\ge0}\) dada por
+    \[
+        p_n(z)=\alpha^n P_n\!\left(\frac{z-\beta}{\alpha}\right)
+    \]
+    es la sucesión de polinomios mónicos ortogonales para
+    \(\langle\cdot,\cdot\rangle_{a,R,F,\Lambda}\).
+\end{prop}
+
+\begin{proof}
+    Como \(\mathbf m_{a;R}\) es la imagen de \(\mathbf m_{0;1}\) por la semejanza
+    \(f\), se tiene
+    \[
+        \int_{\mathbb S_R(a)}p(z)\overline{q(z)}\,d\mathbf m_{a;R}(z)
+        =
+        \int_{\mathbb S_1}P(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w).
+    \]
+    Por otra parte, como \(p(f(w))=P(w)\), la regla de la cadena da
+    \[
+        \alpha\,p'(f(w))=P'(w),
+        \qquad
+        \alpha\,q'(f(w))=Q'(w).
+    \]
+    Evaluando en \(w=d_j=f^{-1}(c_j)\), obtenemos
+    \[
+        p'(c_j)=\alpha^{-1}P'(d_j),
+        \qquad
+        q'(c_j)=\alpha^{-1}Q'(d_j),
+    \]
+    y por tanto
+    \[
+        \sum_{j=1}^{N}\lambda_j\,p'(c_j)\overline{q'(c_j)}
+        =
+        |\alpha|^{-2}
+        \sum_{j=1}^{N}\lambda_j\,P'(d_j)\overline{Q'(d_j)}.
+    \]
+    Sumando ambas identidades se obtiene la primera fórmula, y la segunda se deduce
+    multiplicando por \(|\alpha|^2\).
+
+    Sea ahora \(P_n\) un polinomio mónico ortogonal para el producto del segundo
+    miembro y definamos
+    \[
+        p_n(z)=\alpha^nP_n\!\left(\frac{z-\beta}{\alpha}\right).
+    \]
+    Entonces \(p_n\) es mónico, pues el coeficiente director de
+    \(P_n((z-\beta)/\alpha)\) es \(\alpha^{-n}\). Además, si \(r\in\Poly\) tiene
+    grado menor que \(n\), existe un único \(Q\in\Poly\) de grado menor que \(n\)
+    tal que
+    \[
+        r=Q\circ f^{-1},
+    \]
+    ya que la composición con \(f^{-1}\) preserva el grado. Aplicando la identidad
+    ya probada con \(P=P_n\) y este polinomio \(Q\), obtenemos
+    \[
+        \langle p_n,r\rangle_{a,R,F,\Lambda}
+        =
+        \alpha^n\left(
+        \int_{\mathbb S_1}P_n(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w)
+        +
+        |\alpha|^{-2}\sum_{j=1}^{N}\lambda_j\,P_n'(d_j)\overline{Q'(d_j)}
+        \right)=0,
+    \]
+    porque \(\deg Q<n\) y \(P_n\) es ortogonal a todos los polinomios de grado menor
+    que \(n\) para ese producto. Por tanto, \(p_n\) es el polinomio mónico ortogonal
+    de grado \(n\) para \(\langle\cdot,\cdot\rangle_{a,R,F,\Lambda}\).
+\end{proof}
+
+\begin{rmk}\label{rmk:importancia_semejanza_modelo_sobolev}
+    La proposición anterior permite normalizar la geometría del problema sin alterar
+    la familia de polinomios ortogonales mónicos. En efecto, una semejanza transporta
+    simultáneamente la circunferencia soporte y los átomos discretos, de modo que todo
+    modelo sobre una circunferencia arbitraria \(\mathbb S_R(a)\) puede estudiarse en
+    la circunferencia unitaria \(\mathbb S_1\), con los átomos movidos por la misma
+    transformación inversa. La única modificación analítica es una renormalización
+    global del producto escalar, irrelevante para la ortogonalidad. Esto justifica
+    que en los estudios de caso resulte natural trabajar con configuraciones centradas
+    en el origen y, cuando convenga, en radio uno, aunque en los enunciados generales
+    mantendremos explícitos el centro y el radio para reflejar la geometría original
+    del problema.
+\end{rmk}
 
 En el caso de la medida \(\mathbf m_{0;R}\), los monomios son ortogonales y se
 tiene

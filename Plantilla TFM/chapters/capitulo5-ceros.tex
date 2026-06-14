@@ -9,7 +9,7 @@ La lectura correcta tiene dos niveles. Primero aparece un puente macroscópico: 
 
 Antes de distinguir regímenes, fijamos el mecanismo común que solo da control macroscópico. El problema de los ceros ya quedó traducido al lenguaje matricial en el Capítulo~\ref{sec:matricial}. En la Proposición~\ref{prop:charpoly_truncada} vimos que la matriz de Hessenberg truncada $\mathbf D_n$ codifica la acción de multiplicar por $z$ sobre
 \[
-	\mathcal P_n=\operatorname{span}\{\phi_0,\dots,\phi_n\},
+	\mathbb P_n=[\phi_0,\dots,\phi_n],
 \]
 y que su polinomio característico reproduce, salvo normalización, al polinomio ortogonal siguiente.
 
@@ -21,7 +21,7 @@ y que su polinomio característico reproduce, salvo normalización, al polinomio
 \end{prop}
 
 \begin{proof}
-	La matriz $\mathbf{D}_n$ representa la compresión del operador de multiplicación $\D$ al subespacio $\operatorname{span}\{\phi_0,\dots,\phi_n\}$ en la base $\{\phi_k\}_{k=0}^n$. Como la multiplicación por $z$ aumenta el grado en una unidad, $\mathbf{D}_n$ tiene estructura de Hessenberg superior: sus entradas satisfacen $d_{ij}=0$ para $i>j+1$. Esto implica que para cualquier $\lambda\in\C$,
+	La matriz $\mathbf{D}_n$ representa la compresión del operador de multiplicación $\D$ al subespacio $\mathbb P_n$ en la base $\{\phi_k\}_{k=0}^n$. Como la multiplicación por $z$ aumenta el grado en una unidad, $\mathbf{D}_n$ tiene estructura de Hessenberg superior: sus entradas satisfacen $d_{ij}=0$ para $i>j+1$. Esto implica que para cualquier $\lambda\in\C$,
 	\[
 		\det(\lambda I_{n+1}-\mathbf{D}_n^t)=\det(\lambda I_{n+1}-\mathbf{D}_n)
 		=\phi_{n+1}(\lambda)/\gamma_{n+1},

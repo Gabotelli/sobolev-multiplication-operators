@@ -847,13 +847,13 @@ Veamos ahora que la codimensión $m$ es necesaria para estabilizar el operador d
 \end{lem}
 
 \begin{proof}
-    Escribimos $\operatorname{codim}_{\Poly}(V)=r<m$. Existen entonces funcionales lineales independientes $\lambda_1,\dots,\lambda_r:\Poly\to\C$ tales que
+    Escribimos $\operatorname{codim}_{\Poly}(V)=r<m$. Existen entonces funcionales lineales independientes $L_1,\dots,L_r:\Poly\to\C$ tales que
     \[
-        V=\bigcap_{i=1}^r\ker(\lambda_i).
+        V=\bigcap_{i=1}^r\ker(L_i).
     \]
     Para cada $n$ consideramos la matriz
     \[
-        A_n:=\bigl(\lambda_i(u_{c,n})\bigr)_{\substack{1\le i\le r\\ c\in I_{\mathrm{out}}}}\in\C^{r\times m}.
+        A_n:=\bigl(L_i(u_{c,n})\bigr)_{\substack{1\le i\le r\\ c\in I_{\mathrm{out}}}}\in\C^{r\times m}.
     \]
     Como $r<m$, el núcleo de $A_n$ es no trivial. Elegimos
     \[
@@ -867,7 +867,7 @@ Veamos ahora que la codimensión $m$ es necesaria para estabilizar el operador d
     \]
     Entonces, para cada $i=1,\dots,r$,
     \[
-        \lambda_i(p_n)=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}\lambda_i(u_{c,n})=0,
+        L_i(p_n)=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}L_i(u_{c,n})=0,
     \]
     y por tanto $p_n\in V$. Además $p_n\in W_n$ por construcción.
 

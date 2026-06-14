@@ -27,85 +27,85 @@ La noción clásica de codimensión en este contexto es la siguiente.
 El punto delicado aparece cuando un subespacio de $\Poly$ está definido por anulación de funcionales lineales y se lo mira dentro de la compleción hilbertiana $\mathcal H$. En ese paso, la condición lineal puede sobrevivir o desaparecer tras tomar clausura, según el funcional sea acotado o no respecto de la norma de $\mathcal H$. La proposición siguiente describe exactamente esta dicotomía.
 
 \begin{prop}[Dicotomía topológica para un funcional]\label{thm:dicotomia_1}
-    Sea $\phi:\Poly\to\mathbb C$ un funcional lineal no nulo y $(\mathcal{H}, \langle\cdot, \cdot\rangle)$. Entonces ocurre exactamente una de las dos posibilidades siguientes:
+    Sea $L:\Poly\to\mathbb C$ un funcional lineal no nulo y $(\mathcal{H}, \langle\cdot, \cdot\rangle)$. Entonces ocurre exactamente una de las dos posibilidades siguientes:
     \begin{enumerate}
-        \item si $\phi$ no es acotado respecto de la norma de $\mathcal H$, entonces
+        \item si $L$ no es acotado respecto de la norma de $\mathcal H$, entonces
               \[
-                  \overline{\ker\phi}=\mathcal H,
+                  \overline{\ker L}=\mathcal H,
                   \qquad
-                  \operatorname{codim}_{\mathcal H}(\overline{\ker\phi})=0;
+                  \operatorname{codim}_{\mathcal H}(\overline{\ker L})=0;
               \]
-        \item si $\phi$ es acotado respecto de la norma de $\mathcal H$, entonces
+        \item si $L$ es acotado respecto de la norma de $\mathcal H$, entonces
               \[
-                  \operatorname{codim}_{\mathcal H}(\overline{\ker\phi})=1.
+                  \operatorname{codim}_{\mathcal H}(\overline{\ker L})=1.
               \]
     \end{enumerate}
 \end{prop}
 
 \begin{proof}
-    Si $\phi$ no es acotado, su núcleo es denso en $\Poly$ respecto de la norma inducida por $\mathcal H$. En efecto, fijado $p\in\Poly$, como $\phi$ es no acotado existe una sucesión $w_n\in\Poly$ tal que
+    Si $L$ no es acotado, su núcleo es denso en $\Poly$ respecto de la norma inducida por $\mathcal H$. En efecto, fijado $p\in\Poly$, como $L$ es no acotado existe una sucesión $w_n\in\Poly$ tal que
     \[
-        |\phi(w_n)|>n\|w_n\|.
+        |L(w_n)|>n\|w_n\|.
     \]
     Definimos entonces
     \[
-        u_n:=\frac{w_n}{\phi(w_n)}.
+        u_n:=\frac{w_n}{L(w_n)}.
     \]
     Así,
     \[
-        \phi(u_n)=1,
+        L(u_n)=1,
         \qquad
-        \|u_n\|=\frac{\|w_n\|}{|\phi(w_n)|}<\frac1n,
+        \|u_n\|=\frac{\|w_n\|}{|L(w_n)|}<\frac1n,
     \]
     y en particular $\|u_n\|\to0$. Entonces
     \[
-        v_n:=p-\phi(p)u_n\in\ker\phi,
+        v_n:=p-L(p)u_n\in\ker L,
         \qquad
-        \|v_n-p\|=|\phi(p)|\,\|u_n\|\to 0.
+        \|v_n-p\|=|L(p)|\,\|u_n\|\to 0.
     \]
-    Como $\Poly$ es denso en $\mathcal H$, se sigue que $\overline{\ker\phi}=\mathcal H$.
+    Como $\Poly$ es denso en $\mathcal H$, se sigue que $\overline{\ker L}=\mathcal H$.
 
-    Supongamos ahora que $\phi$ es acotado. Entonces se extiende de manera única a un funcional lineal acotado $\widetilde\phi$ sobre $\mathcal H$. Su núcleo es cerrado y contiene a $\ker\phi\subset\Poly$, luego
+    Supongamos ahora que $L$ es acotado. Entonces se extiende de manera única a un funcional lineal acotado $\varphi$ sobre $\mathcal H$. Su núcleo es cerrado y contiene a $\ker L\subset\Poly$, luego
     \[
-        \overline{\ker\phi}^{\,\mathcal H}=\ker\widetilde\phi.
+        \overline{\ker L}^{\,\mathcal H}=\ker\varphi.
     \]
-    Tomemos $q\in\Poly$ con $\phi(q)\neq 0$. Para todo $x\in\mathcal H$,
+    Tomemos $q\in\Poly$ con $L(q)\neq 0$. Para todo $x\in\mathcal H$,
     \[
-        x=\left(x-\frac{\widetilde\phi(x)}{\phi(q)}q\right)+\frac{\widetilde\phi(x)}{\phi(q)}q,
+        x=\left(x-\frac{\varphi(x)}{L(q)}q\right)+\frac{\varphi(x)}{L(q)}q,
     \]
-    y el primer sumando pertenece a $\ker\widetilde\phi$. Por tanto,
+    y el primer sumando pertenece a $\ker\varphi$. Por tanto,
     \[
-        \mathcal H=\ker\widetilde\phi+[q].
+        \mathcal H=\ker\varphi+[q].
     \]
-    Como $q\notin\ker\widetilde\phi$, esa suma es directa. En consecuencia,
+    Como $q\notin\ker\varphi$, esa suma es directa. En consecuencia,
     \[
-        \operatorname{codim}_{\mathcal H}(\overline{\ker\phi})=\operatorname{codim}_{\mathcal H}(\ker\widetilde\phi)=1.
+        \operatorname{codim}_{\mathcal H}(\overline{\ker L})=\operatorname{codim}_{\mathcal H}(\ker\varphi)=1.
     \]
 \end{proof}
 
 \begin{prop}
-    Sea $\mathcal{H}$ un espacio de Hilbert y sean $\phi_1, \dots, \phi_N$ funcionales lineales acotados y linealmente independientes. Entonces, el subespacio
+    Sea $\mathcal{H}$ un espacio de Hilbert y sean $\varphi_1, \dots, \varphi_N$ funcionales lineales acotados y linealmente independientes. Entonces, el subespacio
     \[
-        V = \bigcap_{i=1}^N \ker(\phi_i)
+        M = \bigcap_{i=1}^N \ker(\varphi_i)
     \]
-    tiene codimensión topológica $\operatorname{codim}_{\mathcal{H}}(V) = N$.
+    tiene codimensión topológica $\operatorname{codim}_{\mathcal{H}}(M) = N$.
 \end{prop}
 
 \begin{proof}
-    Al ser cada $\phi_i$ acotado en $\mathcal{H}$, por el Teorema de Riesz existen representantes $f_1, \dots, f_N \in \mathcal{H}$ linealmente independientes tales que $\phi_i(x) = \langle x, f_i \rangle_{\mathcal{H}}$. Sea
+    Al ser cada $\varphi_i$ acotado en $\mathcal{H}$, por el Teorema de Riesz existen representantes $f_1, \dots, f_N \in \mathcal{H}$ linealmente independientes tales que $\varphi_i(x) = \langle x, f_i \rangle_{\mathcal{H}}$. Sea
     \[
         F=[f_1, \dots, f_N].
     \]
     Entonces
     \[
-        x\in V
-        \iff \phi_i(x)=0\ \text{para todo }i
+        x\in M
+        \iff \varphi_i(x)=0\ \text{para todo }i
         \iff \langle x,f_i\rangle_{\mathcal H}=0\ \text{para todo }i
         \iff x\perp F,
     \]
-    de modo que $V=F^{\perp}$. Como los vectores $f_1,\dots,f_N$ son linealmente independientes, se tiene $\dim(F)=N$, y por la descomposición ortogonal $\mathcal H=F^{\perp}\oplus F$ concluimos que
+    de modo que $M=F^{\perp}$. Como los vectores $f_1,\dots,f_N$ son linealmente independientes, se tiene $\dim(F)=N$, y por la descomposición ortogonal $\mathcal H=F^{\perp}\oplus F$ concluimos que
     \[
-        \operatorname{codim}_{\mathcal{H}}(V)=N.
+        \operatorname{codim}_{\mathcal{H}}(M)=N.
     \]
 \end{proof}
 
@@ -131,20 +131,20 @@ La primera caracterización es la que usaremos de manera sistemática.
     Para un subespacio vectorial $V\subset \Poly$, son equivalentes:
     \begin{enumerate}
         \item $\operatorname{codim}_{\Poly}(V)<\infty$;
-        \item existe un sistema de $m\in\mathbb N$ funcionales lineales $\{\phi_1,\dots,\phi_m\}$ tales que
+        \item existe un sistema de $m\in\mathbb N$ funcionales lineales $\{L_1,\dots,L_m\}$ tales que
               \[
-                  V=\bigcap_{j=1}^m \ker \phi_j.
+                  V=\bigcap_{j=1}^m \ker L_j.
               \]
     \end{enumerate}
     Además,
     \[
         \operatorname{codim}_{\Poly}(V)
         =
-        \min\Bigl\{m:\exists\,\{\phi_1,\dots,\phi_m\},\ V=\bigcap_{j=1}^m\ker\phi_j\Bigr\},
+        \min\Bigl\{m:\exists\,\{L_1,\dots,L_m\},\ V=\bigcap_{j=1}^m\ker L_j\Bigr\},
     \]
-    y más precisamente, si $V=\bigcap_{j=1}^m\ker\phi_j$, entonces
+    y más precisamente, si $V=\bigcap_{j=1}^m\ker L_j$, entonces
     \[
-        \operatorname{codim}_{\Poly}(V)=\dim[\phi_1,\dots,\phi_m].
+        \operatorname{codim}_{\Poly}(V)=\dim[L_1,\dots,L_m].
     \]
 \end{prop}
 
@@ -159,35 +159,35 @@ La primera caracterización es la que usaremos de manera sistemática.
         \qquad
         \dim(F)=n.
     \]
-    Tomemos una base $u_1,\dots,u_n$ de $F$ y sea $\lambda_1,\dots,\lambda_n$ la base dual de $F^*$. Para cada $p\in\Poly$, escribiendo de manera única $p=v+f$ con $v\in V$ y $f\in F$, definimos
+    Tomemos una base $u_1,\dots,u_n$ de $F$ y sea $u_1^*,\dots,u_n^*$ la base dual de $F^*$. Para cada $p\in\Poly$, escribiendo de manera única $p=v+f$ con $v\in V$ y $f\in F$, definimos
     \[
-        \phi_j(p):=\lambda_j(f),\qquad j=1,\dots,n.
+        L_j(p):=u_j^*(f),\qquad j=1,\dots,n.
     \]
-    Entonces cada $\phi_j$ es lineal y
+    Entonces cada $L_j$ es lineal y
     \[
-        V=\bigcap_{j=1}^n\ker\phi_j,
+        V=\bigcap_{j=1}^n\ker L_j,
     \]
-    pues $\phi_j(p)=0$ para todo $j$ si y solo si la componente $f$ es nula.
+    pues $L_j(p)=0$ para todo $j$ si y solo si la componente $f$ es nula.
 
     Probemos ahora $(2)\Rightarrow(1)$. Supongamos que
     \[
-        V=\bigcap_{j=1}^m\ker\phi_j.
+        V=\bigcap_{j=1}^m\ker L_j.
     \]
     Sea
     \[
-        r:=\dim[\phi_1,\dots,\phi_m].
+        r:=\dim[L_1,\dots,L_m].
     \]
-    Reordenando si hace falta, podemos suponer que $\phi_1,\dots,\phi_r$ forman una base de ese subespacio. Entonces
+    Reordenando si hace falta, podemos suponer que $L_1,\dots,L_r$ forman una base de ese subespacio. Entonces
     \[
-        V=\bigcap_{i=1}^r\ker\phi_i.
+        V=\bigcap_{i=1}^r\ker L_i.
     \]
     Consideremos la aplicación lineal
     \[
         \Psi:\Poly\to\mathbb C^r,
         \qquad
-        \Psi(p)=(\phi_1(p),\dots,\phi_r(p)).
+        \Psi(p)=(L_1(p),\dots,L_r(p)).
     \]
-    Como $\phi_1,\dots,\phi_r$ son linealmente independientes, $\Psi$ es sobreyectiva. Además,
+    Como $L_1,\dots,L_r$ son linealmente independientes, $\Psi$ es sobreyectiva. Además,
     \[
         \ker\Psi=V.
     \]
@@ -198,7 +198,7 @@ La primera caracterización es la que usaremos de manera sistemática.
     y por tanto
     \[
         \operatorname{codim}_{\Poly}(V)=r=
-        \dim[\phi_1,\dots,\phi_m].
+        \dim[L_1,\dots,L_m].
     \]
     La fórmula del mínimo se deduce de inmediato de esta identidad.
 \end{proof}
@@ -212,11 +212,11 @@ A continuación damos una caracterización de la codimensión algebraica atendie
     \]
     Entonces
     \[
-        F^{\perp}_{\Poly}=\bigcap_{j=1}^m \ker(\phi_j),
+        F^{\perp}_{\Poly}=\bigcap_{j=1}^m \ker(L_j),
         \qquad
-        \phi_j(p):=\langle p,f_j\rangle,
+        L_j(p):=\langle p,f_j\rangle,
     \]
-    donde $\phi_j(p)$ es un elemento de la base dual de $F^*$ y
+    donde cada $L_j$ pertenece a $\Poly^*$ y
     \[
         \operatorname{codim}_{\Poly}(F^{\perp}_{\Poly})
         =
@@ -231,7 +231,7 @@ A continuación damos una caracterización de la codimensión algebraica atendie
 \begin{proof}
     La identidad
     \[
-        F^{\perp}_{\Poly}=\bigcap_{j=1}^m\ker(\phi_j)
+        F^{\perp}_{\Poly}=\bigcap_{j=1}^m\ker(L_j)
     \]
     es inmediata de la definición.
 
@@ -239,9 +239,9 @@ A continuación damos una caracterización de la codimensión algebraica atendie
     \[
         r:=\dim F.
     \]
-    Reordenando si hace falta, podemos suponer que $f_1,\dots,f_r$ forman una base de ese subespacio. Entonces, para cada $j>r$, el vector $f_j$ es combinación lineal de $f_1,\dots,f_r$, y por sesquilinealidad del producto interno se sigue que $\phi_j$ es combinación lineal de $\phi_1,\dots,\phi_r$ y $\cap^r_{i=1} \operatorname{ker}(\phi_i) \subset \operatorname{ker}(\phi_j)$. Por tanto,
+    Reordenando si hace falta, podemos suponer que $f_1,\dots,f_r$ forman una base de ese subespacio. Entonces, para cada $j>r$, el vector $f_j$ es combinación lineal de $f_1,\dots,f_r$, y por sesquilinealidad del producto interno se sigue que $L_j$ es combinación lineal de $L_1,\dots,L_r$ y $\cap^r_{i=1} \operatorname{ker}(L_i) \subset \operatorname{ker}(L_j)$. Por tanto,
     \[
-        F^{\perp}_{\Poly}=\bigcap_{i=1}^r\ker(\phi_i).
+        F^{\perp}_{\Poly}=\bigcap_{i=1}^r\ker(L_i).
     \]
 
     Como existe un isomorfismo entre un espacio y su dual, por el Teorema de Riesz se conserva la independencia lineal. Tomando
@@ -250,7 +250,7 @@ A continuación damos una caracterización de la codimensión algebraica atendie
     \)
     obtenemos por la propiedad del producto escalar que $q \equiv 0$, luego $\alpha_1=\cdots=\alpha_r=0$.
 
-    Aplicando la Proposición~\ref{prop:finite-codim-kernels} a $\phi_1,\dots,\phi_r$, concluimos que
+    Aplicando la Proposición~\ref{prop:finite-codim-kernels} a $L_1,\dots,L_r$, concluimos que
     \[
         \operatorname{codim}_{\Poly}(F^{\perp}_{\Poly})=r.
     \]
@@ -274,7 +274,7 @@ En este trabajo son relevantes los siguientes funcionales de evaluación y evalu
 \end{defn}
 
 \begin{lem}
-    Sea $\mathcal{A} = \{z_1, \dots, z_N\} \subset \C$ un conjunto finito de $N$ puntos distintos. Entonces el conjunto de funcionales de evaluación $\{\delta_{z_1}, \dots, \delta_{z_N}\}$ es linealmente independiente en el espacio dual de funcionales lineales$\Poly^*$.
+    Sea $F = \{z_1, \dots, z_N\} \subset \C$ un conjunto finito de $N$ puntos distintos. Entonces el conjunto de funcionales de evaluación $\{\delta_{z_1}, \dots, \delta_{z_N}\}$ es linealmente independiente en $\Poly^*$.
 \end{lem}
 
 \begin{proof}
@@ -379,29 +379,29 @@ En realidad, ambas responden a una misma construcción: la codimensión de un su
         \dim(\mathcal H/\overline V)\le \dim(F)=m.
     \]
 
-    Probemos $(2)$. Como $M$ es cerrado y de codimensión $m$, existen $m$ funcionales lineales acotados $\Phi_1,\dots,\Phi_m$ tales que
+    Probemos $(2)$. Como $M$ es cerrado y de codimensión $m$, existen $m$ funcionales lineales acotados $\varphi_1,\dots,\varphi_m$ tales que
     \[
-        M=\bigcap_{j=1}^m \ker \Phi_j,
+        M=\bigcap_{j=1}^m \ker \varphi_j,
     \]
     Restringiendo a $\Poly$, obtenemos
     \[
-        M\cap\Poly=\bigcap_{j=1}^m \ker(\Phi_j|_{\Poly}).
+        M\cap\Poly=\bigcap_{j=1}^m \ker L_j,
     \]
-    Las restricciones $\Phi_j|_{\Poly}$ son linealmente independientes: si una combinación lineal se anula en $\Poly$, también se anula en todo $\mathcal H$ por densidad, puesto que todos los funcionales son acotados; y entonces todos los coeficientes son nulos. Por la Proposición~\ref{prop:finite-codim-kernels},
+    donde $L_j:=\varphi_j|_{\Poly}$ para $j=1,\dots,m$. Las restricciones $L_j$ son linealmente independientes: si una combinación lineal se anula en $\Poly$, también se anula en todo $\mathcal H$ por densidad, puesto que todos los funcionales son acotados; y entonces todos los coeficientes son nulos. Por la Proposición~\ref{prop:finite-codim-kernels},
     \[
         \operatorname{codim}_{\Poly}(M\cap\Poly)=m.
     \]
     Además, $M\cap\Poly$ es denso en $M$. En efecto, fijado $x\in M$, tomamos una sucesión $p_n\in\Poly$ tal que $p_n\to x$. Definimos
     \[
-        a_n:=(\Phi_1(p_n),\dots,\Phi_m(p_n))\in\mathbb C^m.
+        a_n:=(\varphi_1(p_n),\dots,\varphi_m(p_n))\in\mathbb C^m.
     \]
-    Como $x\in M$, se tiene $a_n\to 0$, ya que al ser los funcionales acotados, $\Phi_j(p_n)\to\Phi_j(x)=0$ para cada $j$. Consideremos ahora la aplicación lineal
+    Como $x\in M$, se tiene $a_n\to 0$, ya que al ser los funcionales acotados, $\varphi_j(p_n)\to\varphi_j(x)=0$ para cada $j$. Consideremos ahora la aplicación lineal
     \[
         S:\Poly\to\mathbb C^m,
         \qquad
-        S(p)=(\Phi_1(p),\dots,\Phi_m(p)).
+        S(p)=(L_1(p),\dots,L_m(p)).
     \]
-    Las restricciones $\Phi_j|_{\Poly}$ son linealmente independientes, luego $S$ es sobreyectiva. Elegimos polinomios $u_1,\dots,u_m\in\Poly$ tales que $S(u_i)=e_i$, donde $e_i$ es la base canónica de $\mathbb C^m$, y definimos
+    Las restricciones $L_j$ son linealmente independientes, luego $S$ es sobreyectiva. Elegimos polinomios $u_1,\dots,u_m\in\Poly$ tales que $S(u_i)=e_i$, donde $e_i$ es la base canónica de $\mathbb C^m$, y definimos
     \[
         R:\mathbb C^m\to\Poly,
         \qquad
@@ -501,11 +501,11 @@ A continuación fijamos un modelo elemental en el que la cadena se rompe por pri
         \langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m(z)+p'(2)\overline{q'(2)},
         \qquad p,q\in\Poly,
     \]
-    y el operador de multiplicación $\mathcal D p(z)=zp(z)$. Para analizar su acotación, calculamos la norma de $\mathcal D p$:
+    y el operador de multiplicación $\D p(z)=zp(z)$. Para analizar su acotación, calculamos la norma de $\D p$:
     \[
-        \|\mathcal D p\|_S^2=\int_{\mathbb S_1}|zp(z)|^2\,d\mathbf m(z)+|(\mathcal D p)'(2)|^2=\|p\|_{L^2(\mathbf m)}^2+|p(2)+2p'(2)|^2.
+        \|\D p\|_S^2=\int_{\mathbb S_1}|zp(z)|^2\,d\mathbf m(z)+|(\D p)'(2)|^2=\|p\|_{L^2(\mathbf m)}^2+|p(2)+2p'(2)|^2.
     \]
-    Podemos construir una sucesión explícita de polinomios $\{p_n\}_{n\in\mathbb{N}}$ para comprobar que $\mathcal D$ no es acotado. Consideremos:
+    Podemos construir una sucesión explícita de polinomios $\{p_n\}_{n\in\mathbb{N}}$ para comprobar que $\D$ no es acotado. Consideremos:
     \[
         p_n(z) = \frac{n^2}{2^n} \left( z^n - \frac{n}{2(n+1)} z^{n+1} \right).
     \]
@@ -527,21 +527,21 @@ A continuación fijamos un modelo elemental en el que la cadena se rompe por pri
     \]
     mientras que
     \[
-        \|\mathcal D p_n\|_S^2 = \|p_n\|_{L^2(\mathbf m)}^2 + |p_n(2)|^2 \to \infty.
+        \|\D p_n\|_S^2 = \|p_n\|_{L^2(\mathbf m)}^2 + |p_n(2)|^2 \to \infty.
     \]
-    Esto demuestra que el operador $\mathcal D$ no es acotado globalmente, es decir, $Q_0(\mathcal D)=\infty$. 
+    Esto demuestra que el operador $\D$ no es acotado globalmente, es decir, $Q_0(\D)=\infty$. 
     
     Sin embargo, la no acotación proviene del término libre $p(2)$. Si consideramos el subespacio de codimensión algebraica 1:
     \[
         V = \{p \in \Poly : p(2) = 0\},
     \]
-    para cualquier $p \in V$ se tiene que $(\mathcal D p)'(2) = p(2) + 2p'(2) = 2p'(2)$. Evaluando nuevamente la norma obtenemos:
+    para cualquier $p \in V$ se tiene que $(\D p)'(2) = p(2) + 2p'(2) = 2p'(2)$. Evaluando nuevamente la norma obtenemos:
     \[
-        \|\mathcal D p\|_S^2 = \|p\|_{L^2(\mathbf m)}^2 + |2p'(2)|^2 \le 4\left(\|p\|_{L^2(\mathbf m)}^2 + |p'(2)|^2\right) = 4\|p\|_S^2.
+        \|\D p\|_S^2 = \|p\|_{L^2(\mathbf m)}^2 + |2p'(2)|^2 \le 4\left(\|p\|_{L^2(\mathbf m)}^2 + |p'(2)|^2\right) = 4\|p\|_S^2.
     \]
     Por tanto, la restricción del operador a este subespacio es acotada, lo que implica que
     \[
-        Q_1(\mathcal D) \le 2 < \infty.
+        Q_1(\D) \le 2 < \infty.
     \]
 \end{exm}
 

@@ -865,6 +865,171 @@ Note that in the case of the multiplication operator, $\mathcal{D}$, the infinit
 
 \noindent
 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+\noindent SOBRE EL LEMA IMPORTANTE 
+    
+ Dado un espacio vectorial $X$ 
+es la suma directa algebraica (o suma directa en la categoría de espacios vectoriales) 
+$X=  M\oplus N$ cuando se cumple cualquiera de las siguientes condiciones equivalentes 
+\begin{enumerate}
+    \item $S: M\times N \to X$ es lineal y biyectiva, siendo $S(m,n)=m+n$.
+    \item $X=M+N$ y $M\cap N=\{0\}.$
+\end{enumerate}
+\end{defi}
+\noindent En estas condiciones la inversa de la suma está bien definida y $S^{-1}: X \to M \times N$ permite descomponer cualquier $x\in M+N$ de forma única como $x=m+n, m\in M, n\in N$. De esta forma, 
+$ S^{-1}=\left(P_{M},P_{N}\right)$. A las aplicaciones  $
+P_{M}:X\to M, P_N:X\to N$ se les llama proyecciones canónicas y se denomina proyección canónica. En este caso, se dice que la suma es directa $X=M\oplus N$
+
+\noindent \begin{lem} Sean V un espacio vectorial, $W$ un hiperplano  de $V$, entonces si $u\in V\setminus W$ se tiene que 
+$$
+V= W \oplus [u]
+$$
+\end{lem}
+
+\begin{proof}
+    
+\end{proof}
+
+\noindent En espacios de Hilbert no es cierto en general que la suma de subespacios vectoriales cerrados sea cerrada, sin embargo si uno de ellos es cerrado sí es cierto que la suma es cerrada. Lo vemos a continuación: (apuntes de Fernando Revilla, autónoma, wikipedia).
+
+\begin{lem} Sea $\mathcal{H}$ un espacio de Hilbert, $M$ subespacio vectorial cerrado y $F$ subespacio vectorial de dimensión finita entonces $M+F$ es cerrado. 
+\end{lem}
+\begin{proof} Sea $(z_k)\subset M+F$, con $(z_k)\to z$ tenemos que probar que $z\in M+F$. Tenemos que $z_k=x_k+y_k$ con $x_k\in M$ y $y_k\in F$ con $x_k=\pi_M(z_k), y_k=\pi_F(y_k)$.   En primer lugar, puesto que las proyecciones ortogonales a subespacios vectoriales cerrados existen siempre y son continuas se tiene que la sucesión $(y_k)$ es acotada, puesto que $(z_k)$ es acotada. Ahora es cuando utilizaremos el teorema de Riesz de los espacios de dimensión finita y puesto que $F$ tiene {\bf dimensión finita} se tiene que una subsucesión de $(y_k)$, que llamaremos igual sin pérdida de generalidad,  es convergente digamos a un cierto $y\in F$. Es decir, $\displaystyle{\lim_{n\to \infty} y_k=y\in F}$. Puesto que $x_n=z_n-y_n$ se tiene que 
+$$
+\lim_{n\to \infty} x_n= \lim_{n\to \infty} z_n-y_n=z-y,
+$$
+\noindent y puesto que $M$ es {\bf cerrado} entonces $z-y\in M$; concluímos que $z=x+y\in M+N$ como queríamos demostrar. 
+\end{proof}
+
+\begin{prop} Sea $\mathcal{H}$ un espacio de Hilbert y $E,F$ subespacios vectoriales de $\mathcal{H}$. Supongamos que $F$ es cerrado. Entonces, 
+$$
+\overline{E+F}= \overline{E}+F
+$$   
+\end{prop}
+
+\begin{proof} Utilizando el lema anterior, puesto que  
+$\overline{E}$ es cerrado y $F$ es finito dimensional se tiene que la suma es cerrada, es decir, 
+$$
+\overline{ \overline{E}+F}= \overline{E} + F
+$$
+\noindent Luego la primera inclusión es clara, ya que:
+$$
+E+F \subset \overline{E}+F \Rightarrow \overline{E+F} \subset  \overline{E}+F
+$$
+
+\noindent La otra inclusión es obvia ya que $E\subset \overline{E+F}$ luego $\overline{E}\subset \overline{E +F}$ y $F\subset E+F \subset \overline{E+ F}$  luego  
+ $$
+E+F   \subset \overline{E+F}.    
+$$
+
+\end{proof}
+
+
+
+\begin{prop} Sea $\mathcal{H}$ un espacio de Hilbert que es complección de los polinomios con respecto a un producto interno. 
+\begin{enumerate}
+    \item Si $W \subset \mathbb{P}[z]$ satisface que ${\it codim}_{\mathbb{P}}(W)=m <\infty$, entonces 
+    $$
+    {\it cod}_{\mathcal{H}}(\overline{W}) \leq m. 
+    $$
+    \item Si $V\subset \mathcal{H}$ es cerrado y ${\it codim}_{\mathcal{H}}(V)=m<\infty$, entonces 
+    $$ \overline{V \cap \mathbb{P}}= V, \qquad {\it codim}_{\mathbb{P}}(V \cap \mathbb{P})=m.
+    $$
+\end{enumerate}
+    
+\end{prop}
+
+
+
+
+\begin{proof}
+
+\textcolor{red}{demostración que habría que hacer}
+
+
+\noindent \textcolor{red}{Puesto que la codimensión de $W$ en $\mathbb{P}[z]$ es $m$ hay un subespacio vectorial $F$ en $\mathbb{P}[z]$ de dimensión $m$ de modo que 
+$$
+\mathbb{P}[z]=W + F
+$$
+}
+
+\noindent La prueba de este resultado para el caso de codimensión uno aparece en un documento de Maximenko, la reproducimos aquí: 
+
+\noindent Supongamos que ${\it dim}(V/W) = 1$. Elegímos una base en dicho espacio $\{[u]\}$. Ahora consideramos un representante no nulo de la clase, $u\in V$, claramente $u\notin W$. Demostremos que 
+$V \subset  W + [u]$. 
+Sea $x \in V$, puesto que  $x +W \in  V/W = [u]$, existe $\lambda \in \CC$ tal que  $x +W = \lambda u +W$, por lo que $x-\lambda u\in W$. Además esta descomposición es única.  
+ 
+
+\noindent Consideremos ahora  que la dimensión de $V/W$ es $m$ y consideramos una base en dicho espacio $\mathfrak{B}=\{[u_1],\dots, [u_k]\}$ y consideramos vectores representantes de la clase $[u_i]=u_i+W, i=1,\dots,k$. 
+
+\noindent Vamos a probar que $V=W+[u_1,\dots,u_k]$
+. Una inclusión es obvia, vemos que $V\subset W+[u_1,\dots,u_k]$. Sea $x\in V$, consideramos la clase $[v]=v+W\subset V/W$, entonces existen $\lambda_i,i=1,\dots,k$ tal que 
+$$
+v+W=\lambda_1[u_1]+ \dots +\lambda_k[u_k]
+$$
+
+\noindent luego $v+W=\lambda_1u_1+\dots+\lambda_ku_k.$ Entonces 
+$$
+v=(v-\lambda_1u_1+\dots-\lambda_ku_k)+\lambda_1u_1+\dots+\lambda_ku_k
+$$
+
+
+La pregunta es la siguiente, entonces consideremos $F=[u_1,\dots,u_n]$ y se tiene que 
+$$
+V=W\oplus F, \qquad F=[u_1,\dots,u_k]
+$$
+
+\noindent 
+\noindent Pasando a la adherencia, utilizando los resultados anteriores se tiene que
+$$
+\mathcal{H}=\overline{\mathbb{P}[z]}=\overline{W + F}=\overline{W} + F
+$$
+por lo que la codimensión en $\mathcal{H}$ de $\overline{W}$ es menor o igual $m$.
+
+
+
+\noindent Vemos la demostración de  la segunda parte. Sea $V$ un subespacio cerrado en $\mathcal{H}$ con codimensión $m$ en dicho espacio. Entonces, existe una aplicación lineal y continua $L$
+$$
+L: \mathcal{H} \to \CC^m, 
+$$
+
+\noindent sobreyectiva. Puesto que $L\neq 0$ y es lineal y continua, es claro que $L/\mathbb{P}[z]\neq 0$ ya que en otro caso, por densidad y continuidad $L=0;$ Además, 
+$$
+V \cap \mathbb{P}[z]= {\it Ker (L/\mathbb{P}[z])}
+$$
+
+\noindent por lo que ${\it codim}$
+${\it cod}_{\mathbb{P}} V \cap \mathbb{P}[z]=m$. 
+
+\noindent Vamos a probar ahora que $\overline{V\cap \mathbb{P}[z]}=V$. En efecto, siempre 
+$$
+\overline{V\cap \mathbb{P}[z]} \subset \overline{V}=V. 
+$$
+
+\noindent Probaremos que 
+$$
+V \subset \overline{V\cap \mathbb{P}[z]}. 
+$$
+
+\noindent Sea $f\in V= {\it Ker} L$, entonces existe una sucesión de polinomios tal que $P_n \to f$; y puesto que $L$ es continua se tiene que $L(P_n)=a_n\to L(f)=0.$ 
+\noindent Ahora, puesto que $L$ es sobreyectiva,  podemos encontrar polinomios $q_1,\dots,q_m$ de modo que $L(q_k)=e_k$, $k=1,\dots,m$ y de modo que $R=L/[q_1,\dots,q_m]:[q_1,\dots,q_m]\to \CC^m$ es un isomorfismo. Consideramos los polinomios $R^{-1}(a_n)=Q_n$, entonces veamos que  
+$$
+Q_n- P_n\in {\it Ker}(L) \text{ ya que }
+L(Q_n-P_n)= a_n-a_n=0,
+$$
+
+\noindent y por otra parte
+$$
+\Vert P_n -Q_n -f \Vert \leq  \Vert P_n -f \Vert + \Vert  Q_n \Vert \to 0
+$$ 
+
+\noindent ya que $Q_n=R^{-1}(a_n)\to 0$, ya que $R^{-1}$ es continua y $a_n \to 0.$
+\end{proof}
+
+
+
+
 \begin{thebibliography}{Man96}
 
 %\bibitem{arom} Aron,R; Garcia,D, Pellegrino,D. Teixeira,V., 
