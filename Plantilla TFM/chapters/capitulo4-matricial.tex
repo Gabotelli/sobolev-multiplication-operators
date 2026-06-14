@@ -3,7 +3,7 @@
 
 \section{Matriz de Hessenberg y secciones truncadas}
 
-Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, su representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ viene dada por los coeficientes $\langle Te_j,e_i\rangle$. En este capítulo aplicaremos la misma construcción a $\D p(z)=zp(z)$, con la diferencia de que no necesitamos su acotación en toda $\mathcal H$: basta que $\D$ esté definida en el subespacio denso $\Poly$ y que $\D\phi_j=z\phi_j\in\Poly$ para todo $j$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y valores singulares de manera directa.
+Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, su representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ viene dada por los coeficientes $\langle Te_j,e_i\rangle$. En este capítulo aplicaremos la misma construcción a $\D p(z)=zp(z)$, con la diferencia de que no necesitamos su acotación en toda $\mathcal H$, basta que $\D$ esté definida en el subespacio denso $\Poly$ y que $\D\phi_j=z\phi_j\in\Poly$ para todo $j$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y valores singulares de manera directa. Esta perspectiva se sitúa dentro del enfoque matricial desarrollado recientemente para polinomios ortogonales y cantidades espectrales asociadas; véanse \cite{EGT23,EG25-2}.
 
 \begin{defn}\label{def:hessenberg}
 	Sea $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev. La representación matricial de $\D$ es
@@ -29,9 +29,9 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 
 \begin{defn}\label{def:seccion_truncada}
 	Para cada $n\in\mathbb N$, sea
-	\[
+	\(
 		\mathbb P_n:=[\phi_0,\dots,\phi_n],
-	\]
+	\)
 	y sea $\pi_n:\mathcal H\to\mathbb P_n$ la proyección ortogonal. Definimos la aplicación lineal
 	\[
 		\mathcal D_n:\mathbb P_n\to\mathbb P_n,
@@ -48,15 +48,13 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 	Como $\mathbb P_n\subset\Poly$ y $\D(\mathbb P_n)\subset\Poly$, la aplicación $\mathcal D_n$ está bien definida.
 \end{rmk}
 
-Estas truncaciones son la primera escala finita del operador de multiplicación. En particular, permiten relacionar la geometría de $\mathbb P_n$ con cantidades espectrales concretas, y constituyen el punto de entrada natural para recuperar, en dimensión $n+1$, la información codificada por el polinomio ortonormal siguiente.
-
 \begin{prop}\label{prop:charpoly_truncada}
 	Sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev en $(\Poly, \langle \cdot,\cdot\rangle_S)$. Para todo \(n\ge0\), sea
-	\(\mathcal D_n:\mathbb P_n\to\mathbb P_n\) la compresión de \(\D\) definida en la Definición~\ref{def:seccion_truncada} y sea \(\mathbf D_n\) su matriz en la base \(\{\phi_0,\dots,\phi_n\}\).
+	\(\mathbf D_n\) la sección principal de \(\D\) en la base \(\{\phi_0,\dots,\phi_n\}\).
 	Entonces existe una constante
-	\[
+	\(
 		\kappa_n\in\C\setminus\{0\}
-	\]
+	\)
 	tal que
 	\[
 		\det(z\mathbf I_{n+1}-\mathbf D_n)
@@ -68,21 +66,42 @@ Estas truncaciones son la primera escala finita del operador de multiplicación.
 \end{prop}
 
 \begin{proof}
-	Como la multiplicación por $z$ aumenta el grado en una unidad, la matriz $\mathbf D_n$ es de Hessenberg superior. Por \cite[\S3.1]{szego1975orthogonal},
+	Para cada $j=0,\dots,n$, la expansión de $z\phi_j$ en la base ortonormal viene dada por
 	\[
-		\det(z\mathbf I_{n+1}-\mathbf D_n)=\frac{1}{\gamma_{n+1}}\phi_{n+1}(z),
+		z\phi_j(z)=\sum_{i=0}^{j+1} d_{i,j}\phi_i(z).
 	\]
-	donde $\gamma_{n+1}$ es el coeficiente director de $\phi_{n+1}$. Tomando
+	Sea ahora $z_0\in\C$ un cero de $\phi_{n+1}$. Evaluando en $z_0$, obtenemos para cada
+	$j=0,\dots,n$
 	\[
-		\kappa_n:=\frac{1}{\gamma_{n+1}},
+		z_0\phi_j(z_0)=\sum_{i=0}^{n} d_{i,j}\phi_i(z_0),
 	\]
-	obtenemos la primera igualdad. Además, para toda matriz cuadrada $A$ se tiene
+	pues el término con $\phi_{n+1}(z_0)$ desaparece. Si definimos
+	\[
+		v(z_0):=(\phi_0(z_0),\dots,\phi_n(z_0))^t\in\C^{n+1},
+	\]
+	entonces $v(z_0)\neq 0$, ya que $\phi_0$ es constante no nula, y la identidad anterior se escribe como
+	\[
+		\mathbf D_n^t v(z_0)=z_0 v(z_0).
+	\]
+	Por tanto, todo cero de $\phi_{n+1}$ es un autovalor de $\mathbf D_n^t$, es decir,
+	\[
+		\phi_{n+1}(z)=0
+		\quad\Longrightarrow\quad
+		\det(z\mathbf I_{n+1}-\mathbf D_n^t)=0.
+	\]
+	Además, $\det(z\mathbf I_{n+1}-\mathbf D_n^t)$ y $\phi_{n+1}(z)$ son polinomios de
+	grado $n+1$. Como todos los ceros del segundo son también ceros del primero, se sigue que existe una constante
+	$\kappa_n\in\C\setminus\{0\}$ tal que
+	\[
+		\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z).
+	\]
+	Además, para toda matriz cuadrada $A$ se tiene
 	\[
 		\det(z\mathbf I-A^t)=\det\bigl((z\mathbf I-A)^t\bigr)=\det(z\mathbf I-A).
 	\]
 	Aplicando esto a $A=\mathbf D_n$, concluimos que
 	\[
-		\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\det(z\mathbf I_{n+1}-\mathbf D_n).
+		\det(z\mathbf I_{n+1}-\mathbf D_n)=\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z).
 	\]
 \end{proof}
 
@@ -103,15 +122,15 @@ Estas truncaciones son la primera escala finita del operador de multiplicación.
 \end{proof}
 
 \begin{rmk}
-	La Proposición~\ref{prop:charpoly_truncada} identifica a $\mathbf D_n$ como una realización matricial finita cuya información espectral queda gobernada por $\phi_{n+1}$. En particular, los autovalores de $\mathbf D_n$ y de $\mathbf D_n^t$ coinciden con los ceros del siguiente polinomio ortonormal.
+	La Proposición~\ref{prop:charpoly_truncada} identifica a $\mathbf D_n$ como una representación matricial finita cuya información espectral queda determinada por $\phi_{n+1}$. En particular, los autovalores de $\mathbf D_n$ y de $\mathbf D_n^t$ coinciden con los ceros, luego el estudio de los ceros de $\phi_{n+1}$ pueden abordarse mediante el análisis de $\mathbf D_n$.
 \end{rmk}
 
-\section{Valores singulares de \texorpdfstring{$\mathbf D_n$}{Dn}}
+\section{Valores singulares de \texorpdfstring{$\mathbf D_n$}{Dn} y relación con el índice \texorpdfstring{$Q_k(\D)$}{Qk(D)}}
 
-Además del espectro, necesitaremos medir el tamaño de estas truncaciones en distintas direcciones. Para ello introducimos ahora sus valores singulares, que proporcionan una noción intrínseca de amplificación matricial y serán el objeto adecuado para la lectura asintótica de la sección final.
+Siguiendo con la filosofía de los capítulos anteriores, introduciremos ahora los valores singulares de estas representaciones matriciales y veremos cómo se relacionan con $Q_k(\D)$ y $c_k(\D)$.
 
 \begin{defn}\label{def:sigma_kn}
-	Para $n\ge0$, sea \(\mathcal D_n:\mathbb P_n\to\mathbb P_n\) la compresión de \(\D\) definida en la Definición~\ref{def:seccion_truncada} y sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) su matriz en la base \(\{\phi_0,\dots,\phi_n\}\).
+	Para $n\ge0$, sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la sección principal de \(\mathbf D\) en la base \(\{\phi_0,\dots,\phi_n\}\).
 	Denotamos por
 	\[
 		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
@@ -123,11 +142,11 @@ Además del espectro, necesitaremos medir el tamaño de estas truncaciones en di
 	Se tiene $\sigma_{0,n}=\|\mathbf D_n\|_2$. La indexación desde $0$ sitúa en $\sigma_{0,n}$ el mayor valor singular de la truncación.
 \end{rmk}
 
-Para explotar esta jerarquía necesitaremos una herramienta variacional estándar. Usaremos la caracterización min--max de Courant--Fischer para valores singulares; véase, por ejemplo, \cite[Section~3.1]{horn2012matrix}.
+De manera análoga al desarrollo hecho con operadores usando los números de Gelfand y el índice $Q_k(\D)$, necesitaremos una herramienta variacional para las representaciones matriciales. El estudio de estas truncaciones mediante valores singulares encaja además en la línea de trabajo matricial reciente sobre polinomios ortogonales, desigualdades espectrales y localización de ceros; cf. \cite{EG25-2}. Para ello usaremos la caracterización min--max de Courant--Fischer para valores singulares; véase \cite[Section~3.1]{horn2012matrix}.
 
 \begin{lem}
 	\label{lem:minmax_sigma_Dn}
-	Sea \(n\ge0\) y sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la matriz de la compresión \(\mathcal D_n\) de la Definición~\ref{def:seccion_truncada}. Entonces, para todo \(0\le k\le n\),
+	Sea \(n\ge0\) y sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la sección principal de \(\mathbf D\) en la base \(\{\phi_0,\dots,\phi_n\}\). Entonces, para todo \(0\le k\le n\),
 	\[
 		\sigma_{k,n}
 		=
@@ -147,9 +166,9 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 
 \begin{lem}\label{lem:bloque_gram_truncadas}
 	Sea \(\mathbf D=(d_{i,j})_{i,j\ge0}\) una matriz de Hessenberg superior infinita y, para cada \(n\ge0\), sea
-	\[
+	\(
 		\mathbf D_n=(d_{i,j})_{0\le i,j\le n}
-	\]
+	\)
 	su sección principal de orden \(n+1\). Entonces
 	\[
 		(\mathbf D_{n+1}^*\mathbf D_{n+1})_n
@@ -167,7 +186,7 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 		\end{pmatrix}
 		\in\mathcal M_{n+1}(\C).
 	\]
-	En particular, \(H_n\) es hermitiana semidefinida positiva.
+	En particular, \(H_n\) es hermitiana semidefinida positiva (HPSD).
 \end{lem}
 
 \begin{proof}
@@ -176,12 +195,12 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 		\mathbf D_{n+1}=
 		\begin{pmatrix}
 			\mathbf D_n & u_n         \\
-			v_n^*       & d_{n+1,n+1}
+			w_n         & d_{n+1,n+1}
 		\end{pmatrix}
 	\]
-	para ciertos vectores \(u_n,v_n\in\C^{n+1}\), donde
+	para ciertos vectores \(u_n\in\C^{n+1}\) y \(w_n\in(\C^{n+1})^*\), donde
 	\[
-		v_n=(0,\dots,0,d_{n+1,n})^t.
+		w_n=(0,\dots,0,d_{n+1,n}).
 	\]
 	Al multiplicar por bloques se obtiene que el bloque principal superior izquierdo de \(\mathbf D_{n+1}^*\mathbf D_{n+1}\) es
 	\[
@@ -193,7 +212,7 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 			0      & \cdots & 0      & |d_{n+1,n}|^2
 		\end{pmatrix}.
 	\]
-	La última matriz es hermitiana semidefinida positiva.
+	La última matriz es hermitiana semidefinida positiva (HPSD).
 \end{proof}
 
 \begin{prop}\label{prop:monotonia_sigma_kn}
@@ -202,9 +221,9 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
 	\]
 	los valores singulares de \(\mathbf D_n\) ordenados de forma decreciente. Entonces, para todo \(k\ge0\) fijo, la sucesión
-	\[
+	\(
 		\{\sigma_{k,n}\}_{n\ge k}
-	\]
+	\)
 	es creciente. En particular,
 	\[
 		\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty]
@@ -228,13 +247,14 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 		\mathbf D_n^*\mathbf D_n+H_n,
 		\qquad H_n\succeq0.
 	\]
-	La monotonía de Weyl para perturbaciones hermitianas semidefinidas positivas da
+	La monotonía de Weyl para perturbaciones hermitianas semidefinidas positivas y el teorema de entrelazamiento de Cauchy para submatrices principales dan, en la forma estándar, las desigualdades siguientes; véase \cite[Chapter~4]{horn2012matrix}.
+	Por tanto,
 	\[
 		\lambda_{k,n}
 		\le
 		\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr),
 	\]
-	Por el teorema de entrelazamiento de Cauchy aplicado a la submatriz principal \((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\),
+	y además
 	\[
 		\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr)
 		\le
@@ -254,27 +274,41 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 \end{proof}
 
 \begin{defn}\label{def:sigma_operador}
-	Para cada \(k\ge0\), donde \(\sigma_{k,n}\) está definido en la Definición~\ref{def:sigma_kn}, definimos
+	Para cada \(k\ge0\), donde \(\sigma_{k,n}\) está definido en la Definición~\ref{def:sigma_kn}, definimos como valores singulares de la representación matricial \(\mathbf D\) los números
 	\[
-		\sigma_k(\D):=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
+		\sigma_k(\mathbf D):=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
 	\]
 \end{defn}
 
 \begin{prop}\label{prop:sigma_qk}
-	Para todo \(n\ge0\), sea \(\mathcal D_n:\mathbb P_n\to\mathbb P_n\) la compresión de \(\D\) definida en la Definición~\ref{def:seccion_truncada}, sea \(\mathbf D_n\) su matriz en la base \(\{\phi_0,\dots,\phi_n\}\) y sean \(\sigma_{0,n}\ge\cdots\ge\sigma_{n,n}\ge0\) sus valores singulares. Entonces, para todo \(0\le k\le n\),
+	Para todo \(n\ge0\), sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la sección principal de \(\mathbf D\) en la base \(\{\phi_0,\dots,\phi_n\}\) y sean \(\sigma_{0,n}\ge\cdots\ge\sigma_{n,n}\ge0\) sus valores singulares. Entonces, para todo \(0\le k\le n\),
 	\[
-		\sigma_{k,n}\le Q_k(\D).
+		\sigma_{k,n}\le Q_k(\mathcal D).
 	\]
 \end{prop}
 
 \begin{proof}
 	Fijemos $n\ge0$ y $0\le k\le n$. Sea $V\subset\Poly$ un subespacio con
-	\[
+	\(
 		\operatorname{codim}_{\Poly}(V)<k+1.
-	\]
+	\)
 	Consideremos
-	\[
+	\(
 		V_n:=V\cap\mathbb P_n.
+	\)
+	La aplicación natural
+	\[
+		\mathbb P_n/(V\cap\mathbb P_n)\longrightarrow \Poly/V,
+		\qquad
+		p+(V\cap\mathbb P_n)\longmapsto p+V,
+	\]
+	es inyectiva. En efecto, si $p\in\mathbb P_n$ verifica $p+V=V$, entonces $p\in V$, y por tanto $p\in V\cap\mathbb P_n$.
+	En consecuencia,
+	\[
+		\operatorname{codim}_{\mathbb P_n}(V\cap\mathbb P_n)
+		\le
+		\operatorname{codim}_{\Poly}(V)
+		<k+1.
 	\]
 	Al pasar a coordenadas en la base $\{\phi_0,\dots,\phi_n\}$ obtenemos un subespacio $S_n\subset\mathbb C^{n+1}$ con codimensión menor que $k+1$, o equivalentemente con dimensión al menos $n+1-k$. Por Courant--Fischer,
 	\[
@@ -287,9 +321,9 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 		\|\mathbf D_nx\|_2=\|\pi_n(\D p)\|_S\le \|\D p\|_S\le \|\D|_V\|_S\,\|p\|_S=\|\D|_V\|_S\,\|x\|_2.
 	\]
 	Por tanto,
-	\[
+	\(
 		\sigma_{k,n}\le \|\D|_V\|_S.
-	\]
+	\)
 	Tomando ínfimo sobre todos los subespacios $V$ con codimensión $<k+1$, obtenemos
 	\[
 		\sigma_{k,n}\le Q_k(\D).
@@ -297,29 +331,28 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 \end{proof}
 
 \begin{cor}\label{cor:sigma_operador_qk}
-	Para el operador de multiplicación \(\D\) sobre \((\Poly,\langle\cdot,\cdot\rangle_S)\), para todo \(k\ge0\) se tiene
+	Para el operador \(\D\) sobre \((\Poly,\langle\cdot,\cdot\rangle_S)\) y su representación matricial \(\mathbf D\), para todo \(k\ge0\) se tiene
 	\[
-		\sigma_k(\D)\le Q_k(\D).
+		\sigma_k(\mathbf D)\le Q_k(\D).
 	\]
 \end{cor}
 
 \begin{proof}
 	Para cada $n\ge k$, la Proposición~\ref{prop:sigma_qk} da
-	\[
+	\(
 		\sigma_{k,n}\le Q_k(\D).
-	\]
+	\)
 	Pasando al límite cuando $n\to\infty$, obtenemos
 	\[
-		\sigma_k(\D)\le Q_k(\D).
+		\sigma_k(\mathbf D)\le Q_k(\D).
 	\]
 \end{proof}
 
 \begin{thm}\label{thm:sigma0_q0}
-	Para el operador de multiplicación \(\D\) y sus secciones principales \(\mathbf D_n\), se tiene
+	Para el operador \(\D\) y su representación matricial \(\mathbf D\), se tiene
 	\[
-		\sigma_0(\D)=Q_0(\D),
+		\sigma_0(\mathbf D)=Q_0(\D),
 	\]
-	entendiendo la igualdad en la recta real extendida \([0,+\infty]\).
 \end{thm}
 
 \begin{proof}
@@ -352,37 +385,35 @@ Para explotar esta jerarquía necesitaremos una herramienta variacional estánda
 	\]
 	Como la sucesión \(\{\sigma_{0,n}\}_{n\ge0}\) es creciente por la Proposición~\ref{prop:monotonia_sigma_kn}, su límite coincide con su supremo. Se concluye que
 	\[
-		\sigma_0(\D)=Q_0(\D).
+		\sigma_0(\mathbf D)=Q_0(\D).
 	\]
 \end{proof}
 
 \begin{cor}\label{cor:caso_acotado_ck}
 	Si el operador de multiplicación \(\D\) se extiende como elemento de \(\mathcal L(\mathcal H)\), entonces para todo \(k\ge0\),
 	\[
-		\sigma_k(\D)\le c_k(\D).
+		\sigma_k(\mathbf D)\le c_k(\D).
 	\]
 \end{cor}
 
 \begin{proof}
-	Por la Proposición~\ref{prop:sigma_qk},
-	\[
-		\sigma_k(\D)\le Q_k(\D).
-	\]
+	Por el Corolario~\ref{cor:sigma_operador_qk},
+	\(
+		\sigma_k(\mathbf D)\le Q_k(\D).
+	\)
 	Como \(\D\in\mathcal L(\mathcal H)\), el Teorema~\ref{thm:equivalencia_Qk_Gelfand} da
-	\[
+	\(
 		Q_k(\D)=c_k(\D).
-	\]
+	\)
 	Se concluye que
 	\[
-		\sigma_k(\D)\le c_k(\D).
+		\sigma_k(\mathbf D)\le c_k(\D).
 	\]
 \end{proof}
 
 \section{Conexión con el teorema de estabilización}
 
-\subsection{Caso general con átomos finitos}
-
-Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en el capítulo anterior. A partir de ellas traducimos el umbral de estabilización al lenguaje de valores singulares de las secciones principales.
+Una vez vistas las relaciones de los valores singulares $\sigma_k(\mathbf D)$ de la representación matricial con los índices $Q_k(\D)$ y $c_k(\D)$ del operador, podemos aplicar los resultados del Teorema~\ref{thm:estabilizacion} para obtener información sobre la estabilización de los valores singulares de las secciones principales.
 
 \begin{prop}\label{prop:sigma_kn_general_cota_inferior_R}
 	Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
@@ -394,7 +425,7 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 		\sum_{c\in F} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly.
 	\]
-	Sea $N:=|F|$ y, para cada $n\ge0$, sean $\mathcal D_n:\mathbb P_n\to\mathbb P_n$ la compresión de $\D$ y $\sigma_{0,n}\ge\cdots\ge\sigma_{n,n}\ge0$ los valores singulares de su matriz $\mathbf D_n$ en la base $\{\phi_0,\dots,\phi_n\}$. Entonces, para todo $k\ge N$ existe $N_k$ tal que
+	Sea $N:=|F|$ y, para cada $n\ge0$, sea la aplicación lineal $\mathcal D_n:\mathbb P_n\to\mathbb P_n$ de la Definición \ref{def:seccion_principal}, y sea $\sigma_{0,n}\ge\cdots\ge\sigma_{n,n}\ge0$ los valores singulares de $\mathbf D_n\in\mathcal M_{n+1}(\C)$ la sección principal de $\mathbf D$ en la base $\{\phi_0,\dots,\phi_n\}$. Entonces, para todo $k\ge N$ existe $N_k$ tal que
 	\[
 		\sigma_{k,n}\ge R,
 		\qquad n\ge N_k.
@@ -454,7 +485,7 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 \end{proof}
 
 \begin{thm}\label{thm:igualdad_sigma_qN_general}
-	Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+	Sean $R>0$ y $F\subset\C$ finito, consideremos sobre $\Poly$ el producto escalar
 	\[
 		\langle p,q\rangle_S
 		=
@@ -463,43 +494,41 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 		\sum_{c\in F} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly.
 	\]
-	Si $N:=|F|$, entonces
+	Sea $\mathbf D$ la representación matricial del operador $\D$. Si $N:=|F|$, entonces
 	\[
-		\sigma_N(\D)=Q_N(\D)=R.
+		\sigma_N(\mathbf D)=Q_N(\D)=R.
 	\]
 \end{thm}
 
 \begin{proof}
 	Por las Proposiciones~\ref{prop:qk_general_cota_inferior_R} y \ref{prop:qN_general_cota_superior_R},
-	\[
+	\(
 		R\le Q_N(\D)\le R.
-	\]
+	\)
 	Luego
 	\[
 		Q_N(\D)=R.
 	\]
-	Además, por la Proposición~\ref{prop:sigma_qk},
-	\[
-		\sigma_N(\D)\le Q_N(\D)=R.
-	\]
+	Además, por el Corolario~\ref{cor:sigma_operador_qk},
+	\(
+		\sigma_N(\mathbf D)\le Q_N(\D)=R.
+	\)
 	Por otra parte, la Proposición~\ref{prop:sigma_kn_general_cota_inferior_R} aplicada con $k=N$ da
-	\[
+	\(
 		\sigma_{N,n}\ge R
-	\]
+	\)
 	para $n$ suficientemente grande. Pasando al límite cuando $n\to\infty$, obtenemos
 	\[
-		\sigma_N(\D)\ge R.
+		\sigma_N(\mathbf D)\ge R.
 	\]
 	Se concluye que
 	\[
-		\sigma_N(\D)=Q_N(\D)=R.
+		\sigma_N(\mathbf D)=Q_N(\D)=R.
 	\]
 \end{proof}
 
-\subsection{Caso puramente exterior}
-
 \begin{cor}\label{cor:igualdad_sigma_qk_exterior_puro}
-	Sea $R>0$ y sea
+	Sea $R>0$ y sea el producto escalar de Sobolev sobre \(\Poly\) dado por
 	\[
 		\langle p,q\rangle_S
 		=
@@ -508,13 +537,13 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 		\sum_{c\in I_{\mathrm{out}}} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly,
 	\]
-	y supongamos que $I_{\mathrm{in}}=\varnothing$ en la Definición~\ref{def:class_points_new}. Sea $m:=|I_{\mathrm{out}}|$. Entonces, para todo $k\ge 0$ se tiene
+	y supongamos que $I_{\mathrm{in}}=\varnothing$ en la Definición~\ref{def:class_points_new}. Sea $m:=|I_{\mathrm{out}}|$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
 	\[
-		\sigma_k(\D)=Q_k(\D),
+		\sigma_k(\mathbf D)=Q_k(\D),
 	\]
 	y más precisamente
 	\[
-		Q_k(\D)=\sigma_k(\D)
+		Q_k(\D)=\sigma_k(\mathbf D)
 		=
 		\begin{cases}
 			+\infty, & 0\le k<m, \\
@@ -530,13 +559,13 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 	\]
 	Si $0\le k<m$, el Teorema~\ref{thm:estabilizacion} da $Q_k(\D)=\infty$. Basta probar que
 	\[
-		\sigma_{m-1}(\D)=+\infty.
+		\sigma_{m-1}(\mathbf D)=+\infty.
 	\]
 	En el Lema~\ref{lem:paquetes_diagonales} del capítulo anterior se construyeron, para cada $n$, polinomios
-	\[
+	\(
 		u_{c,n}\in\Poly,
 		\qquad c\in I_{\mathrm{out}},
-	\]
+	\)
 	que satisfacen
 	\[
 		\|u_{c,n}\|_S\xrightarrow[n\to\infty]{}0,
@@ -544,14 +573,22 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 		\psi_d(u_{c,n})=\delta_{dc}.
 	\]
 	Sea
-	\[
+	\(
 		F_n:=[u_{c,n}:c\in I_{\mathrm{out}}].
-	\]
-	Por la diagonalidad anterior, estos vectores son linealmente independientes, luego $\dim(F_n)=m$. Además, si
+	\)
+	,por la diagonalidad anterior, estos vectores son linealmente independientes, luego $\dim(F_n)=m$. Además, si
 	\[
 		p=\sum_{c\in I_{\mathrm{out}}}\beta_c u_{c,n}\in F_n,
 		\qquad p\neq0,
 	\]
+	por homogeneidad del cociente
+	\(
+	\frac{\|\D p\|_S}{\|p\|_S}
+	\)
+	podemos suponer que
+	\(
+		\|\beta\|_{\ell^2}=1.
+	\)
 	y definimos
 	\[
 		\psi^{(n)}:=\sum_{c\in I_{\mathrm{out}}}\overline{\beta_c}\,\psi_c,
@@ -562,7 +599,7 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 		\qquad\text{y}\qquad
 		|\psi^{(n)}(p)|\le \|\D p\|_S.
 	\]
-	Si normalizamos $\|\beta\|_{\ell^2}=1$, la primera identidad da $|\psi^{(n)}(p)|=1$, mientras que
+	La primera identidad da $|\psi^{(n)}(p)|=1$, mientras que
 	\[
 		\|p\|_S
 		\le
@@ -579,56 +616,54 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 	\[
 		\inf_{0\neq p\in F_{n(L)}}\frac{\|\D p\|_S}{\|p\|_S}>L.
 	\]
-	Sea $F:=F_{n(L)}$ y sea $N_L$ un entero tal que $F\subset \mathbb P_{N_L-1}$. Entonces, para todo $N\ge N_L$, se tiene $F\subset \mathbb P_{N-1}$ y por tanto $\D p\in\mathbb P_N$ para todo $p\in F$. En consecuencia, sobre $F$ la compresión coincide con $\D$, y la forma max--min de Courant--Fischer da
+	Sea $F:=F_{n(L)}$ y sea $N_L$ un entero tal que $F\subset \mathbb P_{N_L-1}$. Entonces, para todo $N\ge N_L$, se tiene $F\subset \mathbb P_{N-1}$ y por tanto $\D p\in\mathbb P_N$ para todo $p\in F$. En consecuencia, sobre $F$ la sección principal coincide con $\D$, y la forma max--min de Courant--Fischer da
 	\[
 		\sigma_{m-1,N}\ge \inf_{0\neq p\in F}\frac{\|\D p\|_S}{\|p\|_S}>L,
 		\qquad N\ge N_L.
 	\]
 	Como $L$ es arbitrario, concluimos que
-	\[
-		\sigma_{m-1}(\D)=+\infty.
-	\]
+	\(
+		\sigma_{m-1}(\mathbf D)=+\infty.
+	\)
 	Por la monotonía en el índice,
 	\[
-		\sigma_k(\D)=+\infty,
+		\sigma_k(\mathbf D)=+\infty,
 		\qquad 0\le k<m.
 	\]
 	Aplicando el Teorema~\ref{thm:igualdad_sigma_qN_general} con $F=I_{\mathrm{out}}$ y $N=m$, obtenemos
-	\[
-		\sigma_m(\D)=Q_m(\D)=R.
-	\]
+	\(
+		\sigma_m(\mathbf D)=Q_m(\D)=R.
+	\)
 	Sea ahora $k\ge m$. Como la familia de subespacios admisibles en la definición de $Q_k$ crece con $k$, se tiene
 	\[
 		Q_k(\D)\le Q_m(\D)=R.
 	\]
 	Por otra parte, la Proposición~\ref{prop:qk_general_cota_inferior_R} da
-	\[
+	\(
 		R\le Q_k(\D),
-	\]
+	\)
 	y la Proposición~\ref{prop:sigma_kn_general_cota_inferior_R} implica, al pasar al límite, que
-	\[
-		R\le \sigma_k(\D).
-	\]
-	Finalmente, por la Proposición~\ref{prop:sigma_qk},
-	\[
-		\sigma_k(\D)\le Q_k(\D).
-	\]
+	\(
+		R\le \sigma_k(\mathbf D).
+	\)
+	Finalmente, por el Corolario~\ref{cor:sigma_operador_qk},
+	\(
+		\sigma_k(\mathbf D)\le Q_k(\D).
+	\)
 	Por tanto,
-	\[
-		R\le \sigma_k(\D)\le Q_k(\D)\le R,
-	\]
+	\(
+		R\le \sigma_k(\mathbf D)\le Q_k(\D)\le R,
+	\)
 	y se concluye que
 	\[
-		\sigma_k(\D)=Q_k(\D)=R.
+		\sigma_k(\mathbf D)=Q_k(\D)=R.
 	\]
 \end{proof}
-
-\subsection{Caso mixto}
 
 \begin{cor}\label{cor:estabilizacion_singular_umbral}
 	Bajo las hipótesis del Teorema~\ref{thm:estabilizacion}, si $m$ es el entero definido en ese teorema, se tiene
 	\[
-		\sigma_m(\D)
+		\sigma_m(\mathbf D)
 		\le
 		Q_m(\D)
 		<
@@ -637,9 +672,9 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 \end{cor}
 
 \begin{proof}
-	Por la Proposición~\ref{prop:sigma_qk},
+	Por el Corolario~\ref{cor:sigma_operador_qk},
 	\[
-		\sigma_m(\D)\le Q_m(\D).
+		\sigma_m(\mathbf D)\le Q_m(\D).
 	\]
 	Como $Q_m(\D)<\infty$ por el Teorema~\ref{thm:estabilizacion}, se concluye el resultado.
 \end{proof}
@@ -647,22 +682,20 @@ Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en 
 \begin{rmk}[Lectura matricial del umbral]
 	En el caso general con $N=|F|$,
 	\[
-		\sigma_N(\D)=Q_N(\D)=R.
+		\sigma_N(\mathbf D)=Q_N(\D)=R.
 	\]
-	En el caso puramente exterior,
+	En el caso exterior con $I_{\mathrm{in}}=\varnothing$ y $m=|I_{\mathrm{out}}|$,
 	\[
-		\sigma_j(\D)=Q_j(\D)=+\infty,
+		\sigma_j(\mathbf D)=Q_j(\D)=+\infty,
 		\qquad 0\le j<m,
 	\]
 	y
 	\[
-		\sigma_k(\D)=Q_k(\D)=R,
+		\sigma_k(\mathbf D)=Q_k(\D)=R,
 		\qquad k\ge m.
 	\]
-	En el caso mixto,
+	En el caso mixto de momento sólo se puede afirmar,
 	\[
-		\sigma_m(\D)\le Q_m(\D)<\infty.
+		\sigma_m(\mathbf D)\le Q_m(\D)<\infty.
 	\]
 \end{rmk}
-
-Esta lectura matricial prepara el paso al capítulo siguiente, donde el análisis de los ceros y de las cantidades extremales volverá a ponerse en primer plano desde una perspectiva más global.

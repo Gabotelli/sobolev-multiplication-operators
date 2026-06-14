@@ -334,7 +334,16 @@ En realidad, ambas responden a una misma construcción: la codimensión de un su
         \qquad
         \dim(F)=m.
     \]
-    Como $F$ es finito-dimensional, es cerrado en $\mathcal H$, y por tanto también lo es la suma $\overline V+F$. Además,
+    Como $F$ es finito-dimensional, es cerrado en $\mathcal H$, y además la suma
+    $\overline V+F$ también es cerrada. En efecto, si $x_n=v_n+f_n\in \overline V+F$
+    y $x_n\to x$ en $\mathcal H$, entonces la sucesión $(x_n)$ es acotada. Como $F$
+    es finito-dimensional, de la acotación de $(f_n)$ podemos extraer una subsucesión
+    $(f_{n_k})$ convergente a cierto $f\in F$. En consecuencia,
+    \[
+        v_{n_k}=x_{n_k}-f_{n_k}\to x-f.
+    \]
+    Dado que $\overline V$ es cerrado, se sigue que $x-f\in\overline V$, y por tanto
+    $x=(x-f)+f\in\overline V+F$. Además,
     \[
         V+F\subset \overline V+F,
     \]
