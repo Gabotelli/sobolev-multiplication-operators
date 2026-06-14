@@ -301,7 +301,7 @@ Notese que al abordar el caso estable conocido se ha impuesto que $|c_j|<R$ para
     \[
         \psi_c(p)=p(c)+cp'(c)=(\D p)'(c).
     \]
-    Entonces $\D$ no es acotado globalmente, pero se estabiliza al imponer una restricción de codimensión uno. Más precisamente,
+    Entonces
     \[
         Q_0(\D)=\infty,
         \qquad
@@ -564,7 +564,7 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
     \[
         Q_m(\D)<\infty.
     \]
-    Más precisamente,
+    Además,
     \[
         Q_m(\D)\le C_{\mathrm{out}},
     \]
@@ -1001,4 +1001,126 @@ Ahora procedemos a ver que la codimensión $m$ es necesaria para estabilizar el 
         Q_m(\D)<\infty.
     \]
     Esto concluye la demostración.
+\end{proof}
+
+\section{Cotas generales para \texorpdfstring{$Q_k(\D)$}{Qk(D)}}
+
+Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la estructura derivativa de la norma de Sobolev. Resultarán útiles en el paso matricial del capítulo siguiente.
+
+\begin{prop}\label{prop:qk_general_cota_inferior_R}
+    Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+    \[
+        \langle p,q\rangle_S
+        =
+        \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+        +
+        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \qquad p,q\in\Poly.
+    \]
+    Entonces, para todo $k\ge0$,
+    \[
+        Q_k(\D)\ge R.
+    \]
+\end{prop}
+
+\begin{proof}
+    Sea
+    \[
+        E:=\{p\in\Poly:p'(c)=0\text{ para todo }c\in F\}.
+    \]
+    Entonces
+    \[
+        E=\ker T,
+        \qquad
+        T:\Poly\to\C^{|F|},
+        \qquad
+        T(p):=(p'(c))_{c\in F},
+    \]
+    y por tanto $E$ tiene codimensión finita. Si $W\subset\Poly$ tiene codimensión finita, entonces $W\cap E\neq\{0\}$.
+
+    Fijado ahora $k\ge0$, sea $W\subset\Poly$ con
+    \[
+        \operatorname{codim}_{\Poly}(W)<k+1.
+    \]
+    Tomamos $0\neq p\in W\cap E$. Como $p'(c)=0$ para todo $c\in F$,
+    \[
+        \|p\|_S^2=\|p\|_{L^2(\mathbf{m}_R)}^2.
+    \]
+    Además,
+    \[
+        (\D p)'(c)=p(c),
+        \qquad c\in F.
+    \]
+    Por consiguiente,
+    \[
+        \|\D p\|_S^2
+        =
+        R^2\|p\|_{L^2(\mathbf{m}_R)}^2
+        +
+        \sum_{c\in F}|p(c)|^2
+        \ge
+        R^2\|p\|_S^2.
+    \]
+    Luego
+    \[
+        \|\D|_W\|_S\ge \frac{\|\D p\|_S}{\|p\|_S}\ge R.
+    \]
+    Tomando ínfimo sobre los subespacios $W$ con $\operatorname{codim}_{\Poly}(W)<k+1$, obtenemos $Q_k(\D)\ge R$.
+\end{proof}
+
+\begin{prop}\label{prop:qN_general_cota_superior_R}
+    Sea $R>0$, sea $F\subset\C$ finito, sea $N:=|F|$ y consideremos sobre $\Poly$ el producto escalar
+    \[
+        \langle p,q\rangle_S
+        =
+        \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+        +
+        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \qquad p,q\in\Poly.
+    \]
+    Para cada $c\in F$, definamos
+    \[
+        \eta_c(p):=p(c)+cp'(c),
+        \qquad p\in\Poly,
+    \]
+    y sea
+    \[
+        W_N:=\bigcap_{c\in F}\ker\eta_c.
+    \]
+    Entonces
+    \[
+        \operatorname{codim}_{\Poly}(W_N)\le N
+        \qquad\text{y}\qquad
+        Q_N(\D)\le R.
+    \]
+\end{prop}
+
+\begin{proof}
+    Consideremos la aplicación lineal
+    \[
+        \Lambda_N:\Poly\to\C^N,
+        \qquad
+        \Lambda_N(p):=(\eta_c(p))_{c\in F}.
+    \]
+    Entonces $W_N=\ker\Lambda_N$, y por tanto
+    \[
+        \operatorname{codim}_{\Poly}(W_N)=\operatorname{rg}(\Lambda_N)\le N.
+    \]
+    Si $p\in W_N$, entonces
+    \[
+        (\D p)'(c)=\eta_c(p)=0,
+        \qquad c\in F.
+    \]
+    En consecuencia,
+    \[
+        \|\D p\|_S^2=R^2\|p\|_{L^2(\mathbf{m}_R)}^2\le R^2\|p\|_S^2.
+    \]
+    Luego
+    \[
+        \|\D|_{W_N}\|_S\le R.
+    \]
+    Como $W_N$ es admisible en la definición de $Q_N$, concluimos que
+    \[
+        Q_N(\D)\le R.
+    \]
 \end{proof}

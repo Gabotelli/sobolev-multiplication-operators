@@ -3,7 +3,7 @@
 
 \section{Matriz de Hessenberg y secciones truncadas}
 
-Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, su representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ viene dada por los coeficientes $\langle Te_j,e_i\rangle$. En este capítulo aplicaremos la misma construcción a $\D p(z)=zp(z)$, con la diferencia de que no necesitamos su acotación en toda $\mathcal H$: basta que $\D$ esté definida en el subespacio denso $\Poly$ y que $\D\phi_j=z\phi_j\in\Poly$ para todo $j$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y tamaños singulares de manera directa.
+Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, su representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ viene dada por los coeficientes $\langle Te_j,e_i\rangle$. En este capítulo aplicaremos la misma construcción a $\D p(z)=zp(z)$, con la diferencia de que no necesitamos su acotación en toda $\mathcal H$: basta que $\D$ esté definida en el subespacio denso $\Poly$ y que $\D\phi_j=z\phi_j\in\Poly$ para todo $j$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y valores singulares de manera directa.
 
 \begin{defn}\label{def:hessenberg}
 	Sea $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev. La representación matricial de $\D$ es
@@ -34,242 +34,245 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 	\]
 	y sea $\pi_n:\mathcal H\to\mathbb P_n$ la proyección ortogonal. Definimos la aplicación lineal
 	\[
-		T_n:\mathbb P_n\to\mathbb P_n,
+		\mathcal D_n:\mathbb P_n\to\mathbb P_n,
 		\qquad
-		T_n(p):=\pi_n(\D p).
+		\mathcal D_n(p):=\pi_n(\D p).
 	\]
-	Como $\mathbb P_n\subset\Poly$ y $\D(\mathbb P_n)\subset\Poly$, la aplicación $T_n$ está bien definida. La matriz de $T_n$ respecto de la base $\{\phi_0,\dots,\phi_n\}$ se llama la \emph{sección principal} de orden $n+1$ de $\mathbf D$ y viene dada por
+	La matriz de $\mathcal D_n$ respecto de la base $\{\phi_0,\dots,\phi_n\}$ se llama la \emph{sección principal} de orden $n+1$ de $\mathbf D$ y viene dada por
 	\[
 		\mathbf D_n:=(d_{i,j})_{0\le i,j\le n}\in\mathcal M_{n+1}(\mathbb C).
 	\]
 \end{defn}
 
+\begin{rmk}
+	Como $\mathbb P_n\subset\Poly$ y $\D(\mathbb P_n)\subset\Poly$, la aplicación $\mathcal D_n$ está bien definida.
+\end{rmk}
+
 Estas truncaciones son la primera escala finita del operador de multiplicación. En particular, permiten relacionar la geometría de $\mathbb P_n$ con cantidades espectrales concretas, y constituyen el punto de entrada natural para recuperar, en dimensión $n+1$, la información codificada por el polinomio ortonormal siguiente.
 
 \begin{prop}\label{prop:charpoly_truncada}
-Sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev en $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea
-\(\mathbf D_n\) la sección truncada definida en
-Definición~\ref{def:seccion_truncada}.
-Entonces, para todo \(n\ge0\), existe una constante
-\[
-    \kappa_n\in\C\setminus\{0\}
-\]
-tal que
-\[
-    \det(z\mathbf I_{n+1}-\mathbf D_n)
-    =
-    \det(z\mathbf I_{n+1}-\mathbf D_n^t)
-    =
-    \kappa_n\,\phi_{n+1}(z).
-\]
-En particular,
-\[
-    \sigma(\mathbf D_n)
-    =
-    \sigma(\mathbf D_n^t)
-    =
-    \{z\in\C:\phi_{n+1}(z)=0\},
-\]
-contando multiplicidades algebraicas.
+	Sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev en $(\Poly, \langle \cdot,\cdot\rangle_S)$. Para todo \(n\ge0\), sea
+	\(\mathcal D_n:\mathbb P_n\to\mathbb P_n\) la compresión de \(\D\) definida en la Definición~\ref{def:seccion_truncada} y sea \(\mathbf D_n\) su matriz en la base \(\{\phi_0,\dots,\phi_n\}\).
+	Entonces existe una constante
+	\[
+		\kappa_n\in\C\setminus\{0\}
+	\]
+	tal que
+	\[
+		\det(z\mathbf I_{n+1}-\mathbf D_n)
+		=
+		\det(z\mathbf I_{n+1}-\mathbf D_n^t)
+		=
+		\kappa_n\,\phi_{n+1}(z).
+	\]
 \end{prop}
 
 \begin{proof}
-	Como la multiplicación por $z$ aumenta el grado en una unidad, la matriz $\mathbf D_n$ es de Hessenberg superior. Para este tipo de matrices asociadas a polinomios ortogonales, es un hecho clásico que el polinomio característico de la truncación coincide, salvo una constante no nula, con el polinomio ortonormal del grado siguiente; más precisamente,
+	Como la multiplicación por $z$ aumenta el grado en una unidad, la matriz $\mathbf D_n$ es de Hessenberg superior. Por \cite[\S3.1]{szego1975orthogonal},
 	\[
 		\det(z\mathbf I_{n+1}-\mathbf D_n)=\frac{1}{\gamma_{n+1}}\phi_{n+1}(z),
 	\]
-	donde $\gamma_{n+1}$ es el coeficiente director de $\phi_{n+1}$; véase, por ejemplo, \cite[\S3.1]{szego1975orthogonal}. Por tanto, tomando
+	donde $\gamma_{n+1}$ es el coeficiente director de $\phi_{n+1}$. Tomando
 	\[
 		\kappa_n:=\frac{1}{\gamma_{n+1}},
 	\]
-	obtenemos la primera igualdad anunciada.
-
-	Además, para toda matriz cuadrada $A$ se tiene
+	obtenemos la primera igualdad. Además, para toda matriz cuadrada $A$ se tiene
 	\[
 		\det(z\mathbf I-A^t)=\det\bigl((z\mathbf I-A)^t\bigr)=\det(z\mathbf I-A).
 	\]
-	Aplicado a $A=\mathbf D_n$, concluimos que $\mathbf D_n$ y $\mathbf D_n^t$ tienen el mismo polinomio característico y, por tanto, el mismo espectro algebraico. Esto prueba que los autovalores de ambas matrices coinciden exactamente con los ceros de $\phi_{n+1}$, contando multiplicidades.
+	Aplicando esto a $A=\mathbf D_n$, concluimos que
+	\[
+		\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\det(z\mathbf I_{n+1}-\mathbf D_n).
+	\]
 \end{proof}
 
-La proposición anterior identifica a $\mathbf D_n$ como una realización matricial finita cuya información espectral queda gobernada por $\phi_{n+1}$. Así, cada truncación selecciona exactamente los ceros del siguiente polinomio ortonormal, lo que fija el vínculo entre la estructura de Hessenberg y la localización espectral en dimensión finita.
+\begin{cor}
+	En las hipótesis de la Proposición~\ref{prop:charpoly_truncada}, para todo $n\ge0$ se tiene
+	\[
+		\sigma(\mathbf D_n)
+		=
+		\sigma(\mathbf D_n^t)
+		=
+		\{z\in\C:\phi_{n+1}(z)=0\},
+	\]
+	contando multiplicidades algebraicas.
+\end{cor}
+
+\begin{proof}
+	Es una consecuencia inmediata de la Proposición~\ref{prop:charpoly_truncada}.
+\end{proof}
+
+\begin{rmk}
+	La Proposición~\ref{prop:charpoly_truncada} identifica a $\mathbf D_n$ como una realización matricial finita cuya información espectral queda gobernada por $\phi_{n+1}$. En particular, los autovalores de $\mathbf D_n$ y de $\mathbf D_n^t$ coinciden con los ceros del siguiente polinomio ortonormal.
+\end{rmk}
 
 \section{Valores singulares de \texorpdfstring{$\mathbf D_n$}{Dn}}
 
 Además del espectro, necesitaremos medir el tamaño de estas truncaciones en distintas direcciones. Para ello introducimos ahora sus valores singulares, que proporcionan una noción intrínseca de amplificación matricial y serán el objeto adecuado para la lectura asintótica de la sección final.
 
 \begin{defn}\label{def:sigma_kn}
-	Sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la sección truncada definida en
-	Definición~\ref{def:seccion_truncada}.
-	Recordemos que los valores singulares de una matriz $A$ son los autovalores de $(A^*A)^{1/2}$, o equivalentemente las raíces cuadradas de los autovalores de $A^*A$.
-	Para $n\ge0$, denotamos por
+	Para $n\ge0$, sea \(\mathcal D_n:\mathbb P_n\to\mathbb P_n\) la compresión de \(\D\) definida en la Definición~\ref{def:seccion_truncada} y sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) su matriz en la base \(\{\phi_0,\dots,\phi_n\}\).
+	Denotamos por
 	\[
 		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
 	\]
 	los valores singulares de \(\mathbf D_n\), ordenados de forma decreciente.
-	En particular,
-	\[
-		\sigma_{0,n}=\|\mathbf D_n\|_2.
-	\]
 \end{defn}
 
-La indexación desde $0$ es la natural para esta familia ordenada: $\sigma_{0,n}$ recoge el mayor tamaño singular de la truncación y los índices sucesivos describen niveles cada vez más restringidos de amplificación.
+\begin{rmk}
+	Se tiene $\sigma_{0,n}=\|\mathbf D_n\|_2$. La indexación desde $0$ sitúa en $\sigma_{0,n}$ el mayor valor singular de la truncación.
+\end{rmk}
 
 Para explotar esta jerarquía necesitaremos una herramienta variacional estándar. Usaremos la caracterización min--max de Courant--Fischer para valores singulares; véase, por ejemplo, \cite[Section~3.1]{horn2012matrix}.
 
 \begin{lem}
-\label{lem:minmax_sigma_Dn}
-Sea \(n\ge0\). Para todo \(0\le k\le n\),
-\[
-    \sigma_{k,n}
-    =
-    \min_{\substack{S\subset\C^{n+1}\\ \dim S=n+1-k}}
-    \max_{\substack{x\in S\\ x\neq0}}
-    \frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
-\]
-Equivalentemente,
-\[
-    \sigma_{k,n}
-    =
-    \max_{\substack{S\subset\C^{n+1}\\ \dim S=k+1}}
-    \min_{\substack{x\in S\\ x\neq0}}
-    \frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
-\]
+	\label{lem:minmax_sigma_Dn}
+	Sea \(n\ge0\) y sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la matriz de la compresión \(\mathcal D_n\) de la Definición~\ref{def:seccion_truncada}. Entonces, para todo \(0\le k\le n\),
+	\[
+		\sigma_{k,n}
+		=
+		\min_{\substack{S\subset\C^{n+1}\\ \dim S=n+1-k}}
+		\max_{\substack{x\in S\\ x\neq0}}
+		\frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
+	\]
+	Equivalentemente,
+	\[
+		\sigma_{k,n}
+		=
+		\max_{\substack{S\subset\C^{n+1}\\ \dim S=k+1}}
+		\min_{\substack{x\in S\\ x\neq0}}
+		\frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
+	\]
 \end{lem}
 
 \begin{lem}\label{lem:bloque_gram_truncadas}
-Sea \(\mathbf D=(d_{i,j})_{i,j\ge0}\) una matriz de Hessenberg superior infinita y, para cada \(n\ge0\), sea
-\[
-\mathbf D_n=(d_{i,j})_{0\le i,j\le n}
-\]
-su sección principal de orden \(n+1\). Entonces
-\[
-(\mathbf D_{n+1}^*\mathbf D_{n+1})_n
-=
-\mathbf D_n^*\mathbf D_n+H_n,
-\]
-donde
-\[
-H_n=
-\begin{pmatrix}
-0 & \cdots & 0 & 0\\
-\vdots & \ddots & \vdots & \vdots\\
-0 & \cdots & 0 & 0\\
-0 & \cdots & 0 & |d_{n+1,n}|^2
-\end{pmatrix}
-\in\mathcal M_{n+1}(\C).
-\]
-En particular, \(H_n\) es hermitiana semidefinida positiva.
+	Sea \(\mathbf D=(d_{i,j})_{i,j\ge0}\) una matriz de Hessenberg superior infinita y, para cada \(n\ge0\), sea
+	\[
+		\mathbf D_n=(d_{i,j})_{0\le i,j\le n}
+	\]
+	su sección principal de orden \(n+1\). Entonces
+	\[
+		(\mathbf D_{n+1}^*\mathbf D_{n+1})_n
+		=
+		\mathbf D_n^*\mathbf D_n+H_n,
+	\]
+	donde
+	\[
+		H_n=
+		\begin{pmatrix}
+			0      & \cdots & 0      & 0             \\
+			\vdots & \ddots & \vdots & \vdots        \\
+			0      & \cdots & 0      & 0             \\
+			0      & \cdots & 0      & |d_{n+1,n}|^2
+		\end{pmatrix}
+		\in\mathcal M_{n+1}(\C).
+	\]
+	En particular, \(H_n\) es hermitiana semidefinida positiva.
 \end{lem}
 
 \begin{proof}
-Por la estructura de Hessenberg,
-\[
-\mathbf D_{n+1}=
-\begin{pmatrix}
-\mathbf D_n & u_n\\
-v_n^* & d_{n+1,n+1}
-\end{pmatrix}
-\]
-para ciertos vectores \(u_n,v_n\in\C^{n+1}\), donde
-\[
-v_n=(0,\dots,0,d_{n+1,n})^t.
-\]
-Al multiplicar por bloques se obtiene que el bloque principal superior izquierdo de \(\mathbf D_{n+1}^*\mathbf D_{n+1}\) es
-\[
-\mathbf D_n^*\mathbf D_n+
-\begin{pmatrix}
-0 & \cdots & 0 & 0\\
-\vdots & \ddots & \vdots & \vdots\\
-0 & \cdots & 0 & 0\\
-0 & \cdots & 0 & |d_{n+1,n}|^2
-\end{pmatrix}.
-\]
-La última matriz es hermitiana semidefinida positiva.
+	Por la estructura de Hessenberg,
+	\[
+		\mathbf D_{n+1}=
+		\begin{pmatrix}
+			\mathbf D_n & u_n         \\
+			v_n^*       & d_{n+1,n+1}
+		\end{pmatrix}
+	\]
+	para ciertos vectores \(u_n,v_n\in\C^{n+1}\), donde
+	\[
+		v_n=(0,\dots,0,d_{n+1,n})^t.
+	\]
+	Al multiplicar por bloques se obtiene que el bloque principal superior izquierdo de \(\mathbf D_{n+1}^*\mathbf D_{n+1}\) es
+	\[
+		\mathbf D_n^*\mathbf D_n+
+		\begin{pmatrix}
+			0      & \cdots & 0      & 0             \\
+			\vdots & \ddots & \vdots & \vdots        \\
+			0      & \cdots & 0      & 0             \\
+			0      & \cdots & 0      & |d_{n+1,n}|^2
+		\end{pmatrix}.
+	\]
+	La última matriz es hermitiana semidefinida positiva.
 \end{proof}
 
 \begin{prop}\label{prop:monotonia_sigma_kn}
-Sea \(\mathbf D\) una matriz de Hessenberg superior infinita y, para cada \(n\ge0\), sean
-\[
-\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
-\]
-los valores singulares de \(\mathbf D_n\) ordenados de forma decreciente. Entonces, para todo \(k\ge0\) fijo, la sucesión
-\[
-\{\sigma_{k,n}\}_{n\ge k}
-\]
-es creciente. En particular,
-\[
-\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty]
-\]
-existe para todo \(k\ge0\).
+	Sea \(\mathbf D\) una matriz de Hessenberg superior infinita y, para cada \(n\ge0\), sean
+	\[
+		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
+	\]
+	los valores singulares de \(\mathbf D_n\) ordenados de forma decreciente. Entonces, para todo \(k\ge0\) fijo, la sucesión
+	\[
+		\{\sigma_{k,n}\}_{n\ge k}
+	\]
+	es creciente. En particular,
+	\[
+		\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty]
+	\]
+	existe para todo \(k\ge0\).
 \end{prop}
 
 \begin{proof}
-Fijado \(k\ge0\), para cada \(n\ge k\) denotemos por
-\[
-\lambda_{0,n}\ge\lambda_{1,n}\ge\cdots\ge\lambda_{n,n}\ge0
-\]
-los autovalores de \(\mathbf D_n^*\mathbf D_n\). Entonces
-\[
-\sigma_{k,n}^2=\lambda_{k,n}.
-\]
-Por el Lema~\ref{lem:bloque_gram_truncadas},
-\[
-(\mathbf D_{n+1}^*\mathbf D_{n+1})_n
-=
-\mathbf D_n^*\mathbf D_n+H_n,
-\qquad H_n\succeq0.
-\]
-La monotonía de Weyl para perturbaciones hermitianas semidefinidas positivas da
-\[
-\lambda_{k,n}
-\le
-\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr),
-\]
-Por el teorema de entrelazamiento de Cauchy aplicado a la submatriz principal \((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\),
-\[
-\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr)
-\le
-\lambda_{k,n+1}.
-\]
-Por tanto,
-\[
-\lambda_{k,n}\le\lambda_{k,n+1},
-\qquad n\ge k,
-\]
-y, en consecuencia,
-\[
-\sigma_{k,n}\le\sigma_{k,n+1},
-\qquad n\ge k.
-\]
-La existencia del límite se sigue de la monotonía.
+	Fijado \(k\ge0\), para cada \(n\ge k\) denotemos por
+	\[
+		\lambda_{0,n}\ge\lambda_{1,n}\ge\cdots\ge\lambda_{n,n}\ge0
+	\]
+	los autovalores de \(\mathbf D_n^*\mathbf D_n\). Entonces
+	\[
+		\sigma_{k,n}^2=\lambda_{k,n}.
+	\]
+	Por el Lema~\ref{lem:bloque_gram_truncadas},
+	\[
+		(\mathbf D_{n+1}^*\mathbf D_{n+1})_n
+		=
+		\mathbf D_n^*\mathbf D_n+H_n,
+		\qquad H_n\succeq0.
+	\]
+	La monotonía de Weyl para perturbaciones hermitianas semidefinidas positivas da
+	\[
+		\lambda_{k,n}
+		\le
+		\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr),
+	\]
+	Por el teorema de entrelazamiento de Cauchy aplicado a la submatriz principal \((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\),
+	\[
+		\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr)
+		\le
+		\lambda_{k,n+1}.
+	\]
+	Por tanto,
+	\[
+		\lambda_{k,n}\le\lambda_{k,n+1},
+		\qquad n\ge k,
+	\]
+	y, en consecuencia,
+	\[
+		\sigma_{k,n}\le\sigma_{k,n+1},
+		\qquad n\ge k.
+	\]
+	La existencia del límite se sigue de la monotonía.
 \end{proof}
 
 \begin{defn}\label{def:sigma_operador}
-	Para cada \(k\ge0\) definimos
+	Para cada \(k\ge0\), donde \(\sigma_{k,n}\) está definido en la Definición~\ref{def:sigma_kn}, definimos
 	\[
 		\sigma_k(\D):=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
 	\]
 \end{defn}
 
 \begin{prop}\label{prop:sigma_qk}
-	Sea \(\mathbf D_n\) la sección truncada de \(\D\) en
-	\(\mathbb P_n=[\phi_0,\dots,\phi_n]\).
-	Entonces, para todo \(n\ge0\) y todo \(0\le k\le n\),
+	Para todo \(n\ge0\), sea \(\mathcal D_n:\mathbb P_n\to\mathbb P_n\) la compresión de \(\D\) definida en la Definición~\ref{def:seccion_truncada}, sea \(\mathbf D_n\) su matriz en la base \(\{\phi_0,\dots,\phi_n\}\) y sean \(\sigma_{0,n}\ge\cdots\ge\sigma_{n,n}\ge0\) sus valores singulares. Entonces, para todo \(0\le k\le n\),
 	\[
 		\sigma_{k,n}\le Q_k(\D).
-	\]
-	En consecuencia, para todo \(k\ge0\),
-	\[
-		\sigma_k(\D)\le Q_k(\D).
 	\]
 \end{prop}
 
 \begin{proof}
-	Fijemos un subespacio $V\subset\Poly$ con
+	Fijemos $n\ge0$ y $0\le k\le n$. Sea $V\subset\Poly$ un subespacio con
 	\[
 		\operatorname{codim}_{\Poly}(V)<k+1.
 	\]
-	Para cada $n$, consideramos
+	Consideremos
 	\[
 		V_n:=V\cap\mathbb P_n.
 	\]
@@ -291,25 +294,28 @@ La existencia del límite se sigue de la monotonía.
 	\[
 		\sigma_{k,n}\le Q_k(\D).
 	\]
-	La definición de \(\sigma_k(\D)\) da
-	\[
-		\sigma_k(\D)\le Q_k(\D).
-	\]
 \end{proof}
 
 \begin{cor}\label{cor:sigma_operador_qk}
-	Para todo \(k\ge0\) se tiene
+	Para el operador de multiplicación \(\D\) sobre \((\Poly,\langle\cdot,\cdot\rangle_S)\), para todo \(k\ge0\) se tiene
 	\[
 		\sigma_k(\D)\le Q_k(\D).
 	\]
 \end{cor}
 
 \begin{proof}
-	Es una reformulación de la Proposición~\ref{prop:sigma_qk}.
+	Para cada $n\ge k$, la Proposición~\ref{prop:sigma_qk} da
+	\[
+		\sigma_{k,n}\le Q_k(\D).
+	\]
+	Pasando al límite cuando $n\to\infty$, obtenemos
+	\[
+		\sigma_k(\D)\le Q_k(\D).
+	\]
 \end{proof}
 
 \begin{thm}\label{thm:sigma0_q0}
-	Se tiene
+	Para el operador de multiplicación \(\D\) y sus secciones principales \(\mathbf D_n\), se tiene
 	\[
 		\sigma_0(\D)=Q_0(\D),
 	\]
@@ -351,7 +357,7 @@ La existencia del límite se sigue de la monotonía.
 \end{proof}
 
 \begin{cor}\label{cor:caso_acotado_ck}
-	Si \(\D\in\mathcal L(\mathcal H)\), entonces para todo \(k\ge0\),
+	Si el operador de multiplicación \(\D\) se extiende como elemento de \(\mathcal L(\mathcal H)\), entonces para todo \(k\ge0\),
 	\[
 		\sigma_k(\D)\le c_k(\D).
 	\]
@@ -376,117 +382,7 @@ La existencia del límite se sigue de la monotonía.
 
 \subsection{Caso general con átomos finitos}
 
-\begin{prop}\label{prop:qk_general_cota_inferior_R}
-	Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
-	\[
-		\langle p,q\rangle_S
-		=
-		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
-		+
-		\sum_{c\in F} p'(c)\overline{q'(c)},
-		\qquad p,q\in\Poly.
-	\]
-	Entonces, para todo $k\ge 0$ se tiene
-	\[
-		Q_k(\D)\ge R.
-	\]
-\end{prop}
-
-\begin{proof}
-	Sea
-	\[
-		E:=\{p\in\Poly: p'(c)=0\ \text{para todo } c\in F\}.
-	\]
-	Entonces $E$ es el núcleo de la aplicación lineal
-	\[
-		L:\Poly\to\C^N,
-		\qquad
-		L(p):=(p'(c))_{c\in F},
-	\]
-	donde $N:=|F|$. En particular, $E$ tiene codimensión finita. Si $W\subset\Poly$ tiene codimensión finita, entonces
-	\[
-		\operatorname{codim}_{\Poly}(W\cap E)
-		\le
-		\operatorname{codim}_{\Poly}(W)+\operatorname{codim}_{\Poly}(E)
-		<\infty.
-	\]
-	Como $\Poly$ es infinito-dimensional, se sigue que $W\cap E\neq\{0\}$.
-
-	Fijado ahora $W\subset\Poly$ con $\operatorname{codim}_{\Poly}(W)<k+1$, tomamos $0\neq p\in W\cap E$. Como $p'(c)=0$ para todo $c\in F$,
-	\[
-		\|p\|_S^2=\|p\|_{L^2(\mathbf{m}_R)}^2.
-	\]
-	Además, para todo $c\in F$,
-	\[
-		(\D p)'(c)=p(c)+cp'(c)=p(c).
-	\]
-	Por consiguiente,
-	\[
-		\|\D p\|_S^2
-		=
-		R^2\|p\|_{L^2(\mathbf{m}_R)}^2
-		+
-		\sum_{c\in F}|p(c)|^2
-		\ge
-		R^2\|p\|_S^2.
-	\]
-	De aquí
-	\[
-		\|\D|_W\|_S\ge \frac{\|\D p\|_S}{\|p\|_S}\ge R.
-	\]
-	Tomando ínfimo sobre todos los subespacios $W$ con $\operatorname{codim}_{\Poly}(W)<k+1$, obtenemos $Q_k(\D)\ge R$.
-\end{proof}
-
-\begin{prop}\label{prop:qN_general_cota_superior_R}
-	Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
-	\[
-		\langle p,q\rangle_S
-		=
-		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
-		+
-		\sum_{c\in F} p'(c)\overline{q'(c)},
-		\qquad p,q\in\Poly.
-	\]
-	Sea $N:=|F|$ y, para cada $c\in F$, definamos
-	\[
-		\eta_c(p):=p(c)+cp'(c).
-	\]
-	Si
-	\[
-		W_N:=\bigcap_{c\in F}\ker\eta_c,
-	\]
-	entonces
-	\[
-		\operatorname{codim}_{\Poly}(W_N)\le N
-		\qquad\text{y}\qquad
-		Q_N(\D)\le R.
-	\]
-\end{prop}
-
-\begin{proof}
-	Consideremos la aplicación lineal
-	\[
-		\Lambda_N:\Poly\to\C^N,
-		\qquad
-		\Lambda_N(p):=(\eta_c(p))_{c\in F}.
-	\]
-	Entonces $W_N=\ker\Lambda_N$, y por tanto
-	\[
-		\operatorname{codim}_{\Poly}(W_N)=\operatorname{rg}(\Lambda_N)\le N.
-	\]
-	Si $p\in W_N$, se tiene $(\D p)'(c)=\eta_c(p)=0$ para todo $c\in F$. En consecuencia,
-	\[
-		\|\D p\|_S^2=R^2\|p\|_{L^2(\mathbf{m}_R)}^2\le R^2\|p\|_S^2.
-	\]
-	De aquí
-	\[
-		\|\D|_{W_N}\|_S\le R.
-	\]
-	Como $W_N$ es admisible en la definición de $Q_N$, concluimos que
-	\[
-		Q_N(\D)\le R.
-	\]
-\end{proof}
+Las dos cotas abstractas para $Q_k(\D)$ y $Q_N(\D)$ ya quedaron establecidas en el capítulo anterior. A partir de ellas traducimos el umbral de estabilización al lenguaje de valores singulares de las secciones principales.
 
 \begin{prop}\label{prop:sigma_kn_general_cota_inferior_R}
 	Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
@@ -498,7 +394,7 @@ La existencia del límite se sigue de la monotonía.
 		\sum_{c\in F} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly.
 	\]
-	Sea $N:=|F|$. Entonces, para todo $k\ge N$ existe $N_k$ tal que
+	Sea $N:=|F|$ y, para cada $n\ge0$, sean $\mathcal D_n:\mathbb P_n\to\mathbb P_n$ la compresión de $\D$ y $\sigma_{0,n}\ge\cdots\ge\sigma_{n,n}\ge0$ los valores singulares de su matriz $\mathbf D_n$ en la base $\{\phi_0,\dots,\phi_n\}$. Entonces, para todo $k\ge N$ existe $N_k$ tal que
 	\[
 		\sigma_{k,n}\ge R,
 		\qquad n\ge N_k.
@@ -540,15 +436,15 @@ La existencia del límite se sigue de la monotonía.
 	\]
 	Luego $W\cap E_{n-1}\neq\{0\}$. Sea $0\neq p\in W\cap E_{n-1}$. Como $p\in\mathbb P_{n-1}$, se tiene $\D p\in\mathbb P_n$ y por tanto
 	\[
-		T_n(p)=\pi_n(\D p)=\D p.
+		\mathcal D_n(p)=\pi_n(\D p)=\D p.
 	\]
 	Además, como $p\in E_{n-1}$, el cálculo de la Proposición~\ref{prop:qk_general_cota_inferior_R} da
 	\[
-		\|T_n(p)\|_S=\|\D p\|_S\ge R\|p\|_S.
+		\|\mathcal D_n(p)\|_S=\|\D p\|_S\ge R\|p\|_S.
 	\]
 	En consecuencia,
 	\[
-		\max_{0\neq q\in W}\frac{\|T_n(q)\|_S}{\|q\|_S}\ge \frac{\|T_n(p)\|_S}{\|p\|_S}\ge R.
+		\max_{0\neq q\in W}\frac{\|\mathcal D_n(q)\|_S}{\|q\|_S}\ge \frac{\|\mathcal D_n(p)\|_S}{\|p\|_S}\ge R.
 	\]
 	Como $W$ era arbitrario, la caracterización min--max del Lema~\ref{lem:minmax_sigma_Dn} implica
 	\[
@@ -603,7 +499,7 @@ La existencia del límite se sigue de la monotonía.
 \subsection{Caso puramente exterior}
 
 \begin{cor}\label{cor:igualdad_sigma_qk_exterior_puro}
-	Sea
+	Sea $R>0$ y sea
 	\[
 		\langle p,q\rangle_S
 		=
@@ -612,7 +508,7 @@ La existencia del límite se sigue de la monotonía.
 		\sum_{c\in I_{\mathrm{out}}} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly,
 	\]
-	y supongamos que $I_{\mathrm{in}}=\varnothing$ de la Definición~\ref{def:class_points_new}. Sea $m=|I_{\mathrm{out}}|$. Entonces, para todo $k\ge 0$ se tiene
+	y supongamos que $I_{\mathrm{in}}=\varnothing$ en la Definición~\ref{def:class_points_new}. Sea $m:=|I_{\mathrm{out}}|$. Entonces, para todo $k\ge 0$ se tiene
 	\[
 		\sigma_k(\D)=Q_k(\D),
 	\]
@@ -621,8 +517,8 @@ La existencia del límite se sigue de la monotonía.
 		Q_k(\D)=\sigma_k(\D)
 		=
 		\begin{cases}
-			+\infty, & 0\le k<m,\\
-			R, & k\ge m.
+			+\infty, & 0\le k<m, \\
+			R,       & k\ge m.
 		\end{cases}
 	\]
 \end{cor}
@@ -727,27 +623,10 @@ La existencia del límite se sigue de la monotonía.
 	\]
 \end{proof}
 
-\begin{cor}\label{cor:umbral_singular_indice_m_enunciado}
-	Bajo las hipótesis del Corolario~\ref{cor:igualdad_sigma_qk_exterior_puro} se tiene
-	\[
-		\sigma_j(\D)=+\infty,
-		\qquad 0\le j\le m-1,
-	\]
-	y además
-	\[
-		\sigma_k(\D)=R,
-		\qquad k\ge m.
-	\]
-\end{cor}
-
-\begin{proof}
-	Es una reformulación del Corolario~\ref{cor:igualdad_sigma_qk_exterior_puro}.
-\end{proof}
-
 \subsection{Caso mixto}
 
 \begin{cor}\label{cor:estabilizacion_singular_umbral}
-	Bajo las hipótesis del Teorema~\ref{thm:estabilizacion} se tiene
+	Bajo las hipótesis del Teorema~\ref{thm:estabilizacion}, si $m$ es el entero definido en ese teorema, se tiene
 	\[
 		\sigma_m(\D)
 		\le
