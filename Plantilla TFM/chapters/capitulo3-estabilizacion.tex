@@ -7,7 +7,7 @@ En el Capítulo~\ref{sec:codimension_qk} construimos el marco abstracto de los �
 \]
 y estudiamos la cadena de índices de Gelfand
 \[
-     Q_0(\D) \geq Q_1(\D) \geq Q_2(\D) \geq \dots
+    Q_0(\D) \geq Q_1(\D) \geq Q_2(\D) \geq \dots
 \]
 cuando la norma proviene de un producto de Sobolev discreto de la forma
 \begin{equation}\label{eq:norma_sobolev_discreta_general}
@@ -19,12 +19,11 @@ cuando la norma proviene de un producto de Sobolev discreto de la forma
     \qquad p,q\in\Poly.
 \end{equation}
 
-Para ilustrar esta situación geométrica, consideramos el producto escalar representado visualmente en la Figura~\ref{fig:geometria_atomos}.
+La Figura~\ref{fig:geometria_atomos} resume la configuración geométrica asociada a \eqref{eq:norma_sobolev_discreta_general}.
 
 \begin{figure}[H]
     \centering
-    % TODO: insertar aquí la figura geométrica definitiva.
-    \fbox{\parbox[c][4cm][c]{0.8\linewidth}{\centering Placeholder para la figura geométrica de $\mathbb{S}_R$ y de los átomos discretos.}}
+    \fbox{\parbox[c][4cm][c]{0.8\linewidth}{\centering Esquema geométrico del soporte continuo $\mathbb{S}_R$ y de los átomos discretos.}}
     \caption{Configuración geométrica del soporte continuo $\mathbb{S}_R$ y de la posición de los átomos discretos.}
     \label{fig:geometria_atomos}
 \end{figure}
@@ -46,8 +45,11 @@ Los funcionales de evaluación y derivación aparecerán de forma recurrente en 
         \psi_c(p):=(\D p)'(c)=p(c)+cp'(c),
         \qquad p\in\Poly.
     \end{equation}
-    Si alguno de estos funcionales es continuo respecto a la norma considerada, entonces admite una extensión continua a la compleción del espacio. En ese caso denotaremos dicha extensión, cuando convenga, por $\widetilde\delta_c$, $\widetilde\delta'_c$ o $\widetilde\psi_c$.
 \end{defn}
+
+\begin{rmk}
+    Si alguno de estos funcionales es continuo respecto a la norma considerada, denotaremos por $\widetilde\delta_c$, $\widetilde\delta'_c$ o $\widetilde\psi_c$ su extensión continua a la compleción del espacio.
+\end{rmk}
 
 \begin{defn}\label{def:abpe_ch3}
     Sea $\mu$ una medida positiva finita en $\C$. Diremos que $a\in\C$ es un punto de evaluación acotada (\emph{bounded point evaluation}, BPE) para $L^2(\mu)$ si existe una constante $C>0$ tal que
@@ -55,27 +57,29 @@ Los funcionales de evaluación y derivación aparecerán de forma recurrente en 
         |p(a)|^2\le C\int |p(z)|^2\,d\mu(z),
         \qquad p\in\Poly.
     \end{equation}
-    Diremos que $a\in\C$ es un punto de evaluación acotada analítica (\emph{analytic bounded point evaluation}, ABPE) para $L^2(\mu)$ si existe un entorno abierto $U$ de $a$ y una constante $C>0$ tales que
+    Diremos que $a\in\C$ es un punto de evaluación acotada analítica (\emph{analytic bounded point evaluation}, ABPE) \cite{conway2020approximationmeanrationalfunctions,aleman2009nontangential} para $L^2(\mu)$ si existe un entorno abierto $U$ de $a$ y una constante $C>0$ tales que
     \[
         |p(z)|^2\le C\int |p(\zeta)|^2\,d\mu(\zeta),
         \qquad p\in\Poly,\ z\in U.
     \]
-    Véase \cite{conway2020approximationmeanrationalfunctions,aleman2009nontangential}.
 \end{defn}
 
 \begin{defn}\label{def:delta_singular}
-    Sea $\langle\cdot,\cdot\rangle_{\mu}$ un producto interno sobre $\Poly$. Diremos que un punto $c\in\C$ es \emph{$\delta$-singular} respecto a $\|\cdot\|_{\mu}$ si la restricción del funcional $\delta_c$ al subespacio $\ker(\delta'_c)$ no es acotada. Equivalente y más concretamente,
+    Sea $\langle\cdot,\cdot\rangle_{\mu}$ un producto interno sobre $\Poly$. Diremos que un punto $c\in\C$ es \emph{$\delta$-singular} respecto a $\|\cdot\|_{\mu}$ si la restricción de $\delta_c$ a $\ker(\delta'_c)$ no es acotada, es decir,
     \[
         \sup\Bigl\{\frac{|p(c)|}{\|p\|_{\mu}}:p\in\ker(\delta'_c)\setminus\{0\}\Bigr\}=+\infty.
     \]
-    Esto equivale a la existencia de una sucesión $\{p_n\}_{n\ge1} $ con $p_n \in \ker(\delta'_c)$ tal que
+\end{defn}
+
+\begin{rmk}
+    La condición anterior equivale a la existencia de una sucesión $\{p_n\}_{n\ge1}$ con $p_n\in\ker(\delta'_c)$ tal que
     \[
         \|p_n\|_{\mu}\to0,
         \qquad
         p_n(c)=1
         \quad\text{para todo }n\ge1.
     \]
-\end{defn}
+\end{rmk}
 
 \begin{lem}\label{lema:ABPE_derivada}
     Sea $R>0$ y sea $c\in\C$ con $|c|<R$. Entonces $c$ es un punto ABPE para $L^2(\mathbf{m}_R)$ y, en consecuencia, el funcional
@@ -189,7 +193,7 @@ Los funcionales de evaluación y derivación aparecerán de forma recurrente en 
 
 \section{Caso estable}
 
-Este caso es conocido y ha sido tratado por Gonzalo y Escribano \cite{EG25-2} para contextos mas generales. A continuación presentamos un resultado particular para el producto de Sobolev discreto \ref{eq:norma_sobolev_discreta_general} apoyandonos en el hecho de que los puntos interiores son ABPE para la parte continua.
+Gonzalo y Escribano \cite{EG25-2} tratan este caso en contextos más generales. A continuación presentamos un resultado particular correspondiente al producto de Sobolev discreto \eqref{eq:norma_sobolev_discreta_general}, usando que los puntos interiores son ABPE para la parte continua.
 
 \begin{prop}\label{prop:atomos_interiores_acotado}
     Sea $R>0$ y sean $c_1,\dots,c_N\in\C$ tales que
@@ -250,7 +254,7 @@ Este caso es conocido y ha sido tratado por Gonzalo y Escribano \cite{EG25-2} pa
     \[
         \langle p,q\rangle_S
         =
-        \int_{M_1} p(z)\overline{q(z)}\,d\mathbf m_1(z)
+        \int_{\mathbb{S}_1} p(z)\overline{q(z)}\,d\mathbf m_1(z)
         +
         p'(0)\overline{q'(0)},
         \qquad p,q\in\Poly.
@@ -285,7 +289,7 @@ Este caso es conocido y ha sido tratado por Gonzalo y Escribano \cite{EG25-2} pa
 
 \section{Caso inestable}
 
-Notese que al abordar el caso estable conocido se ha impuesto que $|c_j|<R$ para todo $j$. Luego es natural preguntarse qué ocurre cuando alguno de los puntos $c_j$ cumple que $|c_j|\ge R$. Empecemos por un caso sencillo con un solo átomo.
+Consideremos ahora el caso en que existe al menos un punto $c_j$ con $|c_j|\ge R$. Comenzamos con un único átomo.
 
 \begin{thm}\label{thm:un_atomo_exterior}\label{prop:lebesgue_pre_umbral_Qk}
     Sea $R>0$, sea $c\in\C$ con $|c|\ge R$ y consideremos sobre $\Poly$ el producto escalar
@@ -338,7 +342,7 @@ Notese que al abordar el caso estable conocido se ha impuesto que $|c_j|<R$ para
         Q_0(\D)=\|\D\|_S=\infty.
     \]
 
-    Para obtener una restricción estable, consideramos
+    Consideramos
     \[
         W:=\ker(\psi_c)=\{p\in\Poly:\psi_c(p)=0\}.
     \]
@@ -394,7 +398,7 @@ Notese que al abordar el caso estable conocido se ha impuesto que $|c_j|<R$ para
     Si $|c|<R$, la Proposición~\ref{prop:atomos_interiores_acotado} aplicada con $N=1$ prueba que $\D$ es acotado y, por tanto, $Q_0(\D)<\infty$. Si $|c|\ge R$, el Teorema~\ref{thm:un_atomo_exterior} da $Q_0(\D)=\infty$ y $Q_1(\D)\le R<\infty$.
 \end{proof}
 
-Pasamos ahora al producto de Sobolev discreto \ref{eq:norma_sobolev_discreta_general} con un conjunto finito de átomos derivados. Sea $F\subset\C$ un conjunto finito y consideremos
+Sea $F\subset\C$ finito y consideremos el producto de Sobolev discreto \eqref{eq:norma_sobolev_discreta_general}
 \[
     \langle p,q\rangle_S
     =
@@ -425,19 +429,25 @@ La Proposición~\ref{prop:atomos_interiores_acotado} ya resuelve completamente e
 \]
 
 \begin{rmk}
-	Por el Teorema~\ref{thm:equivalencia_lebesgue} y la Proposición~\ref{prop:caracterizacion_psi_c}, cada $c\in I_{\mathrm{out}}$ da lugar a un funcional $\psi_c$ no acotado, mientras que los puntos de $I_{\mathrm{in}}$ permanecen controlados por la parte continua.
+    Por el Teorema~\ref{thm:equivalencia_lebesgue} y la Proposición~\ref{prop:caracterizacion_psi_c}, cada $c\in I_{\mathrm{out}}$ da lugar a un funcional $\psi_c$ no acotado, mientras que los puntos de $I_{\mathrm{in}}$ permanecen controlados por la parte continua.
 \end{rmk}
 
 \section{Subespacio estable}
 
-Veamos que podemos construir un subespacio estable imponiendo exactamente las restricciones que anulan las contribuciones discretas del producto de Sobolev \ref{eq:norma_sobolev_discreta_general}
+Definimos ahora el subespacio estable imponiendo la anulación de las contribuciones discretas del producto de Sobolev \eqref{eq:norma_sobolev_discreta_general}.
 
 \begin{defn}\label{def:vout_ch3}
-    Sea $F\subset\C$ un conjunto finito y consideremos los funcionales asociados al operador de multiplicación \ref{eq:def_psi_c} para $c\in I_{\mathrm{out}}$. Definimos el subespacio
+    Sea $R>0$, sea $F\subset\C$ finito y sea
+    \(
+    I_{\mathrm{out}}
+    \) de la Definición~\ref{def:class_points_new}.
+    Para cada $c\in I_{\mathrm{out}}$, sea $\psi_c$ el funcional dado por \eqref{eq:def_psi_c}. Definimos
     \begin{equation}\label{eq:def_vout}
         V_{\mathrm{out}}:=\bigcap_{c\in I_{\mathrm{out}}}\ker(\psi_c).
     \end{equation}
 \end{defn}
+
+Veamos un resultado de interpolación de Hermite \cite{Dav75} que nos permitirá construir polinomios con valores y derivadas en un conjunto finito de puntos.
 
 \begin{lem}\label{lem:hermite_datos_finito}
     Sea $F\subset\C$ un conjunto finito. Entonces, para cualesquiera familias de datos $(\alpha_a)_{a\in F}$ y $(\beta_a)_{a\in F}$ en $\C$, existe un polinomio $h\in\Poly$ tal que
@@ -447,11 +457,14 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
         h'(a)=\beta_a,
         \qquad a\in F.
     \]
-    Véase \cite{Dav75}.
 \end{lem}
 
 \begin{lem}\label{lem:independencia_funcionales_psi}
-    Sea $R>0$, sea $I_{\mathrm{in}}\subset\C$ el conjunto de atomos interiores y sea $\psi_c(p)$ el funcional asociado al operador de multiplicación \ref{eq:def_psi_c} para cada $c\in I_{\mathrm{out}}$. El sistema $\{\psi_c\}_{c\in I_{\mathrm{out}}}$ es linealmente independiente. En particular,
+    Sea $R>0$, sea $F\subset\C$ finito y sea
+    \(
+    I_{\mathrm{out}}
+    \) de la Definición \ref{def:class_points_new}.
+    Para cada $c\in I_{\mathrm{out}}$, sea $\psi_c$ el funcional dado por \eqref{eq:def_psi_c}. Entonces el sistema $\{\psi_c\}_{c\in I_{\mathrm{out}}}$ es linealmente independiente. En particular,
     \[
         \dim[\psi_c:c\in I_{\mathrm{out}}]=m,
         \qquad m:=|I_{\mathrm{out}}|.
@@ -482,7 +495,10 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
 \end{proof}
 
 \begin{lem}\label{lem:vout_codimension}
-    Sea $R>0$, sea $I_{\mathrm{out}}\subset\C$ el conjunto de atomos interiores y consideremos el subespacio $V_{\mathrm{out}}$ \ref{eq:def_vout}.Entonces
+    Sea $R>0$, sea $F\subset\C$ finito y sea
+    \(
+    V_{\mathrm{out}}
+    \) de la Definición~\ref{def:vout_ch3}. Entonces
     \[
         \operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m,
         \qquad m:=|I_{\mathrm{out}}|.
@@ -494,7 +510,11 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
 \end{proof}
 
 \begin{lem}\label{lem:vout_acotacion}
-    Sea $R>0$, sea $F= I_{\mathrm{in}} \cup I_{\mathrm{out}}\subset\C$ finito, sea $V_{\mathrm{out}}$ el subespacio estable \ref{eq:def_vout} y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sea $F\subset\C$ finito y sea
+    \(
+    V_{\mathrm{out}}
+    \)
+    de la Definición~\ref{def:vout_ch3}, y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
@@ -516,7 +536,6 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
     \[
         (\D p)'(c)=\psi_c(p)=0.
     \]
-    Es decir, todas las contribuciones discretas procedentes de $I_{\mathrm{out}}$ desaparecen en la norma de Sobolev de $\D p$.
 
     Si $c\in I_{\mathrm{in}}$, entonces $|c|<R$. Por el Lema~\ref{lema:ABPE_derivada} y la propiedad ABPE de los puntos interiores, existen constantes $A_c,B_c<\infty$ tales que
     \[
@@ -551,7 +570,10 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
 \end{proof}
 
 \begin{prop}\label{prop:umbral_fase1}
-    Sea $R>0$, sea $F= I_{\mathrm{in}} \cup I_{\mathrm{out}}\subset\C$ finito, sea $V_{\mathrm{out}}$ el subespacio estable \ref{eq:def_vout} y consideremos sobre $\Poly$ el producto escalar
+    Sean $R>0$ y \(m:=|I_{\mathrm{out}}|\), sea $F\subset\C$ finito y sea
+    \(
+    V_{\mathrm{out}}
+    \) de la Definición~\ref{def:vout_ch3}, y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
@@ -579,7 +601,12 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
 \end{proof}
 
 \begin{cor}\label{cor:sin_interiores}
-    Sea $R>0$, sea $F= I_{\mathrm{in}} \cup I_{\mathrm{out}}\subset\C$ finito, sea $V_{\mathrm{out}}$ el subespacio estable \ref{eq:def_vout} y consideremos sobre $\Poly$ el producto escalar
+    Sean $R>0$ y $m:=|I_{\mathrm{out}}|$, sea $F\subset\C$ finito y definamos
+    sea
+    \(
+    V_{\mathrm{out}}
+    \) de la Definición~\ref{def:vout_ch3},
+    y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
@@ -607,7 +634,12 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
 \end{proof}
 
 \begin{thm}\label{thm:caso_mixto}
-    Sea $R>0$, sea $F= I_{\mathrm{in}} \cup I_{\mathrm{out}}\subset\C$ finito, sea $V_{\mathrm{out}}$ el subespacio estable \ref{eq:def_vout} y consideremos sobre $\Poly$ el producto escalar
+    Sean $R>0$ y $m:=|I_{\mathrm{out}}|$, sea $F\subset\C$ finito y sea
+    \(
+    V_{\mathrm{out}}
+    \)
+    de la Definición~\ref{def:vout_ch3},
+    y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
@@ -628,7 +660,7 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
         \le
         \max\{R^2,\lambda_{\max}(\mathbf B,\mathbf A)\},
     \]
-    donde $\mathbf A=(\langle e_j,e_i\rangle_S)_{i,j=1}^d$ y $\mathbf B=(\langle \D e_j,\D e_i\rangle_S)_{i,j=1}^d$ son las matrices de Gram respecto a una base $\{e_1,\dots,e_d\}$ del subespacio finito-dimensional generado por los representadores de Riesz de los funcionales acotados
+    donde $\mathbf A=(\langle e_j,e_i\rangle_S)_{i,j=1}^d$ y $\mathbf B=(\langle \D e_j,\D e_i\rangle_S)_{i,j=1}^d$ son las matrices de Gram respecto a una base $\{e_1,\dots,e_d\}$ del subespacio finito-dimensional de la completación de $V_{\mathrm{out}}$ generado por los representadores de Riesz de los funcionales acotados
     \[
         \ell_c(p):=p'(c),\qquad c\in F,
     \]
@@ -647,7 +679,7 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
         \|\D y\|_S^2=R^2\|y\|_{L^2(\mathbf{m}_R)}^2=R^2\|y\|_S^2.
     \]
 
-    La ortogonalidad respecto a ambas formas cuadráticas da entonces
+    La ortogonalidad respecto a ambas formas cuadráticas da
     \[
         \frac{\|\D p\|_S^2}{\|p\|_S^2}
         =
@@ -655,12 +687,12 @@ Veamos que podemos construir un subespacio estable imponiendo exactamente las re
         \le
         \max\!\left\{R^2,\sup_{\substack{q\in E\\ q\ne0}}\frac{\|\D q\|_S^2}{\|q\|_S^2}\right\}.
     \]
-    El segundo término es el mayor cociente de Rayleigh generalizado del par $(\mathbf B,\mathbf A)$ asociado a una base de $E$, esto es, $\lambda_{\max}(\mathbf B,\mathbf A)$. Se concluye así la cota superior anunciada para $\|\D|_{V_{\mathrm{out}}}\|_S^2$, y la desigualdad para $Q_m(\D)$ es inmediata por definición.
+    El segundo término es $\lambda_{\max}(\mathbf B,\mathbf A)$. Se concluye la cota superior para $\|\D|_{V_{\mathrm{out}}}\|_S^2$, y la desigualdad para $Q_m(\D)$ es inmediata por definición.
 \end{proof}
 
 \section{Necesidad de la codimensión \texorpdfstring{$m$}{m}}
 
-Veamos ahora que la codimensión $m$ es necesaria para estabilizar el operador de multiplicación, luego no podemos construir un subespacio estable con codimensión menor que $m$. Pero antes debemos ver unos resultados que nos ayudarán a construir las sucesiones que usaremos para ver la necesidad de la codimensión $m$.
+Probamos ahora que la codimensión $m$ es necesaria para estabilizar el operador de multiplicación. Comenzamos con la construcción de las sucesiones auxiliares.
 
 \begin{lem}\label{lem:paquete_local_exterior}
     Sea $R>0$ y sea $c\in\C$ con $|c|\ge R$. Entonces existe una sucesión $\{r_{c,n}\}_{n\ge1}$ con $r_{c,n}\in\Poly$ tal que
@@ -674,75 +706,26 @@ Veamos ahora que la codimensión $m$ es necesaria para estabilizar el operador d
 \end{lem}
 
 \begin{proof}
-    Distinguimos dos casos.
-
-    Si $|c|>R$, definimos
-    \[
-        r_{c,n}(z):=\frac{(n+1)c z^n-nz^{n+1}}{c^{n+1}}.
-    \]
-    Entonces
+    Por el Teorema~\ref{thm:equivalencia_lebesgue}, la condición $|c|\ge R$ equivale a que $c$ es $\delta$-singular respecto a $\|\cdot\|_{L^2(\mathbf{m}_R)}$. La observación siguiente a la Definición~\ref{def:delta_singular} proporciona entonces una sucesión $(r_{c,n})_{n\ge1}\subset\Poly$ tal que
     \[
         r_{c,n}(c)=1,
         \qquad
-        r'_{c,n}(c)=0.
-    \]
-    Además,
-    \[
-        \|r_{c,n}\|_{L^2(\mathbf{m}_R)}^2
-        =
-        (n+1)^2\left(\frac{R}{|c|}\right)^{2n}
-        +
-        n^2\left(\frac{R}{|c|}\right)^{2n+2}
-        \xrightarrow[n\to\infty]{}0,
-    \]
-    porque $R/|c|<1$.
-
-    Si $|c|=R$, tomamos
-    \[
-        \alpha_n:=\frac{\sum_{k=1}^n k}{\sum_{k=1}^n k^2}=\frac{3}{2n+1},
-    \]
-    y definimos
-    \[
-        P_{c,n}(z):=\sum_{k=0}^n (1-\alpha_n k)\left(\frac zc\right)^k.
-    \]
-    Entonces
-    \[
-        P'_{c,n}(c)=0,
+        r'_{c,n}(c)=0,
         \qquad
-        P_{c,n}(c)=\frac{(n+1)(n+2)}{2(2n+1)}.
+        \|r_{c,n}\|_{L^2(\mathbf{m}_R)}\xrightarrow[n\to\infty]{}0.
     \]
-    Definimos
-    \[
-        r_{c,n}:=\frac{P_{c,n}}{P_{c,n}(c)}.
-    \]
-    Así,
-    \[
-        r_{c,n}(c)=1,
-        \qquad
-        r'_{c,n}(c)=0.
-    \]
-    Además,
-    \[
-        \|r_{c,n}\|_{L^2(\mathbf{m}_R)}^2
-        =
-        \frac{\|P_{c,n}\|_{L^2(\mathbf{m}_R)}^2}{|P_{c,n}(c)|^2}
-        =
-        \frac1{P_{c,n}(c)}
-        \xrightarrow[n\to\infty]{}0.
-    \]
-    Esto concluye la prueba.
 \end{proof}
 
 \begin{lem}\label{lem:paquetes_diagonales}
-    Sea $R>0$, sea $F\subset\C$ finito y definamos
-    \[
-        I_{\mathrm{out}}:=\{c\in F:|c|\ge R\}.
-    \]
+    Sea $R>0$, sea $F\subset\C$ finito y sea
+    \(
+    I_{\mathrm{out}}
+    \) de la Definición~\ref{def:class_points_new}.
     Para cada $c\in I_{\mathrm{out}}$ existe una sucesión $(u_{c,n})_{n\ge1}\subset\Poly$ tal que
     \[
         \|u_{c,n}\|_S\xrightarrow[n\to\infty]{}0,
     \]
-    y además
+    y además, para $\psi_d$ dado por \eqref{eq:def_psi_c},
     \[
         \psi_d(u_{c,n})=\delta_{dc},
         \qquad d\in I_{\mathrm{out}}.
@@ -789,13 +772,13 @@ Veamos ahora que la codimensión $m$ es necesaria para estabilizar el operador d
     \[
         \psi_d(u_{c,n})=0.
     \]
-    Hemos probado así que
+    Por tanto,
     \[
         \psi_d(u_{c,n})=\delta_{dc},
         \qquad d\in I_{\mathrm{out}}.
     \]
 
-    Queda justificar que $\|u_{c,n}\|_S\to0$. Para todo $a\in F$, la elección de $H_c$ y $r_{c,n}$ da
+    Para todo $a\in F$, la elección de $H_c$ y $r_{c,n}$ da
     \[
         u'_{c,n}(a)=H'_c(a)r_{c,n}(a)+H_c(a)r'_{c,n}(a)=0.
     \]
