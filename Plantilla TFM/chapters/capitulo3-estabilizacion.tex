@@ -51,6 +51,43 @@ Los funcionales de evaluación y derivación aparecerán de forma recurrente en 
     Si alguno de estos funcionales es continuo respecto a la norma considerada, denotaremos por $\widetilde\delta_c$, $\widetilde\delta'_c$ o $\widetilde\psi_c$ su extensión continua a la compleción del espacio.
 \end{rmk}
 
+Veamos los siguientes resultados sobre la codimensión de intersecciones de núcleos de funcionales de evaluación.
+
+\begin{lem}
+    Sean $z_1,\dots,z_N\in\C$ distintos. Entonces $\delta_{z_1},\dots,\delta_{z_N}$ son linealmente independientes en $\Poly^*$.
+\end{lem}
+
+\begin{proof}
+    Supongamos que existe una combinación lineal nula $\sum_{i=1}^N \alpha_i \delta_{z_i} = 0$.
+    Para cada $j\in\{1,\dots,N\}$, sea
+    \[
+        L_j(z) = \prod_{\substack{l=1 \\ l \neq j}}^{N} \frac{z - z_l}{z_j - z_l}.
+    \]
+    Entonces $L_j(z_i)=\delta_{ji}$. Evaluando en $L_j$,
+    \[
+        0 = \sum_{i=1}^N \alpha_i \delta_{z_i}(L_j) = \sum_{i=1}^N \alpha_i L_j(z_i) = \alpha_j \cdot 1
+    \]
+    para todo $j$. Luego $\alpha_j=0$ para todo $j$.
+\end{proof}
+
+\begin{cor}
+    Sean $z_1,\dots,z_N\in\C$ distintos y sea
+    \[
+        V:=\bigcap_{i=1}^N \ker(\delta_{z_i}).
+    \]
+    Entonces
+    \[
+        \operatorname{codim}_{\Poly}(V)=N.
+    \]
+\end{cor}
+
+\begin{proof}
+    Por el lema anterior, $\delta_{z_1},\dots,\delta_{z_N}$ son linealmente independientes. Aplicando la Proposición~\ref{prop:finite-codim-kernels},
+    \[
+        \operatorname{codim}_{\Poly}(V) = \dim[\delta_{z_1}, \dots, \delta_{z_N}] = N.
+    \]
+\end{proof}
+
 \begin{defn}\label{def:abpe_ch3}
     Sea $\mu$ una medida positiva finita en $\C$. Diremos que $a\in\C$ es un punto de evaluación acotada (\emph{bounded point evaluation}, BPE) para $L^2(\mu)$ si existe una constante $C>0$ tal que
     \begin{equation}\label{eq:def_bpe}

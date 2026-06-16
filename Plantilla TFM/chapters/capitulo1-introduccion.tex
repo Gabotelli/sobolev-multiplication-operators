@@ -1073,6 +1073,18 @@ que cuantifican el tamaño de un operador desde distintos puntos de vista
 \cite{Pietsch1987}. En particular, los números de Gelfand están ligados a la
 restricción del operador a subespacios de codimensión finita.
 
+\begin{defn}[Codimensión]\label{def:codim_general}
+    Sea \(X\) un espacio vectorial y sea \(V\subset X\) un subespacio. Definimos la codimensión de \(V\) en \(X\) por
+    \[
+        \operatorname{codim}_{X}(V):=\dim(X/V),
+    \]
+    donde la dimensión se entiende en la categoría del espacio ambiente. En particular, si \(X=\mathcal H\) es un espacio de Hilbert y \(V\) es cerrado, entonces
+    \[
+        \operatorname{codim}_{\mathcal H}(V)=\dim(V^\perp),
+    \]
+    mientras que para subespacios \(V\subset\Poly\) la dimensión de \(\Poly/V\) es algebraica, es decir, se calcula mediante bases de Hamel \cite{halmos1982hilbert,hormander1989linearfunctionalanalysis,Aizpuru2009Apuntes}.
+\end{defn}
+
 El punto de vista que seguiremos en esta memoria es análogo. No nos limitaremos a
 preguntar si el operador de multiplicación es acotado en todo el espacio de
 polinomios. Cuando \(\D\) no sea acotado globalmente, estudiaremos si esta falta de

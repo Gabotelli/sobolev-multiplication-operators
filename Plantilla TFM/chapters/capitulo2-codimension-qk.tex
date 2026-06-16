@@ -1,154 +1,52 @@
 % !TEX root = ../main.tex
-\chapter{Codimensión, Dicotomía topológica e índice \texorpdfstring{$Q_k$}{Qk}}\label{sec:codimension_qk}
-
-\section{Marco hilbertiano y codimensión topológica}
-
+\chapter{Codimensión, Dicotomía e índice \texorpdfstring{$Q_k$}{Qk}}\label{sec:codimension_qk}
 Partimos de un producto interno $\langle\cdot, \cdot\rangle$. Denotamos por $\mathcal H$ la compleción de $\Poly$ respecto de la norma inducida por ese producto. En particular,
 \[
     \mathcal H=\overline{\Poly},
 \]
-y $\Poly$ es un subespacio denso de $\mathcal H$.
-
-La noción clásica de codimensión en este contexto es la siguiente.
-
-\begin{defn}[Codimensión topológica en Hilbert \cite{halmos1982hilbert}]\label{def:codim_top_hilbert}
-    Sea $\mathcal H$ un espacio de Hilbert y sea $M\subset \mathcal H$ un subespacio cerrado. Definimos la codimensión de $M$ en $\mathcal H$:
-    \[
-        \operatorname{codim}_{\mathcal H}(M):=\dim(\mathcal H/M).
-    \]
-    Equivalentemente,
-    \[
-        \operatorname{codim}_{\mathcal H}(M)=\dim(M^\perp).
-    \]
-\end{defn}
-
-\section{Límite de la codimensión topológica}
-
-El punto delicado aparece cuando un subespacio de $\Poly$ está definido por anulación de funcionales lineales y se lo mira dentro de la compleción hilbertiana $\mathcal H$. En ese paso, la condición lineal puede sobrevivir o desaparecer tras tomar clausura, según el funcional sea acotado o no respecto de la norma de $\mathcal H$. La proposición siguiente describe exactamente esta dicotomía.
-
-\begin{prop}[Dicotomía topológica para un funcional]\label{thm:dicotomia_1}
-    Sea $(\mathcal H,\langle\cdot,\cdot\rangle)$ un espacio de Hilbert tal que $\mathcal H=\overline{\Poly}$, y sea $L:\Poly\to\mathbb C$ un funcional lineal no nulo. Entonces ocurre exactamente una de las dos posibilidades siguientes:
-    \begin{enumerate}
-        \item si $L$ no es acotado respecto de la norma de $\mathcal H$, entonces
-              \[
-                  \overline{\ker L}=\mathcal H,
-                  \qquad
-                  \operatorname{codim}_{\mathcal H}(\overline{\ker L})=0;
-              \]
-        \item si $L$ es acotado respecto de la norma de $\mathcal H$, entonces
-              \[
-                  \operatorname{codim}_{\mathcal H}(\overline{\ker L})=1.
-              \]
-    \end{enumerate}
-\end{prop}
-
-\begin{proof}
-    Supongamos que $L$ no es acotado. Fijado $p\in\Poly$, existe una sucesión $w_n\in\Poly$ tal que
-    \[
-        |L(w_n)|>n\|w_n\|.
-    \]
-    Definimos
-    \[
-        u_n:=\frac{w_n}{L(w_n)}.
-    \]
-    Entonces
-    \[
-        L(u_n)=1,
-        \qquad
-        \|u_n\|=\frac{\|w_n\|}{|L(w_n)|}<\frac1n,
-    \]
-    de modo que $\|u_n\|\to0$. Sea
-    \[
-        v_n:=p-L(p)u_n\in\ker L,
-        \qquad
-        \|v_n-p\|=|L(p)|\,\|u_n\|\to 0.
-    \]
-    Como $\Poly$ es denso en $\mathcal H$, se sigue que $\overline{\ker L}=\mathcal H$.
-
-    Supongamos que $L$ es acotado. Entonces se extiende de manera única a un funcional lineal acotado $\varphi$ sobre $\mathcal H$. Como $\ker\varphi$ es cerrado y contiene a $\ker L$,
-    \[
-        \overline{\ker L}^{\,\mathcal H}=\ker\varphi.
-    \]
-    Tomemos $q\in\Poly$ con $L(q)\neq 0$. Para todo $x\in\mathcal H$,
-    \[
-        x=\left(x-\frac{\varphi(x)}{L(q)}q\right)+\frac{\varphi(x)}{L(q)}q,
-    \]
-    y el primer sumando pertenece a $\ker\varphi$. Por tanto,
-    \[
-        \mathcal H=\ker\varphi+[q].
-    \]
-    Como $q\notin\ker\varphi$, esa suma es directa. En consecuencia,
-    \[
-        \operatorname{codim}_{\mathcal H}(\overline{\ker L})=\operatorname{codim}_{\mathcal H}(\ker\varphi)=1.
-    \]
-\end{proof}
-
-\begin{prop}
-    Sea $\mathcal H$ un espacio de Hilbert y sean $\varphi_1,\dots,\varphi_N\in\mathcal H^*$ linealmente independientes. Si
-    \[
-        M:=\bigcap_{i=1}^N \ker(\varphi_i),
-    \]
-    entonces
-    \[
-        \operatorname{codim}_{\mathcal H}(M)=N.
-    \]
-\end{prop}
-
-\begin{proof}
-    Por el teorema de Riesz, existen $f_1,\dots,f_N\in\mathcal H$ linealmente independientes tales que
-    \[
-        \varphi_i(x)=\langle x,f_i\rangle_{\mathcal H},
-        \qquad x\in\mathcal H,
-    \]
-    para $i=1,\dots,N$. Sea
-    \[
-        F=[f_1, \dots, f_N].
-    \]
-    Entonces
-    \[
-        x\in M
-        \iff \varphi_i(x)=0\ \text{para todo }i
-        \iff \langle x,f_i\rangle_{\mathcal H}=0\ \text{para todo }i
-        \iff x\perp F,
-    \]
-    de modo que $M=F^{\perp}$. Como los vectores $f_1,\dots,f_N$ son linealmente independientes, se tiene $\dim(F)=N$, y por la descomposición ortogonal $\mathcal H=F^{\perp}\oplus F$ concluimos que
-    \[
-        \operatorname{codim}_{\mathcal{H}}(M)=N.
-    \]
-\end{proof}
-
-\section{Codimensión algebraica y restricciones lineales finitas}
-
-La definición que introducimos ahora no responde a una noción esencialmente distinta de codimensión, sino a la misma construcción aplicada en otro espacio ambiente. Si trabajamos en $\Poly$, la cantidad
+y $\Poly$ es un subespacio denso de $\mathcal H$. Siguiendo la Definición~\ref{def:codim_general}, cuando $M\subset\mathcal H$ es un subespacio cerrado escribiremos
 \[
-    \dim(\Poly/V)
+    \operatorname{codim}_{\mathcal H}(M)=\dim(\mathcal H/M)=\dim(M^\perp),
 \]
-cuenta exactamente el número de restricciones lineales impuestas por $V$, sin que intervenga todavía ningún proceso de clausura. Esto permite conservar la información lineal que puede perderse al pasar a $\mathcal H$.
+mientras que para un subespacio vectorial $V\subset\Poly$ escribiremos
+\[
+    \operatorname{codim}_{\Poly}(V)=\dim(\Poly/V),
+\]
+entendiendo aquí la dimensión en sentido algebraico.
 
-\begin{defn}\label{def:codim_alg}
-    Sea $V\subset \Poly$ un subespacio vectorial. Definimos
-    \[
-        \operatorname{codim}_{\Poly}(V):=\dim(\Poly/V)\in\mathbb N\cup\{\infty\},
-    \]
-    donde la dimensión es algebraica, es decir, la cardinalidad de una base de Hamel (una base vectorial en el sentido puramente algebraico) \cite{hormander1989linearfunctionalanalysis,Aizpuru2009Apuntes}.
+En espacios de Hilbert, los valores singulares están ligados a la estructura hilbertiana del espacio. Sin embargo, en contextos más generales no existe una única noción canónica que los sustituya. La teoría de los \(s\)-números, desarrollada por Pietsch \cite{Ullrich2024, Pietsch1987}, proporciona un marco para extender esta filosofía a operadores acotados entre espacios de Banach. En particular, nos apoyaremos en los números de Gelfand, que se definen a continuación.
+
+\begin{defn}\label{def:numeros_gelfand}
+    Sea $T\in\mathcal L(\mathcal H)$. Para cada $k\ge 0$, definimos el número de Gelfand de orden $k$ de $T$ como
+    \begin{equation}\label{eq:gelfand_numbers}
+        c_k(T)=\inf\{\|T|_M\|:M\subset \mathcal H,\ M\text{ cerrado},\ \operatorname{codim}_{\mathcal H}(M)<k+1\}.
+    \end{equation}
+    En particular, $c_0(T)=\|T\|$. \cite{Ullrich2024}
 \end{defn}
 
-La primera caracterización es la que usaremos de manera sistemática.
+\begin{rmk}
+    Nuestra definición del número de Gelfand $c_0(T)$ corresponde al número $c_1(T)$, y en general $c_{k-1}(T)$ corresponde a $c_k(T)$. La usamos así por coherencia de notación al trabajar en espacios de polinomios.
+\end{rmk}
+
+\section{Restricciones lineales y codimensión finita}
+
+Comenzamos fijando el lenguaje algebraico que usaremos para describir subespacios de codimensión finita. En un espacio vectorial, imponer una condición lineal equivale a tomar el núcleo de un funcional lineal; imponer varias condiciones lineales equivale a considerar una intersección de núcleos. En particular, los subespacios de codimensión finita pueden entenderse como aquellos determinados por un número finito de restricciones lineales independientes.
 
 \begin{prop}\label{prop:finite-codim-kernels}
     Para un subespacio vectorial $V\subset \Poly$, son equivalentes:
     \begin{enumerate}
         \item $\operatorname{codim}_{\Poly}(V)<\infty$;
-        \item existen $m\in\mathbb N$ y $L_1,\dots,L_m\in\Poly^*$ tales que
+        \item existen $m\in\mathbb N\cup\{0\}$ y $L_1,\dots,L_m\in\Poly^*$ tales que
               \[
-                   V=\bigcap_{j=1}^m \ker L_j.
-               \]
+                    V=\bigcap_{j=1}^m \ker L_j.
+                \]
+              donde, si $m=0$, entendemos por convención que la intersección vacía es todo $\Poly$.
     \end{enumerate}
     Además,
     \[
         \operatorname{codim}_{\Poly}(V)
         =
-        \min\Bigl\{m\in\mathbb N: \exists\,L_1,\dots,L_m\in\Poly^*\ \text{tales que}\ V=\bigcap_{j=1}^m\ker L_j\Bigr\},
+        \min\Bigl\{m\in\mathbb N\cup\{0\}: \exists\,L_1,\dots,L_m\in\Poly^*\ \text{tales que}\ V=\bigcap_{j=1}^m\ker L_j\Bigr\},
     \]
     y más precisamente, si $V=\bigcap_{j=1}^m\ker L_j$, entonces
     \[
@@ -267,6 +165,7 @@ A continuación damos una caracterización de la codimensión algebraica atendie
     \]
 \end{proof}
 
+\begin{comment}
 En este trabajo son relevantes los siguientes funcionales de evaluación y evaluación de la derivada en un punto.
 
 \begin{defn}\label{def:funcionales_restringidos}
@@ -292,7 +191,7 @@ En este trabajo son relevantes los siguientes funcionales de evaluación y evalu
     Supongamos que existe una combinación lineal nula $\sum_{i=1}^N \alpha_i \delta_{z_i} = 0$.
     Para cada $j\in\{1,\dots,N\}$, sea
     \[
-        L_j(z) = \prod_{\substack{l=1 \\ l \neq j}}^{N} \frac{z - z_l}{z_j - z_l}
+        L_j(z) = \prod_{\substack{l=1 \\ l \neq j}}^{N} \frac{z - z_l}{z_j - z_l}.
     \]
     Entonces $L_j(z_i)=\delta_{ji}$. Evaluando en $L_j$,
     \[
@@ -318,12 +217,168 @@ En este trabajo son relevantes los siguientes funcionales de evaluación y evalu
         \operatorname{codim}_{\Poly}(V) = \dim[\delta_{z_1}, \dots, \delta_{z_N}] = N.
     \]
 \end{proof}
+\end{comment}
 
-\section{Relación entre codimensión algebraica y topológica}
+La misma idea se extiende a intersecciones finitas de núcleos de funcionales acotados.
 
-En esta sección estudiaremos la relación entre las codimensiones algebraicas y topológicas introducidas en las secciones anteriores.
+\begin{prop}\label{prop:finite-codim-hilbert-kernels}
+    Sea $\mathcal H$ un espacio de Hilbert y sean $\varphi_1,\dots,\varphi_N$ funcionales lineales acotados y linealmente independientes. Si
+    \[
+        M:=\bigcap_{i=1}^N \ker(\varphi_i),
+    \]
+    entonces $M$ es cerrado y
+    \[
+        \operatorname{codim}_{\mathcal H}(M)=N.
+    \]
+\end{prop}
 
-La proposición siguiente precisa cómo se relacionan ambas codimensiones.
+\begin{proof}
+    Como cada $\ker(\varphi_i)$ es cerrado, la intersección finita $M$ también es cerrada.
+
+    Por el teorema de Riesz, existen $f_1,\dots,f_N\in\mathcal H$ linealmente independientes tales que
+    \[
+        \varphi_i(x)=\langle x,f_i\rangle_{\mathcal H},
+        \qquad x\in\mathcal H,
+    \]
+    para $i=1,\dots,N$. Sea
+    \[
+        F=[f_1, \dots, f_N].
+    \]
+    Entonces
+    \[
+        x\in M
+        \iff \varphi_i(x)=0\ \text{para todo }i
+        \iff \langle x,f_i\rangle_{\mathcal H}=0\ \text{para todo }i
+        \iff x\perp F,
+    \]
+    de modo que $M=F^{\perp}$. Como los vectores $f_1,\dots,f_N$ son linealmente independientes, se tiene $\dim(F)=N$, y por la descomposición ortogonal $\mathcal H=F^{\perp}\oplus F$ concluimos que
+    \[
+        \operatorname{codim}_{\mathcal{H}}(M)=N.
+    \]
+\end{proof}
+
+\begin{prop}\label{prop:closed-finite-codim-hilbert}
+    Sea $M\subset\mathcal H$ un subespacio cerrado. Son equivalentes:
+    \begin{enumerate}
+        \item $\operatorname{codim}_{\mathcal H}(M)=m<\infty$;
+        \item existen funcionales lineales acotados y linealmente independientes $\varphi_1,\dots,\varphi_m\in\mathcal H^*$ tales que
+              \[
+                  M=\bigcap_{j=1}^m \ker \varphi_j.
+              \]
+    \end{enumerate}
+    Además, si $M=\bigcap_{j=1}^r\ker\varphi_j$ para ciertos funcionales lineales acotados $\varphi_1,\dots,\varphi_r$, entonces
+    \[
+        \operatorname{codim}_{\mathcal H}(M)=\dim[\varphi_1,\dots,\varphi_r].
+    \]
+\end{prop}
+
+\begin{proof}
+    Supongamos que $\operatorname{codim}_{\mathcal H}(M)=m<\infty$. Entonces $M^\perp$ es finito-dimensional de dimensión $m$. Tomamos una base ortonormal $f_1,\dots,f_m$ de $M^\perp$ y definimos
+    \[
+        \varphi_j(x):=\langle x,f_j\rangle_{\mathcal H},
+        \qquad x\in\mathcal H,
+    \]
+    para $j=1,\dots,m$. Entonces cada $\varphi_j$ es lineal y acotado, y además
+    \[
+        M=(M^\perp)^\perp=\bigcap_{j=1}^m \ker\varphi_j.
+    \]
+    Si $\sum_{j=1}^m\alpha_j\varphi_j=0$, evaluando en $f_i$ obtenemos $\alpha_i=0$ para todo $i$, de modo que $\varphi_1,\dots,\varphi_m$ son linealmente independientes.
+
+    Recíprocamente, si $M=\bigcap_{j=1}^m\ker\varphi_j$ con $\varphi_1,\dots,\varphi_m$ linealmente independientes, la Proposición~\ref{prop:finite-codim-hilbert-kernels} da
+    \[
+        \operatorname{codim}_{\mathcal H}(M)=m.
+    \]
+
+    Para la afirmación final, sea
+    \[
+        s:=\dim[\varphi_1,\dots,\varphi_r].
+    \]
+    Reordenando si hace falta, podemos suponer que $\varphi_1,\dots,\varphi_s$ forman una base de ese subespacio. Entonces
+    \[
+        M=\bigcap_{j=1}^s\ker\varphi_j,
+    \]
+    y la Proposición~\ref{prop:finite-codim-hilbert-kernels} implica
+    \[
+        \operatorname{codim}_{\mathcal H}(M)=s.
+    \]
+\end{proof}
+
+\section{Dicotomía de la codimensión}
+
+La sección anterior describe los subespacios de codimensión finita mediante restricciones lineales. Sin embargo, en nuestro problema esas restricciones viven inicialmente en \(\Poly\), mientras que la teoría clásica de los números de Gelfand se formula en la compleción hilbertiana \(\mathcal H\). Por tanto, es necesario entender qué ocurre con una condición lineal impuesta en \(\Poly\) cuando se toma la clausura del subespacio que define. 
+
+\begin{prop}\label{thm:dicotomia_1}
+    Sea $(\mathcal H,\langle\cdot,\cdot\rangle)$ un espacio de Hilbert tal que $\mathcal H=\overline{\Poly}$, y sea $L:\Poly\to\mathbb C$ un funcional lineal no nulo. Entonces ocurre exactamente una de las dos posibilidades siguientes:
+    \begin{enumerate}
+        \item si $L$ no es acotado respecto de la norma de $\mathcal H$, entonces
+              \[
+                  \overline{\ker L}=\mathcal H,
+                  \qquad
+                  \operatorname{codim}_{\mathcal H}(\overline{\ker L})=0;
+              \]
+        \item si $L$ es acotado respecto de la norma de $\mathcal H$, entonces
+              \[
+                  \operatorname{codim}_{\mathcal H}(\overline{\ker L})=1.
+              \]
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    Supongamos que $L$ no es acotado. Fijado $p\in\Poly$, existe una sucesión $w_n\in\Poly$ tal que
+    \[
+        |L(w_n)|>n\|w_n\|.
+    \]
+    Definimos
+    \[
+        u_n:=\frac{w_n}{L(w_n)}.
+    \]
+    Entonces
+    \[
+        L(u_n)=1,
+        \qquad
+        \|u_n\|=\frac{\|w_n\|}{|L(w_n)|}<\frac1n,
+    \]
+    de modo que $\|u_n\|\to0$. Sea
+    \[
+        v_n:=p-L(p)u_n\in\ker L,
+        \qquad
+        \|v_n-p\|=|L(p)|\,\|u_n\|\to 0.
+    \]
+    Como $\Poly$ es denso en $\mathcal H$, se sigue que $\overline{\ker L}=\mathcal H$.
+
+    Supongamos que $L$ es acotado. Entonces se extiende de manera única a un funcional lineal acotado $\widetilde L$ sobre $\mathcal H$. Como $\ker\widetilde L$ es cerrado y contiene a $\ker L$,
+    \[
+        \overline{\ker L}^{\,\mathcal H}\subset \ker\widetilde L.
+    \]
+    Recíprocamente, sea $x\in\ker\widetilde L$. Tomamos una sucesión $p_n\in\Poly$ tal que $p_n\to x$. Fijado $q\in\Poly$ con $L(q)\neq 0$, definimos
+    \[
+        v_n:=p_n-\frac{\widetilde L(p_n)}{L(q)}q.
+    \]
+    Entonces $v_n\in\ker L$ y, como $\widetilde L(x)=0$, se tiene
+    \[
+        v_n-p_n=-\frac{\widetilde L(p_n)}{L(q)}q\xrightarrow[n\to\infty]{}0,
+    \]
+    de modo que $v_n\to x$. Por tanto,
+    \[
+        \ker\widetilde L\subset \overline{\ker L}^{\,\mathcal H},
+    \]
+    y concluimos que
+    \[
+        \overline{\ker L}^{\,\mathcal H}=\ker\widetilde L.
+    \]
+    Para todo $x\in\mathcal H$,
+    \[
+        x=\left(x-\frac{\widetilde L(x)}{L(q)}q\right)+\frac{\widetilde L(x)}{L(q)}q,
+    \]
+    y el primer sumando pertenece a $\ker\widetilde L$. Por tanto,
+    \[
+        \mathcal H=\ker\widetilde L+[q].
+    \]
+    Como $q\notin\ker\widetilde L$, esa suma es directa. En consecuencia,
+    \[
+        \operatorname{codim}_{\mathcal H}(\overline{\ker L})=\operatorname{codim}_{\mathcal H}(\ker\widetilde L)=1.
+    \]
+\end{proof}
 
 \begin{prop}\label{prop:relacion_codimensiones}
     Sea $\mathcal H=\overline{\Poly}$ con respecto a un producto interno.
@@ -393,7 +448,7 @@ La proposición siguiente precisa cómo se relacionan ambas codimensiones.
         \dim(\mathcal H/\overline V)\le \dim(F)=m.
     \]
 
-    Para $(2)$, como $M$ es cerrado y de codimensión $m$, existen $\varphi_1,\dots,\varphi_m\in\mathcal H^*$ linealmente independientes tales que
+    Para $(2)$, como $M$ es cerrado y de codimensión $m$, la Proposición~\ref{prop:closed-finite-codim-hilbert} garantiza que existen $\varphi_1,\dots,\varphi_m\in\mathcal H^*$ linealmente independientes tales que
     \[
         M=\bigcap_{j=1}^m \ker \varphi_j,
     \]
@@ -438,23 +493,11 @@ La proposición siguiente precisa cómo se relacionan ambas codimensiones.
 
 \section{Índice \texorpdfstring{$Q_k$}{Qk}}
 
-Recordemos que, dado $T\in\mathcal L(\mathcal H)$ y un subespacio vectorial $M\subset\mathcal H$, la restricción $T|_M$ satisface
+Una vez vista la dicotomía, podemos introducir el índice que será relevante para operadores lineales no necesariamente acotados sobre $\Poly$. Para un operador lineal $T:\Poly\to\Poly$ y un subespacio $V\subset\Poly$, escribiremos
 \[
-    \|T|_M\|=\sup_{\substack{p\in M\\ p\ne0}}\frac{\|Tp\|}{\|p\|}\le \|T\|<+\infty.
+    \|T|_V\|:=\sup_{\substack{p\in V\\ p\ne0}}\frac{\|Tp\|}{\|p\|}\in[0,+\infty].
 \]
 
-\begin{defn}\label{def:numeros_gelfand}
-    Sea $T\in\mathcal L(\mathcal H)$. Para cada $k\ge 0$, definimos el número de Gelfand de orden $k$ de $T$ como
-    \begin{equation}\label{eq:gelfand_numbers}
-        c_k(T)=\inf\{\|T|_M\|:M\subset \mathcal H,\ M\text{ cerrado},\ \operatorname{codim}_{\mathcal H}(M)<k+1\}.
-    \end{equation}
-    En particular, $c_0(T)=\|T\|$. \cite{Ullrich2024}
-\end{defn}
-\begin{rmk}
-    Nuestra definición del número de Gelfand $c_0(T)$ corresponde al número $c_1(T)$, y en general $c_{k-1}(T)$ corresponde a $c_k(T)$. La usamos así por coherencia de notación al trabajar en espacios de polinomios.
-\end{rmk}
-
-El índice de Gelfand se define para operadores acotados, mientras que en este trabajo aparecerán operadores no acotados. La discusión anterior muestra que, en ese régimen, medir solo la codimensión de la clausura en $\mathcal H$ no siempre retiene las restricciones lineales relevantes. Esto justifica introducir un nuevo índice que extienda la noción de los números de Gelfand a operadores no acotados sobre $\Poly$.
 \begin{defn}\label{def:indice_Qk}
     Sea $T:\Poly\to\Poly$ un operador lineal no necesariamente acotado definido sobre $(\Poly,\|\cdot\|)$, donde la norma está inducida por un producto interno. Para cada $k\ge0$, definimos
     \[
@@ -475,6 +518,116 @@ El índice de Gelfand se define para operadores acotados, mientras que en este t
     \]
     admitiendo el valor $+\infty$ cuando $T$ no es acotado.
 \end{rmk}
+
+Veamos una caracterización de $Q_k(T)$ en términos de subespacios de dimensión finita. Poder expresar $Q_k(T)$ como un supremo sobre subespacios de dimensión finita será útil más adelante.
+
+\begin{thm}\label{thm:maxmin_Qk}
+    Sea $T:\Poly\to\Poly$ un operador lineal, no necesariamente acotado. Entonces, para todo $k\ge0$,
+    \[
+        Q_k(T)
+        =
+        \sup_{\substack{E\subset\Poly\\ \dim E=k+1}}
+        \inf_{\substack{p\in E\\ p\ne0}}
+        \frac{\|Tp\|}{\|p\|},
+    \]
+    admitiendo el valor $+\infty$.
+\end{thm}
+
+\begin{proof}
+    Denotemos
+    \[
+        \mu_k(T):=
+        \sup_{\substack{E\subset\Poly\\ \dim E=k+1}}
+        \inf_{\substack{p\in E\\ p\ne0}}
+        \frac{\|Tp\|}{\|p\|}.
+    \]
+
+    Probemos primero que $\mu_k(T)\le Q_k(T)$. Sea $V\subset\Poly$ con
+    \[
+        \operatorname{codim}_{\Poly}(V)<k+1,
+    \]
+    y sea $E\subset\Poly$ con $\dim E=k+1$. Entonces
+    \[
+        E\cap V\ne\{0\}.
+    \]
+    En efecto, si $E\cap V=\{0\}$, la aplicación cociente $E\to\Poly/V$ sería inyectiva, lo que implicaría
+    \[
+        k+1=\dim E\le \dim(\Poly/V)=\operatorname{codim}_{\Poly}(V)<k+1,
+    \]
+    una contradicción. Tomando $0\ne p\in E\cap V$, obtenemos
+    \[
+        \inf_{\substack{q\in E\\ q\ne0}}
+        \frac{\|Tq\|}{\|q\|}
+        \le
+        \frac{\|Tp\|}{\|p\|}
+        \le
+        \sup_{\substack{q\in V\\ q\ne0}}
+        \frac{\|Tq\|}{\|q\|}.
+    \]
+    Tomando supremo en $E$ e ínfimo en $V$, se sigue que
+    \[
+        \mu_k(T)\le Q_k(T).
+    \]
+
+    Probemos ahora la desigualdad recíproca. Si $Q_k(T)=0$, no hay nada que demostrar. Sea
+    \[
+        0<a<Q_k(T),
+    \]
+    donde, si $Q_k(T)=+\infty$, tomamos $a>0$ arbitrario. Consideremos la forma hermítica
+    \[
+        B_a(p,q):=\langle Tp,Tq\rangle-a^2\langle p,q\rangle,
+        \qquad p,q\in\Poly.
+    \]
+
+    Afirmamos que existe un subespacio $E\subset\Poly$ con $\dim E=k+1$ tal que
+    \[
+        B_a(p,p)>0,
+        \qquad 0\ne p\in E.
+    \]
+    Supongamos lo contrario. Entonces todo subespacio sobre el que $B_a$ es definida positiva tiene dimensión a lo sumo $k$. Elegimos uno de dimensión máxima, digamos $F$, con
+    \[
+        m:=\dim F\le k.
+    \]
+    Definimos
+    \[
+        V:=\{p\in\Poly: B_a(p,f)=0\ \text{para todo }f\in F\}.
+    \]
+    Como $V$ está definido por $m$ condiciones lineales, se tiene
+    \[
+        \operatorname{codim}_{\Poly}(V)\le m\le k<k+1.
+    \]
+    Además, si existiera $p\in V$ con $B_a(p,p)>0$, entonces $F\oplus[p]$ sería un subespacio de dimensión $m+1$ sobre el cual $B_a$ sería definida positiva, contradiciendo la maximalidad de $F$. Por tanto,
+    \[
+        B_a(p,p)\le0,
+        \qquad p\in V.
+    \]
+    Es decir,
+    \[
+        \|Tp\|\le a\|p\|,
+        \qquad p\in V.
+    \]
+    En consecuencia,
+    \[
+        Q_k(T)\le \|T|_V\|\le a,
+    \]
+    lo cual contradice $a<Q_k(T)$. La afirmación queda probada.
+
+    Así, para cada $a<Q_k(T)$ existe $E\subset\Poly$ con $\dim E=k+1$ tal que
+    \[
+        \frac{\|Tp\|}{\|p\|}>a,
+        \qquad 0\ne p\in E.
+    \]
+    Por tanto,
+    \[
+        \mu_k(T)\ge a.
+    \]
+    Haciendo $a\uparrow Q_k(T)$, o tomando $a$ arbitrario si $Q_k(T)=+\infty$, concluimos que
+    \[
+        \mu_k(T)\ge Q_k(T).
+    \]
+
+    Junto con la primera desigualdad, esto prueba la igualdad.
+\end{proof}
 
 \begin{prop}\label{prop:propiedades_Qk}
     Sea $T:\Poly\to\Poly$ un operador lineal. Entonces
@@ -560,16 +713,16 @@ A continuación fijamos un modelo elemental en el que la cadena se rompe por pri
 
 De este ejemplo conviene destacar que existen operadores lineales no acotados sobre $\Poly$ cuya restricción a subespacios ``grandes'' (en el sentido de que tienen codimensión 1) es acotada. Esto justifica estudiar la estabilización de la cadena de los $Q_k$ para encontrar subespacios de codimensión finita donde esos operadores sean acotados.
 
-\section{Equivalencia con los números de Gelfand}
+\section{Compatibilidad con los índices clásicos}
 
-A continuación, probaremos que cuando consideramos operadores lineales acotados sobre $\Poly$, que admiten por tanto una extensión al espacio de Hilbert $\mathcal H$, entonces los índices $Q_k$ coinciden con los números de Gelfand.
+Por completitud del capítulo, podemos relacionar el índice $Q_k$ con los números de Gelfand de la extensión hilbertiana del operador.
 
 \begin{thm}\label{thm:equivalencia_Qk_Gelfand}
     Sea $(\mathcal H,\langle\cdot,\cdot\rangle)$ un espacio de Hilbert tal que $\mathcal H=\overline{\Poly}$, y sea $T\in\mathcal L(\mathcal H)$ con $T(\Poly)\subset\Poly$. Entonces, para todo $k\ge0$,
     \begin{equation}\label{eq:igualdad_Qk_Gelfand}
         Q_k(T)=c_k(T),
     \end{equation}
-    donde $Q_k(T)$ se calcula sobre $\Poly$ con la norma inducida por $\mathcal H$.
+    donde el índice $Q_k(T)$ se considera para $T|_{\Poly}$ con la norma inducida por $\mathcal{H}$.
 \end{thm}
 
 \begin{proof}
@@ -626,4 +779,128 @@ A continuación, probaremos que cuando consideramos operadores lineales acotados
 
 \begin{rmk}
     Esto justifica que el índice $Q_k$ es una extensión del índice de Gelfand para operadores no acotados, ya que coinciden cuando estos son acotados.
+\end{rmk}
+
+De manera análoga usando la caracterización del índice $Q_k$, podemos hacer lo mismo para el número de Bernstein de la extensión hilbertiana del operador.
+
+\begin{prop}\label{prop:Qk_Bernstein}
+    Sea $T:\Poly\to\Poly$ un operador lineal acotado respecto de $\|\cdot\|$, y sea
+    \[
+        \widetilde T\in\mathcal L(\mathcal H),
+        \qquad
+        \mathcal H=\overline{\Poly},
+    \]
+    su extensión acotada. Entonces, para todo $k\ge0$,
+    \[
+        Q_k(T)=b_k(\widetilde T).
+    \]
+\end{prop}
+
+\begin{proof}
+    Por la caracterización max--min algebraica del Teorema~\ref{thm:maxmin_Qk},
+    \[
+        Q_k(T)
+        =
+        \sup_{\substack{E\subset\Poly\\ \dim E=k+1}}
+        \inf_{\substack{p\in E\\ p\ne0}}
+        \frac{\|Tp\|}{\|p\|}.
+    \]
+    Como $\widetilde T|_{\Poly}=T$, esto equivale a
+    \[
+        Q_k(T)
+        =
+        \sup_{\substack{E\subset\Poly\\ \dim E=k+1}}
+        \inf_{\substack{p\in E\\ p\ne0}}
+        \frac{\|\widetilde T p\|}{\|p\|}.
+    \]
+
+    Puesto que todo subespacio de $\Poly$ es también un subespacio de $\mathcal H$, se tiene inmediatamente
+    \[
+        Q_k(T)\le b_k(\widetilde T).
+    \]
+
+    Probemos la desigualdad contraria. Sea $F\subset\mathcal H$ un subespacio de dimensión $k+1$, y escribamos
+    \[
+        \alpha_F:=
+        \inf_{\substack{x\in F\\ x\ne0}}
+        \frac{\|\widetilde T x\|}{\|x\|}.
+    \]
+    Fijemos $\varepsilon>0$. Tomemos una base ortonormal
+    \[
+        f_1,\dots,f_{k+1}
+    \]
+    de $F$. Como $\Poly$ es denso en $\mathcal H$, podemos escoger
+    \[
+        p_1,\dots,p_{k+1}\in\Poly
+    \]
+    tan próximos a $f_1,\dots,f_{k+1}$ como queramos.
+
+    Definimos $A:F\to\mathcal H$ por
+    \[
+        Af_j=p_j,
+        \qquad j=1,\dots,k+1,
+    \]
+    y extendemos linealmente. Escogiendo las aproximaciones suficientemente buenas, podemos suponer que
+    \[
+        \|A-I_F\|<\delta
+    \]
+    con $0<\delta<1$. En particular, $A$ es inyectivo. Por tanto,
+    \[
+        E:=A(F)
+    \]
+    es un subespacio de $\Poly$ de dimensión $k+1$.
+
+    Para todo $x\in F$ se tiene
+    \[
+        \|Ax\|\le (1+\delta)\|x\|,
+    \]
+    y además
+    \[
+        \|\widetilde T Ax\|
+        \ge
+        \|\widetilde T x\|-\|\widetilde T\|\,\|Ax-x\|
+        \ge
+        \bigl(\alpha_F-\|\widetilde T\|\delta\bigr)\|x\|.
+    \]
+    Por tanto, para todo $0\ne x\in F$,
+    \[
+        \frac{\|\widetilde T Ax\|}{\|Ax\|}
+        \ge
+        \frac{\alpha_F-\|\widetilde T\|\delta}{1+\delta}.
+    \]
+    Como el término de la derecha tiende a $\alpha_F$ cuando $\delta\to0$, podemos escoger las aproximaciones suficientemente buenas para que
+    \[
+        \frac{\alpha_F-\|\widetilde T\|\delta}{1+\delta}
+        \ge
+        \alpha_F-\varepsilon.
+    \]
+    Así,
+    \[
+        \inf_{\substack{y\in E\\ y\ne0}}
+        \frac{\|\widetilde T y\|}{\|y\|}
+        \ge
+        \alpha_F-\varepsilon.
+    \]
+    Como $E\subset\Poly$ y $\dim E=k+1$, se deduce que
+    \[
+        Q_k(T)\ge \alpha_F-\varepsilon.
+    \]
+    Puesto que $F$ y $\varepsilon$ eran arbitrarios, obtenemos
+    \[
+        Q_k(T)\ge
+        \sup_{\substack{F\subset\mathcal H\\ \dim F=k+1}}
+        \inf_{\substack{x\in F\\ x\ne0}}
+        \frac{\|\widetilde T x\|}{\|x\|}
+        =
+        b_k(\widetilde T).
+    \]
+
+    Juntando ambas desigualdades,
+    \[
+        Q_k(T)=b_k(\widetilde T).
+    \]
+\end{proof}
+
+\begin{rmk}
+    Cuando $T$ es acotado y estamos en un Hilbert, los números de Bernstein y los números de Gelfand coinciden, ya que son los valores singulares del operador. Por tanto, la Proposición~\ref{prop:Qk_Bernstein} y el Teorema~\ref{thm:equivalencia_Qk_Gelfand} afirman que el índice $Q_k$ es una extensión para operadores no acotados densamente definidos.
 \end{rmk}
