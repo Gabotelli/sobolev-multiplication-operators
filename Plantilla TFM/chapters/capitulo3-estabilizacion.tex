@@ -638,12 +638,7 @@ Veamos un resultado de interpolación de Hermite \cite{Dav75} que nos permitirá
 \end{proof}
 
 \begin{cor}\label{cor:sin_interiores}
-    Sean $R>0$ y $m:=|I_{\mathrm{out}}|$, sea $F\subset\C$ finito y definamos
-    sea
-    \(
-    V_{\mathrm{out}}
-    \) de la Definición~\ref{def:vout_ch3},
-    y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
@@ -652,14 +647,14 @@ Veamos un resultado de interpolación de Hermite \cite{Dav75} que nos permitirá
         \sum_{c\in F} p'(c)\overline{q'(c)},
         \qquad p,q\in\Poly.
     \]
-    Si $I_{\mathrm{in}}=\varnothing$, entonces
+    Si $|c|\ge R$ para todo $c\in F$ y $m:=|F|$, entonces
     \[
         Q_m(\D)\le R.
     \]
 \end{cor}
 
 \begin{proof}
-    Si $I_{\mathrm{in}}=\varnothing$, el Lema~\ref{lem:vout_acotacion} da
+    En estas hipótesis se tiene $I_{\mathrm{in}}=\varnothing$, $I_{\mathrm{out}}=F$ y $m=|I_{\mathrm{out}}|$. Por el Lema~\ref{lem:vout_acotacion},
     \[
         \|\D p\|_S\le R\|p\|_S,
         \qquad p\in V_{\mathrm{out}}.

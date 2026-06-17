@@ -106,7 +106,7 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 \end{proof}
 
 \begin{cor}
-	En las hipótesis de la Proposición~\ref{prop:charpoly_truncada}, para todo $n\ge0$ se tiene
+	Sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev en $(\Poly,\langle \cdot,\cdot\rangle_S)$ y, para cada $n\ge0$, sea $\mathbf D_n$ la sección principal de $\D$ en la base $\{\phi_0,\dots,\phi_n\}$. Entonces
 	\[
 		\sigma(\mathbf D_n)
 		=
@@ -492,10 +492,10 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 		=
 		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
 		+
-		\sum_{c\in I_{\mathrm{out}}} p'(c)\overline{q'(c)},
+		\sum_{c\in F} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly,
 	\]
-	y supongamos que $I_{\mathrm{in}}=\varnothing$ en la Definición~\ref{def:class_points_new}. Sea $m:=|I_{\mathrm{out}}|$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
+	donde $F\subset\C$ es finito y satisface $|c|\ge R$ para todo $c\in F$. Sea $m:=|F|$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D),
 	\]
@@ -517,7 +517,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 		Q_k(\D)=+\infty,
 		\qquad 0\le k<m.
 	\]
-	Aplicando el Teorema~\ref{thm:igualdad_sigma_qN_general} con $F=I_{\mathrm{out}}$ y $N=m$, obtenemos directamente
+	Aplicando el Teorema~\ref{thm:igualdad_sigma_qN_general} con este conjunto $F$ y $N=m$, obtenemos directamente
 	\(
 		\sigma_k(\mathbf D)=Q_k(\D)=R,
 		\qquad k\ge m.
@@ -534,7 +534,23 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{proof}
 
 \begin{cor}\label{cor:estabilizacion_singular_umbral}
-	Bajo las hipótesis del Teorema~\ref{thm:estabilizacion}, si $m$ es el entero definido en ese teorema, se tiene
+	Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+		+
+		\sum_{c\in F} p'(c)\overline{q'(c)},
+		\qquad p,q\in\Poly.
+	\]
+	Sea
+	\[
+		I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
+		\qquad
+		m:=|I_{\mathrm{out}}|.
+	\]
+	Sea además \(\mathbf D\) la representación matricial del operador \(\D\).
+	Si $m\ge1$, entonces
 	\[
 		\sigma_m(\mathbf D)=Q_m(\D)<\infty.
 	\]
