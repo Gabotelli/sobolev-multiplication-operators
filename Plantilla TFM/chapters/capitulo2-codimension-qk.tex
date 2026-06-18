@@ -4,7 +4,21 @@ Partimos de un producto interno $\langle\cdot, \cdot\rangle$. Denotamos por $\ma
 \[
     \mathcal H=\overline{\Poly},
 \]
-y $\Poly$ es un subespacio denso de $\mathcal H$. Siguiendo la Definición~\ref{def:codim_general}, cuando $M\subset\mathcal H$ es un subespacio cerrado escribiremos
+y $\Poly$ es un subespacio denso de $\mathcal H$.
+
+\begin{defn}[Codimensión]\label{def:codim_general}
+    Sea $X$ un espacio vectorial y sea $V\subset X$ un subespacio. Definimos la codimensión de $V$ en $X$ por
+    \[
+        \operatorname{codim}_{X}(V):=\dim(X/V),
+    \]
+    donde la dimensión se entiende en la categoría del espacio ambiente. En particular, si $X=\mathcal H$ es un espacio de Hilbert y $V$ es cerrado, entonces
+    \[
+        \operatorname{codim}_{\mathcal H}(V)=\dim(V^\perp),
+    \]
+    mientras que para subespacios $V\subset\Poly$ la dimensión de $\Poly/V$ es algebraica \cite{halmos1982hilbert,hormander1989linearfunctionalanalysis,Aizpuru2009Apuntes}.
+\end{defn}
+
+Con esta notación, cuando $M\subset\mathcal H$ es un subespacio cerrado escribiremos
 \[
     \operatorname{codim}_{\mathcal H}(M)=\dim(\mathcal H/M)=\dim(M^\perp),
 \]

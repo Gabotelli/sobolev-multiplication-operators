@@ -1,196 +1,204 @@
 % !TEX root = ../main.tex
 \chapter{Introducción y Estado del Arte}\label{sec:intro}
+
+El presente capítulo tiene como objetivo introducir los polinomios ortogonales de Sobolev, considerando tanto los fundamentos matemáticos necesarios para el desarrollo de su teoría como el contexto histórico que impulsó las investigaciones en este campo.
+
 \section{Polinomios, medidas y ortogonalidad clásica}
 \label{sec:preliminares_ortogonalidad}
 
-La teoría de los polinomios ortogonales ocupa un lugar central en el análisis,
-la teoría de la aproximación y la física matemática. En su formulación clásica,
-se estudian sucesiones de polinomios ortogonales respecto de medidas positivas,
-y esa ortogonalidad refleja con gran precisión la geometría del soporte de la
-medida y la estructura del espacio funcional subyacente \cite{Chi78,szego1975orthogonal}.
+La teoría de polinomios ortogonales clásica estudia sucesiones ortogonales con
+respecto a medidas positivas. En ese contexto, la geometría del soporte de la
+medida y la estructura del producto escalar determinan gran parte del
+comportamiento analítico y geométrico de los polinomios asociados
+\cite{Chi78,szego1975orthogonal}.
 
 A lo largo de esta memoria denotaremos por \(\Poly\) el espacio vectorial de los
-polinomios con coeficientes complejos. Para cada \(n\ge0\), escribiremos
+polinomios con coeficientes complejos y, para cada \(n\ge 0\), escribiremos
 \[
-    \Poly_n:=\{p\in\Poly:\deg p\le n\}
+    \Poly_n:=\{p\in\Poly:\deg p\le n\}.
 \]
-para el subespacio de polinomios de grado menor o igual que \(n\).
 
 \begin{defn}\label{def:medida_soporte}
 Sea \(\mu\) una medida de Borel positiva y finita en \(\C\). El soporte de
-\(\mu\), que denotaremos por \(\operatorname{supp}(\mu)\), es el menor cerrado
+\(\mu\), denotado por \(\operatorname{supp}(\mu)\), es el menor cerrado
 \(S\subset\C\) tal que
 \[
     \mu(\C\setminus S)=0.
 \]
-Diremos que \(\mu\) tiene soporte infinito si \(\operatorname{supp}(\mu)\) contiene infinitos
-puntos.
+Diremos que \(\mu\) tiene soporte infinito si \(\operatorname{supp}(\mu)\)
+contiene infinitos puntos.
 \end{defn}
 
-Si \(\mu\) es una medida de Borel positiva y finita con soporte infinito, podemos
-definir en \(\Poly\) el producto estándar
+Si \(\mu\) es una medida de Borel positiva y finita con soporte infinito,
+definimos en \(\Poly\) el producto estándar
 \begin{equation}\label{eq:producto_estandar}
     \langle p,q\rangle_\mu
     :=
-    \int_{\C}p(z)\overline{q(z)}\,d\mu(z),
-    \qquad p,q\in\Poly.
+    \int_{\C} p(z)\overline{q(z)}\,d\mu(z),
+    \qquad p,q\in\Poly,
 \end{equation}
-La norma asociada se denotará por
+y la norma asociada
 \[
-    \|p\|_\mu^2
-    :=
-    \int_{\C}|p(z)|^2\,d\mu(z).
+    \|p\|_\mu^2:=\int_{\C}|p(z)|^2\,d\mu(z).
 \]
-Cuando queramos enfatizar que se trata de la norma de \(L^2(\mu)\), escribiremos
+Aquí \(L^2(\mu)\) denota el espacio de clases de funciones medibles
+\(f:\C\to\C\) tales que
+\[
+    \int_{\C}|f(z)|^2\,d\mu(z)<\infty,
+\]
+dotado de la norma
+\[
+    \|f\|_{L^2(\mu)}^2:=\int_{\C}|f(z)|^2\,d\mu(z).
+\]
+En particular, la expresión anterior es la restricción de esa norma al subespacio
+de polinomios, y cuando queramos enfatizar esta interpretación escribiremos
 también \(\|p\|_{L^2(\mu)}\).
 
+Como \(\operatorname{supp}(\mu)\) es infinito, \eqref{eq:producto_estandar}
+define un producto escalar en \(\Poly\). Denotaremos por
+\[
+    \mathcal H_\mu:=\overline{\Poly}^{\,\|\cdot\|_\mu}
+\]
+la completación de \(\Poly\) respecto de esa norma. Entonces \(\mathcal H_\mu\)
+es un espacio de Hilbert separable y \(\Poly\) es un subespacio denso de
+\(\mathcal H_\mu\), aunque en este capítulo trabajaremos principalmente en el
+subespacio de polinomios.
+
 \begin{defn}\label{def:polinomios_ortogonales}
-Sea \(\langle\cdot,\cdot\rangle\) un producto escalar definido en \(\Poly\).
-Una sucesión \((P_n)_{n\ge0}\subset\Poly\) se dice ortogonal respecto de
+Sea \(\langle\cdot,\cdot\rangle\) un producto escalar en \(\Poly\). Una
+sucesión \((p_n)_{n\ge 0}\subset\Poly\) se dice ortogonal respecto de
 \(\langle\cdot,\cdot\rangle\) si
 \[
-    \deg(P_n)=n,
+    \deg(p_n)=n,
     \qquad
-    \langle P_n,P_m\rangle=0
-    \quad\text{si }n\ne m.
+    \langle p_n,p_m\rangle=0
+    \quad\text{si }n\neq m.
 \]
-Si además
-\[
-    \|P_n\|=1,
-    \qquad n\ge0,
-\]
-diremos que \((P_n)_{n\ge0}\) es una sucesión ortonormal.
+Si además \(\|p_n\|=1\) para todo \(n\ge 0\), diremos que la sucesión es
+ortonormal.
 \end{defn}
 
-En el caso del producto estándar \eqref{eq:producto_estandar}, si el soporte de
-\(\mu\) es infinito, el procedimiento de Gram--Schmidt aplicado a la base
+Aplicando Gram--Schmidt a la base monomial \(1,z,z^2,\dots\), obtenemos una
+sucesión ortonormal
 \[
-    1,z,z^2,\ldots
-\]
-permite construir una sucesión de polinomios ortonormales
-\[
-    (\phi_n)_{n\ge0},
+    (\phi_n)_{n\ge 0},
     \qquad
     \deg(\phi_n)=n,
 \]
-que queda determinada de forma única si se exige que el coeficiente principal de
-cada \(\phi_n\) sea positivo. Es decir,
+única si se fija positividad en el coeficiente principal. En particular,
 \[
     \langle \phi_n,\phi_m\rangle_\mu=\delta_{nm},
-    \qquad n,m\ge0.
+    \qquad n,m\ge 0.
 \]
-Esta construcción constituye uno de los puntos de partida de la teoría clásica de
-polinomios ortogonales \cite{Chi78,szego1975orthogonal}.
+Además, la familia \(\{\phi_n\}_{n\ge 0}\) constituye una base ortonormal
+numerable de \(\mathcal H_\mu\).
 
-Un objeto fundamental en esta teoría es el operador de multiplicación por la
-variable independiente.
+De manera equivalente, para cada \(n\ge 0\) existe un único polinomio mónico
+ortogonal
+\[
+    \widehat p_n(z)=z^n+\cdots,
+\]
+y la relación entre ambas normalizaciones viene dada por
+\[
+    \phi_n=\frac{\widehat p_n}{\|\widehat p_n\|_\mu}.
+\]
+
+\begin{prop}
+\label{prop:minima_norma_intro}
+Sea \(\widehat p_n\) el polinomio mónico ortogonal de grado \(n\). Entonces
+\[
+    \|\widehat p_n\|_\mu
+    =
+    \min\{\|q\|_\mu : q\in\Poly_n \text{ es mónico y } \deg q=n\}.
+\]
+En particular, la construcción de Gram--Schmidt selecciona, grado a grado, el
+representante mónico de menor norma \cite{Chi78,szego1975orthogonal}.
+\end{prop}
+
+Un operador central en esta teoría es la multiplicación por la variable.
 
 \begin{defn}\label{def:operador_multiplicacion_intro}
 Definimos el operador de multiplicación
 \[
-    \D:\Poly\to\Poly
-\]
-por
-\[
-    (\D p)(z)=zp(z),
-    \qquad p\in\Poly.
+    \D:\Poly\to\Poly,
+    \qquad
+    (\D p)(z)=zp(z).
 \]
 \end{defn}
 
-En el caso clásico real, es decir, cuando \(\operatorname{supp}(\mu)\subset\mathbb{R}\), el operador
-\(\D\) es simétrico respecto del producto estándar:
-\[
-    \langle \D p,q\rangle_\mu
-    =
-    \langle p,\D q\rangle_\mu,
-    \qquad p,q\in\Poly.
-\]
-Esta simetría es una de las razones por las que la teoría clásica posee una
-estructura tan rígida. En particular, los polinomios ortogonales reales satisfacen
-una relación de recurrencia a tres términos, y sus ceros tienen propiedades
-geométricas muy precisas \cite{Chi78,szego1975orthogonal}.
+Cuando \(\operatorname{supp}(\mu)\subset\mathbb R\), el operador \(\D\) es
+simétrico respecto del producto estándar. Esta simetría explica parte de la
+rigidez del caso clásico: recurrencias a tres términos, ceros reales y una fuerte
+dependencia de la localización de los ceros respecto del soporte de la medida
+\cite{Chi78,szego1975orthogonal}.
 
-El siguiente resultado recoge algunas de las propiedades clásicas más importantes
-de esos ceros \cite{Chi78,szego1975orthogonal}.
-
-\begin{prop}[Propiedades clásicas de los ceros]\label{prop:ceros_clasicos}
+\begin{prop}
+\label{prop:recurrencia_tres_terminos_intro}
 Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito contenido
-en \(\mathbb{R}\), y sea \((P_n)_{n\ge0}\) la sucesión de polinomios ortogonales asociada
-al producto estándar \eqref{eq:producto_estandar}. Entonces, para cada \(n\ge1\),
-los ceros de \(P_n\) son reales, simples y están contenidos en el interior de la
-envoltura convexa de \(\operatorname{supp}(\mu)\). Además, los ceros de dos polinomios
-consecutivos se entrelazan.
+en \(\mathbb R\), y sea \((\phi_n)_{n\ge 0}\) la sucesión ortonormal asociada al
+producto estándar \eqref{eq:producto_estandar}. Entonces existen sucesiones
+\((a_n)_{n\ge 1}\subset(0,\infty)\) y \((b_n)_{n\ge 0}\subset\mathbb R\) tales
+que
+\[
+    x\phi_n(x)=a_{n+1}\phi_{n+1}(x)+b_n\phi_n(x)+a_n\phi_{n-1}(x),
+    \qquad n\ge 0,
+\]
+con la convención \(\phi_{-1}=0\). En particular, la multiplicación por la
+variable preserva una estructura tridiagonal en la base ortonormal
+\cite{Chi78,szego1975orthogonal}.
 \end{prop}
 
-\begin{rmk}
-La Proposición~\ref{prop:ceros_clasicos} resume uno de los rasgos diferenciales
-del caso estándar: la geometría del soporte de la medida controla directamente la
-localización de los ceros. En los productos escalares de Sobolev, que serán
-introducidos más adelante, esta situación cambia de forma sustancial \cite{AlfRez01}.
-\end{rmk}
+\begin{prop}\label{prop:ceros_clasicos}
+Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito contenido
+en \(\mathbb R\), y sea \((\phi_n)_{n\ge 0}\) la sucesión ortonormal asociada al
+producto estándar \eqref{eq:producto_estandar}. Entonces, para cada \(n\ge 1\),
+los ceros de \(\phi_n\) son reales, simples y pertenecen al interior de la
+envoltura convexa de \(\operatorname{supp}(\mu)\). Además, los ceros de
+\(\phi_n\) y \(\phi_{n+1}\) se entrelazan.
+\end{prop}
 
-La relación entre el operador de multiplicación, el soporte de la medida y los ceros
-será una de las líneas conductoras de esta memoria. En el caso estándar, la
-acotación de \(\D\) respecto de \(\|\cdot\|_\mu\) está ligada a la compacidad del
-soporte de \(\mu\), y proporciona una vía natural para controlar la localización de
-los ceros. En el contexto de Sobolev, en cambio, la presencia de derivadas en el
-producto escalar rompe parte de esta estructura clásica y obliga a introducir
-herramientas más finas \cite{CastroDuran2003}.
+La Proposición~\ref{prop:ceros_clasicos} resume el rasgo esencial del caso
+estándar: la geometría del soporte controla de forma directa la localización de
+los ceros. Ese control se debilita en el marco Sobolev: cuando intervienen
+derivadas, la medida base deja de ser el único dato que influye en la posición de
+los ceros, y pueden aparecer ceros fuera de la región clásica de ortogonalidad
+\cite{Alt62,AlfRez01,marcellan2015sobolev}.
+
+En el caso estándar, la recurrencia a tres términos, la compacidad del soporte, la
+acotación del operador de multiplicación y la acotación uniforme de los ceros
+forman un bloque de propiedades estrechamente relacionado. Esta conexión será
+precisada en la sección siguiente desde el punto de vista operatorial
+\cite{CastroDuran2003}.
 
 \section{Ceros y operador de multiplicación en el caso estándar}
 \label{sec:ceros_operador_estandar}
 
-En la sección anterior hemos recordado algunas propiedades básicas de los ceros en
-el caso estándar real. Profundizamos ahora en la relación entre estos ceros, el
-soporte de la medida y la acotación del operador de multiplicación. Esta relación
-constituye uno de los puntos de partida del estudio de polinomios ortogonales
-asociados a productos más generales \cite{CastroDuran2003}.
+En el caso estándar, el operador \(\D\) traduce información geométrica del soporte
+en información sobre los ceros. Esta relación será el punto de comparación para
+todo lo que sigue \cite{CastroDuran2003}.
 
-Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinito, y
-consideremos el producto estándar
+Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinito.
+Diremos que \(\D\) es acotado respecto de \(\|\cdot\|_\mu\) si existe una
+constante \(C>0\) tal que
 \[
-    \langle p,q\rangle_\mu
-    =
-    \int_{\C}p(z)\overline{q(z)}\,d\mu(z),
-    \qquad p,q\in\Poly.
-\]
-El operador de multiplicación
-\[
-    \D p(z)=zp(z)
-\]
-se dice acotado respecto de \(\|\cdot\|_\mu\) si existe una constante \(C>0\) tal
-que
-\[
-    \|\D p\|_\mu
-    \le
-    C\|p\|_\mu,
+    \|\D p\|_\mu\le C\|p\|_\mu,
     \qquad p\in\Poly.
 \]
-En tal caso escribiremos
+En ese caso escribiremos
 \[
-    \|\D\|_\mu
-    :=
+    \|\D\|_\mu:=
     \sup_{p\in\Poly\setminus\{0\}}
     \frac{\|\D p\|_\mu}{\|p\|_\mu}.
 \]
 
-En el caso estándar, la acotación de \(\D\) tiene una interpretación geométrica
-muy simple: equivale a que la variable \(z\) esté uniformemente acotada en el
-soporte de la medida. El teorema siguiente recoge esta equivalencia en el marco
-estándar \cite{CastroDuran2003}.
-
-\begin{thm}[Acotación de \(\D\) y soporte compacto]
+\begin{thm}
 \label{thm:intro_soporte_compacto_estandar}
 Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinito y
-con todos los momentos finitos. Entonces el operador de multiplicación
+con todos los momentos finitos. Entonces \(\D\) es acotado respecto de
+\(\|\cdot\|_\mu\) si y solo si \(\operatorname{supp}(\mu)\) es compacto. En tal
+caso,
 \[
-    \D p(z)=zp(z)
-\]
-es acotado respecto de \(\|\cdot\|_\mu\) si y solo si \(\operatorname{supp}(\mu)\) es compacto.
-En tal caso,
-\[
-    \|\D\|_\mu
-    =
+    \|\D\|_\mu=
     \operatorname*{ess\,sup}_{z\in\operatorname{supp}(\mu)} |z|.
 \]
 \end{thm}
@@ -201,1183 +209,332 @@ En particular, si \(\operatorname{supp}(\mu)\subset \overline{D(0,R)}\), entonce
     =
     \int_{\C}|z|^2|p(z)|^2\,d\mu(z)
     \le
-    R^2
-    \int_{\C}|p(z)|^2\,d\mu(z),
+    R^2\int_{\C}|p(z)|^2\,d\mu(z),
     \qquad p\in\Poly,
 \]
-y por tanto \(\|\D\|_\mu\le R\). Recíprocamente, si \(\D\) es acotado, la
-desigualdad anterior fuerza que la medida no pueda tener masa esencialmente fuera
-de un disco suficientemente grande.
+y por tanto \(\|\D\|_\mu\le R\). Recíprocamente, si \(\D\) es acotado,
+la desigualdad anterior impide que la medida tenga masa esencialmente fuera de un
+disco suficientemente grande.
 
-La acotación del operador de multiplicación proporciona también una cota directa
-sobre los ceros de los polinomios ortogonales. Este hecho será importante más
-adelante, porque en el contexto de Sobolev utilizaremos el operador \(\D\) como
-herramienta para estudiar la localización de ceros \cite{CastroDuran2003}.
+El teorema anterior muestra que, en el caso estándar, la acotación de \(\D\) no es
+una propiedad abstracta aislada: equivale a una condición geométrica precisa sobre
+el soporte.
 
-\begin{thm}[Acotación del operador y localización de ceros]
+\begin{thm}
 \label{thm:intro_D_implica_ceros}
 Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinito y
-con todos los momentos finitos. Sea \((P_n)_{n\ge0}\) la sucesión de polinomios
-ortonormales asociada a \(\langle\cdot,\cdot\rangle_\mu\). Si el operador de
-multiplicación \(\D\) es acotado respecto de \(\|\cdot\|_\mu\), entonces todos los
-ceros de los polinomios \(P_n\) están contenidos en el disco cerrado
+con todos los momentos finitos. Sea \((\phi_n)_{n\ge 0}\) la sucesión ortonormal
+asociada a \(\langle\cdot,\cdot\rangle_\mu\). Si \(\D\) es acotado respecto de
+\(\|\cdot\|_\mu\), entonces todos los ceros de los polinomios \(\phi_n\) están
+contenidos en el disco cerrado
 \[
     \overline{D(0,\|\D\|_\mu)}.
 \]
 \end{thm}
 
-\begin{proof}
-Sea \(z_0\) un cero de \(P_n\). Entonces existe \(q\in\Poly_{n-1}\) tal que
-\[
-    P_n(z)=(z-z_0)q(z).
-\]
-Por la ortogonalidad de \(P_n\) frente a \(\Poly_{n-1}\), se tiene
-\[
-    0=\langle P_n,q\rangle_\mu
-    =
-    \langle zq,q\rangle_\mu
-    -
-    z_0\langle q,q\rangle_\mu.
-\]
-Por tanto,
-\[
-    z_0\|q\|_\mu^2
-    =
-    \langle \D q,q\rangle_\mu.
-\]
-Aplicando la desigualdad de Cauchy--Schwarz y la acotación de \(\D\), obtenemos
-\[
-    |z_0|\|q\|_\mu^2
-    \le
-    \|\D q\|_\mu\|q\|_\mu
-    \le
-    \|\D\|_\mu\|q\|_\mu^2.
-\]
-Como \(q\ne0\), se deduce
-\[
-    |z_0|\le \|\D\|_\mu.
-\]
-\end{proof}
+La acotación del operador de multiplicación proporciona, por tanto, una cota
+uniforme para los ceros de la familia ortogonal. Esta observación constituye uno
+de los puntos de partida de la perspectiva operatorial sobre localización de ceros
+en productos de Sobolev \cite{CastroDuran2003,lopez1999zero,lopez2001sobolev,Rod01}.
 
-En el caso real estándar, los resultados anteriores se combinan con las propiedades
-clásicas de localización de ceros para dar una imagen especialmente rígida: la
-compacidad del soporte, la acotación del operador de multiplicación y la acotación
-uniforme de los ceros son propiedades estrechamente relacionadas \cite{Chi78,szego1975orthogonal,CastroDuran2003}.
+Así, la norma de \(\D\) proporciona una cota uniforme para los ceros. En la recta
+real esta observación se combina con la teoría clásica para producir una imagen
+especialmente rígida.
 
-\begin{cor}[Caso estándar real]
+\begin{cor}
 \label{cor:intro_equivalencias_reales}
 Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito contenido en
-\(\mathbb{R}\), y sea \((P_n)_{n\ge0}\) la sucesión de polinomios ortonormales asociada a
-\(\mu\). Entonces las siguientes propiedades son equivalentes:
+\(\mathbb R\), y sea \((\phi_n)_{n\ge 0}\) la sucesión ortonormal asociada a
+\(\mu\). Entonces son equivalentes:
 \begin{enumerate}
-    \item el operador de multiplicación \(\D p(x)=xp(x)\) es acotado respecto de
-    \(\|\cdot\|_\mu\);
-    \item el soporte \(\operatorname{supp}(\mu)\) es compacto;
-    \item los ceros de los polinomios \(P_n\) están contenidos en un compacto de
-    \(\mathbb{R}\), independiente de \(n\).
+    \item[(i)] El operador de multiplicación \(\D p(x)=xp(x)\) es acotado
+    respecto de \(\|\cdot\|_\mu\).
+    \item[(ii)] El soporte \(\operatorname{supp}(\mu)\) es compacto.
+    \item[(iii)] Existe un compacto \(K\subset\mathbb R\), independiente de
+    \(n\), que contiene todos los ceros de \(\phi_n\).
 \end{enumerate}
 \end{cor}
 
-En el plano complejo, esta situación debe matizarse. La acotación de \(\D\) sigue
-implicando la acotación uniforme de los ceros, y por el
-Teorema~\ref{thm:intro_soporte_compacto_estandar} equivale a la compacidad del
-soporte de la medida. Sin embargo, la acotación uniforme de los ceros no implica
-necesariamente la compacidad del soporte. Existen medidas no compactamente
-soportadas cuyos polinomios ortogonales tienen ceros contenidos en un compacto
-\cite{CastroDuran2003}.
+En el plano complejo la situación es más flexible: la acotación de \(\D\) sigue
+implicando acotación uniforme de los ceros, pero la recíproca puede fallar
+\cite{CastroDuran2003}. Este cambio anticipa la pérdida de rigidez que caracteriza
+al caso Sobolev.
 
-\begin{rmk}
-La diferencia entre el caso real y el caso complejo muestra que la localización de
-ceros puede depender de fenómenos más sutiles que la mera geometría del soporte.
-Esta pérdida de rigidez se acentúa aún más al pasar a productos escalares de
-Sobolev, donde el operador de multiplicación deja de ser simétrico en general.
-\end{rmk}
+\medskip
 
-La moraleja de esta sección es que, en el caso estándar, el operador de
-multiplicación es una herramienta natural para traducir información geométrica
-sobre la medida en información sobre los ceros. En las secciones siguientes veremos
-que, para productos de Sobolev, esta relación continúa siendo fundamental, aunque
-la presencia de derivadas introduce nuevos fenómenos y obliga a refinar las
-herramientas operatoriales.
+En el caso estándar, el operador de multiplicación
+es una herramienta natural para traducir información geométrica sobre la medida en
+información sobre los ceros. En las secciones siguientes veremos que, para productos de
+Sobolev, esta relación continúa siendo fundamental, aunque la presencia de derivadas
+introduce nuevos fenómenos y obliga a refinar las herramientas.
 
 \section{Productos escalares de Sobolev}
 \label{sec:productos_sobolev_intro}
 
-La teoría clásica descrita en las secciones anteriores se basa en productos
-escalares en los que solo intervienen los valores de los polinomios. Sin embargo,
-en numerosos problemas de aproximación resulta natural medir simultáneamente una
-función y algunas de sus derivadas. Esta idea conduce a los productos escalares de
-Sobolev.
-
-Históricamente, este tipo de productos aparece ligado a problemas de aproximación
-por mínimos cuadrados en los que se desea aproximar una función y, al mismo
-tiempo, una o varias de sus derivadas. En el contexto de polinomios ortogonales,
-esto dio lugar al estudio de productos escalares que incorporan términos derivados,
-y por tanto a sucesiones de polinomios ortogonales con propiedades distintas de las
-del caso estándar \cite{Lew47,AlfRez01,marcellan2015sobolev}.
+Los productos escalares de Sobolev surgen cuando se desea medir simultáneamente
+una función y algunas de sus derivadas. En aproximación por mínimos cuadrados,
+esta idea aparece ya en el trabajo de Lewis \cite{Lew47}. Poco después,
+Althammer \cite{Alt62} introdujo un marco de ortogonalidad ampliado y mostró
+que podían aparecer ceros fuera de la región clásica de ortogonalidad. Ese hecho
+marcó una diferencia conceptual decisiva con respecto al caso estándar. Tras
+ese antecedente, la teoría cobró un impulso renovado a finales de los años
+ochenta y, sobre todo, en los noventa, con estudios sistemáticos sobre
+propiedades algebraicas, recurrencias y localización de ceros en el caso
+discreto \cite{AMRR92,AMR93,ALR96}. Para panorámicas históricas y de conjunto
+pueden consultarse \cite{AlfRez01,marcellan2015sobolev}.
 
 \begin{defn}\label{def:producto_sobolev_general}
-Sea \(m\in\mathbb{N}\) y sean
-\[
-    \mu_0,\mu_1,\ldots,\mu_m
-\]
-medidas de Borel positivas y finitas en \(\C\). Un producto escalar de Sobolev
-diagonal es un producto de la forma
+Sean \(m\in\mathbb N\) y \(\mu_0,\mu_1,\dots,\mu_m\) medidas de Borel positivas y
+finitas en \(\C\). Un producto escalar de Sobolev diagonal es un producto de la
+forma
 \[
     \langle p,q\rangle_S
     =
-    \sum_{k=0}^{m}
-    \int_{\C}
-    p^{(k)}(z)\overline{q^{(k)}(z)}\,d\mu_k(z),
+    \sum_{k=0}^m \int_{\C} p^{(k)}(z)\overline{q^{(k)}(z)}\,d\mu_k(z),
     \qquad p,q\in\Poly.
 \]
 La norma asociada se denotará por \(\|\cdot\|_S\).
 \end{defn}
 
-En esta definición, la medida \(\mu_0\) controla la parte estándar del producto,
-mientras que las medidas \(\mu_k\), con \(k\ge1\), controlan las derivadas de los
-polinomios. Para que el producto dé lugar a una sucesión de polinomios
-ortogonales de todos los grados, se impone normalmente que al menos una de las
-medidas que intervienen tenga soporte infinito.
+\begin{rmk}\label{rmk:familia_medidas_intro}
+Conviene pensar un producto de Sobolev diagonal como un objeto gobernado por la
+familia de medidas \((\mu_0,\mu_1,\dots,\mu_m)\): cada componente pesa un
+orden de derivación distinto. Sin entrar aquí en formulaciones matriciales más
+generales, este punto de vista ---cercano a considerar un vector de medidas---
+es suficiente para organizar la discusión introductoria.
+\end{rmk}
 
-El caso \(m=0\) recupera la ortogonalidad estándar. En cambio, cuando
-\(m\ge1\), la presencia de derivadas modifica de manera esencial la estructura del
-problema. En particular, el operador de multiplicación
-\[
-    \D p(z)=zp(z)
-\]
-no es, en general, simétrico respecto del producto de Sobolev. De hecho,
+El caso \(m=0\) recupera la ortogonalidad estándar. Cuando \(m\ge 1\), la
+presencia de derivadas altera de manera esencial la estructura del problema. En
+particular, la simetría de \(\D\) deja de ser un rasgo general, pues
 \[
     (\D p)'(z)=p(z)+zp'(z),
 \]
-por lo que al calcular la norma de \(\D p\) aparecen simultáneamente los valores
-de \(p\) y de \(p'\). Esta mezcla entre órdenes de derivación es una de las razones
-por las que los productos de Sobolev presentan fenómenos nuevos.
+de modo que al calcular la norma de \(\D p\) se mezclan distintos órdenes de
+derivación.
 
 \begin{rmk}\label{rmk:ruptura_simetria_sobolev}
-En el caso estándar real, la simetría del operador de multiplicación está en la base
-de la relación de recurrencia a tres términos y de la localización clásica de los
-ceros. Para productos de Sobolev, dicha simetría se pierde en general, y con ella
-desaparece la estructura rígida propia de los polinomios ortogonales clásicos.
+La pérdida de simetría de \(\D\) es una de las diferencias estructurales más
+importantes entre la teoría clásica y la teoría de Sobolev. Por ello, muchas
+herramientas del caso estándar deben reformularse o sustituirse.
 \end{rmk}
 
-Dentro de los productos de Sobolev se distinguen dos clases especialmente
-importantes: los productos discretos y los productos continuos \cite{AlfRez01,marcellan2015sobolev}.
+Dentro de esta clase se distinguen dos casos básicos.
 
 \begin{defn}\label{def:sobolev_discreto}
-Diremos que un producto de Sobolev es discreto si alguno de los términos
-asociados a derivadas está dado por evaluaciones en un número finito de puntos.
-En particular, un producto de Sobolev discreto de primer orden tiene la forma
+Diremos que un producto de Sobolev es \emph{discreto} si alguno de los términos
+derivados viene dado por evaluaciones en un número finito de puntos. Un ejemplo de
+primer orden es
 \[
     \langle p,q\rangle_S
     =
-    \int_{\C}p(z)\overline{q(z)}\,d\mu(z)
+    \int_{\C} p(z)\overline{q(z)}\,d\mu(z)
     +
-    \sum_{j=1}^{N}
-    \lambda_j\,p'(c_j)\overline{q'(c_j)},
-    \qquad p,q\in\Poly,
+    \sum_{j=1}^{N} \lambda_j p'(c_j)\overline{q'(c_j)},
+    \qquad \lambda_j>0,
 \]
-donde
-\[
-    \lambda_j>0,
-    \qquad
-    c_j\in\C,
-    \qquad
-    j=1,\ldots,N.
-\]
-Los puntos \(c_j\) se denominan puntos o átomos discretos del producto.
+donde \(c_1,\dots,c_N\in\C\).
 \end{defn}
-
-Más generalmente, pueden considerarse términos discretos de orden superior:
-\[
-    \sum_{j=1}^{N}
-    \lambda_j\,p^{(r_j)}(c_j)\overline{q^{(r_j)}(c_j)},
-\]
-donde \(r_j\in\mathbb{N}\). En este caso, el producto contiene información puntual sobre
-derivadas de distintos órdenes.
 
 \begin{defn}\label{def:sobolev_continuo}
-Diremos que un producto de Sobolev es continuo si las derivadas de los polinomios
-se integran respecto de medidas con parte continua. Un ejemplo típico es
+Diremos que un producto de Sobolev es \emph{continuo} si las derivadas aparecen
+integradas frente a medidas con parte continua. Un ejemplo típico es
 \[
     \langle p,q\rangle_S
     =
-    \int_{\C}p(z)\overline{q(z)}\,d\mu_0(z)
+    \int_{\C} p(z)\overline{q(z)}\,d\mu_0(z)
     +
-    \int_{\C}p'(z)\overline{q'(z)}\,d\mu_1(z),
-    \qquad p,q\in\Poly.
+    \int_{\C} p'(z)\overline{q'(z)}\,d\mu_1(z).
 \]
 \end{defn}
 
-La distinción entre productos discretos y continuos es relevante porque las técnicas
-de estudio de los ceros pueden ser muy diferentes en cada caso. En los productos
-discretos, la parte derivada introduce un número finito de condiciones puntuales,
-mientras que en los productos continuos la información derivada se distribuye a lo
-largo del soporte de una medida.
-
-\begin{exm}\label{ex:sobolev_discreto_basico}
-Sea \(\mu\) una medida positiva y finita con soporte infinito, sea \(c\in\C\) y sea
-\(\lambda>0\). El producto
-\[
-    \langle p,q\rangle_S
-    =
-    \int_{\C}p(z)\overline{q(z)}\,d\mu(z)
-    +
-    \lambda p'(c)\overline{q'(c)}
-\]
-es un producto de Sobolev discreto de primer orden con un único átomo.
-\end{exm}
-
-\begin{exm}\label{ex:sobolev_continuo_basico}
-Sean \(\mu_0\) y \(\mu_1\) medidas positivas y finitas. El producto
-\[
-    \langle p,q\rangle_S
-    =
-    \int_{\C}p(z)\overline{q(z)}\,d\mu_0(z)
-    +
-    \int_{\C}p'(z)\overline{q'(z)}\,d\mu_1(z)
-\]
-es un producto de Sobolev continuo de primer orden siempre que \(\mu_1\) no sea
-puramente discreta.
-\end{exm}
-
-El paso de la ortogonalidad estándar a la ortogonalidad de Sobolev tiene
-consecuencias importantes para la localización de ceros. En el caso estándar real,
-los ceros son reales, simples y se sitúan dentro de la envoltura convexa del soporte.
-En cambio, para productos de Sobolev pueden aparecer ceros fuera de la región de
-ortogonalidad e incluso ceros complejos en situaciones en las que las medidas son
-reales \cite{Alt62,AlfRez01,marcellan2015sobolev}.
-
-\begin{rmk}\label{rmk:althammer}
-Uno de los primeros ejemplos que muestra esta diferencia se debe a Althammer:
-para ciertos productos de Sobolev aparecen ceros fuera del intervalo de
-ortogonalidad. Este fenómeno marca una ruptura con la teoría clásica y motiva el
-estudio específico de la localización de ceros en productos de Sobolev \cite{Alt62,AlfRez01}.
-\end{rmk}
-
-En consecuencia, el problema de localizar los ceros de los polinomios ortogonales
-de Sobolev no puede resolverse simplemente trasladando las técnicas clásicas.
-Aunque el operador de multiplicación sigue siendo una herramienta fundamental, la
-presencia de derivadas obliga a estudiar con más detalle cuándo dicho operador es
-acotado y qué información proporciona sobre los ceros.
-
-En esta memoria trabajaremos con productos de Sobolev discretos de primer orden.
-El modelo concreto se fijará más adelante, cuando introduzcamos una medida de
-Lebesgue soportada en una circunferencia y una familia finita de átomos discretos
-donde se evalúa la derivada de los polinomios.
+La distinción entre productos discretos y continuos es introductoria pero
+fundamental: en los discretos la perturbación queda concentrada en un número
+finito de puntos, mientras que en los continuos la información derivada se reparte
+sobre el soporte de una medida. Esa diferencia repercute de manera decisiva en la
+localización de los ceros.
 
 \section{Localización de ceros en productos de Sobolev}
 \label{sec:localizacion_ceros_sobolev}
 
-Como hemos visto, los ceros de los polinomios ortogonales clásicos poseen una
-estructura muy rígida. En cambio, para productos escalares de Sobolev la presencia
-de derivadas modifica sustancialmente el problema. Aunque en muchos casos los
-ceros siguen reflejando la geometría de las medidas que intervienen en el producto,
-ya no es cierto en general que deban permanecer dentro de la envoltura convexa del
-soporte principal, ni que deban ser todos reales cuando las medidas están soportadas
-en la recta real \cite{AlfRez01,marcellan2015sobolev}.
+Una de las primeras lecciones de la teoría de Sobolev es que los ceros ya no se
+comportan como en el caso estándar. A partir del antecedente histórico ya
+mencionado, de Bruin \cite{deB93}, Meijer \cite{Mei93}, Gautschi y Kuijlaars
+\cite{GK97}, entre otros, estudiaron con mayor detalle la influencia de la parte
+derivada en la posición de los ceros. En particular, la localización de ceros en
+espacios de Sobolev discretos y continuos se desarrolló en trabajos como
+\cite{AMRR92,ALR96,lopez1999zero,lopez2001sobolev,RS08}.
 
-En particular, en productos de Sobolev discretos pueden aparecer ceros fuera del
-soporte de la medida continua, e incluso ceros complejos. Esta fue una de las
-primeras diferencias observadas entre la teoría clásica y la teoría de Sobolev
-\cite{Alt62,AlfRez01}.
-
-\begin{rmk}
-Los ejemplos de Althammer muestran que, para ciertos productos escalares de
-Sobolev, algún cero puede salir del intervalo de ortogonalidad. Este fenómeno no
-aparece en la teoría estándar real y constituye una de las motivaciones principales
-para estudiar la localización de ceros en el contexto Sobolev.
-\end{rmk}
-
-En el caso discreto real se conocen resultados que cuantifican cuántos ceros
-permanecen en la región principal de ortogonalidad y cuántos pueden verse
-afectados por la parte discreta del producto. Presentamos a continuación una
-formulación cualitativa de este tipo de resultados \cite{AMRR92,ALR96,AlfRez01}.
-
-\begin{thm}[Ceros en productos Sobolev discretos]
-\label{thm:intro_ceros_discretos_sobolev}
-Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito
-\(S_\mu\subset\mathbb{R}\), y consideremos un producto de Sobolev discreto de la forma
-\[
-    \langle p,q\rangle_S
-    =
-    \int_{S_\mu}p(x)q(x)\,d\mu(x)
-    +
-    \sum_{j=1}^{m}
-    M_j\,p^{(\nu_j)}(c)\,q^{(\nu_j)}(c),
-\]
-donde
-\[
-    M_j\ne0,
-    \qquad
-    0\le \nu_1<\cdots<\nu_m.
-\]
-Sea \((Q_n)_{n\ge0}\) la sucesión de polinomios ortogonales asociada. Entonces,
-bajo hipótesis adecuadas sobre \(\mu\), los polinomios \(Q_n\) conservan un número
-grande de ceros en el interior de la envoltura convexa de \(S_\mu\), mientras que
-un número finito de ceros puede verse atraído por los puntos de la parte discreta
-del producto.
-\end{thm}
+En el caso discreto real, la parte puntual suele afectar solo a un número finito
+de ceros, mientras que la mayoría conserva un comportamiento próximo al del caso
+clásico.
 
 \begin{rmk}
-El Teorema~\ref{thm:intro_ceros_discretos_sobolev} debe interpretarse como una
-manifestación de un principio general: en los productos discretos, la parte
-puntual del producto puede modificar la localización de un número finito de ceros.
-En particular, el número de términos discretos influye en el número de ceros que
-pueden escapar de la región principal.
+Los resultados disponibles para productos de Sobolev discretos sobre la recta
+real no se condensan cómodamente en un único teorema breve con hipótesis
+uniformes. No obstante, sí muestran un patrón estable: la perturbación discreta
+suele modificar solo un número finito de ceros, mientras que los restantes
+mantienen un comportamiento cercano al del caso estándar. Dependiendo de la
+posición y de la intensidad de la parte discreta, pueden aparecer ceros no
+clásicos o ceros atraídos hacia los puntos de perturbación
+\cite{AMRR92,ALR96,AlfRez01,Mei93,GK97}.
 \end{rmk}
 
-En productos de Sobolev continuos la situación es distinta. En general, no se dispone
-de una cuasi-ortogonalidad simple respecto de una única medida auxiliar, por lo que
-las técnicas de localización de ceros del caso discreto no se trasladan directamente.
-En este régimen, una herramienta especialmente útil es estudiar la acotación del
-operador de multiplicación
-\[
-    \D p(z)=zp(z).
-\]
+En productos continuos, y también en parte de la teoría discreta en el plano
+complejo, resulta especialmente útil estudiar la acotación del operador
+\(\D\). Esa estrategia permite pasar de una propiedad operatorial a una cota
+uniforme para los ceros.
 
-La razón es que la acotación de \(\D\) proporciona una cota uniforme para los ceros
-de los polinomios ortogonales asociados. Este resultado es uno de los puntos de
-partida de la teoría moderna de ceros de polinomios ortogonales de Sobolev
-\cite{lopez1999zero,lopez2001sobolev}.
-
-\begin{thm}[Acotación de \(\D\) y ceros de Sobolev]
+\begin{thm}
 \label{thm:intro_D_acotado_ceros_sobolev}
 Sea
 \[
     \langle p,q\rangle_S
     =
-    \sum_{k=0}^{m}
-    \int_{\C}
-    p^{(k)}(z)\overline{q^{(k)}(z)}\,d\mu_k(z),
+    \sum_{k=0}^m \int_{\C} p^{(k)}(z)\overline{q^{(k)}(z)}\,d\mu_k(z),
     \qquad p,q\in\Poly,
 \]
-un producto de Sobolev definido por medidas de Borel positivas y finitas, y sea
-\((Q_n)_{n\ge0}\) la sucesión de polinomios ortogonales asociada. Si el operador
-de multiplicación
-\[
-    \D p(z)=zp(z)
-\]
-es acotado respecto de la norma \(\|\cdot\|_S\), entonces los ceros de todos los
-polinomios \(Q_n\) están contenidos en el disco cerrado
+un producto de Sobolev definido por medidas de Borel positivas y finitas. Si el
+operador de multiplicación \(\D\) es acotado respecto de \(\|\cdot\|_S\),
+entonces los ceros de los polinomios ortogonales asociados están contenidos en el
+disco cerrado
 \[
     \overline{D(0,\|\D\|_S)}.
 \]
-En particular, el conjunto de ceros de la familia \((Q_n)_{n\ge0}\) está
-uniformemente acotado.
+En particular, la familia de ceros está uniformemente acotada
+\cite{lopez1999zero,lopez2001sobolev}.
 \end{thm}
 
-\begin{rmk}
-El Teorema~\ref{thm:intro_D_acotado_ceros_sobolev} muestra que la acotación de
-\(\D\) es una condición suficiente para la acotación uniforme de los ceros. Sin
-embargo, en el contexto de Sobolev esta condición no es siempre necesaria: pueden
-existir productos para los que los ceros estén uniformemente acotados aunque el
-operador de multiplicación no sea acotado.
-\end{rmk}
-
-Este hecho marca una diferencia importante con el caso estándar. En la teoría
-clásica real, la localización de ceros, la geometría del soporte y la acotación del
-operador de multiplicación están estrechamente ligadas. En la teoría de Sobolev, en
-cambio, la acotación de \(\D\) sigue siendo una herramienta muy potente, pero no
-agota todos los fenómenos posibles.
-
-Por ello, una parte importante de la literatura se ha centrado en encontrar
-condiciones suficientes, y en algunos casos caracterizaciones, para que el operador
-de multiplicación sea acotado respecto de una norma de Sobolev. Entre estas
-condiciones destacan la dominación secuencial de las medidas, las evaluaciones
-puntuales acotadas y ciertos enfoques matriciales basados en matrices de momentos.
-Estas ideas serán recordadas en las siguientes secciones \cite{lopez1999zero,lopez2001sobolev,Rod01,CastroDuran2003,EG25,EG25-2,EGT23}.
-
-En esta memoria seguiremos esta línea operatorial, pero con una diferencia
-fundamental: no solo nos preguntaremos si \(\D\) es acotado. Cuando el operador no
-sea acotado globalmente, estudiaremos si es posible recuperar la acotación al
-imponer un número finito de restricciones lineales. Esta será la idea que conducirá
-a los índices \(Q_k(\D)\) y al problema de estabilización desarrollado más adelante.
+Este criterio no agota el problema, pero sí proporciona una guía operatorial muy
+clara: en Sobolev, la localización de los ceros está estrechamente ligada a la
+acotación del operador de multiplicación \(\D\), aunque la relación ya no sea
+tan rígida como en el caso estándar.
 
 \section{Dominación secuencial y acotación}
 \label{sec:dominacion_secuencial_intro}
 
-Una de las vías clásicas para garantizar la acotación del operador de
-multiplicación en productos de Sobolev es la llamada dominación secuencial de las
-medidas que intervienen en el producto. Esta condición permite comparar de forma
-ordenada las distintas componentes del producto Sobolev y controlar los términos
-que aparecen al multiplicar un polinomio por la variable.
-Esta línea fue desarrollada, en distintas formulaciones, por López Lagomasino,
-Pijeira y trabajos posteriores sobre acotación del operador de multiplicación
-\cite{lopez1999zero,lopez2001sobolev,CastroDuran2003}.
+Una de las herramientas más influyentes para obtener acotación de \(\D\) en normas
+de Sobolev es la dominación secuencial de las medidas. La idea consiste en ordenar
+las distintas componentes del producto de manera que cada nivel derivado quede
+controlado por el anterior \cite{lopez1999zero,lopez2001sobolev,CastroDuran2003}.
 
-Consideremos, para simplificar, un producto de Sobolev diagonal de la forma
-\[
-    \langle p,q\rangle_S
-    =
-    \sum_{k=0}^{m}
-    \int_{\C}
-    p^{(k)}(z)\overline{q^{(k)}(z)}\,d\mu_k(z),
-    \qquad p,q\in\Poly.
-\]
 Supongamos que existe una medida positiva de Borel \(\mu\) tal que
 \[
-    d\mu_k=w_k\,d\mu,
-    \qquad k=0,\ldots,m,
+    d\mu_k = w_k\,d\mu,
+    \qquad k=0,\dots,m,
 \]
-donde \(w_k\in L^1(\mu)\) y \(w_k\ge0\).
+con \(w_k\in L^1(\mu)\) y \(w_k\ge 0\).
 
-\begin{defn}[Dominación secuencial]
+\begin{defn}
 \label{def:dominacion_secuencial}
-Diremos que la familia de medidas
-\[
-    \mu_0,\mu_1,\ldots,\mu_m
-\]
-es secuencialmente dominada si, para cada \(k=1,\ldots,m\), se tiene
+Diremos que la familia \(\mu_0,\mu_1,\dots,\mu_m\) es secuencialmente dominada si,
+para cada \(k=1,\dots,m\), se tiene
 \[
     \frac{w_k}{w_{k-1}}\in L^\infty(\mu).
 \]
-Equivalentemente, para cada \(k=1,\ldots,m\), existe una constante \(C_k>0\) tal
-que
+Equivalentemente, para cada \(k\) existe una constante \(C_k>0\) tal que
 \[
     w_k(z)\le C_k w_{k-1}(z)
-    \quad
-    \text{para \(\mu\)-casi todo }z.
+    \quad\text{para \(\mu\)-casi todo }z.
 \]
 \end{defn}
 
-En términos de medidas, la condición anterior significa que cada componente
-\(\mu_k\) está controlada por la componente anterior \(\mu_{k-1}\). En particular,
-se obtiene una cadena de desigualdades que permite estimar las normas de las
-derivadas de orden superior a partir de las normas que ya aparecen en el producto.
+Esta hipótesis permite estimar de forma jerárquica las contribuciones derivadas y,
+por ello, conduce a criterios de acotación para \(\D\).
 
-Un criterio clásico de este tipo se recoge en el siguiente resultado
-\cite{lopez1999zero,lopez2001sobolev}.
-
-\begin{thm}[López--Pijeira]
+\begin{thm}
 \label{thm:lopez_pijeira_dominacion}
 Sea
 \[
     \langle p,q\rangle_S
     =
-    \sum_{k=0}^{m}
-    \int_{\C}
-    p^{(k)}(z)\overline{q^{(k)}(z)}\,d\mu_k(z),
+    \sum_{k=0}^m \int_{\C} p^{(k)}(z)\overline{q^{(k)}(z)}\,d\mu_k(z),
     \qquad p,q\in\Poly,
 \]
 un producto de Sobolev diagonal definido por medidas positivas con soporte
-compacto. Si la familia
-\[
-    \mu_0,\mu_1,\ldots,\mu_m
-\]
-es secuencialmente dominada, entonces el operador de multiplicación
-\[
-    \D p(z)=zp(z)
-\]
-es acotado respecto de la norma \(\|\cdot\|_S\).
+compacto. Si la familia \(\mu_0,\mu_1,\dots,\mu_m\) es secuencialmente dominada,
+entonces \(\D\) es acotado respecto de \(\|\cdot\|_S\)
+\cite{lopez1999zero,lopez2001sobolev}.
 \end{thm}
 
-\begin{rmk}
-El Teorema~\ref{thm:lopez_pijeira_dominacion} proporciona una condición
-suficiente de acotación. Por tanto, combinado con el
-Teorema~\ref{thm:intro_D_acotado_ceros_sobolev}, permite obtener acotación
-uniforme de los ceros de los polinomios ortogonales de Sobolev asociados.
-\end{rmk}
+El teorema de López--Pijeira ofrece, por tanto, una condición suficiente
+directamente verificable en términos de la cadena de medidas.
 
-La dominación secuencial no es únicamente una condición suficiente aislada. En
-ciertos contextos, la acotación del operador de multiplicación puede caracterizarse
-mediante la equivalencia de la norma de Sobolev con otra norma construida a partir
-de una familia secuencialmente dominada. La formulación siguiente es debida a
-Rodríguez \cite{Rod01}.
-
-\begin{thm}[Rodríguez]
+\begin{thm}
 \label{thm:rodriguez_dominacion}
 Sea
 \[
     \langle p,q\rangle_S
     =
-    \sum_{k=0}^{m}
-    \int_{\C}
-    p^{(k)}(z)\overline{q^{(k)}(z)}\,w_k(z)\,d\mu(z),
+    \sum_{k=0}^m \int_{\C} p^{(k)}(z)\overline{q^{(k)}(z)}\,w_k(z)\,d\mu(z),
     \qquad p,q\in\Poly,
 \]
-un producto de Sobolev diagonal con \(\mu\) de soporte compacto. Entonces el
-operador de multiplicación \(\D p(z)=zp(z)\) es acotado respecto de
-\(\|\cdot\|_S\) si y solo si la norma \(\|\cdot\|_S\) es equivalente en
-\(\Poly\) a una norma de Sobolev asociada a una familia de medidas
-secuencialmente dominada.
-
-Más concretamente, se puede considerar la familia de pesos
-\[
-    \widetilde w_k
-    =
-    w_k+w_{k+1}+\cdots+w_m,
-    \qquad k=0,\ldots,m,
-\]
-y la norma asociada
-\[
-    \|p\|_{\widetilde S}^2
-    =
-    \sum_{k=0}^{m}
-    \int_{\C}
-    |p^{(k)}(z)|^2\,\widetilde w_k(z)\,d\mu(z).
-\]
-Entonces la acotación de \(\D\) puede caracterizarse mediante la equivalencia de
-\(\|\cdot\|_S\) y \(\|\cdot\|_{\widetilde S}\) en \(\Poly\).
+un producto de Sobolev diagonal con \(\mu\) de soporte compacto. Entonces
+\(\D\) es acotado respecto de \(\|\cdot\|_S\) si y solo si la norma
+\(\|\cdot\|_S\) es equivalente en \(\Poly\) a la norma de algún producto de
+Sobolev diagonal, definido sobre la misma medida base \(\mu\), cuyas
+componentes forman una familia secuencialmente dominada \cite{Rod01}.
 \end{thm}
 
-\begin{rmk}
-El resultado anterior muestra que la dominación secuencial aparece de forma
-natural en el estudio de la acotación del operador de multiplicación. No obstante,
-también pone de manifiesto una limitación: el análisis se centra en obtener una
-norma equivalente para la cual las medidas queden ordenadas de forma
-secuencial.
-\end{rmk}
+En particular, el resultado de Rodríguez no afirma que la familia original de
+pesos esté ya secuencialmente dominada, sino que la acotación del operador de
+multiplicación \(\D\) se caracteriza por la equivalencia con una norma
+comparable que sí posee esa estructura dominada.
 
-Otro resultado importante en esta dirección muestra que la acotación del operador
-de multiplicación impone restricciones geométricas sobre las medidas que definen el
-producto de Sobolev. En particular, Castro y Durán muestran que la acotación de
-potencias de \(\D\) fuerza compacidad de los soportes \cite{CastroDuran2003}.
+Como complemento, Castro y Durán muestran que la acotación de potencias de
+\(\D\) impone restricciones geométricas sobre los soportes de las medidas
+involucradas \cite{CastroDuran2003}. En conjunto, estos resultados sitúan la
+dominación secuencial como una de las vías clásicas para relacionar normas de
+Sobolev, acotación operatorial y localización de ceros.
 
-\begin{thm}[Castro--Durán]
-\label{thm:castro_duran_soporte}
-Sea \(\langle\cdot,\cdot\rangle_S\) un producto de Sobolev definido por medidas
-positivas en el plano complejo. Si alguna potencia del operador de multiplicación,
-\[
-    \D^r p(z)=z^r p(z),
-    \qquad r\ge1,
-\]
-es acotada respecto de \(\|\cdot\|_S\), entonces los soportes de las medidas
-diagonales que intervienen en el producto están contenidos en un compacto de
-\(\C\). Más precisamente, dichos soportes quedan contenidos en un disco cuyo radio
-puede estimarse en términos de la norma de \(\D^r\).
-\end{thm}
+\section{Puntos de evaluación acotada}
+\label{sec:puntos_bpe_intro}
 
-\begin{rmk}
-Este resultado es análogo al fenómeno del caso estándar: la acotación del operador
-de multiplicación fuerza una condición de compacidad sobre los soportes. Sin
-embargo, en productos de Sobolev el recíproco no es cierto en general; la compacidad
-de los soportes no garantiza por sí sola la acotación de \(\D\).
-\end{rmk}
+Otra herramienta útil en la literatura es la noción de evaluación puntual
+acotada. Su interés radica en que permite controlar valores puntuales mediante una
+norma de tipo \(L^2\), algo especialmente relevante cuando el producto de Sobolev
+incluye términos discretos \cite{miller1999bounded,deB93}.
 
-La dominación secuencial constituye, por tanto, una herramienta fundamental en la
-teoría clásica de acotación del operador de multiplicación para productos de
-Sobolev. Sin embargo, no describe todos los fenómenos posibles. En particular,
-existen situaciones en las que el operador de multiplicación puede ser acotado por
-mecanismos distintos de la dominación secuencial, y también situaciones en las que
-la acotación global falla por la presencia de un número finito de direcciones
-inestables.
-
-Esta observación es especialmente relevante para la presente memoria. Nuestro
-interés no será únicamente decidir si \(\D\) es acotado o no respecto de una norma
-de Sobolev. En el modelo que estudiaremos, la acotación global puede fallar, pero
-esa falta de acotación estará concentrada en un número finito de direcciones. Por
-ello, en lugar de buscar una norma equivalente secuencialmente dominada,
-estudiaremos cuántas restricciones lineales son necesarias para recuperar la
-acotación del operador.
-
-\section{Evaluaciones puntuales acotadas y enfoque matricial}
-\label{sec:bpe_enfoque_matricial_intro}
-
-Además de la dominación secuencial, otra herramienta fundamental para estudiar la
-acotación del operador de multiplicación en productos de Sobolev es la noción de
-evaluación puntual acotada. Esta idea permite determinar cuándo el valor de un
-polinomio en un punto puede ser controlado por una norma \(L^2\), y resulta
-especialmente útil en productos de Sobolev discretos, donde aparecen evaluaciones
-de derivadas en un número finito de puntos \cite{miller1999bounded,EGT23,EG25-2}.
-
-\begin{defn}[Punto de evaluación acotada]
+\begin{defn}
 \label{def:bpe_intro}
 Sea \(\mu\) una medida de Borel positiva y finita en \(\C\). Diremos que
 \(a\in\C\) es un punto de evaluación acotada para \(L^2(\mu)\), o
-\emph{bounded point evaluation} de \(\mu\), si existe una constante \(C_a>0\)
-tal que
+\emph{bounded point evaluation}, si existe una constante \(C_a>0\) tal que
 \[
     |p(a)|^2
     \le
-    C_a
-    \int_{\C}|p(z)|^2\,d\mu(z),
+    C_a \int_{\C}|p(z)|^2\,d\mu(z),
     \qquad p\in\Poly.
 \]
-Denotaremos por
-\[
-    \operatorname{bpe}(\mu)
-\]
-el conjunto de puntos de evaluación acotada de \(\mu\).
+Denotaremos por \(\operatorname{bpe}(\mu)\) el conjunto de todos esos puntos.
 \end{defn}
 
 Equivalentemente, \(a\in\operatorname{bpe}(\mu)\) si el funcional de evaluación
-\[
-    \delta_a:\Poly\to\C,
-    \qquad
-    \delta_a(p)=p(a),
-\]
-es continuo respecto de la norma \(\|\cdot\|_{L^2(\mu)}\). En ese caso,
-\(\delta_a\) se extiende por continuidad a la clausura de \(\Poly\) en
-\(L^2(\mu)\) \cite{miller1999bounded}.
+\(\delta_a(p)=p(a)\) es continuo respecto de la norma base y, por tanto, se
+prolonga a la completación de \((\Poly,\|\cdot\|_{L^2(\mu)})\). Desde este
+punto de vista, los puntos de \(\operatorname{bpe}(\mu)\) proporcionan un
+puente entre la geometría del soporte y el control de perturbaciones discretas.
 
-\begin{defn}[Punto de evaluación acotada analítica]
-\label{def:abpe_intro}
-Sea \(\mu\) una medida de Borel positiva y finita en \(\C\). Diremos que
-\(a\in\C\) es un punto de evaluación acotada analítica, o
-\emph{analytic bounded point evaluation}, si existe un entorno abierto
-\(U\subset\C\) de \(a\) y una constante \(C>0\) tales que
-\[
-    |p(z)|^2
-    \le
-    C
-    \int_{\C}|p(\zeta)|^2\,d\mu(\zeta),
-    \qquad
-    p\in\Poly,\ z\in U.
-\]
-\end{defn}
-
-La diferencia entre BPE y ABPE es que, en el segundo caso, la estimación no solo
-controla la evaluación en un punto aislado, sino uniformemente en un entorno de
-ese punto. Esta propiedad será relevante más adelante, ya que permite controlar
-también derivadas mediante estimaciones de Cauchy cuando se trabaja en regiones
-donde las evaluaciones son analíticamente acotadas \cite{miller1999bounded}.
-
-Desde este punto de vista funcional, la geometría del soporte impone restricciones
-naturales sobre las evaluaciones puntuales acotadas \cite{miller1999bounded}.
-
-\begin{prop}[BPE y envoltura polinomial]
-\label{prop:bpe_envoltura_polinomial}
-Sea \(\mu\) una medida de Borel positiva y finita con soporte compacto. Entonces
-todo punto de evaluación acotada de \(\mu\) pertenece a la envoltura polinomial
-del soporte de \(\mu\). Es decir,
-\[
-    \operatorname{bpe}(\mu)
-    \subset
-    \operatorname{Pc}(\operatorname{supp}(\mu)),
-\]
-donde
-\[
-    \operatorname{Pc}(K)
-    :=
-    \{z\in\C:\ |p(z)|\le \max_{\xi\in K}|p(\xi)|
-    \text{ para todo }p\in\Poly\}
-\]
-denota la envoltura polinomial de un compacto \(K\subset\C\).
-\end{prop}
-
-En particular, la existencia de puntos de evaluación acotada está condicionada por
-la geometría del soporte de la medida. Cuando el soporte es una curva cerrada,
-como una circunferencia, las evaluaciones en el interior pueden comportarse de
-forma muy distinta a las evaluaciones en la frontera o en el exterior.
-
-La utilidad de las BPE en el contexto Sobolev proviene del siguiente principio:
-si los puntos donde se evalúan las derivadas están suficientemente controlados por
-la parte continua de la norma, entonces el operador de multiplicación puede seguir
-siendo acotado. Este principio reaparece en trabajos recientes sobre productos de
-Sobolev en circunferencias y su formulación matricial \cite{EGT23,EG25-2}.
-
-\begin{prop}[Criterio mediante evaluaciones puntuales acotadas]
+\begin{prop}
 \label{prop:bpe_sobolev_discreto}
-Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito, y supongamos
-que el operador de multiplicación
-\[
-    \D p(z)=zp(z)
-\]
-es acotado respecto de \(\|\cdot\|_{L^2(\mu)}\). Sean
-\[
-    a_1,\ldots,a_N\in \operatorname{bpe}(\mu).
-\]
-Entonces el operador de multiplicación es acotado respecto de la norma de Sobolev
-discreta
+Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito, y
+supongamos que el operador de multiplicación \(\D\) es acotado respecto de
+\(\|\cdot\|_{L^2(\mu)}\). Si \(a_1,\dots,a_N\in \operatorname{bpe}(\mu)\),
+entonces \(\D\) es acotado respecto de la norma de Sobolev discreta
 \[
     \|p\|_S^2
     =
     \int_{\C}|p(z)|^2\,d\mu(z)
     +
-    \sum_{j=1}^{N}|p'(a_j)|^2,
+    \sum_{j=1}^N |p'(a_j)|^2,
     \qquad p\in\Poly.
 \]
-En consecuencia, los ceros de los polinomios ortogonales asociados a esta norma
-están uniformemente acotados.
+En consecuencia, los ceros de los polinomios ortogonales asociados a esa norma
+quedan uniformemente acotados.
 \end{prop}
 
-\begin{rmk}
-La proposición anterior muestra que las evaluaciones puntuales acotadas permiten
-controlar términos discretos en productos de Sobolev. Esta idea será una de las
-motivaciones del modelo que estudiaremos en esta memoria, donde la parte continua
-estará soportada en una circunferencia y la parte discreta estará formada por
-evaluaciones de la derivada.
-\end{rmk}
-
-Otra forma de estudiar estos problemas consiste en reemplazar las medidas por sus
-matrices de momentos. Este enfoque matricial permite tratar de forma unificada
-productos estándar, productos de Sobolev y ciertas generalizaciones en las que no
-se parte necesariamente de una medida explícita \cite{EG25,EGT23}.
-
-\begin{defn}[Matriz de momentos]
-\label{def:matriz_momentos_intro}
-Sea \(\mu\) una medida de Borel positiva y finita en \(\C\) con todos sus momentos
-finitos. La matriz de momentos asociada a \(\mu\) es
-\[
-    M(\mu)
-    =
-    (c_{i,j})_{i,j\ge0},
-    \qquad
-    c_{i,j}
-    :=
-    \int_{\C}z^i\overline{z}^{\,j}\,d\mu(z).
-\]
-Si
-\[
-    p(z)=\sum_{k=0}^{n}v_kz^k,
-    \qquad
-    q(z)=\sum_{k=0}^{m}w_kz^k,
-\]
-y escribimos
-\[
-    v=(v_0,\ldots,v_n,0,\ldots),
-    \qquad
-    w=(w_0,\ldots,w_m,0,\ldots),
-\]
-entonces
-\[
-    \langle p,q\rangle_\mu
-    =
-    vM(\mu)w^*.
-\]
-\end{defn}
-
-Más generalmente, una matriz hermítica definida positiva infinita \(M\) induce un
-producto escalar en \(\Poly\) mediante
-\[
-    \langle p,q\rangle_M
-    =
-    vMw^*,
-\]
-donde \(v\) y \(w\) son los vectores de coeficientes de \(p\) y \(q\). Esta
-construcción permite estudiar polinomios ortogonales asociados a matrices
-positivas, incluso cuando la matriz no se presenta explícitamente como matriz de
-momentos de una medida.
-
-\begin{defn}[Norma de Sobolev matricial]
-\label{def:sobolev_matricial_intro}
-Sean \(M_0\) y \(M_1\) matrices hermíticas semidefinidas positivas, con \(M_0\)
-definida positiva. La norma de Sobolev matricial asociada al par
-\((M_0,M_1)\) se define por
-\[
-    \|p\|_{MS}^2
-    =
-    \|p\|_{M_0}^2
-    +
-    \|p'\|_{M_1}^2,
-    \qquad p\in\Poly.
-\]
-El producto escalar correspondiente se escribe
-\[
-    \langle p,q\rangle_{MS}
-    =
-    \langle p,q\rangle_{M_0}
-    +
-    \langle p',q'\rangle_{M_1}.
-\]
-\end{defn}
-
-En este contexto, la acotación del operador de multiplicación puede estudiarse
-mediante desigualdades entre matrices. Por ejemplo, una desigualdad de la forma
-\[
-    \|p\|_{M_1}
-    \le
-    C\|p\|_{MS},
-    \qquad p\in\Poly,
-\]
-permite controlar los términos que aparecen al derivar \(zp(z)\), puesto que
-\[
-    (\D p)'(z)=p(z)+zp'(z).
-\]
-
-El tipo de caracterización siguiente se inscribe en ese enfoque matricial reciente
-\cite{EG25,EG25-2,EGT23}.
-
-\begin{thm}[Caracterización matricial de la acotación]
-\label{thm:caracterizacion_matricial_intro}
-Sea
-\[
-    \|p\|_{MS}^2
-    =
-    \|p\|_{M_0}^2
-    +
-    \|p'\|_{M_1}^2
-\]
-una norma de Sobolev matricial, y supongamos que el operador de multiplicación es
-acotado respecto de \(\|\cdot\|_{M_0}\). Bajo hipótesis naturales de acotación de
-la multiplicación en la componente \(M_1\), el operador \(\D\) es acotado respecto
-de \(\|\cdot\|_{MS}\) si y solo si existe una constante \(C>0\) tal que
-\[
-    \|p\|_{M_1}
-    \le
-    C\|p\|_{MS},
-    \qquad p\in\Poly.
-\]
-\end{thm}
-
-Este resultado muestra que la acotación de \(\D\) en normas de Sobolev puede
-reformularse como una desigualdad entre la norma de los polinomios y la norma de
-sus derivadas. Desde esta perspectiva aparecen de forma natural desigualdades de
-tipo Wirtinger para polinomios, en las que se controla la norma de un polinomio
-mediante la norma de su derivada bajo condiciones de anulación.
-Estas desigualdades desempeñan un papel central en formulaciones recientes del
-problema \cite{EG25-2}.
-
-\begin{defn}[Desigualdad polinomial de tipo Wirtinger]
-\label{def:wirtinger_intro}
-Sea \(\mu\) una medida de Borel positiva y finita en \(\C\). Diremos que \(\mu\)
-satisface una desigualdad polinomial de tipo Wirtinger si existe una constante
-\(C>0\) tal que
-\[
-    \int_{\C}|p(z)|^2\,d\mu(z)
-    \le
-    C
-    \int_{\C}|p'(z)|^2\,d\mu(z)
-\]
-para todo \(p\in\Poly\) que satisfaga una condición de anulación adecuada, por
-ejemplo \(p(0)=0\).
-\end{defn}
-
-El enfoque matricial será importante en esta memoria por dos razones. En primer
-lugar, permite interpretar los productos de Sobolev mediante matrices hermíticas
-positivas y estudiar la acotación del operador de multiplicación en términos de
-desigualdades matriciales. En segundo lugar, al representar \(\D\) en la base de
-polinomios ortonormales, aparecen matrices de Hessenberg cuyas secciones truncadas
-contienen información sobre los ceros de los polinomios ortogonales y sobre los
-valores singulares asociados. Esta conexión será desarrollada en los capítulos
-posteriores.
-
-\section{Valores singulares y \(s\)-números}
-\label{sec:problema_estabilizacion_intro}
-
-En las secciones anteriores hemos visto que la acotación del operador de
-multiplicación
-\[
-    \D p(z)=zp(z)
-\]
-es una herramienta fundamental para estudiar la localización de los ceros de los
-polinomios ortogonales. En efecto, si \(\D\) es acotado respecto de una norma dada,
-entonces su norma operatorial proporciona una cota uniforme para los ceros. Sin
-embargo, la norma operatorial mide únicamente el peor comportamiento global del
-operador. Cuando esta norma es infinita, la conclusión inmediata es que el operador
-no es acotado, pero esta afirmación puede ocultar una estructura más fina.
-
-Esta situación es familiar en teoría de operadores. En el caso de operadores entre
-espacios de Hilbert, los valores singulares proporcionan una escala de magnitudes
-asociadas al operador. El primer valor singular coincide con la norma operatorial,
-mientras que los siguientes describen, en cierto sentido, el comportamiento del
-operador una vez descartadas sucesivamente ciertas direcciones dominantes. Así, en
-lugar de reducir el análisis a una única cantidad, la norma, se obtiene una sucesión
-de cantidades que permite medir distintos niveles de actuación del operador.
-
-En espacios de Banach existe una teoría abstracta que formaliza esta idea mediante
-los llamados \(s\)-números. Esta teoría, sistematizada por Pietsch, incluye entre
-otros los números de aproximación, de Gelfand, de Kolmogorov y otros invariantes
-que cuantifican el tamaño de un operador desde distintos puntos de vista
-\cite{Pietsch1987}. En particular, los números de Gelfand están ligados a la
-restricción del operador a subespacios de codimensión finita.
-
-\begin{defn}[Codimensión]\label{def:codim_general}
-    Sea \(X\) un espacio vectorial y sea \(V\subset X\) un subespacio. Definimos la codimensión de \(V\) en \(X\) por
-    \[
-        \operatorname{codim}_{X}(V):=\dim(X/V),
-    \]
-    donde la dimensión se entiende en la categoría del espacio ambiente. En particular, si \(X=\mathcal H\) es un espacio de Hilbert y \(V\) es cerrado, entonces
-    \[
-        \operatorname{codim}_{\mathcal H}(V)=\dim(V^\perp),
-    \]
-    mientras que para subespacios \(V\subset\Poly\) la dimensión de \(\Poly/V\) es algebraica, es decir, se calcula mediante bases de Hamel \cite{halmos1982hilbert,hormander1989linearfunctionalanalysis,Aizpuru2009Apuntes}.
-\end{defn}
-
-El punto de vista que seguiremos en esta memoria es análogo. No nos limitaremos a
-preguntar si el operador de multiplicación es acotado en todo el espacio de
-polinomios. Cuando \(\D\) no sea acotado globalmente, estudiaremos si esta falta de
-acotación puede eliminarse imponiendo un número finito de restricciones lineales.
-
-Más concretamente, consideraremos el producto de Sobolev discreto
-\[
-    \langle p,q\rangle_S
-    =
-    \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
-    +
-    \sum_{j=1}^{N}
-    p'(c_j)\overline{q'(c_j)},
-    \qquad p,q\in\Poly,
-\]
-donde
-\[
-    \mathbb{S}_R=\{z\in\C:|z|=R\}
-\]
-y \(\mathbf m_{0;R}\) es la medida de Lebesgue normalizada sobre \(\mathbb{S}_R\). En este
-modelo puede ocurrir que no exista una constante \(C>0\) tal que
-\[
-    \|\D p\|_S
-    \le
-    C\|p\|_S,
-    \qquad p\in\Poly.
-\]
-No obstante, la no acotación puede estar concentrada en un número finito de
-direcciones. En ese caso, aunque el operador no sea acotado globalmente, sí puede
-serlo al restringirlo a subespacios definidos por un número finito de condiciones
-lineales.
-
-Esta observación conduce a considerar cantidades de la forma
-\[
-    Q_k(\D),
-    \qquad k=0,1,2,\ldots,
-\]
-donde \(Q_k(\D)\) representa la mejor cota que puede obtenerse para \(\D\) al
-restringirlo a subespacios de codimensión a lo sumo \(k\). Así, \(Q_0(\D)\) coincide
-con la norma usual del operador, si esta es finita, mientras que los índices
-posteriores miden la acotación que se recupera después de imponer restricciones
-lineales independientes.
-
-La cadena
-\[
-    Q_0(\D),\ Q_1(\D),\ Q_2(\D),\ldots
-\]
-permite, por tanto, sustituir la dicotomía clásica
-\[
-    \D \text{ acotado}
-    \qquad\text{o}\qquad
-    \D \text{ no acotado}
-\]
-por una pregunta más precisa:
-\[
-    \text{¿en qué codimensión se recupera la acotación de }\D?
-\]
-
-En el modelo discreto sobre la circunferencia, la respuesta estará determinada por
-la posición geométrica de los átomos discretos respecto del soporte continuo
-\(\mathbb{S}_R\). De esta manera, la teoría de restricciones de codimensión finita permitirá
-cuantificar la inestabilidad del operador de multiplicación y traducirla después al
-lenguaje matricial de valores singulares y a la localización de ceros.
-
-\section{El modelo central a estudiar}
-\label{sec:modelo_memoria}
-
-En esta memoria trabajaremos con un modelo concreto de producto de Sobolev
-discreto en el plano complejo. La parte continua del producto estará dada por una
-medida de Lebesgue normalizada sobre una circunferencia, y la parte discreta estará
-formada por evaluaciones de la derivada en un número finito de puntos
-\cite{berriochoa2000bernstein,EG25-2}.
-
-Fijado \(R>0\), denotaremos por
-\[
-    \mathbb{S}_R:=\{z\in\C: |z|=R\}
-\]
-la circunferencia de centro \(0\) y radio \(R\). Escribiremos
-\[
-    \mathbf m_{0;R}
-\]
-para la medida de Lebesgue normalizada sobre \(\mathbb{S}_R\). Por tanto,
-\[
-    \operatorname{supp}(\mathbf m_{0;R})=\mathbb{S}_R.
-\]
-La medida \(\mathbf m_{0;R}\) será la medida continua de referencia a lo largo de
-todo el trabajo.
-
-Sea
-\[
-    F=\{c_1,\ldots,c_N\}\subset\C
-\]
-un conjunto finito de puntos. Consideraremos en \(\Poly\) el producto de Sobolev
-discreto
-\begin{equation}\label{eq:producto_modelo_intro}
-    \langle p,q\rangle_S
-    =
-    \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
-    +
-    \sum_{j=1}^{N}
-    p'(c_j)\overline{q'(c_j)},
-    \qquad p,q\in\Poly.
-\end{equation}
-La norma asociada se denotará por
-\[
-    \|p\|_S^2
-    =
-    \int_{\mathbb{S}_R}|p(z)|^2\,d\mathbf m_{0;R}(z)
-    +
-    \sum_{j=1}^{N}|p'(c_j)|^2.
-\]
-
-El primer término de \eqref{eq:producto_modelo_intro} mide el tamaño del polinomio
-sobre la circunferencia \(\mathbb{S}_R\). El segundo término incorpora información puntual
-sobre la derivada de \(p\) en los puntos \(c_1,\ldots,c_N\). Estos puntos serán
-llamados átomos discretos del producto.
-
-Este tipo de producto recoge de forma sencilla la interacción entre una parte
-continua, soportada en una curva compacta, y una parte discreta, localizada en un
-número finito de puntos del plano complejo. Precisamente esta interacción será la
-fuente de los fenómenos que estudiaremos: dependiendo de la posición geométrica
-de los átomos respecto del soporte continuo \(\mathbb{S}_R\), el operador de multiplicación
-puede ser acotado, no acotado, o estabilizarse después de imponer un número finito
-de restricciones lineales.
-
-Antes de fijar definitivamente estas normalizaciones, conviene registrar una
-invariancia elemental bajo semejanzas. La formulamos para un producto ligeramente
-más general, permitiendo coeficientes discretos positivos arbitrarios, pues esa será
-la versión natural del cambio de variables.
-
-\begin{prop}[Normalización por semejanzas]\label{prop:semejanza_modelo_sobolev}
-    Sean \(a\in\C\), \(R>0\), \(F=\{c_1,\ldots,c_N\}\subset\C\) y
-    \(\lambda_1,\ldots,\lambda_N>0\). Consideremos en \(\Poly\) el producto
-    \[
-        \langle p,q\rangle_{a,R,F,\Lambda}
-        :=
-        \int_{\mathbb S_R(a)}p(z)\overline{q(z)}\,d\mathbf m_{a;R}(z)
-        +
-        \sum_{j=1}^{N}\lambda_j\,p'(c_j)\overline{q'(c_j)},
-        \qquad p,q\in\Poly,
-    \]
-    donde
-    \[
-        \mathbb S_R(a):=\{z\in\C:|z-a|=R\}
-    \]
-    y \(\mathbf m_{a;R}\) es la medida de Lebesgue normalizada sobre
-    \(\mathbb S_R(a)\).
-
-    Sea ahora
-    \[
-        f(w)=\alpha w+\beta,
-        \qquad \alpha\in\C\setminus\{0\},\quad \beta\in\C,
-    \]
-    con \(|\alpha|=R\) y \(\beta=a\), de modo que
-    \(f(\mathbb S_1)=\mathbb S_R(a)\). Definimos
-    \[
-        d_j:=f^{-1}(c_j)=\frac{c_j-\beta}{\alpha},
-        \qquad j=1,\ldots,N.
-    \]
-    Si \(P,Q\in\Poly\) y
-    \[
-        p=P\circ f^{-1},
-        \qquad
-        q=Q\circ f^{-1},
-    \]
-    entonces
-    \[
-        \langle p,q\rangle_{a,R,F,\Lambda}
-        =
-        \int_{\mathbb S_1}P(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w)
-        +
-        |\alpha|^{-2}\sum_{j=1}^{N}\lambda_j\,P'(d_j)\overline{Q'(d_j)}.
-    \]
-    Equivalentemente,
-    \[
-        |\alpha|^2\langle p,q\rangle_{a,R,F,\Lambda}
-        =
-        |\alpha|^2\int_{\mathbb S_1}P(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w)
-        +
-        \sum_{j=1}^{N}\lambda_j\,P'(d_j)\overline{Q'(d_j)}.
-    \]
-    En particular, si \(\{P_n\}_{n\ge0}\) es la sucesión de polinomios mónicos
-    ortogonales para el producto del segundo miembro, entonces la sucesión
-    \(\{p_n\}_{n\ge0}\) dada por
-    \[
-        p_n(z)=\alpha^n P_n\!\left(\frac{z-\beta}{\alpha}\right)
-    \]
-    es la sucesión de polinomios mónicos ortogonales para
-    \(\langle\cdot,\cdot\rangle_{a,R,F,\Lambda}\).
-\end{prop}
-
-\begin{proof}
-    Como \(\mathbf m_{a;R}\) es la imagen de \(\mathbf m_{0;1}\) por la semejanza
-    \(f\), se tiene
-    \[
-        \int_{\mathbb S_R(a)}p(z)\overline{q(z)}\,d\mathbf m_{a;R}(z)
-        =
-        \int_{\mathbb S_1}P(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w).
-    \]
-    Por otra parte, como \(p(f(w))=P(w)\), la regla de la cadena da
-    \[
-        \alpha\,p'(f(w))=P'(w),
-        \qquad
-        \alpha\,q'(f(w))=Q'(w).
-    \]
-    Evaluando en \(w=d_j=f^{-1}(c_j)\), obtenemos
-    \[
-        p'(c_j)=\alpha^{-1}P'(d_j),
-        \qquad
-        q'(c_j)=\alpha^{-1}Q'(d_j),
-    \]
-    y por tanto
-    \[
-        \sum_{j=1}^{N}\lambda_j\,p'(c_j)\overline{q'(c_j)}
-        =
-        |\alpha|^{-2}
-        \sum_{j=1}^{N}\lambda_j\,P'(d_j)\overline{Q'(d_j)}.
-    \]
-    Sumando ambas identidades se obtiene la primera fórmula, y la segunda se deduce
-    multiplicando por \(|\alpha|^2\).
-
-    Sea ahora \(P_n\) un polinomio mónico ortogonal para el producto del segundo
-    miembro y definamos
-    \[
-        p_n(z)=\alpha^nP_n\!\left(\frac{z-\beta}{\alpha}\right).
-    \]
-    Entonces \(p_n\) es mónico, pues el coeficiente director de
-    \(P_n((z-\beta)/\alpha)\) es \(\alpha^{-n}\). Además, si \(r\in\Poly\) tiene
-    grado menor que \(n\), existe un único \(Q\in\Poly\) de grado menor que \(n\)
-    tal que
-    \[
-        r=Q\circ f^{-1},
-    \]
-    ya que la composición con \(f^{-1}\) preserva el grado. Aplicando la identidad
-    ya probada con \(P=P_n\) y este polinomio \(Q\), obtenemos
-    \[
-        \langle p_n,r\rangle_{a,R,F,\Lambda}
-        =
-        \alpha^n\left(
-        \int_{\mathbb S_1}P_n(w)\overline{Q(w)}\,d\mathbf m_{0;1}(w)
-        +
-        |\alpha|^{-2}\sum_{j=1}^{N}\lambda_j\,P_n'(d_j)\overline{Q'(d_j)}
-        \right)=0,
-    \]
-    porque \(\deg Q<n\) y \(P_n\) es ortogonal a todos los polinomios de grado menor
-    que \(n\) para ese producto. Por tanto, \(p_n\) es el polinomio mónico ortogonal
-    de grado \(n\) para \(\langle\cdot,\cdot\rangle_{a,R,F,\Lambda}\).
-\end{proof}
-
-\begin{rmk}\label{rmk:importancia_semejanza_modelo_sobolev}
-    La proposición anterior permite normalizar la geometría del problema sin alterar
-    la familia de polinomios ortogonales mónicos. En efecto, una semejanza transporta
-    simultáneamente la circunferencia soporte y los átomos discretos, de modo que todo
-    modelo sobre una circunferencia arbitraria \(\mathbb S_R(a)\) puede estudiarse en
-    la circunferencia unitaria \(\mathbb S_1\), con los átomos movidos por la misma
-    transformación inversa. La única modificación analítica es una renormalización
-    global del producto escalar, irrelevante para la ortogonalidad. Esto justifica
-    que en los estudios de caso resulte natural trabajar con configuraciones centradas
-    en el origen y, cuando convenga, en radio uno, aunque en los enunciados generales
-    mantendremos explícitos el centro y el radio para reflejar la geometría original
-    del problema.
-\end{rmk}
-
-En el caso de la medida \(\mathbf m_{0;R}\), los monomios son ortogonales y se
-tiene
-\[
-    \int_{\mathbb{S}_R}z^n\overline{z}^{\,m}\,d\mathbf m_{0;R}(z)
-    =
-    \begin{cases}
-        R^{2n}, & n=m,\\
-        0, & n\ne m.
-    \end{cases}
-\]
-Esta estructura explícita de la parte continua será útil en los capítulos
-posteriores, tanto para estudiar las evaluaciones puntuales como para construir
-sucesiones de polinomios que detectan la pérdida de acotación del operador de
-multiplicación.
-
-El operador central de la memoria será, de nuevo, el operador de multiplicación
-por la variable independiente,
-\[
-    \D p(z)=zp(z),
-    \qquad p\in\Poly.
-\]
-A diferencia del caso estándar clásico, la norma de Sobolev
-\eqref{eq:producto_modelo_intro} no solo contiene la parte \(L^2\) sobre
-\(\mathbb{S}_R\), sino también valores de la derivada en puntos discretos. Por ello, al
-calcular la norma de \(\D p\) aparecen los términos
-\[
-    (\D p)'(c_j)
-    =
-    p(c_j)+c_jp'(c_j),
-    \qquad j=1,\ldots,N.
-\]
-La presencia de los valores \(p(c_j)\), junto con los términos derivados
-\(p'(c_j)\), será esencial en el análisis de la acotación de \(\D\).
+En esta forma básica, la noción de pertenecer a
+\(\operatorname{bpe}(\mu)\) no sustituye a la teoría general de la acotación de
+\(\D\), pero sí ofrece un criterio eficaz para tratar perturbaciones discretas y
+forma parte del repertorio habitual en el estudio de la localización de ceros de
+Sobolev.

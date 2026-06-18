@@ -89,7 +89,7 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
 \end{proof}
 
 \begin{defn}\label{def:abpe_ch3}
-    Sea $\mu$ una medida positiva finita en $\C$. Diremos que $a\in\C$ es un punto de evaluación acotada (\emph{bounded point evaluation}, BPE) para $L^2(\mu)$ si existe una constante $C>0$ tal que
+    Sea $\mu$ una medida positiva finita en $\C$. Diremos que $a\in\operatorname{bpe}(\mu)$ si existe una constante $C>0$ tal que
     \begin{equation}\label{eq:def_bpe}
         |p(a)|^2\le C\int |p(z)|^2\,d\mu(z),
         \qquad p\in\Poly.
@@ -128,7 +128,7 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
 \end{lem}
 
 \begin{proof}
-    En el caso de Lebesgue sobre la circunferencia, todo punto del disco abierto $\{|z|<R\}$ es BPE y de hecho ABPE \cite{miller1999bounded,aleman2009nontangential}. Tomamos $r>0$ tal que la circunferencia $\gamma_r=\{z:|z-c|=r\}$ quede contenida en el disco $\{|z|<R\}$. Por la fórmula de Cauchy para la derivada,
+    En el caso de Lebesgue sobre la circunferencia, todo punto del disco abierto $\{|z|<R\}$ pertenece a $\operatorname{bpe}(\mathbf{m}_R)$ y de hecho es ABPE \cite{miller1999bounded,aleman2009nontangential}. Tomamos $r>0$ tal que la circunferencia $\gamma_r=\{z:|z-c|=r\}$ quede contenida en el disco $\{|z|<R\}$. Por la fórmula de Cauchy para la derivada,
     \[
         p'(c)=\frac{1}{2\pi i}\oint_{\gamma_r}\frac{p(z)}{(z-c)^2}\,dz.
     \]
@@ -136,7 +136,7 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
     \[
         |p'(c)|\le \frac1r\max_{z\in\gamma_r}|p(z)|.
     \]
-    Como todos los puntos de $\gamma_r$ son BPE, existe $M>0$ tal que
+    Como $\gamma_r\subset \operatorname{bpe}(\mathbf{m}_R)$, existe $M>0$ tal que
     \[
         |p(z)|\le M\|p\|_{L^2(\mathbf{m}_R)},
         \qquad z\in\gamma_r.
@@ -225,7 +225,7 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
     \]
     De nuevo $c$ es $\delta$-singular.
 
-    Probamos ahora que $(1)\Rightarrow(2)$ por contrarrecíproco. Si $|c|<R$, entonces $c$ es BPE para $L^2(\mathbf{m}_R)$ y, por el Lema~\ref{lema:ABPE_derivada}, tanto $\delta_c$ como $\delta'_c$ son funcionales acotados respecto a $\|\cdot\|_{L^2(\mathbf{m}_R)}$. En particular, la restricción de $\delta_c$ a $\ker(\delta'_c)$ es acotada, y por ello $c$ no es $\delta$-singular.
+    Probamos ahora que $(1)\Rightarrow(2)$ por contrarrecíproco. Si $|c|<R$, entonces $c\in\operatorname{bpe}(\mathbf{m}_R)$ y, por el Lema~\ref{lema:ABPE_derivada}, tanto $\delta_c$ como $\delta'_c$ son funcionales acotados respecto a $\|\cdot\|_{L^2(\mathbf{m}_R)}$. En particular, la restricción de $\delta_c$ a $\ker(\delta'_c)$ es acotada, y por ello $c$ no es $\delta$-singular.
 \end{proof}
 
 \section{Caso estable}
