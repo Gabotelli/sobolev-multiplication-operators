@@ -46,7 +46,7 @@ de modo que
 \]
 Esto da un control grosero del tamaño de los ceros. El siguiente paso macroscópico consiste en mirar no un solo autovalor, sino el producto de los $k$ autovalores de mayor módulo.
 
-\begin{lem}[Desigualdad de Weyl--Horn \cite{horn2012matrix}]\label{lem:weyl_horn}
+\begin{lem}\label{lem:weyl_horn}
 	Sea $A\in\mathcal{M}_{n+1}(\mathbb{C})$ con autovalores $\lambda_0,\dots,\lambda_n$
 	ordenados por módulo decreciente y valores singulares
 	$\sigma_0\ge\sigma_1\ge\cdots\ge\sigma_n\ge 0$. Entonces
@@ -280,7 +280,7 @@ Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una f
 	que es exactamente el sistema anunciado.
 \end{proof}
 
-\begin{lem}[Reducción racional exterior y conteo]\label{lem:conteo_exterior_reciproco}
+\begin{lem}\label{lem:conteo_exterior_reciproco}
 	Sea
 	\[
 		\langle p,q\rangle_S
@@ -382,7 +382,7 @@ Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una f
 	Sobre la circunferencia $|w|=(R+\varepsilon)^{-1}$ se tiene $|1/w|=R+\varepsilon$, luego $H_n\to H$ uniformemente. Además, los polos de $F$ están en $R^2/\overline c_k$, cuyo módulo es estrictamente menor que $R+\varepsilon$; por tanto, $H$ es holomorfa en $|w|\le (R+\varepsilon)^{-1}$. Sus ceros en ese disco son exactamente $1/c_1,\dots,1/c_m$, todos simples, y no hay ceros sobre la frontera. Aplicando Rouché en $|w|=(R+\varepsilon)^{-1}$, concluimos que para $n$ suficientemente grande $H_n$ y $H$ tienen el mismo número de ceros en $|w|<(R+\varepsilon)^{-1}$, a saber, $m$. Bajo la transformación $w=1/z$, esos ceros corresponden exactamente a los ceros de $\pi_{n+1}$ en $|z|>R+\varepsilon$.
 \end{proof}
 
-\begin{thm}[Régimen puramente exterior: conteo exacto fuera de $R+\varepsilon$]\label{thm:conteo_ceros}
+\begin{thm}\label{thm:conteo_ceros}
 	Sea $\phi_{n+1}$ el polinomio ortonormal de Sobolev de grado $n+1$
 	asociado a un producto de Sobolev discreto con medida de Lebesgue normalizada en $\mathbb S_R$ y
 	átomos de primera derivada situados en puntos $c_1,\dots,c_m$ con $|c_k|>R$ para todo $k$. Para cada $\varepsilon>0$ tal que
@@ -408,7 +408,7 @@ El teorema anterior cierra la capa macroscópica en el régimen puramente exteri
 
 Una vez fijado cuántos ceros quedan fuera de $|z|=R+\varepsilon$, el siguiente problema es dónde caen exactamente. En el régimen puramente exterior, la misma función racional límite separa esos $m$ ceros y muestra que cada átomo estrictamente exterior atrae uno de ellos.
 
-\begin{thm}[Régimen puramente exterior: un cero junto a cada átomo exterior]\label{thm:atraccion}
+\begin{thm}\label{thm:atraccion}
 	Sea
 	\[
 		\langle p,q\rangle_S
@@ -495,7 +495,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	El segundo sumando es no negativo y el primero solo se anula cuando $\lambda=0$; por tanto $D$ es hermítica definida positiva. En consecuencia es invertible. Como el conjunto de matrices invertibles es abierto y $D_n\to D$, se sigue que $D_n$ es invertible para $n$ suficientemente grande y que sus inversas permanecen uniformemente acotadas.
 \end{proof}
 
-\begin{lem}[Desacople exterior en el caso mixto sin frontera]\label{lem:desacople_mixto_sin_frontera}
+\begin{lem}\label{lem:desacople_mixto_sin_frontera}
 	Sea
 	\[
 		\langle p,q\rangle_S
@@ -730,7 +730,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	Pasando a la variable recíproca $w=1/z$ y repitiendo palabra por palabra el argumento de Rouché empleado en el Lema~\ref{lem:conteo_exterior_reciproco}, se obtiene que, para todo $0<\varepsilon<\min_r(|a_r|-R)$, el polinomio $\pi_{n+1}$ tiene exactamente $m$ ceros en $\{|z|>R+\varepsilon\}$ cuando $n$ es suficientemente grande.
 \end{proof}
 
-\begin{thm}[Caso mixto sin frontera: un cero junto a cada átomo exterior]\label{thm:atraccion_mixta_sin_frontera}
+\begin{thm}\label{thm:atraccion_mixta_sin_frontera}
 	Bajo las hipótesis del Lema~\ref{lem:desacople_mixto_sin_frontera}, para todo $\varepsilon>0$ suficientemente pequeño existe $n_\varepsilon\in\mathbb{N}$ tal que, para todo $n\ge n_\varepsilon$, los ceros de $\phi_{n+1}$ fuera de $\overline{\mathbb D_{R+\varepsilon}}$ pertenecen a
 	\[
 		\bigcup_{r=1}^m\overline{\mathbb D_\varepsilon(a_r)},
@@ -898,7 +898,7 @@ En la frontera pura ya no hay separación macroscópica fija del círculo. La at
 	Luego $|z_n|=|c|\,\bigl|1+x_n/n\bigr|>R$ eventualmente.
 \end{proof}
 
-\begin{thm}[Frontera pura: un cero a escala $1/n$ junto a cada átomo]\label{thm:atraccion_frontera}
+\begin{thm}\label{thm:atraccion_frontera}
 	Sea
 	\[
 		\langle p,q\rangle_S
@@ -1021,7 +1021,7 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 
 \subsection{Desacople macroscópico exterior}
 
-\begin{thm}[Caso mixto con frontera: conteo exterior macroscópico]\label{thm:desacople_mixto_con_frontera}
+\begin{thm}\label{thm:desacople_mixto_con_frontera}
 	Sea
 	\[
 		\langle p,q\rangle_S
@@ -1209,7 +1209,7 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 
 \end{proof}
 
-\begin{cor}[Caso mixto con frontera: un cero junto a cada átomo exterior]\label{cor:atraccion_exterior_mixto_frontera}
+\begin{cor}\label{cor:atraccion_exterior_mixto_frontera}
 	Bajo las hipótesis del Teorema~\ref{thm:desacople_mixto_con_frontera}, para todo $\varepsilon>0$ suficientemente pequeño existe $n_\varepsilon\in\mathbb N$ tal que, para todo $n\ge n_\varepsilon$, los ceros de $\pi_{n+1}$ fuera de $\overline{\mathbb D_{R+\varepsilon}}$ pertenecen a
 	\[
 		\bigcup_{r=1}^m\overline{\mathbb D_\varepsilon(a_r)},
@@ -1231,7 +1231,7 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 
 \subsection{Perfil local de frontera}
 
-\begin{thm}[Caso mixto con frontera: perfil local en la frontera]\label{thm:frontera_mixta_completa}
+\begin{thm}\label{thm:frontera_mixta_completa}
 	Bajo las hipótesis del Teorema~\ref{thm:desacople_mixto_con_frontera}, definamos
 	\[
 		H(x):=e^x-3\int_0^1 t e^{xt}\,dt,
@@ -1344,7 +1344,7 @@ el módulo máximo de sus ceros. Aunque cada $\sigma_j^{(n)}$ es finito para $n$
 
 En cada ejemplo, la figura de la izquierda representa todos los ceros de los polinomios ortogonales de Sobolev hasta grado $50$, mientras que la de la derecha muestra los ceros del polinomio de grado $50$. La tabla asociada recoge los valores singulares relevantes y el radio exterior $\rho_n$ para ese mismo grado.
 
-\begin{exm}[Átomo interior]
+\begin{exm}
 
 	Consideramos el producto de Sobolev
 	\[
@@ -1376,7 +1376,7 @@ En cada ejemplo, la figura de la izquierda representa todos los ceros de los pol
 	% explicando qué se observa en los ceros y en las ramas singulares.
 \end{exm}
 
-\begin{exm}[Átomo estrictamente exterior]
+\begin{exm}
 
 	Consideramos el producto de Sobolev
 	\[
@@ -1408,7 +1408,7 @@ En cada ejemplo, la figura de la izquierda representa todos los ceros de los pol
 	% conectando ramas divergentes, ramas acotadas y atracción del cero de mayor módulo.
 \end{exm}
 
-\begin{exm}[Caso mixto]
+\begin{exm}
 
 	Consideramos el producto de Sobolev
 	\[
@@ -1442,7 +1442,7 @@ En cada ejemplo, la figura de la izquierda representa todos los ceros de los pol
 
 Como consecuencia colateral del régimen puramente exterior, se recupera también una acotación uniforme global de los ceros. La incluimos solo como corolario de cierre técnico, no como nuevo paso estructural del capítulo.
 
-\begin{thm}[Acotación uniforme en el régimen estrictamente exterior]\label{thm:acotacion_via_Q_m}
+\begin{thm}\label{thm:acotacion_via_Q_m}
 	Sea
 	\[
 		\langle p,q\rangle_S

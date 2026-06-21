@@ -96,9 +96,7 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 		\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z).
 	\]
 	Además, para toda matriz cuadrada $A$ se tiene
-	\[
-		\det(z\mathbf I-A^t)=\det\bigl((z\mathbf I-A)^t\bigr)=\det(z\mathbf I-A).
-	\]
+	\(\det(z\mathbf I-A^t)=\det\bigl((z\mathbf I-A)^t\bigr)=\det(z\mathbf I-A)\).
 	Aplicando esto a $A=\mathbf D_n$, concluimos que
 	\[
 		\det(z\mathbf I_{n+1}-\mathbf D_n)=\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z).
@@ -292,10 +290,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 	\(
 		\operatorname{codim}_{\Poly}(V)<k+1.
 	\)
-	Consideremos
-	\(
-		V_n:=V\cap\mathbb P_n.
-	\)
+	Consideremos \(V_n:=V\cap\mathbb P_n\).
 	La aplicación natural
 	\[
 		\mathbb P_n/(V\cap\mathbb P_n)\longrightarrow \Poly/V,
@@ -320,10 +315,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 	\[
 		\|\mathbf D_nx\|_2=\|\pi_n(\D p)\|_S\le \|\D p\|_S\le \|\D|_V\|_S\,\|p\|_S=\|\D|_V\|_S\,\|x\|_2.
 	\]
-	Por tanto,
-	\(
-		\sigma_{k,n}\le \|\D|_V\|_S.
-	\)
+	Por tanto, \(\sigma_{k,n}\le \|\D|_V\|_S\).
 	Tomando ínfimo sobre todos los subespacios $V$ con codimensión $<k+1$, obtenemos
 	\[
 		\sigma_{k,n}\le Q_k(\D).
@@ -338,10 +330,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 \end{cor}
 
 \begin{proof}
-	Para cada $n\ge k$, la Proposición~\ref{prop:sigma_qk} da
-	\(
-		\sigma_{k,n}\le Q_k(\D).
-	\)
+	Para cada $n\ge k$, la Proposición~\ref{prop:sigma_qk} da \(\sigma_{k,n}\le Q_k(\D)\).
 	Pasando al límite cuando $n\to\infty$, obtenemos
 	\[
 		\sigma_k(\mathbf D)\le Q_k(\D).
@@ -356,29 +345,16 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 \end{thm}
 
 \begin{proof}
-	La desigualdad
-    \[
-        \sigma_k(\mathbf D)\le Q_k(\D)
-    \]
-    es el contenido del Corolario~\ref{cor:sigma_operador_qk}. Probemos la desigualdad contraria.
+	La desigualdad \(\sigma_k(\mathbf D)\le Q_k(\D)\) es el contenido del Corolario~\ref{cor:sigma_operador_qk}. Probemos la desigualdad contraria.
 
     Sea $0 <a<Q_k(\D)$, donde puede ocurrir que $Q_k(\D)=+\infty$. Por la caracterización max--min del Teorema~\ref{thm:maxmin_Qk}, existe un subespacio $E\subset\Poly$ con
-    \(
-        \dim E=k+1
-    \)
+    \(\dim E=k+1\)
     tal que
     \[
         \inf_{\substack{p\in E\\ p\ne0}}
         \frac{\|\D p\|_S}{\|p\|_S}>a.
     \]
-    Como $E$ es finito-dimensional y $E \subset \Poly$, existe $N\ge0$ tal que
-    \(
-        E\subset\mathbb P_N.
-    \)
-    Entonces
-    \(
-        \D (E)\subset\mathbb P_{N+1}.
-    \)
+    Como $E$ es finito-dimensional y $E \subset \Poly$, existe $N\ge0$ tal que \(E\subset\mathbb P_N\). Entonces \(\D(E)\subset\mathbb P_{N+1}\).
     Por tanto, para todo $n\ge N+1$ y todo $p\in E$,
     \[
         \mathcal D_n p=\pi_n(\D p)=\D p.
@@ -395,10 +371,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
         \frac{\|\D p\|_S}{\|p\|_S}
         >a.
     \]
-    Pasando al límite,
-    \(
-        \sigma_k(\mathbf D)\ge a.
-    \)
+    Pasando al límite, \(\sigma_k(\mathbf D)\ge a\).
     Como esto se verifica para $0 <a<Q_k(\D)$ se concluye que
     \[
         \sigma_k(\mathbf D)\ge Q_k(\D).
@@ -417,13 +390,9 @@ En el caso de operadores acotados, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} 
 
 \begin{proof}
 	Por el Teorema~\ref{thm:igualdad_sigma_qk_general},
-	\(
-		\sigma_k(\mathbf D)=Q_k(\D).
-	\)
+	\(\sigma_k(\mathbf D)=Q_k(\D)\).
 	Como \(\D\in\mathcal L(\mathcal H)\), el Teorema~\ref{thm:equivalencia_Qk_Gelfand} da
-	\(
-		Q_k(\D)=c_k(\D).
-	\)
+	\(Q_k(\D)=c_k(\D)\).
 	Se concluye que
 	\[
 		\sigma_k(\mathbf D)=c_k(\D).
@@ -451,15 +420,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{thm}
 
 \begin{proof}
-	Por el Teorema~\ref{thm:qk_vale_R_desde_N},
-	\(
-		Q_k(\D)=R \) para todo
-		\(k\ge N.
-	\)
-	Por el Teorema~\ref{thm:igualdad_sigma_qk_general},
-	\(
-		\sigma_k(\mathbf D)=Q_k(\D).
-	\)
+	Por el Teorema~\ref{thm:qk_vale_R_desde_N}, \(Q_k(\D)=R\) para todo \(k\ge N\). Por el Teorema~\ref{thm:igualdad_sigma_qk_general}, \(\sigma_k(\mathbf D)=Q_k(\D)\).
 	Se concluye que
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D)=R,
@@ -566,7 +527,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 
 En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singulares relevantes para contrastar los resultados teóricos con los cálculos numéricos de las truncaciones. En cada caso puede sustituirse el recuadro por la imagen generada computacionalmente del soporte del producto de Sobolev.
 
-\begin{exm}[Átomos solo en el interior de la circunferencia unidad]
+\begin{exm}
 	Consideremos el producto escalar
 	\[
 		\langle p,q\rangle_S
@@ -607,20 +568,22 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 		\label{fig:ejemplo_interior_puro}
 	\end{figure}
 
-	Los valores singulares relevantes para completar numéricamente son
-	\[
-		\text{no hay índices }k\text{ con }\sigma_k(\mathbf D)=+\infty,
-	\]
-	\[
-		\sigma_0(\mathbf D)=\boxed{\text{valor numérico a insertar}}<\infty,
-	\]
-	\[
-		\sigma_4(\mathbf D)=1.
-	\]
-	Aquí $\sigma_0(\mathbf D)$ es el primer índice finito, mientras que el primer índice para el que el valor viene forzado por la teoría general es $k=N=4$.
+	Los índices relevantes para completar numéricamente pueden resumirse en la tabla siguiente:
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Índice & Valor \\
+			\hline
+			$\sigma_0(\mathbf D)$ & $\boxed{\text{valor numérico a insertar}}<\infty$ \\
+			\hline
+			$\sigma_4(\mathbf D)$ & $1$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	En este ejemplo no aparece ningún índice con valor infinito. El interés del cuadro está en separar el primer valor finito, $\sigma_0(\mathbf D)$, del primer índice cuyo valor queda forzado por la teoría general, que es $k=N=4$.
 \end{exm}
 
-\begin{exm}[Átomos solo en el exterior de la circunferencia unidad]
+\begin{exm}
 	Consideremos ahora
 	\[
 		\langle p,q\rangle_S
@@ -665,20 +628,22 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 		\label{fig:ejemplo_exterior_puro}
 	\end{figure}
 
-	En este ejemplo el último índice con valor infinito es $k=3$, el siguiente ya es finito y además coincide con el valor $R=1$:
-	\[
-		\sigma_3(\mathbf D)=+\infty,
-	\]
-	\[
-		\sigma_4(\mathbf D)=1.
-	\]
-	Si se desea resaltar el primer índice finito, puede indicarse también
-	\[
-		\sigma_4(\mathbf D)=\boxed{1}.
-	\]
+	Los índices relevantes pueden organizarse así:
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Índice & Valor \\
+			\hline
+			$\sigma_3(\mathbf D)$ & $+\infty$ \\
+			\hline
+			$\sigma_4(\mathbf D)$ & $1$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Aquí el contraste es inmediato: $k=3$ es el último índice con valor infinito, mientras que $k=4$ ya es finito y además coincide con el valor general $R=1$.
 \end{exm}
 
-\begin{exm}[Átomos dentro y fuera de la circunferencia unidad]
+\begin{exm}
 	Finalmente, consideremos el caso mixto
 	\[
 		\langle p,q\rangle_S
@@ -730,15 +695,19 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 		\label{fig:ejemplo_mixto}
 	\end{figure}
 
-	Los índices destacados son ahora
-	\[
-		\sigma_2(\mathbf D)=+\infty,
-	\]
-	\[
-		\sigma_3(\mathbf D)=\boxed{\text{valor numérico a insertar}}<\infty,
-	\]
-	\[
-		\sigma_5(\mathbf D)=1.
-	\]
-	Este ejemplo permite visualizar la diferencia entre el umbral de finitud $m=3$ y el índice $N=5$ a partir del cual el valor singular queda fijado por la cota general $R=1$.
+	Los índices destacados quedan resumidos en la tabla:
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Índice & Valor \\
+			\hline
+			$\sigma_2(\mathbf D)$ & $+\infty$ \\
+			\hline
+			$\sigma_3(\mathbf D)$ & $\boxed{\text{valor numérico a insertar}}<\infty$ \\
+			\hline
+			$\sigma_5(\mathbf D)$ & $1$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Este ejemplo muestra con claridad la diferencia entre el umbral de finitud $m=3$ y el índice $N=5$: en $k=3$ ya se alcanza la finitud, pero el valor singular no queda fijado por la cota general $R=1$ hasta llegar a $k=5$.
 \end{exm}
