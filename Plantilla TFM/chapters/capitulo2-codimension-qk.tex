@@ -11,35 +11,33 @@ y $\Poly$ es un subespacio denso de $\mathcal H$.
     \[
         \operatorname{codim}_{X}(V):=\dim(X/V),
     \]
-    donde la dimensión se entiende en la categoría del espacio ambiente. En particular, si $X=\mathcal H$ es un espacio de Hilbert y $V$ es cerrado, entonces
-    \[
-        \operatorname{codim}_{\mathcal H}(V)=\dim(V^\perp),
-    \]
-    mientras que para subespacios $V\subset\Poly$ la dimensión de $\Poly/V$ es algebraica \cite{halmos1982hilbert,hormander1989linearfunctionalanalysis,Aizpuru2009Apuntes}.
+    donde la dimensión se entiende en la categoría del espacio ambiente.\cite{hormander1989linearfunctionalanalysis}.
 \end{defn}
 
 Con esta notación, cuando $M\subset\mathcal H$ es un subespacio cerrado escribiremos
 \[
     \operatorname{codim}_{\mathcal H}(M)=\dim(\mathcal H/M)=\dim(M^\perp),
 \]
-mientras que para un subespacio vectorial $V\subset\Poly$ escribiremos
+entendiendo aquí a la dimensión en sentido topológico \cite{halmos1982hilbert}, mientras que para un subespacio vectorial $V\subset\Poly$ escribiremos
 \[
     \operatorname{codim}_{\Poly}(V)=\dim(\Poly/V),
 \]
-entendiendo aquí la dimensión en sentido algebraico.
+entendiendo aquí la dimensión en sentido algebraico \cite{Aizpuru2009Apuntes}.
 
-En espacios de Hilbert, los valores singulares están ligados a la estructura hilbertiana del espacio. Sin embargo, en contextos más generales no existe una única noción canónica que los sustituya. La teoría de los \(s\)-números, desarrollada por Pietsch \cite{Ullrich2024, Pietsch1987}, proporciona un marco para extender esta filosofía a operadores acotados entre espacios de Banach. En particular, nos apoyaremos en los números de Gelfand, que se definen a continuación.
+En espacios de Hilbert, los valores singulares están ligados a la estructura hilbertiana del espacio. Sin embargo, en contextos más generales no existe una única noción canónica que los sustituya. La teoría de los \(s\)-números, desarrollada por Pietsch \cite{Ullrich2024, Pietsch1987}, proporciona un marco para extender esta filosofía a operadores acotados entre espacios de Banach. En particular, nos apoyaremos en los números de Gelfand \cite{Ullrich2024}, que se definen a continuación. Para un operador lineal $T:\Poly\to\Poly$ y un subespacio cerrado $M\subset\Poly$, escribiremos
+\[
+    \|T|_M\|:=\sup_{\substack{p\in M\\ p\ne0}}\frac{\|Tp\|}{\|p\|}\in[0,+\infty].
+\]
 
 \begin{defn}\label{def:numeros_gelfand}
     Sea $T\in\mathcal L(\mathcal H)$. Para cada $k\ge 0$, definimos el número de Gelfand de orden $k$ de $T$ como
     \begin{equation}\label{eq:gelfand_numbers}
         c_k(T)=\inf\{\|T|_M\|:M\subset \mathcal H,\ M\text{ cerrado},\ \operatorname{codim}_{\mathcal H}(M)<k+1\}.
     \end{equation}
-    En particular, $c_0(T)=\|T\|$. \cite{Ullrich2024}
 \end{defn}
 
 \begin{rmk}
-    Nuestra definición del número de Gelfand $c_0(T)$ corresponde al número $c_1(T)$, y en general $c_{k-1}(T)$ corresponde a $c_k(T)$. La usamos así por coherencia de notación al trabajar en espacios de polinomios.
+    Nuestra definición del número de Gelfand $c_0(T)$ corresponde al número $c_1(T)$, luego tenemos que  $c_0(T)=\|T\|$, y en general $c_{k-1}(T)$ corresponde a $c_k(T)$. La usamos así por coherencia de notación al trabajar en espacios de polinomios.
 \end{rmk}
 
 \section{Restricciones lineales y codimensión finita}
@@ -52,8 +50,8 @@ Comenzamos fijando el lenguaje algebraico que usaremos para describir subespacio
         \item $\operatorname{codim}_{\Poly}(V)<\infty$;
         \item existen $m\in\mathbb N\cup\{0\}$ y $L_1,\dots,L_m\in\Poly^*$ tales que
               \[
-                    V=\bigcap_{j=1}^m \ker L_j.
-                \]
+                  V=\bigcap_{j=1}^m \ker L_j.
+              \]
               donde, si $m=0$, entendemos por convención que la intersección vacía es todo $\Poly$.
     \end{enumerate}
     Además,
@@ -319,7 +317,7 @@ La misma idea se extiende a intersecciones finitas de núcleos de funcionales ac
 
 \section{Dicotomía de la codimensión}
 
-La sección anterior describe los subespacios de codimensión finita mediante restricciones lineales. Sin embargo, en nuestro problema esas restricciones viven inicialmente en \(\Poly\), mientras que la teoría clásica de los números de Gelfand se formula en la compleción hilbertiana \(\mathcal H\). Por tanto, es necesario entender qué ocurre con una condición lineal impuesta en \(\Poly\) cuando se toma la clausura del subespacio que define. 
+La sección anterior describe los subespacios de codimensión finita mediante restricciones lineales. Sin embargo, en nuestro problema esas restricciones viven inicialmente en \(\Poly\), mientras que la teoría clásica de los números de Gelfand se formula en la compleción hilbertiana \(\mathcal H\). Por tanto, es necesario entender qué ocurre con una condición lineal impuesta en \(\Poly\) cuando se toma la clausura del subespacio que define.
 
 \begin{prop}\label{thm:dicotomia_1}
     Sea $(\mathcal H,\langle\cdot,\cdot\rangle)$ un espacio de Hilbert tal que $\mathcal H=\overline{\Poly}$, y sea $L:\Poly\to\mathbb C$ un funcional lineal no nulo. Entonces ocurre exactamente una de las dos posibilidades siguientes:
@@ -666,7 +664,7 @@ Veamos una caracterización de $Q_k(T)$ en términos de subespacios de dimensió
 \end{proof}
 
 \begin{defn}
-    Sea $T:\Poly\to\Poly$ un operador lineal no necesariamente acotado. Para $k\ge1$, diremos que la cadena 
+    Sea $T:\Poly\to\Poly$ un operador lineal no necesariamente acotado. Para $k\ge1$, diremos que la cadena
     \[
         Q_0(T)\ge Q_1(T)\ge \cdots \ge Q_k(T)\ge Q_{k+1}(T)\ge \cdots \ge 0,
     \]
@@ -710,7 +708,7 @@ A continuación fijamos un modelo elemental en el que la cadena se rompe por pri
         \|\D p_n\|_S^2 = \|p_n\|_{L^2(\mathbf m)}^2 + |p_n(2)|^2 \to \infty.
     \]
     Luego $\D$ no es acotado, es decir, $Q_0(\D)=\infty$.
-    
+
     Sin embargo, la no acotación proviene del término $p(2)$. Si
     \[
         V = \{p \in \Poly : p(2) = 0\},
