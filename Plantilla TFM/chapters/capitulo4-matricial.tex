@@ -3,7 +3,7 @@
 
 \section{Matriz de Hessenberg y secciones truncadas}
 
-Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, su representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ viene dada por los coeficientes $\langle Te_j,e_i\rangle$. En este capítulo aplicaremos la misma construcción a $\D p(z)=zp(z)$, con la diferencia de que no necesitamos su acotación en toda $\mathcal H$, basta que $\D$ esté definida en el subespacio denso $\Poly$ y que $\D\phi_j=z\phi_j\in\Poly$ para todo $j$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y valores singulares de manera directa. Esta perspectiva se sitúa dentro del enfoque matricial desarrollado recientemente para polinomios ortogonales y cantidades espectrales asociadas; véanse \cite{EGT23,EG25-2}.
+Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, admite una representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ cuyas entradas son $\langle Te_j,e_i\rangle$ \cite{}. Esta representación matricial puede hacerse también a operadores de $T:\Poly \longrightarrow \Poly$ no necesariamente acotados, basta que $T$ esté definido en el subespacio denso $\Poly$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y valores singulares de manera directa. Esta perspectiva se sitúa dentro del enfoque matricial desarrollado recientemente para polinomios ortogonales y cantidades espectrales asociadas; véanse \cite{EGT23,EG25-2}.
 
 \begin{defn}\label{def:hessenberg}
 	Sea $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev. La representación matricial de $\D$ es
@@ -139,7 +139,7 @@ Siguiendo con la filosofía de los capítulos anteriores, introduciremos ahora l
 \end{defn}
 
 \begin{rmk}
-	Se tiene $\sigma_{0,n}=\|\mathbf D_n\|_2$. La indexación desde $0$ sitúa en $\sigma_{0,n}$ el mayor valor singular de la truncación.
+	Se tiene $\sigma_{0,n}=\|\mathbf D_n\|_2$, donde la norma $\|\cdot\|_2$ es la norma del operador inducido por la matriz $\mathbf D_n \in \mathcal M_{n+1}(\C)$, considerando la norma euclídea. La indexación desde $0$ sitúa en $\sigma_{0,n}$ el mayor valor singular de la truncación.
 \end{rmk}
 
 De manera análoga al desarrollo hecho con operadores usando los números de Gelfand y el índice $Q_k(\D)$, necesitaremos una herramienta variacional para las representaciones matriciales. El estudio de estas truncaciones mediante valores singulares encaja además en la línea de trabajo matricial reciente sobre polinomios ortogonales, desigualdades espectrales y localización de ceros; cf. \cite{EG25-2}. Para ello usaremos la caracterización min--max de Courant--Fischer para valores singulares; véase \cite[Section~3.1]{horn2012matrix}.
@@ -353,10 +353,6 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D).
 	\]
-    Equivalentemente,
-    \[
-        \lim_{n\to\infty}\sigma_{k,n}=Q_k(\D).
-    \]
 \end{thm}
 
 \begin{proof}
@@ -366,23 +362,23 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
     \]
     es el contenido del Corolario~\ref{cor:sigma_operador_qk}. Probemos la desigualdad contraria.
 
-    Sea $a<Q_k(\D)$, donde si $Q_k(\D)=+\infty$ tomamos $a>0$ arbitrario. Por la caracterización max--min del Teorema~\ref{thm:maxmin_Qk}, existe un subespacio $E\subset\Poly$ con
-    \[
+    Sea $0 <a<Q_k(\D)$, donde puede ocurrir que $Q_k(\D)=+\infty$. Por la caracterización max--min del Teorema~\ref{thm:maxmin_Qk}, existe un subespacio $E\subset\Poly$ con
+    \(
         \dim E=k+1
-    \]
+    \)
     tal que
     \[
         \inf_{\substack{p\in E\\ p\ne0}}
         \frac{\|\D p\|_S}{\|p\|_S}>a.
     \]
-    Como $E$ es finito-dimensional y está formado por polinomios, existe $N\ge0$ tal que
-    \[
+    Como $E$ es finito-dimensional y $E \subset \Poly$, existe $N\ge0$ tal que
+    \(
         E\subset\mathbb P_N.
-    \]
+    \)
     Entonces
-    \[
-        \D E\subset\mathbb P_{N+1}.
-    \]
+    \(
+        \D (E)\subset\mathbb P_{N+1}.
+    \)
     Por tanto, para todo $n\ge N+1$ y todo $p\in E$,
     \[
         \mathcal D_n p=\pi_n(\D p)=\D p.
@@ -400,15 +396,17 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
         >a.
     \]
     Pasando al límite,
-    \[
+    \(
         \sigma_k(\mathbf D)\ge a.
-    \]
-    Como $a<Q_k(\D)$ era arbitrario, y en el caso $Q_k(\D)=+\infty$ puede tomarse $a>0$ arbitrario, se concluye que
+    \)
+    Como esto se verifica para $0 <a<Q_k(\D)$ se concluye que
     \[
         \sigma_k(\mathbf D)\ge Q_k(\D).
     \]
-    Junto con la desigualdad opuesta, esto prueba la igualdad.
+    Este resultado unido con la desigualdad contraria, esto prueba la igualdad.
 \end{proof}
+
+En el caso de operadores acotados, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} identifica el índice $Q_k$ con el número de Gelfand del operador. Combinando ese hecho con el resultado anterior obtenemos el siguiente corolario.
 
 \begin{cor}\label{cor:caso_acotado_ck}
 	Si el operador de multiplicación \(\D\) se extiende como elemento de \(\mathcal L(\mathcal H)\), entonces para todo \(k\ge0\),
@@ -432,12 +430,12 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 	\]
 \end{proof}
 
-\section{Conexión con el teorema de estabilización}
+\section{Análisis asintótico espectral de \texorpdfstring{$\mathbf D$}{D}}
 
 Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la representación matricial con los índices $Q_k(\D)$, podemos aplicar los resultados del Teorema~\ref{thm:estabilizacion} para obtener información sobre la estabilización de los valores singulares de las secciones principales.
 
 \begin{thm}\label{thm:igualdad_sigma_qN_general}
-	Sean $R>0$ y $F\subset\C$ finito, consideremos sobre $\Poly$ el producto escalar
+	Sean $R>0$ y $F\subset\C$ un conjunto finito de puntos, consideremos sobre $\Poly$ el producto escalar
 	\[
 		\langle p,q\rangle_S
 		=
@@ -453,31 +451,15 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{thm}
 
 \begin{proof}
-	Por las Proposiciones~\ref{prop:qk_general_cota_inferior_R} y \ref{prop:qN_general_cota_superior_R},
+	Por el Teorema~\ref{thm:qk_vale_R_desde_N},
 	\(
-		R\le Q_N(\D)\le R.
+		Q_k(\D)=R \) para todo
+		\(k\ge N.
 	\)
-	Luego
-	\[
-		Q_N(\D)=R.
-	\]
-	Sea ahora $k\ge N$. Como la familia de subespacios admisibles en la definición de $Q_k$ crece con $k$, se tiene
-	\[
-		Q_k(\D)\le Q_N(\D)=R.
-	\]
-	Por otra parte, la Proposición~\ref{prop:qk_general_cota_inferior_R} da
-	\[
-		R\le Q_k(\D).
-	\]
-	Por tanto,
-	\[
-		Q_k(\D)=R,
-		\qquad k\ge N.
-	\]
 	Por el Teorema~\ref{thm:igualdad_sigma_qk_general},
-	\[
+	\(
 		\sigma_k(\mathbf D)=Q_k(\D).
-	\]
+	\)
 	Se concluye que
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D)=R,
@@ -495,13 +477,9 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 		\sum_{c\in F} p'(c)\overline{q'(c)},
 		\qquad p,q\in\Poly,
 	\]
-	donde $F\subset\C$ es finito y satisface $|c|\ge R$ para todo $c\in F$. Sea $m:=|F|$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
+	donde $F\subset\C$ es un conjunto finito de puntos y satisface $|c|\ge R$ para todo $c\in F$. Sea $m:=|F|$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
 	\[
-		\sigma_k(\mathbf D)=Q_k(\D),
-	\]
-	y más precisamente
-	\[
-		Q_k(\D)=\sigma_k(\mathbf D)
+		\sigma_k(\mathbf D)
 		=
 		\begin{cases}
 			+\infty, & 0\le k<m, \\
@@ -511,18 +489,15 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{cor}
 
 \begin{proof}
-	Por el Teorema~\ref{thm:igualdad_sigma_qk_general}, basta calcular los índices $Q_k(\D)$.
-	Si $0\le k<m$, el Teorema~\ref{thm:estabilizacion} da
+	Como en este caso $I_{\mathrm{out}}=F$, se tiene $m=N=|F|$. Por el Teorema~\ref{thm:descripcion_global_qk},
 	\[
-		Q_k(\D)=+\infty,
-		\qquad 0\le k<m.
+		Q_k(\D)=
+		\begin{cases}
+			+\infty, & 0\le k<m, \\
+			R,       & k\ge m.
+		\end{cases}
 	\]
-	Aplicando el Teorema~\ref{thm:igualdad_sigma_qN_general} con este conjunto $F$ y $N=m$, obtenemos directamente
-	\(
-		\sigma_k(\mathbf D)=Q_k(\D)=R,
-		\qquad k\ge m.
-	\)
-	Usando nuevamente el Teorema~\ref{thm:igualdad_sigma_qk_general} para $0\le k<m$, se concluye que
+	Aplicando ahora el Teorema~\ref{thm:igualdad_sigma_qk_general}, se concluye que
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D)
 		=
@@ -564,7 +539,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 	Como $Q_m(\D)<\infty$ por el Teorema~\ref{thm:estabilizacion}, se concluye el resultado.
 \end{proof}
 
-\begin{rmk}[Lectura matricial del umbral]
+\begin{rmk}
 	En el caso general con $N=|F|$,
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D)=R,
@@ -586,3 +561,184 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 	\]
 	 aunque el valor exacto de este índice no queda determinado por el Teorema~\ref{thm:estabilizacion}.
 \end{rmk}
+
+\subsection{Ejemplos}
+
+En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singulares relevantes para contrastar los resultados teóricos con los cálculos numéricos de las truncaciones. En cada caso puede sustituirse el recuadro por la imagen generada computacionalmente del soporte del producto de Sobolev.
+
+\begin{exm}[Átomos solo en el interior de la circunferencia unidad]
+	Consideremos el producto escalar
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_1(z)
+		+
+		p'(0)\overline{q'(0)}
+		+
+		p'\!\left(\tfrac12\right)\overline{q'\!\left(\tfrac12\right)}
+		+
+		p'\!\left(-\tfrac13\right)\overline{q'\!\left(-\tfrac13\right)}
+		+
+		p'\!\left(\tfrac{i}{2}\right)\overline{q'\!\left(\tfrac{i}{2}\right)},
+		\qquad p,q\in\Poly.
+	\]
+	En este caso
+	\[
+		F=\left\{0,\tfrac12,-\tfrac13,\tfrac{i}{2}\right\},
+		\qquad
+		I_{\mathrm{out}}=\varnothing,
+		\qquad
+		m=0,
+		\qquad
+		N=4.
+	\]
+	Por la Proposición~\ref{prop:atomos_interiores_acotado}, el operador $\D$ es acotado; por tanto no aparece ningún índice con valor singular infinito. Además, por el Teorema~\ref{thm:igualdad_sigma_qN_general},
+	\[
+		\sigma_k(\mathbf D)=Q_k(\D)=1,
+		\qquad k\ge 4.
+	\]
+
+	\begin{figure}[H]
+		\centering
+		\fbox{\parbox[c][4cm][c]{0.78\linewidth}{\centering
+			Sustituir por la imagen del soporte del producto:\\[2mm]
+			circunferencia $\mathbb S_1$ y átomos en $0$, $\tfrac12$, $-\tfrac13$ y $\tfrac{i}{2}$.}}
+		\caption{Soporte del producto de Sobolev en el ejemplo con átomos interiores.}
+		\label{fig:ejemplo_interior_puro}
+	\end{figure}
+
+	Los valores singulares relevantes para completar numéricamente son
+	\[
+		\text{no hay índices }k\text{ con }\sigma_k(\mathbf D)=+\infty,
+	\]
+	\[
+		\sigma_0(\mathbf D)=\boxed{\text{valor numérico a insertar}}<\infty,
+	\]
+	\[
+		\sigma_4(\mathbf D)=1.
+	\]
+	Aquí $\sigma_0(\mathbf D)$ es el primer índice finito, mientras que el primer índice para el que el valor viene forzado por la teoría general es $k=N=4$.
+\end{exm}
+
+\begin{exm}[Átomos solo en el exterior de la circunferencia unidad]
+	Consideremos ahora
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_1(z)
+		+
+		p'(2)\overline{q'(2)}
+		+
+		p'(-2)\overline{q'(-2)}
+		+
+		p'\!\left(\tfrac{3i}{2}\right)\overline{q'\!\left(\tfrac{3i}{2}\right)}
+		+
+		p'\!\left(-\tfrac{3i}{2}\right)\overline{q'\!\left(-\tfrac{3i}{2}\right)},
+		\qquad p,q\in\Poly.
+	\]
+	Entonces
+	\[
+		F=\left\{2,-2,\tfrac{3i}{2},-\tfrac{3i}{2}\right\},
+		\qquad
+		I_{\mathrm{out}}=F,
+		\qquad
+		m=4,
+		\qquad
+		N=4.
+	\]
+	Por el Corolario~\ref{cor:igualdad_sigma_qk_exterior_puro},
+	\[
+		\sigma_k(\mathbf D)=Q_k(\D)
+		=
+		\begin{cases}
+			+\infty, & 0\le k<4, \\
+			1,       & k\ge 4.
+		\end{cases}
+	\]
+
+	\begin{figure}[H]
+		\centering
+		\fbox{\parbox[c][4cm][c]{0.78\linewidth}{\centering
+			Sustituir por la imagen del soporte del producto:\\[2mm]
+			circunferencia $\mathbb S_1$ y átomos en $2$, $-2$, $\tfrac{3i}{2}$ y $-\tfrac{3i}{2}$.}}
+		\caption{Soporte del producto de Sobolev en el ejemplo con átomos exteriores.}
+		\label{fig:ejemplo_exterior_puro}
+	\end{figure}
+
+	En este ejemplo el último índice con valor infinito es $k=3$, el siguiente ya es finito y además coincide con el valor $R=1$:
+	\[
+		\sigma_3(\mathbf D)=+\infty,
+	\]
+	\[
+		\sigma_4(\mathbf D)=1.
+	\]
+	Si se desea resaltar el primer índice finito, puede indicarse también
+	\[
+		\sigma_4(\mathbf D)=\boxed{1}.
+	\]
+\end{exm}
+
+\begin{exm}[Átomos dentro y fuera de la circunferencia unidad]
+	Finalmente, consideremos el caso mixto
+	\[
+		\langle p,q\rangle_S
+		=
+		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_1(z)
+		+
+		p'(2)\overline{q'(2)}
+		+
+		p'(-2)\overline{q'(-2)}
+		+
+		p'\!\left(\tfrac{3i}{2}\right)\overline{q'\!\left(\tfrac{3i}{2}\right)}
+		+
+		p'(0)\overline{q'(0)}
+		+
+		p'\!\left(\tfrac12\right)\overline{q'\!\left(\tfrac12\right)},
+		\qquad p,q\in\Poly.
+	\]
+	Ahora
+	\[
+		F=\left\{2,-2,\tfrac{3i}{2},0,\tfrac12\right\},
+		\qquad
+		I_{\mathrm{out}}=\left\{2,-2,\tfrac{3i}{2}\right\},
+		\qquad
+		I_{\mathrm{in}}=\left\{0,\tfrac12\right\},
+		\qquad
+		m=3,
+		\qquad
+		N=5.
+	\]
+	Por el Teorema~\ref{thm:estabilizacion},
+	\[
+		\sigma_0(\mathbf D)=\sigma_1(\mathbf D)=\sigma_2(\mathbf D)=+\infty,
+		\qquad
+		\sigma_3(\mathbf D)<\infty.
+	\]
+	Además, por el Teorema~\ref{thm:igualdad_sigma_qN_general},
+	\[
+		\sigma_k(\mathbf D)=Q_k(\D)=1,
+		\qquad k\ge 5.
+	\]
+
+	\begin{figure}[H]
+		\centering
+		\fbox{\parbox[c][4cm][c]{0.78\linewidth}{\centering
+			Sustituir por la imagen del soporte del producto:\\[2mm]
+			circunferencia $\mathbb S_1$, átomos exteriores en $2$, $-2$ y $\tfrac{3i}{2}$,\\
+			y átomos interiores en $0$ y $\tfrac12$.}}
+		\caption{Soporte del producto de Sobolev en el ejemplo mixto.}
+		\label{fig:ejemplo_mixto}
+	\end{figure}
+
+	Los índices destacados son ahora
+	\[
+		\sigma_2(\mathbf D)=+\infty,
+	\]
+	\[
+		\sigma_3(\mathbf D)=\boxed{\text{valor numérico a insertar}}<\infty,
+	\]
+	\[
+		\sigma_5(\mathbf D)=1.
+	\]
+	Este ejemplo permite visualizar la diferencia entre el umbral de finitud $m=3$ y el índice $N=5$ a partir del cual el valor singular queda fijado por la cota general $R=1$.
+\end{exm}

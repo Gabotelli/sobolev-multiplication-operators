@@ -28,7 +28,7 @@ La Figura~\ref{fig:geometria_atomos} resume la configuración geométrica asocia
     \label{fig:geometria_atomos}
 \end{figure}
 
-\section{Funcionales de evaluación}
+\section{Funcionales asociados y geometría de los átomos}
 
 Los funcionales de evaluación y derivación aparecerán de forma recurrente en el análisis. En particular, el funcional asociado al operador de multiplicación jugará un papel central en la detección de las direcciones inestables.
 
@@ -228,7 +228,7 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
     Probamos ahora que $(1)\Rightarrow(2)$ por contrarrecíproco. Si $|c|<R$, entonces $c\in\operatorname{bpe}(\mathbf{m}_R)$ y, por el Lema~\ref{lema:ABPE_derivada}, tanto $\delta_c$ como $\delta'_c$ son funcionales acotados respecto a $\|\cdot\|_{L^2(\mathbf{m}_R)}$. En particular, la restricción de $\delta_c$ a $\ker(\delta'_c)$ es acotada, y por ello $c$ no es $\delta$-singular.
 \end{proof}
 
-\section{Caso estable}
+\subsection{Átomos interiores}
 
 Gonzalo y Escribano \cite{EG25-2} tratan este caso en contextos más generales. A continuación presentamos un resultado particular correspondiente al producto de Sobolev discreto \eqref{eq:norma_sobolev_discreta_general}, usando que los puntos interiores son ABPE para la parte continua.
 
@@ -324,7 +324,7 @@ Gonzalo y Escribano \cite{EG25-2} tratan este caso en contextos más generales. 
     de modo que sobre el subespacio $\ker(\delta_0)$ el operador actúa con norma a lo sumo $1$.
 \end{exm}
 
-\section{Caso inestable}
+\subsection{Un átomo exterior}
 
 Consideremos ahora el caso en que existe al menos un punto $c_j$ con $|c_j|\ge R$. Comenzamos con un único átomo.
 
@@ -403,37 +403,7 @@ Consideremos ahora el caso en que existe al menos un punto $c_j$ con $|c_j|\ge R
     \]
 \end{proof}
 
-\begin{cor}\label{cor:dicotomia_un_atomo}
-    Sea $R>0$, sea $c\in\C$ y consideremos sobre $\Poly$ el producto escalar
-    \[
-        \langle p,q\rangle_S
-        =
-        \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
-        +
-        p'(c)\overline{q'(c)},
-        \qquad p,q\in\Poly.
-    \]
-    Entonces el operador $\D p(z)=zp(z)$ es acotado si y solo si $|c|<R$. Equivalentemente,
-    \[
-        |c|<R
-        \iff
-        Q_0(\D)<\infty,
-    \]
-    mientras que
-    \[
-        |c|\ge R
-        \iff
-        Q_0(\D)=\infty,
-    \]
-    y en este segundo caso además
-    \[
-        Q_1(\D)<\infty.
-    \]
-\end{cor}
-
-\begin{proof}
-    Si $|c|<R$, la Proposición~\ref{prop:atomos_interiores_acotado} aplicada con $N=1$ prueba que $\D$ es acotado y, por tanto, $Q_0(\D)<\infty$. Si $|c|\ge R$, el Teorema~\ref{thm:un_atomo_exterior} da $Q_0(\D)=\infty$ y $Q_1(\D)\le R<\infty$.
-\end{proof}
+Los dos resultados anteriores muestran ya el patrón geométrico básico: los átomos interiores no rompen la acotación del operador de multiplicación, mientras que un átomo situado sobre la circunferencia o en el exterior produce una dirección inestable y obliga a pasar a codimensión uno para recuperar acotación.
 
 Sea $F\subset\C$ finito y consideremos el producto de Sobolev discreto \eqref{eq:norma_sobolev_discreta_general}
 \[
@@ -469,7 +439,11 @@ La Proposición~\ref{prop:atomos_interiores_acotado} ya resuelve completamente e
     Por el Teorema~\ref{thm:equivalencia_lebesgue} y la Proposición~\ref{prop:caracterizacion_psi_c}, cada $c\in I_{\mathrm{out}}$ da lugar a un funcional $\psi_c$ no acotado, mientras que los puntos de $I_{\mathrm{in}}$ permanecen controlados por la parte continua.
 \end{rmk}
 
-\section{Subespacio estable}
+\section{Umbral de finitud: construcción estable y necesidad de codimensión}
+
+La experiencia del caso de un átomo sugiere que cada punto exterior debe aportar una dirección inestable independiente. En esta sección construimos primero un subespacio de codimensión $m=|I_{\mathrm{out}}|$ sobre el que $\D$ es acotado y después probamos que con una codimensión estrictamente menor no puede estabilizarse el operador.
+
+\subsection{Construcción de un subespacio estable}
 
 Definimos ahora el subespacio estable imponiendo la anulación de las contribuciones discretas del producto de Sobolev \eqref{eq:norma_sobolev_discreta_general}.
 
@@ -637,34 +611,6 @@ Veamos un resultado de interpolación de Hermite \cite{Dav75} que nos permitirá
     \]
 \end{proof}
 
-\begin{cor}\label{cor:sin_interiores}
-    Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
-    \[
-        \langle p,q\rangle_S
-        =
-        \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
-        +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
-        \qquad p,q\in\Poly.
-    \]
-    Si $|c|\ge R$ para todo $c\in F$ y $m:=|F|$, entonces
-    \[
-        Q_m(\D)\le R.
-    \]
-\end{cor}
-
-\begin{proof}
-    En estas hipótesis se tiene $I_{\mathrm{in}}=\varnothing$, $I_{\mathrm{out}}=F$ y $m=|I_{\mathrm{out}}|$. Por el Lema~\ref{lem:vout_acotacion},
-    \[
-        \|\D p\|_S\le R\|p\|_S,
-        \qquad p\in V_{\mathrm{out}}.
-    \]
-    Como $V_{\mathrm{out}}$ tiene codimensión $m$, la definición de $Q_m$ implica
-    \[
-        Q_m(\D)\le \|\D|_{V_{\mathrm{out}}}\|_S\le R.
-    \]
-\end{proof}
-
 \begin{thm}\label{thm:caso_mixto}
     Sean $R>0$ y $m:=|I_{\mathrm{out}}|$, sea $F\subset\C$ finito y sea
     \(
@@ -722,7 +668,7 @@ Veamos un resultado de interpolación de Hermite \cite{Dav75} que nos permitirá
     El segundo término es $\lambda_{\max}(\mathbf B,\mathbf A)$. Se concluye la cota superior para $\|\D|_{V_{\mathrm{out}}}\|_S^2$, y la desigualdad para $Q_m(\D)$ es inmediata por definición.
 \end{proof}
 
-\section{Necesidad de la codimensión \texorpdfstring{$m$}{m}}
+\subsection{Necesidad de la codimensión \texorpdfstring{$m$}{m}}
 
 Probamos ahora que la codimensión $m$ es necesaria para estabilizar el operador de multiplicación. Comenzamos con la construcción de las sucesiones auxiliares.
 
@@ -967,7 +913,11 @@ Ahora procedemos a ver que la codimensión $m$ es necesaria para estabilizar el 
     y la restricción $\D|_V$ no puede ser acotada. Como $V$ era arbitrario entre los subespacios de codimensión menor que $m$, concluimos que $Q_{m-1}(\D)=\infty$.
 \end{proof}
 
-\section{Teorema de estabilización}
+\section{Umbral de finitud y valor exacto de la cola}
+
+Los resultados de la sección anterior permiten identificar el primer índice en el que la cadena deja de ser infinita. A continuación cerramos el análisis determinando, además, desde qué índice el valor de la cadena queda fijado exactamente por el radio $R$ de la circunferencia soporte.
+
+\subsection{Teorema de estabilización}
 
 \begin{thm}[Estabilización]\label{thm:estabilizacion}
     Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
@@ -1018,7 +968,7 @@ Ahora procedemos a ver que la codimensión $m$ es necesaria para estabilizar el 
     Esto concluye la demostración.
 \end{proof}
 
-\section{Cotas generales para \texorpdfstring{$Q_k(\D)$}{Qk(D)}}
+\subsection{Valor exacto de la cola}
 
 Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la estructura derivativa de la norma de Sobolev. Resultarán útiles en el paso matricial del capítulo siguiente.
 
@@ -1093,7 +1043,14 @@ Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la
         \sum_{c\in F} p'(c)\overline{q'(c)},
         \qquad p,q\in\Poly.
     \]
-    Para cada $c\in F$, definamos
+    Entonces
+    \[
+        Q_N(\D)\le R.
+    \]
+\end{prop}
+
+\begin{proof}
+Para cada $c\in F$, definamos
     \[
         \eta_c(p):=p(c)+cp'(c),
         \qquad p\in\Poly,
@@ -1102,15 +1059,6 @@ Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la
     \[
         W_N:=\bigcap_{c\in F}\ker\eta_c.
     \]
-    Entonces
-    \[
-        \operatorname{codim}_{\Poly}(W_N)\le N
-        \qquad\text{y}\qquad
-        Q_N(\D)\le R.
-    \]
-\end{prop}
-
-\begin{proof}
     Consideremos la aplicación lineal
     \[
         \Lambda_N:\Poly\to\C^N,
@@ -1138,4 +1086,98 @@ Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la
     \[
         Q_N(\D)\le R.
     \]
+\end{proof}
+
+\begin{thm}\label{thm:qk_vale_R_desde_N}
+	 Sea $R>0$, sea $F\subset\C$ finito, sea $N:=|F|$ y consideremos sobre $\Poly$ el producto escalar
+    \[
+        \langle p,q\rangle_S
+        =
+        \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+        +
+        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \qquad p,q\in\Poly.
+    \]
+    Entonces
+    \[
+        Q_k(\D)=R,
+        \qquad k\ge N.
+    \] 
+\end{thm}
+
+\begin{proof}
+    Por la Proposición~\ref{prop:qN_general_cota_superior_R},
+    \[
+        Q_N(\D)\le R.
+    \]
+    Por otra parte, la Proposición~\ref{prop:qk_general_cota_inferior_R} da
+    \[
+        R\le Q_k(\D),
+        \qquad k\ge0.
+    \]
+    Además, la sucesión $\{Q_k(\D)\}_{k\ge0}$ es monótona no creciente por la Proposición~\ref{prop:propiedades_Qk}. Por tanto, si $k\ge N$,
+    \[
+        Q_k(\D)\le Q_N(\D)\le R.
+    \]
+    Juntando esta desigualdad con la cota inferior anterior, obtenemos
+    \[
+        R\le Q_k(\D)\le R,
+        \qquad k\ge N.
+    \]
+    Luego
+    \[
+        Q_k(\D)=R,
+        \qquad k\ge N,
+    \]
+    como queríamos demostrar.
+\end{proof}
+
+\begin{thm}[Descripción global de la cadena]\label{thm:descripcion_global_qk}
+    Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+    \[
+        \langle p,q\rangle_S
+        =
+        \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+        +
+        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \qquad p,q\in\Poly.
+    \]
+    Sea además
+    \[
+        I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
+        \qquad
+        m:=|I_{\mathrm{out}}|,
+        \qquad
+        N:=|F|.
+    \]
+    Entonces se verifica que
+    \[
+        Q_k(\D)=
+        \begin{cases}
+            +\infty, & 0\le k<m, \\
+            \text{finito}, & m\le k<N, \\
+            R, & k\ge N.
+        \end{cases}
+    \]
+    En particular, si $m=0$, el primer régimen es vacío y $\D$ es acotado; si $m=N$, el segundo régimen es vacío.
+\end{thm}
+
+\begin{proof}
+    Si $0\le k<m$, el Teorema~\ref{thm:estabilizacion} da
+    \[
+        Q_k(\D)=+\infty.
+    \]
+    Si $m\le k<N$, la monotonía de la cadena y el mismo Teorema~\ref{thm:estabilizacion} implican
+    \[
+        Q_k(\D)\le Q_m(\D)<\infty.
+    \]
+    Por otra parte, la Proposición~\ref{prop:qk_general_cota_inferior_R} da
+    \[
+        Q_k(\D)\ge R,
+    \]
+    y en particular $Q_k(\D)$ es finito y no menor que $R$ en este rango intermedio. Finalmente, para $k\ge N$, el Teorema~\ref{thm:qk_vale_R_desde_N} da
+    \[
+        Q_k(\D)=R.
+    \]
+    Esto concluye la demostración.
 \end{proof}
