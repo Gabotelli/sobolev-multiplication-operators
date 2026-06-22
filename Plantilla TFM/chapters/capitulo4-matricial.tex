@@ -30,7 +30,7 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 \begin{defn}\label{def:seccion_truncada}
 	Para cada $n\in\mathbb N$, sea
 	\(
-		\mathbb P_n:=[\phi_0,\dots,\phi_n],
+	\mathbb P_n:=[\phi_0,\dots,\phi_n],
 	\)
 	y sea $\pi_n:\mathcal H\to\mathbb P_n$ la proyección ortogonal. Definimos la aplicación lineal
 	\[
@@ -53,7 +53,7 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 	\(\mathbf D_n\) la sección principal de \(\D\) en la base \(\{\phi_0,\dots,\phi_n\}\).
 	Entonces existe una constante
 	\(
-		\kappa_n\in\C\setminus\{0\}
+	\kappa_n\in\C\setminus\{0\}
 	\)
 	tal que
 	\[
@@ -165,7 +165,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 \begin{lem}\label{lem:bloque_gram_truncadas}
 	Sea \(\mathbf D=(d_{i,j})_{i,j\ge0}\) una matriz de Hessenberg superior infinita y, para cada \(n\ge0\), sea
 	\(
-		\mathbf D_n=(d_{i,j})_{0\le i,j\le n}
+	\mathbf D_n=(d_{i,j})_{0\le i,j\le n}
 	\)
 	su sección principal de orden \(n+1\). Entonces
 	\[
@@ -220,7 +220,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 	\]
 	los valores singulares de \(\mathbf D_n\) ordenados de forma decreciente. Entonces, para todo \(k\ge0\) fijo, la sucesión
 	\(
-		\{\sigma_{k,n}\}_{n\ge k}
+	\{\sigma_{k,n}\}_{n\ge k}
 	\)
 	es creciente. En particular,
 	\[
@@ -288,7 +288,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 \begin{proof}
 	Fijemos $n\ge0$ y $0\le k\le n$. Sea $V\subset\Poly$ un subespacio con
 	\(
-		\operatorname{codim}_{\Poly}(V)<k+1.
+	\operatorname{codim}_{\Poly}(V)<k+1.
 	\)
 	Consideremos \(V_n:=V\cap\mathbb P_n\).
 	La aplicación natural
@@ -347,36 +347,36 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 \begin{proof}
 	La desigualdad \(\sigma_k(\mathbf D)\le Q_k(\D)\) es el contenido del Corolario~\ref{cor:sigma_operador_qk}. Probemos la desigualdad contraria.
 
-    Sea $0 <a<Q_k(\D)$, donde puede ocurrir que $Q_k(\D)=+\infty$. Por la caracterización max--min del Teorema~\ref{thm:maxmin_Qk}, existe un subespacio $E\subset\Poly$ con
-    \(\dim E=k+1\)
-    tal que
-    \[
-        \inf_{\substack{p\in E\\ p\ne0}}
-        \frac{\|\D p\|_S}{\|p\|_S}>a.
-    \]
-    Como $E$ es finito-dimensional y $E \subset \Poly$, existe $N\ge0$ tal que \(E\subset\mathbb P_N\). Entonces \(\D(E)\subset\mathbb P_{N+1}\).
-    Por tanto, para todo $n\ge N+1$ y todo $p\in E$,
-    \[
-        \mathcal D_n p=\pi_n(\D p)=\D p.
-    \]
+	Sea $0 <a<Q_k(\D)$, donde puede ocurrir que $Q_k(\D)=+\infty$. Por la caracterización max--min del Teorema~\ref{thm:maxmin_Qk}, existe un subespacio $E\subset\Poly$ con
+	\(\dim E=k+1\)
+	tal que
+	\[
+		\inf_{\substack{p\in E\\ p\ne0}}
+		\frac{\|\D p\|_S}{\|p\|_S}>a.
+	\]
+	Como $E$ es finito-dimensional y $E \subset \Poly$, existe $N\ge0$ tal que \(E\subset\mathbb P_N\). Entonces \(\D(E)\subset\mathbb P_{N+1}\).
+	Por tanto, para todo $n\ge N+1$ y todo $p\in E$,
+	\[
+		\mathcal D_n p=\pi_n(\D p)=\D p.
+	\]
 
-    Aplicando la forma max--min del Lema~\ref{lem:minmax_sigma_Dn} a $\mathbf D_n$, para $n\ge N+1$ obtenemos
-    \[
-        \sigma_{k,n}
-        \ge
-        \inf_{\substack{p\in E\\ p\ne0}}
-        \frac{\|\mathcal D_n p\|_S}{\|p\|_S}
-        =
-        \inf_{\substack{p\in E\\ p\ne0}}
-        \frac{\|\D p\|_S}{\|p\|_S}
-        >a.
-    \]
-    Pasando al límite, \(\sigma_k(\mathbf D)\ge a\).
-    Como esto se verifica para $0 <a<Q_k(\D)$ se concluye que
-    \[
-        \sigma_k(\mathbf D)\ge Q_k(\D).
-    \]
-    Este resultado unido con la desigualdad contraria, esto prueba la igualdad.
+	Aplicando la forma max--min del Lema~\ref{lem:minmax_sigma_Dn} a $\mathbf D_n$, para $n\ge N+1$ obtenemos
+	\[
+		\sigma_{k,n}
+		\ge
+		\inf_{\substack{p\in E\\ p\ne0}}
+		\frac{\|\mathcal D_n p\|_S}{\|p\|_S}
+		=
+		\inf_{\substack{p\in E\\ p\ne0}}
+		\frac{\|\D p\|_S}{\|p\|_S}
+		>a.
+	\]
+	Pasando al límite, \(\sigma_k(\mathbf D)\ge a\).
+	Como esto se verifica para $0 <a<Q_k(\D)$ se concluye que
+	\[
+		\sigma_k(\mathbf D)\ge Q_k(\D).
+	\]
+	Este resultado unido con la desigualdad contraria, esto prueba la igualdad.
 \end{proof}
 
 En el caso de operadores acotados, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} identifica el índice $Q_k$ con el número de Gelfand del operador. Combinando ese hecho con el resultado anterior obtenemos el siguiente corolario.
@@ -520,7 +520,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 	\[
 		\sigma_m(\mathbf D)=Q_m(\D)<\infty,
 	\]
-	 aunque el valor exacto de este índice no queda determinado por el Teorema~\ref{thm:estabilizacion}.
+	aunque el valor exacto de este índice no queda determinado por el Teorema~\ref{thm:estabilizacion}.
 \end{rmk}
 
 \subsection{Ejemplos}
@@ -562,8 +562,8 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\begin{figure}[H]
 		\centering
 		\fbox{\parbox[c][4cm][c]{0.78\linewidth}{\centering
-			Sustituir por la imagen del soporte del producto:\\[2mm]
-			circunferencia $\mathbb S_1$ y átomos en $0$, $\tfrac12$, $-\tfrac13$ y $\tfrac{i}{2}$.}}
+				Sustituir por la imagen del soporte del producto:\\[2mm]
+				circunferencia $\mathbb S_1$ y átomos en $0$, $\tfrac12$, $-\tfrac13$ y $\tfrac{i}{2}$.}}
 		\caption{Soporte del producto de Sobolev en el ejemplo con átomos interiores.}
 		\label{fig:ejemplo_interior_puro}
 	\end{figure}
@@ -572,11 +572,11 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Índice & Valor \\
+			Índice                & Valor           \\
 			\hline
-			$\sigma_0(\mathbf D)$ & $\boxed{\text{valor numérico a insertar}}<\infty$ \\
+			$\sigma_0(\mathbf D)$ & $2.0904<\infty$ \\
 			\hline
-			$\sigma_4(\mathbf D)$ & $1$ \\
+			$\sigma_4(\mathbf D)$ & $1$             \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -622,8 +622,8 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\begin{figure}[H]
 		\centering
 		\fbox{\parbox[c][4cm][c]{0.78\linewidth}{\centering
-			Sustituir por la imagen del soporte del producto:\\[2mm]
-			circunferencia $\mathbb S_1$ y átomos en $2$, $-2$, $\tfrac{3i}{2}$ y $-\tfrac{3i}{2}$.}}
+				Sustituir por la imagen del soporte del producto:\\[2mm]
+				circunferencia $\mathbb S_1$ y átomos en $2$, $-2$, $\tfrac{3i}{2}$ y $-\tfrac{3i}{2}$.}}
 		\caption{Soporte del producto de Sobolev en el ejemplo con átomos exteriores.}
 		\label{fig:ejemplo_exterior_puro}
 	\end{figure}
@@ -632,11 +632,11 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Índice & Valor \\
+			Índice                & Valor             \\
 			\hline
-			$\sigma_3(\mathbf D)$ & $+\infty$ \\
+			$\sigma_3(\mathbf D)$ & $2.2935\cdot10^3$ \\
 			\hline
-			$\sigma_4(\mathbf D)$ & $1$ \\
+			$\sigma_4(\mathbf D)$ & $1$               \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -688,9 +688,9 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\begin{figure}[H]
 		\centering
 		\fbox{\parbox[c][4cm][c]{0.78\linewidth}{\centering
-			Sustituir por la imagen del soporte del producto:\\[2mm]
-			circunferencia $\mathbb S_1$, átomos exteriores en $2$, $-2$ y $\tfrac{3i}{2}$,\\
-			y átomos interiores en $0$ y $\tfrac12$.}}
+				Sustituir por la imagen del soporte del producto:\\[2mm]
+				circunferencia $\mathbb S_1$, átomos exteriores en $2$, $-2$ y $\tfrac{3i}{2}$,\\
+				y átomos interiores en $0$ y $\tfrac12$.}}
 		\caption{Soporte del producto de Sobolev en el ejemplo mixto.}
 		\label{fig:ejemplo_mixto}
 	\end{figure}
@@ -699,13 +699,13 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Índice & Valor \\
+			Índice                & Valor             \\
 			\hline
-			$\sigma_2(\mathbf D)$ & $+\infty$ \\
+			$\sigma_2(\mathbf D)$ & $3.0841\cdot10^3$ \\
 			\hline
-			$\sigma_3(\mathbf D)$ & $\boxed{\text{valor numérico a insertar}}<\infty$ \\
+			$\sigma_3(\mathbf D)$ & $1.7838<\infty$   \\
 			\hline
-			$\sigma_5(\mathbf D)$ & $1$ \\
+			$\sigma_5(\mathbf D)$ & $1$               \\
 			\hline
 		\end{tabular}
 	\end{center}
