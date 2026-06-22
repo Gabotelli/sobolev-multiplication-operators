@@ -65,25 +65,27 @@ I(V):=\{A\in\Poly:A\Poly\subset V\}.
 \end{defn}
 
 \begin{thm}\label{thm:Vout_anulador}
-Sea
+Sean $a_1,\dots,a_m\in\C$ los átomos exteriores y $b_1,\dots,b_s\in\C$ los átomos interiores del producto escalar de Sobolev
 \[
 \langle p,q\rangle_S
 =
 \int_{|z|=R}p(z)\overline{q(z)}\,d\mathbf m_{0;R}(z)
 +
-\sum_{c\in I_{\mathrm{in}}\cup I_{\mathrm{out}}} p'(c)\overline{q'(c)},
+\sum_{r=1}^{m} p'(a_r)\overline{q'(a_r)}
++
+\sum_{j=1}^{s} p'(b_j)\overline{q'(b_j)},
 \qquad p,q\in\Poly,
 \]
 y sea $\D p(z)=zp(z)$. Entonces se verifican las siguientes propiedades:
 \begin{enumerate}
-\item $V_{\mathrm{out}}=\bigcap_{c\in I_{\mathrm{out}}}\ker(\psi_c)$ es admisible y
+\item $V_{\mathrm{out}}=\bigcap_{r=1}^{m}\ker(\psi_{a_r})$ es admisible y
 \[
 \operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m;
 \]
 \item la restricción $\D|_{V_{\mathrm{out}}}$ es acotada respecto de la norma de Sobolev;
 \item si definimos
 \[
-A_{\mathrm{out}}(z):=\prod_{c\in I_{\mathrm{out}}}(z-c)^2,
+A_{\mathrm{out}}(z):=\prod_{r=1}^{m}(z-a_r)^2,
 \]
 entonces
 \[
@@ -100,7 +102,7 @@ I(V_{\mathrm{out}})=(A_{\mathrm{out}}).
 \begin{lem}\label{lem:vout_anulador}
 Si
 \[
-A_{\mathrm{out}}(z)=\prod_{c\in I_{\mathrm{out}}}(z-c)^2,
+A_{\mathrm{out}}(z)=\prod_{r=1}^{m}(z-a_r)^2,
 \]
 entonces
 \[
@@ -110,40 +112,40 @@ En particular, $A_{\mathrm{out}}\Poly\subset V_{\mathrm{out}}$.
 \end{lem}
 
 \begin{proof}
-Comprobemos primero que $A_{\mathrm{out}}\Poly\subset V_{\mathrm{out}}$. Para cada $c\in I_{\mathrm{out}}$ se tiene
+Comprobemos primero que $A_{\mathrm{out}}\Poly\subset V_{\mathrm{out}}$. Para cada $r\in\{1,\dots,m\}$ se tiene
 \[
-A_{\mathrm{out}}(c)=0,
+A_{\mathrm{out}}(a_r)=0,
 \qquad
-A_{\mathrm{out}}'(c)=0.
+A_{\mathrm{out}}'(a_r)=0.
 \]
 Si $q\in\Poly$, entonces
 \[
-(A_{\mathrm{out}}q)(c)=0,
+(A_{\mathrm{out}}q)(a_r)=0,
 \qquad
-(A_{\mathrm{out}}q)'(c)=0,
+(A_{\mathrm{out}}q)'(a_r)=0,
 \]
 y por tanto
 \[
-\psi_c(A_{\mathrm{out}}q)=0.
+\psi_{a_r}(A_{\mathrm{out}}q)=0.
 \]
-Esto vale para todo $c\in I_{\mathrm{out}}$, luego $A_{\mathrm{out}}q\in V_{\mathrm{out}}$.
+Esto vale para todo $r\in\{1,\dots,m\}$, luego $A_{\mathrm{out}}q\in V_{\mathrm{out}}$.
 
 Veamos la inclusión opuesta. Sea $B\in I(V_{\mathrm{out}})$. Entonces $Bq\in V_{\mathrm{out}}$ para todo $q\in\Poly$, y en particular
 \[
-\psi_c(Bq)=0
-\qquad \forall\,c\in I_{\mathrm{out}},\ \forall\,q\in\Poly.
+\psi_{a_r}(Bq)=0
+\qquad \forall\,r\in\{1,\dots,m\},\ \forall\,q\in\Poly.
 \]
-Fijado $c\in I_{\mathrm{out}}$, tomamos primero $q(z)=z-c$. Entonces $q(c)=0$ y $q'(c)=1$, de modo que
+Fijado $r\in\{1,\dots,m\}$, tomamos primero $q(z)=z-a_r$. Entonces $q(a_r)=0$ y $q'(a_r)=1$, de modo que
 \[
-0=\psi_c(Bq)=cB(c).
+0=\psi_{a_r}(Bq)=a_rB(a_r).
 \]
-Como $|c|\ge R$ y $R>0$, se tiene $c\ne0$, luego $B(c)=0$.
+Como $|a_r|\ge R$ y $R>0$, se tiene $a_r\ne0$, luego $B(a_r)=0$.
 
 Tomando ahora $q\equiv1$, obtenemos
 \[
-0=\psi_c(B)=B(c)+cB'(c)=cB'(c),
+0=\psi_{a_r}(B)=B(a_r)+a_rB'(a_r)=a_rB'(a_r),
 \]
-y de nuevo $B'(c)=0$. Hemos probado que cada $c\in I_{\mathrm{out}}$ es raíz doble de $B$, luego $A_{\mathrm{out}}$ divide a $B$. Por tanto $B\in(A_{\mathrm{out}})$.
+y de nuevo $B'(a_r)=0$. Hemos probado que cada $a_r$ es raíz doble de $B$, luego $A_{\mathrm{out}}$ divide a $B$. Por tanto $B\in(A_{\mathrm{out}})$.
 \end{proof}
 
 \begin{proof}[Demostración del Teorema~\ref{thm:Vout_anulador}]

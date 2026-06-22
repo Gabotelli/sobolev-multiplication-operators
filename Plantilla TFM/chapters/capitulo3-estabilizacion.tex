@@ -1,11 +1,7 @@
 % !TEX root = ../main.tex
 \chapter{Estabilización del operador de multiplicación}\label{sec:estabilizacion}
 
-En el Capítulo~\ref{sec:codimension_qk} construimos el marco abstracto de los índices $Q_k$. En este capítulo lo aplicamos al operador de multiplicación
-\[
-    \D p(z)=zp(z),
-\]
-y estudiamos la cadena de índices de Gelfand
+En el Capítulo~\ref{sec:codimension_qk} construimos el marco abstracto de los índices $Q_k$. En este capítulo lo aplicamos al operador de multiplicación $\D p(z)=zp(z)$ y estudiamos la cadena de índices de Gelfand
 \[
     Q_0(\D) \geq Q_1(\D) \geq Q_2(\D) \geq \dots
 \]
@@ -46,11 +42,7 @@ La Figura~\ref{fig:geometria_atomos} resume la configuración geométrica asocia
         +
         |\alpha|^2\sum_{j=1}^N P'(S(c_j))\overline{Q'(S(c_j))}
     \]
-    es equivalente al inicial mediante el operador $p\circ S^{-1}$, en el sentido de que
-    \[
-        \langle p\circ S^{-1},q\circ S^{-1}\rangle_S=\langle p,q\rangle,
-        \qquad p,q\in\Poly.
-    \]
+    es equivalente al inicial mediante el operador $p\circ S^{-1}$, en el sentido de que $\langle p\circ S^{-1},q\circ S^{-1}\rangle_S=\langle p,q\rangle$ para $p,q\in\Poly$.
 \end{prop}
 
 \begin{proof}
@@ -82,14 +74,7 @@ La Figura~\ref{fig:geometria_atomos} resume la configuración geométrica asocia
 Los funcionales de evaluación y derivación aparecerán de forma recurrente en el análisis. En particular, el funcional asociado al operador de multiplicación jugará un papel central en la detección de las direcciones inestables.
 
 \begin{defn}\label{def:funcionales_evaluacion_ch3}
-    Para cada $c\in\C$ definimos inicialmente sobre $\Poly$ los funcionales lineales
-    \[
-        \delta_c(p):=p(c),
-        \qquad
-        \delta'_c(p):=p'(c),
-        \qquad p\in\Poly,
-    \]
-    y el funcional asociado al operador de multiplicación
+    Para cada $c\in\C$ definimos inicialmente sobre $\Poly$ los funcionales lineales $\delta_c(p):=p(c)$ y $\delta'_c(p):=p'(c)$, con $p\in\Poly$, y el funcional asociado al operador de multiplicación
     \begin{equation}\label{eq:def_psi_c}
         \psi_c(p):=(\D p)'(c)=p(c)+cp'(c),
         \qquad p\in\Poly.
@@ -161,12 +146,7 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
 \end{rmk}
 
 \begin{lem}\label{lema:ABPE_derivada}
-    Sea $R>0$ y sea $c\in\C$ con $|c|<R$. Entonces $c$ es un punto ABPE para $L^2(\mathbf{m}_R)$ y, en consecuencia, el funcional
-    \[
-        \delta'_c(p)=p'(c),
-        \qquad p\in\Poly,
-    \]
-    es continuo respecto a la norma $L^2(\mathbf{m}_R)$.
+    Sea $R>0$ y sea $c\in\C$ con $|c|<R$. Entonces $c$ es un punto ABPE para $L^2(\mathbf{m}_R)$ y, en consecuencia, el funcional $\delta'_c(p)=p'(c)$, con $p\in\Poly$, es continuo respecto a la norma $L^2(\mathbf{m}_R)$.
 \end{lem}
 
 \begin{proof}
@@ -174,28 +154,12 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
     \[
         p'(c)=\frac{1}{2\pi i}\oint_{\gamma_r}\frac{p(z)}{(z-c)^2}\,dz.
     \]
-    Luego
-    \[
-        |p'(c)|\le \frac1r\max_{z\in\gamma_r}|p(z)|.
-    \]
-    Como $\gamma_r\subset \operatorname{bpe}(\mathbf{m}_R)$ por la Definición~\ref{def:bpe_intro}, existe $M>0$ tal que
-    \[
-        |p(z)|\le M\|p\|_{L^2(\mathbf{m}_R)},
-        \qquad z\in\gamma_r.
-    \]
-    Sustituyendo se obtiene
-    \[
-        |p'(c)|\le \frac Mr\|p\|_{L^2(\mathbf{m}_R)}.
-    \]
+    Luego $|p'(c)|\le \frac1r\max_{z\in\gamma_r}|p(z)|$. Como $\gamma_r\subset \operatorname{bpe}(\mathbf{m}_R)$ por la Definición~\ref{def:bpe_intro}, existe $M>0$ tal que $|p(z)|\le M\|p\|_{L^2(\mathbf{m}_R)}$ para $z\in\gamma_r$. Sustituyendo se obtiene $|p'(c)|\le \frac Mr\|p\|_{L^2(\mathbf{m}_R)}$.
     Esto prueba la continuidad de $\delta'_c$.
 \end{proof}
 
 \begin{prop}\label{prop:caracterizacion_psi_c}
-    Sea $\mu$ una medida positiva finita en $\C$, sea $c\in\C$ y sea
-    \[
-        \psi_c(p)=p(c)+cp'(c),
-        \qquad p\in\Poly.
-    \]
+    Sea $\mu$ una medida positiva finita en $\C$, sea $c\in\C$ y sea $\psi_c(p)=p(c)+cp'(c)$, con $p\in\Poly$.
     Entonces se verifican las siguientes implicaciones:
     \begin{enumerate}
         \item si $c$ es $\delta$-singular respecto a $\|\cdot\|_{\mu}$, entonces $\delta_c$ no es acotado sobre $\Poly$;
@@ -206,17 +170,9 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
 \begin{proof}
     La primera implicación es inmediata, pues la no acotación de $\delta_c$ sobre $\ker(\delta'_c)$ implica su no acotación sobre el espacio mayor $\Poly$.
 
-    Para la segunda, si $c$ es $\delta$-singular, existe una sucesión $\{p_n\}_{n\ge1}$ con $p_n \in \ker(\delta'_c)$ tal que
-    \[
-        \|p_n\|_{\mu}\to0,
-        \qquad
-        p_n(c)=1.
-    \]
+    Para la segunda, si $c$ es $\delta$-singular, existe una sucesión $\{p_n\}_{n\ge1}$ con $p_n \in \ker(\delta'_c)$ tal que $\|p_n\|_{\mu}\to0$ y $p_n(c)=1$.
     Como $p_n'(c)=0$, se tiene \(\psi_c(p_n)=p_n(c)=1\),
-    y por tanto
-    \[
-        \frac{|\psi_c(p_n)|}{\|p_n\|_{\mu}}=\frac1{\|p_n\|_{\mu}}\xrightarrow[n\to\infty]{}\infty.
-    \]
+    y por tanto $\frac{|\psi_c(p_n)|}{\|p_n\|_{\mu}}=\frac1{\|p_n\|_{\mu}}\xrightarrow[n\to\infty]{}\infty$.
 \end{proof}
 
 \begin{thm}\label{thm:equivalencia_lebesgue}
@@ -272,11 +228,7 @@ Veamos los siguientes resultados sobre la codimensión de intersecciones de núc
 Gonzalo y Escribano \cite{EG25-2} tratan este caso en contextos más generales. A continuación presentamos un resultado particular correspondiente al producto de Sobolev discreto \eqref{eq:norma_sobolev_discreta_general}, usando que los puntos interiores son ABPE para la parte continua.
 
 \begin{prop}\label{prop:atomos_interiores_acotado}
-    Sea $R>0$ y sean $c_1,\dots,c_N\in\C$ tales que
-    \[
-        |c_j|<R,
-        \qquad j=1,\dots,N.
-    \]
+    Sea $R>0$ y sean $c_1,\dots,c_N\in\C$ tales que $|c_j|<R$ para $j=1,\dots,N$.
     Consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
@@ -286,10 +238,7 @@ Gonzalo y Escribano \cite{EG25-2} tratan este caso en contextos más generales. 
         \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly,
     \]
-    y sea $\D p(z)=zp(z)$. Entonces $\D$ es acotado respecto a $\|\cdot\|_S$. En particular,
-    \[
-        Q_0(\D)<\infty.
-    \]
+    y sea $\D p(z)=zp(z)$. Entonces $\D$ es acotado respecto a $\|\cdot\|_S$. En particular, $Q_0(\D)<\infty$.
 \end{prop}
 
 \begin{proof}
@@ -300,10 +249,7 @@ Gonzalo y Escribano \cite{EG25-2} tratan este caso en contextos más generales. 
         |p'(c_j)|\le B_j\|p\|_{L^2(\mathbf{m}_R)},
         \qquad p\in\Poly.
     \]
-    Sea ahora $p\in\Poly$. Como $|z|=R$ sobre $\mathbb{S}_R$,
-    \[
-        \|\D p\|_{L^2(\mathbf{m}_R)}=R\|p\|_{L^2(\mathbf{m}_R)}\le R\|p\|_S.
-    \]
+    Sea ahora $p\in\Poly$. Como $|z|=R$ sobre $\mathbb{S}_R$, $\|\D p\|_{L^2(\mathbf{m}_R)}=R\|p\|_{L^2(\mathbf{m}_R)}\le R\|p\|_S$.
     Además, para cada $j$,
     \[
         |(\D p)'(c_j)|=|p(c_j)+c_jp'(c_j)|
@@ -351,15 +297,9 @@ Gonzalo y Escribano \cite{EG25-2} tratan este caso en contextos más generales. 
         \frac{3|a_1|^2+\sum_{k\ge2}|a_k|^2}{\|p\|_S^2}
         \le2,
     \end{equation}
-    y el máximo se alcanza en las funciones constantes. En consecuencia,
-    \[
-        \|\D\|_S=Q_0(\D)=\sqrt2.
-    \]
+    y el máximo se alcanza en las funciones constantes. En consecuencia, $\|\D\|_S=Q_0(\D)=\sqrt2$.
 
-    Además, si imponemos la restricción $p(0)=0$, entonces $a_0=0$ y las expresiones \eqref{eq:norma_in_0}--\eqref{eq:norma_out_0} dan
-    \[
-        \|\D p\|_S^2=|a_1|^2+\sum_{k=2}^n |a_k|^2\le \|p\|_S^2,
-    \]
+    Además, si imponemos la restricción $p(0)=0$, entonces $a_0=0$ y las expresiones \eqref{eq:norma_in_0}--\eqref{eq:norma_out_0} dan $\|\D p\|_S^2=|a_1|^2+\sum_{k=2}^n |a_k|^2\le \|p\|_S^2$,
     de modo que sobre el subespacio $\ker(\delta_0)$ el operador actúa con norma a lo sumo $1$.
 \end{exm}
 
@@ -377,10 +317,7 @@ Consideremos ahora el caso en que existe al menos un punto $c_j$ con $|c_j|\ge R
         p'(c)\overline{q'(c)},
         \qquad p,q\in\Poly.
     \]
-    Sea además $\D p(z)=zp(z)$ y sea
-    \[
-        \psi_c(p)=p(c)+cp'(c)=(\D p)'(c).
-    \]
+    Sea además $\D p(z)=zp(z)$ y sea $\psi_c(p)=p(c)+cp'(c)=(\D p)'(c)$.
     Entonces
     \[
         Q_0(\D)=\infty,
@@ -428,249 +365,158 @@ Consideremos ahora el caso en que existe al menos un punto $c_j$ con $|c_j|\ge R
 
 Los dos resultados anteriores muestran ya el patrón geométrico básico: los átomos interiores no rompen la acotación del operador de multiplicación, mientras que un átomo situado sobre la circunferencia o en el exterior produce una dirección inestable y obliga a pasar a codimensión uno para recuperar acotación.
 
-Sea $F\subset\C$ finito y consideremos el producto de Sobolev discreto \eqref{eq:norma_sobolev_discreta_general}
+Sea $c_1,\dots,c_N\in\C$ y consideremos el producto de Sobolev discreto \eqref{eq:norma_sobolev_discreta_general}
 \[
     \langle p,q\rangle_S
     =
     \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
     +
-    \sum_{c\in F} p'(c)\overline{q'(c)},
+    \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
     \qquad p,q\in\Poly.
 \]
 
-\begin{defn}\label{def:class_points_new}
-    En el marco anterior definimos
-    \[
-        I_{\mathrm{in}}:=\{c\in F:|c|<R\},
-        \qquad
-        I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
-    \]
-    y escribimos
-    \[
-        m:=|I_{\mathrm{out}}|.
-    \]
-\end{defn}
+Reordenando los puntos si es necesario, fijamos un entero $m\in\{0,\dots,N\}$ tal que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$.
 
-La Proposición~\ref{prop:atomos_interiores_acotado} ya resuelve completamente el caso $m=0$. Por tanto, en los apartados que siguen supondremos cuando sea necesario que
-\[
-    I_{\mathrm{out}}\neq\varnothing,
-    \qquad
-    m\ge1.
-\]
+La Proposición~\ref{prop:atomos_interiores_acotado} ya resuelve completamente el caso $m=0$. Por tanto, en los apartados que siguen supondremos cuando sea necesario que $m\ge1$.
 
 \begin{rmk}
-    Por el Teorema~\ref{thm:equivalencia_lebesgue} y la Proposición~\ref{prop:caracterizacion_psi_c}, cada $c\in I_{\mathrm{out}}$ da lugar a un funcional $\psi_c$ no acotado, mientras que los puntos de $I_{\mathrm{in}}$ permanecen controlados por la parte continua.
+    Por el Teorema~\ref{thm:equivalencia_lebesgue} y la Proposición~\ref{prop:caracterizacion_psi_c}, para cada $j=1,\dots,m$ el funcional $\psi_{c_j}$ no es acotado, mientras que los puntos $c_{m+1},\dots,c_N$ permanecen controlados por la parte continua.
 \end{rmk}
 
 \section{Umbral de finitud: construcción estable y necesidad de codimensión}
 
-La experiencia del caso de un átomo sugiere que cada punto exterior debe aportar una dirección inestable independiente. En esta sección construimos primero un subespacio de codimensión $m=|I_{\mathrm{out}}|$ sobre el que $\D$ es acotado y después probamos que con una codimensión estrictamente menor no puede estabilizarse el operador.
+La experiencia del caso de un átomo sugiere que cada uno de los puntos $c_1,\dots,c_m$ debe aportar una dirección inestable independiente. En esta sección construimos primero un subespacio de codimensión $m$ sobre el que $\D$ es acotado y después probamos que con una codimensión estrictamente menor no puede estabilizarse el operador.
 
 \subsection{Construcción de un subespacio estable}
 
 Definimos ahora el subespacio estable imponiendo la anulación de las contribuciones discretas del producto de Sobolev \eqref{eq:norma_sobolev_discreta_general}.
 
 \begin{defn}\label{def:vout_ch3}
-    Sea $R>0$, sea $F\subset\C$ finito y sea
-    \(
-    I_{\mathrm{out}}
-    \) de la Definición~\ref{def:class_points_new}.
-    Para cada $c\in I_{\mathrm{out}}$, sea $\psi_c$ el funcional dado por \eqref{eq:def_psi_c}. Definimos
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$.
+    Para cada $j=1,\dots,m$, sea $\psi_{c_j}$ el funcional dado por \eqref{eq:def_psi_c}. Definimos
     \begin{equation}\label{eq:def_vout}
-        V_{\mathrm{out}}:=\bigcap_{c\in I_{\mathrm{out}}}\ker(\psi_c).
+        V_m:=\bigcap_{j=1}^m\ker(\psi_{c_j}).
     \end{equation}
 \end{defn}
 
 Veamos un resultado de interpolación de Hermite \cite{Dav75} que nos permitirá construir polinomios con valores y derivadas en un conjunto finito de puntos.
 
 \begin{lem}\label{lem:hermite_datos_finito}
-    Sea $F\subset\C$ un conjunto finito. Entonces, para cualesquiera familias de datos $(\alpha_a)_{a\in F}$ y $(\beta_a)_{a\in F}$ en $\C$, existe un polinomio $h\in\Poly$ tal que
-    \[
-        h(a)=\alpha_a,
-        \qquad
-        h'(a)=\beta_a,
-        \qquad a\in F.
-    \]
+    Sea $F\subset\C$ un conjunto finito. Entonces, para cualesquiera familias de datos $(\alpha_a)_{a\in F}$ y $(\beta_a)_{a\in F}$ en $\C$, existe un polinomio $h\in\Poly$ tal que $h(a)=\alpha_a$ y $h'(a)=\beta_a$ para todo $a\in F$.
 \end{lem}
 
 \begin{lem}\label{lem:independencia_funcionales_psi}
-    Sea $R>0$, sea $F\subset\C$ finito y sea
-    \(
-    I_{\mathrm{out}}
-    \) de la Definición \ref{def:class_points_new}.
-    Para cada $c\in I_{\mathrm{out}}$, sea $\psi_c$ el funcional dado por \eqref{eq:def_psi_c}. Entonces el sistema $\{\psi_c\}_{c\in I_{\mathrm{out}}}$ es linealmente independiente. En particular,
-    \[
-        \dim[\psi_c:c\in I_{\mathrm{out}}]=m,
-        \qquad m:=|I_{\mathrm{out}}|.
-    \]
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$. Entonces el sistema $\{\psi_{c_j}\}_{j=1}^m$ es linealmente independiente. En particular, $\dim[\psi_{c_1},\dots,\psi_{c_m}]=m$.
 \end{lem}
 
 \begin{proof}
-    Fijado $c\in I_{\mathrm{out}}$, aplicamos el Lema~\ref{lem:hermite_datos_finito} al conjunto $E=I_{\mathrm{out}}$ con datos
-    \[
-        \alpha_d=\delta_{dc},
-        \qquad
-        \beta_d=0,
-        \qquad d\in I_{\mathrm{out}}.
-    \]
-    Obtenemos un polinomio $h_c\in\Poly$ tal que
-    \[
-        h_c(d)=\delta_{dc},
-        \qquad
-        h_c'(d)=0,
-        \qquad d\in I_{\mathrm{out}}.
-    \]
-    Entonces
-    \[
-        \psi_d(h_c)=h_c(d)+dh_c'(d)=\delta_{dc},
-        \qquad d\in I_{\mathrm{out}},
-    \]
+    Fijado $j\in\{1,\dots,m\}$, aplicamos el Lema~\ref{lem:hermite_datos_finito} al conjunto $\{c_1,\dots,c_m\}$ con datos $\alpha_{c_k}=\delta_{jk}$ y $\beta_{c_k}=0$ para $k=1,\dots,m$. Obtenemos un polinomio $h_j\in\Poly$ tal que $h_j(c_k)=\delta_{jk}$ y $h_j'(c_k)=0$ para $k=1,\dots,m$. Entonces $\psi_{c_k}(h_j)=h_j(c_k)+c_kh_j'(c_k)=\delta_{jk}$ para $k=1,\dots,m$,
     y esto prueba la independencia lineal.
 \end{proof}
 
 \begin{lem}\label{lem:vout_codimension}
-    Sea $R>0$, sea $F\subset\C$ finito y sea
-    \(
-    V_{\mathrm{out}}
-    \) de la Definición~\ref{def:vout_ch3}. Entonces
-    \[
-        \operatorname{codim}_{\Poly}(V_{\mathrm{out}})=m,
-        \qquad m:=|I_{\mathrm{out}}|.
-    \]
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y sea $V_m$ de la Definición~\ref{def:vout_ch3}. Entonces $\operatorname{codim}_{\Poly}(V_m)=m$.
 \end{lem}
 
 \begin{proof}
-    Por definición, $V_{\mathrm{out}}$ es una intersección finita de núcleos de funcionales lineales. El Lema~\ref{lem:independencia_funcionales_psi} muestra que los funcionales $\{\psi_c\}_{c\in I_{\mathrm{out}}}$ son linealmente independientes y generan un espacio de dimensión $m$. La Proposición~\ref{prop:finite-codim-kernels} da entonces la igualdad anunciada.
+    Por definición, $V_m$ es una intersección finita de núcleos de funcionales lineales. El Lema~\ref{lem:independencia_funcionales_psi} muestra que los funcionales $\{\psi_{c_j}\}_{j=1}^m$ son linealmente independientes y generan un espacio de dimensión $m$. La Proposición~\ref{prop:finite-codim-kernels} da entonces la igualdad anunciada.
 \end{proof}
 
 \begin{lem}\label{lem:vout_acotacion}
-    Sea $R>0$, sea $F\subset\C$ finito y sea
-    \(
-    V_{\mathrm{out}}
-    \)
-    de la Definición~\ref{def:vout_ch3}, y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$. Sea además $V_m$ de la Definición~\ref{def:vout_ch3}, y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
-    Entonces existe una constante $C_{\mathrm{out}}<\infty$ tal que
-    \[
-        \|\D p\|_S\le C_{\mathrm{out}}\|p\|_S,
-        \qquad p\in V_{\mathrm{out}}.
-    \]
-    En particular, $\D|_{V_{\mathrm{out}}}$ es acotado. Si además $I_{\mathrm{in}}=\varnothing$, puede tomarse $C_{\mathrm{out}}=R$.
+    Entonces existe una constante $C_m<\infty$ tal que $\|\D p\|_S\le C_m\|p\|_S$ para $p\in V_m$.
+    En particular, $\D|_{V_m}$ es acotado. Si además $m=N$, puede tomarse $C_m=R$.
 \end{lem}
 
 \begin{proof}
-    Sea $p\in V_{\mathrm{out}}$. Entonces, para todo $c\in I_{\mathrm{out}}$, \((\D p)'(c)=\psi_c(p)=0\).
+    Sea $p\in V_m$. Entonces, para todo $j=1,\dots,m$, se tiene $(\D p)'(c_j)=\psi_{c_j}(p)=0$.
 
-    Si $c\in I_{\mathrm{in}}$, entonces $|c|<R$. Por el Lema~\ref{lema:ABPE_derivada} y la propiedad ABPE de los puntos interiores, existen constantes $A_c,B_c<\infty$ tales que
+    Para cada $j=m+1,\dots,N$, como $|c_j|<R$, por el Lema~\ref{lema:ABPE_derivada} y la propiedad ABPE de los puntos interiores existen constantes $A_j,B_j<\infty$ tales que
     \[
-        |p(c)|\le A_c\|p\|_S,
+        |p(c_j)|\le A_j\|p\|_S,
         \qquad
-        |p'(c)|\le B_c\|p\|_S.
+        |p'(c_j)|\le B_j\|p\|_S.
     \]
     De aquí se deduce
     \[
-        |(\D p)'(c)|=|p(c)+cp'(c)|\le (A_c+|c|B_c)\|p\|_S.
+        |(\D p)'(c_j)|=|p(c_j)+c_jp'(c_j)|\le (A_j+|c_j|B_j)\|p\|_S.
     \]
 
-    Además, como $|z|=R$ en $\mathbb{S}_R$,
-    \[
-        \|zp\|_{L^2(\mathbf{m}_R)}\le R\|p\|_{L^2(\mathbf{m}_R)}\le R\|p\|_S.
-    \]
+    Además, como $|z|=R$ en $\mathbb{S}_R$, $\|zp\|_{L^2(\mathbf{m}_R)}\le R\|p\|_{L^2(\mathbf{m}_R)}\le R\|p\|_S$.
     Por consiguiente,
     \[
         \|\D p\|_S^2
         =
         \|zp\|_{L^2(\mathbf{m}_R)}^2
         +
-        \sum_{c\in I_{\mathrm{in}}}|(\D p)'(c)|^2
+        \sum_{j=m+1}^N |(\D p)'(c_j)|^2
         \le
-        \left(R^2+\sum_{c\in I_{\mathrm{in}}}(A_c+|c|B_c)^2\right)\|p\|_S^2.
+        \left(R^2+\sum_{j=m+1}^N (A_j+|c_j|B_j)^2\right)\|p\|_S^2.
     \]
-    Si $I_{\mathrm{in}}=\varnothing$, la suma anterior desaparece y queda
-    \[
-        \|\D p\|_S^2\le R^2\|p\|_S^2,
-    \]
-    de modo que puede tomarse $C_{\mathrm{out}}=R$.
+    Si $m=N$, la suma anterior desaparece y queda $\|\D p\|_S^2\le R^2\|p\|_S^2$,
+    de modo que puede tomarse $C_m=R$.
 \end{proof}
 
 \begin{prop}\label{prop:umbral_fase1}
-    Sean $R>0$ y \(m:=|I_{\mathrm{out}}|\), sea $F\subset\C$ finito y sea
-    \(
-    V_{\mathrm{out}}
-    \) de la Definición~\ref{def:vout_ch3}, y consideremos sobre $\Poly$ el producto escalar
+    Sean $R>0$, $c_1,\dots,c_N\in\C$ y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$. Sea además $V_m$ de la Definición~\ref{def:vout_ch3}, y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
-    Entonces
-    \[
-        Q_m(\D)<\infty.
-    \]
-    Además,
-    \[
-        Q_m(\D)\le C_{\mathrm{out}},
-    \]
-    donde $C_{\mathrm{out}}$ es la constante del Lema~\ref{lem:vout_acotacion}.
+    Entonces $Q_m(\D)<\infty$. Además, $Q_m(\D)\le C_m$,
+    donde $C_m$ es la constante del Lema~\ref{lem:vout_acotacion}.
 \end{prop}
 
 \begin{proof}
-    Por el Lema~\ref{lem:vout_codimension}, el subespacio $V_{\mathrm{out}}$ tiene codimensión exacta $m$. Por el Lema~\ref{lem:vout_acotacion}, la restricción $\D|_{V_{\mathrm{out}}}$ es acotada. La definición de $Q_m$ da inmediatamente
-    \(Q_m(\D)\le \|\D|_{V_{\mathrm{out}}}\|_S\le C_{\mathrm{out}}<\infty\).
+    Por el Lema~\ref{lem:vout_codimension}, el subespacio $V_m$ tiene codimensión exacta $m$. Por el Lema~\ref{lem:vout_acotacion}, la restricción $\D|_{V_m}$ es acotada. La definición de $Q_m$ da inmediatamente
+    \(Q_m(\D)\le \|\D|_{V_m}\|_S\le C_m<\infty\).
 \end{proof}
 
 \begin{thm}\label{thm:caso_mixto}
-    Sean $R>0$ y $m:=|I_{\mathrm{out}}|$, sea $F\subset\C$ finito y sea
-    \(
-    V_{\mathrm{out}}
-    \)
-    de la Definición~\ref{def:vout_ch3},
+    Sean $R>0$, $c_1,\dots,c_N\in\C$ y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$. Sea además $V_m$ de la Definición~\ref{def:vout_ch3},
     y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
-    Supongamos además que
-    \[
-        I_{\mathrm{in}}\neq\varnothing,
-        \qquad
-        I_{\mathrm{out}}\neq\varnothing.
-    \]
+    Supongamos además que $1\le m<N$.
     Entonces se obtiene la cota superior
     \[
-        Q_m(\D)^2\le \|\D|_{V_{\mathrm{out}}}\|_S^2
+        Q_m(\D)^2\le \|\D|_{V_m}\|_S^2
         \le
         \max\{R^2,\lambda_{\max}(\mathbf B,\mathbf A)\},
     \]
-    donde $\mathbf A=(\langle e_j,e_i\rangle_S)_{i,j=1}^d$ y $\mathbf B=(\langle \D e_j,\D e_i\rangle_S)_{i,j=1}^d$ son las matrices de Gram respecto a una base $\{e_1,\dots,e_d\}$ del subespacio finito-dimensional de la completación de $V_{\mathrm{out}}$ generado por los representadores de Riesz de los funcionales acotados
+    donde $\mathbf A=(\langle e_j,e_i\rangle_S)_{i,j=1}^d$ y $\mathbf B=(\langle \D e_j,\D e_i\rangle_S)_{i,j=1}^d$ son las matrices de Gram respecto a una base $\{e_1,\dots,e_d\}$ del subespacio finito-dimensional de la completación de $V_m$ generado por los representadores de Riesz de los funcionales acotados
     \[
-        \ell_c(p):=p'(c),\qquad c\in F,
+        \ell_j(p):=p'(c_j),\qquad j=1,\dots,N,
     \]
     y
     \[
-        \eta_c(p):=(\D p)'(c)=p(c)+cp'(c),\qquad c\in I_{\mathrm{in}},
+        \eta_j(p):=(\D p)'(c_j)=p(c_j)+c_jp'(c_j),\qquad j=m+1,\dots,N,
     \]
-    en la completación de $V_{\mathrm{out}}$.
+    en la completación de $V_m$.
 \end{thm}
 
 \begin{proof}
-    Sea $\mathcal H_{\mathrm{out}}$ la completación de $V_{\mathrm{out}}$ con la norma de Sobolev. Los funcionales $\ell_c$ son acotados sobre $\mathcal H_{\mathrm{out}}$ para todo $c\in F$, y los funcionales $\eta_c$ son acotados para todo $c\in I_{\mathrm{in}}$ por el control interior probado antes. Sea $E\subset\mathcal H_{\mathrm{out}}$ el subespacio finito-dimensional generado por sus representadores de Riesz.
+    Sea $\mathcal H_m$ la completación de $V_m$ con la norma de Sobolev. Los funcionales $\ell_j$ son acotados sobre $\mathcal H_m$ para todo $j=1,\dots,N$, y los funcionales $\eta_j$ son acotados para todo $j=m+1,\dots,N$ por el control interior probado antes. Sea $E\subset\mathcal H_m$ el subespacio finito-dimensional generado por sus representadores de Riesz.
 
-    Dado $p\in\mathcal H_{\mathrm{out}}$, escribimos su descomposición ortogonal $p=x+y$ con $x\in E$ e $y\in E^\perp$. Entonces $y'(c)=0$ para todo $c\in F$ y $(\D y)'(c)=0$ para todo $c\in I_{\mathrm{in}}$. Además, como $y\in\mathcal H_{\mathrm{out}}$, también se tiene $(\D y)'(c)=0$ para todo $c\in I_{\mathrm{out}}$, pues en $\mathcal H_{\mathrm{out}}$ las restricciones definitorias de $V_{\mathrm{out}}$ se extienden por continuidad como funcionales nulos. Por tanto, las contribuciones discretas desaparecen tanto en $\|y\|_S$ como en $\|\D y\|_S$, y queda
+    Dado $p\in\mathcal H_m$, escribimos su descomposición ortogonal $p=x+y$ con $x\in E$ e $y\in E^\perp$. Entonces $y'(c_j)=0$ para todo $j=1,\dots,N$ y $(\D y)'(c_j)=0$ para todo $j=m+1,\dots,N$. Además, como $y\in\mathcal H_m$, también se tiene $(\D y)'(c_j)=0$ para todo $j=1,\dots,m$, pues en $\mathcal H_m$ las restricciones definitorias de $V_m$ se extienden por continuidad como funcionales nulos. Por tanto, las contribuciones discretas desaparecen tanto en $\|y\|_S$ como en $\|\D y\|_S$, y queda
     \[
         \|\D y\|_S^2=R^2\|y\|_{L^2(\mathbf{m}_R)}^2=R^2\|y\|_S^2.
     \]
@@ -683,7 +529,7 @@ Veamos un resultado de interpolación de Hermite \cite{Dav75} que nos permitirá
         \le
         \max\!\left\{R^2,\sup_{\substack{q\in E\\ q\ne0}}\frac{\|\D q\|_S^2}{\|q\|_S^2}\right\}.
     \]
-    El segundo término es $\lambda_{\max}(\mathbf B,\mathbf A)$. Se concluye la cota superior para $\|\D|_{V_{\mathrm{out}}}\|_S^2$, y la desigualdad para $Q_m(\D)$ es inmediata por definición.
+    El segundo término es $\lambda_{\max}(\mathbf B,\mathbf A)$. Se concluye la cota superior para $\|\D|_{V_m}\|_S^2$, y la desigualdad para $Q_m(\D)$ es inmediata por definición.
 \end{proof}
 
 \subsection{Necesidad de la codimensión \texorpdfstring{$m$}{m}}
@@ -707,142 +553,80 @@ Probamos ahora que la codimensión $m$ es necesaria para estabilizar el operador
 \end{proof}
 
 \begin{lem}\label{lem:paquetes_diagonales}
-    Sea $R>0$, sea $F\subset\C$ finito y sea
-    \(
-    I_{\mathrm{out}}
-    \) de la Definición~\ref{def:class_points_new}.
-    Para cada $c\in I_{\mathrm{out}}$ existe una sucesión $(u_{c,n})_{n\ge1}\subset\Poly$ tal que
-    \[
-        \|u_{c,n}\|_S\xrightarrow[n\to\infty]{}0,
-    \]
-    y además, para $\psi_d$ dado por \eqref{eq:def_psi_c},
-    \[
-        \psi_d(u_{c,n})=\delta_{dc},
-        \qquad d\in I_{\mathrm{out}}.
-    \]
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$. Para cada $j=1,\dots,m$ existe una sucesión $(u_{j,n})_{n\ge1}\subset\Poly$ tal que $\|u_{j,n}\|_S\xrightarrow[n\to\infty]{}0$ y además, para los funcionales de \eqref{eq:def_psi_c}, se cumple $\psi_{c_k}(u_{j,n})=\delta_{kj}$ para $k=1,\dots,m$.
 \end{lem}
 
 \begin{proof}
-    Fijamos $c\in I_{\mathrm{out}}$. Aplicamos el Lema~\ref{lem:hermite_datos_finito} al conjunto finito $F$ y obtenemos un polinomio $H_c\in\Poly$ tal que
+    Fijamos $j\in\{1,\dots,m\}$. Aplicamos el Lema~\ref{lem:hermite_datos_finito} al conjunto finito $\{c_1,\dots,c_N\}$ y obtenemos un polinomio $H_j\in\Poly$ tal que
     \[
-        H_c(c)=1,
+        H_j(c_j)=1,
         \qquad
-        H'_c(c)=0,
+        H'_j(c_j)=0,
     \]
-    y, para todo $a\in F\setminus\{c\}$,
+    y, para todo $k\in\{1,\dots,N\}\setminus\{j\}$,
     \[
-        H_c(a)=0,
+        H_j(c_k)=0,
         \qquad
-        H'_c(a)=0.
+        H'_j(c_k)=0.
     \]
-    Sea $(r_{c,n})$ la sucesión dada por el Lema~\ref{lem:paquete_local_exterior} y definamos \(u_{c,n}:=H_c r_{c,n}\).
+    Sea $(r_{c_j,n})$ la sucesión dada por el Lema~\ref{lem:paquete_local_exterior} y definamos $u_{j,n}:=H_j r_{c_j,n}$.
 
-    Si $d=c$, entonces \(u_{c,n}(c)=H_c(c)r_{c,n}(c)=1\) y \(u'_{c,n}(c)=H'_c(c)r_{c,n}(c)+H_c(c)r'_{c,n}(c)=0\). Por tanto, \(\psi_c(u_{c,n})=u_{c,n}(c)+cu'_{c,n}(c)=1\).
-    Si $d\in I_{\mathrm{out}}\setminus\{c\}$, entonces $H_c(d)=H'_c(d)=0$, luego
-    \(u_{c,n}(d)=0\) y \(u'_{c,n}(d)=0\), y por tanto \(\psi_d(u_{c,n})=0\). En consecuencia, \(\psi_d(u_{c,n})=\delta_{dc}\) para todo \(d\in I_{\mathrm{out}}\).
+    Si $k=j$, entonces $u_{j,n}(c_j)=H_j(c_j)r_{c_j,n}(c_j)=1$ y $u'_{j,n}(c_j)=H'_j(c_j)r_{c_j,n}(c_j)+H_j(c_j)r'_{c_j,n}(c_j)=0$. Por tanto, $\psi_{c_j}(u_{j,n})=u_{j,n}(c_j)+c_ju'_{j,n}(c_j)=1$.
+    Si $k\in\{1,\dots,m\}\setminus\{j\}$, entonces $H_j(c_k)=H'_j(c_k)=0$, luego
+    $u_{j,n}(c_k)=0$ y $u'_{j,n}(c_k)=0$, y por tanto $\psi_{c_k}(u_{j,n})=0$. En consecuencia, $\psi_{c_k}(u_{j,n})=\delta_{kj}$ para todo $k=1,\dots,m$.
 
-    Para todo $a\in F$, la elección de $H_c$ y $r_{c,n}$ da
+    Para todo $k=1,\dots,N$, la elección de $H_j$ y $r_{c_j,n}$ da
     \[
-        u'_{c,n}(a)=H'_c(a)r_{c,n}(a)+H_c(a)r'_{c,n}(a)=0.
+        u'_{j,n}(c_k)=H'_j(c_k)r_{c_j,n}(c_k)+H_j(c_k)r'_{c_j,n}(c_k)=0.
     \]
-    En consecuencia, todas las contribuciones discretas de la norma de Sobolev de $u_{c,n}$ se anulan y \(\|u_{c,n}\|_S^2=\|u_{c,n}\|_{L^2(\mathbf{m}_R)}^2\).
-    Como $H_c$ es fijo,
+    En consecuencia, todas las contribuciones discretas de la norma de Sobolev de $u_{j,n}$ se anulan y $\|u_{j,n}\|_S^2=\|u_{j,n}\|_{L^2(\mathbf{m}_R)}^2$.
+    Como $H_j$ es fijo,
     \[
-        \|u_{c,n}\|_{L^2(\mathbf{m}_R)}
+        \|u_{j,n}\|_{L^2(\mathbf{m}_R)}
         =
-        \|H_c r_{c,n}\|_{L^2(\mathbf{m}_R)}
+        \|H_j r_{c_j,n}\|_{L^2(\mathbf{m}_R)}
         \le
-        \|H_c\|_{L^\infty(\mathbb{S}_R)}\,\|r_{c,n}\|_{L^2(\mathbf{m}_R)}.
+        \|H_j\|_{L^\infty(\mathbb{S}_R)}\,\|r_{c_j,n}\|_{L^2(\mathbf{m}_R)}.
     \]
-    Por el Lema~\ref{lem:paquete_local_exterior}, el último término tiende a cero. Luego
-    \[
-        \|u_{c,n}\|_S\xrightarrow[n\to\infty]{}0.
-    \]
+    Por el Lema~\ref{lem:paquete_local_exterior}, el último término tiende a cero. Luego $\|u_{j,n}\|_S\xrightarrow[n\to\infty]{}0$.
 \end{proof}
 
 \begin{lem}\label{lem:imposicion_restricciones}
-    Sea $R>0$, sea $F\subset\C$ finito y definamos
-    \[
-        I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
-        \qquad
-        m:=|I_{\mathrm{out}}|\ge1.
-    \]
-    Sea además $V\subset\Poly$ un subespacio con
-    \[
-        \operatorname{codim}_{\Poly}(V)<m.
-    \]
-    Para cada $n\ge1$ definimos
-    \[
-        W_n:=[u_{c,n}:c\in I_{\mathrm{out}}],
-    \]
-    donde los paquetes diagonales $u_{c,n}$ son los del Lema~\ref{lem:paquetes_diagonales}. Entonces, para cada $n\ge1$, existe un polinomio no nulo
-    \[
-        p_n\in V\cap W_n
-    \]
-    de la forma
-    \[
-        p_n=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}u_{c,n},
-    \]
-    con coeficientes normalizados por
-    \[
-        \sum_{c\in I_{\mathrm{out}}}|\alpha_c^{(n)}|^2=1.
-    \]
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$.
+    Supongamos además que $m\ge1$.
+    Sea además $V\subset\Poly$ un subespacio con $\operatorname{codim}_{\Poly}(V)<m$. Para cada $n\ge1$ definimos $W_n:=[u_{1,n},\dots,u_{m,n}]$, donde los paquetes diagonales $u_{j,n}$ son los del Lema~\ref{lem:paquetes_diagonales}. Entonces, para cada $n\ge1$, existe un polinomio no nulo $p_n\in V\cap W_n$ de la forma $p_n=\sum_{j=1}^m \alpha_j^{(n)}u_{j,n}$, con coeficientes normalizados por $\sum_{j=1}^m |\alpha_j^{(n)}|^2=1$.
 \end{lem}
 
 \begin{proof}
-    Escribimos $\operatorname{codim}_{\Poly}(V)=r<m$. Existen entonces funcionales lineales independientes $L_1,\dots,L_r:\Poly\to\C$ tales que
-    \[
-        V=\bigcap_{i=1}^r\ker(L_i).
-    \]
+    Escribimos $\operatorname{codim}_{\Poly}(V)=r<m$. Existen entonces funcionales lineales independientes $L_1,\dots,L_r:\Poly\to\C$ tales que $V=\bigcap_{i=1}^r\ker(L_i)$.
     Para cada $n$ consideramos la matriz
     \[
-        A_n:=\bigl(L_i(u_{c,n})\bigr)_{\substack{1\le i\le r\\ c\in I_{\mathrm{out}}}}\in\C^{r\times m}.
+        A_n:=\bigl(L_i(u_{j,n})\bigr)_{\substack{1\le i\le r\\ 1\le j\le m}}\in\C^{r\times m}.
     \]
-    Como $r<m$, el núcleo de $A_n$ es no trivial. Elegimos
-    \[
-        \alpha^{(n)}=(\alpha_c^{(n)})_{c\in I_{\mathrm{out}}}\in\ker(A_n),
-        \qquad
-        \|\alpha^{(n)}\|_{\ell^2}=1,
-    \]
-    y definimos
-    \[
-        p_n:=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}u_{c,n}.
-    \]
+    Como $r<m$, el núcleo de $A_n$ es no trivial. Elegimos $\alpha^{(n)}=(\alpha_j^{(n)})_{j=1}^m\in\ker(A_n)$ con $\|\alpha^{(n)}\|_{\ell^2}=1$, y definimos $p_n:=\sum_{j=1}^m \alpha_j^{(n)}u_{j,n}$.
     Entonces, para cada $i=1,\dots,r$,
     \[
-        L_i(p_n)=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}L_i(u_{c,n})=0,
+        L_i(p_n)=\sum_{j=1}^m \alpha_j^{(n)}L_i(u_{j,n})=0,
     \]
     y por tanto $p_n\in V$. Además $p_n\in W_n$ por construcción.
 
-    Resta ver que $p_n\neq0$. Si fuese $p_n=0$, entonces aplicando $\psi_d$ para un $d\in I_{\mathrm{out}}$ obtendríamos
-    \[
-        0=\psi_d(p_n)=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}\psi_d(u_{c,n})=\alpha_d^{(n)}.
-    \]
-    Como esto vale para todo $d\in I_{\mathrm{out}}$, se seguiría $\alpha^{(n)}=0$, contradiciendo la normalización $\|\alpha^{(n)}\|_{\ell^2}=1$.
+    Resta ver que $p_n\neq0$. Si fuese $p_n=0$, entonces aplicando $\psi_{c_k}$ para un $k\in\{1,\dots,m\}$ obtendríamos $0=\psi_{c_k}(p_n)=\sum_{j=1}^m \alpha_j^{(n)}\psi_{c_k}(u_{j,n})=\alpha_k^{(n)}$.
+    Como esto vale para todo $k=1,\dots,m$, se seguiría $\alpha^{(n)}=0$, contradiciendo la normalización $\|\alpha^{(n)}\|_{\ell^2}=1$.
 \end{proof}
 
 Ahora procedemos a ver que la codimensión $m$ es necesaria para estabilizar el operador de multiplicación.
 
 \begin{thm}\label{thm:umbral_fase2}\label{prop:umbral_fase2}
-    Sea $R>0$, sea $F\subset\C$ un conjunto finito y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
-    Sea
-    \[
-        I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
-        \qquad
-        m:=|I_{\mathrm{out}}|.
-    \]
-    Si $m\ge1$, entonces para todo subespacio $V\subset\Poly$ con
-    \[
-        \operatorname{codim}_{\Poly}(V)<m,
-    \]
+    Sea $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$. Si $m\ge1$, entonces para todo subespacio $V\subset\Poly$ con $\operatorname{codim}_{\Poly}(V)<m$,
     la restricción $\D|_V$ no es acotada. En particular,
     \[
         Q_{m-1}(\D)=\infty.
@@ -850,42 +634,31 @@ Ahora procedemos a ver que la codimensión $m$ es necesaria para estabilizar el 
 \end{thm}
 
 \begin{proof}
-    Sea $V\subset\Poly$ con $\operatorname{codim}_{\Poly}(V)<m$. Para cada $n\ge1$ consideramos el subespacio
-    \[
-        W_n:=[u_{c,n}:c\in I_{\mathrm{out}}],
-    \]
-    donde los $u_{c,n}$ son los paquetes diagonales del Lema~\ref{lem:paquetes_diagonales}. Por el Lema~\ref{lem:imposicion_restricciones}, para cada $n$ existe un polinomio no nulo
-    \[
-        p_n=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}u_{c,n}\in V\cap W_n
-    \]
-    con
-    \[
-        \sum_{c\in I_{\mathrm{out}}}|\alpha_c^{(n)}|^2=1.
-    \]
+    Sea $V\subset\Poly$ con $\operatorname{codim}_{\Poly}(V)<m$. Para cada $n\ge1$ consideramos el subespacio $W_n:=[u_{1,n},\dots,u_{m,n}]$, donde los $u_{j,n}$ son los paquetes diagonales del Lema~\ref{lem:paquetes_diagonales}. Por el Lema~\ref{lem:imposicion_restricciones}, para cada $n$ existe un polinomio no nulo $p_n=\sum_{j=1}^m \alpha_j^{(n)}u_{j,n}\in V\cap W_n$ con $\sum_{j=1}^m |\alpha_j^{(n)}|^2=1$.
 
-    Por el Lema~\ref{lem:paquetes_diagonales}, para cada $d\in I_{\mathrm{out}}$ se tiene
+    Por el Lema~\ref{lem:paquetes_diagonales}, para cada $k=1,\dots,m$ se tiene
     \[
-        \psi_d(p_n)=\sum_{c\in I_{\mathrm{out}}}\alpha_c^{(n)}\psi_d(u_{c,n})=\alpha_d^{(n)}.
+        \psi_{c_k}(p_n)=\sum_{j=1}^m \alpha_j^{(n)}\psi_{c_k}(u_{j,n})=\alpha_k^{(n)}.
     \]
     En consecuencia,
     \[
-        \sum_{d\in I_{\mathrm{out}}}|\psi_d(p_n)|^2
+        \sum_{k=1}^m |\psi_{c_k}(p_n)|^2
         =
-        \sum_{d\in I_{\mathrm{out}}}|\alpha_d^{(n)}|^2
+        \sum_{k=1}^m |\alpha_k^{(n)}|^2
         =
         1.
     \]
-    Como $\psi_d(p_n)=(\D p_n)'(d)$, la parte discreta de la norma de Sobolev de $\D p_n$ satisface
+    Como $\psi_{c_k}(p_n)=(\D p_n)'(c_k)$, la parte discreta de la norma de Sobolev de $\D p_n$ satisface
     \[
-        \|\D p_n\|_S^2\ge \sum_{d\in I_{\mathrm{out}}}|(\D p_n)'(d)|^2=1.
+        \|\D p_n\|_S^2\ge \sum_{k=1}^m |(\D p_n)'(c_k)|^2=1.
     \]
     Por otra parte,
     \[
         \|p_n\|_S
         \le
-        \sum_{c\in I_{\mathrm{out}}}|\alpha_c^{(n)}|\,\|u_{c,n}\|_S
+        \sum_{j=1}^m |\alpha_j^{(n)}|\,\|u_{j,n}\|_S
         \le
-        \sqrt m\max_{c\in I_{\mathrm{out}}}\|u_{c,n}\|_S
+        \sqrt m\max_{1\le j\le m}\|u_{j,n}\|_S
         \xrightarrow[n\to\infty]{}0
     \]
     por el Lema~\ref{lem:paquetes_diagonales}. Por tanto,
@@ -902,20 +675,20 @@ Los resultados de la sección anterior permiten identificar el primer índice en
 \subsection{Teorema de estabilización}
 
 \begin{thm}\label{thm:estabilizacion}
-    Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
     Sea además
     \[
-        I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
+        |c_j|\ge R,\quad j=1,\dots,m,
         \qquad
-        m:=|I_{\mathrm{out}}|.
+        |c_j|<R,\quad j=m+1,\dots,N.
     \]
     Entonces se verifican las siguientes afirmaciones:
     \begin{enumerate}
@@ -955,13 +728,13 @@ Los resultados de la sección anterior permiten identificar el primer índice en
 Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la estructura derivativa de la norma de Sobolev. Resultarán útiles en el paso matricial del capítulo siguiente.
 
 \begin{prop}\label{prop:qk_general_cota_inferior_R}
-    Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
     Entonces, para todo $k\ge0$,
@@ -971,58 +744,45 @@ Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la
 \end{prop}
 
 \begin{proof}
-    Sea
-    \[
-        E:=\{p\in\Poly:p'(c)=0\text{ para todo }c\in F\}.
-    \]
+    Sea $E:=\{p\in\Poly:p'(c_j)=0\text{ para todo }j=1,\dots,N\}$.
     Entonces
     \[
         E=\ker T,
         \qquad
-        T:\Poly\to\C^{|F|},
+        T:\Poly\to\C^{N},
         \qquad
-        T(p):=(p'(c))_{c\in F},
+        T(p):=(p'(c_j))_{j=1}^N,
     \]
     y por tanto $E$ tiene codimensión finita. Si $W\subset\Poly$ tiene codimensión finita, entonces $W\cap E\neq\{0\}$.
 
-    Fijado ahora $k\ge0$, sea $W\subset\Poly$ con
-    \[
-        \operatorname{codim}_{\Poly}(W)<k+1.
-    \]
-    Tomamos $0\neq p\in W\cap E$. Como $p'(c)=0$ para todo $c\in F$,
+    Fijado ahora $k\ge0$, sea $W\subset\Poly$ con $\operatorname{codim}_{\Poly}(W)<k+1$.
+    Tomamos $0\neq p\in W\cap E$. Como $p'(c_j)=0$ para todo $j=1,\dots,N$,
     \[
         \|p\|_S^2=\|p\|_{L^2(\mathbf{m}_R)}^2.
     \]
-    Además,
-    \[
-        (\D p)'(c)=p(c),
-        \qquad c\in F.
-    \]
+    Además, $(\D p)'(c_j)=p(c_j)$ para $j=1,\dots,N$.
     Por consiguiente,
     \[
         \|\D p\|_S^2
         =
         R^2\|p\|_{L^2(\mathbf{m}_R)}^2
         +
-        \sum_{c\in F}|p(c)|^2
+        \sum_{j=1}^N |p(c_j)|^2
         \ge
         R^2\|p\|_S^2.
     \]
-    Luego
-    \[
-        \|\D|_W\|_S\ge \frac{\|\D p\|_S}{\|p\|_S}\ge R.
-    \]
+    Luego $\|\D|_W\|_S\ge \frac{\|\D p\|_S}{\|p\|_S}\ge R$.
     Tomando ínfimo sobre los subespacios $W$ con $\operatorname{codim}_{\Poly}(W)<k+1$, obtenemos $Q_k(\D)\ge R$.
 \end{proof}
 
 \begin{prop}\label{prop:qN_general_cota_superior_R}
-    Sea $R>0$, sea $F\subset\C$ finito, sea $N:=|F|$ y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
     Entonces
@@ -1032,20 +792,12 @@ Las cotas de esta sección solo usan la parte continua sobre $\mathbb{S}_R$ y la
 \end{prop}
 
 \begin{proof}
-Para cada $c\in F$, definamos
-    \[
-        \eta_c(p):=p(c)+cp'(c),
-        \qquad p\in\Poly,
-    \]
-    y sea
-    \[
-        W_N:=\bigcap_{c\in F}\ker\eta_c.
-    \]
+    Para cada $j=1,\dots,N$, definamos $\eta_j(p):=p(c_j)+c_jp'(c_j)$, con $p\in\Poly$, y sea $W_N:=\bigcap_{j=1}^N\ker\eta_j$.
     Consideremos la aplicación lineal
     \[
         \Lambda_N:\Poly\to\C^N,
         \qquad
-        \Lambda_N(p):=(\eta_c(p))_{c\in F}.
+        \Lambda_N(p):=(\eta_j(p))_{j=1}^N.
     \]
     Entonces $W_N=\ker\Lambda_N$, y por tanto
     \[
@@ -1053,17 +805,14 @@ Para cada $c\in F$, definamos
     \]
     Si $p\in W_N$, entonces
     \[
-        (\D p)'(c)=\eta_c(p)=0,
-        \qquad c\in F.
+        (\D p)'(c_j)=\eta_j(p)=0,
+        \qquad j=1,\dots,N.
     \]
     En consecuencia,
     \[
         \|\D p\|_S^2=R^2\|p\|_{L^2(\mathbf{m}_R)}^2\le R^2\|p\|_S^2.
     \]
-    Luego
-    \[
-        \|\D|_{W_N}\|_S\le R.
-    \]
+    Luego $\|\D|_{W_N}\|_S\le R$.
     Como $W_N$ es admisible en la definición de $Q_N$, concluimos que
     \[
         Q_N(\D)\le R.
@@ -1071,13 +820,13 @@ Para cada $c\in F$, definamos
 \end{proof}
 
 \begin{thm}\label{thm:qk_vale_R_desde_N}
-	 Sea $R>0$, sea $F\subset\C$ finito, sea $N:=|F|$ y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
     Entonces
@@ -1115,22 +864,20 @@ Para cada $c\in F$, definamos
 \end{proof}
 
 \begin{thm}\label{thm:descripcion_global_qk}
-    Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+    Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
     \[
         \langle p,q\rangle_S
         =
         \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
         +
-        \sum_{c\in F} p'(c)\overline{q'(c)},
+        \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
         \qquad p,q\in\Poly.
     \]
     Sea además
     \[
-        I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
+        |c_j|\ge R,\quad j=1,\dots,m,
         \qquad
-        m:=|I_{\mathrm{out}}|,
-        \qquad
-        N:=|F|.
+        |c_j|<R,\quad j=m+1,\dots,N.
     \]
     Entonces se verifica que
     \[

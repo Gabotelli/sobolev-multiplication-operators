@@ -1,10 +1,6 @@
 % !TEX root = ../main.tex
 \chapter{Codimensión, Dicotomía e índice \texorpdfstring{$Q_k$}{Qk}}\label{sec:codimension_qk}
-Partimos de un producto interno $\langle\cdot, \cdot\rangle$. Denotamos por $\mathcal H$ la compleción de $\Poly$ respecto de la norma inducida por ese producto. En particular,
-\[
-    \mathcal H=\overline{\Poly},
-\]
-y $\Poly$ es un subespacio denso de $\mathcal H$.
+Partimos de un producto interno $\langle\cdot, \cdot\rangle$. Denotamos por $\mathcal H$ la compleción de $\Poly$ respecto de la norma inducida por ese producto. En particular, $\mathcal H=\overline{\Poly}$ y $\Poly$ es un subespacio denso de $\mathcal H$.
 
 \begin{defn}\label{def:codim_general}
     Sea $X$ un espacio vectorial y sea $V\subset X$ un subespacio. Definimos la codimensión de $V$ en $X$ por
@@ -57,12 +53,7 @@ Comenzamos fijando el lenguaje algebraico que usaremos para describir subespacio
 \end{prop}
 
 \begin{proof}
-    Supongamos que $\operatorname{codim}_{\Poly}(V)=n<\infty$. Entonces existe un subespacio complementario $F\subset\Poly$ tal que
-    \[
-        \Poly=V\oplus F,
-        \qquad
-        \dim(F)=n.
-    \]
+    Supongamos que $\operatorname{codim}_{\Poly}(V)=n<\infty$. Entonces existe un subespacio complementario $F\subset\Poly$ tal que $\Poly=V\oplus F$ y $\dim(F)=n$.
     Tomemos una base $u_1,\dots,u_n$ de $F$ y sea $u_1^*,\dots,u_n^*$ la base dual de $F^*$. Para cada $p\in\Poly$, escribiendo de manera única $p=v+f$ con $v\in V$ y $f\in F$, definimos $L_j(p):=u_j^*(f)$ para $j=1,\dots,n$. Entonces $L_j\in\Poly^*$ y $V=\bigcap_{j=1}^n\ker L_j$, pues $L_j(p)=0$ para todo $j$ si y solo si la componente $f$ es nula.
     Si $\sum_{j=1}^n \alpha_jL_j=0$, evaluando en $u_i$ obtenemos $\alpha_i=0$ para todo $i$, ya que $L_j(u_i)=u_j^*(u_i)=\delta_{ij}$. Por tanto, $L_1,\dots,L_n$ son linealmente independientes.
 
@@ -90,11 +81,7 @@ Comenzamos fijando el lenguaje algebraico que usaremos para describir subespacio
 A continuación damos una caracterización de la codimensión algebraica atendiendo a la ortogonalidad dada por el producto escalar.
 
 \begin{prop}\label{prop:equiv_ortho_interseccion}
-    Sea $\langle\cdot,\cdot\rangle$ un producto interno en $\Poly$, sean $f_1,\dots,f_m\in\Poly$ y sea $F=[f_1,\dots,f_m]$. Para $j=1,\dots,m$, definimos
-    \[
-        L_j(p):=\langle p,f_j\rangle,
-        \qquad p\in\Poly.
-    \]
+    Sea $\langle\cdot,\cdot\rangle$ un producto interno en $\Poly$, sean $f_1,\dots,f_m\in\Poly$ y sea $F=[f_1,\dots,f_m]$. Para $j=1,\dots,m$, definimos $L_j(p):=\langle p,f_j\rangle$ para $p\in\Poly$.
     Entonces
     \[
         F^{\perp}_{\Poly}=\{p\in\Poly:\langle p,f_j\rangle=0,\ j=1,\dots,m\}=\bigcap_{j=1}^m\ker(L_j).
@@ -112,23 +99,12 @@ A continuación damos una caracterización de la codimensión algebraica atendie
 \end{prop}
 
 \begin{proof}
-    Se tiene
-    \[
-        F^{\perp}_{\Poly}=\bigcap_{j=1}^m\ker(L_j)
-    \]
-    por definición.
+    Se tiene $F^{\perp}_{\Poly}=\bigcap_{j=1}^m\ker(L_j)$ por definición.
 
     Sea ahora $r:=\dim F$.
     Reordenando si hace falta, podemos suponer que $f_1,\dots,f_r$ forman una base de ese subespacio. Entonces, para cada $j>r$, el vector $f_j$ es combinación lineal de $f_1,\dots,f_r$, y por sesquilinealidad del producto interno se sigue que $L_j$ es combinación lineal de $L_1,\dots,L_r$ y \(\bigcap_{i=1}^r \operatorname{ker}(L_i) \subset \operatorname{ker}(L_j)\). Por tanto, \(F^{\perp}_{\Poly}=\bigcap_{i=1}^r\ker(L_i)\).
 
-    Si $\sum_{i=1}^r\alpha_iL_i=0$, tomando
-    \(
-    q=\sum_{i=1}^r\overline{\alpha_i}f_i
-    \)
-    se obtiene
-    \[
-        0=\sum_{i=1}^r\alpha_iL_i(q)=\langle q,q\rangle.
-    \]
+    Si $\sum_{i=1}^r\alpha_iL_i=0$, tomando $q=\sum_{i=1}^r\overline{\alpha_i}f_i$ se obtiene $0=\sum_{i=1}^r\alpha_iL_i(q)=\langle q,q\rangle$.
     Luego $q=0$, y como $f_1,\dots,f_r$ son linealmente independientes, $\alpha_1=\cdots=\alpha_r=0$. Por tanto, $L_1,\dots,L_r$ son linealmente independientes.
 
     Aplicando la Proposición~\ref{prop:finite-codim-kernels} a $L_1,\dots,L_r$, concluimos que \(\operatorname{codim}_{\Poly}(F^{\perp}_{\Poly})=r\).
@@ -191,14 +167,7 @@ En este trabajo son relevantes los siguientes funcionales de evaluación y evalu
 La misma idea se extiende a intersecciones finitas de núcleos de funcionales acotados.
 
 \begin{prop}\label{prop:finite-codim-hilbert-kernels}
-    Sea $\mathcal H$ un espacio de Hilbert y sean $\varphi_1,\dots,\varphi_N$ funcionales lineales acotados y linealmente independientes. Si
-    \[
-        M:=\bigcap_{i=1}^N \ker(\varphi_i),
-    \]
-    entonces $M$ es cerrado y
-    \[
-        \operatorname{codim}_{\mathcal H}(M)=N.
-    \]
+    Sea $\mathcal H$ un espacio de Hilbert y sean $\varphi_1,\dots,\varphi_N$ funcionales lineales acotados y linealmente independientes. Si $M:=\bigcap_{i=1}^N \ker(\varphi_i)$, entonces $M$ es cerrado y $\operatorname{codim}_{\mathcal H}(M)=N$.
 \end{prop}
 
 \begin{proof}
@@ -219,10 +188,7 @@ La misma idea se extiende a intersecciones finitas de núcleos de funcionales ac
     Sea $M\subset\mathcal H$ un subespacio cerrado y sea $m\in\mathbb N\cup\{0\}$. Entonces son equivalentes:
     \begin{enumerate}
         \item $\operatorname{codim}_{\mathcal H}(M)=m$;
-        \item existen funcionales lineales acotados y linealmente independientes $\varphi_1,\dots,\varphi_m\in\mathcal H^*$ tales que
-              \[
-                  M=\bigcap_{j=1}^m \ker \varphi_j.
-              \]
+        \item existen funcionales lineales acotados y linealmente independientes $\varphi_1,\dots,\varphi_m\in\mathcal H^*$ tales que $M=\bigcap_{j=1}^m \ker \varphi_j$.
     \end{enumerate}
 \end{prop}
 
@@ -266,26 +232,8 @@ La sección anterior describe los subespacios de codimensión finita mediante re
 \end{prop}
 
 \begin{proof}
-    Supongamos que $L$ no es acotado. Fijado $p\in\Poly$, existe una sucesión $w_n\in\Poly$ tal que
-    \[
-        |L(w_n)|>n\|w_n\|.
-    \]
-    Definimos
-    \[
-        u_n:=\frac{w_n}{L(w_n)}.
-    \]
-    Entonces
-    \[
-        L(u_n)=1,
-        \qquad
-        \|u_n\|=\frac{\|w_n\|}{|L(w_n)|}<\frac1n,
-    \]
-    de modo que $\|u_n\|\to0$. Sea
-    \[
-        v_n:=p-L(p)u_n\in\ker L,
-        \qquad
-        \|v_n-p\|=|L(p)|\,\|u_n\|\to 0.
-    \]
+    Supongamos que $L$ no es acotado. Fijado $p\in\Poly$, existe una sucesión $w_n\in\Poly$ tal que $|L(w_n)|>n\|w_n\|$. Definimos $u_n:=\frac{w_n}{L(w_n)}$. Entonces $L(u_n)=1$ y $\|u_n\|=\frac{\|w_n\|}{|L(w_n)|}<\frac1n$,
+    de modo que $\|u_n\|\to0$. Sea $v_n:=p-L(p)u_n\in\ker L$, de modo que $\|v_n-p\|=|L(p)|\,\|u_n\|\to 0$.
     Como $\Poly$ es denso en $\mathcal H$, se sigue que $\overline{\ker L}=\mathcal H$.
 
     Supongamos que $L$ es acotado. Entonces se extiende de manera única a un funcional lineal acotado $\widetilde L$ sobre $\mathcal H$. Como $\ker\widetilde L$ es cerrado y contiene a $\ker L$, se tiene \(\overline{\ker L}^{\,\mathcal H}\subset \ker\widetilde L\).
@@ -295,10 +243,7 @@ La sección anterior describe los subespacios de codimensión finita mediante re
     \[
         x=\left(x-\frac{\widetilde L(x)}{L(q)}q\right)+\frac{\widetilde L(x)}{L(q)}q,
     \]
-    y el primer sumando pertenece a $\ker\widetilde L$. Por tanto,
-    \[
-        \mathcal H=\ker\widetilde L+[q].
-    \]
+    y el primer sumando pertenece a $\ker\widetilde L$. Por tanto, $\mathcal H=\ker\widetilde L+[q]$.
     Como $q\notin\ker\widetilde L$, esa suma es directa. En consecuencia, \(\operatorname{codim}_{\mathcal H}(\overline{\ker L})=\operatorname{codim}_{\mathcal H}(\ker\widetilde L)=1\).
 \end{proof}
 
@@ -319,63 +264,24 @@ La sección anterior describe los subespacios de codimensión finita mediante re
 \end{prop}
 
 \begin{proof}
-    Para $(1)$, tomemos un subespacio complementario $F\subset\Poly$ con
-    \[
-        \Poly=V\oplus F,
-        \qquad
-        \dim(F)=m.
-    \]
-    Como $F$ es finito-dimensional, es cerrado en $\mathcal H$. Además, $\overline V+F$ es cerrado: si $x_n=v_n+f_n\in \overline V+F$ y $x_n\to x$, entonces $(x_n)$ es acotada; como $F$ es finito-dimensional, de $(f_n)$ extraemos una subsucesión $(f_{n_k})$ convergente a cierto $f\in F$, y por tanto
-    \[
-        v_{n_k}=x_{n_k}-f_{n_k}\to x-f.
-    \]
+    Para $(1)$, tomemos un subespacio complementario $F\subset\Poly$ con $\Poly=V\oplus F$ y $\dim(F)=m$.
+    Como $F$ es finito-dimensional, es cerrado en $\mathcal H$. Además, $\overline V+F$ es cerrado: si $x_n=v_n+f_n\in \overline V+F$ y $x_n\to x$, entonces $(x_n)$ es acotada; como $F$ es finito-dimensional, de $(f_n)$ extraemos una subsucesión $(f_{n_k})$ convergente a cierto $f\in F$, y por tanto $v_{n_k}=x_{n_k}-f_{n_k}\to x-f$.
     Como $\overline V$ es cerrado, $x-f\in\overline V$, luego $x\in\overline V+F$. Por otra parte, \(V+F\subset \overline V+F\), así que \(\overline{V+F}\subset \overline V+F\).
-    Recíprocamente, si $x=v+f\in \overline V+F$ con $v\in\overline V$ y $f\in F$, tomando $v_n\in V$ con $v_n\to v$ se tiene
-    \[
-        v_n+f\in V+F,
-        \qquad
-        v_n+f\to x,
-    \]
+    Recíprocamente, si $x=v+f\in \overline V+F$ con $v\in\overline V$ y $f\in F$, tomando $v_n\in V$ con $v_n\to v$ se tiene $v_n+f\in V+F$ y $v_n+f\to x$,
     y por tanto $x\in\overline{V+F}$. Luego \(\overline{V+F}=\overline V+F\).
     Como $\Poly=V\oplus F$, se sigue que
     \[
         \mathcal H=\overline{\Poly}=\overline{V+F}=\overline V+F.
     \]
-    La aplicación lineal
-    \[
-        \pi_F:F\to \mathcal H/\overline V,
-        \qquad
-        \pi_F(f)=f+\overline V,
-    \]
-    es sobreyectiva, pues dado $x+\overline V\in \mathcal H/\overline V$, como \(\mathcal H=\overline V+F\), existen $v\in \overline V$ y $f\in F$ tales que $x=v+f$. Por tanto, \(x+\overline V=f+\overline V=\pi_F(f)\). Luego \(\dim(\mathcal H/\overline V)\le \dim(F)=m\).
+    La aplicación lineal $\pi_F:F\to \mathcal H/\overline V$, dada por $\pi_F(f)=f+\overline V$, es sobreyectiva, pues dado $x+\overline V\in \mathcal H/\overline V$, como \(\mathcal H=\overline V+F\), existen $v\in \overline V$ y $f\in F$ tales que $x=v+f$. Por tanto, \(x+\overline V=f+\overline V=\pi_F(f)\). Luego \(\dim(\mathcal H/\overline V)\le \dim(F)=m\).
 
-    Para $(2)$, como $M$ es cerrado y de codimensión $m$, la Proposición~\ref{prop:closed-finite-codim-hilbert} garantiza que existen $\varphi_1,\dots,\varphi_m\in\mathcal H^*$ linealmente independientes tales que
-    \[
-        M=\bigcap_{j=1}^m \ker \varphi_j,
-    \]
-    y, restringiendo a $\Poly$,
-    \[
-        M\cap\Poly=\bigcap_{j=1}^m \ker L_j,
-    \]
+    Para $(2)$, como $M$ es cerrado y de codimensión $m$, la Proposición~\ref{prop:closed-finite-codim-hilbert} garantiza que existen $\varphi_1,\dots,\varphi_m\in\mathcal H^*$ linealmente independientes tales que $M=\bigcap_{j=1}^m \ker \varphi_j$ y, restringiendo a $\Poly$, $M\cap\Poly=\bigcap_{j=1}^m \ker L_j$,
     donde $L_j:=\varphi_j|_{\Poly}$ para $j=1,\dots,m$. Si una combinación lineal de los $L_j$ se anula en $\Poly$, también se anula en $\mathcal H$ por densidad, pues los $\varphi_j$ son continuos. Luego $L_1,\dots,L_m$ son linealmente independientes. Por la Proposición~\ref{prop:finite-codim-kernels}, \(\operatorname{codim}_{\Poly}(M\cap\Poly)=m\).
     Fijado $x\in M$, tomamos una sucesión $p_n\in\Poly$ tal que $p_n\to x$ y definimos \(a_n:=(\varphi_1(p_n),\dots,\varphi_m(p_n))\in\mathbb C^m\).
-    Como $x\in M$, se tiene $a_n\to 0$. Consideremos la aplicación lineal
-    \[
-        S:\Poly\to\mathbb C^m,
-        \qquad
-        S(p)=(L_1(p),\dots,L_m(p)).
-    \]
-    Como $L_1,\dots,L_m$ son linealmente independientes, $S$ es sobreyectiva. Elegimos $u_1,\dots,u_m\in\Poly$ tales que $S(u_i)=e_i$, donde $e_i$ es la base canónica de $\mathbb C^m$, y definimos
-    \[
-        R:\mathbb C^m\to\Poly,
-        \qquad
-        R(b_1,\dots,b_m):=\sum_{i=1}^m b_i u_i.
-    \]
+    Como $x\in M$, se tiene $a_n\to 0$. Consideremos la aplicación lineal $S:\Poly\to\mathbb C^m$, dada por $S(p)=(L_1(p),\dots,L_m(p))$.
+    Como $L_1,\dots,L_m$ son linealmente independientes, $S$ es sobreyectiva. Elegimos $u_1,\dots,u_m\in\Poly$ tales que $S(u_i)=e_i$, donde $e_i$ es la base canónica de $\mathbb C^m$, y definimos $R:\mathbb C^m\to\Poly$ por $R(b_1,\dots,b_m):=\sum_{i=1}^m b_i u_i$.
     Entonces $S\circ R=\mathrm{Id}_{\mathbb C^m}$. Para cada $n$, ponemos \(v_n:=p_n-R(a_n)\in\Poly\).
-    Como $S(v_n)=0$, se tiene $v_n\in M\cap\Poly$. Además,
-    \[
-        \|v_n-x\|\le \|p_n-x\|+\|R(a_n)\|\xrightarrow[n\to\infty]{}0,
-    \]
+    Como $S(v_n)=0$, se tiene $v_n\in M\cap\Poly$. Además, $\|v_n-x\|\le \|p_n-x\|+\|R(a_n)\|\xrightarrow[n\to\infty]{}0$,
     porque $p_n\to x$, $a_n\to0$ y $R$ es continua sobre el espacio finito-dimensional $\mathbb C^m$. Luego $x\in\overline{M\cap\Poly}$, y por tanto $\overline{M\cap\Poly}=M$.
 \end{proof}
 
@@ -400,14 +306,7 @@ Una vez vista la dicotomía, podemos introducir el índice que será relevante p
 \end{defn}
 
 \begin{rmk}
-    En particular, para $k=0$ la condición
-    \(
-    \operatorname{codim}_{\Poly}(V)<1
-    \)
-    fuerza $V=\Poly$, y por tanto
-    \[
-        Q_0(T)=\|T\|,
-    \]
+    En particular, para $k=0$ la condición $\operatorname{codim}_{\Poly}(V)<1$ fuerza $V=\Poly$, y por tanto $Q_0(T)=\|T\|$,
     admitiendo el valor $+\infty$ cuando $T$ no es acotado.
 \end{rmk}
 
@@ -435,10 +334,7 @@ Veamos una caracterización de $Q_k(T)$ en términos de subespacios de dimensió
     \]
 
     Probemos primero que $\mu_k(T)\le Q_k(T)$. Sea $V\subset\Poly$ con \(\operatorname{codim}_{\Poly}(V)<k+1\), y sea $E\subset\Poly$ con $\dim E=k+1$. Entonces \(E\cap V\ne\{0\}\).
-    En efecto, si $E\cap V=\{0\}$, la aplicación cociente $E\to\Poly/V$ sería inyectiva, lo que implicaría
-    \[
-        k+1=\dim E\le \dim(\Poly/V)=\operatorname{codim}_{\Poly}(V)<k+1,
-    \]
+    En efecto, si $E\cap V=\{0\}$, la aplicación cociente $E\to\Poly/V$ sería inyectiva, lo que implicaría $k+1=\dim E\le \dim(\Poly/V)=\operatorname{codim}_{\Poly}(V)<k+1$,
     una contradicción. Tomando $0\ne p\in E\cap V$, obtenemos
     \[
         \inf_{\substack{q\in E\\ q\ne0}}
@@ -451,10 +347,7 @@ Veamos una caracterización de $Q_k(T)$ en términos de subespacios de dimensió
     \]
     Tomando supremo en $E$ e ínfimo en $V$, se sigue que \(\mu_k(T)\le Q_k(T)\).
 
-    Probemos ahora la desigualdad recíproca. Si $Q_k(T)=0$, no hay nada que demostrar. Sea
-    \[
-        0<a<Q_k(T),
-    \]
+    Probemos ahora la desigualdad recíproca. Si $Q_k(T)=0$, no hay nada que demostrar. Sea $0<a<Q_k(T)$,
     donde, si $Q_k(T)=+\infty$, tomamos $a>0$ arbitrario. Consideremos la forma hermítica
     \[
         B_a(p,q):=\langle Tp,Tq\rangle-a^2\langle p,q\rangle,
@@ -467,20 +360,13 @@ Veamos una caracterización de $Q_k(T)$ en términos de subespacios de dimensió
         \qquad 0\ne p\in E.
     \]
     Supongamos lo contrario. Entonces todo subespacio sobre el que $B_a$ es definida positiva tiene dimensión a lo sumo $k$. Elegimos uno de dimensión máxima, digamos $F$, con \(m:=\dim F\le k\).
-    Definimos
-    \[
-        V:=\{p\in\Poly: B_a(p,f)=0\ \text{para todo }f\in F\}.
-    \]
+    Definimos $V:=\{p\in\Poly: B_a(p,f)=0\ \text{para todo }f\in F\}$.
     Como $V$ está definido por $m$ condiciones lineales, se tiene \(\operatorname{codim}_{\Poly}(V)\le m\le k<k+1\).
     Además, si existiera $p\in V$ con $B_a(p,p)>0$, entonces $F\oplus[p]$ sería un subespacio de dimensión $m+1$ sobre el cual $B_a$ sería definida positiva, contradiciendo la maximalidad de $F$. Por tanto, \(B_a(p,p)\le0\) para todo \(p\in V\). Es decir, \(\|Tp\|\le a\|p\|\) para todo \(p\in V\).
     En consecuencia, \(Q_k(T)\le \|T|_V\|\le a\),
     lo cual contradice $a<Q_k(T)$. La afirmación queda probada.
 
-    Así, para cada $a<Q_k(T)$ existe $E\subset\Poly$ con $\dim E=k+1$ tal que
-    \[
-        \frac{\|Tp\|}{\|p\|}>a,
-        \qquad 0\ne p\in E.
-    \]
+    Así, para cada $a<Q_k(T)$ existe $E\subset\Poly$ con $\dim E=k+1$ tal que $\frac{\|Tp\|}{\|p\|}>a$ para todo $0\ne p\in E$.
     Por tanto, \(\mu_k(T)\ge a\).
     Haciendo $a\uparrow Q_k(T)$, o tomando $a$ arbitrario si $Q_k(T)=+\infty$, concluimos que
     \(\mu_k(T)\ge Q_k(T)\).
@@ -512,11 +398,7 @@ Veamos una caracterización de $Q_k(T)$ en términos de subespacios de dimensió
 \end{defn}
 
 \begin{rmk}
-    Diremos que la cadena se estabiliza a partir de $k$ si todos los valores posteriores coinciden, es decir, si
-    \[
-        Q_j(T)=Q_k(T),
-        \qquad j\ge k.
-    \]
+    Diremos que la cadena se estabiliza a partir de $k$ si todos los valores posteriores coinciden, es decir, si $Q_j(T)=Q_k(T)$ para todo $j\ge k$.
     En los problemas que estudiaremos más adelante, la ruptura y la estabilización no tienen por qué ocurrir en el mismo índice: la cadena puede romperse primero, al pasar de $\infty$ a un valor finito, y estabilizarse solo más tarde, cuando toda la cola toma un mismo valor constante. También puede ocurrir que ambos fenómenos coincidan en un mismo índice.
 \end{rmk}
 
@@ -558,18 +440,11 @@ A continuación fijamos un modelo elemental en el que la cadena se rompe por pri
     \]
     Luego $\D$ no es acotado, es decir, $Q_0(\D)=\infty$.
 
-    Sin embargo, la no acotación proviene del término $p(2)$. Si
-    \[
-        V = \{p \in \Poly : p(2) = 0\},
-    \]
-    entonces, para todo $p \in V$,
+    Sin embargo, la no acotación proviene del término $p(2)$. Si $V = \{p \in \Poly : p(2) = 0\}$, entonces, para todo $p \in V$,
     \[
         \|\D p\|_S^2 = \|p\|_{L^2(\mathbf m)}^2 + |2p'(2)|^2 \le 4\left(\|p\|_{L^2(\mathbf m)}^2 + |p'(2)|^2\right) = 4\|p\|_S^2.
     \]
-    Por tanto, $\D|_V$ es acotado y
-    \[
-        Q_1(\D) \le 2 < \infty.
-    \]
+    Por tanto, $\D|_V$ es acotado y $Q_1(\D) \le 2 < \infty$.
 \end{exm}
 
 De este ejemplo conviene destacar que existen operadores lineales no acotados sobre $\Poly$ cuya restricción a subespacios ``grandes'' (en el sentido de que tienen codimensión 1) es acotada. Esto justifica estudiar tanto la ruptura como la estabilización de la cadena de los $Q_k$ para encontrar subespacios de codimensión finita donde esos operadores sean acotados y para determinar cuándo la cola adopta un valor constante.
@@ -614,13 +489,7 @@ De manera análoga usando la caracterización del índice $Q_k$, podemos hacer l
 \end{defn}
 
 \begin{prop}\label{prop:Qk_Bernstein}
-    Sea $T:\Poly\to\Poly$ un operador lineal acotado respecto de $\|\cdot\|$, y sea
-    \[
-        \widetilde T\in\mathcal L(\mathcal H),
-        \qquad
-        \mathcal H=\overline{\Poly},
-    \]
-    su extensión acotada. Entonces, para todo $k\ge0$,
+    Sea $T:\Poly\to\Poly$ un operador lineal acotado respecto de $\|\cdot\|$, y sea $\widetilde T\in\mathcal L(\mathcal H)$, con $\mathcal H=\overline{\Poly}$, su extensión acotada. Entonces, para todo $k\ge0$,
     \[
         Q_k(T)=b_k(\widetilde T).
     \]

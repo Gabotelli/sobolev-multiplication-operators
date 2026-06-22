@@ -61,18 +61,9 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 
 \begin{proof}
 	Si $(\varphi_n)_{n\ge0}$ y $(\psi_n)_{n\ge0}$ son las familias ortonormales asociadas a ambos productos, por la Observación posterior a la Proposición~\ref{prop:transformacion_afin_ch3} tenemos
-	\[
-		\psi_n=\lambda_n\,\varphi_n\circ T^{-1},
-		\qquad |\lambda_n|=1.
-	\]
-	Por tanto, usando la equivalencia de productos y la identidad $w=\alpha z+\beta$,
-	\[
-		d^{(2)}_{i,j}=\langle w\psi_j,\psi_i\rangle_T=\alpha\langle z\varphi_j,\varphi_i\rangle+\beta\langle\varphi_j,\varphi_i\rangle.
-	\]
-	Como $\{\varphi_n\}_{n\ge0}$ es ortonormal, se obtiene
-	\[
-		d^{(2)}_{i,j}=\alpha d^{(1)}_{i,j}+\beta\delta_{ij},
-	\]
+	\(\psi_n=\lambda_n\,\varphi_n\circ T^{-1}\), con \(|\lambda_n|=1\).
+	Por tanto, usando la equivalencia de productos y la identidad $w=\alpha z+\beta$, \(d^{(2)}_{i,j}=\langle w\psi_j,\psi_i\rangle_T=\alpha\langle z\varphi_j,\varphi_i\rangle+\beta\langle\varphi_j,\varphi_i\rangle\).
+	Como $\{\varphi_n\}_{n\ge0}$ es ortonormal, se obtiene \(d^{(2)}_{i,j}=\alpha d^{(1)}_{i,j}+\beta\delta_{ij}\),
 	y esta identidad equivale a $\mathbf D^{(2)}=\alpha\mathbf D^{(1)}+\beta\mathbf I$. La afirmación sobre las secciones principales es inmediata al truncar ambos lados al bloque de orden $n+1$.
 \end{proof}
 
@@ -83,11 +74,7 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 \begin{prop}\label{prop:charpoly_truncada}
 	Sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev en $(\Poly, \langle \cdot,\cdot\rangle_S)$. Para todo \(n\ge0\), sea
 	\(\mathbf D_n\) la sección principal de \(\D\) en la base \(\{\phi_0,\dots,\phi_n\}\).
-	Entonces existe una constante
-	\(
-	\kappa_n\in\C\setminus\{0\}
-	\)
-	tal que
+	Entonces existe una constante \(\kappa_n\in\C\setminus\{0\}\) tal que
 	\[
 		\det(z\mathbf I_{n+1}-\mathbf D_n)
 		=
@@ -98,41 +85,23 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 \end{prop}
 
 \begin{proof}
-	Para cada $j=0,\dots,n$, la expansión de $z\phi_j$ en la base ortonormal viene dada por
-	\[
-		z\phi_j(z)=\sum_{i=0}^{j+1} d_{i,j}\phi_i(z).
-	\]
+	Para cada $j=0,\dots,n$, la expansión de $z\phi_j$ en la base ortonormal viene dada por \(z\phi_j(z)=\sum_{i=0}^{j+1} d_{i,j}\phi_i(z)\).
 	Sea ahora $z_0\in\C$ un cero de $\phi_{n+1}$. Evaluando en $z_0$, obtenemos para cada
 	$j=0,\dots,n$
-	\[
-		z_0\phi_j(z_0)=\sum_{i=0}^{n} d_{i,j}\phi_i(z_0),
-	\]
+	\(z_0\phi_j(z_0)=\sum_{i=0}^{n} d_{i,j}\phi_i(z_0)\),
 	pues el término con $\phi_{n+1}(z_0)$ desaparece. Si definimos
-	\[
-		v(z_0):=(\phi_0(z_0),\dots,\phi_n(z_0))^t\in\C^{n+1},
-	\]
+	\(v(z_0):=(\phi_0(z_0),\dots,\phi_n(z_0))^t\in\C^{n+1}\),
 	entonces $v(z_0)\neq 0$, ya que $\phi_0$ es constante no nula, y la identidad anterior se escribe como
-	\[
-		\mathbf D_n^t v(z_0)=z_0 v(z_0).
-	\]
+	\(\mathbf D_n^t v(z_0)=z_0 v(z_0)\).
 	Por tanto, todo cero de $\phi_{n+1}$ es un autovalor de $\mathbf D_n^t$, es decir,
-	\[
-		\phi_{n+1}(z)=0
-		\quad\Longrightarrow\quad
-		\det(z\mathbf I_{n+1}-\mathbf D_n^t)=0.
-	\]
+	\(\phi_{n+1}(z)=0 \Longrightarrow \det(z\mathbf I_{n+1}-\mathbf D_n^t)=0\).
 	Además, $\det(z\mathbf I_{n+1}-\mathbf D_n^t)$ y $\phi_{n+1}(z)$ son polinomios de
 	grado $n+1$. Como todos los ceros del segundo son también ceros del primero, se sigue que existe una constante
-	$\kappa_n\in\C\setminus\{0\}$ tal que
-	\[
-		\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z).
-	\]
+	$\kappa_n\in\C\setminus\{0\}$ tal que \(\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z)\).
 	Además, para toda matriz cuadrada $A$ se tiene
 	\(\det(z\mathbf I-A^t)=\det\bigl((z\mathbf I-A)^t\bigr)=\det(z\mathbf I-A)\).
 	Aplicando esto a $A=\mathbf D_n$, concluimos que
-	\[
-		\det(z\mathbf I_{n+1}-\mathbf D_n)=\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z).
-	\]
+	\(\det(z\mathbf I_{n+1}-\mathbf D_n)=\det(z\mathbf I_{n+1}-\mathbf D_n^t)=\kappa_n\phi_{n+1}(z)\).
 \end{proof}
 
 \begin{cor}
@@ -161,11 +130,7 @@ Siguiendo con la filosofía de los capítulos anteriores, introduciremos ahora l
 
 \begin{defn}\label{def:sigma_kn}
 	Para $n\ge0$, sea \(\mathbf D_n\in\mathcal M_{n+1}(\C)\) la sección principal de \(\mathbf D\) en la base \(\{\phi_0,\dots,\phi_n\}\).
-	Denotamos por
-	\[
-		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
-	\]
-	los valores singulares de \(\mathbf D_n\), ordenados de forma decreciente.
+	Denotamos por \(\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0\) los valores singulares de \(\mathbf D_n\), ordenados de forma decreciente.
 \end{defn}
 
 \begin{rmk}
@@ -228,10 +193,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 			w_n         & d_{n+1,n+1}
 		\end{pmatrix}
 	\]
-	para ciertos vectores \(u_n\in\C^{n+1}\) y \(w_n\in(\C^{n+1})^*\), donde
-	\[
-		w_n=(0,\dots,0,d_{n+1,n}).
-	\]
+	para ciertos vectores \(u_n\in\C^{n+1}\) y \(w_n\in(\C^{n+1})^*\), donde \(w_n=(0,\dots,0,d_{n+1,n})\).
 	Al multiplicar por bloques se obtiene que el bloque principal superior izquierdo de \(\mathbf D_{n+1}^*\mathbf D_{n+1}\) es
 	\[
 		\mathbf D_n^*\mathbf D_n+
@@ -250,64 +212,21 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 	\[
 		\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0
 	\]
-	los valores singulares de \(\mathbf D_n\) ordenados de forma decreciente. Entonces, para todo \(k\ge0\) fijo, la sucesión
-	\(
-	\{\sigma_{k,n}\}_{n\ge k}
-	\)
-	es creciente. En particular,
-	\[
-		\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty]
-	\]
-	existe para todo \(k\ge0\).
+	los valores singulares de \(\mathbf D_n\) ordenados de forma decreciente. Entonces, para todo \(k\ge0\) fijo, la sucesión \(\{\sigma_{k,n}\}_{n\ge k}\) es creciente. En particular, \(\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty]\) existe para todo \(k\ge0\).
 \end{prop}
 
 \begin{proof}
-	Fijado \(k\ge0\), para cada \(n\ge k\) denotemos por
-	\[
-		\lambda_{0,n}\ge\lambda_{1,n}\ge\cdots\ge\lambda_{n,n}\ge0
-	\]
-	los autovalores de \(\mathbf D_n^*\mathbf D_n\). Entonces
-	\[
-		\sigma_{k,n}^2=\lambda_{k,n}.
-	\]
+	Fijado \(k\ge0\), para cada \(n\ge k\) denotemos por \(\lambda_{0,n}\ge\lambda_{1,n}\ge\cdots\ge\lambda_{n,n}\ge0\) los autovalores de \(\mathbf D_n^*\mathbf D_n\). Entonces \(\sigma_{k,n}^2=\lambda_{k,n}\).
 	Por el Lema~\ref{lem:bloque_gram_truncadas},
-	\[
-		(\mathbf D_{n+1}^*\mathbf D_{n+1})_n
-		=
-		\mathbf D_n^*\mathbf D_n+H_n,
-		\qquad H_n\succeq0.
-	\]
+	\((\mathbf D_{n+1}^*\mathbf D_{n+1})_n=\mathbf D_n^*\mathbf D_n+H_n\), con \(H_n\succeq0\).
 	La monotonía de Weyl para perturbaciones hermitianas semidefinidas positivas y el teorema de entrelazamiento de Cauchy para submatrices principales dan, en la forma estándar, las desigualdades siguientes; véase \cite[Chapter~4]{horn2012matrix}.
-	Por tanto,
-	\[
-		\lambda_{k,n}
-		\le
-		\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr),
-	\]
-	y además
-	\[
-		\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr)
-		\le
-		\lambda_{k,n+1}.
-	\]
-	Por tanto,
-	\[
-		\lambda_{k,n}\le\lambda_{k,n+1},
-		\qquad n\ge k,
-	\]
-	y, en consecuencia,
-	\[
-		\sigma_{k,n}\le\sigma_{k,n+1},
-		\qquad n\ge k.
-	\]
+	Por tanto, \(\lambda_{k,n}\le\lambda_k\bigl((\mathbf D_{n+1}^*\mathbf D_{n+1})_n\bigr)\le\lambda_{k,n+1}\), y en consecuencia \(\lambda_{k,n}\le\lambda_{k,n+1}\) y \(\sigma_{k,n}\le\sigma_{k,n+1}\) para todo \(n\ge k\).
 	La existencia del límite se sigue de la monotonía.
 \end{proof}
 
 \begin{defn}\label{def:sigma_operador}
 	Para cada \(k\ge0\), donde \(\sigma_{k,n}\) está definido en la Definición~\ref{def:sigma_kn}, definimos como valores singulares de la representación matricial \(\mathbf D\) los números
-	\[
-		\sigma_k(\mathbf D):=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty].
-	\]
+	\(\sigma_k(\mathbf D):=\lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty]\).
 \end{defn}
 
 \begin{prop}\label{prop:sigma_qk}
@@ -319,9 +238,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 
 \begin{proof}
 	Fijemos $n\ge0$ y $0\le k\le n$. Sea $V\subset\Poly$ un subespacio con
-	\(
-	\operatorname{codim}_{\Poly}(V)<k+1.
-	\)
+	\(\operatorname{codim}_{\Poly}(V)<k+1\).
 	Consideremos \(V_n:=V\cap\mathbb P_n\).
 	La aplicación natural
 	\[
@@ -330,28 +247,15 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 		p+(V\cap\mathbb P_n)\longmapsto p+V,
 	\]
 	es inyectiva. En efecto, si $p\in\mathbb P_n$ verifica $p+V=V$, entonces $p\in V$, y por tanto $p\in V\cap\mathbb P_n$.
-	En consecuencia,
-	\[
-		\operatorname{codim}_{\mathbb P_n}(V\cap\mathbb P_n)
-		\le
-		\operatorname{codim}_{\Poly}(V)
-		<k+1.
-	\]
+	En consecuencia, \(\operatorname{codim}_{\mathbb P_n}(V\cap\mathbb P_n)\le\operatorname{codim}_{\Poly}(V)<k+1\).
 	Al pasar a coordenadas en la base $\{\phi_0,\dots,\phi_n\}$ obtenemos un subespacio $S_n\subset\mathbb C^{n+1}$ con codimensión menor que $k+1$, o equivalentemente con dimensión al menos $n+1-k$. Por Courant--Fischer,
-	\[
-		\sigma_{k,n}
-		\le
-		\max_{\substack{x\in S_n\\x\neq0}}\frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
-	\]
+	\(\sigma_{k,n}\le\max_{\substack{x\in S_n\\x\neq0}}\frac{\|\mathbf D_nx\|_2}{\|x\|_2}\).
 	Si $x$ corresponde al polinomio $p\in V_n$, entonces
 	\[
 		\|\mathbf D_nx\|_2=\|\pi_n(\D p)\|_S\le \|\D p\|_S\le \|\D|_V\|_S\,\|p\|_S=\|\D|_V\|_S\,\|x\|_2.
 	\]
 	Por tanto, \(\sigma_{k,n}\le \|\D|_V\|_S\).
-	Tomando ínfimo sobre todos los subespacios $V$ con codimensión $<k+1$, obtenemos
-	\[
-		\sigma_{k,n}\le Q_k(\D).
-	\]
+	Tomando ínfimo sobre todos los subespacios $V$ con codimensión $<k+1$, obtenemos \(\sigma_{k,n}\le Q_k(\D)\).
 \end{proof}
 
 \begin{cor}\label{cor:sigma_operador_qk}
@@ -362,11 +266,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 \end{cor}
 
 \begin{proof}
-	Para cada $n\ge k$, la Proposición~\ref{prop:sigma_qk} da \(\sigma_{k,n}\le Q_k(\D)\).
-	Pasando al límite cuando $n\to\infty$, obtenemos
-	\[
-		\sigma_k(\mathbf D)\le Q_k(\D).
-	\]
+	Para cada $n\ge k$, la Proposición~\ref{prop:sigma_qk} da \(\sigma_{k,n}\le Q_k(\D)\). Pasando al límite cuando $n\to\infty$, obtenemos \(\sigma_k(\mathbf D)\le Q_k(\D)\).
 \end{proof}
 
 \begin{thm}\label{thm:igualdad_sigma_qk_general}
@@ -379,18 +279,13 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 \begin{proof}
 	La desigualdad \(\sigma_k(\mathbf D)\le Q_k(\D)\) es el contenido del Corolario~\ref{cor:sigma_operador_qk}. Probemos la desigualdad contraria.
 
-	Sea $0 <a<Q_k(\D)$, donde puede ocurrir que $Q_k(\D)=+\infty$. Por la caracterización max--min del Teorema~\ref{thm:maxmin_Qk}, existe un subespacio $E\subset\Poly$ con
-	\(\dim E=k+1\)
-	tal que
+	Sea $0 <a<Q_k(\D)$, donde puede ocurrir que $Q_k(\D)=+\infty$. Por la caracterización max--min del Teorema~\ref{thm:maxmin_Qk}, existe un subespacio $E\subset\Poly$ con \(\dim E=k+1\) tal que
 	\[
 		\inf_{\substack{p\in E\\ p\ne0}}
 		\frac{\|\D p\|_S}{\|p\|_S}>a.
 	\]
 	Como $E$ es finito-dimensional y $E \subset \Poly$, existe $N\ge0$ tal que \(E\subset\mathbb P_N\). Entonces \(\D(E)\subset\mathbb P_{N+1}\).
-	Por tanto, para todo $n\ge N+1$ y todo $p\in E$,
-	\[
-		\mathcal D_n p=\pi_n(\D p)=\D p.
-	\]
+	Por tanto, para todo $n\ge N+1$ y todo $p\in E$, \(\mathcal D_n p=\pi_n(\D p)=\D p\).
 
 	Aplicando la forma max--min del Lema~\ref{lem:minmax_sigma_Dn} a $\mathbf D_n$, para $n\ge N+1$ obtenemos
 	\[
@@ -403,11 +298,7 @@ De manera análoga al desarrollo hecho con operadores usando los números de Gel
 		\frac{\|\D p\|_S}{\|p\|_S}
 		>a.
 	\]
-	Pasando al límite, \(\sigma_k(\mathbf D)\ge a\).
-	Como esto se verifica para $0 <a<Q_k(\D)$ se concluye que
-	\[
-		\sigma_k(\mathbf D)\ge Q_k(\D).
-	\]
+	Pasando al límite, \(\sigma_k(\mathbf D)\ge a\). Como esto se verifica para $0 <a<Q_k(\D)$ se concluye que \(\sigma_k(\mathbf D)\ge Q_k(\D)\).
 	Este resultado unido con la desigualdad contraria, esto prueba la igualdad.
 \end{proof}
 
@@ -421,14 +312,7 @@ En el caso de operadores acotados, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} 
 \end{cor}
 
 \begin{proof}
-	Por el Teorema~\ref{thm:igualdad_sigma_qk_general},
-	\(\sigma_k(\mathbf D)=Q_k(\D)\).
-	Como \(\D\in\mathcal L(\mathcal H)\), el Teorema~\ref{thm:equivalencia_Qk_Gelfand} da
-	\(Q_k(\D)=c_k(\D)\).
-	Se concluye que
-	\[
-		\sigma_k(\mathbf D)=c_k(\D).
-	\]
+	Por el Teorema~\ref{thm:igualdad_sigma_qk_general}, \(\sigma_k(\mathbf D)=Q_k(\D)\). Como \(\D\in\mathcal L(\mathcal H)\), el Teorema~\ref{thm:equivalencia_Qk_Gelfand} da \(Q_k(\D)=c_k(\D)\). Se concluye que \(\sigma_k(\mathbf D)=c_k(\D)\).
 \end{proof}
 
 \section{Análisis asintótico espectral de \texorpdfstring{$\mathbf D$}{D}}
@@ -436,28 +320,23 @@ En el caso de operadores acotados, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} 
 Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la representación matricial con los índices $Q_k(\D)$, podemos aplicar los resultados del Teorema~\ref{thm:estabilizacion} para obtener información sobre la estabilización de los valores singulares de las secciones principales.
 
 \begin{thm}\label{thm:igualdad_sigma_qN_general}
-	Sean $R>0$ y $F\subset\C$ un conjunto finito de puntos, consideremos sobre $\Poly$ el producto escalar
+	Sean $R>0$ y $c_1,\dots,c_N\in\C$, y consideremos sobre $\Poly$ el producto escalar
 	\[
 		\langle p,q\rangle_S
 		=
 		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
 		+
-		\sum_{c\in F} p'(c)\overline{q'(c)},
+		\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
 		\qquad p,q\in\Poly.
 	\]
-	Sea $\mathbf D$ la representación matricial del operador $\D$. Si $N:=|F|$, entonces, para todo $k\ge N$,
+	Sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge N$,
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D)=R.
 	\]
 \end{thm}
 
 \begin{proof}
-	Por el Teorema~\ref{thm:qk_vale_R_desde_N}, \(Q_k(\D)=R\) para todo \(k\ge N\). Por el Teorema~\ref{thm:igualdad_sigma_qk_general}, \(\sigma_k(\mathbf D)=Q_k(\D)\).
-	Se concluye que
-	\[
-		\sigma_k(\mathbf D)=Q_k(\D)=R,
-		\qquad k\ge N.
-	\]
+	Por el Teorema~\ref{thm:qk_vale_R_desde_N}, \(Q_k(\D)=R\) para todo \(k\ge N\). Por el Teorema~\ref{thm:igualdad_sigma_qk_general}, \(\sigma_k(\mathbf D)=Q_k(\D)\). Se concluye que \(\sigma_k(\mathbf D)=Q_k(\D)=R\) para todo \(k\ge N\).
 \end{proof}
 
 \begin{cor}\label{cor:igualdad_sigma_qk_exterior_puro}
@@ -467,10 +346,10 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 		=
 		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
 		+
-		\sum_{c\in F} p'(c)\overline{q'(c)},
+		\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
 		\qquad p,q\in\Poly,
 	\]
-	donde $F\subset\C$ es un conjunto finito de puntos y satisface $|c|\ge R$ para todo $c\in F$. Sea $m:=|F|$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
+	donde $c_1,\dots,c_N\in\C$ satisfacen $|c_j|\ge R$ para todo $j=1,\dots,N$. Sea $m:=N$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
 	\[
 		\sigma_k(\mathbf D)
 		=
@@ -482,7 +361,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{cor}
 
 \begin{proof}
-	Como en este caso $I_{\mathrm{out}}=F$, se tiene $m=N=|F|$. Por el Teorema~\ref{thm:descripcion_global_qk},
+	Como en este caso $m=N$, por el Teorema~\ref{thm:descripcion_global_qk},
 	\[
 		Q_k(\D)=
 		\begin{cases}
@@ -502,20 +381,20 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{proof}
 
 \begin{cor}\label{cor:estabilizacion_singular_umbral}
-	Sea $R>0$, sea $F\subset\C$ finito y consideremos sobre $\Poly$ el producto escalar
+	Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
 	\[
 		\langle p,q\rangle_S
 		=
 		\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
 		+
-		\sum_{c\in F} p'(c)\overline{q'(c)},
+		\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
 		\qquad p,q\in\Poly.
 	\]
 	Sea
 	\[
-		I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
+		|c_j|\ge R,\quad j=1,\dots,m,
 		\qquad
-		m:=|I_{\mathrm{out}}|.
+		|c_j|<R,\quad j=m+1,\dots,N.
 	\]
 	Sea además \(\mathbf D\) la representación matricial del operador \(\D\).
 	Si $m\ge1$, entonces
@@ -525,20 +404,17 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{cor}
 
 \begin{proof}
-	Por el Teorema~\ref{thm:igualdad_sigma_qk_general},
-	\[
-		\sigma_m(\mathbf D)=Q_m(\D).
-	\]
+	Por el Teorema~\ref{thm:igualdad_sigma_qk_general}, \(\sigma_m(\mathbf D)=Q_m(\D)\).
 	Como $Q_m(\D)<\infty$ por el Teorema~\ref{thm:estabilizacion}, se concluye el resultado.
 \end{proof}
 
 \begin{rmk}
-	En el caso general con $N=|F|$,
+	En el caso general con $N$ átomos,
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D)=R,
 		\qquad k\ge N.
 	\]
-	En el caso exterior con $I_{\mathrm{in}}=\varnothing$ y $m=|I_{\mathrm{out}}|$,
+	En el caso exterior con $m=N$,
 	\[
 		\sigma_j(\mathbf D)=Q_j(\D)=+\infty,
 		\qquad 0\le j<m,
@@ -555,9 +431,17 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 	aunque el valor exacto de este índice no queda determinado por el Teorema~\ref{thm:estabilizacion}.
 \end{rmk}
 
+\begin{rmk}
+La igualdad \(\sigma_k(\mathbf D)=Q_k(\D)\) permite interpretar los índices \(Q_k\) desde un punto de vista matricial. Como
+\[
+\sigma_k(\mathbf D)=\lim_{n\to\infty}\sigma_{k,n},
+\]
+con \(\sigma_{k,n}\) el \(k\)-ésimo valor singular de la sección principal \(\mathbf D_n\), el cálculo de los índices \(Q_k(\D)\) puede aproximarse mediante las secciones finitas de la representación matricial de \(\D\). Así, un objeto definido de forma abstracta mediante subespacios de codimensión finita queda conectado con un procedimiento computable basado en valores singulares de matrices finitas.
+\end{rmk}
+
 \subsection{Ejemplos}
 
-En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singulares relevantes para contrastar los resultados teóricos con los cálculos numéricos de las truncaciones. En cada caso puede sustituirse el recuadro por la imagen generada computacionalmente del soporte del producto de Sobolev.
+En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singulares relevantes para contrastar los resultados teóricos con los cálculos numéricos de las truncaciones.
 
 \begin{exm}
 	Consideremos el producto escalar
@@ -575,9 +459,11 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\]
 	En este caso
 	\[
-		F=\left\{\tfrac12,-\tfrac13,\tfrac{i}{2}\right\},
+		c_1=\tfrac12,
 		\qquad
-		I_{\mathrm{out}}=\varnothing,
+		c_2=-\tfrac13,
+		\qquad
+		c_3=\tfrac{i}{2},
 		\qquad
 		m=0,
 		\qquad
@@ -596,7 +482,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 		\label{fig:ejemplo_interior_puro}
 	\end{figure}
 
-	Los índices relevantes para completar numéricamente pueden resumirse en la tabla siguiente:
+	De manera computacional, obtenemos los siguientes valores singulares relevantes para las truncaciones de orden $n=50$:
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -629,9 +515,13 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\]
 	Entonces
 	\[
-		F=\left\{2,-2,\tfrac{3i}{2},-\tfrac{3i}{2}\right\},
+		c_1=2,
 		\qquad
-		I_{\mathrm{out}}=F,
+		c_2=-2,
+		\qquad
+		c_3=\tfrac{3i}{2},
+		\qquad
+		c_4=-\tfrac{3i}{2},
 		\qquad
 		m=4,
 		\qquad
@@ -654,7 +544,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 		\label{fig:ejemplo_exterior_puro}
 	\end{figure}
 
-	Los índices relevantes pueden organizarse así:
+	De manera computacional, obtenemos los siguientes valores singulares relevantes para las truncaciones de orden $n=50$:
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -666,7 +556,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 			\hline
 		\end{tabular}
 	\end{center}
-	Aquí el contraste es inmediato: $k=3$ es el último índice con valor infinito, mientras que $k=4$ ya es finito y además coincide con el valor general $R=1$.
+	Aquí el contraste es inmediato: $k=3$ es el último índice que podemos observar que tiende a infinito, mientras que $k=4$ ya es finito y además coincide con el valor general $R=1$.
 \end{exm}
 
 \begin{exm}
@@ -689,11 +579,15 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\]
 	Ahora
 	\[
-		F=\left\{2,-2,\tfrac{3i}{2},0,\tfrac12\right\},
+		c_1=2,
 		\qquad
-		I_{\mathrm{out}}=\left\{2,-2,\tfrac{3i}{2}\right\},
+		c_2=-2,
 		\qquad
-		I_{\mathrm{in}}=\left\{0,\tfrac12\right\},
+		c_3=\tfrac{3i}{2},
+		\qquad
+		c_4=0,
+		\qquad
+		c_5=\tfrac12,
 		\qquad
 		m=3,
 		\qquad
@@ -718,7 +612,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 		\label{fig:ejemplo_mixto}
 	\end{figure}
 
-	Los índices destacados quedan resumidos en la tabla:
+	De manera computacional, obtenemos los siguientes valores singulares relevantes para las truncaciones de orden $n=50$:
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline

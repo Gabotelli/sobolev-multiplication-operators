@@ -14,28 +14,20 @@ comportamiento analítico y geométrico de los polinomios asociados
 
 A lo largo de esta memoria denotaremos por \(\Poly\) el espacio vectorial de los
 polinomios con coeficientes complejos y, para cada \(n\ge 0\), escribiremos
-\[
-    \Poly_n:=\{p\in\Poly:\deg p\le n\}.
-\]
+\(\Poly_n:=\{p\in\Poly:\deg p\le n\}\).
 
 \begin{defn}\label{def:medida_soporte}
 Sea \(\mu\) una medida de Borel positiva y finita en \(\C\). El soporte de
 \(\mu\), denotado por \(\operatorname{supp}(\mu)\), es el menor cerrado
-\(S\subset\C\) tal que
-\[
-    \mu(\C\setminus S)=0.
-\]
+\(S\subset\C\) tal que \(\mu(\C\setminus S)=0\).
 Diremos que \(\mu\) tiene soporte infinito si \(\operatorname{supp}(\mu)\)
 contiene infinitos puntos.
 \end{defn}
 
 \begin{defn}\label{def:circulos_medidas_normalizadas}
 Para cada \(a\in\C\) y cada \(R>0\), definimos la circunferencia
-\[
-    \mathbb S_{a,R}:=\{z\in\C:|z-a|=R\},
-    \qquad
-    \mathbb S_R:=\mathbb S_{0,R}.
-\]
+\(\mathbb S_{a,R}:=\{z\in\C:|z-a|=R\}\) y escribimos
+\(\mathbb S_R:=\mathbb S_{0,R}\).
 Denotamos por \(\mathbf m_{a;R}\) la medida de Lebesgue normalizada sobre
 \(\mathbb S_{a,R}\), caracterizada por
 \[
@@ -44,11 +36,7 @@ Denotamos por \(\mathbf m_{a;R}\) la medida de Lebesgue normalizada sobre
     \frac{1}{2\pi}\int_0^{2\pi} f(a+Re^{i\theta})\,d\theta
 \]
 para toda función continua \(f:\mathbb S_{a,R}\to\C\). En particular,
-\[
-    \mathbf m_R:=\mathbf m_{0;R},
-    \qquad
-    \mathbf m:=\mathbf m_1.
-\]
+\(\mathbf m_R:=\mathbf m_{0;R}\) y \(\mathbf m:=\mathbf m_1\).
 \end{defn}
 
 Si \(\mu\) es una medida de Borel positiva, finita, con soporte infinito y momentos finitos,
@@ -60,27 +48,17 @@ definimos en \(\Poly\) el producto estándar
     \qquad p,q\in\Poly,
 \end{equation}
 y la norma asociada
-\[
-    \|p\|_\mu^2:=\int_{\C}|p(z)|^2\,d\mu(z).
-\]
+\(\|p\|_\mu^2:=\int_{\C}|p(z)|^2\,d\mu(z)\).
 Aquí \(L^2(\mu)\) denota el espacio de clases de funciones medibles
-\(f:\C\to\C\) tales que
-\[
-    \int_{\C}|f(z)|^2\,d\mu(z)<\infty,
-\]
-dotado de la norma
-\[
-    \|f\|_{L^2(\mu)}^2:=\int_{\C}|f(z)|^2\,d\mu(z).
-\]
+\(f:\C\to\C\) tales que \(\int_{\C}|f(z)|^2\,d\mu(z)<\infty\),
+dotado de la norma \(\|f\|_{L^2(\mu)}^2:=\int_{\C}|f(z)|^2\,d\mu(z)\).
 En particular, la expresión anterior es la restricción de esa norma al subespacio
 de polinomios, y cuando queramos enfatizar esta interpretación escribiremos
 también \(\|p\|_{L^2(\mu)}\).
 
 Como \(\operatorname{supp}(\mu)\) es infinito, \eqref{eq:producto_estandar}
 define un producto escalar en \(\Poly\). Denotaremos por
-\[
-    \mathcal H_\mu:=\overline{\Poly}^{\,\|\cdot\|_\mu}
-\]
+\(\mathcal H_\mu:=\overline{\Poly}^{\,\|\cdot\|_\mu}\)
 la completación de \(\Poly\) respecto de esa norma. Entonces \(\mathcal H_\mu\)
 es un espacio de Hilbert separable y \(\Poly\) es un subespacio denso de
 \(\mathcal H_\mu\), aunque en este capítulo trabajaremos principalmente en el
@@ -89,41 +67,23 @@ subespacio de polinomios.
 \begin{defn}\label{def:polinomios_ortogonales}
 Sea \(\langle\cdot,\cdot\rangle\) un producto escalar en \(\Poly\). Una
 sucesión \((p_n)_{n\ge 0}\subset\Poly\) se dice ortogonal respecto de
-\(\langle\cdot,\cdot\rangle\) si
-\[
-    \deg(p_n)=n,
-    \qquad
-    \langle p_n,p_m\rangle=0
-    \quad\text{si }n\neq m.
-\]
+\(\langle\cdot,\cdot\rangle\) si \(\deg(p_n)=n\) y
+\(\langle p_n,p_m\rangle=0\) si \(n\neq m\).
 Si además \(\|p_n\|=1\) para todo \(n\ge 0\), diremos que la sucesión es
 ortonormal.
 \end{defn}
 
 Aplicando Gram--Schmidt a la base monomial \(1,z,z^2,\dots\), obtenemos una
-sucesión ortonormal
-\[
-    (\phi_n)_{n\ge 0},
-    \qquad
-    \deg(\phi_n)=n,
-\]
+sucesión ortonormal \((\phi_n)_{n\ge 0}\), con \(\deg(\phi_n)=n\),
 única si se fija positividad en el coeficiente principal. En particular,
-\[
-    \langle \phi_n,\phi_m\rangle_\mu=\delta_{nm},
-    \qquad n,m\ge 0.
-\]
+\(\langle \phi_n,\phi_m\rangle_\mu=\delta_{nm}\) para \(n,m\ge 0\).
 Además, la familia \(\{\phi_n\}_{n\ge 0}\) constituye una base ortonormal
 numerable de \(\mathcal H_\mu\).
 
 De manera equivalente, para cada \(n\ge 0\) existe un único polinomio mónico
-ortogonal
-\[
-    \widehat p_n(z)=z^n+\cdots,
-\]
-y la relación entre ambas normalizaciones viene dada por
-\[
-    \phi_n=\frac{\widehat p_n}{\|\widehat p_n\|_\mu}.
-\]
+ortogonal \(\widehat p_n(z)=z^n+\cdots\), y la relación entre ambas
+normalizaciones viene dada por
+\(\phi_n=\frac{\widehat p_n}{\|\widehat p_n\|_\mu}\).
 
 \begin{prop}
 \label{prop:minima_norma_intro}
@@ -201,11 +161,8 @@ todo lo que sigue \cite{CastroDuran2003}.
 
 Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinito.
 Diremos que \(\D\) es acotado respecto de \(\|\cdot\|_\mu\) si existe una
-constante \(C>0\) tal que
-\[
-    \|\D p\|_\mu\le C\|p\|_\mu,
-    \qquad p\in\Poly.
-\]
+constante \(C>0\) tal que \(\|\D p\|_\mu\le C\|p\|_\mu\) para todo
+\(p\in\Poly\).
 En ese caso escribiremos
 \[
     \|\D\|_\mu:=
@@ -248,10 +205,7 @@ Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinit
 con todos los momentos finitos. Sea \((\phi_n)_{n\ge 0}\) la sucesión ortonormal
 asociada a \(\langle\cdot,\cdot\rangle_\mu\). Si \(\D\) es acotado respecto de
 \(\|\cdot\|_\mu\), entonces todos los ceros de los polinomios \(\phi_n\) están
-contenidos en el disco cerrado
-\[
-    \overline{D(0,\|\D\|_\mu)}.
-\]
+contenidos en el disco cerrado \(\overline{D(0,\|\D\|_\mu)}\).
 \end{thm}
 
 La acotación del operador de multiplicación proporciona, por tanto, una cota
@@ -329,9 +283,7 @@ es suficiente para organizar la discusión introductoria.
 El caso \(m=0\) recupera la ortogonalidad estándar. Cuando \(m\ge 1\), la
 presencia de derivadas altera de manera esencial la estructura del problema. En
 particular, la simetría de \(\D\) deja de ser un rasgo general, pues
-\[
-    (\D p)'(z)=p(z)+zp'(z),
-\]
+\((\D p)'(z)=p(z)+zp'(z)\),
 de modo que al calcular la norma de \(\D p\) se mezclan distintos órdenes de
 derivación.
 
@@ -419,10 +371,7 @@ Sea
 un producto de Sobolev definido por medidas de Borel positivas y finitas. Si el
 operador de multiplicación \(\D\) es acotado respecto de \(\|\cdot\|_S\),
 entonces los ceros de los polinomios ortogonales asociados están contenidos en el
-disco cerrado
-\[
-    \overline{D(0,\|\D\|_S)}.
-\]
+disco cerrado \(\overline{D(0,\|\D\|_S)}\).
 En particular, la familia de ceros está uniformemente acotada
 \cite{lopez1999zero,lopez2001sobolev}.
 \end{thm}
@@ -441,24 +390,15 @@ las distintas componentes del producto de manera que cada nivel derivado quede
 controlado por el anterior \cite{lopez1999zero,lopez2001sobolev,CastroDuran2003}.
 
 Supongamos que existe una medida positiva de Borel \(\mu\) tal que
-\[
-    d\mu_k = w_k\,d\mu,
-    \qquad k=0,\dots,m,
-\]
+\(d\mu_k = w_k\,d\mu\) para \(k=0,\dots,m\),
 con \(w_k\in L^1(\mu)\) y \(w_k\ge 0\).
 
 \begin{defn}
 \label{def:dominacion_secuencial}
 Diremos que la familia \(\mu_0,\mu_1,\dots,\mu_m\) es secuencialmente dominada si,
-para cada \(k=1,\dots,m\), se tiene
-\[
-    \frac{w_k}{w_{k-1}}\in L^\infty(\mu).
-\]
+para cada \(k=1,\dots,m\), se tiene \(\frac{w_k}{w_{k-1}}\in L^\infty(\mu)\).
 Equivalentemente, para cada \(k\) existe una constante \(C_k>0\) tal que
-\[
-    w_k(z)\le C_k w_{k-1}(z)
-    \quad\text{para \(\mu\)-casi todo }z.
-\]
+\(w_k(z)\le C_k w_{k-1}(z)\) para \(\mu\)-casi todo \(z\).
 \end{defn}
 
 Esta hipótesis permite estimar de forma jerárquica las contribuciones derivadas y,
@@ -522,12 +462,7 @@ incluye términos discretos \cite{miller1999bounded,deB93}.
 Sea \(\mu\) una medida de Borel positiva y finita en \(\C\). Diremos que
 \(a\in\C\) es un punto de evaluación acotada para \(L^2(\mu)\), o
 \emph{bounded point evaluation}, si existe una constante \(C_a>0\) tal que
-\[
-    |p(a)|^2
-    \le
-    C_a \int_{\C}|p(z)|^2\,d\mu(z),
-    \qquad p\in\Poly.
-\]
+\(|p(a)|^2\le C_a \int_{\C}|p(z)|^2\,d\mu(z)\) para todo \(p\in\Poly\).
 Denotaremos por \(\operatorname{bpe}(\mu)\) el conjunto de todos esos puntos.
 \end{defn}
 

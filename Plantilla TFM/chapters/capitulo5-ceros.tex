@@ -7,11 +7,7 @@ La lectura correcta tiene dos niveles. Primero aparece un puente macroscópico: 
 
 \section{Autovalores, umbral singular y Weyl--Horn}\label{sec:weyl_horn}
 
-Antes de distinguir regímenes, fijamos el mecanismo común que solo da control macroscópico. El problema de los ceros ya quedó traducido al lenguaje matricial en el Capítulo~\ref{sec:matricial}. En la Proposición~\ref{prop:charpoly_truncada} vimos que la matriz de Hessenberg truncada $\mathbf D_n$ codifica la acción de multiplicar por $z$ sobre
-\[
-	\mathbb P_n=[\phi_0,\dots,\phi_n],
-\]
-y que su polinomio característico reproduce, salvo normalización, al polinomio ortogonal siguiente.
+Antes de distinguir regímenes, fijamos el mecanismo común que solo da control macroscópico. El problema de los ceros ya quedó traducido al lenguaje matricial en el Capítulo~\ref{sec:matricial}. En la Proposición~\ref{prop:charpoly_truncada} vimos que la matriz de Hessenberg truncada $\mathbf D_n$ codifica la acción de multiplicar por $z$ sobre $\mathbb P_n=[\phi_0,\dots,\phi_n]$, y que su polinomio característico reproduce, salvo normalización, al polinomio ortogonal siguiente.
 
 \begin{prop}\label{prop:autovalores_ceros}
 	Para cada $n \ge 0$, los ceros del polinomio ortonormal $\phi_{n+1}(z)$ coinciden, contando multiplicidades, con los autovalores de la sección transpuesta $\mathbf{D}_n^t$:
@@ -30,20 +26,10 @@ y que su polinomio característico reproduce, salvo normalización, al polinomio
 \end{proof}
 
 \begin{defn}\label{def:radio_espectral}
-	El \emph{radio espectral} de una matriz cuadrada $A \in \mathcal{M}_n(\mathbb{C})$, denotado $\rho(A)$, se define como
-	\[
-		\rho(A) = \max\{|\lambda| : \lambda \in \sigma(A)\}.
-	\]
+	El \emph{radio espectral} de una matriz cuadrada $A \in \mathcal{M}_n(\mathbb{C})$, denotado $\rho(A)$, se define como $\rho(A)=\max\{|\lambda| : \lambda \in \sigma(A)\}$.
 \end{defn}
 
-Aplicado a $A=\mathbf D_n^t$, este radio espectral mide directamente el módulo del cero más exterior de $\phi_{n+1}$. Además, para toda matriz se tiene
-\[
-	\rho(A)\le \|A\|_2=\sigma_0(A),
-\]
-de modo que
-\[
-	\rho(\mathbf D_n^t)\le \sigma_{0,n}.
-\]
+Aplicado a $A=\mathbf D_n^t$, este radio espectral mide directamente el módulo del cero más exterior de $\phi_{n+1}$. Además, para toda matriz se tiene $\rho(A)\le \|A\|_2=\sigma_0(A)$, de modo que $\rho(\mathbf D_n^t)\le \sigma_{0,n}$.
 Esto da un control grosero del tamaño de los ceros. El siguiente paso macroscópico consiste en mirar no un solo autovalor, sino el producto de los $k$ autovalores de mayor módulo.
 
 \begin{lem}\label{lem:weyl_horn}
@@ -61,21 +47,12 @@ Esto da un control grosero del tamaño de los ceros. El siguiente paso macroscó
 	Véase la demostración en \cite[Sec.~3.3]{horn2012matrix}.
 \end{proof}
 
-La desigualdad anterior muestra que el producto de los $k$ autovalores de mayor módulo no puede superar el producto de los $k$ valores singulares mayores. Por tanto, una vez fijado el umbral singular, el escape espectral queda restringido. En el régimen puramente exterior,
-\[
-	\sigma_{j,n}\to +\infty\quad (j<m),
-	\qquad
-	\lim_{n\to\infty}\sigma_{m,n}\le R,
-\]
-y en el caso mixto al menos se conserva la cota abstracta
-\[
-	\lim_{n\to\infty}\sigma_{m,n}\le Q_m(\D)<\infty.
-\]
+La desigualdad anterior muestra que el producto de los $k$ autovalores de mayor módulo no puede superar el producto de los $k$ valores singulares mayores. Por tanto, una vez fijado el umbral singular, el escape espectral queda restringido. En el régimen puramente exterior, $\sigma_{j,n}\to +\infty$ para $j<m$ y $\lim_{n\to\infty}\sigma_{m,n}\le R$; en el caso mixto al menos se conserva la cota abstracta $\lim_{n\to\infty}\sigma_{m,n}\le Q_m(\D)<\infty$.
 En consecuencia, a partir del índice $m$ el escape de autovalores deja de comportarse como en un régimen completamente inestable. Este control sigue siendo solo macroscópico: acota cuántos ceros pueden quedar en $|z|>R+\varepsilon$, pero no decide todavía junto a qué átomos aparecen ni qué escala local rige en frontera. Para eso hará falta pasar a la reducción racional exterior y a Rouché.
 
 \section{Conteo exacto en el régimen puramente exterior}\label{sec:conteo_ceros}
 
-En esta sección, \emph{puramente exterior} significa estrictamente exterior, es decir, $|c_k|>R$ para todo átomo discreto; en la notación del Capítulo~\ref{sec:estabilizacion}, esto corresponde al subconjunto $I_{\mathrm{out}}^*:=\{c\in I_{\mathrm{out}}:|c|>R\}$. Los puntos de frontera $I_{\mathrm{out}}\setminus I_{\mathrm{out}}^*$ se tratarán por separado más adelante. El Lema~\ref{lem:weyl_horn} solo da un techo: a lo sumo hay $m$ ceros exteriores. El objetivo ahora es convertir ese techo en un conteo exacto mediante la reducción racional exterior de $\pi_{n+1}(z)/z^{n+1}$ y el Teorema de Rouché.
+En esta sección, \emph{puramente exterior} significa estrictamente exterior, es decir, $|c_k|>R$ para todo $k=1,\dots,m$. Los posibles puntos de frontera, caracterizados por $|c_k|=R$ para algún $k\le m$, se tratarán por separado más adelante. El Lema~\ref{lem:weyl_horn} solo da un techo: a lo sumo hay $m$ ceros exteriores. El objetivo ahora es convertir ese techo en un conteo exacto mediante la reducción racional exterior de $\pi_{n+1}(z)/z^{n+1}$ y el Teorema de Rouché.
 
 Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una función racional $F(z)$ con un cero en cada átomo exterior y polos en el interior del disco. Esa es la pieza que convierte el techo macroscópico en conteo exacto.
 
@@ -190,10 +167,7 @@ Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una f
 	\end{align*}
 	y por tanto $\pi_{n+1}'(c)=\alpha_n$. Esto prueba la fórmula exacta.
 
-	Sea ahora
-	\[
-		t=\frac{\overline c z}{R^2}.
-	\]
+	Sea ahora $t=\frac{\overline c z}{R^2}$.
 	Como $|c|>R$ y trabajamos sobre compactos contenidos en $\{|z|>R\}$, se tiene $|t|>1$ uniformemente. La expresión anterior puede reescribirse como
 	\[
 		\frac{\pi_{n+1}(z)}{z^{n+1}}
@@ -237,11 +211,7 @@ Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una f
 		\qquad |c_\ell|>R,
 	\]
 	con $c_1,\dots,c_m$ distintos, y sea $\pi_{n+1}(z)=z^{n+1}+\sum_{j=0}^n a_{j,n}z^j$ el polinomio mónico ortogonal de Sobolev.
-	Definiendo
-	\[
-		v_{\ell,n}:=\pi_{n+1}'(c_\ell),
-		\qquad 1\le \ell\le m,
-	\]
+	Definiendo $v_{\ell,n}:=\pi_{n+1}'(c_\ell)$ para $1\le \ell\le m$,
 	se tiene $a_{0,n}=0$ y, para $1\le j\le n$,
 	\[
 		a_{j,n}=-jR^{-2j}\sum_{\ell=1}^m v_{\ell,n}\overline c_\ell^{\,j-1}.
@@ -303,20 +273,10 @@ Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una f
 \end{lem}
 
 \begin{proof}
-	Sea
-	\[
-		C=(C_{r\ell})_{1\le r,\ell\le m},
-		\qquad
-		C_{r\ell}:=\frac{1}{c_r\overline c_\ell-R^2}.
-	\]
+	Sea $C=(C_{r\ell})_{1\le r,\ell\le m}$, con $C_{r\ell}:=\frac{1}{c_r\overline c_\ell-R^2}$.
 	Esta es una matriz de Cauchy con parámetros $x_r=c_r$ y $y_\ell=-R^2/\overline c_\ell$. Como los $c_r$ son distintos y también lo son los $R^2/\overline c_\ell$, se tiene $x_r-y_\ell\neq0$ para todo par $(r,\ell)$ y el determinante de Cauchy es no nulo; luego $C$ es invertible.
 
-	Definimos
-	\[
-		\beta_n:=\bigl(\beta_{1,n},\dots,\beta_{m,n}\bigr)^t,
-		\qquad
-		\beta_{\ell,n}:=\frac{n\overline c_\ell^{\,n}}{R^{2n}}v_{\ell,n}.
-	\]
+	Definimos $\beta_n:=\bigl(\beta_{1,n},\dots,\beta_{m,n}\bigr)^t$, donde $\beta_{\ell,n}:=\frac{n\overline c_\ell^{\,n}}{R^{2n}}v_{\ell,n}$.
 	Dividiendo el sistema del Lema~\ref{lem:sistema_finito_atraccion} por $nc_r^n$ obtenemos
 	\[
 		C_n\beta_n=\left(1+\frac1n\right)\mathbf 1,
@@ -373,12 +333,7 @@ Al normalizar los polinomios mónicos de Sobolev, este cociente converge a una f
 		F(z)=\prod_{\ell=1}^m\frac{z-c_\ell}{z-R^2/\overline c_\ell}.
 	\]
 
-	Pasamos ahora a la variable recíproca $w=1/z$ y definimos
-	\[
-		H_n(w):=w^{n+1}\pi_{n+1}(1/w)=\frac{\pi_{n+1}(1/w)}{(1/w)^{n+1}},
-		\qquad
-		H(w):=F(1/w).
-	\]
+	Pasamos ahora a la variable recíproca $w=1/z$ y definimos $H_n(w):=w^{n+1}\pi_{n+1}(1/w)=\frac{\pi_{n+1}(1/w)}{(1/w)^{n+1}}$ y $H(w):=F(1/w)$.
 	Sobre la circunferencia $|w|=(R+\varepsilon)^{-1}$ se tiene $|1/w|=R+\varepsilon$, luego $H_n\to H$ uniformemente. Además, los polos de $F$ están en $R^2/\overline c_k$, cuyo módulo es estrictamente menor que $R+\varepsilon$; por tanto, $H$ es holomorfa en $|w|\le (R+\varepsilon)^{-1}$. Sus ceros en ese disco son exactamente $1/c_1,\dots,1/c_m$, todos simples, y no hay ceros sobre la frontera. Aplicando Rouché en $|w|=(R+\varepsilon)^{-1}$, concluimos que para $n$ suficientemente grande $H_n$ y $H$ tienen el mismo número de ceros en $|w|<(R+\varepsilon)^{-1}$, a saber, $m$. Bajo la transformación $w=1/z$, esos ceros corresponden exactamente a los ceros de $\pi_{n+1}$ en $|z|>R+\varepsilon$.
 \end{proof}
 
@@ -456,11 +411,7 @@ Una vez fijado cuántos ceros quedan fuera de $|z|=R+\varepsilon$, el siguiente 
 Cuando hay átomos interiores pero no hay frontera, la geometría exterior dominante no cambia. Los puntos interiores pueden modificar la constante canónica del Capítulo~\ref{sec:estabilizacion}, pero no la ley exterior que controla conteo y atracción. El mecanismo sigue siendo un desacople por bloques: el bloque interior permanece uniformemente invertible, mientras que el bloque exterior vuelve a quedar gobernado por la misma matriz de Cauchy del régimen puramente exterior.
 
 \begin{lem}\label{lem:bloque_interior_invertible}
-	Sean $b_1,\dots,b_q\in\C$ con $|b_s|<R$ para todo $s$, y definamos
-	\[
-		(D_n)_{su}:=\delta_{su}+\frac1{R^2}T_n\!\left(\frac{b_s\overline b_u}{R^2}\right),
-		\qquad 1\le s,u\le q.
-	\]
+	Sean $b_1,\dots,b_q\in\C$ con $|b_s|<R$ para todo $s$, y definamos $(D_n)_{su}:=\delta_{su}+\frac1{R^2}T_n\!\left(\frac{b_s\overline b_u}{R^2}\right)$ para $1\le s,u\le q$.
 	Entonces existe una matriz límite
 	\[
 		D=(D_{su})_{1\le s,u\le q},
@@ -530,12 +481,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	\[
 		\pi_{n+1}(z)=z^{n+1}+\sum_{j=0}^n a_{j,n}z^j.
 	\]
-	Definimos
-	\[
-		x_{r,n}:=\pi_{n+1}'(a_r),
-		\qquad
-		y_{s,n}:=\pi_{n+1}'(b_s).
-	\]
+	Definimos $x_{r,n}:=\pi_{n+1}'(a_r)$ y $y_{s,n}:=\pi_{n+1}'(b_s)$.
 	La ortogonalidad frente a $1$ da $a_{0,n}=0$. Para $1\le k\le n$,
 	\[
 		0=\langle \pi_{n+1},z^k\rangle_S
@@ -561,12 +507,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 		\label{eq:sistema_interior_mixto}
 	\end{align}
 
-	Definimos el vector escalado exterior
-	\[
-		\beta_n:=(\beta_{1,n},\dots,\beta_{m,n})^t,
-		\qquad
-		\beta_{r,n}:=\frac{n\overline a_r^{\,n}}{R^{2n}}x_{r,n}.
-	\]
+	Definimos el vector escalado exterior $\beta_n:=(\beta_{1,n},\dots,\beta_{m,n})^t$, donde $\beta_{r,n}:=\frac{n\overline a_r^{\,n}}{R^{2n}}x_{r,n}$.
 	Si dividimos \eqref{eq:sistema_exterior_mixto} por $na_r^n$, obtenemos
 	\begin{equation}\label{eq:sistema_exterior_beta_mixto}
 		E_n\beta_n+P_nY_n=\left(1+\frac1n\right)\mathbf 1,
@@ -595,18 +536,11 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	\begin{equation}\label{eq:sistema_interior_bloque_mixto}
 		D_nY_n+G_n\beta_n=h_n,
 	\end{equation}
-	donde
-	\[
-		h_n:=\bigl((n+1)b_1^n,\dots,(n+1)b_q^n\bigr)^t,
-	\]
+	donde $h_n:=\bigl((n+1)b_1^n,\dots,(n+1)b_q^n\bigr)^t$,
 	\[
 		(G_n)_{st}:=\frac{R^{2n}}{nR^2\overline a_t^{\,n}}T_n\!\left(\frac{b_s\overline a_t}{R^2}\right),
 	\]
-	y $D_n$ es la matriz del Lema~\ref{lem:bloque_interior_invertible}. Para $n$ grande, ese lema nos da
-	\[
-		Y_n=D_n^{-1}(h_n-G_n\beta_n)
-	\]
-	y, al sustituir en \eqref{eq:sistema_exterior_beta_mixto},
+	y $D_n$ es la matriz del Lema~\ref{lem:bloque_interior_invertible}. Para $n$ grande, ese lema nos da $Y_n=D_n^{-1}(h_n-G_n\beta_n)$ y, al sustituir en \eqref{eq:sistema_exterior_beta_mixto},
 	\begin{equation}\label{eq:schur_mixto}
 		\bigl(E_n-P_nD_n^{-1}G_n\bigr)\beta_n
 		=
@@ -617,10 +551,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 
 	\smallskip
 	\noindent\emph{Paso 1: $P_nD_n^{-1}h_n\to0$.}
-	Puesto que $\sup_n\|D_n^{-1}\|<\infty$, basta ver que $P_nh_n\to0$. Para la entrada $(r,s)$ de ese producto aparece el factor
-	\[
-		\frac{n+1}{nR^2}\left(\frac{b_s}{a_r}\right)^n T_n\!\left(\frac{a_r\overline b_s}{R^2}\right).
-	\]
+	Puesto que $\sup_n\|D_n^{-1}\|<\infty$, basta ver que $P_nh_n\to0$. Para la entrada $(r,s)$ de ese producto aparece el factor $\frac{n+1}{nR^2}\left(\frac{b_s}{a_r}\right)^n T_n\!\left(\frac{a_r\overline b_s}{R^2}\right)$.
 	Aplicando el Lema~\ref{lem:cotas_sumas_geometricas_ponderadas} al compacto
 	\[
 		\left\{\frac{a_r\overline b_s}{R^2}:1\le r\le m,\ 1\le s\le q\right\},
@@ -633,10 +564,7 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 			\left(\dfrac{|b_s|^2}{R^2}\right)^n, & \text{si } \dfrac{|a_r||b_s|}{R^2}>1.
 		\end{cases}
 	\]
-	En ambos casos la base de la potencia es estrictamente menor que $1$, porque $|b_s|<R<|a_r|$. Por tanto $P_nh_n\to0$ y, en consecuencia,
-	\[
-		P_nD_n^{-1}h_n\longrightarrow0.
-	\]
+	En ambos casos la base de la potencia es estrictamente menor que $1$, porque $|b_s|<R<|a_r|$. Por tanto $P_nh_n\to0$ y, en consecuencia, $P_nD_n^{-1}h_n\longrightarrow0$.
 
 	\smallskip
 	\noindent\emph{Paso 2: $P_nD_n^{-1}G_n\to0$.}
@@ -654,21 +582,9 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 		\quad
 		n^4\left(\frac{|b_s|^2}{R^2}\right)^n,
 	\]
-	según que $|a_r||b_s|/R^2$ y $|a_t||b_s|/R^2$ sean menores o mayores que $1$. Todas esas bases son estrictamente menores que $1$. Luego
-	\[
-		P_nG_n\longrightarrow0,
-		\qquad
-		P_nD_n^{-1}G_n\longrightarrow0.
-	\]
+	según que $|a_r||b_s|/R^2$ y $|a_t||b_s|/R^2$ sean menores o mayores que $1$. Todas esas bases son estrictamente menores que $1$. Luego $P_nG_n\longrightarrow0$ y $P_nD_n^{-1}G_n\longrightarrow0$.
 
-	Volviendo a \eqref{eq:schur_mixto}, concluimos que
-	\[
-		\bigl(E_n+o(1)\bigr)\beta_n=\mathbf 1+o(1).
-	\]
-	Como $E_n\to C$ y $C$ es invertible, se sigue que $E_n-P_nD_n^{-1}G_n$ es invertible para $n$ grande y
-	\[
-		\beta_n\longrightarrow \beta:=C^{-1}\mathbf 1.
-	\]
+	Volviendo a \eqref{eq:schur_mixto}, concluimos que $\bigl(E_n+o(1)\bigr)\beta_n=\mathbf 1+o(1)$. Como $E_n\to C$ y $C$ es invertible, se sigue que $E_n-P_nD_n^{-1}G_n$ es invertible para $n$ grande y $\beta_n\longrightarrow \beta:=C^{-1}\mathbf 1$.
 
 	Fijamos ahora un compacto $K\subset\{|z|>R\}$. La identidad \eqref{eq:coeficientes_mixto_sin_frontera} da
 	\begin{align*}
@@ -684,15 +600,9 @@ Cuando hay átomos interiores pero no hay frontera, la geometría exterior domin
 	\]
 	exactamente como en la prueba del Lema~\ref{lem:conteo_exterior_reciproco}, porque $|\overline a_r z|/R^2>1$ sobre $K$.
 
-	Para el bloque interior, definimos
-	\[
-		\eta:=\max\left\{\max_{1\le s\le q}|b_s|,\ \max_{1\le t\le m}\frac{R^2}{|a_t|}\right\}<R.
-	\]
+	Para el bloque interior, definimos $\eta:=\max\left\{\max_{1\le s\le q}|b_s|,\ \max_{1\le t\le m}\frac{R^2}{|a_t|}\right\}<R$.
 	Como $\beta_n$ es acotada y $D_n^{-1}$ también lo es, la ecuación \eqref{eq:sistema_interior_bloque_mixto} y el Lema~\ref{lem:cotas_sumas_geometricas_ponderadas} muestran que
-	\[
-		y_{s,n}=O(n^3\eta^n),
-		\qquad 1\le s\le q.
-	\]
+	$y_{s,n}=O(n^3\eta^n)$ para $1\le s\le q$.
 	Además, aplicando de nuevo el Lema~\ref{lem:cotas_sumas_geometricas_ponderadas} al compacto
 	\[
 		\left\{\frac{\overline b_s z}{R^2}: z\in K,\ 1\le s\le q\right\},
@@ -805,31 +715,14 @@ En la frontera pura ya no hay separación macroscópica fija del círculo. La at
 		\alpha_n=
 		\frac{(n+1)c^n}{1+\dfrac1{R^2}\sum_{j=1}^n j^2}.
 	\]
-	Escribiendo
-	\[
-		z=c\left(1+\frac{x}{n}\right),
-		\qquad
-		t_n(x):=1+\frac{x}{n},
-	\]
+	Escribiendo $z=c\left(1+\frac{x}{n}\right)$ y $t_n(x):=1+\frac{x}{n}$,
 	y usando que $\overline c=R^2/c$, obtenemos
 	\[
 		\frac{\pi_{n+1}(c t_n(x))}{c^{n+1}}
 		=
 		t_n(x)^{n+1}-\gamma_n\sum_{j=1}^n j t_n(x)^j,
 	\]
-	donde
-	\[
-		\gamma_n:=\frac{\alpha_n}{R^2c^n}=
-		\frac{n+1}{R^2+\sum_{j=1}^n j^2}.
-	\]
-	Como
-	\[
-		\sum_{j=1}^n j^2=\frac{n(n+1)(2n+1)}{6},
-	\]
-	se sigue que
-	\[
-		n^2\gamma_n\longrightarrow 3.
-	\]
+	donde $\gamma_n:=\frac{\alpha_n}{R^2c^n}=\frac{n+1}{R^2+\sum_{j=1}^n j^2}$. Como $\sum_{j=1}^n j^2=\frac{n(n+1)(2n+1)}{6}$, se sigue que $n^2\gamma_n\longrightarrow 3$.
 
 	Fijemos ahora un compacto $K\subset\mathbb C$. La convergencia
 	\[
@@ -919,20 +812,7 @@ En la frontera pura ya no hay separación macroscópica fija del círculo. La at
 \end{thm}
 
 \begin{proof}
-	Las identidades del Lema~\ref{lem:sistema_finito_atraccion} siguen siendo válidas palabra por palabra en el caso $|c_k|=R$, ya que su demostración es puramente algebraica. Escribimos
-	\[
-		v_{\ell,n}:=\pi_{n+1}'(c_\ell),
-		\qquad
-		u_{\ell,n}:=c_\ell^{-n}v_{\ell,n},
-	\]
-	y fijamos
-	\[
-		D_n:=1+\frac1{R^2}\sum_{j=1}^n j^2.
-	\]
-	Si
-	\[
-		\omega_{r\ell}:=\frac{c_r\overline c_\ell}{R^2},
-	\]
+	Las identidades del Lema~\ref{lem:sistema_finito_atraccion} siguen siendo válidas palabra por palabra en el caso $|c_k|=R$, ya que su demostración es puramente algebraica. Escribimos $v_{\ell,n}:=\pi_{n+1}'(c_\ell)$ y $u_{\ell,n}:=c_\ell^{-n}v_{\ell,n}$, y fijamos $D_n:=1+\frac1{R^2}\sum_{j=1}^n j^2$. Si $\omega_{r\ell}:=\frac{c_r\overline c_\ell}{R^2}$,
 	entonces $\omega_{rr}=1$ y, para $r\neq \ell$, se tiene $\omega_{r\ell}\in\mathbb T\setminus\{1\}$ porque los $c_k$ son distintos. Dividiendo el sistema lineal de dicho lema por $c_r^n$ obtenemos
 	\[
 		D_n u_{r,n}
@@ -943,33 +823,12 @@ En la frontera pura ya no hay separación macroscópica fija del círculo. La at
 		\qquad 1\le r\le m.
 	\]
 
-	Como el conjunto
-	\[
-		\{\omega_{r\ell}: 1\le r\neq \ell\le m\}
-	\]
-	es finito y está contenido en $\mathbb T\setminus\{1\}$, la fórmula cerrada de $T_n$ dada en el Lema~\ref{lem:sumas_geometricas_ponderadas} implica la cota uniforme
-	\[
-		|T_n(\omega_{r\ell})|\le C n^2,
-		\qquad r\neq \ell,
-	\]
+	Como el conjunto $\{\omega_{r\ell}: 1\le r\neq \ell\le m\}$ es finito y está contenido en $\mathbb T\setminus\{1\}$, la fórmula cerrada de $T_n$ dada en el Lema~\ref{lem:sumas_geometricas_ponderadas} implica la cota uniforme $|T_n(\omega_{r\ell})|\le C n^2$ para $r\neq \ell$,
 	para una constante $C>0$ independiente de $n$. En notación matricial,
 	\[
 		(D_n I+B_n)u_n=(n+1)\mathbf 1,
 	\]
-	donde $\|B_n\|=O(n^2)$. Como $D_n\sim n^3/(3R^2)$, se sigue que
-	\[
-		\|D_n^{-1}B_n\|=O\!\left(\frac1n\right).
-	\]
-	Por tanto, para $n$ grande la matriz $I+D_n^{-1}B_n$ es invertible y
-	\[
-		u_n=\frac{n+1}{D_n}(I+D_n^{-1}B_n)^{-1}\mathbf 1.
-	\]
-	Concluimos que, uniformemente en $1\le r\le m$,
-	\[
-		u_{r,n}=\frac{n+1}{D_n}+O\!\left(\frac1{n^3}\right),
-		\qquad
-		n^2u_{r,n}\longrightarrow 3R^2.
-	\]
+	donde $\|B_n\|=O(n^2)$. Como $D_n\sim n^3/(3R^2)$, se sigue que $\|D_n^{-1}B_n\|=O\!\left(\frac1n\right)$. Por tanto, para $n$ grande la matriz $I+D_n^{-1}B_n$ es invertible y $u_n=\frac{n+1}{D_n}(I+D_n^{-1}B_n)^{-1}\mathbf 1$. Concluimos que, uniformemente en $1\le r\le m$, $u_{r,n}=\frac{n+1}{D_n}+O\!\left(\frac1{n^3}\right)$ y $n^2u_{r,n}\longrightarrow 3R^2$.
 
 	Fijemos ahora $r\in\{1,\dots,m\}$ y un compacto $K\subset\mathbb C$. Para $x\in K$ escribimos $t_n(x)=1+x/n$. La fórmula exacta de los coeficientes da
 	\[
@@ -1063,14 +922,7 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 	\[
 		\pi_{n+1}(z)=z^{n+1}+\sum_{j=0}^n a_{j,n}z^j
 	\]
-	y definimos
-	\[
-		x_{r,n}:=\pi_{n+1}'(a_r),
-		\qquad
-		v_{\ell,n}:=\pi_{n+1}'(c_\ell),
-		\qquad
-		y_{s,n}:=\pi_{n+1}'(b_s).
-	\]
+	y definimos $x_{r,n}:=\pi_{n+1}'(a_r)$, $v_{\ell,n}:=\pi_{n+1}'(c_\ell)$ y $y_{s,n}:=\pi_{n+1}'(b_s)$.
 	La ortogonalidad frente a $1$ da $a_{0,n}=0$. Para $1\le k\le n$ se obtiene, exactamente como en \eqref{eq:coeficientes_mixto_sin_frontera},
 	\[
 		a_{k,n}=-kR^{-2k}\left(\sum_{r=1}^m x_{r,n}\overline a_r^{\,k-1}+\sum_{\ell=1}^p v_{\ell,n}\overline c_\ell^{\,k-1}+\sum_{s=1}^q y_{s,n}\overline b_s^{\,k-1}\right).
@@ -1113,31 +965,18 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 	\begin{equation}\label{eq:inner_mixed_boundary}
 		D_n^{\mathrm{in}}W_n+\widetilde G_n\beta_n+\widetilde H_nU_n=\widetilde h_n,
 	\end{equation}
-	donde $D_n^{\mathrm{in}}$ es la matriz del Lema~\ref{lem:bloque_interior_invertible}, luego $(D_n^{\mathrm{in}})^{-1}$ existe y permanece uniformemente acotada. Además,
-	\[
-		\widetilde h_n=\bigl((n+1)(b_1/R)^n,\dots,(n+1)(b_q/R)^n\bigr)^t=O(\eta^n)
-	\]
+	donde $D_n^{\mathrm{in}}$ es la matriz del Lema~\ref{lem:bloque_interior_invertible}, luego $(D_n^{\mathrm{in}})^{-1}$ existe y permanece uniformemente acotada. Además, $\widetilde h_n=\bigl((n+1)(b_1/R)^n,\dots,(n+1)(b_q/R)^n\bigr)^t=O(\eta^n)$,
 	para cierto $\eta\in(0,1)$; las entradas de $\widetilde G_n$ son exponencialmente pequeñas por el mismo argumento que para $Q_n$; y las entradas de $\widetilde H_n$ permanecen uniformemente acotadas porque $|b_s\overline c_\ell|/R^2=|b_s|/R<1$, luego las sumas $T_n(b_s\overline c_\ell/R^2)$ convergen. Por tanto,
 	\begin{equation}\label{eq:Y_small_mixed_boundary}
 		W_n=O(\|U_n\|)+O(\eta^n).
 	\end{equation}
 
-	Para el bloque frontera escribimos
-	\[
-		\Theta_n:=1+\frac1{R^2}\sum_{j=1}^n j^2,
-	\]
+	Para el bloque frontera escribimos $\Theta_n:=1+\frac1{R^2}\sum_{j=1}^n j^2$,
 	y observamos que la ecuación correspondiente se reescribe como
 	\begin{equation}\label{eq:boundary_block_mixed_boundary}
 		(\Theta_n I+B_n)U_n+J_n\beta_n+L_nW_n=(n+1)\mathbf 1,
 	\end{equation}
-	donde $\|B_n\|=O(n^2)$, $\|L_n\|=O(1)$ y las entradas de $J_n$ son $O(n)$. Como $\Theta_n\sim n^3/(3R^2)$, se tiene
-	\[
-		\|\Theta_n^{-1}B_n\|=O\!\left(\frac1n\right),
-	\]
-	y por tanto $\Theta_n I+B_n$ es invertible para $n$ grande, con
-	\[
-		\|(\Theta_n I+B_n)^{-1}\|=O(n^{-3}).
-	\]
+	donde $\|B_n\|=O(n^2)$, $\|L_n\|=O(1)$ y las entradas de $J_n$ son $O(n)$. Como $\Theta_n\sim n^3/(3R^2)$, se tiene $\|\Theta_n^{-1}B_n\|=O\!\left(\frac1n\right)$, y por tanto $\Theta_n I+B_n$ es invertible para $n$ grande, con $\|(\Theta_n I+B_n)^{-1}\|=O(n^{-3})$.
 	De \eqref{eq:boundary_block_mixed_boundary} y \eqref{eq:Y_small_mixed_boundary} obtenemos
 	\[
 		\|U_n\|\le \frac{C}{n^3}\Bigl(n+\|J_n\|\,\|\beta_n\|+\|W_n\|\Bigr)
@@ -1152,29 +991,9 @@ Este es el único régimen donde conviene separar de forma explícita las dos es
 	\[
 		\|U_n\|\le \frac{C}{n^2}+\frac{C}{n}\|U_n\|+C\eta^n.
 	\]
-	Para $n$ suficientemente grande, $C/n<1/2$, y entonces
-	\[
-		U_n=O(n^{-2}).
-	\]
-	Volviendo a \eqref{eq:Y_small_mixed_boundary}, concluimos también que
-	\[
-		W_n=O(n^{-2}).
-	\]
+	Para $n$ suficientemente grande, $C/n<1/2$, y entonces $U_n=O(n^{-2})$. Volviendo a \eqref{eq:Y_small_mixed_boundary}, concluimos también que $W_n=O(n^{-2})$.
 
-	Volviendo a \eqref{eq:outer_mixed_boundary}, obtenemos
-	\[
-		P_nU_n=O(n^{-1}),
-		\qquad
-		Q_nW_n\longrightarrow0,
-	\]
-	y por tanto
-	\[
-		E_n\beta_n=\mathbf 1+o(1).
-	\]
-	Como $E_n\to C$ y $C$ es invertible, resulta que
-	\[
-		\beta_n\longrightarrow\beta:=C^{-1}\mathbf 1.
-	\]
+	Volviendo a \eqref{eq:outer_mixed_boundary}, obtenemos $P_nU_n=O(n^{-1})$ y $Q_nW_n\longrightarrow0$, y por tanto $E_n\beta_n=\mathbf 1+o(1)$. Como $E_n\to C$ y $C$ es invertible, resulta que $\beta_n\longrightarrow\beta:=C^{-1}\mathbf 1$.
 
 	Fijado ahora un compacto $K\subset\{|z|>R\}$, la fórmula exacta de los coeficientes da
 	\begin{align*}
@@ -1332,24 +1151,14 @@ Las secciones anteriores describen de forma teórica la cadena
 \]
 En esta sección dejamos preparado el espacio para ilustraciones numéricas que permitan visualizar simultáneamente la geometría del soporte, la posición de los átomos, la distribución de ceros y la evolución de las ramas singulares relevantes de las truncaciones.
 
-Para cada grado $n$, escribimos
-\[
-	\sigma_0^{(n)}\ge \sigma_1^{(n)}\ge\cdots\ge \sigma_n^{(n)}\ge 0
-\]
-para los valores singulares de la sección truncada correspondiente, y denotamos por
-\[
-	\rho_n:=\max\{|\zeta|:\zeta\text{ es cero del polinomio ortogonal de grado }n\}
-\]
+Para cada grado $n$, escribimos $\sigma_0^{(n)}\ge \sigma_1^{(n)}\ge\cdots\ge \sigma_n^{(n)}\ge 0$ para los valores singulares de la sección truncada correspondiente, y denotamos por $\rho_n:=\max\{|\zeta|:\zeta\text{ es cero del polinomio ortogonal de grado }n\}$,
 el módulo máximo de sus ceros. Aunque cada $\sigma_j^{(n)}$ es finito para $n$ fijo, en los ejemplos interesa distinguir entre ramas divergentes, ramas acotadas y, cuando proceda, la primera rama que converge al radio $R$.
 
 En cada ejemplo, la figura de la izquierda representa todos los ceros de los polinomios ortogonales de Sobolev hasta grado $50$, mientras que la de la derecha muestra los ceros del polinomio de grado $50$. La tabla asociada recoge los valores singulares relevantes y el radio exterior $\rho_n$ para ese mismo grado.
 
 \begin{exm}
 
-	Consideramos el producto de Sobolev
-	\[
-		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)},
-	\]
+	Consideramos el producto de Sobolev $\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)}$,
 	y fijamos el grado máximo $N=50$. El objetivo del ejemplo es visualizar el régimen estable: la geometría exterior no se activa, no aparecen ramas singulares divergentes asociadas a átomos exteriores y los ceros permanecen controlados por el soporte continuo.
 
 	\begin{figure}[htbp]
@@ -1378,10 +1187,7 @@ En cada ejemplo, la figura de la izquierda representa todos los ceros de los pol
 
 \begin{exm}
 
-	Consideramos el producto de Sobolev
-	\[
-		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(2)\overline{q'(2)},
-	\]
+	Consideramos el producto de Sobolev $\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(2)\overline{q'(2)}$,
 	y fijamos el grado máximo $N=50$. En este caso hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El ejemplo debe ilustrar la coexistencia entre esa rama divergente, la primera rama acotada y un cero exterior atraído por el átomo responsable de la inestabilidad.
 
 	\begin{figure}[htbp]
@@ -1410,10 +1216,7 @@ En cada ejemplo, la figura de la izquierda representa todos los ceros de los pol
 
 \begin{exm}
 
-	Consideramos el producto de Sobolev
-	\[
-		\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)}+p'(2)\overline{q'(2)},
-	\]
+	Consideramos el producto de Sobolev $\langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_{0;1}(z)+p'(0)\overline{q'(0)}+p'(2)\overline{q'(2)}$,
 	y fijamos el grado máximo $N=50$. En este ejemplo también hay exactamente una rama singular divergente, de modo que la última rama divergente es $\sigma_0^{(n)}$ y la primera rama acotada es $\sigma_1^{(n)}$. El objetivo es visualizar simultáneamente el desacople entre la geometría exterior y el efecto del átomo interior.
 
 	\begin{figure}[htbp]
