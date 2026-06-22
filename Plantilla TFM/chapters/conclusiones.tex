@@ -4,9 +4,291 @@
 % -------------------------------------------------------------
 \section{Resultados demostrados}
 % -------------------------------------------------------------
+El objetivo de esta memoria ha sido estudiar cómo la presencia de términos de
+Sobolev discretos modifica el comportamiento del operador de multiplicación
+\(\D p(z)=zp(z)\). En el caso estándar, la acotación de \(\D\) queda gobernada
+de forma directa por la geometría del soporte de la medida. En cambio, al añadir
+términos derivados, incluso cuando estos están concentrados en un número finito de
+puntos, aparecen obstrucciones que no son visibles únicamente desde la parte
+continua del producto. La idea central del trabajo ha consistido en medir esas
+obstrucciones mediante subespacios de codimensión finita y, en particular,
+mediante la familia de índices \(Q_k(\D)\).
+
+El primer paso ha sido fijar un marco algebraico y funcional para tratar
+restricciones lineales sobre \(\Poly\). Si \(\mathcal H\) denota la completación de
+\(\Poly\) respecto de una norma inducida por un producto interno, una condición
+lineal impuesta en \(\Poly\) puede comportarse de dos maneras distintas al pasar a
+\(\mathcal H\). Si el funcional que define la restricción es continuo, entonces la
+restricción sobrevive en la completación y produce un subespacio cerrado de
+codimensión uno. Si el funcional no es continuo, su núcleo es denso en
+\(\mathcal H\) y la condición desaparece desde el punto de vista topológico. Esta
+dicotomía explica por qué la codimensión algebraica y la codimensión hilbertiana
+no siempre coinciden: la primera cuenta las restricciones formales impuestas en
+\(\Poly\), mientras que la segunda cuenta solo aquellas que siguen siendo efectivas
+tras tomar clausura.
+
+A partir de esta distinción se introdujo, para un operador lineal
+\(T:\Poly\to\Poly\) no necesariamente acotado, el índice
+\[
+    Q_k(T)
+    =
+    \inf\bigl\{\|T|_V\|:V\subset\Poly,
+    \operatorname{codim}_{\Poly}(V)<k+1\bigr\}.
+\]
+Este índice mide cuánto puede reducirse la norma de \(T\) al restringirlo a
+subespacios de codimensión menor que \(k+1\). En particular, \(Q_0(T)=\|T\|\),
+admitiendo el valor \(+\infty\). La caracterización max--min obtenida para
+\(Q_k(T)\) muestra que estos índices son la versión algebraica adecuada de los
+números de Gelfand cuando el operador no tiene por qué extenderse de forma
+acotada a la completación. Además, en el caso en que \(T\) sí es acotado sobre
+\(\mathcal H\), se recupera la igualdad con los números de Gelfand clásicos. De
+esta forma, \(Q_k\) proporciona un puente entre el problema algebraico sobre
+polinomios y la teoría hilbertiana de operadores.
+
+El análisis principal se ha desarrollado para el producto de Sobolev discreto
+\[
+    \langle p,q\rangle_S
+    =
+    \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+    +
+    \sum_{c\in F}p'(c)\overline{q'(c)},
+    \qquad p,q\in\Poly,
+\]
+donde \(R>0\), \(F\subset\C\) es finito y \(\mathbf{m}_R\) denota la medida de
+Lebesgue normalizada sobre la circunferencia \(\mathbb{S}_R\). En este contexto, la
+posición de los puntos de \(F\) respecto de \(\mathbb{S}_R\) determina la naturaleza
+de las obstrucciones. Los puntos interiores pueden controlarse mediante la norma
+de la parte continua, mientras que los puntos situados en la frontera o en el
+exterior generan direcciones singulares para el operador de multiplicación.
+
+Para formalizar esta separación se consideró el conjunto
+\[
+    I_{\mathrm{out}}:=\{c\in F:|c|\ge R\},
+    \qquad
+    m:=|I_{\mathrm{out}}|,
+\]
+y se denotó \(N:=|F|\). El resultado de estabilización demuestra que el número
+\(m\) es exactamente el umbral de finitud de la cadena \(\{Q_k(\D)\}_{k\ge0}\). Si
+no hay puntos exteriores, es decir, si \(m=0\), entonces el operador de
+multiplicación es acotado respecto de la norma de Sobolev. Si \(m\ge1\), entonces
+\[
+    Q_0(\D)=Q_1(\D)=\cdots=Q_{m-1}(\D)=+\infty,
+    \qquad
+    Q_m(\D)<\infty.
+\]
+Por tanto, cada átomo derivado situado en \(|c|\ge R\) aporta una obstrucción
+independiente a la acotación. No basta eliminar menos de \(m\) direcciones: para
+cualquier subespacio de codimensión menor que \(m\), la restricción de \(\D\)
+sigue siendo no acotada. En cambio, al imponer las \(m\) condiciones adecuadas,
+la parte singular exterior queda neutralizada y el operador se vuelve acotado
+sobre el subespacio correspondiente.
+
+Además de localizar el primer índice finito, se ha determinado el valor exacto de
+la cola de la sucesión. Para todo \(k\ge N\) se obtiene
+\[
+    Q_k(\D)=R.
+\]
+Combinando esta igualdad con el umbral anterior se llega a la descripción global
+\[
+    Q_k(\D)=
+    \begin{cases}
+        +\infty, & 0\le k<m, \\
+        \text{finito}, & m\le k<N, \\
+        R, & k\ge N.
+    \end{cases}
+\]
+Esta fórmula resume la estructura del problema. Los puntos de \(I_{\mathrm{out}}\)
+determinan cuántos primeros índices son infinitos; el número total de átomos
+\(N\) determina a partir de qué índice la cadena queda fijada por el radio de la
+circunferencia; y el intervalo intermedio, cuando existe, corresponde a una zona
+en la que la acotación ya se ha recuperado pero el valor exacto depende todavía de
+la configuración concreta de los puntos.
+
+El último capítulo conecta esta descripción operatorial con el análisis matricial.
+Al representar \(\D\) en la base ortonormal de polinomios asociada al producto de
+Sobolev, se obtiene una matriz de Hessenberg \(\mathbf D\). Sus secciones
+principales \(\mathbf D_n\) codifican los ceros de los polinomios ortogonales, ya
+que el polinomio característico de \(\mathbf D_n\) coincide, salvo una constante
+no nula, con el polinomio ortonormal de grado \(n+1\). Así, el estudio de los
+ceros puede trasladarse al estudio espectral de una familia de matrices finitas.
+
+Por otra parte, si \(\sigma_{k,n}\) denota el \(k\)-ésimo valor singular de
+\(\mathbf D_n\), la monotonía de las secciones permite definir
+\[
+    \sigma_k(\mathbf D):=\lim_{n\to\infty}\sigma_{k,n}.
+\]
+El resultado fundamental de esta parte es la igualdad
+\[
+    \sigma_k(\mathbf D)=Q_k(\D),
+    \qquad k\ge0.
+\]
+Esta identidad muestra que los índices \(Q_k\), definidos mediante restricciones
+de codimensión finita en \(\Poly\), son exactamente los valores singulares límite
+de la representación matricial del operador de multiplicación. En consecuencia,
+los fenómenos de acotación y estabilización obtenidos en el marco funcional se
+reflejan directamente en las secciones matriciales.
+
+En particular, para el producto de Sobolev considerado se obtiene
+\[
+    \sigma_k(\mathbf D)=Q_k(\D)=R,
+    \qquad k\ge N.
+\]
+En el caso puramente exterior, donde todos los puntos de \(F\) satisfacen
+\(|c|\ge R\), se tiene además
+\[
+    \sigma_k(\mathbf D)=Q_k(\D)=
+    \begin{cases}
+        +\infty, & 0\le k<N, \\
+        R, & k\ge N.
+    \end{cases}
+\]
+Los ejemplos finales ilustran las tres situaciones posibles: átomos interiores,
+átomos exteriores y configuraciones mixtas. En ellos se observa la diferencia
+entre el umbral de finitud, gobernado por \(m\), y el inicio de la cola constante,
+gobernado por \(N\).
+
+En conjunto, la memoria muestra que el comportamiento del operador de
+multiplicación en productos de Sobolev discretos no se describe solo preguntando
+si \(\D\) es acotado o no. Es necesario medir cuántas direcciones producen la falta
+de acotación y en qué momento esas obstrucciones desaparecen al restringir el
+operador a subespacios de codimensión finita. Los índices \(Q_k\) proporcionan
+precisamente esa medida, y la igualdad con los valores singulares límite de las
+secciones matriciales confirma que la información obtenida es intrínseca tanto al
+producto de Sobolev como a la representación matricial asociada.
 
 %-------------------------------------------------------------
 \section{Problemas abiertos y líneas futuras}
 % -------------------------------------------------------------
 
+Los resultados obtenidos sugieren varias direcciones naturales de continuación.
+Una primera línea consiste en sustituir la medida \(\mathbf{m}_R\), soportada en la
+circunferencia, por otras medidas positivas compactamente soportadas. En esta
+memoria la geometría de \(\mathbb{S}_R\) permite separar de forma explícita los
+puntos interiores de los puntos exteriores mediante la condición \(|c|<R\) o
+\(c|\ge R\). Sin embargo, esta descripción geométrica es propia del caso de la
+circunferencia. Para una medida compactamente soportada general, la noción que
+parece desempeñar el papel de los puntos exteriores no debería formularse
+necesariamente en términos de la posición geométrica del punto, sino en términos
+de la continuidad de ciertos funcionales respecto de la norma base.
 
+En este sentido, los puntos \(\delta\)-singulares aparecen como los candidatos
+naturales para reemplazar al conjunto \(I_{\mathrm{out}}\). En el caso estudiado
+en esta memoria se ha probado que, para la medida \(\mathbf{m}_R\), la condición
+\(|c|\ge R\) equivale precisamente a que \(c\) sea \(\delta\)-singular respecto de
+\(|\cdot|_{L^2(\mathbf m_R)}\). Por tanto, una posible extensión de los resultados
+consistiría en estudiar productos de Sobolev discretos de la forma
+\[
+\langle p,q\rangle_S
+=
+\int p(z)\overline{q(z)},d\mu(z)
++
+\sum_{c\in F}p'(c)\overline{q'(c)},
+\]
+donde \(\mu\) sea una medida positiva compactamente soportada, y determinar si el
+umbral de finitud de la sucesión \(\{Q_k(\D)\}_{k\ge0}\) viene dado por el número
+de puntos de (\(F\)) que son \(\delta\)-singulares respecto de
+\(|\cdot|_{L^2(\mu)}\).
+
+Desde este punto de vista, el problema ya no sería distinguir entre puntos
+interiores y exteriores, sino entre puntos donde la evaluación queda controlada
+por la parte continua de la norma y puntos donde aparece una obstrucción no
+controlada. El objetivo sería obtener una descripción de \(Q_k(\D)\) análoga a la
+demostrada para \(\mathbf m_R\), reemplazando el conjunto
+\[
+I_{\mathrm{out}}={c\in F:|c|\ge R}
+\]
+por el conjunto de puntos \(\delta\)-singulares de \(F\) respecto de la medida
+base. Esto permitiría formular el fenómeno de estabilización en términos
+intrínsecos de la norma, y no de una geometría particular del soporte.
+
+Una segunda dirección, más amplia, consiste en reemplazar la parte derivada
+puntual por otra medida compactamente soportada. En lugar de considerar términos
+finitos de la forma \(|p'(c)|^2\), se puede estudiar un producto de Sobolev de la
+forma
+\[
+    \langle p,q\rangle_S
+    =
+    \int_{\C}p(z)\overline{q(z)}\,d\mu_0(z)
+    +
+    \int_{\C}p'(z)\overline{q'(z)}\,d\mu_1(z),
+    \qquad p,q\in\Poly,
+\]
+donde \(\mu_0\) y \(\mu_1\) son medidas positivas de soporte compacto. Este
+problema contiene al caso discreto cuando \(\mu_1\) es una suma finita de deltas,
+pero también permite tratar perturbaciones derivadas distribuidas sobre un
+conjunto infinito. La diferencia es sustancial: en el caso discreto la parte
+derivada introduce un número finito de restricciones, mientras que una medida
+\(\mu_1\) general puede producir una perturbación de naturaleza infinita
+dimensional. Por ello, las técnicas de codimensión finita desarrolladas aquí
+deberían combinarse con criterios de comparación de normas, dominación entre
+medidas y propiedades de las inclusiones entre las completaciones asociadas.
+
+En relación con lo anterior, sería interesante estudiar cuándo el operador de
+multiplicación es acotado para productos con dos medidas compactamente soportadas
+y, cuando no lo sea, qué tipo de índices sustituyen o complementan a \(Q_k\). En
+el caso discreto, la falta de acotación puede eliminarse imponiendo un número
+finito de restricciones. Para una medida derivada no discreta, puede ocurrir que
+la obstrucción no tenga codimensión finita. En tal situación, los índices \(Q_k\)
+seguirían teniendo sentido, pero podrían no estabilizarse de la misma forma. Esto
+abre la posibilidad de estudiar no solo el umbral de finitud, sino también el
+comportamiento asintótico de la sucesión \(\{Q_k(\D)\}_{k\ge0}\).
+
+Una tercera línea natural es considerar productos de Sobolev de orden superior,
+con varias medidas asociadas a derivadas sucesivas:
+\[
+    \langle p,q\rangle_S
+    =
+    \sum_{j=0}^{M}
+    \int_{\C}p^{(j)}(z)\overline{q^{(j)}(z)}\,d\mu_j(z),
+    \qquad p,q\in\Poly,
+\]
+donde cada \(\mu_j\) es una medida positiva compactamente soportada. Este marco
+permitiría estudiar cómo interactúan distintos niveles de derivación. La acción
+de \(\D\) mezcla órdenes consecutivos, pues
+\[
+    (\D p)^{(j)}(z)=zp^{(j)}(z)+j p^{(j-1)}(z),
+\]
+y por tanto la acotación del operador no depende únicamente de una medida aislada,
+sino de la relación entre toda la cadena \(\mu_0,\mu_1,\dots,\mu_M\). Una pregunta
+natural es determinar bajo qué hipótesis de dominación o compatibilidad entre las
+medidas se obtiene acotación de \(\D\), y qué ocurre cuando alguna de esas
+relaciones falla.
+
+También resulta natural combinar las dos extensiones anteriores con términos
+discretos de orden superior. Por ejemplo, podrían considerarse productos en los
+que aparezcan condiciones sobre \(p'(c)\), \(p''(c)\), \dots, \(p^{(M)}(c)\), o
+bien medidas compactamente soportadas para varios órdenes de derivación. En este
+caso, el análogo del número \(m\) no tendría por qué ser simplemente el número de
+puntos exteriores. Habría que determinar cuántas condiciones independientes de
+tipo jet generan obstrucciones reales a la acotación. Esto sugiere estudiar
+umbrales definidos por el rango de familias de funcionales derivados no
+controlados, en lugar de por el mero número de átomos.
+
+Desde el punto de vista matricial, queda abierta la posibilidad de estudiar con
+más detalle las secciones \(\mathbf D_n\) en estos contextos más generales. En la
+situación tratada en esta memoria se ha probado que los valores singulares límite
+coinciden con los índices \(Q_k(\D)\). Una cuestión natural es analizar si esta
+identificación continúa proporcionando información útil para productos con
+medidas derivadas no discretas o con derivadas de orden superior. En particular,
+sería interesante estudiar si existe una descripción de la cola de
+\(\{\sigma_k(\mathbf D)\}_{k\ge0}\) en términos de propiedades geométricas de los
+soportes de las medidas, o si aparecen nuevos fenómenos espectrales ligados a la
+parte continua de las medidas derivadas.
+
+Finalmente, sería conveniente complementar estas extensiones con ejemplos
+explícitos y experimentos numéricos. Los ejemplos del último capítulo muestran que
+las truncaciones matriciales permiten visualizar la transición entre índices
+infinitos, índices finitos intermedios y la cola constante. En productos más
+generales, el cálculo numérico de polinomios ortogonales, ceros y valores
+singulares de las secciones podría servir para detectar nuevos umbrales,
+formular conjeturas y distinguir qué fenómenos son propios del caso discreto y
+cuáles persisten para medidas compactamente soportadas más generales.
+
+En resumen, esta memoria proporciona un marco para entender la falta de acotación
+de \(\D\) como un fenómeno medible mediante codimensión finita. Las líneas futuras
+apuntan a ampliar ese marco desde el caso discreto sobre la circunferencia hacia
+productos de Sobolev con medidas compactamente soportadas más generales y con
+varios órdenes de derivación. El objetivo final sería obtener una teoría que
+relacione, de forma sistemática, la geometría de los soportes, la continuidad de
+los funcionales derivados, la acotación del operador de multiplicación y el
+comportamiento asintótico de las secciones matriciales asociadas.

@@ -508,8 +508,17 @@ Veamos una caracterización de $Q_k(T)$ en términos de subespacios de dimensió
     \[
         Q_0(T)\ge Q_1(T)\ge \cdots \ge Q_k(T)\ge Q_{k+1}(T)\ge \cdots \ge 0,
     \]
-    estabiliza en $k$ si $Q_{k-1}(T)=\infty$ y $Q_k(T)<\infty$.
+    se rompe en $k$ si $Q_{k-1}(T)=\infty$ y $Q_k(T)<\infty$.
 \end{defn}
+
+\begin{rmk}
+    Diremos que la cadena se estabiliza a partir de $k$ si todos los valores posteriores coinciden, es decir, si
+    \[
+        Q_j(T)=Q_k(T),
+        \qquad j\ge k.
+    \]
+    En los problemas que estudiaremos más adelante, la ruptura y la estabilización no tienen por qué ocurrir en el mismo índice: la cadena puede romperse primero, al pasar de $\infty$ a un valor finito, y estabilizarse solo más tarde, cuando toda la cola toma un mismo valor constante. También puede ocurrir que ambos fenómenos coincidan en un mismo índice.
+\end{rmk}
 
 A continuación fijamos un modelo elemental en el que la cadena se rompe por primera vez en $k=1$.
 
@@ -563,7 +572,7 @@ A continuación fijamos un modelo elemental en el que la cadena se rompe por pri
     \]
 \end{exm}
 
-De este ejemplo conviene destacar que existen operadores lineales no acotados sobre $\Poly$ cuya restricción a subespacios ``grandes'' (en el sentido de que tienen codimensión 1) es acotada. Esto justifica estudiar la estabilización de la cadena de los $Q_k$ para encontrar subespacios de codimensión finita donde esos operadores sean acotados.
+De este ejemplo conviene destacar que existen operadores lineales no acotados sobre $\Poly$ cuya restricción a subespacios ``grandes'' (en el sentido de que tienen codimensión 1) es acotada. Esto justifica estudiar tanto la ruptura como la estabilización de la cadena de los $Q_k$ para encontrar subespacios de codimensión finita donde esos operadores sean acotados y para determinar cuándo la cola adopta un valor constante.
 
 \section{Compatibilidad con los índices clásicos}
 
@@ -592,6 +601,17 @@ Por completitud del capítulo, podemos relacionar el índice $Q_k$ con los núme
 \end{rmk}
 
 De manera análoga usando la caracterización del índice $Q_k$, podemos hacer lo mismo para el número de Bernstein de la extensión hilbertiana del operador.
+
+\begin{defn}\label{def:numeros_bernstein}
+    Sea $T\in\mathcal L(\mathcal H)$. Para cada $k\ge0$, definimos el número de Bernstein de orden $k$ de $T$ por
+    \[
+        b_k(T)
+        :=
+        \sup_{\substack{E\subset\mathcal H\\ \dim E=k+1}}
+        \inf_{\substack{x\in E\\ x\ne0}}
+        \frac{\|Tx\|}{\|x\|}.
+    \]
+\end{defn}
 
 \begin{prop}\label{prop:Qk_Bernstein}
     Sea $T:\Poly\to\Poly$ un operador lineal acotado respecto de $\|\cdot\|$, y sea

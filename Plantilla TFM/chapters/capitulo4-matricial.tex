@@ -3,7 +3,7 @@
 
 \section{Matriz de Hessenberg y secciones truncadas}
 
-Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, admite una representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ cuyas entradas son $\langle Te_j,e_i\rangle$ \cite{}. Esta representación matricial puede hacerse también a operadores de $T:\Poly \longrightarrow \Poly$ no necesariamente acotados, basta que $T$ esté definido en el subespacio denso $\Poly$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y valores singulares de manera directa. Esta perspectiva se sitúa dentro del enfoque matricial desarrollado recientemente para polinomios ortogonales y cantidades espectrales asociadas; véanse \cite{EGT23,EG25-2}.
+Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la base ortonormal de polinomios asociada. En el caso clásico, si $T\in\mathcal L(\mathcal H)$ es un operador acotado, admite una representación matricial respecto de una base ortonormal $\{e_n\}_{n\ge0}$ cuyas entradas son $\langle Te_j,e_i\rangle$ \cite{Aizpuru2009Apuntes}. Esta representación matricial puede hacerse también a operadores de $T:\Poly \longrightarrow \Poly$ no necesariamente acotados, basta que $T$ esté definido en el subespacio denso $\Poly$. Por ello, aunque $\D$ pueda no extenderse como operador acotado sobre la compleción, su acción sobre la base de $\Poly$ sigue determinando una matriz infinita. Esta representación permite pasar del operador abstracto a una familia de objetos finito-dimensionales sobre los que pueden estudiarse espectro y valores singulares de manera directa. Esta perspectiva se sitúa dentro del enfoque matricial desarrollado recientemente para polinomios ortogonales y cantidades espectrales asociadas; véanse \cite{EGT23,EG25-2}.
 
 \begin{defn}\label{def:hessenberg}
 	Sea $(\Poly, \langle \cdot,\cdot\rangle_S)$ y sea $\{\phi_n\}_{n\ge0}$ la sucesión de polinomios ortonormales asociada al producto de Sobolev. La representación matricial de $\D$ es
@@ -46,6 +46,38 @@ Sea $\mathcal H=\overline{\Poly}$ la compleción hilbertiana de $(\Poly,\langle\
 
 \begin{rmk}
 	Como $\mathbb P_n\subset\Poly$ y $\D(\mathbb P_n)\subset\Poly$, la aplicación $\mathcal D_n$ está bien definida.
+\end{rmk}
+
+\begin{prop}\label{prop:transformacion_afin_matriz}
+	Bajo las hipótesis y la notación de la Proposición~\ref{prop:transformacion_afin_ch3}, sean $\mathbf D^{(1)}$ y $\mathbf D^{(2)}$ las matrices de representación del operador de multiplicación en las bases ortonormales asociadas al producto inicial y al producto transformado, respectivamente. Entonces
+	\[
+		\mathbf D^{(2)}=\alpha\mathbf D^{(1)}+\beta\mathbf I.
+	\]
+	En particular, para cada $n\ge 0$, sus secciones principales satisfacen
+	\[
+		\mathbf D^{(2)}_n=\alpha\mathbf D^{(1)}_n+\beta I_{n+1}.
+	\]
+\end{prop}
+
+\begin{proof}
+	Si $(\varphi_n)_{n\ge0}$ y $(\psi_n)_{n\ge0}$ son las familias ortonormales asociadas a ambos productos, por la Observación posterior a la Proposición~\ref{prop:transformacion_afin_ch3} tenemos
+	\[
+		\psi_n=\lambda_n\,\varphi_n\circ T^{-1},
+		\qquad |\lambda_n|=1.
+	\]
+	Por tanto, usando la equivalencia de productos y la identidad $w=\alpha z+\beta$,
+	\[
+		d^{(2)}_{i,j}=\langle w\psi_j,\psi_i\rangle_T=\alpha\langle z\varphi_j,\varphi_i\rangle+\beta\langle\varphi_j,\varphi_i\rangle.
+	\]
+	Como $\{\varphi_n\}_{n\ge0}$ es ortonormal, se obtiene
+	\[
+		d^{(2)}_{i,j}=\alpha d^{(1)}_{i,j}+\beta\delta_{ij},
+	\]
+	y esta identidad equivale a $\mathbf D^{(2)}=\alpha\mathbf D^{(1)}+\beta\mathbf I$. La afirmación sobre las secciones principales es inmediata al truncar ambos lados al bloque de orden $n+1$.
+\end{proof}
+
+\begin{rmk}
+	La proposición anterior muestra que, tras aplicar una semejanza al soporte y a los átomos discretos, la representación matricial del operador de multiplicación cambia por la misma transformación afín. En este sentido, el problema matricial que estudiaremos a continuación es equivalente al original después de trasladar y reescalar la configuración geométrica.
 \end{rmk}
 
 \begin{prop}\label{prop:charpoly_truncada}
@@ -534,8 +566,6 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 		=
 		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_1(z)
 		+
-		p'(0)\overline{q'(0)}
-		+
 		p'\!\left(\tfrac12\right)\overline{q'\!\left(\tfrac12\right)}
 		+
 		p'\!\left(-\tfrac13\right)\overline{q'\!\left(-\tfrac13\right)}
@@ -545,18 +575,18 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 	\]
 	En este caso
 	\[
-		F=\left\{0,\tfrac12,-\tfrac13,\tfrac{i}{2}\right\},
+		F=\left\{\tfrac12,-\tfrac13,\tfrac{i}{2}\right\},
 		\qquad
 		I_{\mathrm{out}}=\varnothing,
 		\qquad
 		m=0,
 		\qquad
-		N=4.
+		N=3.
 	\]
 	Por la Proposición~\ref{prop:atomos_interiores_acotado}, el operador $\D$ es acotado; por tanto no aparece ningún índice con valor singular infinito. Además, por el Teorema~\ref{thm:igualdad_sigma_qN_general},
 	\[
 		\sigma_k(\mathbf D)=Q_k(\D)=1,
-		\qquad k\ge 4.
+		\qquad k\ge 3.
 	\]
 
 	\begin{figure}[H]
@@ -572,13 +602,13 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 			\hline
 			Índice                & Valor           \\
 			\hline
-			$\sigma_0(\mathbf D)$ & $2.0904<\infty$ \\
+			$\sigma_{0,50}(\mathbf D)$ & $2.0904<\infty$ \\
 			\hline
-			$\sigma_4(\mathbf D)$ & $1$             \\
+			$\sigma_{3,50}(\mathbf D)$ & $1$             \\
 			\hline
 		\end{tabular}
 	\end{center}
-	En este ejemplo no aparece ningún índice con valor infinito. El interés del cuadro está en separar el primer valor finito, $\sigma_0(\mathbf D)$, del primer índice cuyo valor queda forzado por la teoría general, que es $k=N=4$.
+	En este ejemplo no aparece ningún índice con valor infinito. El interés del cuadro está en separar el primer valor finito, $\sigma_0(\mathbf D)$, del primer índice cuyo valor queda forzado por la teoría general, que es $k=N=3$.
 \end{exm}
 
 \begin{exm}
@@ -630,9 +660,9 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 			\hline
 			Índice                & Valor             \\
 			\hline
-			$\sigma_3(\mathbf D)$ & $2.2935\cdot10^3$ \\
+			$\sigma_{3,50}(\mathbf D)$ & $2.2935\cdot10^3$ \\
 			\hline
-			$\sigma_4(\mathbf D)$ & $1$               \\
+			$\sigma_{4,50}(\mathbf D)$ & $1$               \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -694,11 +724,11 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los índices singul
 			\hline
 			Índice                & Valor             \\
 			\hline
-			$\sigma_2(\mathbf D)$ & $3.0841\cdot10^3$ \\
+			$\sigma_{2,50}(\mathbf D)$ & $3.0841\cdot10^3$ \\
 			\hline
-			$\sigma_3(\mathbf D)$ & $1.7838<\infty$   \\
+			$\sigma_{3,50}(\mathbf D)$ & $1.7838<\infty$   \\
 			\hline
-			$\sigma_5(\mathbf D)$ & $1$               \\
+			$\sigma_{5,50}(\mathbf D)$ & $1$               \\
 			\hline
 		\end{tabular}
 	\end{center}

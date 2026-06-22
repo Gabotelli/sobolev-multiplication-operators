@@ -29,7 +29,29 @@ Diremos que \(\mu\) tiene soporte infinito si \(\operatorname{supp}(\mu)\)
 contiene infinitos puntos.
 \end{defn}
 
-Si \(\mu\) es una medida de Borel positiva y finita con soporte infinito,
+\begin{defn}\label{def:circulos_medidas_normalizadas}
+Para cada \(a\in\C\) y cada \(R>0\), definimos la circunferencia
+\[
+    \mathbb S_{a,R}:=\{z\in\C:|z-a|=R\},
+    \qquad
+    \mathbb S_R:=\mathbb S_{0,R}.
+\]
+Denotamos por \(\mathbf m_{a;R}\) la medida de Lebesgue normalizada sobre
+\(\mathbb S_{a,R}\), caracterizada por
+\[
+    \int_{\mathbb S_{a,R}} f(z)\,d\mathbf m_{a;R}(z)
+    :=
+    \frac{1}{2\pi}\int_0^{2\pi} f(a+Re^{i\theta})\,d\theta
+\]
+para toda función continua \(f:\mathbb S_{a,R}\to\C\). En particular,
+\[
+    \mathbf m_R:=\mathbf m_{0;R},
+    \qquad
+    \mathbf m:=\mathbf m_1.
+\]
+\end{defn}
+
+Si \(\mu\) es una medida de Borel positiva, finita, con soporte infinito y momentos finitos,
 definimos en \(\Poly\) el producto estándar
 \begin{equation}\label{eq:producto_estandar}
     \langle p,q\rangle_\mu
@@ -134,7 +156,7 @@ dependencia de la localización de los ceros respecto del soporte de la medida
 
 \begin{prop}
 \label{prop:recurrencia_tres_terminos_intro}
-Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito contenido
+Sea \(\mu\) una medida de Borel positiva, finita, con soporte infinito y momentos finitos contenido
 en \(\mathbb R\), y sea \((\phi_n)_{n\ge 0}\) la sucesión ortonormal asociada al
 producto estándar \eqref{eq:producto_estandar}. Entonces existen sucesiones
 \((a_n)_{n\ge 1}\subset(0,\infty)\) y \((b_n)_{n\ge 0}\subset\mathbb R\) tales
@@ -149,12 +171,12 @@ variable preserva una estructura tridiagonal en la base ortonormal
 \end{prop}
 
 \begin{prop}\label{prop:ceros_clasicos}
-Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito contenido
+Sea \(\mu\) una medida de Borel positiva, finita, con soporte infinito y momentos finitos contenido
 en \(\mathbb R\), y sea \((\phi_n)_{n\ge 0}\) la sucesión ortonormal asociada al
 producto estándar \eqref{eq:producto_estandar}. Entonces, para cada \(n\ge 1\),
 los ceros de \(\phi_n\) son reales, simples y pertenecen al interior de la
 envoltura convexa de \(\operatorname{supp}(\mu)\). Además, los ceros de
-\(\phi_n\) y \(\phi_{n+1}\) se entrelazan.
+\(\phi_n\) y \(\phi_{n+1}\) se entrelazan \cite{Chi78,szego1975orthogonal}.
 \end{prop}
 
 La Proposición~\ref{prop:ceros_clasicos} resume el rasgo esencial del caso
@@ -517,7 +539,7 @@ puente entre la geometría del soporte y el control de perturbaciones discretas.
 
 \begin{prop}
 \label{prop:bpe_sobolev_discreto}
-Sea \(\mu\) una medida de Borel positiva y finita con soporte infinito, y
+Sea \(\mu\) una medida de Borel positiva, finita, con soporte infinito y momentos finitos, y
 supongamos que el operador de multiplicación \(\D\) es acotado respecto de
 \(\|\cdot\|_{L^2(\mu)}\). Si \(a_1,\dots,a_N\in \operatorname{bpe}(\mu)\),
 entonces \(\D\) es acotado respecto de la norma de Sobolev discreta
@@ -530,7 +552,7 @@ entonces \(\D\) es acotado respecto de la norma de Sobolev discreta
     \qquad p\in\Poly.
 \]
 En consecuencia, los ceros de los polinomios ortogonales asociados a esa norma
-quedan uniformemente acotados.
+quedan uniformemente acotados \cite{EG25-2}.
 \end{prop}
 
 En esta forma básica, la noción de pertenecer a
