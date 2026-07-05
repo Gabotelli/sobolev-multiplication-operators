@@ -36,22 +36,46 @@
 % RESUMEN Y ABSTRACT
 %
 \abstract{spanish}{
-Esta memoria estudia el operador de multiplicación $\D p(z)=zp(z)$ en espacios de Sobolev discretos asociados a la medida de Lebesgue normalizada sobre una circunferencia y a perturbaciones finitas de primera derivada. Tras revisar el vínculo entre la acotación del operador y la localización de ceros en el marco clásico, se introduce el índice $Q_k$, una extensión de los números de Gelfand para operadores no necesariamente acotados sobre el espacio de polinomios, y se obtiene su caracterización max--min, así como su compatibilidad con la teoría hilbertiana cuando existe extensión acotada. Para los productos de Sobolev considerados se caracteriza la singularidad $\delta$ de los átomos discretos y se demuestra un teorema de estabilización: si $m$ denota el número de átomos situados fuera o sobre la circunferencia de soporte, entonces $Q_0(\D)=\cdots=Q_{m-1}(\D)=\infty$ y $Q_m(\D)<\infty$, mientras que en ausencia de tales átomos el operador es acotado. Finalmente, la representación de Hessenberg del operador y sus secciones finitas permiten identificar los ceros de los polinomios ortogonales con el espectro matricial y probar que los valores singulares límite satisfacen $\sigma_k(\mathbf D)=Q_k(\D)$, proporcionando una lectura matricial del umbral de estabilización.
+Esta memoria estudia el operador de multiplicación $\D p(z)=zp(z)$ en espacios de Sobolev discretos asociados a dos medidas, en la parte continua consideramos la medida de Lebesgue normalizada sobre una circunferencia y en la parte discreta un conjunto finito de puntos o átomos. $c_1,\dots ,c_n\in \C, $. 
+\[
+\Vert p(z) \Vert^2_{\mathbf{S}}= \int \vert p(z) \vert^{2} d\mu + \sum_{k=1}^{n} \vert p'(c_k) \vert^{2}.
+\]
+En este estudio, se revisan los resultados principales sobre la conexión entre la acotación del operador y la localización de ceros.
+En particular, se analiza la conexión entre la acotación y el hecho de que los átomos sean o no puntos de evaluación acotada. 
+En esta dirección se investiga el comportamiento del operador de multiplicación restringido a algunos subespacios de polinomios. Para ello, se introduce el índice $Q_k$ y se prueba que es una extensión de los números de Gelfand para operadores no necesariamente acotados sobre el espacio de polinomios y se obtienen varias propiedades.
+El principal resultado obtenido establece que, en el producto interno de Sobolev discreto considerado, el número de puntos de evaluación no acotados coincide exactamente con el índice a partir del cual se estabiliza la sucesión de valores $Q_k$. Este resultado proporciona una localización de átomos mediante análisis espectral: si $m$ denota el número de átomos situados fuera o sobre la circunferencia, entonces $Q_0(\D)=\cdots=Q_{m-1}(\D)=\infty$ y $Q_m(\D)<\infty$, mientras que, en ausencia de tales átomos, el operador es acotado. Finalmente, se analiza la convergencia de los valores singulares de las secciones finitas de la representación de Hessenberg del operador, demostrándose que los valores singulares límite satisfacen $\sigma_k(\mathbf D)=Q_k(\D)$, proporcionando una técnica computacional para el cálculo del umbral de estabilización.
 }
 \keywords{spanish}{
-Polinomios ortogonales de Sobolev;
+Producto interior de Sobolev discreto;
 Operador de multiplicación;
-Evaluaciones puntuales acotadas;
+Puntos de evaluación acotada;
 Números de Gelfand;
 Valores singulares;
 Matrices de Hessenberg
 }
 
 \abstract{english}{
-This thesis studies the multiplication operator $\D p(z)=zp(z)$ in discrete Sobolev spaces associated with the normalized Lebesgue measure on a circle and with finite first-derivative perturbations. After revisiting the link between boundedness of the operator and zero location in the classical setting, we introduce the index $Q_k$, an extension of Gelfand numbers for operators on the polynomial space that need not be bounded, and we establish both its max--min characterization and its compatibility with the Hilbert-space theory whenever a bounded extension exists. For the Sobolev products under consideration, we characterize the $\delta$-singularity of the discrete atoms and prove a stabilization theorem: if $m$ denotes the number of atoms lying on or outside the supporting circle, then $Q_0(\D)=\cdots=Q_{m-1}(\D)=\infty$ and $Q_m(\D)<\infty$, whereas in the absence of such atoms the operator is bounded. Finally, the Hessenberg representation of the operator and its finite sections identify the zeros of the orthogonal polynomials with the matrix spectrum and show that the limiting singular values satisfy $\sigma_k(\mathbf D)=Q_k(\D)$, yielding a matrix interpretation of the stabilization threshold.
+This thesis studies the multiplication operator \(\D p(z)=zp(z)\) on discrete Sobolev spaces associated with two measures: in the continuous part we consider the normalized Lebesgue measure on a circle, and in the discrete part a finite set of points, or atoms, \(c_1,\dots,c_n\in\C\).  
+\[
+\Vert p(z) \Vert^2_{\mathbf{S}}= \int \vert p(z) \vert^{2} d\mu + \sum_{k=1}^{n} \vert p'(c_k) \vert^{2}.
+\]
+In this work, the main results concerning the connection between the boundedness of the operator and the localization of zeros are reviewed. In particular, we analyze the relationship between boundedness and whether the atoms are bounded point evaluations.
+In this direction, we investigate the behavior of the multiplication operator when restricted to certain subspaces of polynomials. To this end, we introduce the index \(Q_k\) and prove that it extends the Gelfand numbers to operators on the polynomial space that are not necessarily bounded; several of its properties are also established.
+The main result shows that, for the discrete Sobolev inner product under consideration, the number of unbounded point evaluations coincides exactly with the index at which the sequence \(Q_k\) stabilizes. This provides a localization of atoms through spectral analysis: if \(m\) denotes the number of atoms lying on or outside the circle, then
+\(
+Q_0(\D)=\cdots=Q_{m-1}(\D)=\infty
+\) and \(
+Q_m(\D)<\infty,
+\)
+whereas, in the absence of such atoms, the operator is bounded.
+Finally, we study the convergence of the singular values of the finite sections of the Hessenberg representation of the operator, proving that the limiting singular values $\sigma_k(\mathbf D)$ satisfy
+\(
+\sigma_k(\mathbf D)=Q_k(\D),
+\)
+thus providing a computational technique for determining the stabilization threshold.
 }
 \keywords{english}{
-Sobolev orthogonal polynomials;
+Discrete Sobolev inner product;
 Multiplication operator;
 Bounded point evaluations;
 Gelfand numbers;

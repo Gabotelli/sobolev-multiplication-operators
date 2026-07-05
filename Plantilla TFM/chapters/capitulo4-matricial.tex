@@ -320,7 +320,7 @@ En el caso de operadores acotados, el Teorema~\ref{thm:equivalencia_Qk_Gelfand} 
 Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la representación matricial con los índices $Q_k(\D)$, podemos aplicar los resultados del Teorema~\ref{thm:estabilizacion} para obtener información sobre la estabilización de los valores singulares de las secciones principales.
 
 \begin{thm}\label{thm:igualdad_sigma_qN_general}
-	Sean $R>0$ y $c_1,\dots,c_N\in\C$, y consideremos sobre $\Poly$ el producto escalar
+	Sean $R>0$ y $c_1,\dots,c_N\in\C$ distintos dos a dos, y consideremos sobre $\Poly$ el producto escalar
 	\[
 		\langle p,q\rangle_S
 		=
@@ -349,13 +349,13 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 		\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
 		\qquad p,q\in\Poly,
 	\]
-	donde $c_1,\dots,c_N\in\C$ satisfacen $|c_j|\ge R$ para todo $j=1,\dots,N$. Sea $m:=N$ y sea $\mathbf D$ la representación matricial del operador $\D$. Entonces, para todo $k\ge 0$ se tiene
+	donde $c_1,\dots,c_N\in\C$ distintos dos a dos satisfacen $|c_j|\ge R$ para todo $j=1,\dots,N$. Entonces, para todo $k\ge 0$ se tiene
 	\[
 		\sigma_k(\mathbf D)
 		=
 		\begin{cases}
-			+\infty, & 0\le k<m, \\
-			R,       & k\ge m.
+			+\infty, & 0\le k<N, \\
+			R,       & k\ge N.
 		\end{cases}
 	\]
 \end{cor}
@@ -381,7 +381,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{proof}
 
 \begin{cor}\label{cor:estabilizacion_singular_umbral}
-	Sea $R>0$, sean $c_1,\dots,c_N\in\C$ y consideremos sobre $\Poly$ el producto escalar
+	Sea $R>0$, sean $c_1,\dots,c_N\in\C$ distintos dos a dos y supongamos que $|c_j|\ge R$ para $j=1,\dots,m$ y $|c_j|<R$ para $j=m+1,\dots,N$ con $m\ge1$. Consideremos sobre $\Poly$ el producto escalar
 	\[
 		\langle p,q\rangle_S
 		=
@@ -390,13 +390,7 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 		\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
 		\qquad p,q\in\Poly.
 	\]
-	Sea
-	\[
-		|c_j|\ge R,\quad j=1,\dots,m,
-		\qquad
-		|c_j|<R,\quad j=m+1,\dots,N.
-	\]
-	Sea además \(\mathbf D\) la representación matricial del operador \(\D\).
+	y \(\mathbf D\) la representación matricial del operador \(\D\).
 	Si $m\ge1$, entonces
 	\[
 		\sigma_m(\mathbf D)=Q_m(\D)<\infty.
@@ -432,14 +426,12 @@ Una vez identificados los valores singulares límite $\sigma_k(\mathbf D)$ de la
 \end{rmk}
 
 \begin{rmk}
-La igualdad \(\sigma_k(\mathbf D)=Q_k(\D)\) permite interpretar los índices \(Q_k\) desde un punto de vista matricial. Como
-\[
-\sigma_k(\mathbf D)=\lim_{n\to\infty}\sigma_{k,n},
-\]
-con \(\sigma_{k,n}\) el \(k\)-ésimo valor singular de la sección principal \(\mathbf D_n\), el cálculo de los índices \(Q_k(\D)\) puede aproximarse mediante las secciones finitas de la representación matricial de \(\D\). Así, un objeto definido de forma abstracta mediante subespacios de codimensión finita queda conectado con un procedimiento computable basado en valores singulares de matrices finitas.
+	La igualdad \(\sigma_k(\mathbf D)=Q_k(\D)\) permite interpretar los índices \(Q_k\) desde un punto de vista matricial. Como
+	\[
+		\sigma_k(\mathbf D)=\lim_{n\to\infty}\sigma_{k,n},
+	\]
+	con \(\sigma_{k,n}\) el \(k\)-ésimo valor singular de la sección principal \(\mathbf D_n\), el cálculo de los índices \(Q_k(\D)\) puede aproximarse mediante las secciones finitas de la representación matricial de \(\D\). Así, un objeto definido de forma abstracta mediante subespacios de codimensión finita queda conectado con un procedimiento computable basado en valores singulares de matrices finitas.
 \end{rmk}
-
-\subsection{Ejemplos}
 
 En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singulares relevantes para contrastar los resultados teóricos con los cálculos numéricos de las truncaciones.
 
@@ -448,7 +440,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singula
 	\[
 		\langle p,q\rangle_S
 		=
-		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_1(z)
+		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m(z)
 		+
 		p'\!\left(\tfrac12\right)\overline{q'\!\left(\tfrac12\right)}
 		+
@@ -477,7 +469,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singula
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.72\linewidth]{figures/soporte_interior}
+		\includegraphics[width=0.4\linewidth]{figures/soporte_interior}
 		\caption{Soporte del producto de Sobolev en el ejemplo con átomos interiores.}
 		\label{fig:ejemplo_interior_puro}
 	\end{figure}
@@ -486,7 +478,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singula
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Índice                & Valor           \\
+			Índice                     & Valor           \\
 			\hline
 			$\sigma_{0,50}(\mathbf D)$ & $2.0904<\infty$ \\
 			\hline
@@ -500,17 +492,17 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singula
 \begin{exm}
 	Consideremos ahora
 	\[
-		\langle p,q\rangle_S
+		\| p,q\|_S
 		=
-		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_1(z)
+		\int_{\mathbb S_1}|p(z)|^2\,d\mathbf m(z)
 		+
-		p'(2)\overline{q'(2)}
+		|p'(2)|^2
 		+
-		p'(-2)\overline{q'(-2)}
+		|p'(-2)|^2
 		+
-		p'\!\left(\tfrac{3i}{2}\right)\overline{q'\!\left(\tfrac{3i}{2}\right)}
+		|p'\!\left(\tfrac{3i}{2}\right)|^2
 		+
-		p'\!\left(-\tfrac{3i}{2}\right)\overline{q'\!\left(-\tfrac{3i}{2}\right)},
+		|p'\!\left(-\tfrac{3i}{2}\right)|^2,
 		\qquad p,q\in\Poly.
 	\]
 	Entonces
@@ -548,7 +540,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singula
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Índice                & Valor             \\
+			Índice                     & Valor             \\
 			\hline
 			$\sigma_{3,50}(\mathbf D)$ & $2.2935\cdot10^3$ \\
 			\hline
@@ -562,19 +554,19 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singula
 \begin{exm}
 	Finalmente, consideremos el caso mixto
 	\[
-		\langle p,q\rangle_S
+		\| p,q\|_S
 		=
-		\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m_1(z)
+		\int_{\mathbb S_1}|p(z)|^2\,d\mathbf m_(z)
 		+
-		p'(2)\overline{q'(2)}
+		|p'(2)|^2
 		+
-		p'(-2)\overline{q'(-2)}
+		|p'(-2)|^2
 		+
-		p'\!\left(\tfrac{3i}{2}\right)\overline{q'\!\left(\tfrac{3i}{2}\right)}
+		|p'\!\left(\tfrac{3i}{2}\right)|^2
 		+
-		p'(0)\overline{q'(0)}
+		|p'(0)|^2
 		+
-		p'\!\left(\tfrac12\right)\overline{q'\!\left(\tfrac12\right)},
+		|p'\!\left(\tfrac12\right)|^2,
 		\qquad p,q\in\Poly.
 	\]
 	Ahora
@@ -616,7 +608,7 @@ En los ejemplos siguientes fijamos $R=1$ y dejamos indicados los valores singula
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			Índice                & Valor             \\
+			Índice                     & Valor             \\
 			\hline
 			$\sigma_{2,50}(\mathbf D)$ & $3.0841\cdot10^3$ \\
 			\hline

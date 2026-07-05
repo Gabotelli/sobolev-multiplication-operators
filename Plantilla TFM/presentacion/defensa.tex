@@ -1,0 +1,878 @@
+% !TEX program = pdflatex
+% !TEX root = defensa.tex
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{mathpazo}
+\usefonttheme{serif}
+
+\usetheme{Boadilla}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[triangle]
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{bibliography item}[text]
+
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{array,colortbl}
+\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,matrix}
+\addbibresource{../referencias.bib}
+
+\definecolor{accent}{HTML}{203A59}
+\definecolor{accent2}{HTML}{496A8A}
+\definecolor{soft}{HTML}{EEF2F5}
+\definecolor{good}{HTML}{2D6A4F}
+\definecolor{bad}{HTML}{8B2D2D}
+
+\setbeamercolor{title}{fg=accent}
+\setbeamercolor{frametitle}{fg=white,bg=accent}
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{block title}{fg=white,bg=accent}
+\setbeamercolor{block body}{fg=black,bg=soft}
+\setbeamerfont{block title}{size=\fontsize{6.8pt}{7.6pt}\selectfont,series=\bfseries}
+\setbeamerfont{block title alerted}{size=\fontsize{6.8pt}{7.6pt}\selectfont,series=\bfseries}
+\setbeamercolor{alerted text}{fg=bad}
+\setbeamercolor{itemize item}{fg=accent}
+\setbeamercolor{itemize subitem}{fg=accent2}
+\setbeamersize{text margin left=7mm,text margin right=7mm}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Poly}{\mathbb{P}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\SR}{\mathbb{S}_R}
+\newcommand{\mR}{\mathbf{m}_R}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\newcommand{\casecircle}[3]{%
+\begin{tikzpicture}[scale=0.52,baseline=-1mm]
+  \draw[accent,thick] (0,0) circle (1.4);
+  \node[font=\scriptsize,accent] at (1.1,-1.05) {$\SR$};
+  #1
+  \node[align=center,font=\scriptsize] at (0,-2.05) {#2\\#3};
+\end{tikzpicture}}
+
+\newcommand{\summarysupport}[1]{%
+\begin{tikzpicture}[scale=0.58,baseline=-0.5ex]
+  \draw[accent,thick] (0,0) circle (1.4);
+  \node[font=\scriptsize,accent] at (1.05,-1.02) {$\mathbb S_1$};
+  #1
+\end{tikzpicture}}
+
+\title{Análisis espectral y matricial del operador de multiplicación\\en espacios de Sobolev discretos}
+\author{Gabriel Suárez}
+\institute{TFM \;\textbar\; UPM \;\textbar\; Tutoras: Carmen Escribano y Raquel Gonzalo}
+\date{2026}
+
+\begin{document}
+
+% 1
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% 2
+\begin{frame}{Caso clásico frente a Sobolev discreto}
+  \scriptsize
+  \setlength{\abovedisplayskip}{3pt}
+  \setlength{\belowdisplayskip}{3pt}
+  \setlength{\abovedisplayshortskip}{2pt}
+  \setlength{\belowdisplayshortskip}{2pt}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \textbf{Caso clásico}
+
+    \vspace{1mm}
+    Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinito y momentos finitos.
+    \[
+      \langle p,q\rangle_\mu
+      =
+      \int_{\C} p(z)\overline{q(z)}\,d\mu(z),
+      \qquad p,q\in\Poly.
+    \]
+    Polinomios ortonormales: \(\{\phi_n^\mu\}_{n\ge0}\).
+
+    \column{0.48\textwidth}
+    \textbf{Caso Sobolev discreto}
+
+    \vspace{1mm}
+    Sea \(\mu\) una medida de Borel positiva y finita en \(\C\), con soporte infinito y momentos finitos, y sean \(c_1,\dots,c_N\in\C\).
+    \[
+      \langle p,q\rangle_S
+      =
+      \int_{\C} p(z)\overline{q(z)}\,d\mu(z)
+      +
+      \sum_{j=1}^{N} p'(c_j)\overline{q'(c_j)}.
+    \]
+    Polinomios ortonormales: \(\{\phi_n^S\}_{n\ge0}\).
+  \end{columns}
+
+  \vspace{0.5mm}
+  \begin{center}
+    \begin{minipage}{0.46\linewidth}
+      \begin{block}{Operador de multiplicación}
+        \centering
+        \[
+          \D:\Poly\to\Poly,
+          \qquad
+          (\D p)(z)=zp
+        \]
+      \end{block}
+    \end{minipage}
+  \end{center}
+
+  \vspace{0.5mm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Criterio clásico de acotación}
+      \footnotesize
+      \[
+        \D\text{ es acotado }
+        \Longleftrightarrow
+        \supp(\mu)\text{ es compacto}
+      \]
+      \[
+        \Longleftrightarrow
+        \text{los ceros de }\phi_n^\mu\text{ están uniformemente acotados.}
+      \]
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{alertblock}{Contraste Sobolev}
+      \footnotesize
+      \begin{itemize}
+        \item \(\supp(\mu)\) compacto \(\not\Rightarrow\) \(\D\) acotado.
+        \item Ceros de \(\phi_n^S\) uniformemente acotados \(\not\Rightarrow\) \(\D\) acotado.
+      \end{itemize}
+    \end{alertblock}
+  \end{columns}
+\end{frame}
+
+% 3
+\begin{frame}{Ejemplo motivador: Castro--Durán}
+  \small
+  \vspace{-4mm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.54\textwidth}
+    \[
+      \langle p,q\rangle_S
+      =
+      \int_{1/2}^{1} p(x)q(x)\,dx
+      +
+      p'(1/2)q'(1/2).
+    \]
+
+    \column{0.42\textwidth}
+    \centering
+    \begin{tikzpicture}[x=5cm,y=1cm]
+      \draw[-{Latex[length=2mm]},black!70,thick] (0.35,0) -- (1.08,0);
+      \draw[accent,line width=2.6pt] (0.5,0) -- (1,0);
+      \fill[accent] (0.5,0) circle (1.8pt);
+      \fill[accent] (1,0) circle (1.8pt);
+      \draw[bad,fill=bad,line width=1.1pt] (0.5,0) circle (3.1pt);
+      \foreach \x/\lab in {0.5/{\(\tfrac12\)},1/{\(1\)}}
+      \draw[black!70] (\x,0.04) -- (\x,-0.04) node[below=2pt,font=\scriptsize] {\lab};
+    \end{tikzpicture}
+  \end{columns}
+
+  \vspace{2mm}
+  \begin{itemize}
+    \item La parte continua está soportada en el intervalo compacto \([1/2,1]\).
+    \item Los ceros de la familia ortogonal permanecen \textbf{uniformemente acotados}.
+    \item Sin embargo, el operador de multiplicación \(\D p(x)=xp(x)\) \textbf{no es acotado}.
+  \end{itemize}
+
+  {\scriptsize El ejemplo procede de \cite{CastroDuran2003}; para fenómenos afines, sobre todo con soporte sobre la recta real,
+    véanse \cite{AMRR92,ALR96,AlfRez01,Mei93,GK97}.}
+
+  \begin{alertblock}{Pregunta guía}
+    ¿Cómo medir la falta de acotación de \(\D\) más allá de la norma, y cómo recuperar esa información desde matrices finitas?
+  \end{alertblock}
+\end{frame}
+
+% 4
+\begin{frame}{Estudio del operador de multiplicación por z en Sobolev general}
+  \scriptsize
+  \setlength{\abovedisplayskip}{2.5pt}
+  \setlength{\belowdisplayskip}{2.5pt}
+  \setlength{\abovedisplayshortskip}{1.5pt}
+  \setlength{\belowdisplayshortskip}{1.5pt}
+
+  Si el operador de multiplicación \(\D\) es acotado respecto de \(\|\cdot\|_S\),
+  entonces los ceros de los polinomios ortogonales asociados están contenidos en el
+  disco cerrado \(\overline{D(0,\|\D\|_S)}\). En particular, la familia de ceros está
+  uniformemente acotada.
+
+  Existe una literatura amplia sobre este problema, especialmente para medidas con
+  soporte sobre la recta real; véanse
+  \cite{AMRR92,ALR96,AlfRez01,Mei93,GK97,lopez1999zero,lopez2001sobolev}.
+
+  \vspace{0.4mm}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.52\textwidth}
+    \begin{block}{Definición}
+      Sea \(\mu\) una medida de Borel positiva y finita en \(\C\). Diremos que
+      \(a\in\C\) es un punto de evaluación acotada para \(L^2(\mu)\), o
+      \emph{bounded point evaluation}, si existe una constante \(C_a>0\) tal que
+      \[
+        |p(a)|^2\le C_a \int_{\C}|p(z)|^2\,d\mu(z)
+        \qquad \text{para todo }p\in\Poly.
+      \]
+      Denotaremos por \(\operatorname{bpe}(\mu)\) el conjunto de todos esos puntos.
+    \end{block}
+
+    \vspace{-1.2mm}
+
+    \begin{block}{Teorema}
+      Si \(\D\) es acotado respecto de \(\|\cdot\|_{L^2(\mu)}\) y
+      \(a_1,\dots,a_N\in\operatorname{bpe}(\mu)\), entonces \(\D\) es acotado respecto de la norma de Sobolev discreta
+      \[
+        \|p\|_S^2=\int_{\C}|p(z)|^2\,d\mu(z)+\sum_{j=1}^N |p'(a_j)|^2.
+      \]
+      En consecuencia, los ceros de los polinomios ortogonales asociados quedan uniformemente acotados {\scriptsize \cite{EG25-2}.}
+    \end{block}
+
+    \column{0.44\textwidth}
+    \begin{alertblock}{Representación matricial infinita}
+      Aunque \(\D\) pueda no extenderse acotadamente a la compleción, su acción sobre
+      \(\Poly\) sigue determinando una matriz infinita de Hessenberg, es decir,
+      \(d_{i,j}=0\) si \(i>j+1\).
+        {\setlength{\arraycolsep}{2.5pt}
+          \[
+            \mathbf D=
+            \begin{pmatrix}
+              d_{0,0} & d_{0,1} & d_{0,2} & d_{0,3} & \cdots \\
+              d_{1,0} & d_{1,1} & d_{1,2} & d_{1,3} & \cdots \\
+              0       & d_{2,1} & d_{2,2} & d_{2,3} & \cdots \\
+              0       & 0       & d_{3,2} & d_{3,3} & \cdots \\
+              \vdots  & \vdots  & \ddots  & \ddots  & \ddots
+            \end{pmatrix},
+            \qquad
+            d_{i,j}=\langle z\phi_j,\phi_i\rangle_S.
+          \]
+        }
+        {\scriptsize \cite{EGT23,EG25-2}.}
+    \end{alertblock}
+  \end{columns}
+\end{frame}
+
+% 5
+\begin{frame}{Punto de partida del TFG y objetivo del TFM}
+  \scriptsize
+  \setlength{\abovedisplayskip}{1.5pt}
+  \setlength{\belowdisplayskip}{1.5pt}
+  \setlength{\abovedisplayshortskip}{0.8pt}
+  \setlength{\belowdisplayshortskip}{0.8pt}
+  Para cada \(n\in\mathbb N\), definimos \(\mathbb P_n=[\phi_0,\dots,\phi_n]\),
+  \(\mathcal D_n(p):=\pi_n(\D p)\) y su matriz
+  \(\mathbf D_n:=(d_{i,j})_{0\le i,j\le n}\in\mathcal M_{n+1}(\C)\), que es la sección principal correspondiente.
+
+  \begin{block}{Definición}
+    Para \(0\le k\le n\), denotamos por \(\sigma_{k,n}\) el \(k\)-ésimo valor singular
+    de \(\mathbf D_n\), con \(\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0\).
+    Por el principio min-max de Courant--Fischer,
+    \[
+      \sigma_{k,n}
+      =
+      \min_{\substack{S\subset\C^{n+1}\\ \dim S=n+1-k}}
+      \max_{\substack{x\in S\\ x\neq0}}
+      \frac{\|\mathbf D_nx\|_2}{\|x\|_2}.
+    \]
+  \end{block}
+
+  \vspace{-1mm}
+  {\setbeamercolor{block title alerted}{fg=white,bg=bad}
+    \setbeamercolor{block body alerted}{fg=black,bg=bad!10}
+    \begin{alertblock}{Observación empírica del TFG}
+      Para cada \(k\) fijo, \(\sigma_{k,n}\) converge a un valor
+      \[
+        \sigma_{k,n}\longrightarrow \sigma_k.
+      \]
+    \end{alertblock}}
+
+  \vspace{-1mm}
+  \begin{block}{Objetivo del TFM}
+    Formalizar matemáticamente los comportamientos observados en el TFG y extender la teoría al caso en que \(\D\) puede no ser acotado en todo \(\Poly\).
+    \begin{enumerate}
+      \item Definir un análogo de los valores singulares para \(\D\).
+      \item Recuperar ambos fenómenos desde las matrices finitas \(\mathbf D_n\).
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+% 6
+\begin{frame}{Números de Gelfand}
+  \scriptsize
+  \begin{block}{Definición}
+    Sea \(T\in\mathcal L(\mathcal H)\). Para cada \(k\ge 0\), definimos el número de Gelfand de orden \(k\) de \(T\) como
+    \[
+      c_k(T)=\inf\left\{\max_{\substack{x\in M\\ x\neq0}}
+      \frac{\|\mathbf Tx\|}{\|x\|}:M\subset \mathcal H,\ M\text{ cerrado},\ \operatorname{codim}_{\mathcal H}(M)<k+1\right\}.
+    \]
+  \end{block}
+
+  Además,
+  \(
+  \|T\|=c_0(T)\ge c_1(T)\ge c_2(T)\ge \cdots \ge 0.
+  \)
+
+  \begin{alertblock}{Problema}
+    \begin{enumerate}
+      \item En nuestro caso, \(\D\) puede no pertenecer a \(\mathcal L(\mathcal H)\).
+      \item Está definido sobre \(\Poly\), no toda la compleción.
+    \end{enumerate}
+  \end{alertblock}
+
+  \begin{block}{Definición}
+    Sea \(X\) un espacio vectorial y sea \(V\subset X\) un subespacio. Definimos la codimensión de \(V\) en \(X\) por
+    \[
+      \operatorname{codim}_{X}(V):=\dim(X/V).
+    \]
+  \end{block}
+\end{frame}
+
+% 7
+\begin{frame}{Caracterización de la codimensión y funcionales relevantes}
+  \scriptsize
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Proposición}
+      Sea \(M\subset\mathcal H\) un subespacio cerrado y sea \(m\geq 1\). Entonces son equivalentes:
+      \begin{enumerate}
+        \setlength{\itemsep}{0pt}
+              \setlength{\parskip}{0pt}
+        \item \(\operatorname{codim}_{\mathcal H}(M)=m\);
+        \item existen funcionales lineales acotados y linealmente independientes \(\varphi_1,\dots,\varphi_m\in\mathcal H^*\) tales que
+              \[
+                M=\bigcap_{j=1}^m \ker \varphi_j.
+              \]
+      \end{enumerate}
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{Proposición}
+      Sea \(V\subset \Poly\) un subespacio vectorial y sea \(m\geq 1\). Entonces son equivalentes:
+      \begin{enumerate}
+        \setlength{\itemsep}{0pt}
+              \setlength{\parskip}{0pt}
+        \item \(\operatorname{codim}_{\Poly}(V)=m\);
+        \item existen funcionales lineales \(L_1,\dots,L_m\in\Poly^*\) linealmente independientes tales que
+              \[
+                V=\bigcap_{j=1}^m \ker L_j.
+              \]
+      \end{enumerate}
+    \end{block}
+  \end{columns}
+
+  \begin{block}{Funcionales relevantes}
+    Sea \(c\in\C\). Consideramos los funcionales lineales
+    \begin{enumerate}
+      \setlength{\itemsep}{0pt}
+            \setlength{\parskip}{0pt}
+      \item \(\delta_c(p):=p(c)\),
+      \item \(\delta'_c(p):=p'(c)\),
+      \item \(\psi_c(p):=(\D p)'(c)=p(c)+cp'(c)\), de modo que \(\|\D p\|_S^2=\|\D p\|_\mu^2+\sum_{j=1}^N |\psi_{c_j}(p)|^2\).
+    \end{enumerate}
+  \end{block}
+
+  Si los puntos son distintos, las familias \(\{\delta_{c_j}\}\), \(\{\delta'_{c_j}\}\) y \(\{\psi_{c_j}\}\) son linealmente independientes.
+\end{frame}
+
+% 8
+\begin{frame}{Índice \texorpdfstring{$Q_k$}{Qk}: definición y propiedades}
+  \scriptsize
+  \setlength{\abovedisplayskip}{2pt}
+  \setlength{\belowdisplayskip}{2pt}
+  \setlength{\abovedisplayshortskip}{1pt}
+  \setlength{\belowdisplayshortskip}{1pt}
+  \begin{block}{Definición}
+    Sea \(T:\Poly\to\Poly\) un operador lineal no necesariamente acotado definido sobre \((\Poly,\|\cdot\|)\), donde la norma está inducida por un producto interno. Para cada \(k\ge0\), definimos
+    \[
+      Q_k(T)
+      :=\inf\left\{\max_{\substack{p\in \Poly\\ p\neq0}}
+      \frac{\|\mathbf Tp\|}{\|p\|}:V\subset\Poly\ \ \operatorname{codim}_{\Poly}(V)<k+1\right\},
+    \]
+    \(Q_k(T)\) admite el valor \(+\infty\).
+  \end{block}
+
+  \begin{itemize}
+    \setlength{\itemsep}{0pt}
+          \setlength{\parskip}{0pt}
+    \item Para \(k=0\), la condición \(\operatorname{codim}_{\Poly}(V)<1\) fuerza \(V=\Poly\), y por tanto \(Q_0(T)=\|T\|\).
+    \item Al igual que los números de Gelfand, \(Q_0(T)\ge Q_1(T)\ge\cdots\ge0\).
+  \end{itemize}
+
+  \vspace{-1mm}
+  \begin{block}{Proposición}
+    Sea \(T:\Poly\to\Poly\) un operador lineal, no necesariamente acotado. Entonces, para todo \(k\ge0\),
+    \[
+      Q_k(T)
+      =
+      \sup_{\substack{E\subset\Poly\\ \dim E=k+1}}
+      \inf_{\substack{p\in E\\ p\ne0}}
+      \frac{\|Tp\|}{\|p\|},
+    \]
+    admitiendo el valor \(+\infty\).
+  \end{block}
+
+  {\scriptsize Esta definición y su formulación tipo min-max se introducen en \cite{EGS-preprint}.}
+\end{frame}
+
+% 9
+\begin{frame}{Ejemplo: $\mathcal D$ no acotado pero tiene norma finita en un subespacio de codimensión 1}
+  \small
+  Consideremos el producto de Sobolev
+  \[
+    \langle p,q\rangle_S=\int_{\mathbb S_1}p(z)\overline{q(z)}\,d\mathbf m(z)+p'(2)\overline{q'(2)},
+    \qquad p,q\in\Poly,
+  \]
+  y el operador de multiplicación \(\D p(z)=zp(z)\).
+
+  \begin{itemize}
+    \item \(\|\D\|_S = Q_0(\D)=\infty\). En particular, \(\D\) no es acotado.
+    \item Si consideramos \(V = \{p \in \Poly : p(2) = 0\}\), este tiene \(\operatorname{codim}_{\Poly}(V) = 1\) y \(\D|_V\) es acotado. En efecto, para \(p \in V\),
+          \[
+            \D|_V=\sup_{\substack{p\in V\\ p\neq0}} \frac{\|\D p\|_S}{\|p\|_S}=2.
+          \]
+  \end{itemize}
+
+  \begin{alertblock}{Lectura}
+    Esto motiva que la cadena de los \(Q_k\) no tiene por qué ser enteramente con valores $+\infty$ cuando \(\D\) es no acotado.
+  \end{alertblock}
+\end{frame}
+
+% 10
+\begin{frame}{Compatibilidad con Gelfand}
+  \small
+  \begin{block}{Teorema}
+    Sea \(T:\Poly\to\Poly\) un operador lineal acotado respecto de \(\|\cdot\|\), y sea \(\widetilde T\in\mathcal L(\mathcal H)\), con \(\mathcal H=\overline{\Poly}\), su extensión acotada. Entonces, para todo \(k\ge0\),
+    \[
+      Q_k(T)=c_k(\widetilde T).
+    \]
+  \end{block}
+
+  \medskip
+  \begin{itemize}
+    \item Si \(T\) es acotado sobre \(\Poly\), \(Q_k(T)\) coincide con el número de Gelfand clásico de su extensión hilbertiana.
+    \item Por tanto, \(Q_k\) prolonga la teoría clásica al marco algebraico sobre \(\Poly\).
+  \end{itemize}
+\end{frame}
+
+% 11
+\begin{frame}{Modelo del TFM y dos fenómenos a estudiar}
+  \scriptsize
+  \begin{block}{Modelo fijo}
+    \[
+      \langle p,q\rangle_S
+      =
+      \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+      +
+      \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
+      \qquad p,q\in\Poly.
+    \]
+    Reordenamos los puntos de modo que \(|c_j|\ge R\) para \(j=1,\dots,m\) y \(|c_j|<R\) para \(j=m+1,\dots,N\).
+  \end{block}
+
+  \small Para la cadena
+  \(
+  Q_0(T)\ge Q_1(T)\ge Q_2(T)\ge \cdots
+  \)
+
+  \scriptsize
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Ruptura}
+      Diremos que la cadena se rompe en \(k\) si \[Q_{k-1}(T)=\infty \qquad\text{y}\qquad Q_k(T)<\infty.\]
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{Estabilización}
+      Diremos que la cadena se estabiliza en \(k\) si
+      \[
+        Q_k(T)=Q_j(T)\quad \text{para todo }j\ge k.
+      \]
+    \end{block}
+  \end{columns}
+
+
+  Nótese que los índices de estabilización y ruptura no tienen por qué coincidir. Aunque es posible que ocurra a la vez.
+
+
+  \small
+  \begin{alertblock}{Estudio del operador \(\D\)}
+    Se hará un estudio de la ruptura y la estabilización de la cadena de índices \(Q_k\) para el operador de multiplicación \(\D\) en el modelo fijado.
+  \end{alertblock}
+
+\end{frame}
+
+% 12
+\begin{frame}{Primeros casos: todos dentro y primer ejemplo de ruptura}
+  \scriptsize
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Todos los átomos interiores}
+      Sea \(R>0\) y sean \(c_1,\dots,c_N\in\C\) tales que \(|c_j|<R\) para \(j=1,\dots,N\) y consideremos
+      \[
+        \langle p,q\rangle_S
+        =
+        \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+        +
+        p'(c)\overline{q'(c)}.
+      \]
+      Entonces
+      \[
+        +\infty>Q_0(\D) \ge Q_1(\D) \ge Q_2(\D) \ge \cdots.
+      \]
+      \medskip
+      \centering
+      \casecircle{
+        \fill[good] (-0.55,0.45) circle (2.2pt);
+        \fill[good] (0.45,0.30) circle (2.2pt);
+        \fill[good] (0.10,-0.55) circle (2.2pt);
+      }{}{}
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{Un átomo exterior}
+      Sea \(R>0\), sea \(c\in\C\) con \(|c|\ge R\) y consideremos
+      \[
+        \langle p,q\rangle_S
+        =
+        \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+        +
+        p'(c)\overline{q'(c)}.
+      \]
+      Entonces
+      \[
+        Q_0(\D)=\infty
+        \qquad \text{y} \qquad
+        Q_1(\D)\le R<\infty.
+      \]
+      \medskip
+      \centering
+      \casecircle{
+        \fill[bad] (2.0,0.3) circle (2.2pt);
+      }{}{}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+% 13
+\begin{frame}{Teorema de ruptura}
+
+  \begin{block}{Teorema}
+    Sea \(R>0\), sean \(c_1,\dots,c_N\in\C\) distintos dos a dos y consideremos sobre \(\Poly\) el producto escalar
+    \[
+      \langle p,q\rangle_S
+      =
+      \int_{\mathbb{S}_R} p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+      +
+      \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
+      \qquad p,q\in\Poly.
+    \]
+    Si \(|c_j|\ge R\) para \(j=1,\dots,m\) y \(|c_j|<R\) para \(j=m+1,\dots,N\), entonces
+    \[
+      Q_0(\D)=Q_1(\D)=\cdots=Q_{m-1}(\D)=\infty,
+      \qquad
+      Q_m(\D)<\infty.
+    \]
+  \end{block}
+  \begin{itemize}
+    \item Cada átomo con \(|c_j|\ge R\) aporta una obstrucción independiente.
+    \item El índice abstracto cuenta cuántas direcciones singulares hay que eliminar.
+  \end{itemize}
+\end{frame}
+
+% 14
+\begin{frame}{Idea de la prueba de ruptura}
+  \footnotesize
+  \setlength{\abovedisplayskip}{2pt}
+  \setlength{\belowdisplayskip}{2pt}
+  \setlength{\abovedisplayshortskip}{1pt}
+  \setlength{\belowdisplayshortskip}{1pt}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Suficiencia}
+      La codimensión \(m\) basta. Sea
+      \[
+        V_m:=\bigcap_{j=1}^m\ker\psi_{c_j},
+        \qquad
+        \codim_{\Poly}(V_m)=m.
+      \]
+      Si \(p\in V_m\), entonces \((\D p)'(c_j)=\psi_{c_j}(p)=0\) para \(j\le m\), y los átomos interiores se controlan por evaluación acotada. Por tanto,
+      \[
+        \|\D p\|_S^2\le C_m^2\|p\|_S^2,
+        \qquad
+        Q_m(\D)\le C_m<\infty.
+      \]
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{Necesidad}
+      La codimensión \(<m\) no basta. Por interpolación de Hermite se construyen \(u_{j,n}\) con
+      \[
+        \|u_{j,n}\|_S\to0,
+        \qquad
+        \psi_{c_k}(u_{j,n})=\delta_{kj}.
+      \]
+      Si \(\codim_{\Poly}(V)<m\), existe \(p_n\in V\cap[u_{1,n},\dots,u_{m,n}]\) tal que
+      \[
+        \sum_{k=1}^m |\psi_{c_k}(p_n)|^2=1,
+        \qquad
+        \|\D p_n\|_S\ge 1,
+        \qquad
+        \|p_n\|_S\to0.
+      \]
+      Luego \(\D|_V\) no es acotado y \(Q_{m-1}(\D)=\infty\).
+    \end{block}
+  \end{columns}
+\end{frame}
+
+% 15
+\begin{frame}{Teorema de estabilización}
+  \small
+  \begin{block}{Teorema}
+    Sea \(R>0\), sean \(c_1,\dots,c_N\in\C\) distintos dos a dos y consideremos sobre \(\Poly\) el producto escalar
+    \[
+      \langle p,q\rangle_S
+      =
+      \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+      +
+      \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
+      \qquad p,q\in\Poly.
+    \]
+    Entonces
+    \[
+      Q_k(\D)=R
+      \qquad \text{para todo } k\ge N.
+    \]
+  \end{block}
+
+  \begin{alertblock}{Aplicación}
+    Para la medida de Lebesgue normalizada sobre \(\SR\), se tiene
+    \begin{enumerate}
+      \item \(\langle \cdot, \cdot\rangle_{\mathbf m_R} \longrightarrow\|\D\|_{\mathbf m_R}=\operatorname{max}\{|z|:z\in\supp(\mathbf m_R)\}=R\).
+      \item \(\langle \cdot, \cdot \rangle_{S} \longrightarrow Q_N(\D)=\operatorname{max}\{|z|:z\in\supp(\mathbf m_R)\}=R\)
+    \end{enumerate}
+  \end{alertblock}
+
+  %\comment{\vspace{1mm}
+  % \centering
+  %\begin{tikzpicture}[scale=0.93]
+  %  \draw[->,thick] (-0.2,0) -- (7.1,0);
+  % \draw[line width=5pt,bad] (0,0) -- (2.1,0);
+  % \draw[line width=5pt,accent2] (2.1,0) -- (4.9,0);
+  % \draw[line width=5pt,good] (4.9,0) -- (6.8,0);
+  % \draw[thick] (2.1,0.18)--(2.1,-0.18);
+  % \draw[thick] (4.9,0.18)--(4.9,-0.18);
+  % \node[below,font=\scriptsize] at (2.1,-0.22) {$m$};
+  % \node[below,font=\scriptsize] at (4.9,-0.22) {$N$};
+  % \node[above,font=\scriptsize,bad] at (1.0,0.35) {$+\infty$};
+  %\node[above,font=\scriptsize,accent2] at (3.45,0.35) {finito};
+  % \node[above,font=\scriptsize,good] at (5.9,0.35) {$R$};
+  % \node[below,font=\scriptsize] at (6.2,-0.55) {índice \(k\)};
+  %\end{tikzpicture}}
+\end{frame}
+
+% 16
+\begin{frame}{Idea de la prueba de estabilización y aplicación directa}
+  \footnotesize
+  \setlength{\abovedisplayskip}{2pt}
+  \setlength{\belowdisplayskip}{2pt}
+  \setlength{\abovedisplayshortskip}{1pt}
+  \setlength{\belowdisplayshortskip}{1pt}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.48\textwidth}
+    \begin{block}{Cota inferior}
+      Sea
+      \[
+        E:=\{p\in\Poly:p'(c_j)=0\text{ para todo }j=1,\dots,N\}.
+      \]
+      Si \(\codim_{\Poly}(W)<k+1\), existe \(0\neq p\in W\cap E\), y entonces
+      \[
+        \|p\|_S^2=\|p\|_{L^2(\mR)}^2,
+      \]
+      \[
+        \|\D p\|_S^2
+        =R^2\|p\|_{L^2(\mR)}^2+\sum_{j=1}^N |p(c_j)|^2
+        \ge R^2\|p\|_S^2.
+      \]
+      Luego \(Q_k(\D)\ge R\) para todo \(k\ge0\).
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{Cota superior}
+      Sea
+      \[
+        V_N:=\bigcap_{j=1}^N\ker\psi_{c_j},
+        \qquad
+        \codim_{\Poly}(V_N)=N.
+      \]
+      Si \(p\in V_N\), entonces \((\D p)'(c_j)=\psi_{c_j}(p)=0\) para todo \(j\), y por tanto
+      \[
+        \|\D p\|_S^2=R^2\|p\|_{L^2(\mR)}^2\le R^2\|p\|_S^2.
+      \]
+      Así,
+      \[
+        Q_N(\D)\le R.
+      \]
+    \end{block}
+  \end{columns}
+\end{frame}
+
+% 17
+\begin{frame}{Análisis matricial}
+  \scriptsize
+  \setlength{\abovedisplayskip}{3pt}
+  \setlength{\belowdisplayskip}{3pt}
+  \setlength{\abovedisplayshortskip}{2pt}
+  \setlength{\belowdisplayshortskip}{2pt}
+  La matriz de Hessenberg infinita \(\mathbf D=(d_{i,j})_{i,j\ge0}\) representa a \(\D\) en la base ortonormal de Sobolev. Para cada \(n\in\mathbb N\), su sección finita es
+  \[
+    \mathbf D_n:=(d_{i,j})_{0\le i,j\le n}\in\mathcal M_{n+1}(\C),
+  \]
+  y escribimos \(\sigma_{0,n}\ge\sigma_{1,n}\ge\cdots\ge\sigma_{n,n}\ge0\) para sus valores singulares.
+
+  \begin{block}{Proposición}
+    Para todo \(k\ge0\) fijo, la sucesión \(\{\sigma_{k,n}\}_{n\ge k}\) es creciente. En particular,
+    \[
+      \lim_{n\to\infty}\sigma_{k,n}\in[0,+\infty]
+    \]
+  \end{block}
+
+  \begin{block}{Definición}
+    Para cada \(k\ge0\) definimos
+    \[
+      \sigma_k(\mathbf D):=\lim_{n\to\infty}\sigma_{k,n}.
+    \]
+  \end{block}
+
+  \begin{block}{Teorema}
+    Para el operador \(\D\) sobre \((\Poly,\langle\cdot,\cdot\rangle_S)\), se tiene
+    \[
+      \sigma_k(\mathbf D)=Q_k(\D),\qquad k\ge0.
+    \]
+  \end{block}
+\end{frame}
+
+% 19
+\begin{frame}{Cuadro resumen}
+  \footnotesize
+  \centering
+  \renewcommand{\arraystretch}{1.25}
+  \setlength{\tabcolsep}{4pt}
+  \arrayrulecolor{accent}
+  \begin{tabular}{|>{\centering\arraybackslash}m{0.29\textwidth}|>{\centering\arraybackslash}m{0.29\textwidth}|>{\centering\arraybackslash}m{0.22\textwidth}|}
+    \hline
+    \rowcolor{accent!15}
+    \textbf{Análisis Espectral} & \textbf{Análisis Matricial} & \textbf{Soporte} \\
+    \hline
+    \shortstack[c]{%
+      {\color{accent}\textbf{Todos los átomos dentro}} {\scriptsize \(m=0\)}\\[-0.2ex]
+      \(\textcolor{accent2}{Q_0(\D)<\infty}\)\\[-0.4ex]
+      \(Q_0(\D)\ge\cdots\ge Q_N(\D)\)\\[-0.4ex]
+      \(\textcolor{good}{Q_N(\D)=Q_{N+1}(\D)=\cdots=1}\)
+    }
+                                &
+    \shortstack[c]{%
+      \(\textcolor{accent2}{\sigma_0(\mathbf D)<\infty}\)\\[-0.4ex]
+      \(\sigma_0(\mathbf D)\ge\cdots\ge \sigma_N(\mathbf D)\)\\[-0.4ex]
+      \(\textcolor{good}{\sigma_N(\mathbf D)=\sigma_{N+1}(\mathbf D)=\cdots=1}\)
+    }
+                                &
+    \summarysupport{
+      \fill[good] (-0.55,0.45) circle (2.0pt);
+      \fill[good] (0.48,0.25) circle (2.0pt);
+      \fill[good] (0.12,-0.55) circle (2.0pt);
+    }
+    \\
+    \hline
+    \shortstack[c]{%
+      {\color{accent}\textbf{Solo un átomo en \(2\)}} {\scriptsize \(m=N=1\)}\\[-0.2ex]
+      \(\textcolor{bad}{Q_0(\D)=\infty}\)\\[-0.4ex]
+      \(\textcolor{good}{Q_1(\D)=Q_2(\D)=\cdots=1}\)
+    }
+                                &
+    \shortstack[c]{%
+      \(\textcolor{bad}{\sigma_0(\mathbf D)=\infty}\)\\[-0.4ex]
+      \(\textcolor{good}{\sigma_1(\mathbf D)=\sigma_2(\mathbf D)=\cdots=1}\)
+    }
+                                &
+    \summarysupport{
+      \fill[bad] (2.0,0) circle (2.1pt);
+    }
+    \\
+    \hline
+    \shortstack[c]{%
+      {\color{accent}\textbf{Mixto}} {\scriptsize \(1\le m<N\)}\\[-0.2ex]
+      \(\textcolor{bad}{Q_0(\D)=\cdots=Q_{m-1}(\D)=\infty}\)\\[-0.4ex]
+      \(Q_m(\D),\dots,Q_{N-1}(\D)<\infty\)\\[-0.4ex]
+      \(\textcolor{good}{Q_N(\D)=Q_{N+1}(\D)=\cdots=1}\)
+    }
+                                &
+    \shortstack[c]{%
+      \(\textcolor{bad}{\sigma_0(\mathbf D)=\cdots=\sigma_{m-1}(\mathbf D)=\infty}\)\\[-0.4ex]
+      \(\sigma_m(\mathbf D),\dots,\sigma_{N-1}(\mathbf D)<\infty\)\\[-0.4ex]
+      \(\textcolor{good}{\sigma_N(\mathbf D)=\sigma_{N+1}(\mathbf D)=\cdots=1}\)
+    }
+                                &
+    \summarysupport{
+      \fill[bad] (1.95,0.18) circle (2.1pt);
+      \fill[bad] (-1.75,0.80) circle (2.1pt);
+      \fill[good] (0.42,0.32) circle (2.0pt);
+      \fill[good] (-0.58,-0.28) circle (2.0pt);
+    }
+    \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+% 20
+\begin{frame}{Conclusiones y líneas futuras}
+  \small
+  \begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item La falta de acotación de \(\D\) en productos de Sobolev discretos no se describe solo preguntando si \(\D\) es acotado o no.
+    \item Los índices \(Q_k(\D)\) miden cuántas direcciones producen la falta de acotación y en qué momento esas obstrucciones desaparecen al restringir el operador a subespacios de codimensión finita.
+    \item El entero \(m\) da el umbral de finitud, el entero \(N\) marca el inicio en que los valores son constantes, y la igualdad \(\sigma_k(\mathbf D)=Q_k(\D)\) convierte ese análisis en un procedimiento computable.
+  \end{itemize}
+
+  \begin{block}{Líneas futuras}
+    \scriptsize
+    \setlength{\abovedisplayskip}{2pt}
+    \setlength{\belowdisplayskip}{2pt}
+    \setlength{\abovedisplayshortskip}{1pt}
+    \setlength{\belowdisplayshortskip}{1pt}
+    \begin{itemize}
+      \setlength{\itemsep}{1pt}
+      \item \textbf{Curvas de Jordan.} Si una semejanza lleva a un problema equivalente, es natural preguntar si una deformación continua del soporte también preserva el fenómeno.
+      \item \textbf{Dos medidas compactamente soportadas.}
+      \[
+        \langle p,q\rangle
+        =
+        \int_{\C} p\overline{q}\,d\mu_0
+        +
+        \int_{\C} p'\overline{q'}\,d\mu_1.
+      \]
+      \item \textbf{Sobolev general de orden \(r\).}
+      \[
+        \langle p,q\rangle_r
+        =
+        \sum_{j=0}^r \int_{\C} p^{(j)}\overline{q^{(j)}}\,d\mu_j.
+      \]
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+% 21
+\begin{frame}[allowframebreaks]{Referencias}
+  \scriptsize
+  \setlength{\bibitemsep}{0.2\baselineskip}
+  \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

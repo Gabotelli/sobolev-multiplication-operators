@@ -30,10 +30,10 @@ tras tomar clausura.
 A partir de esta distinción se introdujo, para un operador lineal
 \(T:\Poly\to\Poly\) no necesariamente acotado, el índice
 \[
-    Q_k(T)
-    =
-    \inf\bigl\{\|T|_V\|:V\subset\Poly,
-    \operatorname{codim}_{\Poly}(V)<k+1\bigr\}.
+	Q_k(T)
+	=
+	\inf\bigl\{\|T|_V\|:V\subset\Poly,
+	\operatorname{codim}_{\Poly}(V)<k+1\bigr\}.
 \]
 Este índice mide cuánto puede reducirse la norma de \(T\) al restringirlo a
 subespacios de codimensión menor que \(k+1\). En particular, \(Q_0(T)=\|T\|\),
@@ -47,12 +47,12 @@ polinomios y la teoría hilbertiana de operadores.
 
 El análisis principal se ha desarrollado para el producto de Sobolev discreto
 \[
-    \langle p,q\rangle_S
-    =
-    \int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
-    +
-    \sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
-    \qquad p,q\in\Poly,
+	\langle p,q\rangle_S
+	=
+	\int_{\mathbb{S}_R}p(z)\overline{q(z)}\,d\mathbf{m}_R(z)
+	+
+	\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
+	\qquad p,q\in\Poly,
 \]
 donde \(R>0\), \(c_1,\dots,c_N\in\C\) y \(\mathbf{m}_R\) denota la medida de
 Lebesgue normalizada sobre la circunferencia \(\mathbb{S}_R\). Reordenando los
@@ -68,9 +68,9 @@ El resultado de estabilización demuestra que el número
 no hay puntos exteriores, es decir, si \(m=0\), entonces el operador de
 multiplicación es acotado respecto de la norma de Sobolev. Si \(m\ge1\), entonces
 \[
-    Q_0(\D)=Q_1(\D)=\cdots=Q_{m-1}(\D)=+\infty,
-    \qquad
-    Q_m(\D)<\infty.
+	Q_0(\D)=Q_1(\D)=\cdots=Q_{m-1}(\D)=+\infty,
+	\qquad
+	Q_m(\D)<\infty.
 \]
 Por tanto, cada átomo derivado situado en \(|c_j|\ge R\) para \(j=1,\dots,m\) aporta una obstrucción
 independiente a la acotación. No basta eliminar menos de \(m\) direcciones: para
@@ -83,12 +83,12 @@ Además de localizar el primer índice finito, se ha determinado el valor exacto
 la cola de la sucesión. Para todo \(k\ge N\) se obtiene \(Q_k(\D)=R\).
 Combinando esta igualdad con el umbral anterior se llega a la descripción global
 \[
-    Q_k(\D)=
-    \begin{cases}
-        +\infty, & 0\le k<m, \\
-        \text{finito}, & m\le k<N, \\
-        R, & k\ge N.
-    \end{cases}
+	Q_k(\D)=
+	\begin{cases}
+		+\infty,       & 0\le k<m, \\
+		\text{finito}, & m\le k<N, \\
+		R,             & k\ge N.
+	\end{cases}
 \]
 Esta fórmula resume la estructura del problema. Los puntos \(c_1,\dots,c_m\)
 determinan cuántos primeros índices son infinitos; el número total de átomos
@@ -110,8 +110,8 @@ Por otra parte, si \(\sigma_{k,n}\) denota el \(k\)-ésimo valor singular de
 \(\sigma_k(\mathbf D):=\lim_{n\to\infty}\sigma_{k,n}\).
 El resultado fundamental de esta parte es la igualdad
 \[
-    \sigma_k(\mathbf D)=Q_k(\D),
-    \qquad k\ge0.
+	\sigma_k(\mathbf D)=Q_k(\D),
+	\qquad k\ge0.
 \]
 Esta identidad muestra que los índices \(Q_k\), definidos mediante restricciones
 de codimensión finita en \(\Poly\), son exactamente los valores singulares límite
@@ -124,11 +124,11 @@ En particular, para el producto de Sobolev considerado se obtiene
 En el caso puramente exterior, donde \(m=N\) y por tanto todos los puntos
 \(c_1,\dots,c_N\) satisfacen \(|c_j|\ge R\), se tiene además
 \[
-    \sigma_k(\mathbf D)=Q_k(\D)=
-    \begin{cases}
-        +\infty, & 0\le k<N, \\
-        R, & k\ge N.
-    \end{cases}
+	\sigma_k(\mathbf D)=Q_k(\D)=
+	\begin{cases}
+		+\infty, & 0\le k<N, \\
+		R,       & k\ge N.
+	\end{cases}
 \]
 Los ejemplos finales ilustran las tres situaciones posibles: átomos interiores,
 átomos exteriores y configuraciones mixtas. En ellos se observa la diferencia
@@ -166,11 +166,11 @@ en esta memoria se ha probado que, para la medida \(\mathbf{m}_R\), la condició
 \(|\cdot|_{L^2(\mathbf m_R)}\). Por tanto, una posible extensión de los resultados
 consistiría en estudiar productos de Sobolev discretos de la forma
 \[
-\langle p,q\rangle_S
-=
-\int p(z)\overline{q(z)},d\mu(z)
-+
-\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
+	\langle p,q\rangle_S
+	=
+	\int p(z)\overline{q(z)},d\mu(z)
+	+
+	\sum_{j=1}^N p'(c_j)\overline{q'(c_j)},
 \]
 donde \(\mu\) sea una medida positiva compactamente soportada, y determinar si el
 umbral de finitud de la sucesión \(\{Q_k(\D)\}_{k\ge0}\) viene dado por el número
@@ -192,12 +192,12 @@ puntual por otra medida compactamente soportada. En lugar de considerar término
 finitos de la forma \(|p'(c)|^2\), se puede estudiar un producto de Sobolev de la
 forma
 \[
-    \langle p,q\rangle_S
-    =
-    \int_{\C}p(z)\overline{q(z)}\,d\mu_0(z)
-    +
-    \int_{\C}p'(z)\overline{q'(z)}\,d\mu_1(z),
-    \qquad p,q\in\Poly,
+	\langle p,q\rangle_S
+	=
+	\int_{\C}p(z)\overline{q(z)}\,d\mu_0(z)
+	+
+	\int_{\C}p'(z)\overline{q'(z)}\,d\mu_1(z),
+	\qquad p,q\in\Poly,
 \]
 donde \(\mu_0\) y \(\mu_1\) son medidas positivas de soporte compacto. Este
 problema contiene al caso discreto cuando \(\mu_1\) es una suma finita de deltas,
@@ -207,11 +207,11 @@ conjunto infinito. Sería interesante estudiar como las técnicas de codimensió
 Una tercera línea natural es considerar productos de Sobolev de orden superior,
 con varias medidas asociadas a derivadas sucesivas:
 \[
-    \langle p,q\rangle_S
-    =
-    \sum_{j=0}^{M}
-    \int_{\C}p^{(j)}(z)\overline{q^{(j)}(z)}\,d\mu_j(z),
-    \qquad p,q\in\Poly,
+	\langle p,q\rangle_S
+	=
+	\sum_{j=0}^{M}
+	\int_{\C}p^{(j)}(z)\overline{q^{(j)}(z)}\,d\mu_j(z),
+	\qquad p,q\in\Poly,
 \]
 donde cada \(\mu_j\) es una medida positiva compactamente soportada. Este marco
 permitiría estudiar cómo interactúan distintos niveles de derivación. La acción
