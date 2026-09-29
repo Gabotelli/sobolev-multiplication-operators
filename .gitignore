@@ -34,10 +34,8 @@
 *.ilg
 *.bak
 
-# IGNORAR PDFs generados en la raíz de las carpetas principales
-# (NO afecta a subcarpetas como figures/)
-/Plantilla\ TFM/*.pdf
-/Notas\ para\ trabajar/*.pdf
-/RESUMEN\ DE\ REUNIONES/*.pdf
+# PDF generados y copias de referencias en cualquier carpeta
+*.pdf
+
 # Local Pi runtime state
 .atl/
