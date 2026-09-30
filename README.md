@@ -1,13 +1,13 @@
 # Master’s thesis: multiplication operators in discrete Sobolev spaces
 
-Source material for my MSc thesis in Advanced Mathematics at Universidad Politécnica de Madrid, *Spectral and Matrix Analysis of the Multiplication Operator in Discrete Sobolev Spaces*. The repository contains LaTeX chapters, numerical and verification scripts, figures, and working notes.
+Source files for my MSc thesis in Advanced Mathematics at Universidad Politécnica de Madrid, *Spectral and Matrix Analysis of the Multiplication Operator in Discrete Sobolev Spaces*.
 
-## Repository map
+## Manuscript and defense
 
-- `Plantilla TFM/main.tex` — main LaTeX manuscript; `chapters/` contains the introduction, analysis and conclusions, and `referencias.bib` holds bibliographic entries.
-- `Plantilla TFM/scripts/` — Python scripts for numerical experiments and checks accompanying the manuscript.
-- `Plantilla TFM/figures/` — generated visualisations. PNG figures referenced by the manuscript are retained.
-- `Plantilla TFM/presentacion/defensa.tex` — defense slides source.
-- `Notas para trabajar/`, `RESUMEN DE REUNIONES/` and `correcciones-plantilla.TFM/` — working notes and drafts.
+- `Plantilla TFM/main.tex` — manuscript entry point; `chapters/` contains the included chapters and conclusions.
+- `Plantilla TFM/MUMAv-UPM.cls`, `logos/` and `referencias.bib` — document class, branding and bibliography.
+- `Plantilla TFM/figures/` — PNG figures used by the manuscript.
+- `Plantilla TFM/presentacion/defensa.tex` — defense slides; `estructura.md` and `notas_orador.md` support the presentation.
+- `Plantilla TFM/scripts/` — Python source for numerical experiments and verification.
 
-Compiled PDFs and unused presentation reference photos have been removed. The manuscript, slides and their figures remain as source files. A TeX installation and the project’s class file are needed to compile; a clean build has not been verified here. The push/pull scripts in the repository are for the author’s Overleaf workflow and require a configured remote.
+Compiled PDFs, intermediate TeX output, working drafts and unused imagery have been removed. A suitable TeX installation is required to compile the manuscript and slides; a clean build has not been verified here.
