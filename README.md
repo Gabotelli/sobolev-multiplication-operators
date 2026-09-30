@@ -10,31 +10,13 @@ My MSc thesis in Advanced Mathematics at Universidad Politécnica de Madrid: *Sp
 
 **Operator-to-matrix connection.** Bounded point evaluations inside the circle control evaluation and derivative terms; boundary and exterior atoms produce the singular obstructions. In an orthonormal polynomial basis, multiplication has a Hessenberg matrix representation. Eigenvalues of its principal sections give polynomial zeros, and the limits of the ordered singular values recover $Q_k(D)$. Finite numerical experiments illustrate this relationship; they do not replace the proofs.
 
-## Available experiments
+## Computational work and repository scope
 
-The current repository contains **Python/NumPy auxiliary verification scripts** under [Plantilla TFM/scripts](Plantilla%20TFM/scripts/):
+I developed Maple routines to investigate finite Hessenberg representations and singular values of the multiplication operator. The manuscript describes the mathematical framework and computational experiments. **Standalone Maple worksheets are not currently included**, so this repository does not yet provide an executable reproduction of those experiments.
 
-| Script | Purpose |
-| --- | --- |
-| `sobolev_experiments.py` | Gram matrices, orthonormalization, Hessenberg sections, zeros, singular values and threshold counts. |
-| `threshold_counterexample.py` | Threshold counterexample calculation. |
-| `verify_chapter3.py` | Numerical checks for the chapter 3 configurations. |
-| `verify_chapters4_5.py` | Matrix identities and spectral checks. |
-| `verify_mixed_no_boundary.py` | Interior and mixed configurations without boundary atoms. |
-| `verify_mixed_with_boundary.py` | Exterior attraction and boundary-scale numerical evidence. |
-| `verify_mixed_boundary_two_scale.py` | Reduced atom system and two-scale boundary verification. |
+## Authorship
 
-From the repository root, with Python and NumPy installed:
-
-```bash
-python3 "Plantilla TFM/scripts/sobolev_experiments.py" --n 8 --r1 1.0 --c1 0.0 --atoms 1.4 -1.6 --thresholds 1 1.1 1.5 --json-output results/example.json
-```
-
-Here `--n 8` means the theoretical section $D_8$, of size $9\times9$. This small example has been run successfully. Larger configurations can be sensitive to numerical conditioning.
-
-## Authorship and scope
-
-The thesis is my academic research project. My documented computational contribution includes Maple routines for finite Hessenberg representations and singular-value analysis. **No standalone Maple worksheets are present in this current tree.** The Python files are supplementary verification code; their individual authorship is not established by this repository and is not claimed here as solely original code written by me. The document class, university branding and cited results retain their respective attribution.
+The thesis and the Maple algorithm are my academic work. The document class, university branding and cited results retain their respective attribution.
 
 ## Manuscript and defense
 
